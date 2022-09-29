@@ -15,6 +15,11 @@ class CreateRumahSakitRujukansTable extends Migration
     {
         Schema::create('rumah_sakit_rujukans', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_RS_rujukan');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
     }

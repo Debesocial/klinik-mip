@@ -15,6 +15,16 @@ class CreateKeluargasTable extends Migration
     {
         Schema::create('keluargas', function (Blueprint $table) {
             $table->id();
+            $table->string('nama', 30);
+            $table->string('hubungan', 30);
+            $table->string('alamat');
+            $table->string('pekerjaan');
+            $table->string('telepon');
+            $table->string('email');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
     }
