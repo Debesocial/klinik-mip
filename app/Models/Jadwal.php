@@ -9,10 +9,16 @@ class Jadwal extends Model
 {
     use HasFactory;
 
+    protected $table = 'jadwals';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'hari',
         'shift',
         'dari',
         'sampai'
     ];
+    
+    public function user() {
+        return $this->hasMany(User::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\JenisObat;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,20 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             JadwalSeeder::class,
-            LevelSeeder::class
+            LevelSeeder::class,
+            RumahSakitRujukanSeeder::class,
+            DivisiSeeder::class,
+            HasilPemantauanSeeder::class,
+            JabatanSeeder::class,
+            KategoriPasienSeeder::class,
+            LokasiKejadianSeeder::class,
+            PerusahaanSeeder::class,
+            SpesialisRujukanSeeder::class,
+            BobotObatSeeder::class,
+            GolonganObatSeeder::class,
+            JenisObatSeeder::class,
+            NamaObatSeeder::class,
+            SatuanObatSeeder::class
         ]);
     }
 }

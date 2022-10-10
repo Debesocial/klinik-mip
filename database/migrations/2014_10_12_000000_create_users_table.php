@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('jadwal_id')->nullable();
             $table->string('telp');
             $table->unsignedInteger('level_id')->nullable();
+            $table->string('status');
             $table->rememberToken();
             $table->timestamps();
         });

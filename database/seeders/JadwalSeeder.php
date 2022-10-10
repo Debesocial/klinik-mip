@@ -39,6 +39,66 @@ class JadwalSeeder extends Seeder
                 'dari' => '18:30:30',
                 'sampai' => '06:30:00',
             ],
+            [
+                'hari' => 'rabu',
+                'shift' => '1',
+                'dari' => '06:30:00',
+                'sampai' => '18:30:30',
+            ],
+            [
+                'hari' => 'rabu',
+                'shift' => '2',
+                'dari' => '18:30:30',
+                'sampai' => '06:30:00',
+            ],
+            [
+                'hari' => 'kamis',
+                'shift' => '1',
+                'dari' => '06:30:00',
+                'sampai' => '18:30:30',
+            ],
+            [
+                'hari' => 'kamis',
+                'shift' => '2',
+                'dari' => '18:30:30',
+                'sampai' => '06:30:00',
+            ],
+            [
+                'hari' => 'jumat',
+                'shift' => '1',
+                'dari' => '06:30:00',
+                'sampai' => '18:30:30',
+            ],
+            [
+                'hari' => 'jumat',
+                'shift' => '2',
+                'dari' => '18:30:30',
+                'sampai' => '06:30:00',
+            ],
+            [
+                'hari' => 'sabtu',
+                'shift' => '1',
+                'dari' => '06:30:00',
+                'sampai' => '18:30:30',
+            ],
+            [
+                'hari' => 'sabtu',
+                'shift' => '2',
+                'dari' => '18:30:30',
+                'sampai' => '06:30:00',
+            ],
+            [
+                'hari' => 'minggu',
+                'shift' => '1',
+                'dari' => '06:30:00',
+                'sampai' => '18:30:30',
+            ],
+            [
+                'hari' => 'minggu',
+                'shift' => '2',
+                'dari' => '18:30:30',
+                'sampai' => '06:30:00',
+            ]
         ]);
     }
 }

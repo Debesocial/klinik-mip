@@ -15,7 +15,7 @@ class CreateSpesialisRujukansTable extends Migration
     {
         Schema::create('spesialis_rujukans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_spesialis_rujukan', 20);
+            $table->string('nama_spesialis_rujukan', 100);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

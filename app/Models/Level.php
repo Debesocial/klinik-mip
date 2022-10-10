@@ -8,6 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Level extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'nama_level'
+    ];
 
-    protected $fillable = ['nama_level'];
+    public function user() {
+        return $this->hasMany(User::class);
+    }
 }

@@ -17,6 +17,10 @@ class AuthController extends Controller
         return view('auth/login');
     }
 
+    public function home(){
+        return view('public/index');
+    }
+
     public function login(Request $request){
 
         $credentials = $request->validate([

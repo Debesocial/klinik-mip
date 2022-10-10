@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class BobotObat extends Model
 {
     use HasFactory;
+
+    protected $table = 'bobot_obats';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'bobot_obat',
+        'created_by',
+        'updated_by'
+    ];
+
+    public function obat_alkes() {
+        return $this->hasMany(ObatAlkes::class);
+    }
 }

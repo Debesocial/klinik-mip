@@ -15,6 +15,7 @@ class CreateHasilPemantauansTable extends Migration
     {
         Schema::create('hasil_pemantauans', function (Blueprint $table) {
             $table->id();
+            $table->string('kode', 1);
             $table->string('nama_pemantauan', 20);
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

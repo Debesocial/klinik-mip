@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',
@@ -44,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    public function jadwal() {
+        return $this->belongsTo(Jadwal::class);
+    }
+
+    public function level() {
+        return $this->belongsTo(Level::class);
+    }
+    
 }

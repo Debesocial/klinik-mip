@@ -19,6 +19,13 @@ class PasienController extends Controller
     }
 
     /**
+     * View for Register patient
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

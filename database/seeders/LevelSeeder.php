@@ -14,9 +14,23 @@ class LevelSeeder extends Seeder
      */
     public function run()
     {
-        Level::create(
+        Level::insert(
             [
-                'nama_level' => 'superadmin'
+                [
+                    'nama_level' => 'superadmin'
+                ],
+                [
+                    'nama_level' => 'dokter',
+                ],
+                [
+                    'nama_level' => 'perawat',
+                ],
+                [
+                    'nama_level' => 'apoteker',
+                ],
+                [
+                    'nama_level' => 'farmasi',
+                ]
             ],
         );
     }
