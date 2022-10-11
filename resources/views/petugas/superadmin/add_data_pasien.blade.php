@@ -2,7 +2,6 @@
 
 @section('title', 'Add Data Pasien')
 
-
 <div class="page-heading">
     <div class="page-title">
         @section('judul', 'Add Data Pasien')
@@ -30,7 +29,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="kategori_pasien_id">Kategori Pasien<b>*</b></label>
+                                                <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
                                                 <select class="choices form-select">
                                                     <option value="">Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
@@ -40,12 +39,12 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="NIK">NIK<b>*</b></label>
+                                                <label for="NIK">NIK <b class="color-red">*</b></label>
                                                 <input type="text" id="NIK" class="form-control" name="NIK"
                                                     placeholder="Masukkan NIK">
                                             </div>
                                             <div class="form-group">
-                                                <label for="perusahaan">Perusahaan <b>*</b></label>
+                                                <label for="perusahaan">Perusahaan <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="lainnya" id="lainnya" required
                                                     onchange="yesnoCheck_lainnya(this);">
                                                     <option value="">Pilih Perusahaan</option>
@@ -62,7 +61,7 @@
                                                     placeholder="lainnya">
                                             </div>
                                             <div class="form-group">
-                                                <label for="divisi_id">Divisi<b>*</b></label>
+                                                <label for="divisi_id">Divisi <b class="color-red">*</b></label>
                                                 <select class="choices form-select">
                                                     <option value="">Pilih Divisi</option>
                                                     @foreach ($divisi as $divi)
@@ -72,7 +71,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan_id">Jabatan<b>*</b></label>
+                                                <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
                                                 <select class="choices form-select">
                                                     <option value="">Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
@@ -82,27 +81,27 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama_pasien">Nama Pasien<b>*</b></label>
+                                                <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
                                                 <input type="text" id="nama_pasien" class="form-control"
                                                     name="nama_pasien" placeholder="Masukkan nama pasien">
                                             </div>
                                             <div class="form-group">
-                                                <label for="tempat_lahir">Tempat Lahir<b>*</b></label>
+                                                <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                                 <input type="text" id="tempat_lahir" class="form-control"
                                                     name="tempat_lahir" placeholder="Masukkan Tempat lahir">
                                             </div>
                                             <div class="form-group">
-                                                <label for="tanggal_lahir">Tanggal Lahir<b>*</b></label>
+                                                <label for="tanggal_lahir">Tanggal Lahir <b class="color-red">*</b></label>
                                                 <input type="date" id="tanggal_lahir" class="form-control"
                                                     name="tanggal_lahir">
                                             </div>
                                             <div class="form-group">
-                                                <label for="umur">Umur<b>*</b></label>
+                                                <label for="umur">Umur <b class="color-red">*</b></label>
                                                 <input type="text" id="umur" class="form-control" name="umur"
                                                     placeholder="Masukkan tempat lahir">
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan_id">Jenis Kelamin<b>*</b></label>
+                                                <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select">
                                                     <option value=""></option>
                                                     <option value="Pria">Laki-laki</option>
@@ -110,7 +109,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="alamat">Alamat<b>*</b></label>
+                                                <label for="alamat">Alamat <b class="color-red">*</b></label>
                                                 <input type="text" id="alamat" class="form-control" name="alamat"
                                                     placeholder="Masukkan Alamat">
                                             </div>
@@ -120,17 +119,17 @@
                                                     name="alamat_mess" placeholder="Masukkan Alamat Mess">
                                             </div>
                                             <div class="form-group">
-                                                <label for="pekerjaan">Pekerjaan<b>*</b></label>
+                                                <label for="pekerjaan">Pekerjaan <b class="color-red">*</b></label>
                                                 <input type="text" id="pekerjaan" class="form-control"
                                                     name="pekerjaan" placeholder="Masukkan Pekerjaan">
                                             </div>
                                             <div class="form-group">
-                                                <label for="telepon">Telepon<b>*</b></label>
+                                                <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="text" id="telepon" class="form-control" name="telepon"
                                                     placeholder="masukkan No Telepon">
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email<b>*</b></label>
+                                                <label for="email">Email <b class="color-red">*</b></label>
                                                 <input type="email" id="email" class="form-control"
                                                     name="email">
                                             </div>
@@ -160,34 +159,34 @@
                                         </div>
 
                                         <div class="col-md-6 col-12">
-                                            <h3>Data Keluarga<b>*</b></h3>
+                                            <h3>Data Keluarga</h3>
                                                 <div class="form-group">
-                                                    <label for="nama">Nama Keluarga<b>*</b></label>
+                                                    <label for="nama">Nama Keluarga <b class="color-red">*</b></label>
                                                     <input type="text" id="nama" class="form-control"
                                                         name="nama" placeholder="Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="hubungan">Hubungan Keluarga<b>*</b></label>
+                                                    <label for="hubungan">Hubungan Keluarga <b class="color-red">*</b></label>
                                                     <input type="text" id="hubungan" class="form-control"
                                                         name="hubungan" placeholder="Hubungan dalam keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="alamat">Alamat<b>*</b></label>
+                                                    <label for="alamat">Alamat <b class="color-red">*</b></label>
                                                     <input type="text" id="alamat" class="form-control"
                                                         name="alamat" placeholder="Alamat Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="pekerjaan">Pekerjaan<b>*</b></label>
+                                                    <label for="pekerjaan">Pekerjaan <b class="color-red">*</b></label>
                                                     <input type="text" id="pekerjaan" class="form-control"
                                                         name="pekerjaan" placeholder="Pekerjaan Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="telepon">Telepon<b>*</b></label>
+                                                    <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                     <input type="text" id="telepon" class="form-control"
                                                         name="telepon" placeholder="No Telepon Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="email">Email<b>*</b></label>
+                                                    <label for="email">Email <b class="color-red">*</b></label>
                                                     <input type="email" id="email" class="form-control"
                                                         name="email" placeholder="Masukkan Email Keluarga" required>
                                                 </div>
