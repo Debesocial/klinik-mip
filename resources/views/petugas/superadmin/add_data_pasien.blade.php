@@ -130,11 +130,11 @@
                                                     placeholder="masukkan No Telepon">
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email<b>*</b></label>
+                                                <label for="email">Email</label>
                                                 <input type="email" id="email" class="form-control"
                                                     name="email">
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="col-md-4">
                                                 <label>Alergi Obat</label>
                                             </div>
                                             <div class="col-md-4 form-group">
@@ -167,9 +167,16 @@
                                                         name="nama" placeholder="Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="hubungan">Hubungan Keluarga<b>*</b></label>
-                                                    <input type="text" id="hubungan" class="form-control"
-                                                        name="hubungan" placeholder="Hubungan dalam keluarga" required>
+                                                    <select class="choices form-select">
+                                                        <option value=""></option>
+                                                        <option value="Ayah">Ayah</option>
+                                                        <option value="Ibu">Ibu</option>
+                                                        <option value="Adik">Adik</option>
+                                                        <option value="Abang">Abang</option>
+                                                        <option value="Kakak">Kakak</option>
+                                                        <option value="Ayah Mertua">Ayah Mertua</option>
+                                                        <option value="Ibu Mertua">Ibu Mertua</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat">Alamat<b>*</b></label>
@@ -187,7 +194,7 @@
                                                         name="telepon" placeholder="No Telepon Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="email">Email<b>*</b></label>
+                                                    <label for="email">Email</label>
                                                     <input type="email" id="email" class="form-control"
                                                         name="email" placeholder="Masukkan Email Keluarga" required>
                                                 </div>

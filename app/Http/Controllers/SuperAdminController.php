@@ -34,6 +34,12 @@ class SuperAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function pemeriksaan()
+    {
+        
+        return view('petugas.superadmin.pemeriksaan');
+    }
+
     public function dataobat()
     {
         $obatalkes = ObatAlkes::all();
@@ -184,6 +190,7 @@ class SuperAdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
+            'status' => 'required',
             'jadwal_id' => 'required',
             'telp' => 'required',
             'level_id' => 'required'

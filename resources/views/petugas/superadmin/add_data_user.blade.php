@@ -54,6 +54,16 @@
                                     </div>
                                     <div class="col-md-2">
                                     </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="status">Status<b>*</b></label>
+                                            <input type="text" id="status" class="form-control"
+                                                 name="status" placeholder="status" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
                                     
 
                                     <div class="col-md-6 col-12">

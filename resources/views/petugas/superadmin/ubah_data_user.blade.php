@@ -78,7 +78,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="level_id">Petugas Level</label>
-                                            <select class="choices form-select" name="jadwal_id" id="jadwal_id">
+                                            <select class="choices form-select" name="level_id" id="level_id">
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}" {{ $item->id == $user->level->id ? 'selected' : '' }}>{{ $item->nama_level }}</option>
                                                 @endforeach

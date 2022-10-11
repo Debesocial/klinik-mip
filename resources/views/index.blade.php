@@ -4,7 +4,7 @@
 
 @section('container') 
 
-<h1 class="card-title">Welcome, {{ Auth::user()->name }}</h1>
+<h3 class="card-title">Welcome, {{ Auth::user()->name }}</h3>
 <br><br>
 <div class="page-content">
     <section class="row">
