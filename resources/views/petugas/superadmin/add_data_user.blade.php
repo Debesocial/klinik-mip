@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Petugas Nama<b>*</b></label>
+                                            <label for="name">Nama Petugas<b>*</b></label>
                                             <input type="text" id="name" class="form-control"
                                                  name="name" placeholder="Nama Petugas" required>
                                         </div>
@@ -47,7 +47,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="email">Petugas Email<b>*</b></label>
+                                            <label for="email">Email<b>*</b></label>
                                             <input type="email" id="email" class="form-control"
                                                  name="email" placeholder="Email Petugas" required>
                                         </div>
@@ -58,8 +58,8 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="password">Petugas Password<b>*</b></label>
-                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" required="">
+                                            <label for="password">Password<b>*</b></label>
+                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" name="password" placeholder="Password Petugas" required="">
                                         </div>
                                     </div>
 
@@ -69,7 +69,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Petugas Jadwal<b>*</b></label>
+                                            <label for="jadwal_id">Jadwal Petugas<b>*</b></label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
                                                 <option value="">Pilih jadwal</option>
                                                 @foreach ($jadwal as $jadwal)
@@ -100,7 +100,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="tempat_lahir">Petugas Level<b>*</b></label>
+                                            <label for="tempat_lahir">Level<b>*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id">
                                                 <option value="">Pilih Level</option>
                                                 @foreach ($level as $item)
