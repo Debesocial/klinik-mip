@@ -3,10 +3,10 @@
         <div class="sidebar-wrapper active">
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
-                    <div class="logo">
-                        <a href="index.html">
-                            <i class="bi bi-doctor"></i>User</a>
-                    </div>
+                <div class="logo d-flex flex-column gap-4 mb-6 align-items-center justify-content-center">
+                        <a href=""><img src="{{asset('assets/images/logo/logo_klinik.png')}}" alt="" style="width: 195px; height: 85px;"></a>
+                        <strong style="font-size: 25px; border-bottom: 3px;" class="text-center">KLINIK MIP</strong>
+                </div>
                     <div class="toggler">
                         <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                     </div>
@@ -14,7 +14,7 @@
             </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    <li class="sidebar-title">Menu</li>
+                    <li class="sidebar-title"><strong>MENU</strong></li>
 
                     <li class="sidebar-item active ">
                         <a href="/dashboard" class='sidebar-link'>
