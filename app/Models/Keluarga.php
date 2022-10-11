@@ -9,9 +9,6 @@ class Keluarga extends Model
 {
     use HasFactory;
 
-    protected $table = 'keluarga';
-    protected $primaryKey = 'id';
-
     protected $fillable = [
         'nama',
         'hubungan',
@@ -21,7 +18,7 @@ class Keluarga extends Model
         'email',
         'created_by',
         'updated_by'
-        
+
     ];
 
     public function user() {

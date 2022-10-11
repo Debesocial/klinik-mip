@@ -24,13 +24,13 @@
                                 @error('message')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                                <form class="form" action="/add/data/pasien" method="post">
+                                <form class="form" action="{{ route('add.pasien') }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                                <select class="choices form-select">
+                                                <label for="kategori_pasien">Kategori Pasien <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="kategori_pasien">
                                                     <option value="">Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
                                                         <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
@@ -45,7 +45,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="perusahaan">Perusahaan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="lainnya" id="lainnya" required
+                                                <select class="choices form-select" name="perusahaan" id="perusahaan" required
                                                     onchange="yesnoCheck_lainnya(this);">
                                                     <option value="">Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
@@ -61,8 +61,8 @@
                                                     placeholder="lainnya">
                                             </div>
                                             <div class="form-group">
-                                                <label for="divisi_id">Divisi <b class="color-red">*</b></label>
-                                                <select class="choices form-select">
+                                                <label for="divisi">Divisi <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="divisi" id="divisi">
                                                     <option value="">Pilih Divisi</option>
                                                     @foreach ($divisi as $divi)
                                                         <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
@@ -71,8 +71,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
-                                                <select class="choices form-select">
+                                                <label for="jabatan">Jabatan <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="jabatan">
                                                     <option value="">Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
                                                         <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
@@ -102,7 +102,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
-                                                <select class="choices form-select">
+                                                <select class="choices form-select" name="jenis_kelamin">
                                                     <option value=""></option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
@@ -138,11 +138,9 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi"
-                                                    id="alergi"> Tidak
-                                                <label for="">
+                                                    id="alergi" value="0"> Tidak
                                                     <input class="form-check-input" type="radio" name="alergi"
-                                                        id="alergi" checked> Ya
-                                                </label>
+                                                        id="alergi" value="1" checked> Ya
                                             </div>
 
                                             <div class="col-md-2">
@@ -150,10 +148,10 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                    id="hamil_menyusui"> Tidak
+                                                    id="hamil_menyusui" value="0"> Tidak
                                                 <label for="">
                                                     <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                        id="hamil_menyusui" checked> Ya
+                                                        id="hamil_menyusui" value="1" checked> Ya
                                                 </label>
                                             </div>
                                         </div>
@@ -161,9 +159,9 @@
                                         <div class="col-md-6 col-12">
                                             <h3>Data Keluarga</h3>
                                                 <div class="form-group">
-                                                    <label for="nama">Nama Keluarga <b class="color-red">*</b></label>
-                                                    <input type="text" id="nama" class="form-control"
-                                                        name="nama" placeholder="Nama Keluarga" required>
+                                                    <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
+                                                    <input type="text" id="nama_keluarga" class="form-control"
+                                                        name="nama_keluarga" placeholder="Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="hubungan">Hubungan Keluarga <b class="color-red">*</b></label>
@@ -171,24 +169,24 @@
                                                         name="hubungan" placeholder="Hubungan dalam keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                                    <input type="text" id="alamat" class="form-control"
-                                                        name="alamat" placeholder="Alamat Keluarga" required>
+                                                    <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
+                                                    <input type="text" id="alamat_keluarga" class="form-control"
+                                                        name="alamat_keluarga" placeholder="Alamat Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="pekerjaan">Pekerjaan <b class="color-red">*</b></label>
-                                                    <input type="text" id="pekerjaan" class="form-control"
-                                                        name="pekerjaan" placeholder="Pekerjaan Keluarga" required>
+                                                    <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
+                                                    <input type="text" id="pekerjaan_keluarga" class="form-control"
+                                                        name="pekerjaan_keluarga" placeholder="Pekerjaan Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                                    <input type="text" id="telepon" class="form-control"
-                                                        name="telepon" placeholder="No Telepon Keluarga" required>
+                                                    <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
+                                                    <input type="text" id="telepon_keluarga" class="form-control"
+                                                        name="telepon_keluarga" placeholder="No Telepon Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="email">Email <b class="color-red">*</b></label>
-                                                    <input type="email" id="email" class="form-control"
-                                                        name="email" placeholder="Masukkan Email Keluarga" required>
+                                                    <label for="email_keluarga">Email <b class="color-red">*</b></label>
+                                                    <input type="email_keluarga" id="email_keluarga" class="form-control"
+                                                        name="email_keluarga" placeholder="Masukkan Email Keluarga" required>
                                                 </div>
                                             <div class="col-md-6">
                                                 <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
