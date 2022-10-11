@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<link rel="stylesheet" href="{{asset ('assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css')}}">
 	<link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
 	@yield('css')
@@ -33,7 +34,7 @@
 	@include('layouts.dashboard.sidebar')
 	<div id="main">
 		<header class="mb-3">
-			
+
 			<a href="#" class="burger-btn d-block d-xl-none">
 				<i class="bi bi-justify fs-3"></i>
 			</a>
@@ -47,10 +48,10 @@
 				@yield('container')
 			</section>
 		</div>
-		
+
 
 		<footer>
-			
+
 		</footer>
 	</div>
 	</div>
@@ -65,7 +66,7 @@
 <script src="{{asset ('ref/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js')}}"></script>
 <script src="{{asset ('ref/assets/vendors/fontawesome/all.min.js')}}"></script>
 
-	
+
 
 	<script src="{{ asset('assets/js/mazer.js') }}"></script>
 	<script>
@@ -73,9 +74,9 @@
 		let jquery_datatable = $("#table1").DataTable()
 	</script>
 	 <script type="text/javascript">
-		function yesnoCheck_lainnya(that) 
+		function yesnoCheck_lainnya(that)
 		{
-			if (that.value == "lainnya") 
+			if (that.value == "lainnya")
 			{
 				document.getElementById("lain").style.display = "block";
 			}

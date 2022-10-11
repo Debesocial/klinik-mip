@@ -15,7 +15,7 @@ class Pasien extends Model
     protected $fillable = [
         'kategori_pasien_id',
         'NIK',
-        'perusahan_id',
+        'perusahaan_id',
         'lain',
         'divisi_id',
         'jabatan_id',
@@ -26,14 +26,15 @@ class Pasien extends Model
         'umur',
         'jenis_kelamin',
         'alamat',
-        'alamat_mess', 
+        'alamat_mess',
         'pekerjaan',
         'telepon',
         'email',
         'alergi_obat',
-        'hamil_menyusui'
-        
+        'hamil_menyusui',
+        'created_by',
+        'updated_by'
     ];
 
-    
+
 }
