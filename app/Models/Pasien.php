@@ -40,6 +40,18 @@ class Pasien extends Model
         return $this->belongsTo(Perusahaan::class);
     }
 
+    public function divisi() {
+        return $this->belongsTo(Divisi::class);
+    }
+
+    public function keluarga() {
+        return $this->belongsTo(Keluarga::class);
+    }
+
+    public function kategori() {
+        return $this->belongsTo(KategoriPasien::class);
+    }
+
     public function jabatan() {
         return $this->belongsTo(Jabatan::class);
     }

@@ -33,10 +33,17 @@
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" required>
+                    
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
                     </div>
+                </div>
+                <div class="form-check form-check-lg d-flex align-items-end">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" onclick="myFunction()">
+                    <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                        Show Password
+                    </label>
                 </div>
                 <div class="form-check form-check-lg d-flex align-items-end">
                     <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
@@ -60,3 +67,14 @@
 </body>
 
 </html>
+
+<script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>

@@ -25,4 +25,8 @@ class Keluarga extends Model
         return $this->hasMany(User::class);
     }
 
+    public function pasien() {
+        return $this->hasMany(Pasien::class);
+    }
+
 }

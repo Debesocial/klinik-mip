@@ -92,7 +92,7 @@ class SuperAdminController extends Controller
         $golonganobat = GolonganObat::all();
         $jenisobat = JenisObat::all();
         $namaobat = NamaObat::all();
-        $satuanobat = BobotObat::all();
+        $satuanobat = SatuanObat::all();
         return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat')); 
     }
 
@@ -159,6 +159,20 @@ class SuperAdminController extends Controller
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
+    public function ubahpasien($id)
+    {
+        
+        $pasien = Pasien::find($id);
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $keluarga = Keluarga::all();
+
+        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga')); 
+    }
+
+    
     
 
     /**
@@ -311,7 +325,7 @@ class SuperAdminController extends Controller
 
     public function addspesialisrujukan()
     {
-        return view('petugas.superadmin.add_rs_rujukan');
+        return view('petugas.superadmin.add_spesialis_rujukan');
     }
 
     public function tambahspessialisrujukan(Request $request)
