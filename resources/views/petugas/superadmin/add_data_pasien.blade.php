@@ -195,7 +195,7 @@
                                                     <input type="email_keluarga" id="email_keluarga" class="form-control"
                                                         name="email_keluarga" placeholder="Masukkan Email Keluarga" required>
                                             </div>
-                                            <div class="col-sm-6 d-flex justify-content-end">
+                                            <div class=" d-flex justify-content-end">
                                                 <button type="submit"
                                                     class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset"
