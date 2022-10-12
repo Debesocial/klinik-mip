@@ -194,7 +194,11 @@
                                                     <label for="email_keluarga">Email <b class="color-red">*</b></label>
                                                     <input type="email_keluarga" id="email_keluarga" class="form-control"
                                                         name="email_keluarga" placeholder="Masukkan Email Keluarga" required>
-                                          <button type="reset"
+                                            </div>
+                                            <div class="col-sm-6 d-flex justify-content-end">
+                                                <button type="submit"
+                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>
                                         </div>
