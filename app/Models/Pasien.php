@@ -15,7 +15,7 @@ class Pasien extends Model
     protected $fillable = [
         'kategori_pasien_id',
         'NIK',
-        'perusahan_id',
+        'perusahaan_id',
         'lain',
         'divisi_id',
         'jabatan_id',
@@ -26,14 +26,41 @@ class Pasien extends Model
         'umur',
         'jenis_kelamin',
         'alamat',
-        'alamat_mess', 
+        'alamat_mess',
         'pekerjaan',
         'telepon',
         'email',
         'alergi_obat',
-        'hamil_menyusui'
-        
+        'hamil_menyusui',
+        'created_by',
+        'updated_by'
     ];
 
-    
+    public function perusahaan() {
+        return $this->belongsTo(Perusahaan::class);
+    }
+
+    public function jabatan() {
+        return $this->belongsTo(Jabatan::class);
+    }
+
+    public function bobotobat() {
+        return $this->belongsTo(BobotObat::class);
+    }
+
+    public function golonganobat() {
+        return $this->belongsTo(GolonganObat::class);
+    }
+
+    public function jenisobat() {
+        return $this->belongsTo(JenisObat::class);
+    }
+
+    public function namaobat() {
+        return $this->belongsTo(NamaObat::class);
+    }
+
+    public function satuanobat() {
+        return $this->belongsTo(SatuanObat::class);
+    }
 }

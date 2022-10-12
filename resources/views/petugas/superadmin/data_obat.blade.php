@@ -29,17 +29,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($obatalkes as $item)
+                    @foreach ($obatalkes as $obat)
                     <tr>
-                        <td>{{ $item->jenis_obat->nama_jenis_obat }}</td>
-                        <td>{{ $item->golongan_obat->nama_golongan_obat }}</td>
-                        <td>{{ $item->nama_obat->nama_obat }}</td>
-                        <td>{{ $item->satuan_obat->satuan_obat }}</td>
-                        <td>{{ $item->bobot_obat->bobot_obat }}</td>
-                        <td>{{ $item->komposisi_obat }}</td>
+                        <td>{{ $obat->jenis_obat->nama_jenis_obat }}</td>
+                        <td>{{ $obat->golongan_obat->nama_golongan_obat }}</td>
+                        <td>{{ $obat->nama_obat->nama_obat }}</td>
+                        <td>{{ $obat->satuan_obat->satuan_obat }}</td>
+                        <td>{{ $obat->bobot_obat->bobot_obat }}</td>
+                        <td>{{ $obat->komposisi_obat }}</td>
                             <td><div class="buttons">
                                 <a href="" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                <a href="/ubah/data/obat/{{ $item->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/data/obat/{{ $obat->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

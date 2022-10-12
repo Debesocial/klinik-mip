@@ -4,8 +4,7 @@
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
                 <div class="logo d-flex flex-column gap-4 mb-6 align-items-center justify-content-center">
-                        <a href=""><img src="{{asset('assets/images/logo/logo_klinik.png')}}" alt="" style="width: 195px; height: 85px;"></a>
-                        <strong style="font-size: 25px; border-bottom: 3px;" class="text-center">KLINIK MIP</strong>
+                        <a href=""><img src="{{asset('assets/images/logo/logo-klinik.JPEG')}}" alt="" style="width: 200px; height: 100px;"></a>
                 </div>
                     <div class="toggler">
                         <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>

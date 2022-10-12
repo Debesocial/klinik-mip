@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="name">Nama Petugas<b>*</b></label>
                                             <input type="text" id="name" class="form-control"
-                                                 name="name" placeholder="Nama Petugas" required>
+                                                 name="name" placeholder="Masukkan Nama" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <label for="email">Email<b>*</b></label>
                                             <input type="email" id="email" class="form-control"
-                                                 name="email" placeholder="Email Petugas" required>
+                                                 name="email" placeholder="Masukkan Email" required>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -69,7 +69,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password<b>*</b></label>
-                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" name="password" placeholder="Password Petugas" required="">
+                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" name="password" placeholder="Masukkan Password" required="">
                                         </div>
                                     </div>
 
@@ -100,7 +100,7 @@
                                         <div class="form-group">
                                             <label for="telp">No Telepon<b>*</b></label>
                                             <input type="number" id="telp" class="form-control"
-                                                name="telp" placeholder="No Telepon Petugas" required>
+                                                name="telp" placeholder="Masukkan No Telepon" required>
                                         </div>
                                     </div>
 

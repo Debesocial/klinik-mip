@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function() {
     
     Route::get('/data/pasien', [SuperAdminController::class, 'datapasien'])->name('superadmin.datapasien');
     Route::get('/add/data/pasien', [SuperAdminController::class, 'addpasien'])->name('superadmin.adddatapasien');
-    Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('superadmin.tambahdatapasien');
+    Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('add.pasien');
     Route::get('/add/data/keluarga', [SuperAdminController::class, 'addkeluarga'])->name('superadmin.adddatakeluarga');
     Route::post('/add/data/keluarga', [SuperAdminController::class, 'tambahkeluarga'])->name('superadmin.tambahdatakeluarga');
 

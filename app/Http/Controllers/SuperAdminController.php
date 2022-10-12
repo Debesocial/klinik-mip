@@ -87,7 +87,7 @@ class SuperAdminController extends Controller
     public function ubahobat($id)
     {
         
-        $obatalkes = ObatAlkes::where('id',$id)->get();
+        $obatalkes = ObatAlkes::find($id);
         $bobotobat = BobotObat::all();
         $golonganobat = GolonganObat::all();
         $jenisobat = JenisObat::all();
