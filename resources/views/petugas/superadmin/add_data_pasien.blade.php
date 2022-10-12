@@ -1,10 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
-
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Data Pasien')
+        @section('judul', 'Tambah Data Pasien')
         @section('container')
             <div class="row">
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -140,18 +139,18 @@
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi"
                                                     id="alergi" value="0"> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi"
+                                                    <input class="form-check-input ms-5" type="radio" name="alergi"
                                                         id="alergi" value="1" checked> Ya
                                             </div>
 
-                                            <div class="col-md-3">
+                                            <div class="col-md-3 mt-4">
                                                 <label>Hamil/Menyusui <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
                                                     id="hamil_menyusui" value="0"> Tidak
                                                 <label for="">
-                                                    <input class="form-check-input" type="radio" name="hamil_menyusui"
+                                                    <input class="form-check-input ms-5" type="radio" name="hamil_menyusui"
                                                         id="hamil_menyusui" value="1" checked> Ya
                                                 </label>
                                             </div>
@@ -198,9 +197,9 @@
                                             </div>
                                             <div class=" d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1 btn-form">Submit</button>
                                                 <button type="reset"
-                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                    class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
                                             </div>
                                         </div>
                                 </form>
