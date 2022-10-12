@@ -3,8 +3,8 @@
 @section('title', 'Dashsboard')
 
 @section('container')
-
 <h4 class="card-title">Welcome, {{ Auth::user()->name }}</h4>
+
 <br><br>
 <div class="page-content">
     <section class="row">

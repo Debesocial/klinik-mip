@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Nama Petugas<b>*</b></label>
+                                            <label for="name">Nama Petugas <b class="color-red">*</b></label>
                                             <input type="text" id="name" class="form-control"
                                                  name="name" placeholder="Masukkan Nama" required>
                                         </div>
@@ -47,9 +47,19 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="email">Email<b>*</b></label>
+                                            <label for="email">Email</label>
                                             <input type="email" id="email" class="form-control"
-                                                 name="email" placeholder="Masukkan Email" required>
+                                                 name="email" placeholder="Masukkan Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="status">Status <b class="color-red">*</b></label>
+                                            <input type="status" id="status" class="form-control"
+                                                 name="status" placeholder="Masukkan Status">
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -58,8 +68,8 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="password">Password<b>*</b></label>
-                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" name="password" placeholder="Masukkan Password" required="">
+                                            <label for="password">Password <b class="color-red">*</b></label>
+                                            <input type="password" name="password" id="password" class="form-control form-control-sm" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" name="password" placeholder="Masukkan Password" required>
                                         </div>
                                     </div>
 
@@ -69,7 +79,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Jadwal Petugas<b>*</b></label>
+                                            <label for="jadwal_id">Jadwal Petugas <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
                                                 <option value="">Pilih jadwal</option>
                                                 @foreach ($jadwal as $jadwal)
@@ -88,7 +98,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="telp">No Telepon<b>*</b></label>
+                                            <label for="telp">No Telepon <b class="color-red">*</b></label>
                                             <input type="number" id="telp" class="form-control"
                                                 name="telp" placeholder="Masukkan No Telepon" required>
                                         </div>
@@ -100,7 +110,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="tempat_lahir">Level<b>*</b></label>
+                                            <label for="tempat_lahir">Level <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id">
                                                 <option value="">Pilih Level</option>
                                                 @foreach ($level as $item)

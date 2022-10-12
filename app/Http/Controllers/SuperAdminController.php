@@ -34,10 +34,16 @@ class SuperAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    public function pemeriksaan()
+    {
+        
+        return view('petugas.superadmin.pemeriksaan');
+    }
+
     public function dataobat()
     {
         $obatalkes = ObatAlkes::all();
-
+        
         return view('petugas.superadmin.data_obat', compact('obatalkes'));
     }
 
@@ -54,7 +60,7 @@ class SuperAdminController extends Controller
 
     public function tambahobat(Request $request)
     {
-
+        
         $validatedData = $request->validate([
             'jenis_obat_id' => 'required',
             'golongan_obat_id' => 'required',
@@ -80,14 +86,14 @@ class SuperAdminController extends Controller
 
     public function ubahobat($id)
     {
-
-        $obatalkes = ObatAlkes::where('id',$id)->get();
+        
+        $obatalkes = ObatAlkes::find($id);
         $bobotobat = BobotObat::all();
         $golonganobat = GolonganObat::all();
         $jenisobat = JenisObat::all();
         $namaobat = NamaObat::all();
         $satuanobat = BobotObat::all();
-        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat'));
+        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat')); 
     }
 
     function changeobat(Request $request, $id) {
@@ -125,12 +131,13 @@ class SuperAdminController extends Controller
     }
     public function tambahpasien(Request $request)
     {
-        $request->validate([
-            'kategori_pasien' => 'required',
+        $validatedData = $request->validate([
+            'kategori_pasien_id' => 'required',
             'NIK' => 'required',
-            'perusahaan' => 'required',
-            'divisi' => 'required',
-            'jabatan' => 'required',
+            'perusahan_id' => 'required',
+            'divisi_id' => 'required',
+            'jabatan_id' => 'required',
+            'keluarga_id' => 'required',
             'nama_pasien' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -140,58 +147,19 @@ class SuperAdminController extends Controller
             'pekerjaan' => 'required',
             'telepon' => 'required',
             'email' => 'required',
-            'alergi' => 'required',
-            'hamil_menyusui' => 'required',
-            'nama_keluarga' => 'required',
-            'hubungan' => 'required',
-            'alamat_keluarga' => 'required',
-            'pekerjaan_keluarga' => 'required',
-            'telepon_keluarga' => 'required',
-            'email_keluarga' => 'required'
+            'alergi_obat' => 'required',
+            'hamil_menyusui' => 'required', 
+            'keluarga_id' => ''
         ]);
 
-        $keluarga = Keluarga::create([
-            'nama' => $request->nama_keluarga,
-            'hubungan' => $request->hubungan,
-            'alamat' => $request->alamat_keluarga,
-            'pekerjaan' => $request->pekerjaan_keluarga,
-            'telepon' => $request->telepon_keluarga,
-            'email' => $request->email_keluarga,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id
-        ]);
+        dd($request->all());
 
-        $pasien = Pasien::create([
-            'kategori_pasien_id' => $request->kategori_pasien,
-            'NIK' => $request->NIK,
-            'perusahaan_id' => $request->perusahaan,
-            'divisi_id' => $request->divisi,
-            'jabatan_id' => $request->jabatan,
-            'keluarga_id' => $keluarga->id,
-            'nama_pasien' => $request->nama_pasien,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'umur' => $request->umur,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'alamat' => $request->alamat,
-            'alamat_mess' => $request->alamat_mess,
-            'pekerjaan' => $request->pekerjaan,
-            'telepon' => $request->telepon,
-            'email' => $request->email,
-            'alergi_obat' => $request->alergi,
-            'hamil_menyusui' => $request->hamil_menyusui,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id
-        ]);
+        Pasien::create($validatedData);
 
-        if ($pasien) {
-            return redirect('/data/pasien')->with('success', 'Successfully!');
-        }
-
-        return redirect()->back()->with('fail', 'Fail Create Data!');
+        return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
-
+    
 
     /**
      * Store a newly created resource in storage.
@@ -202,8 +170,8 @@ class SuperAdminController extends Controller
     public function datauser()
     {
         $users = User::all();
-
-
+        
+        
         return view('petugas.superadmin.data_user')->with('users', $users);
     }
 
@@ -217,11 +185,12 @@ class SuperAdminController extends Controller
 
     public function tambahuser(Request $request)
     {
-
+        
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
+            'status' => 'required',
             'jadwal_id' => 'required',
             'telp' => 'required',
             'level_id' => 'required'
@@ -239,7 +208,7 @@ class SuperAdminController extends Controller
         $user = User::find($id);
         $jadwal = Jadwal::all();
         $level = Level::all();
-        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level'));
+        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level')); 
     }
 
     function changeuser(Request $request, $id) {
@@ -283,7 +252,7 @@ class SuperAdminController extends Controller
     public function ubahlokasikejadian($id)
     {
         $lokasikejadian = LokasiKejadian::find($id);
-        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian'));
+        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian')); 
     }
 
     function changelokasikejadian(Request $request, $id) {
@@ -310,7 +279,7 @@ class SuperAdminController extends Controller
         $validatedData = $request->validate([
             'nama_RS_rujukan' => 'required',
         ]);
-
+        
         RumahSakitRujukan::create([
             'nama_RS_rujukan' => $request->nama_RS_rujukan,
             'created_by' => auth()->user()->id,
@@ -323,7 +292,7 @@ class SuperAdminController extends Controller
     public function ubahrsrujukan($id)
     {
         $rsrujukan = RumahSakitRujukan::find($id);
-        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan'));
+        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan')); 
     }
 
     function changersrujukan(Request $request, $id) {
@@ -369,7 +338,7 @@ class SuperAdminController extends Controller
     public function ubahspesialisrujukan($id)
     {
         $spesialisrujukan = SpesialisRujukan::find($id);
-        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan'));
+        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan')); 
     }
 
     function changespesialisrujukan(Request $request, $id) {
@@ -405,7 +374,7 @@ class SuperAdminController extends Controller
     public function ubahhasilpemantauan($id)
     {
         $hasilpemantauan = HasilPemantauan::find($id);
-        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan'));
+        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan')); 
     }
 
     function changehasilpemantauan(Request $request, $id) {
@@ -420,7 +389,7 @@ class SuperAdminController extends Controller
     public function addkeluarga($id)
     {
         $keluarga = Keluarga::find($id);
-        return view('petugas.superadmin.add_data_keluarga', compact('keluarga'));
+        return view('petugas.superadmin.add_data_keluarga', compact('keluarga')); 
     }
 
     /**

@@ -20,7 +20,7 @@ class CreateKeluargasTable extends Migration
             $table->string('alamat');
             $table->string('pekerjaan');
             $table->string('telepon');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

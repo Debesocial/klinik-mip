@@ -26,7 +26,7 @@
                                             <label for="jenis_obat_id">Jenis Obat</label>
                                             <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
                                                 @foreach ($jenisobat as $jenis)
-                                                <option value="{{ $jenis->id }}" {{ $jenis->id == $obatalkes->jenisobat->id ? 'selected' : '' }}>{{ $jenis->nama_jenis_obat }}</option>
+                                                <option value="{{ $jenis->id }}" {{ $jenis->id == $obatalkes->jenisobat->id ? 'selected' : '' }}>{{ $jenis->namajenisobat }}</option>
                                                 @endforeach
                                         </select>
                                         </div>

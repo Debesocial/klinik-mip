@@ -17,7 +17,7 @@ class BobotObat extends Model
         'updated_by'
     ];
 
-    public function obat_alkes() {
+    public function obatalkes() {
         return $this->hasMany(ObatAlkes::class);
     }
 }
