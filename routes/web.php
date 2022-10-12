@@ -25,13 +25,12 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi,perawat']], function() {
+Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi,perawat']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function() {
-    Route::get('/pemeriksaan', [SuperAdminController::class, 'pemeriksaan'])->name('superadmin.pemeriksaan');
-    
+    Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function () {
+
     Route::get('/data/pasien', [SuperAdminController::class, 'datapasien'])->name('superadmin.datapasien');
     Route::get('/add/data/pasien', [SuperAdminController::class, 'addpasien'])->name('superadmin.adddatapasien');
     Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('add.pasien');
@@ -79,6 +78,6 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function() {
     Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:perawat']], function() {
+Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
     Route::get('/perawat/daftar', [PerawatController::class, 'daftar'])->name('perawat.daftar');
 });

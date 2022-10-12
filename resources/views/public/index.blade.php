@@ -9,9 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="public_assets/images/favicon.svg" />
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="public_assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="public_assets/css/LineIcons.2.0.css" />
@@ -22,14 +20,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-      <p class="browserupgrade">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-        your experience and security.
-      </p>
-    <![endif]-->
-
     <div class="preloader">
         <div class="preloader-inner">
             <div class="preloader-icon">
@@ -41,18 +31,13 @@
 
 
     <header class="header navbar-area">
-
-        <div class="toolbar-area">
+        <div class="toolbar-area" style="background: #194c79;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-6 col-12">
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="toolbar-login">
-                            <div class="button">
-                                
-                                <a href="{{ route('login.index') }}" class="btn">Log In</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,11 +50,9 @@
                     <div class="nav-inner">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index-2.html">
-                                <img src="" alt="Logo">
+                                <img src="{{asset('assets/images/logo/logo-klinik.JPG')}}" alt="" style="width: 150px; height: 50px;">
                             </a>
-                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
                                 <span class="toggler-icon"></span>
@@ -77,25 +60,11 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a class="page-scroll active dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Home</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-1">
-                                            <li class="nav-item active"><a href="index-2.html">University</a></li>
-                                            <li class="nav-item"><a href="index2.html">Online Course</a></li>
-                                            <li class="nav-item"><a href="index3.html">Training Institute</a></li>
-                                        </ul>
+                                        <a class="page-scroll active dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#submenu-1-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: #194c79;">Home</a>
                                     </li>
-                                    <li class="nav-item"><a href="contact.html">Tentang</a></li>
-                                    <li class="nav-item"><a href="contact.html">Contact</a></li> 
+                                    <li class="nav-item"><a href="contact.html" style="color: ##194c79;">about</a></li>
+                                    <li class="nav-item"><a href="contact.html" style="color: ##194c79;">Contact</a></li>
                                 </ul>
-                                <form class="d-flex search-form">
-                                    <input class="form-control me-2" type="search" placeholder="Search"
-                                        aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit"><i
-                                            class="lni lni-search-alt"></i></button>
-                                </form>
                             </div>
                         </nav>
                     </div>
@@ -104,17 +73,14 @@
         </div>
     </header>
 
-
     <section class="hero-area">
         <div class="hero-slider">
-
             <div class="hero-inner overlay" style="background-image: url('');">
                 <div class="container">
                     <div class="row ">
-                        <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
+                        <div class="col-lg-8">
                             <div class="home-slider">
                                 <div class="hero-text">
-                                    
                                     <h1 class="wow fadeInUp" data-wow-delay=".5s">Excellent And Friendly <br> Faculty
                                         Members</h1>
                                     <p class="wow fadeInUp" data-wow-delay=".7s">Lorem Ipsum is simply dummy text of the
@@ -123,32 +89,41 @@
                                         <br>dummy text ever since an to impression.
                                     </p>
                                     <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="hero-inner overlay" style="background-image: url('');">
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
+                        <div class="col-lg-4 mt-50">
                             <div class="home-slider">
-                                <div class="hero-text">
-                                    
-                                    <h1 class="wow fadeInUp" data-wow-delay=".5s">Innovation Paradise<br> For Students
-                                    </h1>
-                                    <p class="wow fadeInUp" data-wow-delay=".7s">Lorem Ipsum is simply dummy text of the
-                                        printing and typesetting <br> industry. Lorem Ipsum has been the industry's
-                                        standard
-                                        <br>dummy text ever since an to impression.
-                                    </p>
-                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h6>Login to Klinik MIP</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <form action="{{route('login')}}" method="POST">
+                                                @csrf
+                                                <div class="form-group position-relative has-icon-left mb-4 mt-3">
+                                                    <input type="email" class="form-control form-control-xl" name="email" placeholder="email" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-person"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group position-relative has-icon-left mb-4">
+                                                    <input type="password" class="form-control form-control-xl" name="password" placeholder="Password" required>
+                                                    <div class="form-control-icon">
+                                                        <i class="bi bi-shield-lock"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-check-lg d-flex align-items-end">
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
+                                                    <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                                                        Keep me logged in
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class=" form-control btn btn-primary mt-3 mb-5">Log in</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,38 +131,8 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="hero-inner overlay" style="background-image: url('');">
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-lg-8 offset-lg-2 col-md-12 co-12">
-                            <div class="home-slider">
-                                <div class="hero-text">
-                                    
-                                    <h1 class="wow fadeInUp" data-wow-delay=".5s">Your Ideas Will Be <br> Heard &
-                                        Supported</h1>
-                                    <p class="wow fadeInUp" data-wow-delay=".7s">Lorem Ipsum is simply dummy text of the
-                                        printing and typesetting <br> industry. Lorem Ipsum has been the industry's
-                                        standard
-                                        <br>dummy text ever since an to impression.
-                                    </p>
-                                    <div class="button wow fadeInUp" data-wow-delay=".9s">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
-
-
-    
-
 
     <div class="client-logo-section">
         <div class="container">
@@ -225,35 +170,18 @@
         </div>
     </div>
 
-
     <footer class="footer">
-
         <div class="footer-middle">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-12">
-
-                        <div class="f-about single-footer">
-                            <div class="logo">
-                                <a href="index-2.html"><img src="public_assets/images/logo/logo.svg" alt="Logo"></a>
-                            </div>
-                            <p>Nemo enim enim voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                consequ magni dolores eos qui ratione.</p>
-                            <div class="footer-social">
-                                <ul>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
+                    <div class="col" style="text-align: left;">
+                        <i>copyright <a href="mandiricoal.co.id">mandiricoal.co.id</a> 2022</i>
                     </div>
-                    
-
-        
-
+                    <div class="col" style="text-align: right;">
+                        <i>Fueling the Bright Future</i>
+                    </div>
+                </div>
+            </div>
     </footer>
 
 
