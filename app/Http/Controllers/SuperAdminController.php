@@ -212,7 +212,7 @@ class SuperAdminController extends Controller
         $jadwal = Jadwal::all();
         $level = Level::all();
 
-        return view('petugas.superadmin.add_data_user', compact('jadwal', 'level'));
+        return view('petugas.superadmin.add_data_user', compact('jadwal', 'level','user'));
     }
 
     public function tambahuser(Request $request)
@@ -222,6 +222,7 @@ class SuperAdminController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
+            'status' => 'required',
             'jadwal_id' => 'required',
             'telp' => 'required',
             'level_id' => 'required'
