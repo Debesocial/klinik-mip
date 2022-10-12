@@ -21,13 +21,14 @@ class CreatePasiensTable extends Migration
             $table->foreignId('divisi_id')->constrained();
             $table->foreignId('jabatan_id')->constrained();
             $table->foreignId('keluarga_id')->constrained();
+            $table->string('lain')->nullable();
             $table->string('nama_pasien', 50);
             $table->string('tempat_lahir', 20);
             $table->date('tanggal_lahir');
             $table->bigInteger('umur');
             $table->string('jenis_kelamin', 10);
             $table->string('alamat', 50);
-            $table->string('alamat_mess', 20);
+            $table->string('alamat_mess', 20)->nullable();
             $table->string('pekerjaan', 20);
             $table->string('telepon', 20);
             $table->string('email', 30);

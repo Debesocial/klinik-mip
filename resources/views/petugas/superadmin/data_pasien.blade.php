@@ -36,17 +36,20 @@
                              <th>Jabatan</th>
                              <th>Alergi</th>
                              <th>Hamil/Menyusui</th>
+                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pasiens as $pasien)
+                        @foreach ($pasiens as $patient)
                         <tr>
-                            <td>{{ $pasien['nama_pasien'] }}</td>
-                            <td>{{ $pasien['tempat_lahir'] }}</td>
-                            <td>{{ $pasien['tanggal_lahir'] }}</td>
-                            <td>{{ $pasien['alamat'] }}</td>
-                            <td>{{ $pasien['pekerjaan'] }}</td>
-                            <td>{{ $pasien['telepon'] }}</td>
+                            <td>{{ $patient['created_at'] }}</td>
+                            <td>{{ $patient['nama_pasien'] }}</td>
+                            <td>{{ $patient['umur'] }}</td>
+                            <td>{{ $patient['jenis_kelamin'] }}</td>
+                            <td>{{ $patient->perusahaan->nama_perusahaan_pasien }}</td>
+                            <td>{{ $patient->jabatan->nama_jabatan }}</td>
+                            <td>{{ $patient['alergi_obat'] }}</td>
+                            <td>{{ $patient['hamil_menyusui'] }}</td>
                             <td><div class="buttons" width="100px">
                                 <a href="" title="View Data Pasien" href="#"
                                 class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>

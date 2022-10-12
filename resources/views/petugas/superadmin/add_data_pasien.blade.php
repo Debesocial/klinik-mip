@@ -28,6 +28,7 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-12">
+                                        <h3 class="mb-4">Data Pasien</h3>
                                             <div class="form-group">
                                                 <label for="kategori_pasien">Kategori Pasien <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="kategori_pasien">
@@ -103,7 +104,7 @@
                                             <div class="form-group">
                                                 <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jenis_kelamin">
-                                                    <option value=""></option>
+                                                    <option value="">Pilih Jenis Kelamin</option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
                                                 </select>
@@ -126,15 +127,15 @@
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="text" id="telepon" class="form-control" name="telepon"
-                                                    placeholder="masukkan No Telepon">
+                                                    placeholder="Masukkan No Telepon">
                                             </div>
                                             <div class="form-group">
-                                                <label for="email">Email <b class="color-red">*</b></label>
+                                                <label for="email">Email</label>
                                                 <input type="email" id="email" class="form-control"
-                                                    name="email">
+                                                    name="email" placeholder="Masukkan Email">
                                             </div>
-                                            <div class="col-md-2">
-                                                <label>Alergi Obat</label>
+                                            <div class="col-md-4">
+                                                <label>Alergi Obat <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi"
@@ -143,8 +144,8 @@
                                                         id="alergi" value="1" checked> Ya
                                             </div>
 
-                                            <div class="col-md-2">
-                                                <label>Hamil/Menyusui</label>
+                                            <div class="col-md-3">
+                                                <label>Hamil/Menyusui <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
@@ -157,40 +158,44 @@
                                         </div>
 
                                         <div class="col-md-6 col-12">
-                                            <h3>Data Keluarga</h3>
+                                            <h3 class="mb-4">Data Keluarga</h3>
                                                 <div class="form-group">
                                                     <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
                                                     <input type="text" id="nama_keluarga" class="form-control"
                                                         name="nama_keluarga" placeholder="Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="hubungan">Hubungan Keluarga <b class="color-red">*</b></label>
-                                                    <input type="text" id="hubungan" class="form-control"
-                                                        name="hubungan" placeholder="Hubungan dalam keluarga" required>
+                                                    <select class="choices form-select">
+                                                        <option value="">Pilih Hubungan Keluarga</option>
+                                                        <option value="Ayah">Ayah</option>
+                                                        <option value="Ibu">Ibu</option>
+                                                        <option value="Adik">Adik</option>
+                                                        <option value="Abang">Abang</option>
+                                                        <option value="Kakak">Kakak</option>
+                                                        <option value="Ayah Mertua">Ayah Mertua</option>
+                                                        <option value="Ibu Mertua">Ibu Mertua</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
                                                     <input type="text" id="alamat_keluarga" class="form-control"
-                                                        name="alamat_keluarga" placeholder="Alamat Keluarga" required>
+                                                        name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
                                                     <input type="text" id="pekerjaan_keluarga" class="form-control"
-                                                        name="pekerjaan_keluarga" placeholder="Pekerjaan Keluarga" required>
+                                                        name="pekerjaan_keluarga" placeholder="Masukkan Pekerjaan Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
                                                     <input type="text" id="telepon_keluarga" class="form-control"
-                                                        name="telepon_keluarga" placeholder="No Telepon Keluarga" required>
+                                                        name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="email_keluarga">Email <b class="color-red">*</b></label>
+                                                    <label for="email_keluarga">Email</label>
                                                     <input type="email_keluarga" id="email_keluarga" class="form-control"
-                                                        name="email_keluarga" placeholder="Masukkan Email Keluarga" required>
-                                                </div>
-                                            <div class="col-md-6">
-                                                <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                                <button type="reset"
+                                                        name="email_keluarga" placeholder="Masukkan Email Keluarga">
+                                          <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>
                                         </div>

@@ -36,5 +36,31 @@ class Pasien extends Model
         'updated_by'
     ];
 
+    public function perusahaan() {
+        return $this->belongsTo(Perusahaan::class);
+    }
 
+    public function jabatan() {
+        return $this->belongsTo(Jabatan::class);
+    }
+
+    public function bobotobat() {
+        return $this->belongsTo(BobotObat::class);
+    }
+
+    public function golonganobat() {
+        return $this->belongsTo(GolonganObat::class);
+    }
+
+    public function jenisobat() {
+        return $this->belongsTo(JenisObat::class);
+    }
+
+    public function namaobat() {
+        return $this->belongsTo(NamaObat::class);
+    }
+
+    public function satuanobat() {
+        return $this->belongsTo(SatuanObat::class);
+    }
 }
