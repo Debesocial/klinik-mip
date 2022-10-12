@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jenis_obat_id">Jenis Obat <b>*</b></label>
+                                            <label for="jenis_obat_id">Jenis Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
                                                 <option value="">Pilih</option>
                                                 @foreach ($jenisobat as $item)
@@ -50,7 +50,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="golongan_obat_id">Golongan Obat <b>*</b></label>
+                                            <label for="golongan_obat_id">Golongan Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="golongan_obat_id" id="golongan_obat_id">
                                                 <option value="">Pilih</option>
                                                 @foreach ($golonganobat as $golonganobat)
@@ -65,7 +65,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="nama_obat_id">Nama Obat <b>*</b></label>
+                                            <label for="nama_obat_id">Nama Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
                                                 <option value="">Pilih </option>
                                                 @foreach ($namaobat as $namaobat)
@@ -79,7 +79,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="satuan_obat_id">Satuan Obat <b>*</b></label>
+                                            <label for="satuan_obat_id">Satuan Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id">
                                                 <option value="">Pilih </option>
                                                 @foreach ($satuanobat as $item)
@@ -93,7 +93,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat_id">Bobot Obat <b>*</b></label>
+                                            <label for="bobot_obat_id">Bobot Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
                                                 <option value="">Pilih </option>
                                                 @foreach ($bobotobat as $bobotobat)
@@ -109,7 +109,7 @@
                                         <div class="form-group">
                                             <label for="nama_obat_id">Komposisi Obat</label>
                                             <input type="text" id="komposisi_obat" class="form-control"
-                                                 name="komposisi_obat" required>
+                                                 name="komposisi_obat">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
