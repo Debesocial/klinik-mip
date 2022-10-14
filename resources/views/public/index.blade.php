@@ -101,6 +101,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="container">
+                                            
                                             <form action="{{route('login')}}" method="POST">
                                                 @csrf
                                                 <div class="form-group position-relative has-icon-left mb-4 mt-3">
@@ -122,6 +123,9 @@
                                                     </label>
                                                 </div>
                                                 <button type="submit" class=" form-control btn btn-primary mt-3 mb-5">Log in</button>
+                                                @error("message")
+                    <p class="text-danger">{{$message}}</p>
+                @enderror
                                             </form>
                                         </div>
                                     </div>

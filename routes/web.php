@@ -2,6 +2,16 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriPasienController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\NamaObatController;
+use App\Http\Controllers\BobotObatController;
+use App\Http\Controllers\JenisObatController;
+use App\Http\Controllers\GolonganObatController;
+use App\Http\Controllers\SatuanObatController;
+use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PerawatController;
@@ -31,6 +41,32 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
 
     Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function () {
 
+    Route::get('/pemeriksaan/narkoba', [SuperAdminController::class, 'pemeriksaannarkoba'])->name('superadmin.pemeriksaannarkoba');
+
+    Route::get('/pemeriksaan/covid', [SuperAdminController::class, 'pemeriksaancovid'])->name('superadmin.pemeriksaancovid');
+
+    Route::get('/pemantauan/covid', [SuperAdminController::class, 'pemantauancovid'])->name('superadmin.pemantauancovid');
+
+    Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
+
+    Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
+
+    Route::get('/permintaan/makanan', [SuperAdminController::class, 'permintaanmakanan'])->name('superadmin.permintaanmakanan');
+
+    Route::get('/kecelakaan/kerja', [SuperAdminController::class, 'kecelakaankerja'])->name('superadmin.kecelakaankerja');
+
+    Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
+
+    Route::get('/izin/berobat', [SuperAdminController::class, 'izinberobat'])->name('superadmin.izinberobat');
+
+    Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
+
+    Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
+
+    Route::get('/keterangan/sehat', [SuperAdminController::class, 'keterangansehat'])->name('superadmin.keterangansehat');
+
+    Route::get('/persetujuan/tindakan/medis', [SuperAdminController::class, 'persetujuantindakanmedis'])->name('superadmin.persetujuantindakanmedis');
+
     Route::get('/data/pasien', [SuperAdminController::class, 'datapasien'])->name('superadmin.datapasien');
     Route::get('/add/data/pasien', [SuperAdminController::class, 'addpasien'])->name('superadmin.adddatapasien');
     Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('add.pasien');
@@ -45,12 +81,78 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/ubah/data/obat/{id}', [SuperAdminController::class, 'ubahobat'])->name('superadmin.ubahdataobat');
     Route::post('/ubah/data/obat/{id}', [SuperAdminController::class, 'changeobat'])->name('superadmin.changedataobat');
 
+    Route::get('/jenis/obat', [JenisObatController::class, 'jenisobat'])->name('superadmin.jenisobat');
+    Route::get('/add/jenis/obat', [JenisObatController::class, 'addjenisobat'])->name('superadmin.addjenisobat');
+    Route::post('/add/jenis/obat', [JenisObatController::class, 'tambahjenisobat'])->name('superadmin.tambahjenisobat');
+    Route::get('/ubah/jenis/obat/{id}', [JenisObatController::class, 'ubahjenisobat'])->name('superadmin.ubahjenisobat');
+    Route::post('/ubah/jenis/obat/{id}', [JenisObatController::class, 'changejenisobat'])->name('superadmin.changejenisobat');
+
+    Route::get('/nama/obat', [NamaObatController::class, 'namaobat'])->name('superadmin.namaobat');
+    Route::get('/add/nama/obat', [NamaObatController::class, 'addnamaobat'])->name('superadmin.addnamaobat');
+    Route::post('/add/nama/obat', [NamaObatController::class, 'tambahnamaobat'])->name('superadmin.tambahnamaobat');
+    Route::get('/ubah/nama/obat/{id}', [NamaObatController::class, 'ubahnamaobat'])->name('superadmin.ubahnamaobat');
+    Route::post('/ubah/nama/obat/{id}', [NamaObatController::class, 'changenamaobat'])->name('superadmin.changenamaobat');
+
+    Route::get('/golongan/obat', [GolonganObatController::class, 'golonganobat'])->name('superadmin.golonganobat');
+    Route::get('/add/golongan/obat', [GolonganObatController::class, 'addgolonganobat'])->name('superadmin.addgolonganobat');
+    Route::post('/add/golongan/obat', [GolonganObatController::class, 'tambahgolonganobat'])->name('superadmin.tambahgolonganobat');
+    Route::get('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'ubahgolonganobat'])->name('superadmin.ubahgolonganobat');
+    Route::post('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'changegolonganobat'])->name('superadmin.changegolonganobat');
+
+    Route::get('/satuan/obat', [SatuanObatController::class, 'satuanobat'])->name('superadmin.satuanobat');
+    Route::get('/add/satuan/obat', [SatuanObatController::class, 'addsatuanobat'])->name('superadmin.addsatuanobat');
+    Route::post('/add/satuan/obat', [SatuanObatController::class, 'tambahsatuanobat'])->name('superadmin.tambahsatuanobat');
+    Route::get('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'ubahsatuanobat'])->name('superadmin.ubahsatuanobat');
+    Route::post('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'changesatuanobat'])->name('superadmin.changesatuanobat');
+
+    Route::get('/bobot/obat', [BobotObatController::class, 'bobotobat'])->name('superadmin.bobotobat');
+    Route::get('/add/bobot/obat', [BobotObatController::class, 'addbobotobat'])->name('superadmin.addbobotobat');
+    Route::post('/add/bobot/obat', [BobotObatController::class, 'tambahbobotobat'])->name('superadmin.tambahbobotobat');
+    Route::get('/ubah/bobot/obat/{id}', [BobotObatController::class, 'ubahbobotobat'])->name('superadmin.ubahbobotobat');
+    Route::post('/ubah/bobot/obat/{id}', [BobotObatController::class, 'changebobotobat'])->name('superadmin.changebobotobat');
+
     Route::get('/data/user', [SuperAdminController::class, 'datauser'])->name('superadmin.datauser');
     Route::get('/add/data/user', [SuperAdminController::class, 'adduser'])->name('superadmin.adddatauser');
     Route::post('/add/data/user', [SuperAdminController::class, 'tambahuser'])->name('superadmin.tambahdatauser');
     Route::get('/ubah/data/user/{id}', [SuperAdminController::class, 'ubahuser'])->name('superadmin.ubahdatauser');
     Route::post('/ubah/data/user/{id}', [SuperAdminController::class, 'changeuser'])->name('superadmin.changedatauser');
 
+    Route::get('/jadwal', [SuperAdminController::class, 'jadwal'])->name('superadmin.jadwal');
+    Route::get('/add/jadwal', [SuperAdminController::class, 'addjadwal'])->name('superadmin.addjadwal');
+    Route::post('/add/jadwal', [SuperAdminController::class, 'tambahjadwal'])->name('superadmin.tambahjadwal');
+    Route::get('/ubah/jadwal/{id}', [SuperAdminController::class, 'ubahjadwal'])->name('superadmin.ubahjadwal');
+    Route::post('/ubah/jadwal/{id}', [SuperAdminController::class, 'changejadwal'])->name('superadmin.changejadwal');
+
+    Route::get('/level', [LevelController::class, 'level'])->name('superadmin.level');
+    Route::get('/add/level', [LevelController::class, 'addlevel'])->name('superadmin.addlevel');
+    Route::post('/add/level', [LevelController::class, 'tambahlevel'])->name('superadmin.tambahlevel');
+    Route::get('/ubah/level/{id}', [LevelController::class, 'ubahlevel'])->name('superadmin.ubahlevel');
+    Route::post('/ubah/level/{id}', [LevelController::class, 'changelevel'])->name('superadmin.changelevel');
+
+    Route::get('/kategori/pasien', [KategoriPasienController::class, 'kategoripasien'])->name('superadmin.kategoripasien');
+    Route::get('/add/kategori/pasien', [KategoriPasienController::class, 'addkategoripasien'])->name('superadmin.addkategoripasien');
+    Route::post('/add/kategori/pasien', [KategoriPasienController::class, 'tambahkategoripasien'])->name('superadmin.tambahkategoripasien');
+    Route::get('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'ubahkategoripasien'])->name('superadmin.ubahkategoripasien');
+    Route::post('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'changekategoripasien'])->name('superadmin.changekategoripasien');
+    
+    Route::get('/jabatan', [JabatanController::class, 'jabatan'])->name('superadmin.jabatan');
+    Route::get('/add/jabatan', [JabatanController::class, 'addjabatan'])->name('superadmin.addjabatan');
+    Route::post('/add/jabatan', [JabatanController::class, 'tambahjabatan'])->name('superadmin.tambahjabatan');
+    Route::get('/ubah/jabatan/{id}', [JabatanController::class, 'ubahjabatan'])->name('superadmin.ubahjabatan');
+    Route::post('/ubah/jabatan/{id}', [JabatanController::class, 'changejabatan'])->name('superadmin.changejabatan');
+
+    Route::get('/perusahaan', [PerusahaanController::class, 'perusahaan'])->name('superadmin.perusahaan');
+    Route::get('/add/perusahaan', [PerusahaanController::class, 'addperusahaan'])->name('superadmin.addperusahaan');
+    Route::post('/add/perusahaan', [PerusahaanController::class, 'tambahperusahaan'])->name('superadmin.tambahperusahaan');
+    Route::get('/ubah/perusahaan/{id}', [PerusahaanController::class, 'ubahperusahaan'])->name('superadmin.ubahperusahaan');
+    Route::post('/ubah/perusahaan/{id}', [PerusahaanController::class, 'changeperusahaan'])->name('superadmin.changeperusahaan');
+
+    Route::get('/divisi', [DivisiController::class, 'divisi'])->name('superadmin.divisi');
+    Route::get('/add/divisi', [DivisiController::class, 'adddivisi'])->name('superadmin.adddivisi');
+    Route::post('/add/divisi', [DivisiController::class, 'tambahdivisi'])->name('superadmin.tambahdivisi');
+    Route::get('/ubah/divisi/{id}', [DivisiController::class, 'ubahdivisi'])->name('superadmin.ubahdivisi');
+    Route::post('/ubah/divisi/{id}', [DivisiController::class, 'changedivisi'])->name('superadmin.changedivisi');
+    
     Route::get('/lokasi/kejadian', [SuperAdminController::class, 'lokasikejadian'])->name('superadmin.lokasikejadian');
     Route::get('/add/lokasi/kejadian', [SuperAdminController::class, 'addlokasikejadian'])->name('superadmin.addlokasikejadian');
     Route::post('/add/lokasi/kejadian', [SuperAdminController::class, 'tambahlokasikejadian'])->name('superadmin.tambahlokasikejadian');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\NamaObat;
 use App\Http\Requests\StoreNamaObatRequest;
 use App\Http\Requests\UpdateNamaObatRequest;
+use Illuminate\Http\Request;
 
 class NamaObatController extends Controller
 {
@@ -13,11 +14,45 @@ class NamaObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function namaobat()
     {
-        //
+        $namaobat = NamaObat::all();
+        return view('petugas.superadmin.nama_obat')->with('namaobat', $namaobat);
     }
 
+    public function addnamaobat()
+    {
+        return view('petugas.superadmin.add_nama_obat');
+    }
+
+    public function tambahnamaobat(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_obat' => 'required'
+        ]);
+
+        NamaObat::create([
+            'nama_obat' => $request->nama_obat,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/nama/obat')->with('success', 'Successfully!');
+    }
+
+    public function ubahnamaobat($id)
+    {
+        $namaobat = NamaObat::find($id);
+        return view('petugas.superadmin.ubah_nama_obat', compact('namaobat')); 
+    }
+
+    function changenamaobat(Request $request, $id) {
+        $namaobat = NamaObat::find($id);
+        $namaobat->nama_obat = $request->input('nama_obat');
+        $namaobat->update();
+
+        return redirect('/nama/obat')->with('success', 'Successfully!');
+    }
     /**
      * Show the form for creating a new resource.
      *

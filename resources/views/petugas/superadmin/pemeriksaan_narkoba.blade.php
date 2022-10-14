@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Pemeriksaan')
+@section('title', 'Pemeriksaan Narkoba')
 
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Pemeriksaan')
+        @section('judul', 'Pemeriksaan Narkoba')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -29,9 +29,9 @@
                     <div class="row match-height">
                     <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                {{-- <div class="card-header">
                                     <h4 class="card-title"></h4>
-                                </div>
+                                </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form form-horizontal">
@@ -159,9 +159,9 @@
                     <div class="row match-height">
                     <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
+                                {{-- <div class="card-header">
                                     <h4 class="card-title"></h4>
-                                </div>
+                                </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
                                         <form class="form form-horizontal">

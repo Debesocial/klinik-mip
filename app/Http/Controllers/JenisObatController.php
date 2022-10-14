@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisObat;
 use App\Http\Requests\StoreJenisObatRequest;
 use App\Http\Requests\UpdateJenisObatRequest;
+use Illuminate\Http\Request;
 
 class JenisObatController extends Controller
 {
@@ -13,9 +14,44 @@ class JenisObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function jenisobat()
     {
-        //
+        $jenisobat = JenisObat::all();
+        return view('petugas.superadmin.jenis_obat')->with('jenisobat', $jenisobat);
+    }
+
+    public function addjenisobat()
+    {
+        return view('petugas.superadmin.add_jenis_obat');
+    }
+
+    public function tambahjenisobat(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_jenis_obat' => 'required'
+        ]);
+
+        JenisObat::create([
+            'nama_jenis_obat' => $request->nama_jenis_obat,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/nama/obat')->with('success', 'Successfully!');
+    }
+
+    public function ubahjenisobat($id)
+    {
+        $jenisobat = JenisObat::find($id);
+        return view('petugas.superadmin.ubah_jenis_obat', compact('jenisobat')); 
+    }
+
+    function changejenisobat(Request $request, $id) {
+        $jenisobat = JenisObat::find($id);
+        $jenisobat->nama_jenis_obat = $request->input('nama_jenis_obat');
+        $jenisobat->update();
+
+        return redirect('/jenis/obat')->with('success', 'Successfully!');
     }
 
     /**

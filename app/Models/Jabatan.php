@@ -13,7 +13,11 @@ class Jabatan extends Model
 
     protected $table = 'jabatans';
     protected $primaryKey = 'id';
-    protected $fillable = ['nama_jabatan'];
+    protected $fillable = [
+        'nama_jabatan',
+        'created_by',
+        'updated_by'
+    ];
 
     public function user() {
         return $this->hasMany(User::class);

@@ -30,7 +30,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="kategori_pasien">Kategori Pasien <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="kategori_pasien">
+                                                <select class="choices form-select" name="kategori_pasien" id="kategori_pasien">
                                                     <option value="">Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
                                                 <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}</option>
@@ -42,10 +42,10 @@
                                                 <input type="text" id="NIK" class="form-control"
                                                  name="NIK" value="{{ $pasien['NIK'] }}" required>
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label for="perusahaan">Perusahaan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="perusahaan" id="perusahaan" required
-                                                    onchange="yesnoCheck_lainnya(this);">
+                                                <select class="choices form-select" name="perusahaan" id="perusahaan" onchange="yesnoCheck_lainnya(this);">
                                                     <option value="">Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
                                                     @foreach ($perusahaan as $peru)
@@ -69,7 +69,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="jabatan">Jabatan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="jabatan">
+                                                <select class="choices form-select" name="jabatan" id="jabatan">
                                                     <option value="">Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
                                                 <option value="{{ $jabat->id }}" {{ $jabat->id == $pasien->jabatan->id ? 'selected' : '' }}>{{ $jabat->nama_jabatan }}</option>
@@ -97,8 +97,8 @@
                                                  name="umur" value="{{ $pasien['umur'] }}" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="jenis_kelamin">
+                                                <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
                                                     <option value=""></option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
@@ -175,22 +175,22 @@
                                                 <div class="form-group">
                                                     <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
                                                     <input type="text" id="alamat_keluarga" class="form-control"
-                                                        name="alamat_keluarga" placeholder="Alamat Keluarga" required>
+                                                        name="alamat_keluarga" value="{{ $pasien->keluarga->alamat }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
                                                     <input type="text" id="pekerjaan_keluarga" class="form-control"
-                                                        name="pekerjaan_keluarga" placeholder="Pekerjaan Keluarga" required>
+                                                        name="pekerjaan_keluarga" value="{{ $pasien->keluarga->pekerjaan }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
                                                     <input type="text" id="telepon_keluarga" class="form-control"
-                                                        name="telepon_keluarga" placeholder="No Telepon Keluarga" required>
+                                                        name="telepon_keluarga" value="{{ $pasien->keluarga->telepon }}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email_keluarga">Email </label>
                                                     <input type="email_keluarga" id="email_keluarga" class="form-control"
-                                                        name="email_keluarga" placeholder="Masukkan Email Keluarga" required>
+                                                        name="email_keluarga" value="{{ $pasien->keluarga->email }}" required>
                                             </div>
                                             <div class=" d-flex justify-content-end">
                                                 <button type="submit"
