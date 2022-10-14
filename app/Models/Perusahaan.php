@@ -10,7 +10,9 @@ class Perusahaan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama_perusahaan_pasien'
+        'nama_perusahaan_pasien',
+        'created_by',
+        'updated_by'
     ];
 
     public function pasien() {

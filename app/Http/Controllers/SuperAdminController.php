@@ -34,10 +34,69 @@ class SuperAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function pemeriksaan()
+    public function pemeriksaannarkoba()
     {
-        
-        return view('petugas.superadmin.pemeriksaan');
+        return view('petugas.superadmin.pemeriksaan_narkoba');
+    }
+
+    public function pemeriksaancovid()
+    {
+        return view('petugas.superadmin.pemeriksaan_covid');
+    }
+
+    public function pemantauancovid()
+    {
+        return view('petugas.superadmin.pemantauan_covid');
+    }
+
+    public function rawatinapdokter()
+    {
+        return view('petugas.superadmin.rawat_inap_dokter');
+    }
+
+    public function rawatinapperawat()
+    {
+        return view('petugas.superadmin.rawat_inap_perawat');
+    }
+
+    public function permintaanmakanan()
+    {
+        return view('petugas.superadmin.permintaan_makanan');
+    }
+
+    public function kecelakaankerja()
+    {
+        return view('petugas.superadmin.kecelakaan_kerja');
+    }
+
+    public function keteranganberobat()
+    {
+        return view('petugas.superadmin.keterangan_berobat');
+    }
+
+    public function izinberobat()
+    {
+        return view('petugas.superadmin.izin_berobat');
+    }
+
+    public function izinistirahat()
+    {
+        return view('petugas.superadmin.izin_istirahat');
+    }
+
+    public function suratrujukan()
+    {
+        return view('petugas.superadmin.surat_rujukan');
+    }
+
+    public function keterangansehat()
+    {
+        return view('petugas.superadmin.keterangan_sehat');
+    }
+
+    public function persetujuantindakanmedis()
+    {
+        return view('petugas.superadmin.persetujuan_tindakan_medis');
     }
 
     public function dataobat()
@@ -172,6 +231,31 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga')); 
     }
 
+    function changepasien(Request $request, $id) {
+        $pasien = Pasien::find($id);
+        $pasien->kategori_pasien_id = $request->input('kategori_pasien');
+        $pasien->NIK = $request->input('NIK');
+        $pasien->perusahaan_id = $request->input('perusahaan');
+        $pasien->divisi_id = $request->input('divisi');
+        $pasien->jabatan_id = $request->input('jabatan');
+        $pasien->keluarga_id = $request->input('keluarga');
+        $pasien->nama_pasien = $request->input('nama_pasien');
+        $pasien->tempat_lahir = $request->input('tempat_lahir');
+        $pasien->tanggal_lahir = $request->input('tanggal_lahir');
+        $pasien->umur = $request->input('umur');
+        $pasien->jenis_kelamin = $request->input('jenis_kelamin');
+        $pasien->alamat = $request->input('alamat');
+        $pasien->pekerjaan = $request->input('pekerjaan');
+        $pasien->telepon = $request->input('telepon');
+        $pasien->email = $request->input('email');
+        $pasien->alergi_obat = $request->input('alergi');
+        $pasien->hamil_menyusui = $request->input('hamil_menyusui');
+        $pasien->keluarga_id = $request->input('keluarga_id');
+        $pasien->update();
+
+        return redirect('/data/user')->with('success', 'Successfully!');
+    }
+
     
     
 
@@ -235,6 +319,54 @@ class SuperAdminController extends Controller
         $user->update();
 
         return redirect('/data/user')->with('success', 'Successfully!');
+    }
+
+    public function jadwal()
+    {
+        $jadwal = Jadwal::all();
+        return view('petugas.superadmin.jadwal')->with('jadwal', $jadwal);
+    }
+
+    public function addjadwal()
+    {
+        return view('petugas.superadmin.add_jadwal');
+    }
+
+    public function tambahjadwal(Request $request)
+    {
+        $validatedData = $request->validate([
+            'hari' => 'required',
+            'shift' => 'required',
+            'dari' => 'required',
+            'sampai' => 'required'
+        ]);
+
+        Jadwal::create([
+            'hari' => $request->hari,
+            'shift' => $request->shift,
+            'dari' => $request->dari,
+            'sampai' => $request->sampai,
+        ]);
+
+        return redirect('/jadwal')->with('success', 'Successfully!');
+    }
+
+    public function ubahjadwal($id)
+    {
+        $jadwal = Jadwal::find($id);
+        
+        return view('petugas.superadmin.ubah_jadwal', compact('jadwal'));
+    }
+
+    function changejadwal(Request $request, $id) {
+        $jadwal = Jadwal::find($id);
+        $jadwal->hari = $request->input('hari');
+        $jadwal->shift = $request->input('shift');
+        $jadwal->dari = $request->input('dari');
+        $jadwal->sampai = $request->input('sampai');
+        $jadwal->update();
+
+        return redirect('/jadwal')->with('success', 'Successfully!');
     }
 
     public function lokasikejadian()

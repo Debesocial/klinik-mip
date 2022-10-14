@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BobotObat;
 use App\Http\Requests\StoreBobotObatRequest;
 use App\Http\Requests\UpdateBobotObatRequest;
+use Illuminate\Http\Request;
 
 class BobotObatController extends Controller
 {
@@ -13,9 +14,44 @@ class BobotObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function bobotobat()
     {
-        //
+        $bobotobat = BobotObat::all();
+        return view('petugas.superadmin.bobot_obat')->with('bobotobat', $bobotobat);
+    }
+
+    public function addbobotobat()
+    {
+        return view('petugas.superadmin.add_bobot_obat');
+    }
+
+    public function tambahbobotobat(Request $request)
+    {
+        $validatedData = $request->validate([
+            'bobot_obat' => 'required'
+        ]);
+
+        BobotObat::create([
+            'bobot_obat' => $request->bobot_obat,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/bobot/obat')->with('success', 'Successfully!');
+    }
+
+    public function ubahbobotobat($id)
+    {
+        $bobotobat = BobotObat::find($id);
+        return view('petugas.superadmin.ubah_bobot_obat', compact('bobotobat')); 
+    }
+
+    function changebobotobat(Request $request, $id) {
+        $bobotobat = BobotObat::find($id);
+        $bobotobat->bobot_obat = $request->input('bobot_obat');
+        $bobotobat->update();
+
+        return redirect('/bobot/obat')->with('success', 'Successfully!');
     }
 
     /**

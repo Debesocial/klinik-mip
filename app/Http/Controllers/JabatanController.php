@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Jabatan;
 use App\Http\Requests\StoreJabatanRequest;
 use App\Http\Requests\UpdateJabatanRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JabatanController extends Controller
 {
@@ -13,9 +15,44 @@ class JabatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function jabatan()
     {
-        //
+        $jabatan = Jabatan::all();
+        return view('petugas.superadmin.jabatan')->with('jabatan', $jabatan);
+    }
+
+    public function addjabatan()
+    {
+        return view('petugas.superadmin.add_jabatan');
+    }
+
+    public function tambahjabatan(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_jabatan' => 'required'
+        ]);
+
+        Jabatan::create([
+            'nama_jabatan' => $request->nama_jabatan,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/jabatan')->with('success', 'Successfully!');
+    }
+
+    public function ubahjabatan($id)
+    {
+        $jabatan = Jabatan::find($id);
+        return view('petugas.superadmin.ubah_jabatan', compact('jabatan')); 
+    }
+
+    function changejabatan(Request $request, $id) {
+        $jabatan = Jabatan::find($id);
+        $jabatan->nama_jabatan = $request->input('nama_jabatan');
+        $jabatan->update();
+
+        return redirect('/jabatan')->with('success', 'Successfully!');
     }
 
     /**

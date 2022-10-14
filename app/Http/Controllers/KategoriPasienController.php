@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\KategoriPasien;
 use App\Http\Requests\StoreKategoriPasienRequest;
 use App\Http\Requests\UpdateKategoriPasienRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriPasienController extends Controller
 {
@@ -13,9 +15,44 @@ class KategoriPasienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function kategoripasien()
     {
-        //
+        $kategoripasien = KategoriPasien::all();
+        return view('petugas.superadmin.kategori_pasien')->with('kategoripasien', $kategoripasien);
+    }
+    
+    public function addkategoripasien()
+    {
+        return view('petugas.superadmin.add_kategori_pasien');
+    }
+
+    public function tambahkategoripasien(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_kategori' => 'required'
+        ]);
+
+        KategoriPasien::create([
+            'nama_kategori' => $request->nama_kategori,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/kategori/pasien')->with('success', 'Successfully!');
+    }
+
+    public function ubahkategoripasien($id)
+    {
+        $kategoripasien = KategoriPasien::find($id);
+        return view('petugas.superadmin.ubah_kategori_pasien', compact('kategoripasien')); 
+    }
+
+    function changekategoripasien(Request $request, $id) {
+        $kategoripasien = KategoriPasien::find($id);
+        $kategoripasien->nama_kategori = $request->input('nama_kategori');
+        $kategoripasien->update();
+
+        return redirect('/kategori/pasien')->with('success', 'Successfully!');
     }
 
     /**

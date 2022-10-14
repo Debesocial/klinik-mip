@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SatuanObat;
 use App\Http\Requests\StoreSatuanObatRequest;
 use App\Http\Requests\UpdateSatuanObatRequest;
+use Illuminate\Http\Request;
 
 class SatuanObatController extends Controller
 {
@@ -13,9 +14,10 @@ class SatuanObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function satuanobat()
     {
-        //
+        $satuanobat = SatuanObat::all();
+        return view('petugas.superadmin.satuan_obat')->with('satuanobat', $satuanobat);
     }
 
     /**
@@ -23,9 +25,38 @@ class SatuanObatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function addsatuanobat()
     {
-        //
+        return view('petugas.superadmin.add_satuan_obat');
+    }
+
+    public function tambahsatuanobat(Request $request)
+    {
+        $validatedData = $request->validate([
+            'satuan_obat' => 'required'
+        ]);
+
+        SatuanObat::create([
+            'satuan_obat' => $request->satuan_obat,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/satuan/obat')->with('success', 'Successfully!');
+    }
+
+    public function ubahsatuanobat($id)
+    {
+        $satuanobat = SatuanObat::find($id);
+        return view('petugas.superadmin.ubah_satuan_obat', compact('satuanobat')); 
+    }
+
+    function changesatuanobat(Request $request, $id) {
+        $satuanobat = SatuanObat::find($id);
+        $satuanobat->satuan_obat = $request->input('satuan_obat');
+        $satuanobat->update();
+
+        return redirect('/satuan/obat')->with('success', 'Successfully!');
     }
 
     /**
