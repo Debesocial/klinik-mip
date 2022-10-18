@@ -12,7 +12,7 @@
             <div class="buttons" width="100px">
                     <a href="{{ route('superadmin.adddatauser') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
-                    <span>Create</span></a>
+                    <span>Tambah</span></a>
                 </div>
         </div>
         <div class="card-body">
