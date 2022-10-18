@@ -18,6 +18,7 @@ use App\Models\HasilPemantauan;
 use App\Models\Jabatan;
 use App\Models\KategoriPasien;
 use App\Models\Level;
+use App\Models\NamaPenyakit;
 use App\Models\Perusahaan;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
@@ -36,7 +37,8 @@ class SuperAdminController extends Controller
 
     public function pemeriksaannarkoba()
     {
-        return view('petugas.superadmin.pemeriksaan_narkoba');
+        $pasien = Pasien::all();
+        return view('petugas.superadmin.pemeriksaan_narkoba')->with('pasien', $pasien);
     }
 
     public function pemeriksaancovid()
@@ -185,18 +187,20 @@ class SuperAdminController extends Controller
         $perusahaan = Perusahaan::all();
         $divisi = Divisi::all();
         $jabatan = Jabatan::all();
+        $namapenyakit = NamaPenyakit::all();
 
-        return view('petugas.superadmin.add_data_pasien', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien'));
+        return view('petugas.superadmin.add_data_pasien', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien', 'namapenyakit'));
     }
     public function tambahpasien(Request $request)
     {
+        // dd($request->all());
+        
         $validatedData = $request->validate([
             'kategori_pasien_id' => 'required',
             'NIK' => 'required',
             'perusahan_id' => 'required',
             'divisi_id' => 'required',
             'jabatan_id' => 'required',
-            'keluarga_id' => 'required',
             'nama_pasien' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -211,7 +215,7 @@ class SuperAdminController extends Controller
             'keluarga_id' => ''
         ]);
 
-        dd($request->all());
+        // dd($request->all());
 
         Pasien::create($validatedData);
 
@@ -253,7 +257,7 @@ class SuperAdminController extends Controller
         $pasien->keluarga_id = $request->input('keluarga_id');
         $pasien->update();
 
-        return redirect('/data/user')->with('success', 'Successfully!');
+        return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
 
