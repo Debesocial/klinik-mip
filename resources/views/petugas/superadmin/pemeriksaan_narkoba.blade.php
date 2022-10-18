@@ -46,12 +46,18 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
+                                                    
+                                                        
                                                     <div class="col-md-2">
                                                         <label>ID Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="search" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Pasien">
+                                                        <select name="id" id="id" class="form-select">
+                                                            <option disabled selected>Pilih ID Pasien</option>
+                                                            @foreach ($pasien as $pas)
+                                                                <option value="{{ $pas['id'] }}">{{ $pas['nama_pasien'] }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -353,5 +359,8 @@
                 </div>
                         </div>   
 
+                        <script>
+                            $(".form-select").select2();
+                        </script>
 
     @endsection
