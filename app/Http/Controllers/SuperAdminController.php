@@ -102,7 +102,7 @@ class SuperAdminController extends Controller
     public function dataobat()
     {
         $obatalkes = ObatAlkes::all();
-        
+
         return view('petugas.superadmin.data_obat', compact('obatalkes'));
     }
 
@@ -119,7 +119,7 @@ class SuperAdminController extends Controller
 
     public function tambahobat(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'jenis_obat_id' => 'required',
             'golongan_obat_id' => 'required',
@@ -145,14 +145,14 @@ class SuperAdminController extends Controller
 
     public function ubahobat($id)
     {
-        
+
         $obatalkes = ObatAlkes::find($id);
         $bobotobat = BobotObat::all();
         $golonganobat = GolonganObat::all();
         $jenisobat = JenisObat::all();
         $namaobat = NamaObat::all();
         $satuanobat = SatuanObat::all();
-        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat')); 
+        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat'));
     }
 
     function changeobat(Request $request, $id) {
@@ -207,7 +207,7 @@ class SuperAdminController extends Controller
             'telepon' => 'required',
             'email' => 'required',
             'alergi_obat' => 'required',
-            'hamil_menyusui' => 'required', 
+            'hamil_menyusui' => 'required',
             'keluarga_id' => ''
         ]);
 
@@ -220,7 +220,7 @@ class SuperAdminController extends Controller
 
     public function ubahpasien($id)
     {
-        
+
         $pasien = Pasien::find($id);
         $kategori = KategoriPasien::all();
         $perusahaan = Perusahaan::all();
@@ -228,7 +228,7 @@ class SuperAdminController extends Controller
         $jabatan = Jabatan::all();
         $keluarga = Keluarga::all();
 
-        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga')); 
+        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga'));
     }
 
     function changepasien(Request $request, $id) {
@@ -256,8 +256,8 @@ class SuperAdminController extends Controller
         return redirect('/data/user')->with('success', 'Successfully!');
     }
 
-    
-    
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -268,8 +268,8 @@ class SuperAdminController extends Controller
     public function datauser()
     {
         $users = User::all();
-        
-        
+
+
         return view('petugas.superadmin.data_user')->with('users', $users);
     }
 
@@ -283,7 +283,7 @@ class SuperAdminController extends Controller
 
     public function tambahuser(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -306,7 +306,7 @@ class SuperAdminController extends Controller
         $user = User::find($id);
         $jadwal = Jadwal::all();
         $level = Level::all();
-        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level')); 
+        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level'));
     }
 
     function changeuser(Request $request, $id) {
@@ -354,7 +354,7 @@ class SuperAdminController extends Controller
     public function ubahjadwal($id)
     {
         $jadwal = Jadwal::find($id);
-        
+
         return view('petugas.superadmin.ubah_jadwal', compact('jadwal'));
     }
 
@@ -398,7 +398,7 @@ class SuperAdminController extends Controller
     public function ubahlokasikejadian($id)
     {
         $lokasikejadian = LokasiKejadian::find($id);
-        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian')); 
+        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian'));
     }
 
     function changelokasikejadian(Request $request, $id) {
@@ -425,7 +425,7 @@ class SuperAdminController extends Controller
         $validatedData = $request->validate([
             'nama_RS_rujukan' => 'required',
         ]);
-        
+
         RumahSakitRujukan::create([
             'nama_RS_rujukan' => $request->nama_RS_rujukan,
             'created_by' => auth()->user()->id,
@@ -438,7 +438,7 @@ class SuperAdminController extends Controller
     public function ubahrsrujukan($id)
     {
         $rsrujukan = RumahSakitRujukan::find($id);
-        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan')); 
+        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan'));
     }
 
     function changersrujukan(Request $request, $id) {
@@ -484,7 +484,7 @@ class SuperAdminController extends Controller
     public function ubahspesialisrujukan($id)
     {
         $spesialisrujukan = SpesialisRujukan::find($id);
-        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan')); 
+        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan'));
     }
 
     function changespesialisrujukan(Request $request, $id) {
@@ -520,7 +520,7 @@ class SuperAdminController extends Controller
     public function ubahhasilpemantauan($id)
     {
         $hasilpemantauan = HasilPemantauan::find($id);
-        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan')); 
+        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan'));
     }
 
     function changehasilpemantauan(Request $request, $id) {
@@ -535,7 +535,7 @@ class SuperAdminController extends Controller
     public function addkeluarga($id)
     {
         $keluarga = Keluarga::find($id);
-        return view('petugas.superadmin.add_data_keluarga', compact('keluarga')); 
+        return view('petugas.superadmin.add_data_keluarga', compact('keluarga'));
     }
 
     /**
