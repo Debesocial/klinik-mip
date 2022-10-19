@@ -174,7 +174,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nama_keluarga">Hubungan <b class="color-red">*</b></label>
-                                                    <select class="choices form-select">
+                                                    <select class="choices form-select" name="hubungan_keluarga">
                                                         <option disabled selected>Pilih Hubungan Keluarga</option>
                                                         <option value="Ayah">Ayah</option>
                                                         <option value="Ibu">Ibu</option>
@@ -213,7 +213,7 @@
                                             </div>
                                         </div>
                                 </form>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
 
 
     </div>
-    
+
 
 @endsection
 <script>
