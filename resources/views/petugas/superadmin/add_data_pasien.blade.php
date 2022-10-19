@@ -83,7 +83,7 @@
                                             <div class="form-group">
                                                 <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien" placeholder="Masukkan nama pasien">
+                                                    name="nama_pasien" placeholder="Masukkan Nama Pasien">
                                             </div>
                                             <div class="form-group">
                                                 <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
@@ -161,7 +161,7 @@
                                                 <div class="form-group">
                                                     <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
                                                     <input type="text" id="nama_keluarga" class="form-control"
-                                                        name="nama_keluarga" placeholder="Nama Keluarga" required>
+                                                        name="nama_keluarga" placeholder="Masukkan Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <select class="choices form-select">
