@@ -119,7 +119,7 @@ $data = array(
     public function dataobat()
     {
         $obatalkes = ObatAlkes::all();
-        
+
         return view('petugas.superadmin.data_obat', compact('obatalkes'));
     }
 
@@ -136,7 +136,7 @@ $data = array(
 
     public function tambahobat(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'jenis_obat_id' => 'required',
             'golongan_obat_id' => 'required',
@@ -162,14 +162,14 @@ $data = array(
 
     public function ubahobat($id)
     {
-        
+
         $obatalkes = ObatAlkes::find($id);
         $bobotobat = BobotObat::all();
         $golonganobat = GolonganObat::all();
         $jenisobat = JenisObat::all();
         $namaobat = NamaObat::all();
         $satuanobat = SatuanObat::all();
-        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat')); 
+        return view('petugas.superadmin.ubah_data_obat', compact('obatalkes', 'bobotobat', 'golonganobat', 'jenisobat', 'namaobat', 'satuanobat'));
     }
 
     function changeobat(Request $request, $id) {
@@ -208,12 +208,13 @@ $data = array(
     }
     public function tambahpasien(Request $request)
     {
-        $request->validate([
-            'kategori_pasien' => 'required',
+
+        $validatedData = $request->validate([
+            'kategori_pasien_id' => 'required',
             'NIK' => 'required',
-            'perusahaan' => 'required',
-            'divisi' => 'required',
-            'jabatan' => 'required',
+            'perusahaan_id' => 'required',
+            'divisi_id' => 'required',
+            'jabatan_id' => 'required',
             'nama_pasien' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
@@ -225,33 +226,27 @@ $data = array(
             'nama_penyakit' => 'required',
             'telepon' => 'required',
             'email' => 'required',
-            'alergi' => 'required',
-            'hamil_menyusui' => 'required',
-            'nama_keluarga' => 'required',
-            'hubungan' => 'required',
-            'alamat_keluarga' => 'required',
-            'pekerjaan_keluarga' => 'required',
-            'telepon_keluarga' => 'required',
-            'email_keluarga' => 'required'
+            'alergi_obat' => 'required',
+            'hamil_menyusui' => 'required'
         ]);
 
         $keluarga = Keluarga::create([
             'nama' => $request->nama_keluarga,
-            'hubungan' => $request->hubungan,
+            'hubungan' => $request->hubungan_keluarga,
             'alamat' => $request->alamat_keluarga,
             'pekerjaan' => $request->pekerjaan_keluarga,
             'telepon' => $request->telepon_keluarga,
             'email' => $request->email_keluarga,
             'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id
+            'updated_by' => auth()->user()->id,
         ]);
 
         $pasien = Pasien::create([
-            'kategori_pasien_id' => $request->kategori_pasien,
+            'kategori_pasien_id' => $request->kategori_pasien_id,
             'NIK' => $request->NIK,
-            'perusahaan_id' => $request->perusahaan,
-            'divisi_id' => $request->divisi,
-            'jabatan_id' => $request->jabatan,
+            'perusahaan_id' => $request->perusahaan_id,
+            'divisi_id' => $request->divisi_id,
+            'jabatan_id' => $request->jabatan_id,
             'keluarga_id' => $keluarga->id,
             'nama_pasien' => $request->nama_pasien,
             'tempat_lahir' => $request->tempat_lahir,
@@ -263,8 +258,8 @@ $data = array(
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
-            'nama_penyakit_id' => $request->nama_penyakit,
-            'alergi_obat' => $request->alergi,
+            'nama_penyakit_id' => $request->nama_penyakit_id,
+            'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id
@@ -279,7 +274,7 @@ $data = array(
 
     public function ubahpasien($id)
     {
-        
+
         $pasien = Pasien::find($id);
         $kategori = KategoriPasien::all();
         $perusahaan = Perusahaan::all();
@@ -287,7 +282,7 @@ $data = array(
         $jabatan = Jabatan::all();
         $keluarga = Keluarga::all();
 
-        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga')); 
+        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga'));
     }
 
     function changepasien(Request $request, $id) {
@@ -315,8 +310,8 @@ $data = array(
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
-    
-    
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -327,8 +322,8 @@ $data = array(
     public function datauser()
     {
         $users = User::all();
-        
-        
+
+
         return view('petugas.superadmin.data_user')->with('users', $users);
     }
 
@@ -342,7 +337,7 @@ $data = array(
 
     public function tambahuser(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -365,7 +360,7 @@ $data = array(
         $user = User::find($id);
         $jadwal = Jadwal::all();
         $level = Level::all();
-        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level')); 
+        return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level'));
     }
 
     function changeuser(Request $request, $id) {
@@ -413,7 +408,7 @@ $data = array(
     public function ubahjadwal($id)
     {
         $jadwal = Jadwal::find($id);
-        
+
         return view('petugas.superadmin.ubah_jadwal', compact('jadwal'));
     }
 
@@ -457,7 +452,7 @@ $data = array(
     public function ubahlokasikejadian($id)
     {
         $lokasikejadian = LokasiKejadian::find($id);
-        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian')); 
+        return view('petugas.superadmin.ubah_lokasi_kejadian', compact('lokasikejadian'));
     }
 
     function changelokasikejadian(Request $request, $id) {
@@ -484,7 +479,7 @@ $data = array(
         $validatedData = $request->validate([
             'nama_RS_rujukan' => 'required',
         ]);
-        
+
         RumahSakitRujukan::create([
             'nama_RS_rujukan' => $request->nama_RS_rujukan,
             'created_by' => auth()->user()->id,
@@ -497,7 +492,7 @@ $data = array(
     public function ubahrsrujukan($id)
     {
         $rsrujukan = RumahSakitRujukan::find($id);
-        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan')); 
+        return view('petugas.superadmin.ubah_rs_rujukan', compact('rsrujukan'));
     }
 
     function changersrujukan(Request $request, $id) {
@@ -543,7 +538,7 @@ $data = array(
     public function ubahspesialisrujukan($id)
     {
         $spesialisrujukan = SpesialisRujukan::find($id);
-        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan')); 
+        return view('petugas.superadmin.ubah_spesialis_rujukan', compact('spesialisrujukan'));
     }
 
     function changespesialisrujukan(Request $request, $id) {
@@ -579,7 +574,7 @@ $data = array(
     public function ubahhasilpemantauan($id)
     {
         $hasilpemantauan = HasilPemantauan::find($id);
-        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan')); 
+        return view('petugas.superadmin.ubah_hasil_pemantauan', compact('hasilpemantauan'));
     }
 
     function changehasilpemantauan(Request $request, $id) {
@@ -594,7 +589,7 @@ $data = array(
     public function addkeluarga($id)
     {
         $keluarga = Keluarga::find($id);
-        return view('petugas.superadmin.add_data_keluarga', compact('keluarga')); 
+        return view('petugas.superadmin.add_data_keluarga', compact('keluarga'));
     }
 
     /**
