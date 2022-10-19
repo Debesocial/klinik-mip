@@ -194,7 +194,7 @@ class SuperAdminController extends Controller
     public function tambahpasien(Request $request)
     {
         // dd($request->all());
-        
+
         $validatedData = $request->validate([
             'kategori_pasien_id' => 'required',
             'NIK' => 'required',
