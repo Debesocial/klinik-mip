@@ -4,6 +4,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriPasienController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KlasifikasiPenyakitController;
+use App\Http\Controllers\SubKlasifikasiController;
+use App\Http\Controllers\NamaPenyakitController;
 use App\Http\Controllers\NamaObatController;
 use App\Http\Controllers\BobotObatController;
 use App\Http\Controllers\JenisObatController;
@@ -152,6 +155,24 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::post('/add/divisi', [DivisiController::class, 'tambahdivisi'])->name('superadmin.tambahdivisi');
     Route::get('/ubah/divisi/{id}', [DivisiController::class, 'ubahdivisi'])->name('superadmin.ubahdivisi');
     Route::post('/ubah/divisi/{id}', [DivisiController::class, 'changedivisi'])->name('superadmin.changedivisi');
+
+    Route::get('/klasifikasi/penyakit', [KlasifikasiPenyakitController::class, 'klasifikasipenyakit'])->name('superadmin.klasifikasipenyakit');
+    Route::get('/add/klasifikasi/penyakit', [KlasifikasiPenyakitController::class, 'addklasifikasipenyakit'])->name('superadmin.addklasifikasipenyakit');
+    Route::post('/add/klasifikasi/penyakit', [KlasifikasiPenyakitController::class, 'tambahklasifikasipenyakit'])->name('superadmin.tambahklasifikasipenyakit');
+    Route::get('/ubah/klasifikasi/penyakit/{id}', [KlasifikasiPenyakitController::class, 'ubahklasifikasipenyakit'])->name('superadmin.ubahklasifikasipenyakit');
+    Route::post('/ubah/klasifikasi/penyakit/{id}', [KlasifikasiPenyakitController::class, 'changeklasifikasipenyakit'])->name('superadmin.changeklasifikasipenyakit');
+
+    Route::get('/sub/klasifikasi', [SubKlasifikasiController::class, 'subklasifikasi'])->name('superadmin.subklasifikasi');
+    Route::get('/add/sub/klasifikasi', [SubKlasifikasiController::class, 'addsubklasifikasi'])->name('superadmin.addsubklasifikasi');
+    Route::post('/add/sub/klasifikasi', [SubKlasifikasiController::class, 'tambahsubklasifikasi'])->name('superadmin.tambahsubklasifikasi');
+    Route::get('/ubah/sub/klasifikasi/{id}', [SubKlasifikasiController::class, 'ubahsubklasifikasi'])->name('superadmin.ubahsubklasifikasi');
+    Route::post('/ubah/sub/klasifikasi/{id}', [SubKlasifikasiController::class, 'changesubklasifikasi'])->name('superadmin.changesubklasifikasi');
+
+    Route::get('/nama/penyakit', [NamaPenyakitController::class, 'namapenyakit'])->name('superadmin.namapenyakit');
+    Route::get('/add/nama/penyakit', [NamaPenyakitController::class, 'addnamapenyakit'])->name('superadmin.addnamapenyakit');
+    Route::post('/add/nama/penyakit', [NamaPenyakitController::class, 'tambahnamapenyakit'])->name('superadmin.tambahnamapenyakit');
+    Route::get('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'ubahnamapenyakit'])->name('superadmin.ubahnamapenyakit');
+    Route::post('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'changenamapenyakit'])->name('superadmin.changenamapenyakit');
     
     Route::get('/lokasi/kejadian', [SuperAdminController::class, 'lokasikejadian'])->name('superadmin.lokasikejadian');
     Route::get('/add/lokasi/kejadian', [SuperAdminController::class, 'addlokasikejadian'])->name('superadmin.addlokasikejadian');

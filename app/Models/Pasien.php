@@ -32,9 +32,14 @@ class Pasien extends Model
         'email',
         'alergi_obat',
         'hamil_menyusui',
+        'nama_penyakit_id',
         'created_by',
         'updated_by'
     ];
+
+    public function namapenyakit() {
+        return $this->belongsTo(NamaPenyakit::class);
+    }
 
     public function perusahaan() {
         return $this->belongsTo(Perusahaan::class);

@@ -141,13 +141,13 @@
                                 <a href="#"> Rekam Medis</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"><i class="bi bi-arrow-return-right"></i> Klasifikasi Penyakit</a>
+                                <a href="{{ route('superadmin.klasifikasipenyakit') }}"><i class="bi bi-arrow-return-right"></i> Klasifikasi Penyakit</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"><i class="bi bi-arrow-return-right"></i> Sub Klasifikasi Penyakit</a>
+                                <a href="{{ route('superadmin.subklasifikasi') }}"><i class="bi bi-arrow-return-right"></i> Sub Klasifikasi Penyakit</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"><i class="bi bi-arrow-return-right"></i> Diagnosa</a>
+                                <a href="{{ route('superadmin.namapenyakit') }}"><i class="bi bi-arrow-return-right"></i> Diagnosa</a>
                             </li>
                         </ul>
                     </li>

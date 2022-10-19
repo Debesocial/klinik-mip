@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\JenisObat;
+use App\Models\KlasifikasiPenyakit;
+use App\Models\NamaPenyakit;
+use App\Models\Tindakan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -31,7 +34,11 @@ class DatabaseSeeder extends Seeder
             GolonganObatSeeder::class,
             JenisObatSeeder::class,
             NamaObatSeeder::class,
-            SatuanObatSeeder::class
+            SatuanObatSeeder::class,
+            TindakanSeeder::class,
+            KlasifikasiPenyakitSeeder::class,
+            SubKlasifikasiSeeder::class,
+            NamaPenyakitSeeder::class
         ]);
     }
 }
