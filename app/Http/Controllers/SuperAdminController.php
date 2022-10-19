@@ -78,7 +78,22 @@ class SuperAdminController extends Controller
 
     public function izinberobat()
     {
-        return view('petugas.superadmin.izin_berobat');
+        $users = User::all();
+        return view('petugas.superadmin.izin_berobat', compact( 'users'));
+    }
+
+    public function proses()
+    {
+        include 'koneksi.php';
+$id = $_GET['id'];
+$query = mysqli_query($koneksi, "select * from users where id='$id'");
+$users = mysqli_fetch_array($query);
+$data = array(
+            'email'      =>  $mahasiswa['email'],
+            'telp'   =>  $mahasiswa['telp'],
+            'status'    =>  $mahasiswa['status'],);
+ echo json_encode($data);
+        return view('petugas.superadmin.proses');
     }
 
     public function izinistirahat()
@@ -193,33 +208,73 @@ class SuperAdminController extends Controller
     }
     public function tambahpasien(Request $request)
     {
-        // dd($request->all());
-        
-        $validatedData = $request->validate([
-            'kategori_pasien_id' => 'required',
+        $request->validate([
+            'kategori_pasien' => 'required',
             'NIK' => 'required',
-            'perusahan_id' => 'required',
-            'divisi_id' => 'required',
-            'jabatan_id' => 'required',
+            'perusahaan' => 'required',
+            'divisi' => 'required',
+            'jabatan' => 'required',
             'nama_pasien' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'umur' => 'required',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
+            'alamat_mess' => 'required',
             'pekerjaan' => 'required',
+            'nama_penyakit' => 'required',
             'telepon' => 'required',
             'email' => 'required',
-            'alergi_obat' => 'required',
+            'alergi' => 'required',
             'hamil_menyusui' => 'required',
-            'keluarga_id' => ''
+            'nama_keluarga' => 'required',
+            'hubungan' => 'required',
+            'alamat_keluarga' => 'required',
+            'pekerjaan_keluarga' => 'required',
+            'telepon_keluarga' => 'required',
+            'email_keluarga' => 'required'
         ]);
 
-        // dd($request->all());
+        $keluarga = Keluarga::create([
+            'nama' => $request->nama_keluarga,
+            'hubungan' => $request->hubungan,
+            'alamat' => $request->alamat_keluarga,
+            'pekerjaan' => $request->pekerjaan_keluarga,
+            'telepon' => $request->telepon_keluarga,
+            'email' => $request->email_keluarga,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
 
-        Pasien::create($validatedData);
+        $pasien = Pasien::create([
+            'kategori_pasien_id' => $request->kategori_pasien,
+            'NIK' => $request->NIK,
+            'perusahaan_id' => $request->perusahaan,
+            'divisi_id' => $request->divisi,
+            'jabatan_id' => $request->jabatan,
+            'keluarga_id' => $keluarga->id,
+            'nama_pasien' => $request->nama_pasien,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'umur' => $request->umur,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'alamat_mess' => $request->alamat_mess,
+            'pekerjaan' => $request->pekerjaan,
+            'telepon' => $request->telepon,
+            'email' => $request->email,
+            'nama_penyakit_id' => $request->nama_penyakit,
+            'alergi_obat' => $request->alergi,
+            'hamil_menyusui' => $request->hamil_menyusui,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        if ($pasien) {
+            return redirect('/data/pasien')->with('success', 'Successfully!');
+        }
+
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function ubahpasien($id)

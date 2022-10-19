@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Izin Berobat')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <div class="page-heading">
     <div class="page-title">
@@ -41,8 +41,8 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="seacrh" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="">
+                                                <input type="search" id="id" class="form-control"
+                                                    name="id"  onkeyup="autofill()">
                                             </div>
                                             <div class="col-md-6 form-group">
                                             </div>
@@ -83,7 +83,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-                                                    name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                    name="pekerjaan" placeholder="Pekerjaan" onkeyup="autofill()">
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -147,5 +147,22 @@
                 
             </div>
         </section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+<script src="{{asset ('ref/assets/vendors/jquery/jquery-1.12.4.min.js')}}"></script>
+
+<script>
+    $('#id').on('change', (event) => {
+        getUsers(event.target.value).then(users => {
+            $('#email').val(users.email);
+        });
+    });
+</script>
+
+<script>
+    $(".form-select").select2();
+</script>
 
 @endsection

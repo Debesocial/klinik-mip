@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	$timeout = 1; // setting timeout dalam menit
-	$logout = "index.php"; // redirect halaman logout
+	$timeout = 15; // setting timeout dalam menit
+	$logout = "/logout"; // redirect halaman logout
 
 	$timeout = $timeout * 60; // menit ke detik
 	if(isset($_SESSION['start_session'])){
