@@ -39,7 +39,7 @@
                                 <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"> Data Mitra Kerja</a>
+                                <a href="{{ route('superadmin.mitrakerja') }}"> Data Mitra Kerja</a>
                                 </a>
                             </li>
                         </ul>
@@ -119,7 +119,7 @@
                                 <a href="{{ route('superadmin.pemeriksaancovid') }}"> Pemeriksaan Covid</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"><i class="bi bi-arrow-return-right"></i> Kebutuhan Pemeriksaan Antigen</a>
+                                <a href="{{ route('superadmin.pemeriksaanantigen') }}"><i class="bi bi-arrow-return-right"></i> Kebutuhan Pemeriksaan Antigen</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemantauancovid') }}"> Pemantauan Covid</a>

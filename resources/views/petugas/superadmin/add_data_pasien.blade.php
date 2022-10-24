@@ -31,7 +31,7 @@
                                             <div class="form-group">
                                                 <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="kategori_pasien_id">
-                                                    <option value="">Pilih Kategori Pasien</option>
+                                                    <option disabled selected>Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
                                                         <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
                                                         </option>
@@ -47,7 +47,7 @@
                                                 <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required
                                                     onchange="yesnoCheck_lainnya(this);">
-                                                    <option value="">Pilih Perusahaan</option>
+                                                    <option disabled selected>Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
                                                     @foreach ($perusahaan as $peru)
                                                         <option value="{{ $peru->id }}">
@@ -63,7 +63,7 @@
                                             <div class="form-group">
                                                 <label for="divisi_id">Divisi <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="divisi_id" id="divisi_id">
-                                                    <option value="">Pilih Divisi</option>
+                                                    <option disabled selected>Pilih Divisi</option>
                                                     @foreach ($divisi as $divi)
                                                         <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
                                                         </option>
@@ -73,7 +73,7 @@
                                             <div class="form-group">
                                                 <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jabatan_id">
-                                                    <option value="">Pilih Jabatan</option>
+                                                    <option disabled selected>Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
                                                         <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
                                                         </option>
@@ -97,13 +97,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="umur">Umur <b class="color-red">*</b></label>
-                                                <input type="text" id="umur" class="form-control" name="umur"
+                                                <input type="number" id="umur" class="form-control" name="umur"
                                                     placeholder="Masukkan tempat lahir">
                                             </div>
                                             <div class="form-group">
                                                 <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jenis_kelamin">
-                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    <option disabled selected>Pilih Jenis Kelamin</option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
                                                 </select>

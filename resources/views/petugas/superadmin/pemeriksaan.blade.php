@@ -34,7 +34,7 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{ route('superadmin.addpemeriksaannarkoba') }}" method="post">
+                                        <form class="form form-horizontal" action="{{ route('superadmin.addpemeriksaan') }}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
@@ -45,8 +45,12 @@
                                                         <label>ID Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="id" class="form-control"
-                                                                name="id" placeholder="ID" required >
+                                                        <select name="id" id="id" class="form-select">
+                                                            <option disabled selected>Pilih ID Pasien</option>
+                                                            @foreach ($id as $pas)
+                                                                <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -442,7 +446,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script type="text/javascript">
     function isi_otomatis(){

@@ -41,6 +41,18 @@ class Pasien extends Model
         return $this->belongsTo(NamaPenyakit::class);
     }
 
+    public function pemeriksaancovid() {
+        return $this->belongsTo(PemeriksaanCovid::class);
+    }
+
+    public function pemeriksaanantigen() {
+        return $this->belongsTo(PemeriksaanAntigen::class);
+    }
+
+    public function testurin() {
+        return $this->belongsTo(TestUrin::class);
+    }
+
     public function perusahaan() {
         return $this->belongsTo(Perusahaan::class);
     }

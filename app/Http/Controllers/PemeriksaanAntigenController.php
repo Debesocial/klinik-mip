@@ -2,55 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PemeriksaanAntigen;
 use Illuminate\Http\Request;
-use App\Models\KlasifikasiPenyakit;
 
-class KlasifikasiPenyakitController extends Controller
+class PemeriksaanAntigenController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function klasifikasipenyakit()
+    public function pemeriksaanantigen()
     {
-        $klasifikasipenyakit = KlasifikasiPenyakit::all();
-        return view('petugas.superadmin.klasifikasi_penyakit')->with('klasifikasipenyakit', $klasifikasipenyakit);
+        $pemeriksaanantigen = PemeriksaanAntigen::all();
+        return view('petugas.superadmin.pemeriksaan_antigen')->with('pemeriksaanantigen', $pemeriksaanantigen);
     }
 
-    public function addklasifikasipenyakit()
+    public function addpemeriksaanantigen()
     {
-        return view('petugas.superadmin.add_klasifikasi_penyakit');
+        return view('petugas.superadmin.add_pemeriksaan_antigen');
     }
 
-    public function tambahklasifikasipenyakit(Request $request)
+    public function tambahpemeriksaanantigen(Request $request)
     {
-        
         $validatedData = $request->validate([
-            'klasifikasi_penyakit' => 'required'
+            'kebutuhan' => 'required'
         ]);
 
-        KlasifikasiPenyakit::create([
-            'klasifikasi_penyakit' => $request->klasifikasi_penyakit,
+        PemeriksaanAntigen::create([
+            'kebutuhan' => $request->kebutuhan,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/klasifikasi/penyakit')->with('success', 'Successfully!');
+        return redirect('/pemeriksaan/antigen')->with('success', 'Successfully!');
     }
 
-    public function ubahklasifikasipenyakit($id)
+    public function ubahpemeriksaanantigen($id)
     {
-        $klasifikasipenyakit = KlasifikasiPenyakit::find($id);
-        return view('petugas.superadmin.ubah_klasifikasi_penyakit', compact('klasifikasipenyakit')); 
+        $pemeriksaanantigen = PemeriksaanAntigen::find($id);
+        return view('petugas.superadmin.ubah_pemeriksaan_antigen', compact('pemeriksaanantigen'));
     }
 
-    function changeklasifikasipenyakit(Request $request, $id) {
-        $klasifikasipenyakit = KlasifikasiPenyakit::find($id);
-        $klasifikasipenyakit->klasifikasi_penyakit = $request->input('klasifikasi_penyakit');
-        $klasifikasipenyakit->update();
+    function changepemeriksaanantigen(Request $request, $id) {
+        $pemeriksaanantigen = PemeriksaanAntigen::find($id);
+        $pemeriksaanantigen->kebutuhan = $request->input('kebutuhan');
+        $pemeriksaanantigen->update();
 
-        return redirect('/klasifikasi/penyakit')->with('success', 'Successfully!');
+        return redirect('/pemeriksaan/antigen')->with('success', 'Successfully!');
     }
 
     /**

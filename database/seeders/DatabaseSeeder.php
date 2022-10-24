@@ -38,7 +38,8 @@ class DatabaseSeeder extends Seeder
             TindakanSeeder::class,
             KlasifikasiPenyakitSeeder::class,
             SubKlasifikasiSeeder::class,
-            NamaPenyakitSeeder::class
+            NamaPenyakitSeeder::class,
+            PemeriksaanAntigenSeeder::class
         ]);
     }
 }
