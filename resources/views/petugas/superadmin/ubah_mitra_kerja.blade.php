@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Ubah Data Pasien')
+@section('title', 'Ubah Data Mitra Kerja')
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Ubah Data Pasien')
+        @section('judul', 'Ubah Data Mitra Kerja')
         @section('container')
             <div class="row">
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -24,7 +24,7 @@
                                 @error('message')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                                <form class="form" action="/ubah/data/pasien/{{ $pasien->id }}" method="post">
+                                <form class="form" action="/ubah/mitra/kerja/{{ $pasien->id }}" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-12">

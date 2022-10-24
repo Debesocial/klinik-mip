@@ -1,8 +1,6 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
-
 <div class="page-heading">
     <div class="page-title">
         @section('judul', 'Tambah Data Pasien')
@@ -31,8 +29,8 @@
                                         <div class="col-md-6 col-12">
                                         <h3 class="mb-4">Data Pasien</h3>
                                             <div class="form-group">
-                                                <label for="kategori_pasien">Kategori Pasien <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="kategori_pasien" id="kategori_pasien">
+                                                <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="kategori_pasien_id">
                                                     <option disabled selected>Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
                                                         <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
@@ -46,8 +44,8 @@
                                                     placeholder="Masukkan NIK">
                                             </div>
                                             <div class="form-group">
-                                                <label for="perusahaan">Perusahaan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="perusahaan" id="perusahaan" required
+                                                <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required
                                                     onchange="yesnoCheck_lainnya(this);">
                                                     <option disabled selected>Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
@@ -63,8 +61,8 @@
                                                     placeholder="lainnya">
                                             </div>
                                             <div class="form-group">
-                                                <label for="divisi">Divisi <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="divisi" id="divisi">
+                                                <label for="divisi_id">Divisi <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="divisi_id" id="divisi_id">
                                                     <option disabled selected>Pilih Divisi</option>
                                                     @foreach ($divisi as $divi)
                                                         <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
@@ -73,8 +71,8 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan">Jabatan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="jabatan">
+                                                <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="jabatan_id">
                                                     <option disabled selected>Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
                                                         <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
@@ -99,12 +97,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="umur">Umur <b class="color-red">*</b></label>
-                                                <input type="text" id="umur" class="form-control" name="umur"
+                                                <input type="number" id="umur" class="form-control" name="umur"
                                                     placeholder="Masukkan tempat lahir">
                                             </div>
                                             <div class="form-group">
-                                                <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
+                                                <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="jenis_kelamin">
                                                     <option disabled selected>Pilih Jenis Kelamin</option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
@@ -126,8 +124,8 @@
                                                     name="pekerjaan" placeholder="Masukkan Pekerjaan">
                                             </div>
                                             <div class="form-group">
-                                                <label for="nama_penyakit">Nama Penyakit<b class="color-red">*</b></label>
-                                                <select name="nama_penyakit" id="nama_penyakit" class="form-select">
+                                                <label for="nama_penyakit_id">Nama Penyakit<b class="color-red">*</b></label>
+                                                <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($namapenyakit as $nama)
                                                         <option value="{{ $nama['id'] }}">{{ $nama['primer'] }}</option>
@@ -226,10 +224,9 @@
 
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
-    <script>
-        $(".form-select").select2();
-    </script>
+
 @endsection
+<script>
+    $(".form-select").select2();
+</script>

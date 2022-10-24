@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Permintaan Makanan')
+@section('title', 'Kecelakan Kerja')
 
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Permintaan Makanan')
+        @section('judul', 'Kecelakan Kerja')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
