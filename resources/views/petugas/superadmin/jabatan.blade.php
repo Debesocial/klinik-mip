@@ -28,7 +28,6 @@
                     <tr>
                         <td>{{ $jab['nama_jabatan'] }}</td>
                         <td><div class="buttons">
-                                <a href="" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
                                 <a href="/ubah/jabatan/{{ $jab->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
