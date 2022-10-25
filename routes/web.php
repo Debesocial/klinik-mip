@@ -53,6 +53,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
 
     Route::get('/pemantauan/covid', [SuperAdminController::class, 'pemantauancovid'])->name('superadmin.pemantauancovid');
 
+    Route::get('/pemantauan/tandavital', [SuperAdminController::class, 'pemantauantandavital'])->name('superadmin.pemantauantandavital');
+
+    Route::get('/rawat/inap', [SuperAdminController::class, 'rawatinap'])->name('superadmin.rawatinap');
+
     Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
 
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
@@ -60,6 +64,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/permintaan/makanan', [SuperAdminController::class, 'permintaanmakanan'])->name('superadmin.permintaanmakanan');
 
     Route::get('/kecelakaan/kerja', [SuperAdminController::class, 'kecelakaankerja'])->name('superadmin.kecelakaankerja');
+
+    Route::get('/pengesahan/hasil', [SuperAdminController::class, 'pengesahanhasil'])->name('superadmin.pengesahanhasil');
+
+    Route::get('/keterangan/pemeriksaan', [SuperAdminController::class, 'keteranganpemeriksaan'])->name('superadmin.keteranganpemeriksaan');
 
     Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
 
@@ -69,6 +77,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
 
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
+
+    Route::get('/rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
 
     Route::get('/keterangan/sehat', [SuperAdminController::class, 'keterangansehat'])->name('superadmin.keterangansehat');
 
