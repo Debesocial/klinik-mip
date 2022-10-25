@@ -66,8 +66,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon</label>
-                                            <input type="text" id="telp" class="form-control"
-                                                name="telp" value="{{ $user['telp'] }}">
+                                            <input type="text" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                name="telp" value="{{ $user['telp'] }}" maxlength="13">
                                         </div>
                                     </div>
 

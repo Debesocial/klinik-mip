@@ -39,8 +39,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="NIK">NIK <b class="color-red">*</b></label>
-                                                <input type="text" id="NIK" class="form-control"
-                                                 name="NIK" value="{{ $pasien['NIK'] }}" required>
+                                                <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                 name="NIK" value="{{ $pasien['NIK'] }}" maxlength="16" required>
                                             </div>
                                             
                                             <div class="form-group">
@@ -130,8 +130,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                                <input type="text" id="telepon" class="form-control"
-                                                 name="telepon" value="{{ $pasien['telepon'] }}" required>
+                                                <input type="text" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                 name="telepon" value="{{ $pasien['telepon'] }}" maxlength="13" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email">Email<b>*</b></label>
@@ -196,8 +196,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
-                                                    <input type="text" id="telepon_keluarga" class="form-control"
-                                                        name="telepon_keluarga" value="{{ $pasien->keluarga->telepon }}" required>
+                                                    <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        name="telepon_keluarga" value="{{ $pasien->keluarga->telepon }}" maxlength="13" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email_keluarga">Email </label>

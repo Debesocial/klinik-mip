@@ -123,6 +123,31 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.pemantauan_covid');
     }
 
+    public function pemantauantandavital()
+    {
+        return view('petugas.superadmin.pemantauan_tanda_vital');
+    }
+
+    public function keteranganpemeriksaan()
+    {
+        return view('petugas.superadmin.keterangan_pemeriksaan');
+    }
+
+    public function rekammedis()
+    {
+        return view('petugas.superadmin.rekam_medis');
+    }
+
+    public function pengesahanhasil()
+    {
+        return view('petugas.superadmin.pengesahan_hasil');
+    }
+
+    public function rawatinap()
+    {
+        return view('petugas.superadmin.rawat_inap');
+    }
+
     public function rawatinapdokter()
     {
         return view('petugas.superadmin.rawat_inap_dokter');

@@ -40,8 +40,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="NIK">NIK <b class="color-red">*</b></label>
-                                                <input type="text" id="NIK" class="form-control" name="NIK"
-                                                    placeholder="Masukkan NIK">
+                                                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK"
+                                                    placeholder="Masukkan NIK" maxlength = "16" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
@@ -134,8 +134,8 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                                <input type="text" id="telepon" class="form-control" name="telepon"
-                                                    placeholder="Masukkan No Telepon">
+                                                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="telepon" class="form-control" name="telepon"
+                                                    placeholder="Masukkan No Telepon" maxlength="13">
                                             </div>
                                             <div class="form-group">
                                                 <label for="email">Email</label>
@@ -197,8 +197,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
-                                                    <input type="text" id="telepon_keluarga" class="form-control"
-                                                        name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" required>
+                                                    <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email_keluarga">Email</label>

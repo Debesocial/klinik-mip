@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" id="email" class="form-control"
-                                                 name="email" placeholder="Masukkan Email">
+                                                 name="email" placeholder="Masukkan Email" required>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -58,8 +58,11 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="status">Status <b class="color-red">*</b></label>
-                                            <input type="status" id="status" class="form-control"
-                                                 name="status" placeholder="Masukkan Status">
+                                            <select class="choices form-select" name="status" id="status" required>
+                                                <option disabled selected>Pilih Status</option>
+                                                <option value="aktif">Aktif</option>
+                                                <option value="nonaktif">NonAktif</option>
+                                        </select>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -81,9 +84,9 @@
                                         <div class="form-group">
                                             <label for="jadwal_id">Jadwal Petugas <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
-                                                <option value="">Pilih jadwal</option>
+                                                <option disabled selected>Pilih jadwal</option>
                                                 @foreach ($jadwal as $jadwal)
-                                                <option value="{{ $jadwal->id }}">{{ $jadwal->hari }}</option>
+                                                <option value="{{ $jadwal->id }}">{{ $jadwal->hari }} shift {{ $jadwal->shift }}</option>
                                                 @endforeach
                                         </select>
                                         </div>
@@ -99,8 +102,8 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon <b class="color-red">*</b></label>
-                                            <input type="number" id="telp" class="form-control"
-                                                name="telp" placeholder="Masukkan No Telepon" required>
+                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                name="telp" placeholder="Masukkan No Telepon" maxlength="13" required>
                                         </div>
                                     </div>
 
@@ -112,7 +115,7 @@
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id">
-                                                <option value="">Pilih Level</option>
+                                                <option disabled selected>Pilih Level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>
                                                 @endforeach
