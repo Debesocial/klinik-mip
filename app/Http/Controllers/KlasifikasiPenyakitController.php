@@ -23,6 +23,22 @@ class KlasifikasiPenyakitController extends Controller
         return view('petugas.superadmin.add_klasifikasi_penyakit');
     }
 
+    public function tambahklasifikasipenyakit(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'klasifikasi_penyakit' => 'required'
+        ]);
+
+        KlasifikasiPenyakit::create([
+            'klasifikasi_penyakit' => $request->klasifikasi_penyakit,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        return redirect('/klasifikasi/penyakit')->with('success', 'Successfully!');
+    }
+
     public function ubahklasifikasipenyakit($id)
     {
         $klasifikasipenyakit = KlasifikasiPenyakit::find($id);
