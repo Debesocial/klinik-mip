@@ -36,7 +36,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="nama_level">Hari</label>
+                                            <label for="nama_level">Kategori Petugas</label>
                                             <input type="text"  class="form-control"
                                                  name="nama_level"  value="{{ $level['nama_level'] }}" required>
                                         </div>
