@@ -100,8 +100,8 @@
                                                 <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
                                                     <option disabled selected></option>
-                                                    <option value="Pria">Laki-laki</option>
-                                                    <option value="Wanita">Perempuan</option>
+                                                    <option value="Laki-Laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
