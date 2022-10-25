@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Add Data Pasien')
+@section('title', 'Add Data Mitra Kerja')
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Tambah Data Pasien')
+        @section('judul', 'Tambah Data Mitra Kerja')
         @section('container')
             <div class="row">
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -23,15 +23,15 @@
                                 @error('message')
                                     <p class="text-danger">{{ $message }}</p>
                                 @enderror
-                                <form class="form" action="{{ route('add.pasien') }}" method="post">
+                                <form class="form" action="/add/mitra/kerja" method="post">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                        <h3 class="mb-4">Data Pasien</h3>
+                                        <h3 class="mb-4">Data Mitra Kerja</h3>
                                             <div class="form-group">
-                                                <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
+                                                <label for="kategori_pasien_id">Kategori <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="kategori_pasien_id">
-                                                    <option disabled selected>Pilih Kategori Pasien</option>
+                                                    <option disabled selected>Pilih Kategori</option>
                                                     @foreach ($kategori as $kate)
                                                         <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
                                                         </option>
@@ -40,7 +40,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="NIK">NIK <b class="color-red">*</b></label>
-                                                <input type="text" id="NIK" class="form-control" name="NIK"
+                                                <input type="number" id="NIK" class="form-control" name="NIK"
                                                     placeholder="Masukkan NIK">
                                             </div>
                                             <div class="form-group">
@@ -83,7 +83,7 @@
                                             <div class="form-group">
                                                 <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien" placeholder="Masukkan Nama Pasien">
+                                                    name="nama_pasien" placeholder="Masukkan nama pasien">
                                             </div>
                                             <div class="form-group">
                                                 <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
@@ -134,7 +134,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                                <input type="text" id="telepon" class="form-control" name="telepon"
+                                                <input type="number" id="telepon" class="form-control" name="telepon"
                                                     placeholder="Masukkan No Telepon">
                                             </div>
                                             <div class="form-group">
@@ -170,7 +170,7 @@
                                                 <div class="form-group">
                                                     <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
                                                     <input type="text" id="nama_keluarga" class="form-control"
-                                                        name="nama_keluarga" placeholder="Masukkan Nama Keluarga" required>
+                                                        name="nama_keluarga" placeholder="Nama Keluarga" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="nama_keluarga">Hubungan <b class="color-red">*</b></label>
@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="telepon_keluarga">Telepon <b class="color-red">*</b></label>
-                                                    <input type="text" id="telepon_keluarga" class="form-control"
+                                                    <input type="number" id="telepon_keluarga" class="form-control"
                                                         name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" required>
                                                 </div>
                                                 <div class="form-group">

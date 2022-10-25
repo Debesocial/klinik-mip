@@ -29,9 +29,9 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="kategori_pasien">Kategori Pasien <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="kategori_pasien" id="kategori_pasien">
-                                                    <option value="">Pilih Kategori Pasien</option>
+                                                <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label> 
+                                                <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
+                                                    <option disabled selected>Pilih Kategori Pasien</option>
                                                     @foreach ($kategori as $kate)
                                                 <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}</option>
                                                 @endforeach
@@ -44,9 +44,9 @@
                                             </div>
                                             
                                             <div class="form-group">
-                                                <label for="perusahaan">Perusahaan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="perusahaan" id="perusahaan" onchange="yesnoCheck_lainnya(this);">
-                                                    <option value="">Pilih Perusahaan</option>
+                                                <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" onchange="yesnoCheck_lainnya(this);">
+                                                    <option disabled selected>Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
                                                     @foreach ($perusahaan as $peru)
                                                 <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan->id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
@@ -59,18 +59,18 @@
                                                     placeholder="lainnya">
                                             </div>
                                             <div class="form-group">
-                                                <label for="divisi">Divisi <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="divisi" id="divisi">
-                                                    <option value="">Pilih Divisi</option>
+                                                <label for="divisi_id">Divisi <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="divisi_id" id="divisi_id">
+                                                    <option disabled selected>Pilih Divisi</option>
                                                     @foreach ($divisi as $div)
                                                 <option value="{{ $div->id }}" {{ $div->id == $pasien->divisi->id ? 'selected' : '' }}>{{ $div->nama_divisi_pasien }}</option>
                                                 @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="jabatan">Jabatan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="jabatan" id="jabatan">
-                                                    <option value="">Pilih Jabatan</option>
+                                                <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
+                                                <select class="choices form-select" name="jabatan_id" id="jabatan_id">
+                                                    <option disabled selected>Pilih Jabatan</option>
                                                     @foreach ($jabatan as $jabat)
                                                 <option value="{{ $jabat->id }}" {{ $jabat->id == $pasien->jabatan->id ? 'selected' : '' }}>{{ $jabat->nama_jabatan }}</option>
                                                 @endforeach
@@ -93,13 +93,13 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="umur">Umur <b class="color-red">*</b></label>
-                                                <input type="text" id="umur" class="form-control"
+                                                <input type="number" id="umur" class="form-control"
                                                  name="umur" value="{{ $pasien['umur'] }}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
-                                                    <option value=""></option>
+                                                    <option disabled selected></option>
                                                     <option value="Pria">Laki-laki</option>
                                                     <option value="Wanita">Perempuan</option>
                                                 </select>
@@ -120,6 +120,15 @@
                                                  name="pekerjaan" value="{{ $pasien['pekerjaan'] }}" required>
                                             </div>
                                             <div class="form-group">
+                                                <label for="nama_penyakit_id">Nama Penyakit</label>
+                                                <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
+                                                    <option disabled selected>Pilih Nama Penyakit</option>
+                                                    @foreach ($namapenyakit as $nama)
+                                                <option value="{{ $nama->id }}" >{{ $nama->primer }}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="text" id="telepon" class="form-control"
                                                  name="telepon" value="{{ $pasien['telepon'] }}" required>
@@ -133,10 +142,10 @@
                                                 <label>Alergi Obat</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input class="form-check-input" type="radio" name="alergi"
-                                                    id="alergi" value="0"> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi"
-                                                        id="alergi" value="1" checked> Ya
+                                                <input class="form-check-input" type="radio" name="alergi_obat"
+                                                    id="alergi_obat" value="0"> Tidak
+                                                    <input class="form-check-input" type="radio" name="alergi_obat"
+                                                        id="alergi_obat" value="1" checked> Ya
                                             </div>
 
                                             <div class="col-md-2">
@@ -160,10 +169,13 @@
                                                  name="nama_keluarga" value="{{ $pasien->keluarga->nama }}" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="alamat_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
-                                                    <select class="choices form-select">
-                                                        <option value=""></option>
-                                                        <option value="Ayah">Ayah</option>
+                                                    <label for="hubungan_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
+                                                    <select class="choices form-select" id="hubungan_keluarga" name="hubungan_keluarga">
+                                                        <option disabled selected>Pilih Hubungan Keluarga</option>
+                                                    @foreach ($keluarga as $kel)
+                                                <option value="{{ $kel->id }}" {{ $kel->id == $pasien->keluarga->id ? 'selected' : '' }}>{{ $kel->hubungan }}</option>
+                                                @endforeach
+                                                <option value="Ayah">Ayah</option>
                                                         <option value="Ibu">Ibu</option>
                                                         <option value="Adik">Adik</option>
                                                         <option value="Abang">Abang</option>

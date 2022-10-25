@@ -19,9 +19,12 @@ use App\Models\Jabatan;
 use App\Models\KategoriPasien;
 use App\Models\Level;
 use App\Models\NamaPenyakit;
+use App\Models\PemeriksaanAntigen;
+use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
+use App\Models\TestUrin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -37,13 +40,82 @@ class SuperAdminController extends Controller
 
     public function pemeriksaannarkoba()
     {
-        $pasien = Pasien::all();
-        return view('petugas.superadmin.pemeriksaan_narkoba')->with('pasien', $pasien);
+        $id = Pasien::get();
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $namapenyakit = NamaPenyakit::all();
+        $testurin = TestUrin::all();
+
+        return view('petugas.superadmin.pemeriksaan_narkoba', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'id', 'namapenyakit', 'testurin'));
+    }
+
+    public function pemeriksaan()
+    {
+        $id = Pasien::get();
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $namapenyakit = NamaPenyakit::all();
+        $testurin = TestUrin::all();
+
+        return view('petugas.superadmin.pemeriksaan', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'id', 'namapenyakit', 'testurin'));
+    }
+
+    public function addpemeriksaan(Request $request)
+    {
+        
+        $testurin = new TestUrin();
+        $testurin->id = $request->id;
+        $testurin->pengguna_obat = $request->pengguna_obat;
+        $testurin->jenis_obat = $request->jenis_obat;
+        $testurin->asal_obat = $request->asal_obat;
+        $testurin->terakhir_digunakan = $request->terakhir_digunakan;
+        $testurin->amp = $request->amp;
+        $testurin->met = $request->met;
+        $testurin->thc = $request->thc;
+        $testurin->bzo = $request->bzo;
+        $testurin->mop = $request->mop;
+        $testurin->coc = $request->coc;
+
+        if ($testurin) {
+            return redirect('/data/pasien')->with('success', 'Successfully!');
+        }
+
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function pemeriksaancovid()
     {
-        return view('petugas.superadmin.pemeriksaan_covid');
+        $id = Pasien::get();
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $pemeriksaanantigen = PemeriksaanAntigen::all();
+        $covid = PemeriksaanCovid::all();
+
+
+        return view('petugas.superadmin.pemeriksaan_covid', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'id', 'pemeriksaanantigen'));
+    }
+
+    public function addpemeriksaancovid(Request $request)
+    {
+        dd($request->covid);
+        
+        $covid = new PemeriksaanCovid();
+        $covid->id = $request->id;
+        $covid->pasien_id = $request->pasien_id;
+        $covid->pemeriksaan_antigen_id = $request->pemeriksaan_antigen_id;
+        $covid->hasil_pemeriksaan = $request->hasil_pemeriksaan;
+
+        if ($covid) {
+            return redirect('/pemeriksaan/covid')->with('success', 'Successfully!');
+        }
+
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function pemantauancovid()
@@ -78,8 +150,13 @@ class SuperAdminController extends Controller
 
     public function izinberobat()
     {
-        return view('petugas.superadmin.izin_berobat');
+        $users = User::all();
+        return view('petugas.superadmin.izin_berobat', compact( 'users'));
     }
+
+    
+
+    
 
     public function izinistirahat()
     {
@@ -264,18 +341,18 @@ class SuperAdminController extends Controller
         $divisi = Divisi::all();
         $jabatan = Jabatan::all();
         $keluarga = Keluarga::all();
+        $namapenyakit = NamaPenyakit::all();
 
-        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga'));
+        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
     }
 
     function changepasien(Request $request, $id) {
         $pasien = Pasien::find($id);
-        $pasien->kategori_pasien_id = $request->input('kategori_pasien');
+        $pasien->kategori_pasien_id = $request->input('kategori_pasien_id');
         $pasien->NIK = $request->input('NIK');
-        $pasien->perusahaan_id = $request->input('perusahaan');
-        $pasien->divisi_id = $request->input('divisi');
-        $pasien->jabatan_id = $request->input('jabatan');
-        $pasien->keluarga_id = $request->input('keluarga');
+        $pasien->perusahaan_id = $request->input('perusahaan_id');
+        $pasien->divisi_id = $request->input('divisi_id');
+        $pasien->jabatan_id = $request->input('jabatan_id');
         $pasien->nama_pasien = $request->input('nama_pasien');
         $pasien->tempat_lahir = $request->input('tempat_lahir');
         $pasien->tanggal_lahir = $request->input('tanggal_lahir');
@@ -284,14 +361,153 @@ class SuperAdminController extends Controller
         $pasien->alamat = $request->input('alamat');
         $pasien->pekerjaan = $request->input('pekerjaan');
         $pasien->telepon = $request->input('telepon');
+        $pasien->nama_penyakit_id = request('nama_penyakit_id');
         $pasien->email = $request->input('email');
-        $pasien->alergi_obat = $request->input('alergi');
+        $pasien->alergi_obat = $request->input('alergi_obat');
         $pasien->hamil_menyusui = $request->input('hamil_menyusui');
-        $pasien->keluarga_id = $request->input('keluarga_id');
         $pasien->update();
-
+        $keluarga = Keluarga::find($id);
+        $keluarga->nama = $request->input('nama_keluarga');
+        $keluarga->hubungan = $request->input('hubungan_keluarga');
+        $keluarga->alamat = $request->input('alamat_keluarga');
+        $keluarga->pekerjaan = $request->input('pekerjaan_keluarga');
+        $keluarga->telepon = $request->input('telepon_keluarga');
+        $keluarga->email = $request->input('email_keluarga');
+        $keluarga->update();
+        
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
+
+    public function mitrakerja(Request $request)
+    {
+        $kategori = KategoriPasien::all();
+        $pasien = Pasien::where("kategori_pasien_id", "2")->orWhere("kategori_pasien_id", "3")->get();
+        // dd($pasien);
+        
+        return view('petugas.superadmin.mitra_kerja', compact('pasien', 'kategori'));
+    }
+
+    public function addmitrakerja()
+    {
+        $pasien = Pasien::all();
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $namapenyakit = NamaPenyakit::all();
+
+        return view('petugas.superadmin.add_mitra_kerja', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien', 'namapenyakit'));
+    }
+    public function tambahmitrakerja(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'kategori_pasien_id' => 'required',
+            'NIK' => 'required',
+            'perusahaan_id' => 'required',
+            'divisi_id' => 'required',
+            'jabatan_id' => 'required',
+            'nama_pasien' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'umur' => 'required',
+            'jenis_kelamin' => 'required',
+            'alamat' => 'required',
+            'pekerjaan' => 'required',
+            'telepon' => 'required',
+            'email' => 'required',
+            'alergi_obat' => 'required',
+            'hamil_menyusui' => 'required'
+        ]);
+
+        $keluarga = Keluarga::create([
+            'nama' => $request->nama_keluarga,
+            'hubungan' => $request->hubungan_keluarga,
+            'alamat' => $request->alamat_keluarga,
+            'pekerjaan' => $request->pekerjaan_keluarga,
+            'telepon' => $request->telepon_keluarga,
+            'email' => $request->email_keluarga,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        $pasien = Pasien::create([
+            'kategori_pasien_id' => $request->kategori_pasien_id,
+            'NIK' => $request->NIK,
+            'perusahaan_id' => $request->perusahaan_id,
+            'divisi_id' => $request->divisi_id,
+            'jabatan_id' => $request->jabatan_id,
+            'keluarga_id' => $keluarga->id,
+            'nama_pasien' => $request->nama_pasien,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'umur' => $request->umur,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat' => $request->alamat,
+            'alamat_mess' => $request->alamat_mess,
+            'pekerjaan' => $request->pekerjaan,
+            'telepon' => $request->telepon,
+            'email' => $request->email,
+            'nama_penyakit_id' => $request->nama_penyakit_id,
+            'alergi_obat' => $request->alergi_obat,
+            'hamil_menyusui' => $request->hamil_menyusui,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id
+        ]);
+
+        if ($pasien) {
+            return redirect('/mitra/kerja')->with('success', 'Successfully!');
+        }
+
+        return redirect()->back()->with('fail', 'Fail Create Data!');
+    }
+
+    public function ubahmitrakerja($id)
+    {
+
+        $pasien = Pasien::find($id);
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $keluarga = Keluarga::all();
+        $namapenyakit = NamaPenyakit::all();
+
+        return view('petugas.superadmin.ubah_mitra_kerja', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
+    }
+
+    function changemitrakerja(Request $request, $id) {
+        $pasien = Pasien::find($id);
+        $pasien->kategori_pasien_id = $request->input('kategori_pasien_id');
+        $pasien->NIK = $request->input('NIK');
+        $pasien->perusahaan_id = $request->input('perusahaan_id');
+        $pasien->divisi_id = $request->input('divisi_id');
+        $pasien->jabatan_id = $request->input('jabatan_id');
+        $pasien->nama_pasien = $request->input('nama_pasien');
+        $pasien->tempat_lahir = $request->input('tempat_lahir');
+        $pasien->tanggal_lahir = $request->input('tanggal_lahir');
+        $pasien->umur = $request->input('umur');
+        $pasien->jenis_kelamin = $request->input('jenis_kelamin');
+        $pasien->alamat = $request->input('alamat');
+        $pasien->pekerjaan = $request->input('pekerjaan');
+        $pasien->telepon = $request->input('telepon');
+        $pasien->nama_penyakit_id = request('nama_penyakit_id');
+        $pasien->email = $request->input('email');
+        $pasien->alergi_obat = $request->input('alergi_obat');
+        $pasien->hamil_menyusui = $request->input('hamil_menyusui');
+        $pasien->update();
+        $keluarga = Keluarga::find($id);
+        $keluarga->nama = $request->input('nama_keluarga');
+        $keluarga->hubungan = $request->input('hubungan_keluarga');
+        $keluarga->alamat = $request->input('alamat_keluarga');
+        $keluarga->pekerjaan = $request->input('pekerjaan_keluarga');
+        $keluarga->telepon = $request->input('telepon_keluarga');
+        $keluarga->email = $request->input('email_keluarga');
+        $keluarga->update();
+        
+        return redirect('/mitra/kerja')->with('success', 'Successfully!');
+    }
+
 
 
 
