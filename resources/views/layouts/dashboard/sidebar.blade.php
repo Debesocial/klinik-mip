@@ -138,7 +138,7 @@
 
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="#"> Rekam Medis</a>
+                                <a href="{{ route('superadmin.rekammedis') }}"> Rekam Medis</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.klasifikasipenyakit') }}"><i class="bi bi-arrow-return-right"></i> Klasifikasi Penyakit</a>
@@ -159,7 +159,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="#"> Daftar Pasien Rawat Inap</a>
+                                <a href="{{ route('superadmin.rawatinap') }}"> Daftar Pasien Rawat Inap</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rawatinapdokter') }}"> Pemeriksaan Rawat Inap Intruksi Dokter</a>
@@ -169,6 +169,9 @@
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.permintaanmakanan') }}"> Permintaan Makanan (Gizi)</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.pemantauantandavital') }}">Pemantauan Tanda Vital</a>
                             </li>
                         </ul>
                     </li>
@@ -180,10 +183,10 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="#"> Hasil Pemeriksaan Berkala, Khusus dan Akhir</a>
+                                <a href="{{ route('superadmin.keteranganpemeriksaan') }}"> Hasil Pemeriksaan Berkala, Khusus dan Akhir</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="#"> Hasil Pemeriksaan Kesehatan Awal</a>
+                                <a href="{{ route('superadmin.pengesahanhasil') }}"> Hasil Pemeriksaan Kesehatan Awal</a>
                             </li>
                         </ul>
                     </li>

@@ -55,12 +55,8 @@
                                                             <label>Nama Pasien</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <select name="nama_pasien" id="nama_pasien" class="form-select">
-                                                                <option disabled selected>Pilih Nama</option>
-                                                                @foreach ($id as $pas)
-                                                                    <option value="{{ $pas['nama_pasien'] }}">{{ $pas['nama_pasien'] }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <input type="text" id="nama_pasien" class="form-control"
+                                                                name="nama_pasien" placeholder="nama_pasien" required >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -136,10 +132,7 @@
                                                     onchange="yesnoCheck_lainnya(this);">
                                                     <option disabled selected>Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
-                                                    @foreach ($perusahaan as $peru)
-                                                        <option value="{{ $peru->id }}">
-                                                            {{ $peru->nama_perusahaan_pasien }}</option>
-                                                    @endforeach
+                                                    
                                                 </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -150,10 +143,7 @@
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="divisi_id" id="divisi_id">
                                                             <option disabled selected>Pilih Divisi</option>
-                                                            @foreach ($divisi as $divi)
-                                                                <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
-                                                                </option>
-                                                            @endforeach
+                                                           
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -164,10 +154,7 @@
                                                         <div class="col-md-4 form-group">
                                                             <select class="choices form-select" name="jabatan_id">
                                                                 <option disabled selected>Pilih Jabatan</option>
-                                                                @foreach ($jabatan as $jabat)
-                                                                    <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
-                                                                    </option>
-                                                                @endforeach
+                                                                
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6">
@@ -179,10 +166,7 @@
                                                             <div class="col-md-4 form-group">
                                                                 <select class="choices form-select" name="kategori_pasien_id">
                                                                     <option disabled selected>Pilih Kategori Pasien</option>
-                                                                    @foreach ($kategori as $kate)
-                                                                        <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
-                                                                        </option>
-                                                                    @endforeach
+                                                                    
                                                                 </select>
                                                             </div>
                                                             <div class="col-md-6">
