@@ -37,7 +37,7 @@ class JenisObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/nama/obat')->with('success', 'Successfully!');
+        return redirect('/jenis/obat')->with('success', 'Successfully!');
     }
 
     public function ubahjenisobat($id)

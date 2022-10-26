@@ -38,6 +38,16 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
+
+                                                    <div class="col-md-2">
+                                                        <label>ID Surat</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <input type="text" id="surat_id" class="form-control"
+                                                                name="surat_id" placeholder="id surat" required >
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        </div>
                                                     
                                                     
                                                         
@@ -224,7 +234,7 @@
                                                                         <input class="form-check-input" type="radio" name="hamil_menyusui"
                                                     id="hamil_menyusui" value="0"> Tidak
                                                 <label for="">
-                                                    <input class="form-check-input ms-5" type="radio" name="hamil_menyusui"
+                                                    <input class="form-check-input" type="radio" name="hamil_menyusui"
                                                         id="hamil_menyusui" value="1"> Ya
                                                                     </div>
                                                                     <div class="col-md-6">

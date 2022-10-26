@@ -147,20 +147,19 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
-                                                    id="alergi_obat" value="0"> Tidak
+                                                    id="alergi_obat" value="0" checked> Tidak
                                                     <input class="form-check-input" type="radio" name="alergi_obat"
-                                                        id="alergi_obat" value="1" checked> Ya
+                                                        id="alergi_obat" value="1"> Ya
                                             </div>
 
                                             <div class="col-md-3 mt-4">
-                                                <label>Hamil/Menyusui <b class="color-red">*</b></label>
+                                                <label>Hamil/Menyusui<b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                    id="hamil_menyusui" value="0"> Tidak
-                                                <label for="">
-                                                    <input class="form-check-input ms-5" type="radio" name="hamil_menyusui"
-                                                        id="hamil_menyusui" value="1" checked> Ya
+                                                    id="hamil_menyusui" value="0" checked> Tidak
+                                                    <input class="form-check-input" type="radio" name="hamil_menyusui"
+                                                        id="hamil_menyusui" value="1"> Ya
                                                 </label>
                                             </div>
                                         </div>

@@ -25,13 +25,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($hasil_pemantauans as $hasilpemantauan)
+                    @foreach ($hasilpemantauan as $hasil)
                     <tr>
-                        <td>{{ $hasilpemantauan['kode'] }}</td>
-                        <td>{{ $hasilpemantauan['nama_pemantauan'] }}</td>
+                        <td>{{ $hasil['kode'] }}</td>
+                        <td>{{ $hasil['nama_pemantauan'] }}</td>
                         <td><div class="buttons">
-                            <a href="" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                            <a href="/ubah/hasil/pemantauan/{{ $hasilpemantauan['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="/ubah/hasil/pemantauan/{{ $hasil['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                             </div></td>
                     </tr>
                     @endforeach
