@@ -5,25 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TestUrin extends Model
+class PersetujuanTindakan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'penggunaan_obat',
-        'jenis_obat',
         'pasien_id',
-        'asal_obat',
-        'terakhir_digunakan',
-        'amp',
-        'met',
-        'thc',
-        'bzo',
-        'mop',
-        'coc',
+        'rekam_medis_id',
+        'riwayat',
+        'hasil',
+        'ttd',
+        'catatan',
         'created_by',
         'updated_by'
     ];
+
+    public function rekammedis() {
+        return $this->belongsTo(RekamMedis::class);
+    }
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);

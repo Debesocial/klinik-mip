@@ -5,22 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TestUrin extends Model
+class PemantauanCovid extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'penggunaan_obat',
-        'jenis_obat',
         'pasien_id',
-        'asal_obat',
-        'terakhir_digunakan',
-        'amp',
-        'met',
-        'thc',
-        'bzo',
-        'mop',
-        'coc',
+        'suhu_pagi',
+        'td',
+        'hr',
+        'spo',
+        'gejala',
+        'jenis_pemeriksaan',
+        'spoo',
+        'hasil_laboratorium',
+        'lampiran_laboratorium',
+        'hasil_rontgen',
+        'lampiran_rontgen',
+        'tanggal_rontgen',
+        'keterangan',
+        'perjalanan',
+        'asal',
+        'kota_tujuan',
         'created_by',
         'updated_by'
     ];

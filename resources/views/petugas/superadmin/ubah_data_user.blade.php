@@ -85,10 +85,22 @@
                                         </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-12">
+                                    </div>
 
                                     <div class="col-md-6 col-12">
-                                        
+                                        <div class="form-group">
+                                            <label for="status">Status</label>
+                                            <select class="choices form-select" name="status" id="status" required>
+                                                <option value="{{ $user['status'] }}">{{ $user['status'] }}</option>
+                                                <option value="Aktif">Aktif</option>
+                                                <option value="NonAktif">NonAktif</option>
+                                        </select>
+                                        </div>
                                     </div>
+                                    <div class="col-md-2">
+                                    </div>
+
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
                                             class="btn btn-primary me-1 mb-1">Submit</button>

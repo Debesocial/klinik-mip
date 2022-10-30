@@ -53,6 +53,50 @@ class Pasien extends Model
         return $this->belongsTo(TestUrin::class);
     }
 
+    public function rekammedis() {
+        return $this->belongsTo(RekamMedis::class);
+    }
+
+    public function rawatinap(){
+        return $this->belongsTo(RawatInap::class);
+    }
+
+    public function permintaanmakanan() {
+        return $this->belongsTo(PermintaanMakanan::class);
+    }
+
+    public function tandavital() {
+        return $this->belongsTo(TandaVital::class);
+    }
+
+    public function kecelakaankerja() {
+        return $this->belongsTo(KecelakaanKerja::class);
+    }
+
+    public function keteranganberobat() {
+        return $this->belongsTo(KeteranganBerobat::class);
+    }
+
+    public function suratrujukan() {
+        return $this->belongsTo(SuratRujukan::class);
+    }
+
+    public function izinberobat() {
+        return $this->belongsTo(IzinBerobat::class);
+    }
+
+    public function keterangansehat() {
+        return $this->belongsTo(KeteranganSehat::class);
+    }
+
+    public function persetujuantindakan() {
+        return $this->belongsTo(PersetujuanTindakan::class);
+    }
+
+    public function izinistirahat() {
+        return $this->belongsTo(IzinIstirahat::class);
+    }
+
     public function perusahaan() {
         return $this->belongsTo(Perusahaan::class);
     }
