@@ -18,4 +18,20 @@ class Tindakan extends Model
     public function user() {
         return $this->hasMany(User::class);
     }
+
+    public function rekammedis() {
+        return $this->hasMany(RekamMedis::class);
+    }
+
+    public function rawatinap() {
+        return $this->hasMany(RawatInap::class);
+    }
+
+    public function kecelakaankerja() {
+        return $this->hasMany(KecelakaanKerja::class);
+    }
+
+    public function izinistirahat() {
+        return $this->hasMany(IzinIstirahat::class);
+    }
 }

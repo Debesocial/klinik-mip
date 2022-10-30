@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestUrinsTable extends Migration
+class CreateTandaVitalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,19 @@ class CreateTestUrinsTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_urins', function (Blueprint $table) {
+        Schema::create('tanda_vitals', function (Blueprint $table) {
             $table->id();
-            $table->string('penggunaan_obat');
-            $table->string('jenis_obat');
-            $table->string('asal_obat');
-            $table->string('terakhir_digunakan');
-            $table->boolean('amp');
-            $table->boolean('met');
-            $table->boolean('thc');
-            $table->boolean('bzo');
-            $table->boolean('mop');
-            $table->boolean('coc');
+            $table->foreignId('pasien_id')->constrained();
+            $table->string('skala_nyeri');
+            $table->string('hr');
+            $table->string('bp');
+            $table->string('temp');
+            $table->string('rr');
+            $table->string('saturasi_oksigen');
+            $table->string('nama_obat');
+            $table->string('jumlah_obat');
+            $table->string('aturan');
+            $table->time('waktu');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
@@ -40,6 +41,6 @@ class CreateTestUrinsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_urins');
+        Schema::dropIfExists('tanda_vitals');
     }
 }

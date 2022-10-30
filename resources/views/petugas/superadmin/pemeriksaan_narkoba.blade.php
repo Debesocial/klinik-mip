@@ -34,7 +34,7 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="{{ route('superadmin.addpemeriksaannarkoba') }}" method="post">
+                                        <form class="form form-horizontal" action="/pemeriksaan/narkoba" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
@@ -44,7 +44,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="surat_id" class="form-control"
-                                                                name="surat_id" placeholder="id surat" required >
+                                                                name="surat_id" placeholder="id surat">
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -55,8 +55,12 @@
                                                         <label>ID Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="id" class="form-control"
-                                                                name="id" placeholder="ID" required >
+                                                        <select name="pasien_id" id="pasien_id" class="form-select">
+                                                            <option disabled selected>Pilih ID Pasien</option>
+                                                            @foreach ($pasien_id as $pas)
+                                                                <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -66,7 +70,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="nama_pasien" class="form-control"
-                                                                name="nama_pasien" placeholder="nama_pasien" required >
+                                                                name="nama_pasien" placeholder="nama_pasien"  >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -78,7 +82,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="NIK" class="form-control"
-                                                                name="NIK" placeholder="NIK" required >
+                                                                name="NIK" placeholder="NIK" >
                                                         </div>
     
                                                         <div class="col-md-6">
@@ -89,7 +93,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="umur" class="form-control"
-                                                            name="umur" placeholder="Umur" required >
+                                                            name="umur" placeholder="Umur"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -100,7 +104,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="tempat_lahir" class="form-control"
-                                                            name="tempat_lahir" placeholder="Tempat Lahir" required >
+                                                            name="tempat_lahir" placeholder="Tempat Lahir"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -109,7 +113,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="date" id="tanggal_lahir" class="form-control"
-                                                            name="tanggal_lahir" placeholder="Tanggal Lahir" required >
+                                                            name="tanggal_lahir" placeholder="Tanggal Lahir"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -118,7 +122,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="alamat" class="form-control"
-                                                            name="alamat" placeholder="Alamat" required >
+                                                            name="alamat" placeholder="Alamat"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -127,7 +131,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="pekerjaan" class="form-control"
-                                                            name="pekerjaan" placeholder="Pekerjaan" required >
+                                                            name="pekerjaan" placeholder="Pekerjaan"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -138,7 +142,7 @@
                                                         <label>Perusahaan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required
+                                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" 
                                                     onchange="yesnoCheck_lainnya(this);">
                                                     <option disabled selected>Pilih Perusahaan</option>
                                                     <option value="lainnya">other</option>
@@ -200,7 +204,7 @@
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
                                                                         <input type="text" id="telepon" class="form-control"
-                                                                            name="telepon" placeholder="telepon" required >
+                                                                            name="telepon" placeholder="telepon"  >
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -210,7 +214,7 @@
                                                                         </div>
                                                                         <div class="col-md-4 form-group">
                                                                             <input type="email" id="email" class="form-control"
-                                                                                name="email" placeholder="email" required >
+                                                                                name="email" placeholder="email"  >
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             </div>

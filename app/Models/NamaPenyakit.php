@@ -25,6 +25,30 @@ class NamaPenyakit extends Model
         return $this->hasMany(Pasien::class);
     }
 
+    public function rekammedis() {
+        return $this->hasMany(RekamMedis::class);
+    }
+
+    public function rawatinap() {
+        return $this->hasMany(RawatInap::class);
+    }
+
+    public function permintaanmakanan() {
+        return $this->hasMany(PermintaanMakanan::class);
+    }
+
+    public function tandavital() {
+        return $this->hasMany(TandaVital::class);
+    }
+
+    public function kecelakaankerja() {
+        return $this->hasMany(KecelakaanKerja::class);
+    }
+
+    public function keteranganberobat() {
+        return $this->hasMany(KeteranganBerobat::class);
+    }
+
     public function sub_klasifikasi(){
         return $this->belongsTo(SubKlasifikasi::class);
     }

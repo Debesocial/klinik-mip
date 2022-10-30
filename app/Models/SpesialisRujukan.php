@@ -16,4 +16,12 @@ class SpesialisRujukan extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function suratrujukan() {
+        return $this->hasMany(SuratRujukan::class);
+    }
+
+    public function izinistirahat() {
+        return $this->hasMany(IzinIstirahat::class);
+    }
 }
