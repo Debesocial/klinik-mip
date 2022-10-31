@@ -24,25 +24,22 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" action="/izin/berobat" method="post" enctype='multipart/form-data'>
+                                    {{csrf_field()}}
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-2">
-                                                <label>No Surat</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="no_surat" class="form-control"
-                                                    name="no_surat" placeholder="No Surat" required disabled>
-                                            </div> 
-                                            <div class="col-md-6">
-                                            </div>
+                                            
 
                                             <div class="col-md-2">
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="search" id="id" class="form-control"
-                                                    name="id"  onkeyup="autofill()">
+                                                <select name="pasien_id" id="pasien_id" class="choices form-select">
+                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    @foreach ($pasien_id as $pas)
+                                                        <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-6 form-group">
                                             </div>
@@ -52,8 +49,8 @@
                                                 <label>Tempat Pemeriksaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="tempat_pemeriksaan" class="form-control"
-                                                    name="tempat_pemeriksaan"  required disabled>
+                                                <input type="text" id="tempat" class="form-control"
+                                                    name="tempat"  required >
                                             </div>
                                             <div class="col-md-6">               
                                             </div>
@@ -63,7 +60,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien"  required disabled>
+                                                    name="nama_pasien" >
                                             </div>
                                             <div class="col-md-6">               
                                             </div>
@@ -73,7 +70,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-                                                    name="umur"  required disabled>
+                                                    name="umur"  >
                                             </div>
                                                 <div class="col-md-6">
                                             </div>
@@ -87,49 +84,27 @@
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
+
                                             <div class="col-md-2">
                                                 <label>Perusahaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                    name="perusahaan" placeholder="Perusahaan" >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
-                                                            <div class="col-md-2">
-                                                                <label>Dokter yang Memeriksa</label>
-                                                            </div>
-                                                            <div class="col-md-4 form-group">
-                                                                <input type="text" id="dokter_pemeriksa" class="form-control"
-                                                                    name="dokter_pemeriksa" placeholder="Dokter Pemeriksa">
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                </div>
-                                                                
+                                                            
+                                                 {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
+                                                <div class="col-md-2">
+                                                    <label>Perusahaan</label>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input class="form-control" type="file" id="ttd" name="ttd[]" multiple>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    </div>      
                                                                             
-
-                                                                                <div class="col-md-2">
-                                                                                    <label>Dokter Yang Memeriksa</label>
-                                                                                </div>
-                                                                                <div class="col-md-4 form-group">
-                                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> Tanda Tangan
-                                                                                    <label for="">
-                                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> Tanda Tangan Tersimpan
-                                                                                    </label>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    </div> 
-
-                                                                                    <div class="col-md-2">
-                                                                                        
-                                                                                    </div>
-                                                                                    <div class="col-md-4 form-group">
-                                                                                        <textarea type="text" id="tanda_tangan" class="form-control"
-                                                                                            name="tanda_tangan"  style="width: 100%"></textarea>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        </div> 
-                                            
 
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
