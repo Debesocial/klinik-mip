@@ -14,7 +14,7 @@
     </div>
 
 
-       
+
         <section id="basic-horizontal-layouts">
             <div class="row match-height">
             <div class="col-12">
@@ -28,7 +28,7 @@
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
-                                            
+
 
                                             <div class="col-md-2">
                                                 <label>ID Pasien</label>
@@ -52,7 +52,7 @@
                                                 <input type="text" id="tempat" class="form-control"
                                                     name="tempat"  required >
                                             </div>
-                                            <div class="col-md-6">               
+                                            <div class="col-md-6">
                                             </div>
 
                                             <div class="col-md-2">
@@ -62,7 +62,7 @@
                                                 <input type="text" id="nama_pasien" class="form-control"
                                                     name="nama_pasien" >
                                             </div>
-                                            <div class="col-md-6">               
+                                            <div class="col-md-6">
                                             </div>
 
                                             <div class="col-md-2">
@@ -94,17 +94,17 @@
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
-                                                            
+
                                                  {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                 <div class="col-md-2">
                                                     <label>Perusahaan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input class="form-control" type="file" id="ttd" name="ttd[]" multiple>
+                                                    <input class="form-control" type="file" id="ttd" name="ttd">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    </div>      
-                                                                            
+                                                    </div>
+
 
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
@@ -119,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </section>
 
