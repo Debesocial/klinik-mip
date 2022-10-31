@@ -25,7 +25,7 @@
                         <div class="card-content">
                             <div class="card-body">
                                 <form class="form form-horizontal" action="/izin/berobat" method="post" enctype='multipart/form-data'>
-                                    {{csrf_field()}}
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
 

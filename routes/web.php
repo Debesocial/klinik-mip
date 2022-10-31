@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
 
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
+    Route::post('/surat/rujukan', [SuperAdminController::class, 'addsuratrujukan'])->name('superadmin.addsuratrujukan');
 
     Route::get('/rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
 

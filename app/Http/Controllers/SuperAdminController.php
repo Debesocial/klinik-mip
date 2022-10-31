@@ -26,6 +26,7 @@ use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
+use App\Models\SuratRujukan;
 use App\Models\TestUrin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -251,7 +252,44 @@ class SuperAdminController extends Controller
 
     public function suratrujukan()
     {
-        return view('petugas.superadmin.surat_rujukan');
+        $pasien_id = Pasien::get();
+        $suratrujukan = SuratRujukan::all();
+        $spesialisrujukan = SpesialisRujukan::all();
+        $rsrujukan = RumahSakitRujukan::all();
+
+        return view('petugas.superadmin.surat_rujukan', compact( 'pasien_id', 'suratrujukan', 'spesialisrujukan', 'rsrujukan'));
+    }
+
+    public function addsuratrujukan(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'tempat' => 'required',
+            'tanggal' => 'required',
+            'riwayat' => 'required',
+            'obat_diberikan' => 'required',
+            'hasil_pengobatan' => 'required',
+            'spesialis_rujukan_id' => 'required',
+            'rumah_sakit_rujukan_id' => 'required',
+            'ttd' => 'required',
+        ]);
+
+        SuratRujukan::create([
+            'pasien_id' => $request->pasien_id,
+            'tempat' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'riwayat' => $request->riwayat,
+            'obat_diberikan' => $request->obat_diberikan,
+            'hasil_pengobatan' => $request->hasil_pengobatan,
+            'spesialis_rujukan_id' => $request->spesialis_rujukan_id,
+            'rumah_sakit_rujukan_id' => $request->rumah_sakit_rujukan_id,
+            'ttd' => $request->ttd,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
     public function keterangansehat()
