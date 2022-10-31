@@ -119,15 +119,7 @@
                                                 <input type="text" id="pekerjaan" class="form-control"
                                                  name="pekerjaan" value="{{ $pasien['pekerjaan'] }}" required>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="nama_penyakit_id">Nama Penyakit</label>
-                                                <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
-                                                    <option disabled selected>Pilih Nama Penyakit</option>
-                                                    @foreach ($namapenyakit as $nama)
-                                                <option value="{{ $nama->id }}" >{{ $nama->primer }}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
+                                            
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="text" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
