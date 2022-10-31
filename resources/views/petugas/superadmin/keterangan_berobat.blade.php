@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Keterangan Berobat')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 
 <div class="page-heading">
@@ -35,24 +36,22 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal">
+                                        <form class="form form-horizontal" action="/keterangan/berobat" method="post">
+                                            @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>No Surat</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="search" id="id_pasien" class="form-control"
-                                                            name="no_surat" placeholder="No Surat" required disabled>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        </div>
+                                                    
+
                                                     <div class="col-md-2">
                                                         <label>ID Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="search" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Pasien">
+                                                        <select name="pasien_id" id="pasien_id" class="choices form-select">
+                                                            <option disabled selected>Pilih ID Pasien</option>
+                                                            @foreach ($pasien_id as $pas)
+                                                                <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -62,7 +61,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="nama_pasien" class="form-control"
-                                                                name="nama_pasien" placeholder="Nama Pasien" required disabled>
+                                                                name="nama_pasien" placeholder="Nama Pasien" >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -72,7 +71,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="umur" class="form-control"
-                                                            name="umur" placeholder="Umur" required disabled>
+                                                            name="umur" placeholder="Umur"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -82,7 +81,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="pekerjaan" class="form-control"
-                                                                name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                                name="pekerjaan" placeholder="Pekerjaan"  >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -92,7 +91,7 @@
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <input type="text" id="perusahaan" class="form-control"
-                                                                    name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                                    name="perusahaan" placeholder="Perusahaan"  >
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
@@ -102,7 +101,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="divisi" class="form-control"
-                                                            name="divisi" placeholder="Perusahaan" required disabled>
+                                                            name="divisi" placeholder="Perusahaan"  >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -111,7 +110,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="jabatan" class="form-control"
-                                                                name="jabatan" placeholder="Jabatan" required disabled>
+                                                                name="jabatan" placeholder="Jabatan"  >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -119,7 +118,7 @@
                                                                 
                                                 </div>
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -140,106 +139,76 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal">
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Nama Klinik Praktek/Rumah Sakit</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Pasien">
+                                                        <input type="text" id="klinik" class="form-control"
+                                                            name="klinik" placeholder="Nama Klinik">
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
 
-                                                        <div class="col-md-2">
-                                                            <label></label>
-                                                        </div>
-                                                        <div class="col-md-4 form-group">
-                                                            <input type="text" id="" class="form-control"
-                                                                name="" placeholder="nama rumah sakit">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                        </div>
+                                                        
 
-                                            <div class="col-md-2">
-                                                <label>Klasifikasi Penyakit</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            <select class="choices form-select">
-                                                    <option value="others">Others</option>
-                                                    <option value="jantung">Jantung</option>
-                                                    <option value="hati">Hati</option>
-                                            </select>
-                                        </div>
-                                            <div class="col-md-6">
-                                            </div>
-
-                                            <div class="col-md-2">
-                                                <label>Sub-Klasifikasi Penyakit</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            <select class="choices form-select">
-                                                    <option value="others">Others</option>
-                                                    <option value="jantung">Jantung</option>
-                                                    <option value="hati">Hati</option>
-                                            </select>
-                                        </div>
-                                            <div class="col-md-6">
-                                            </div>
+                                            
                                                 <div class="col-md-2">
                                                     <label>Diagnosa</label>
                                                 </div>
-                                                <div class="col-md-4 form-group">
-                                                <select class="choices form-select">
-                                                    <option value="others">Others</option>
-                                                    <option value="jantung">Jantung</option>
-                                                    <option value="hati">Hati</option>
-                                                </select>
+                                                <div class="col-md-6 form-group">
+                                                    <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
+                                                        <option disabled selected>Pilih Nama Penyakit</option>
+                                                        @foreach ($namapenyakit as $nama)
+                                                            <option value="{{ $nama['id'] }}">{{ $nama['primer'] }}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                 </div>
 
                                                 <div class="col-md-2">
                                                     <label>Diagnosa Sekunder</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                <select class="choices form-select">
-                                                    <option value="others">Others</option>
-                                                    <option value="jantung">Jantung</option>
-                                                    <option value="hati">Hati</option>
-                                                </select>
-                                            </div>
-                                                <div class="col-md-6">
+                                                    <textarea type="text" id="sekunder" class="form-control"
+                                                        name="sekunder"> </textarea>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    </div>
+
+                                                
 
                                                 <div class="col-md-2">
                                                     <label>Pasien diresepkan obat</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <textarea type="text" id="pasien_diresep" class="form-control"
-                                                        name="pasien_diresep"> </textarea>
+                                                    <textarea type="text" id="resep" class="form-control"
+                                                        name="resep"> </textarea>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
+
+                                                    
                                                     <div class="col-md-2">
                                                         <label>Saran untuk Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <textarea type="text" id="saran_untuk_pasien" class="form-control"
-                                                            name="saran_untuk_pasien">Saran untuk Pasien</textarea>
+                                                        <textarea type="text" id="saran" class="form-control"
+                                                            name="saran"></textarea>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
+
 
                                                         <div class="col-md-2">
                                                             <label>Pasien Harus Kontrol Kembali</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> Tidak
+                                                            <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="0" checked> Tidak
                                                             <label for="">
-                                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> Ya
+                                                            <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="1"> Ya
                                                             </label>
                                                         </div>
                                                         <div class="col-md-6">
@@ -249,10 +218,18 @@
                                                             <label>Tanggal Pengembalian Surat Rujukan</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <input type="date" id="saran_untuk_pasien" class="form-control"
-                                                                name="saran_untuk_pasien">
+                                                            <input type="date" id="tanggal_kembali" class="form-control"
+                                                                name="tanggal_kembali">
                                                         </div>
                                                         <div class="col-md-6">
+                                                            </div>
+
+
+                                                            <div class=" d-flex justify-content-end">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary me-1 mb-1 btn-form">Submit</button>
+                                                                <button type="reset"
+                                                                    class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
                                                             </div>
 
                                             </div>
@@ -270,4 +247,10 @@
                 </div>
                         </div>   
 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+
+<script>
+		$(".form-select").select2();
+	</script>
 @endsection

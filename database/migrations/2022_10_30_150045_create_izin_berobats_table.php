@@ -17,7 +17,7 @@ class CreateIzinBerobatsTable extends Migration
             $table->id();
             $table->foreignId('pasien_id')->constrained();
             $table->string('tempat');
-            $table->string('ttd');
+            $table->text('ttd');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

@@ -1,6 +1,8 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
+
 <div class="page-heading">
     <div class="page-title">
         @section('judul', 'Tambah Data Pasien')
@@ -126,7 +128,7 @@
                                             <div class="form-group">
                                                 <label for="nama_penyakit_id">Nama Penyakit<b class="color-red">*</b></label>
                                                 <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih Nama Penyakit</option>
                                                     @foreach ($namapenyakit as $nama)
                                                         <option value="{{ $nama['id'] }}">{{ $nama['primer'] }}</option>
                                                     @endforeach
@@ -224,8 +226,9 @@
 
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+    <script>
+        $(".form-select").select2();
+    </script>
 @endsection
-<script>
-    $(".form-select").select2();
-</script>

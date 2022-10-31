@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="no_surat" class="form-control"
-                                                name="no_surat" placeholder="No Surat" required disabled>
+                                                name="no_surat" placeholder="No Surat" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pasien_tempat_lahir" class="form-control"
-                                                    name="pasien_tempat_lahir" placeholder="Tempat Lahir" required disabled>
+                                                    name="pasien_tempat_lahir" placeholder="Tempat Lahir" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="date" id="pasien_tanggal_lahir" class="form-control"
-                                                        name="pasien_tanggal_lahir" placeholder="Tanggal Lahir" required disabled>
+                                                        name="pasien_tanggal_lahir" placeholder="Tanggal Lahir" required >
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="umur" class="form-control"
-                                                name="umur" placeholder="Umur" required disabled>
+                                                name="umur" placeholder="Umur" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -102,7 +102,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-                                                    name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                    name="pekerjaan" placeholder="Pekerjaan" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -111,7 +111,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="perusahaan" class="form-control"
-                                                        name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                        name="perusahaan" placeholder="Perusahaan" required >
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="perusahaan" class="form-control"
-                                                name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                name="perusahaan" placeholder="Perusahaan" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -130,7 +130,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="jabatan" class="form-control"
-                                                    name="jabatan" placeholder="Jabatan" required disabled>
+                                                    name="jabatan" placeholder="Jabatan" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -161,125 +161,142 @@
                             <form class="form form-horizontal">
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-2">
-                                            <label>Anamnesis*</label>
-                                        </div>
-                                        <div class="col-md-4 form-group">
-                                            <input type="text" id="id_pasien" class="form-control"
-                                                name="id_pasien" placeholder="ID Pasien">
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Pemeriksa Fisik*</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            </div>
-                                            <div class="col-md-6">
-                                                </div>    <br><br>
-
-                                            <div class="col-md-2">
-                                                <label>Tinggi Badan</label>
-                                            </div>
-                                            <div class="col-md-2 form-group">
-                                                <input type="text" id="tinggi_badan" class="form-control"
-                                                    name="tinggi_badan" placeholder="tinggi badan">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Cm</label>
-                                            </div>
-                                            <div class="col-md-5">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>ID Rekam Medis</label>
                                                 </div>
-                                        
+                                                <div class="col-md-4 form-group">
+                                                    <input type="search" id="id_pasien" class="form-control"
+                                                        name="id_pasien" placeholder="ID Rekam Medis">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Anamnesis/Kronologi</label>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" id="id_pasien" class="form-control"
+                                                        name="id_pasien" placeholder="" required >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Pemeriksa Fisik*</label>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Tinggi Badan</label>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                        <div class="input-group-append">
+                                                          <span class="input-group-text" id="basic-addon2">cm</span>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
                                                 <div class="col-md-2">
                                                     <label>Berat Badan</label>
                                                 </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="berat_badan" class="form-control"
-                                                        name="berat_badan" placeholder="berat badan">
+                                                <div class="col-md-4 form-group">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                        <div class="input-group-append">
+                                                          <span class="input-group-text" id="basic-addon2">kg</span>
+                                                        </div>
+                                                      </div>
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label>Kg</label>
-                                                </div>
-                                                <div class="col-md-5">
-                                                    </div>
-
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">                                                    
                                                 <div class="col-md-2">
                                                         <label>Suhu Tubuh</label>
                                                 </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="suhu_tubuh" class="form-control"
-                                                            name="suhu_tubuh" placeholder="suhu tubuh">
+                                                <div class="col-md-4 form-group">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                        <div class="input-group-append">
+                                                          <span class="input-group-text" id="basic-addon2">Celcius</span>
+                                                        </div>
+                                                      </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Celcius</label>
-                                                 </div>
-                                                <div class="col-md-5">
-                                                 </div>    
+                                                   <label>Tekanan Darah</label>
+                                           </div>
+                                           <div class="col-md-4 form-group">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text" id="basic-addon2">mmHg</span>
+                                                </div>
+                                              </div>
+                                        </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                   <label>Denyut Nadi</label>
+                                           </div>
+                                           <div class="col-md-4 form-group">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text" id="basic-addon2">/menit</span>
+                                                </div>
+                                              </div>
+                                        </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                   <label>Laju Pernapasan</label>
+                                           </div>
+                                           <div class="col-md-4 form-group">
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                <div class="input-group-append">
+                                                  <span class="input-group-text" id="basic-addon2">/menit</span>
+                                                </div>
+                                              </div>
+                                        </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                   <label>Saturasi Oksigen</label>
+                                           </div>
+                                           <div class="col-md-2 form-group">
+                                               <input type="text" id="saturasi_oksigen" class="form-control"
+                                                       name="saturasi_oksigen" placeholder="" required >
+                                           </div>
+                                            </div>
+                                        </div>
                                         
-                                                 <div class="col-md-2">
-                                                    <label>Tekanan Darah</label>
-                                            </div>
-                                            <div class="col-md-2 form-group">
-                                                <input type="text" id="tekanan_darah" class="form-control"
-                                                        name="tekanan_darah" placeholder="Tekanan Darah">
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>mmHg</label>
-                                             </div>
-                                            <div class="col-md-5">
-                                             </div> 
 
-                                             <div class="col-md-2">
-                                                <label>Denyut Nadi</label>
-                                        </div>
-                                        <div class="col-md-2 form-group">
-                                            <input type="text" id="denyut_nadi" class="form-control"
-                                                    name="denyut_nadi" placeholder="">
-                                        </div>
-                                        <div class="col-md-1">
-                                            <label>per</label>
-                                         </div>
-                                         <div class="col-md-2 form-group">
-                                            <input type="text" id="satuan_nadi" class="form-control"
-                                                    name="satuan_nadi" placeholder="">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label>Menit</label>
-                                    </div>
-                                        <div class="col-md-2">
-                                         </div>
-
-                                         <div class="col-md-2">
-                                            <label>Laju Pernapasan</label>
-                                    </div>
-                                    <div class="col-md-2 form-group">
-                                        <input type="text" id="laju_pernapasan" class="form-control"
-                                                name="laju_pernapasan" placeholder="">
-                                    </div>
-                                    <div class="col-md-1">
-                                        <label>per</label>
-                                     </div>
-                                     <div class="col-md-2 form-group">
-                                        <input type="text" id="per" class="form-control"
-                                                name="per" placeholder="">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label>Menit</label>
-                                </div>
-                                    <div class="col-md-2">
-                                     </div>
-
-                                     <div class="col-md-2">
-                                        <label>Saturasi Oksigen</label>
-                                </div>
-                                <div class="col-md-2 form-group">
-                                    <input type="text" id="saturasi_oksigen" class="form-control"
-                                            name="saturasi_oksigen" placeholder="">
-                                </div>
-                                <div class="col-md-7">
-                                 </div> 
+                                        
 
                                  <div class="col-md-2">
                                     <label>Pemeriksaan Penunjang</label>
