@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Add Bobot Obat')
+@section('title', 'Tambah Bobot Obat')
 
 
 <div class="page-heading">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="bobot_obat">Nama Obat</label>
                                             <input type="text"  class="form-control"
-                                                 name="bobot_obat" id="bobot_obat" required>
+                                                 name="bobot_obat" id="bobot_obat"  placeholder="Masukkan bobot obat" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add RS Rujukan')
+        @section('judul', 'Tambah RS Rujukan')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_RS_rujukan">Nama Rumah Sakit Rujukan</label>
                                             <input type="text" id="nama_RS_rujukan" class="form-control"
-                                                 name="nama_RS_rujukan">
+                                                 name="nama_RS_rujukan"  placeholder="Masukkan nama rumah sakit">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

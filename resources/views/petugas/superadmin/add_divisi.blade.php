@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Divisi')
+        @section('judul', 'Tambah Divisi')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_divisi_pasien">Nama Divisi</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_divisi_pasien" id="nama_divisi_pasien" required>
+                                                 name="nama_divisi_pasien" id="nama_divisi_pasien"  placeholder="Masukkan Divisi" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

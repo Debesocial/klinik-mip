@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_obat">Nama Obat</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_obat" id="nama_obat" required>
+                                                 name="nama_obat" id="nama_obat"  placeholder="Masukkan nama obat" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

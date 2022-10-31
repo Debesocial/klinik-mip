@@ -126,7 +126,7 @@
                                             <div class="form-group">
                                                 <label for="nama_penyakit_id">Nama Penyakit<b class="color-red">*</b></label>
                                                 <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih Nama Penyakit</option>
                                                     @foreach ($namapenyakit as $nama)
                                                         <option value="{{ $nama['id'] }}">{{ $nama['primer'] }}</option>
                                                     @endforeach
@@ -148,11 +148,11 @@
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
                                                     id="alergi_obat" value="0"> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi_obat"
+                                                    <input class="form-check-input ms-5" type="radio" name="alergi_obat"
                                                         id="alergi_obat" value="1" checked> Ya
                                             </div>
 
-                                            <div class="col-md-3 mt-4">
+                                            <div class="col-md-4">
                                                 <label>Hamil/Menyusui <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">

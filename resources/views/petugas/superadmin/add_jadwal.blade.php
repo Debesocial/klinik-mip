@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Jadwal')
+        @section('judul', 'Tambah Jadwal')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">

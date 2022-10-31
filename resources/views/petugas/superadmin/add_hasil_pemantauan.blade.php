@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="kode">Kode</label>
                                             <input type="text" id="kode" class="form-control"
-                                                 name="kode">
+                                                 name="kode"  placeholder="Masukkan kode">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -47,9 +47,9 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="nama_pemantauan">Nama Pemantauan</label>
+                                                <label for="nama_pemantauan">Deskripsi</label>
                                                 <input type="text" id="nama_pemantauan" class="form-control"
-                                                     name="nama_lokasi">
+                                                     name="nama_lokasi"  placeholder="Masukkan deskripsi">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
