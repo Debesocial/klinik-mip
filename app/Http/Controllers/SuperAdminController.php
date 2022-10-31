@@ -52,7 +52,7 @@ class SuperAdminController extends Controller
 
     public function addpemeriksaannarkoba(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'pasien_id' => 'required',
             'penggunaan_obat' => 'required',
@@ -86,7 +86,7 @@ class SuperAdminController extends Controller
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
-    
+
 
     public function pemeriksaancovid()
     {
@@ -100,7 +100,7 @@ class SuperAdminController extends Controller
 
     public function addpemeriksaancovid(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'pasien_id' => 'required',
             'pemeriksaan_antigen_id' => 'required',
@@ -179,7 +179,7 @@ class SuperAdminController extends Controller
 
     public function addketeranganberobat(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'pasien_id' => 'required',
             'klinik' => 'required',
@@ -217,24 +217,32 @@ class SuperAdminController extends Controller
 
     public function addizinberobat(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'pasien_id' => 'required',
             'tempat' => 'required',
             'ttd' => 'required',
         ]);
 
-        IzinBerobat::create([
-            'pasien_id' => $request->pasien_id,
-            'tempat' => $request->tempat,
-            'ttd' => $request->ttd,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        if($request->hasFile('ttd')) {
+            $file = $request->file('ttd');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $file->move('petugas/izin_berobat/file', $filename);
+            IzinBerobat::create([
+                'pasien_id' => $request->pasien_id,
+                'tempat' => $request->tempat,
+                'ttd' => $filename,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
+            ]);
+        }
+
 
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
-    
+
 
     public function izinistirahat()
     {
@@ -452,7 +460,7 @@ class SuperAdminController extends Controller
         $keluarga->telepon = $request->input('telepon_keluarga');
         $keluarga->email = $request->input('email_keluarga');
         $keluarga->update();
-        
+
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
@@ -460,7 +468,7 @@ class SuperAdminController extends Controller
     {
         $users = User::where("level_id", "6")->get();
         // dd($pasien);
-        
+
         return view('petugas.superadmin.mitra_kerja', compact('users'));
     }
 
@@ -510,7 +518,7 @@ class SuperAdminController extends Controller
         $user->telp = $request->input('telp');
         $user->level_id = $request->input('level_id');
         $user->update();
-        
+
         return redirect('/mitra/kerja')->with('success', 'Successfully!');
     }
 
