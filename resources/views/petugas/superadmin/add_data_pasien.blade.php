@@ -147,6 +147,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
+<<<<<<< HEAD
                                                     id="alergi_obat" value="0"> Tidak
                                                     <input class="form-check-input ms-5" type="radio" name="alergi_obat"
                                                         id="alergi_obat" value="1" checked> Ya
@@ -154,13 +155,21 @@
 
                                             <div class="col-md-4">
                                                 <label>Hamil/Menyusui <b class="color-red">*</b></label>
+=======
+                                                    id="alergi_obat" value="0" checked> Tidak
+                                                    <input class="form-check-input" type="radio" name="alergi_obat"
+                                                        id="alergi_obat" value="1"> Ya
+                                            </div>
+
+                                            <div class="col-md-3 mt-4">
+                                                <label>Hamil/Menyusui<b class="color-red">*</b></label>
+>>>>>>> 59c8fa159a58afb6cbba83731a27e86115155174
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                    id="hamil_menyusui" value="0"> Tidak
-                                                <label for="">
-                                                    <input class="form-check-input ms-5" type="radio" name="hamil_menyusui"
-                                                        id="hamil_menyusui" value="1" checked> Ya
+                                                    id="hamil_menyusui" value="0" checked> Tidak
+                                                    <input class="form-check-input" type="radio" name="hamil_menyusui"
+                                                        id="hamil_menyusui" value="1"> Ya
                                                 </label>
                                             </div>
                                         </div>

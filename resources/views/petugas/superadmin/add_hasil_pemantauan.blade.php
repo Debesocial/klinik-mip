@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Add Lokasi Kejadian')
+@section('title', 'Add Hasil Pemantauan')
 
 
 <div class="page-heading">
@@ -31,7 +31,7 @@
         </ul>
     </div>
 @endif --}}
-                            <form class="form" action="/add/lokasi/kejadian" method="post">
+                            <form class="form" action="/add/hasil/pemantauan" method="post">
                                 @csrf 
                                 <div class="row">
                                     <div class="col-md-6 col-12">

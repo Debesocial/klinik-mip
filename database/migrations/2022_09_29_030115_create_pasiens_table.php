@@ -21,7 +21,6 @@ class CreatePasiensTable extends Migration
             $table->foreignId('divisi_id')->constrained();
             $table->foreignId('jabatan_id')->constrained();
             $table->foreignId('keluarga_id')->nullable()->constrained();
-            $table->foreignId('test_urin_id')->nullable()->constrained();
             $table->string('lain')->nullable();
             $table->string('nama_pasien', 50);
             $table->string('tempat_lahir', 20);

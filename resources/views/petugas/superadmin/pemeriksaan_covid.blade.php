@@ -24,7 +24,8 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" action="/pemeriksaan/covid" method="post">
+                                    @csrf 
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -38,10 +39,10 @@
                                                 <label>Kebutuhan Pemriksaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select name="kebutuhan" id="kebutuhan" class="form-select">
+                                                <select name="pemeriksaan_antigen_id" id="pemeriksaan_antigen_id" class="form-select">
                                                     <option disabled selected>Kebutuhan Pemriksaan</option>
                                                     @foreach ($pemeriksaanantigen as $antigen)
-                                                        <option value="{{ $antigen['kebutuhan'] }}">{{ $antigen['kebutuhan'] }}</option>
+                                                        <option value="{{ $antigen['id'] }}">{{ $antigen['kebutuhan'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -51,9 +52,9 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select name="id" id="id" class="form-select">
+                                                <select name="pasien_id" id="pasien_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
-                                                    @foreach ($id as $pas)
+                                                    @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
                                                     @endforeach
                                                 </select>

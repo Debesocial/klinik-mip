@@ -1,9 +1,13 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Data Jadwal Petugas')
+@section('title', 'Kategori Pasien')
 
 
+<<<<<<< HEAD
 @section('judul', 'Data Kategori Pasien')
+=======
+@section('judul', 'Kategori Pasien')
+>>>>>>> 59c8fa159a58afb6cbba83731a27e86115155174
 @section('container')
 
 <section class="section">

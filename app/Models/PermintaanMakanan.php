@@ -5,25 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TestUrin extends Model
+class PermintaanMakanan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'penggunaan_obat',
-        'jenis_obat',
         'pasien_id',
-        'asal_obat',
-        'terakhir_digunakan',
-        'amp',
-        'met',
-        'thc',
-        'bzo',
-        'mop',
-        'coc',
+        'nama_penyakit_id',
+        'permitaan_makanan',
+        'catatan',
+        'tanggal_mulai',
+        'tanggal_selesai',
+        'total',
+        'ttd',
         'created_by',
         'updated_by'
     ];
+
+
+    public function namapenyakit() {
+        return $this->belongsTo(NamaPenyakit::class);
+    }
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);
