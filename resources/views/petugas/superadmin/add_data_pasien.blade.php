@@ -1,6 +1,8 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
+
 <div class="page-heading">
     <div class="page-title">
         @section('judul', 'Tambah Data Pasien')
@@ -147,15 +149,6 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
-<<<<<<< HEAD
-                                                    id="alergi_obat" value="0"> Tidak
-                                                    <input class="form-check-input ms-5" type="radio" name="alergi_obat"
-                                                        id="alergi_obat" value="1" checked> Ya
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <label>Hamil/Menyusui <b class="color-red">*</b></label>
-=======
                                                     id="alergi_obat" value="0" checked> Tidak
                                                     <input class="form-check-input" type="radio" name="alergi_obat"
                                                         id="alergi_obat" value="1"> Ya
@@ -163,7 +156,6 @@
 
                                             <div class="col-md-3 mt-4">
                                                 <label>Hamil/Menyusui<b class="color-red">*</b></label>
->>>>>>> 59c8fa159a58afb6cbba83731a27e86115155174
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
@@ -234,8 +226,9 @@
 
     </div>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+    <script>
+        $(".form-select").select2();
+    </script>
 @endsection
-<script>
-    $(".form-select").select2();
-</script>
