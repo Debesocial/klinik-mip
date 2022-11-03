@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ $kate['nama_kategori'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/kategori/pasien/{{ $kate->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/kategori/pasien/{{ $kate->id }}" class="btn btn-success rounded-pill" title="Ubah kategori pasien"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

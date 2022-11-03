@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $lev['nama_level'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/level/{{ $lev->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/level/{{ $lev->id }}" class="btn btn-success rounded-pill" title="Ubah kategori petugas"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

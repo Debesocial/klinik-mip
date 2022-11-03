@@ -34,7 +34,7 @@
                         <td>{{ $jad['dari'] }}</td>
                         <td>{{ $jad['sampai'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/jadwal/{{ $jad->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/jadwal/{{ $jad->id }}" class="btn btn-success rounded-pill" title="Ubah jadwal petugas"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Masuk</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
@@ -21,19 +21,19 @@
             <div class="auth-logo">
                 <a href="index.html"><img src="" alt="Logo"></a>
             </div>
-            <h1 class="auth-title">Login</h1>
+            <h1 class="auth-title">Masuk</h1>
             <p class="auth-subtitle mb-5">with your data.</p>
 
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="email" class="form-control form-control-xl" name="email" placeholder="email" required>
+                    <input type="email" class="form-control form-control-xl" name="email" placeholder="Masukkan email" required>
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Masukkan password" required>
                     
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
@@ -42,16 +42,16 @@
                 <div class="form-check form-check-lg d-flex align-items-end">
                     <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault" onclick="myFunction()">
                     <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                        Show Password
+                        Tampilkan Password
                     </label>
                 </div>
                 <div class="form-check form-check-lg d-flex align-items-end">
                     <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label text-gray-600" for="flexCheckDefault">
-                        Keep me logged in
+                        Tetap Masuk
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Masuk</button>
             </form>
             
         </div>
