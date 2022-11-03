@@ -125,15 +125,7 @@
                                                 <input type="text" id="pekerjaan" class="form-control"
                                                     name="pekerjaan" placeholder="Masukkan Pekerjaan">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="nama_penyakit_id">Nama Penyakit<b class="color-red">*</b></label>
-                                                <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
-                                                    <option disabled selected>Pilih Nama Penyakit</option>
-                                                    @foreach ($namapenyakit as $nama)
-                                                        <option value="{{ $nama['id'] }}">{{ $nama['primer'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
+                                                 
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="telepon" class="form-control" name="telepon"
@@ -150,12 +142,12 @@
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
                                                     id="alergi_obat" value="0" checked> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi_obat"
+                                                    <input class="form-check-input " type="radio" name="alergi_obat"
                                                         id="alergi_obat" value="1"> Ya
                                             </div>
 
-                                            <div class="col-md-3 mt-4">
-                                                <label>Hamil/Menyusui<b class="color-red">*</b></label>
+                                            <div class="col-md-4">
+                                                <label>Hamil/Menyusui <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"

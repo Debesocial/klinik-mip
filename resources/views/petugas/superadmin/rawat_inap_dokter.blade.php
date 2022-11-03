@@ -43,7 +43,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Pasien</label>
+                                                <label>Maukkan ID pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="search" id="id_pasien" class="form-control"
@@ -56,7 +56,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien" required disabled>
+                                                        name="nama_pasien" placeholder="Masukkan nama pasien" required disabled>
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -66,7 +66,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="no_surat" class="form-control"
-                                                    name="no_surat" placeholder="No Surat" required disabled>
+                                                    name="no_surat" placeholder="Masukkan no surat" required disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -75,7 +75,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="pasien_tempat_lahir" class="form-control"
-                                                        name="pasien_tempat_lahir" placeholder="Tempat Lahir" required disabled>
+                                                        name="pasien_tempat_lahir" placeholder="Masukkan tempat lahir" required disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -84,7 +84,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="date" id="pasien_tanggal_lahir" class="form-control"
-                                                            name="pasien_tanggal_lahir" placeholder="Tanggal Lahir" required disabled>
+                                                            name="pasien_tanggal_lahir" placeholder="Masukkan tanggal lahir" required disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-                                                    name="umur" placeholder="Umur" required disabled>
+                                                    name="umur" placeholder="Masukkan umur" required disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -102,7 +102,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="pekerjaan" class="form-control"
-                                                        name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                        name="pekerjaan" placeholder="Masukkan pekerjaan" required disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -111,7 +111,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="perusahaan" class="form-control"
-                                                            name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                            name="perusahaan" placeholder="Masukkan perusahaan" required disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -121,7 +121,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                    name="perusahaan" placeholder="Masukkan divisi" required disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="jabatan" class="form-control"
-                                                        name="jabatan" placeholder="Jabatan" required disabled>
+                                                        name="jabatan" placeholder="Masukkan jabatan" required disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>

@@ -49,7 +49,7 @@
                                             <div class="form-group">
                                                 <label for="nama_pemantauan">Deskripsi</label>
                                                 <input type="text" id="nama_pemantauan" class="form-control"
-                                                     name="nama_lokasi"  placeholder="Masukkan deskripsi">
+                                                     name="nama_lokasi" placeholder="Masukkan deskripsi">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">

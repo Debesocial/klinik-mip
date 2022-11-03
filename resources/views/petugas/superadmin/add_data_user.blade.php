@@ -82,9 +82,9 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Jadwal Petugas <b class="color-red">*</b></label>
+                                            <label for="jadwal_id">Jadwal <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
-                                                <option disabled selected>Pilih jadwal</option>
+                                                <option disabled selected>Pilih Jadwal</option>
                                                 @foreach ($jadwal as $jadwal)
                                                 <option value="{{ $jadwal->id }}">{{ $jadwal->hari }} shift {{ $jadwal->shift }}</option>
                                                 @endforeach

@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Kategori')
+        @section('judul', 'Tambah Kategori')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_level">Kategori Petugas</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_level" id="nama_level" required>
+                                                 name="nama_level" id="nama_level" placeholder="Masukkan kategori petugas" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

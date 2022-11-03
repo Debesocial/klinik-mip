@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Jenis Obat')
+        @section('judul', 'Tambah Jenis Obat/Alat Kesehatan')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -36,9 +36,9 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="nama_jenis_obat">Jenis Obat</label>
+                                            <label for="nama_jenis_obat">Jenis Obat/Alat Kesehatan</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_jenis_obat" id="nama_jenis_obat"  placeholder="Masukkan jenis obat" required>
+                                                 name="nama_jenis_obat" id="nama_jenis_obat"  placeholder="Masukkan jenis obat/alat kesehatan" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
