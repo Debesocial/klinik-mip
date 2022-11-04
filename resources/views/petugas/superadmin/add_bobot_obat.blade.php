@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Bobot Obat')
+        @section('judul', 'Tambah Bobot Obat/Alkes')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -36,9 +36,9 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat">Nama Obat</label>
+                                            <label for="bobot_obat">Nama Obat/Alkes</label>
                                             <input type="text"  class="form-control"
-                                                 name="bobot_obat" id="bobot_obat"  placeholder="Masukkan bobot obat" required>
+                                                 name="bobot_obat" id="bobot_obat"  placeholder="Masukkan bobot obat/alkes" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -47,7 +47,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

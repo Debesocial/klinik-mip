@@ -95,7 +95,7 @@
                                             <div class="form-group">
                                                 <label for="telp">No Telepon <b class="color-red">*</b></label>
                                                 <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                    name="telp" placeholder="Masukkan No Telepon" maxlength="13" required>
+                                                    name="telp" placeholder="Masukkan no telepon" maxlength="13" required>
                                             </div>
                                         </div>
     

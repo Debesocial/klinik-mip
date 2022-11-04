@@ -42,7 +42,7 @@ class SatuanObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/satuan/obat')->with('success', 'Successfully!');
+        return redirect('/satuan/obat')->with('success', 'Berhasil Menambahkan Satuan Obat/Alkes!');
     }
 
     public function ubahsatuanobat($id)
@@ -56,7 +56,7 @@ class SatuanObatController extends Controller
         $satuanobat->satuan_obat = $request->input('satuan_obat');
         $satuanobat->update();
 
-        return redirect('/satuan/obat')->with('success', 'Successfully!');
+        return redirect('/satuan/obat')->with('success', 'Berhasil Menambahkan Satuan Obat/Alkes!');
     }
 
     /**

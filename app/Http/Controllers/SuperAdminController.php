@@ -343,7 +343,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/obat')->with('success', 'Successfully!');
+        return redirect('/data/obat')->with('success', 'Berhasil Menambahkan Data Obat/Alkes!');
     }
 
     public function ubahobat($id)
@@ -368,7 +368,7 @@ class SuperAdminController extends Controller
         $obatalkes->komposisi_obat = $request->input('komposisi_obat');
         $obatalkes->update();
 
-        return redirect('/data/obat')->with('success', 'Successfully!');
+        return redirect('/data/obat')->with('success', 'Berhasil Mengubah Data Obat/Alkes!');
     }
 
     /**
