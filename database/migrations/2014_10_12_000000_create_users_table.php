@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('telp');
             $table->unsignedInteger('level_id')->nullable();
             $table->string('status');
+            $table->text('ttd')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
