@@ -3,7 +3,7 @@
 @section('title', 'Bobbot Obat')
 
 
-@section('judul', 'Bobot Obat')
+@section('judul', 'Data Bobot Obat/Alkes')
 @section('container')
 
 <section class="section">
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $bobot['bobot_obat'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/bobot/obat/{{ $bobot->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/bobot/obat/{{ $bobot->id }}" class="btn btn-success rounded-pill" title="Ubah bobot obat/alkes"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

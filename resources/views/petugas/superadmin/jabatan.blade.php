@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $jab['nama_jabatan'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/jabatan/{{ $jab->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/jabatan/{{ $jab->id }}" class="btn btn-success rounded-pill" title="Ubah jabatan"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

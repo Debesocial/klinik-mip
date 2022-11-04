@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Add Golongan Obat')
+@section('title', 'Tambah Golongan Obat')
 
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Golongan Obat')
+        @section('judul', 'Tambah Golongan Obat/Alkes')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_golongan_obat">Golongan Obat</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_golongan_obat" id="nama_golongan_obat" required>
+                                                 name="nama_golongan_obat" id="nama_golongan_obat"  placeholder="Masukkan golongan obat/alkes" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -47,7 +47,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

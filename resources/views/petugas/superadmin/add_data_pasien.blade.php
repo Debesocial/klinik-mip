@@ -90,7 +90,7 @@
                                             <div class="form-group">
                                                 <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                                 <input type="text" id="tempat_lahir" class="form-control"
-                                                    name="tempat_lahir" placeholder="Masukkan Tempat lahir">
+                                                    name="tempat_lahir" placeholder="Masukkan tempat lahir">
                                             </div>
                                             <div class="form-group">
                                                 <label for="tanggal_lahir">Tanggal Lahir <b class="color-red">*</b></label>
@@ -125,16 +125,16 @@
                                                 <input type="text" id="pekerjaan" class="form-control"
                                                     name="pekerjaan" placeholder="Masukkan Pekerjaan">
                                             </div>
-                                            
+                                                 
                                             <div class="form-group">
                                                 <label for="telepon">Telepon <b class="color-red">*</b></label>
                                                 <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="telepon" class="form-control" name="telepon"
-                                                    placeholder="Masukkan No Telepon" maxlength="13">
+                                                    placeholder="Masukkan no telepon" maxlength="13">
                                             </div>
                                             <div class="form-group">
                                                 <label for="email">Email</label>
                                                 <input type="email" id="email" class="form-control"
-                                                    name="email" placeholder="Masukkan Email">
+                                                    name="email" placeholder="Masukkan email">
                                             </div>
                                             <div class="col-md-4">
                                                 <label>Alergi Obat <b class="color-red">*</b></label>
@@ -142,12 +142,12 @@
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="alergi_obat"
                                                     id="alergi_obat" value="0" checked> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi_obat"
+                                                    <input class="form-check-input " type="radio" name="alergi_obat"
                                                         id="alergi_obat" value="1"> Ya
                                             </div>
 
-                                            <div class="col-md-3 mt-4">
-                                                <label>Hamil/Menyusui<b class="color-red">*</b></label>
+                                            <div class="col-md-4">
+                                                <label>Hamil/Menyusui <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="hamil_menyusui"
@@ -200,7 +200,7 @@
                                             </div>
                                             <div class=" d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1 btn-form">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1 btn-form">Simpan</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
                                             </div>

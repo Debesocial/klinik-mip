@@ -95,7 +95,7 @@
                                             <div class="form-group">
                                                 <label for="telp">No Telepon <b class="color-red">*</b></label>
                                                 <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                    name="telp" placeholder="Masukkan No Telepon" maxlength="13" required>
+                                                    name="telp" placeholder="Masukkan no telepon" maxlength="13" required>
                                             </div>
                                         </div>
     
@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="col-sm-6 d-flex justify-content-end">
                                             <button type="submit"
-                                                class="btn btn-primary me-1 mb-1">Submit</button>
+                                                class="btn btn-primary me-1 mb-1">Simpan</button>
                                             <button type="reset"
                                                 class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                         </div>

@@ -3,7 +3,7 @@
 @section('title', 'Kategori Pasien')
 
 
-@section('judul', 'Kategori Pasien')
+@section('judul', 'Data Kategori Pasien')
 @section('container')
 
 <section class="section">
@@ -12,7 +12,7 @@
             <div class="buttons" width="100px">
                     <a href="{{ route('superadmin.addkategoripasien') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
-                    <span>Create</span></a>
+                    <span>Tambah</span></a>
                 </div>
         </div>
         <div class="card-body">
@@ -28,8 +28,7 @@
                     <tr>
                         <td>{{ $kate['nama_kategori'] }}</td>
                         <td><div class="buttons">
-                                <a href="" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                <a href="/ubah/kategori/pasien/{{ $kate->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/kategori/pasien/{{ $kate->id }}" class="btn btn-success rounded-pill" title="Ubah kategori pasien"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

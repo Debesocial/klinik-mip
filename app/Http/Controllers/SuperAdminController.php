@@ -418,7 +418,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/obat')->with('success', 'Successfully!');
+        return redirect('/data/obat')->with('success', 'Berhasil Menambahkan Data Obat/Alkes!');
     }
 
     public function ubahobat($id)
@@ -443,7 +443,7 @@ class SuperAdminController extends Controller
         $obatalkes->komposisi_obat = $request->input('komposisi_obat');
         $obatalkes->update();
 
-        return redirect('/data/obat')->with('success', 'Successfully!');
+        return redirect('/data/obat')->with('success', 'Berhasil Mengubah Data Obat/Alkes!');
     }
 
     /**
@@ -694,7 +694,7 @@ class SuperAdminController extends Controller
             ]);
         }
 
-        return redirect('/data/user')->with('success', 'Successfully!');
+        return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
     }
 
     public function ubahuser($id)
@@ -715,7 +715,7 @@ class SuperAdminController extends Controller
         $user->level_id = $request->input('level_id');
         $user->update();
 
-        return redirect('/data/user')->with('success', 'Successfully!');
+        return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
     }
 
     public function jadwal()
@@ -745,7 +745,7 @@ class SuperAdminController extends Controller
             'sampai' => $request->sampai,
         ]);
 
-        return redirect('/jadwal')->with('success', 'Successfully!');
+        return redirect('/jadwal')->with('success', 'Berhasil Menambahkan Jadwal!');
     }
 
     public function ubahjadwal($id)
@@ -763,7 +763,7 @@ class SuperAdminController extends Controller
         $jadwal->sampai = $request->input('sampai');
         $jadwal->update();
 
-        return redirect('/jadwal')->with('success', 'Successfully!');
+        return redirect('/jadwal')->with('success', 'Berhasil Mengubah Jadwal!');
     }
 
     public function lokasikejadian()
@@ -789,7 +789,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/lokasi/kejadian')->with('success', 'Successfully!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil!');
     }
 
     public function ubahlokasikejadian($id)
@@ -803,7 +803,7 @@ class SuperAdminController extends Controller
         $lokasikejadian->nama_lokasi = $request->input('nama_lokasi');
         $lokasikejadian->update();
 
-        return redirect('/lokasi/kejadian')->with('success', 'Successfully!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil!');
     }
 
     public function rsrujukan()
@@ -829,7 +829,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/rs/rujukan')->with('success', 'Successfully!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil!');
     }
 
     public function ubahrsrujukan($id)
@@ -843,7 +843,7 @@ class SuperAdminController extends Controller
         $rsrujukan->nama_RS_rujukan = $request->input('nama_RS_rujukan');
         $rsrujukan->update();
 
-        return redirect('/rs/rujukan')->with('success', 'Successfully!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil!');
     }
 
     public function spesialisrujukan()
@@ -869,7 +869,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/spesialis/rujukan')->with('success', 'Successfully!');
+        return redirect('/spesialis/rujukan')->with('success', 'Berhasil!');
     }
 
     public function hasilpemantauan()
@@ -889,7 +889,7 @@ class SuperAdminController extends Controller
         $spesialisrujukan->nama_spesialis_rujukan = $request->input('nama_spesialis_rujukan');
         $spesialisrujukan->update();
 
-        return redirect('/spesialis/rujukan')->with('success', 'Successfully!');
+        return redirect('/spesialis/rujukan')->with('success', 'Berhasil!');
     }
 
     public function addhasilpemantauan()
@@ -911,7 +911,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/hasil/pemantauan')->with('success', 'Successfully!');
+        return redirect('/hasil/pemantauan')->with('success', 'Berhasil!');
     }
 
     public function ubahhasilpemantauan($id)
@@ -926,7 +926,7 @@ class SuperAdminController extends Controller
         $hasilpemantauan->nama_pemantauan = $request->input('nama_pemantauan');
         $hasilpemantauan->update();
 
-        return redirect('/hasil/pemantauan')->with('success', 'Successfully!');
+        return redirect('/hasil/pemantauan')->with('success', 'Berhasil!');
     }
 
     public function addkeluarga($id)

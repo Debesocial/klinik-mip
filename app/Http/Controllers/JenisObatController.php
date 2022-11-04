@@ -37,7 +37,7 @@ class JenisObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/jenis/obat')->with('success', 'Successfully!');
+        return redirect('/jenis/obat')->with('success', 'Berhasil Menambahkan Jenis Obat/Alkes!');
     }
 
     public function ubahjenisobat($id)
@@ -51,7 +51,7 @@ class JenisObatController extends Controller
         $jenisobat->nama_jenis_obat = $request->input('nama_jenis_obat');
         $jenisobat->update();
 
-        return redirect('/jenis/obat')->with('success', 'Successfully!');
+        return redirect('/jenis/obat')->with('success', 'Berhasil Mengubah Jenis Obat/Alkes!');
     }
 
     /**

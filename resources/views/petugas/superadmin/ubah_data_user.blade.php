@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="name">Petugas Nama</label>
+                                            <label for="name">Nama Petugas</label>
                                             <input type="text" id="name" class="form-control"
                                                  name="name" placeholder="Nama Petugas" value="{{ $user['name'] }}" required>
                                         </div>
@@ -34,7 +34,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="email">Petugas Email</label>
+                                            <label for="email">Email Petugas</label>
                                             <input type="email" id="email" class="form-control"
                                                  name="email" value="{{ $user['email'] }}" required>
                                         </div>
@@ -47,7 +47,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Petugas Jadwal</label>
+                                            <label for="jadwal_id">Jadwal Petugas</label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
                                                 @foreach ($jadwal as $item)
                                                 <option value="{{ $item->id }}" {{ $item->id == $user->jadwal->id ? 'selected' : '' }}>{{ $item->hari }} shift {{ $item->shift }}</option>
@@ -77,7 +77,7 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="level_id">Petugas Level</label>
+                                            <label for="level_id">Level Petugas</label>
                                             <select class="choices form-select" name="level_id" id="level_id">
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}" {{ $item->id == $user->level->id ? 'selected' : '' }}>{{ $item->nama_level }}</option>
@@ -92,7 +92,7 @@
                                         <div class="form-group">
                                             <label for="status">Status</label>
                                             <select class="choices form-select" name="status" id="status" required>
-                                                <option value="{{ $user['status'] }}">{{ $user['status'] }}</option>
+                                                <option disabled selected>Pilih Status</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                         </select>
@@ -103,7 +103,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

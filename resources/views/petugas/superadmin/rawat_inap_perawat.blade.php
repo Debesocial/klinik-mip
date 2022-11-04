@@ -302,14 +302,6 @@
                                 </div>
                                 <div class="col-md-6">
                                 </div>
-
-                                <div class="col-md-2">
-                                    <label>Catatan</label>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <textarea type="text" id="catatan" class="form-control"
-                                        name="catatan">Catatan</textarea>
-                                </div>
                                 <div class="col-md-6">
                                 </div>
                                     
