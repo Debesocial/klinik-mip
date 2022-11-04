@@ -36,11 +36,11 @@
                                                     name="no_surat" placeholder="No Surat" required disabled>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Kebutuhan Pemriksaan</label>
+                                                <label>Kebutuhan Pemeriksaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pemeriksaan_antigen_id" id="pemeriksaan_antigen_id" class="form-select">
-                                                    <option disabled selected>Kebutuhan Pemriksaan</option>
+                                                    <option disabled selected>Kebutuhan Pemeriksaan</option>
                                                     @foreach ($pemeriksaanantigen as $antigen)
                                                         <option value="{{ $antigen['id'] }}">{{ $antigen['kebutuhan'] }}</option>
                                                     @endforeach
@@ -84,7 +84,7 @@
                                             
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>

@@ -25,7 +25,7 @@
                                         <div class="form-group">
                                             <label for="nama_lokasi">Klasifikasi Penyakit</label>
                                             <input type="text" id="klasifikasi_penyakit" class="form-control"
-                                                 name="klasifikasi_penyakit" placeholder="" value="{{ $klasifikasipenyakit['klasifikasi_penyakit'] }}" required>
+                                                 name="klasifikasi_penyakit" value="{{ $klasifikasipenyakit['klasifikasi_penyakit'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -33,7 +33,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

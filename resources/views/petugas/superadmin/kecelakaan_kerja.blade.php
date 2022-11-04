@@ -100,7 +100,7 @@
                                                             <div class="col-md-6">
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    <label>Tanggal Kembali Kontrol</label>
+                                                                    <label>Lokasi Kejadian</label>
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
                                                                     <select class="choices form-select">

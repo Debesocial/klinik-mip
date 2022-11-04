@@ -275,7 +275,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="penggunaan_obat" class="form-control"
-                                                            name="penggunaan_obat" placeholder="Penggunaan Obat-obatan" required>
+                                                            name="penggunaan_obat" placeholder="Masukkan cara penggunaan" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -284,7 +284,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="jenis_obat" class="form-control"
-                                                            name="jenis_obat" placeholder="Jenis Obat yang Digunakan" required>
+                                                            name="jenis_obat" placeholder="Masukkan jenis obat" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -293,7 +293,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="asal_obat" class="form-control"
-                                                            name="asal_obat" placeholder="Asal Obat" required>
+                                                            name="asal_obat" placeholder="Masukkan asal obat" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
