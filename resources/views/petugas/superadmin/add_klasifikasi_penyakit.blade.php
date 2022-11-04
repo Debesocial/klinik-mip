@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Klasifikasi Penyakit')
+        @section('judul', 'Tambah Klasifikasi Penyakit')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="klasifikasi_penyakit">Klasifikasi Penyakit</label>
                                             <input type="text"  class="form-control"
-                                                 name="klasifikasi_penyakit" required>
+                                                 name="klasifikasi_penyakit" placeholder="Masukkan klasifikasi penyakit" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -49,7 +49,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

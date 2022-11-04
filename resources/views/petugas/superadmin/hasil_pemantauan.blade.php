@@ -3,7 +3,7 @@
 @section('title', 'Hasil Pemantauan')
 
 
-@section('judul', 'Data Hasil Pemantauan')
+@section('judul', 'Data Kode Hasil Pemantauan Covid')
 @section('container')
 
 <section class="section">
@@ -30,7 +30,7 @@
                         <td>{{ $hasil['kode'] }}</td>
                         <td>{{ $hasil['nama_pemantauan'] }}</td>
                         <td><div class="buttons">
-                            <a href="/ubah/hasil/pemantauan/{{ $hasil['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="/ubah/hasil/pemantauan/{{ $hasil['id'] }}" class="btn btn-success rounded-pill" title="Ubah hasil pemantauan"><i class="fa fa-edit"></i></a>
                             </div></td>
                     </tr>
                     @endforeach

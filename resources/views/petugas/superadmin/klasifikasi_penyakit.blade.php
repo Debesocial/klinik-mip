@@ -3,7 +3,7 @@
 @section('title', 'Klasifikasi Penyakit')
 
 
-@section('judul', 'Klasifikasi Penyakit')
+@section('judul', 'Data Klasifikasi Penyakit')
 @section('container')
 
 <section class="section">
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $klasifikasi['klasifikasi_penyakit'] }}</td>
                         <td><div class="buttons">
-                            <a href="/ubah/klasifikasi/penyakit/{{ $klasifikasi['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="/ubah/klasifikasi/penyakit/{{ $klasifikasi['id'] }}" class="btn btn-success rounded-pill" title="Ubah klasifikasi penyakit"><i class="fa fa-edit"></i></a>
                             </div></td>
                     </tr>
                     @endforeach

@@ -43,15 +43,20 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>Maukkan ID pasien</label>
+                                                <label>ID pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
+<<<<<<< HEAD
+                                                <input type="search" id="id_pasien" class="form-control"
+                                                    name="id_pasien" placeholder="Masukkan ID pasien">
+=======
                                                 <select name="pasien_id" id="pasien_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
                                                     @endforeach
                                                 </select>
+>>>>>>> 266a9a769e6171a04b11e316ac4e58a6652582ee
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -158,30 +163,23 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>ID Rekam Medis</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="search" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Rekam Medis">
-                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Anamnesis/Kronologi</label>
+                                                        <label>Anamnesis</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID " required >
+                                                            name="id_pasien" placeholder="Masukkan anamnesis" required >
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 mt-4 mb-3">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Pemeriksa Fisik*</label>
+                                                        <h5 class="font-weight-bold" style="font-weight: bold">Pemeriksaan Fisik</h5>
                                                     </div>
                                                     
                                                 </div>
@@ -194,7 +192,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            <input type="text" class="form-control" placeholder="Masukkan tinggi badan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                             <div class="input-group-append">
                                                               <span class="input-group-text" id="basic-addon2">cm</span>
                                                             </div>
@@ -209,7 +207,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            <input type="text" class="form-control" placeholder="Masukkan berat badan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                             <div class="input-group-append">
                                                               <span class="input-group-text" id="basic-addon2">kg</span>
                                                             </div>
@@ -224,7 +222,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <div class="input-group mb-3">
-                                                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            <input type="text" class="form-control" placeholder="Masukkan suhu tubuh" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                             <div class="input-group-append">
                                                               <span class="input-group-text" id="basic-addon2">Celcius</span>
                                                             </div>
@@ -239,7 +237,7 @@
                                                </div>
                                                <div class="col-md-4 form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <input type="text" class="form-control" placeholder="Masukkan tekanan darah" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
                                                       <span class="input-group-text" id="basic-addon2">mmHg</span>
                                                     </div>
@@ -254,7 +252,7 @@
                                                </div>
                                                <div class="col-md-4 form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <input type="text" class="form-control" placeholder="Masukkan denyut nadi" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
                                                       <span class="input-group-text" id="basic-addon2">/menit</span>
                                                     </div>
@@ -270,7 +268,7 @@
                                                </div>
                                                <div class="col-md-4 form-group">
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <input type="text" class="form-control" placeholder="Masukkan laju pernapasan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
                                                       <span class="input-group-text" id="basic-addon2">/menit</span>
                                                     </div>
@@ -285,18 +283,19 @@
                                                </div>
                                                <div class="col-md-2 form-group">
                                                    <input type="text" id="saturasi_oksigen" class="form-control"
-                                                           name="saturasi_oksigen" placeholder="" required >
+                                                           name="saturasi_oksigen" placeholder="Masukkan saturasi oksigen" required >
                                                </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                       <label>Status Lokalis</label>
+                                                       <label>Pemeriksaan Penunjang</label>
                                                    </div>
                                                    <div class="col-md-5 form-group">
                                                        <textarea type="text" id="status_lokasi" class="form-control"
-                                                           name="status_lokasi">Status Lokalis</textarea>
+                                                           name="status_lokasi">
+                                                        </textarea>
                                                    </div>
                                                 </div>
                                             </div>

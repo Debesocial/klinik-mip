@@ -525,7 +525,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($pasien) {
-            return redirect('/data/pasien')->with('success', 'Successfully!');
+            return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pasien!');
         }
 
         return redirect()->back()->with('fail', 'Fail Create Data!');
@@ -574,7 +574,7 @@ class SuperAdminController extends Controller
         $keluarga->email = $request->input('email_keluarga');
         $keluarga->update();
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        return redirect('/data/pasien')->with('success', 'Berhasil Mengubah Data Pasien!');
     }
 
     public function mitrakerja(Request $request)
@@ -609,7 +609,7 @@ class SuperAdminController extends Controller
 
         User::create($validatedData);
 
-        return redirect()->back()->with('fail', 'Fail Create Data!');
+        return redirect()->back()->with('fail', 'Gagal Menambahkan Data Pasien!');
     }
 
     public function ubahmitrakerja($id)
@@ -632,7 +632,7 @@ class SuperAdminController extends Controller
         $user->level_id = $request->input('level_id');
         $user->update();
 
-        return redirect('/mitra/kerja')->with('success', 'Successfully!');
+        return redirect('/mitra/kerja')->with('success', 'Berhasil Mengubah Data Mitra Kerja!');
     }
 
 
@@ -789,7 +789,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/lokasi/kejadian')->with('success', 'Berhasil!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil Menambahkan Lokasi Kejadian!');
     }
 
     public function ubahlokasikejadian($id)
@@ -803,7 +803,7 @@ class SuperAdminController extends Controller
         $lokasikejadian->nama_lokasi = $request->input('nama_lokasi');
         $lokasikejadian->update();
 
-        return redirect('/lokasi/kejadian')->with('success', 'Berhasil!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil Mengubah Lokasi Kejadian!');
     }
 
     public function rsrujukan()
@@ -829,7 +829,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/rs/rujukan')->with('success', 'Berhasil!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil Menambahkan Rumah Sakit Rujukan!');
     }
 
     public function ubahrsrujukan($id)
@@ -843,7 +843,7 @@ class SuperAdminController extends Controller
         $rsrujukan->nama_RS_rujukan = $request->input('nama_RS_rujukan');
         $rsrujukan->update();
 
-        return redirect('/rs/rujukan')->with('success', 'Berhasil!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil Mengubah Rumah Sakit Rujukan!');
     }
 
     public function spesialisrujukan()
