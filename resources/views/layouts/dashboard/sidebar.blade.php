@@ -214,11 +214,19 @@
                             <span>Keterangan Berobat</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('superadmin.izinberobat') }}" class='sidebar-link'>
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Izin Berobat</span>
                         </a>
+                        <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataizinberobat') }}"> Data Surat Izin Berobat </a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.izinberobat') }}"><i class="bi bi-arrow-return-right"></i> Form Surat Izin </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="sidebar-item">
                         <a href="{{ route('superadmin.izinistirahat') }}" class='sidebar-link'>
@@ -232,6 +240,9 @@
                             <span>Rujukan</span>
                         </a>
                         <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.datasuratrujukan') }}">Data Surat Rujukan</a>
+                            </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.suratrujukan') }}">Surat Rujukan</a>
                             </li>

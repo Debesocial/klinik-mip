@@ -25,14 +25,6 @@ class RekamMedis extends Model
         'nama_penyakit_id',
         'obat_dikonsumsi',
         'dokumen',
-        'tindakan_id',
-        'nama_alat',
-        'jumlah_pengguna',
-        'keterangan',
-        'nama_obat',
-        'jumlah_obat',
-        'aturan',
-        'keterangan_obat',
         'created_by',
         'updated_by'
     ];

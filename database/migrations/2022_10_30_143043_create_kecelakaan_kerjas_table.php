@@ -32,14 +32,6 @@ class CreateKecelakaanKerjasTable extends Migration
             $table->foreignId('nama_penyakit_id')->constrained();
             $table->string('sekunder')->nullable();
             $table->string('terapi');
-            $table->foreignId('tindakan_id')->constrained();
-            $table->string('alkes');
-            $table->string('pengguna');
-            $table->string('keterangan');
-            $table->string('nama_obat')->nullable();
-            $table->string('jumlah_obat')->nullable();
-            $table->string('aturan')->nullable();
-            $table->string('keterangan_obat')->nullable();;
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

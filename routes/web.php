@@ -39,7 +39,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi,perawat']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
@@ -72,16 +72,21 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
     Route::post('/keterangan/berobat', [SuperAdminController::class, 'addketeranganberobat'])->name('superadmin.addketeranganberobat');
 
+    Route::get('/data/izin/berobat', [SuperAdminController::class, 'dataizinberobat'])->name('superadmin.dataizinberobat');
     Route::get('/izin/berobat', [SuperAdminController::class, 'izinberobat'])->name('superadmin.izinberobat');
     Route::post('/izin/berobat', [SuperAdminController::class, 'addizinberobat'])->name('superadmin.addizinberobat');
+    Route::get('/print/izin/berobat/{id}', [SuperAdminController::class, 'print'])->name('superadmin.printizinberobat');
     Route::get('/proses', [SuperAdminController::class, 'proses'])->name('proses');
 
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
 
+    Route::get('/data/surat/rujukan', [SuperAdminController::class, 'datasuratrujukan'])->name('superadmin.datasuratrujukan');
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
     Route::post('/surat/rujukan', [SuperAdminController::class, 'addsuratrujukan'])->name('superadmin.addsuratrujukan');
-
-    Route::get('/rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
+    Route::get('/print/surat/rujukan/{id}', [SuperAdminController::class, 'printsuratrujukan'])->name('superadmin.printsuratrujukan');
+    
+    Route::get('rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
+    Route::post('/rekam/inqmedis', [SuperAdminController::class, 'autorekam'])->name('superadmin.rekammedisautocomplete');
 
     Route::get('/keterangan/sehat', [SuperAdminController::class, 'keterangansehat'])->name('superadmin.keterangansehat');
 
@@ -94,6 +99,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::post('/ubah/pemeriksaan/antigen/{id}', [PemeriksaanAntigenController::class, 'changepemeriksaanantigen'])->name('superadmin.changepemeriksaanantigen');
 
     Route::get('/data/pasien', [SuperAdminController::class, 'datapasien'])->name('superadmin.datapasien');
+    Route::get('/data/single/pasien', [SuperAdminController::class, 'datapasienById'])->name('superadmin.datapasien.id');
     Route::get('/add/data/pasien', [SuperAdminController::class, 'addpasien'])->name('superadmin.adddatapasien');
     Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('add.pasien');
     Route::get('/add/data/keluarga', [SuperAdminController::class, 'addkeluarga'])->name('superadmin.adddatakeluarga');
@@ -232,4 +238,5 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
     Route::get('/perawat/daftar', [PerawatController::class, 'daftar'])->name('perawat.daftar');
+    Route::get('/perawat', [DashboardController::class, 'indexperawat'])->name('dashboard1');
 });

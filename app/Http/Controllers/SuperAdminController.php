@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Divisi;
 use App\Models\Pasien;
 use App\Models\User;
@@ -24,14 +25,18 @@ use App\Models\NamaPenyakit;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
+use App\Models\RekamMedis;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
 use App\Models\SuratRujukan;
 use App\Models\TestUrin;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Validator;
+use PDF;
+use Response;
 
 class SuperAdminController extends Controller
 {
@@ -121,7 +126,9 @@ class SuperAdminController extends Controller
 
     public function pemantauancovid()
     {
-        return view('petugas.superadmin.pemantauan_covid');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.pemantauan_covid', compact('pasien_id'));
     }
 
     public function pemantauantandavital()
@@ -131,32 +138,45 @@ class SuperAdminController extends Controller
 
     public function keteranganpemeriksaan()
     {
-        return view('petugas.superadmin.keterangan_pemeriksaan');
+        $pasien_id = Pasien::all();
+
+        return view('petugas.superadmin.keterangan_pemeriksaan', compact('pasien_id'));
     }
 
-    public function rekammedis()
-    {
-        return view('petugas.superadmin.rekam_medis');
+    public function rekammedis(Request $request){
+        
+
+        $pasien_id = Pasien::all();
+
+        return view('petugas.superadmin.rekam_medis', compact('pasien_id'));
     }
 
     public function pengesahanhasil()
     {
-        return view('petugas.superadmin.pengesahan_hasil');
+        $pasien_id = Pasien::all();
+
+        return view('petugas.superadmin.pengesahan_hasil', compact('pasien_id'));
     }
 
     public function rawatinap()
     {
-        return view('petugas.superadmin.rawat_inap');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.rawat_inap', compact('pasien_id'));
     }
 
     public function rawatinapdokter()
     {
-        return view('petugas.superadmin.rawat_inap_dokter');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.rawat_inap_dokter', compact('pasien_id'));
     }
 
     public function rawatinapperawat()
     {
-        return view('petugas.superadmin.rawat_inap_perawat');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.rawat_inap_perawat', compact('pasien_id'));
     }
 
     public function permintaanmakanan()
@@ -166,7 +186,9 @@ class SuperAdminController extends Controller
 
     public function kecelakaankerja()
     {
-        return view('petugas.superadmin.kecelakaan_kerja');
+        $pasien_id = Pasien::all();
+
+        return view('petugas.superadmin.kecelakaan_kerja', compact('pasien_id'));
     }
 
     public function keteranganberobat()
@@ -208,6 +230,25 @@ class SuperAdminController extends Controller
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
+    public function dataizinberobat()
+    {
+        $izin = IzinBerobat::all();
+        $pasien = Pasien::all();
+
+        return view('petugas.superadmin.data_izin_berobat', compact( 'izin', 'pasien'));
+    }
+
+    public function print($id)
+    {
+        $izin = IzinBerobat::find($id);
+        $pasien = Pasien::all();
+  
+        $pdf = PDF::loadView('petugas.superadmin.print_izin_berobat', ['izin' => $izin])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+        
+        $pdf->save(storage_path().'izin.pdf');
+        return $pdf->stream();
+    }
+
     public function izinberobat()
     {
         $pasien_id = Pasien::get();
@@ -241,13 +282,25 @@ class SuperAdminController extends Controller
         }
 
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        return redirect('/data/izin/berobat')->with('success', 'Successfully!');
     }
 
 
     public function izinistirahat()
     {
-        return view('petugas.superadmin.izin_istirahat');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.izin_istirahat', compact('pasien_id'));
+    }
+
+    public function datasuratrujukan()
+    {
+        $suratrujukan = SuratRujukan::all();
+        $pasien = Pasien::all();
+        $rsrujukan = RumahSakitRujukan::all();
+        $spesialisrujukan = SpesialisRujukan::all();
+
+        return view('petugas.superadmin.data_surat_rujukan', compact( 'suratrujukan', 'pasien', 'rsrujukan', 'spesialisrujukan'));
     }
 
     public function suratrujukan()
@@ -258,6 +311,17 @@ class SuperAdminController extends Controller
         $rsrujukan = RumahSakitRujukan::all();
 
         return view('petugas.superadmin.surat_rujukan', compact( 'pasien_id', 'suratrujukan', 'spesialisrujukan', 'rsrujukan'));
+    }
+
+    public function printsuratrujukan($id)
+    {
+        $surat = SuratRujukan::find($id);
+        $pasien = Pasien::all();
+  
+        $pdf = PDF::loadView('petugas.superadmin.print_surat_rujukan', ['surat' => $surat])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+        
+        $pdf->save(storage_path().'surat.pdf');
+        return $pdf->stream();
     }
 
     public function addsuratrujukan(Request $request)
@@ -275,31 +339,42 @@ class SuperAdminController extends Controller
             'ttd' => 'required',
         ]);
 
-        SuratRujukan::create([
-            'pasien_id' => $request->pasien_id,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'riwayat' => $request->riwayat,
-            'obat_diberikan' => $request->obat_diberikan,
-            'hasil_pengobatan' => $request->hasil_pengobatan,
-            'spesialis_rujukan_id' => $request->spesialis_rujukan_id,
-            'rumah_sakit_rujukan_id' => $request->rumah_sakit_rujukan_id,
-            'ttd' => $request->ttd,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        if($request->hasFile('ttd')) {
+            $file = $request->file('ttd');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $file->move('petugas/surat_rujukan/file', $filename);
+            SuratRujukan::create([
+                'pasien_id' => $request->pasien_id,
+                'tempat' => $request->tempat,
+                'tanggal' => $request->tanggal,
+                'riwayat' => $request->riwayat,
+                'obat_diberikan' => $request->obat_diberikan,
+                'hasil_pengobatan' => $request->hasil_pengobatan,
+                'spesialis_rujukan_id' => $request->spesialis_rujukan_id,
+                'rumah_sakit_rujukan_id' => $request->rumah_sakit_rujukan_id,
+                'ttd' => $filename,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
+            ]);
+        }
 
         return redirect('/data/pasien')->with('success', 'Successfully!');
     }
 
     public function keterangansehat()
     {
-        return view('petugas.superadmin.keterangan_sehat');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.keterangan_sehat', compact('pasien_id'));
     }
 
     public function persetujuantindakanmedis()
     {
-        return view('petugas.superadmin.persetujuan_tindakan_medis');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.persetujuan_tindakan_medis', compact('pasien_id'));
     }
 
     public function dataobat()
@@ -601,7 +676,23 @@ class SuperAdminController extends Controller
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        if($request->hasFile('ttd')) {
+            $file = $request->file('ttd');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+
+            $file->move('petugas/ttd/file', $filename);
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => $request->status,
+                'jadwal_id' => $request->jadwal_id,
+                'telp' => $request->telp,
+                'level_id' => $request->level_id,
+                'ttd' => $filename,
+            ]);
+        }
 
         return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
     }
@@ -887,5 +978,15 @@ class SuperAdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function datapasienById(Request $request) {
+        if ($request->pasien) {
+            $pasien = Pasien::where('id', $request->pasien)->first();
+            $pasien->nama_perusahaan = $pasien->perusahaan->nama_perusahaan_pasien;
+            $pasien->nama_divisi = $pasien->divisi->nama_divisi_pasien;
+            $pasien->nama_jabatan = $pasien->jabatan->nama_jabatan;
+            return response()->json($pasien, 200);
+        }
     }
 }

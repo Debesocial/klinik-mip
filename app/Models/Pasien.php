@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Pasien extends Model
 {
@@ -36,6 +37,10 @@ class Pasien extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function getCreatedAtAttribute(){
+        return Carbon::parse($this->attributes['tanggal_lahir'])->translatedFormat('l, d F Y');
+    }
 
     public function namapenyakit() {
         return $this->belongsTo(NamaPenyakit::class);

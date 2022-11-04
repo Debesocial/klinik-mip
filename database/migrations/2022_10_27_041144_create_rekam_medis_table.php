@@ -30,14 +30,6 @@ class CreateRekamMedisTable extends Migration
             $table->foreignId('nama_penyakit_id')->constrained();
             $table->string('obat_dikonsumsi');
             $table->text('dokumen');
-            $table->foreignId('tindakan_id')->constrained();
-            $table->string('nama_alat');
-            $table->string('jumlah_pengguna');
-            $table->string('keterangan');
-            $table->string('nama_obat');
-            $table->string('jumlah_obat');
-            $table->string('aturan');
-            $table->string('keterangan_obat');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
