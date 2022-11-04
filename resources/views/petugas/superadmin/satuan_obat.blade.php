@@ -3,7 +3,7 @@
 @section('title', 'Satuan Obat')
 
 
-@section('judul', 'Satuan Obat')
+@section('judul', 'Data Satuan Obat')
 @section('container')
 
 <section class="section">
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $satuan['satuan_obat'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/satuan/obat/{{ $satuan->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/satuan/obat/{{ $satuan->id }}" class="btn btn-success rounded-pill" title="Ubah satuan obat/alkes"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

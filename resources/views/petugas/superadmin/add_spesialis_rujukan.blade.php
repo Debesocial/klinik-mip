@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Dokter Spesialis Rujukan')
+        @section('judul', 'Tambah Dokter Spesialis Rujukan')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_spesialis_rujukan">Dokter Spesialis Rujukan</label>
                                             <input type="text" id="nama_spesialis_rujukan" class="form-control"
-                                                 name="nama_spesialis_rujukan">
+                                                 name="nama_spesialis_rujukan"  placeholder="Masukkan dokter spesialis">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

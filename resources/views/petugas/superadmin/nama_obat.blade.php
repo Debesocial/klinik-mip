@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Nama Obat')
+@section('title', 'Data Nama Obat')
 
 
 @section('judul', 'Nama Obat')
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $nama['nama_obat'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/nama/obat/{{ $nama->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/nama/obat/{{ $nama->id }}" class="btn btn-success rounded-pill" title="Ubah nama obat/alkes"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

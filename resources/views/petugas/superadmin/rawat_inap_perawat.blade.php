@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="search" id="id_pasien" class="form-control"
-                                                name="id_pasien" placeholder="ID Pasien">
+                                                name="id_pasien" placeholder="Masukkan ID pasien">
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien" placeholder="Nama Pasien" required disabled>
+                                                    name="nama_pasien" placeholder=" Masukkan nama pasien" required disabled>
                                             </div>
 
                                             <div class="col-md-6">
@@ -66,7 +66,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="no_surat" class="form-control"
-                                                name="no_surat" placeholder="No Surat" required >
+                                                name="no_surat" placeholder="Masukkan no surat" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -75,7 +75,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pasien_tempat_lahir" class="form-control"
-                                                    name="pasien_tempat_lahir" placeholder="Tempat Lahir" required >
+                                                    name="pasien_tempat_lahir" placeholder="Masukkan tempat lahir" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -84,7 +84,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="date" id="pasien_tanggal_lahir" class="form-control"
-                                                        name="pasien_tanggal_lahir" placeholder="Tanggal Lahir" required >
+                                                        name="pasien_tanggal_lahir" placeholder="Masukkan tanggal lahir" required >
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="umur" class="form-control"
-                                                name="umur" placeholder="Umur" required >
+                                                name="umur" placeholder="Masukkan umur" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -102,7 +102,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-                                                    name="pekerjaan" placeholder="Pekerjaan" required >
+                                                    name="pekerjaan" placeholder="Masukkan pekerjaan" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -111,7 +111,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="perusahaan" class="form-control"
-                                                        name="perusahaan" placeholder="Perusahaan" required >
+                                                        name="perusahaan" placeholder="Masukkan perusahaan" required >
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="col-md-4 form-group">
                                             <input type="text" id="perusahaan" class="form-control"
-                                                name="perusahaan" placeholder="Perusahaan" required >
+                                                name="perusahaan" placeholder="Masukkan divisi" required >
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -130,7 +130,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="jabatan" class="form-control"
-                                                    name="jabatan" placeholder="Jabatan" required >
+                                                    name="jabatan" placeholder="Masukkan jabatan" required >
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -306,14 +306,6 @@
                                         name="id_pasien" placeholder="ID Pasien">
                                 </div>
                                 <div class="col-md-6">
-                                </div>
-
-                                <div class="col-md-2">
-                                    <label>Catatan</label>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <textarea type="text" id="catatan" class="form-control"
-                                        name="catatan">Catatan</textarea>
                                 </div>
                                 <div class="col-md-6">
                                 </div>

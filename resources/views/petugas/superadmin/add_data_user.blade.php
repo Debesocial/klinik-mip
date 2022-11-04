@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Add Data Petugas')
+@section('title', 'Tambah Data Petugas')
 
 
 <div class="page-heading">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="name">Nama Petugas <b class="color-red">*</b></label>
                                             <input type="text" id="name" class="form-control"
-                                                 name="name" placeholder="Masukkan Nama" required>
+                                                 name="name" placeholder="Masukkan nama" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -49,7 +49,7 @@
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" id="email" class="form-control"
-                                                 name="email" placeholder="Masukkan Email" required>
+                                                 name="email" placeholder="Masukkan email" required>
                                         </div>
                                     </div>
                                     <div class="col-md-2">
@@ -59,7 +59,7 @@
                                         <div class="form-group">
                                             <label for="status">Status <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="status" id="status" required>
-                                                <option disabled selected>Pilih Status</option>
+                                                <option disabled selected>Pilih status</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                         </select>
@@ -72,7 +72,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="password">Password <b class="color-red">*</b></label>
-                                            <input type="password" name="password" id="password" class="form-control form-control" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan Password" required>
+                                            <input type="password" name="password" id="password" class="form-control form-control" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan password" required>
                                         </div>
                                     </div>
 
@@ -82,7 +82,7 @@
                                     
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Jadwal Petugas <b class="color-red">*</b></label>
+                                            <label for="jadwal_id">Jadwal <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jadwal_id" id="jadwal_id">
                                                 <option disabled selected>Pilih jadwal</option>
                                                 @foreach ($jadwal as $jadwal)
@@ -103,7 +103,7 @@
                                         <div class="form-group">
                                             <label for="telp">No Telepon <b class="color-red">*</b></label>
                                             <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                                name="telp" placeholder="Masukkan No Telepon" maxlength="13" required>
+                                                name="telp" placeholder="Masukkan no telepon" maxlength="13" required>
                                         </div>
                                     </div>
 
@@ -115,7 +115,7 @@
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id">
-                                                <option disabled selected>Pilih Level</option>
+                                                <option disabled selected>Pilih level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>
                                                 @endforeach
@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

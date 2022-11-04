@@ -35,7 +35,7 @@ class LevelController extends Controller
             'nama_level' => $request->nama_level
         ]);
 
-        return redirect('/level')->with('success', 'Successfully!');
+        return redirect('/level')->with('success', 'Berhasil Menambahkan Kategori Petugas!');
     }
 
     public function ubahlevel($id)
@@ -49,7 +49,7 @@ class LevelController extends Controller
         $level->nama_level = $request->input('nama_level');
         $level->update();
 
-        return redirect('/level')->with('success', 'Successfully!');
+        return redirect('/level')->with('success', 'Berhasil Mengubah Kategori Pasien!');
     }
 
 

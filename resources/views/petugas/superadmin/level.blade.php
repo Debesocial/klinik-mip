@@ -12,7 +12,7 @@
             <div class="buttons" width="100px">
                     <a href="{{ route('superadmin.addlevel') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
-                    <span>Create</span></a>
+                    <span>Tambah</span></a>
                 </div>
         </div>
         <div class="card-body">
@@ -28,7 +28,7 @@
                     <tr>
                         <td>{{ $lev['nama_level'] }}</td>
                         <td><div class="buttons">
-                                <a href="/ubah/level/{{ $lev->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/level/{{ $lev->id }}" class="btn btn-success rounded-pill" title="Ubah kategori petugas"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

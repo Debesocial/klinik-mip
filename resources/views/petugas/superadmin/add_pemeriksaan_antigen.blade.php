@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Pemeriksaan Antigen')
+        @section('judul', 'Tambah Pemeriksaan Antigen')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -36,9 +36,9 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="kebutuhan">Kebuthan Pemeriksaan</label>
+                                            <label for="kebutuhan">Kebutuhan Pemeriksaan</label>
                                             <input type="text"  class="form-control"
-                                                 name="kebutuhan" required>
+                                                 name="kebutuhan"  placeholder="Masukkan kebutuhan pemeriksaan" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

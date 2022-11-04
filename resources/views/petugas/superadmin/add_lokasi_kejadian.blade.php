@@ -1,3 +1,4 @@
+
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Lokasi Kejadian')
@@ -5,7 +6,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Lokasi Kejadian')
+        @section('judul', 'Tambah Lokasi Kejadian')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +39,7 @@
                                         <div class="form-group">
                                             <label for="nama_lokasi">Nama Lokasi</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_lokasi" required>
+                                                 name="nama_lokasi"  placeholder="Masukkan lokasi kejadian" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

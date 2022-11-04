@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Add Perusahaan')
+        @section('judul', 'Tambah Perusahaan')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="nama_perusahaan_pasien">Nama Perusahaan</label>
                                             <input type="text"  class="form-control"
-                                                 name="nama_perusahaan_pasien" id="nama_perusahaan_pasien" required>
+                                                 name="nama_perusahaan_pasien" id="nama_perusahaan_pasien"  placeholder="masukkan nama perusahaan" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -47,7 +47,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>
