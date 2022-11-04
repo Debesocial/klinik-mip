@@ -34,10 +34,10 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select name="pasien_id" id="pasien_id" class="choices form-select">
+                                                <select name="pasien_id" id="pasien_id" data-live-search="true" class="choices form-select" required>
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                        <option value="{{ $pas['id'] }}" id="pasien">{{ $pas['id'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -49,7 +49,7 @@
                                                 <label>Tempat Pemeriksaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="tempat" class="form-control"
+                                                <input id="pasienmart" type="text" id="tempat" class="form-control"
                                                     name="tempat"  required >
                                             </div>
                                             <div class="col-md-6">
@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien" >
+                                                    name="nama_pasien" disabled>
                                             </div>
                                             <div class="col-md-6">
                                             </div>
@@ -70,7 +70,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-                                                    name="umur"  >
+                                                    name="umur"  disabled>
                                             </div>
                                                 <div class="col-md-6">
                                             </div>
@@ -80,7 +80,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-                                                    name="pekerjaan" placeholder="Pekerjaan" onkeyup="autofill()">
+                                                    name="pekerjaan" placeholder="Pekerjaan" disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -90,14 +90,14 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Perusahaan" >
+                                                    name="perusahaan" placeholder="Perusahaan" disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
 
                                                  {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                 <div class="col-md-2">
-                                                    <label>Perusahaan</label>
+                                                    <label>Tanda Tangan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input class="form-control" type="file" id="ttd" name="ttd">
@@ -106,7 +106,7 @@
                                                     </div>
 
 
-                                            <div class="col-sm-12 d-flex justify-content-end">
+                                            <div class="col-sm-4 d-flex justify-content-end">
                                                 <button type="submit"
                                                     class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset"
@@ -124,20 +124,54 @@
         </section>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-<script src="{{asset ('ref/assets/vendors/jquery/jquery-1.12.4.min.js')}}"></script>
+<script src="{{asset ('ref/assets/vendors/jquery/jquery-1.12.4.min.js')}}"></script> --}}
+<script
+  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+  crossorigin="anonymous"></script>
 
-<script>
-    $('#id').on('change', (event) => {
-        getUsers(event.target.value).then(users => {
-            $('#email').val(users.email);
+{{-- <script type="text/javascript">
+    function myChangeFunction(nama_pasien) {
+      let text = nama_pasien.value;
+      const myArray = text.split("|");
+      var nama_pasien = document.getElementById('nama_pasien');
+      var umur = document.getElementById('umur');
+      var pekerjaan = document.getElementById('pekerjaan');
+      nama_pasien.value = myArray[0];
+      umur.value = myArray[1];
+      pekerjaan.value = myArray[2];
+    }
+  </script> --}}
+
+  <script type="text/javascript">
+    $("#pasien_id").click(function(e) {
+        var pasien = $(this).val();
+
+        console.log(pasien);
+        
+        $.ajax({
+            type: "GET",
+            url: "{{route('superadmin.datapasien.id')}}",
+            data: {'pasien': pasien},
+            dataType: 'json',
+            success:  function(data) {
+                console.log(data);
+            $('#nama_pasien').val(data.nama_pasien);
+            $('#umur').val(data.umur);
+            $('#pekerjaan').val(data.pekerjaan);
+            $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+        },
+        error: function(response) {
+            alert(response.responseJSON.message);
+        }
         });
     });
-</script>
+  </script>
 
-<script>
+{{-- <script>
     $(".form-select").select2();
-</script>
+</script> --}}
 
 @endsection

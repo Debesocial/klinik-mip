@@ -27,15 +27,6 @@ class KecelakaanKerja extends Model
         'nama_penyakit_id',
         'sekunder',
         'terapi',
-        'tindakan_id',
-        'alkes',
-        'pengguna',
-        'keterangan',
-        'nama_obat',
-        'jumlah_obat',
-        'aturan',
-        'keterangan_obat',
-        'catatan',
         'created_by',
         'updated_by'
     ];

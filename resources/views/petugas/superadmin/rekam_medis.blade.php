@@ -3,6 +3,23 @@
 @section('title', 'Rekam Medis')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
+@section('css')
+<style>
+    
+::placeholder {
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: red;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: red;
+}
+</style>
+
 <div class="page-heading">
     <div class="page-title">
         @section('judul', 'Rekam Medis')
@@ -46,27 +63,22 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="search" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="ID Pasien">
+                                                <select name="pasien_id" id="pasien_id" data-live-search="true" class="choices form-select" required>
+                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    @foreach ($pasien_id as $pas)
+                                                        <option value="{{ $pas['id'] }}" id="pasien">{{ $pas['id'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
-                                                <div class="col-md-2">
-                                                    <label>No Rekam Medis</label>
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" id="no_rekam_medis" class="form-control"
-                                                        name="no_rekam_medis" placeholder="No Rekam Medis" required disabled>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    </div>
+                                                
                                                 <div class="col-md-2">
                                                     <label>Nama Pasien</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien" required disabled>
+                                                            name="nama_pasien" placeholder="" disabled>
                                                 </div>
 
                                                 <div class="col-md-6">
@@ -75,8 +87,8 @@
                                                         <label>Tanggal Lahir</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="date" id="pasien_tanggal_lahir" class="form-control"
-                                                            name="pasien_tanggal_lahir" placeholder="Tanggal Lahir" required disabled>
+                                                        <input type="date" id="tanggal_lahir" class="form-control"
+                                                            name="tanggal_lahir" placeholder="" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -87,7 +99,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-                                                    name="umur" placeholder="Umur" required disabled>
+                                                    name="umur" placeholder="Umur"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -97,7 +109,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="perusahaan" class="form-control"
-                                                            name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                            name="perusahaan" placeholder="Perusahaan"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -107,7 +119,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="divisi" class="form-control"
-                                                    name="divisi" placeholder="Perusahaan" required disabled>
+                                                    name="divisi" placeholder=""  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -116,7 +128,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="jabatan" class="form-control"
-                                                        name="jabatan" placeholder="Jabatan" required disabled>
+                                                        name="jabatan" placeholder="Jabatan"  disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -125,7 +137,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="jenis_kelamin" class="form-control"
-                                                            name="jenis_kelamin" placeholder="Jenis Kelamin" required disabled>
+                                                            name="jenis_kelamin" placeholder="Jenis Kelamin"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -134,7 +146,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="alamat" class="form-control"
-                                                                name="alamat" required disabled> </textarea>
+                                                                name="alamat"  disabled> </textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -143,7 +155,7 @@
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <input type="date" id="tanggal_pemeriksaan" class="form-control"
-                                                                    name="tanggal_pemeriksaan" placeholder="Tanggal Pemeriksaan" required disabled>
+                                                                    name="tanggal_pemeriksaan" placeholder="Tanggal Pemeriksaan" required >
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
@@ -152,7 +164,7 @@
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
                                                                     <input type="date" id="tanggal_kembali" class="form-control"
-                                                                        name="tanggal_kembali" placeholder="Tanggal Kembali Kontrol">
+                                                                        name="tanggal_kembali" placeholder="Tanggal Kembali Kontrol" required>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     </div>
@@ -672,9 +684,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+<script
+  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+  crossorigin="anonymous"></script>
 
-    <script>
-         $(".form-select").select2();
-     </script>
+
+
+<script type="text/javascript">
+    $("#pasien_id").click(function(e) {
+        var pasien = $(this).val();
+
+        console.log(pasien);
+        
+        $.ajax({
+            type: "GET",
+            url: "{{route('superadmin.datapasien.id')}}",
+            data: {'pasien': pasien},
+            dataType: 'json',
+            success:  function(data) {
+                console.log(data);
+            $('#nama_pasien').val(data.nama_pasien);
+            $('#tanggal_lahir').val(data.tanggal_lahir);
+            $('#umur').val(data.umur);
+            $('#pekerjaan').val(data.pekerjaan);
+            $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+            $('#divisi').val(data.divisi.nama_divisi_pasien);
+            $('#jabatan').val(data.jabatan.nama_jabatan);
+            $('#jenis_kelamin').val(data.jenis_kelamin);
+            $('#alamat').val(data.alamat);
+        },
+        error: function(response) {
+            alert(response.responseJSON.message);
+        }
+        });
+    });
+  </script>
+
+
+<script>
+    $("#form-select").select2();
+</script>
+
 @include('sweetalert::alert') 
     @endsection

@@ -26,7 +26,8 @@ class User extends Authenticatable
         'status',
         'jadwal_id',
         'telp',
-        'level_id'
+        'level_id',
+        'ttd'
     ];
 
     /**

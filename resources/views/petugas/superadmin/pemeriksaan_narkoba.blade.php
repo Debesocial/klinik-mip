@@ -38,18 +38,6 @@
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-
-                                                    <div class="col-md-2">
-                                                        <label>ID Surat</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="surat_id" class="form-control"
-                                                                name="surat_id" placeholder="id surat">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        </div>
-                                                    
-                                                    
                                                         
                                                     <div class="col-md-2">
                                                         <label>ID Pasien</label>
@@ -70,7 +58,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="nama_pasien" class="form-control"
-                                                                name="nama_pasien" placeholder="nama_pasien"  >
+                                                                name="nama_pasien" placeholder="nama_pasien"  disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -82,7 +70,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="NIK" class="form-control"
-                                                                name="NIK" placeholder="NIK" >
+                                                                name="NIK" placeholder="NIK" disabled>
                                                         </div>
     
                                                         <div class="col-md-6">
@@ -93,7 +81,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="umur" class="form-control"
-                                                            name="umur" placeholder="Umur"  >
+                                                            name="umur" placeholder="umur"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -104,7 +92,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="tempat_lahir" class="form-control"
-                                                            name="tempat_lahir" placeholder="Tempat Lahir"  >
+                                                            name="tempat_lahir" placeholder="tempat lahir"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -113,7 +101,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="date" id="tanggal_lahir" class="form-control"
-                                                            name="tanggal_lahir" placeholder="Tanggal Lahir"  >
+                                                            name="tanggal_lahir" placeholder="Tanggal Lahir"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -122,7 +110,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="alamat" class="form-control"
-                                                            name="alamat" placeholder="Alamat"  >
+                                                            name="alamat" placeholder="alamat" disabled >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -131,7 +119,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="pekerjaan" class="form-control"
-                                                            name="pekerjaan" placeholder="Pekerjaan"  >
+                                                            name="pekerjaan" placeholder="pekerjaan"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -142,12 +130,8 @@
                                                         <label>Perusahaan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" 
-                                                    onchange="yesnoCheck_lainnya(this);">
-                                                    <option disabled selected>Pilih Perusahaan</option>
-                                                    <option value="lainnya">other</option>
-                                                    
-                                                </select>
+                                                        <input type="text" id="perusahaan" class="form-control"
+                                                    name="perusahaan" placeholder="perusahaan" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -155,10 +139,8 @@
                                                         <label>Divisi</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select class="choices form-select" name="divisi_id" id="divisi_id">
-                                                            <option disabled selected>Pilih Divisi</option>
-                                                           
-                                                        </select>
+                                                        <input type="text" id="divisi" class="form-control"
+                                                    name="divisi" placeholder="divisi" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -166,35 +148,18 @@
                                                             <label>Jabatan</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <select class="choices form-select" name="jabatan_id">
-                                                                <option disabled selected>Pilih Jabatan</option>
-                                                                
-                                                            </select>
+                                                            <input type="text" id="jabatan" class="form-control"
+                                                    name="jabatan" placeholder="jabatan" disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
-                                                    
-                                                            <div class="col-md-2">
-                                                                <label>Kategori</label>
-                                                            </div>
-                                                            <div class="col-md-4 form-group">
-                                                                <select class="choices form-select" name="kategori_pasien_id">
-                                                                    <option disabled selected>Pilih Kategori Pasien</option>
-                                                                    
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                </div>
 
                                                                 <div class="col-md-2">
                                                                     <label>Jenis kelamin</label>
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
-                                                                    <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
-                                                                        <option disabled selected>Pilih Jenis Kelamin</option>
-                                                                        <option value="Pria">Laki-laki</option>
-                                                                        <option value="Wanita">Perempuan</option>
-                                                                    </select>
+                                                                    <input type="text" id="jenis_kelamin" class="form-control"
+                                                                  name="jenis_kelamin" placeholder="jenis kelamin" disabled>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     </div>
@@ -204,7 +169,7 @@
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
                                                                         <input type="text" id="telepon" class="form-control"
-                                                                            name="telepon" placeholder="telepon"  >
+                                                                            name="telepon" placeholder="telepon"  disabled>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -214,35 +179,12 @@
                                                                         </div>
                                                                         <div class="col-md-4 form-group">
                                                                             <input type="email" id="email" class="form-control"
-                                                                                name="email" placeholder="email"  >
+                                                                                name="email" placeholder="email" disabled >
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             </div>
 
-                                                                <div class="col-md-2">
-                                                                    <label>Alergi</label>
-                                                                </div>
-                                                                <div class="col-md-4 form-group">
-                                                                    <input class="form-check-input" type="radio" name="alergi_obat"
-                                                    id="alergi_obat" value="0"> Tidak
-                                                    <input class="form-check-input" type="radio" name="alergi_obat"
-                                                        id="alergi_obat" value="1"> Ya
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    </div>
-
-                                                                    <div class="col-md-2">
-                                                                        <label>Hamil</label>
-                                                                    </div>
-                                                                    <div class="col-md-4 form-group">
-                                                                        <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                    id="hamil_menyusui" value="0"> Tidak
-                                                <label for="">
-                                                    <input class="form-check-input" type="radio" name="hamil_menyusui"
-                                                        id="hamil_menyusui" value="1"> Ya
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        </div>
+                                                                
 
                                                 </div>
                                             </div>
@@ -440,21 +382,50 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+<script
+  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+  crossorigin="anonymous"></script>
+
+
+
 <script type="text/javascript">
-    function isi_otomatis(){
-        var id = $("#id").val();
+    $("#pasien_id").click(function(e) {
+        var pasien = $(this).val();
+
+        console.log(pasien);
+        
         $.ajax({
-            url: 'ajax.php',
-            data:"id="+id,
-        }).success(function (data) {
-            var json = data,
-            obj = JSON.parse(json);
-            $('#email').val(obj.email);
+            type: "GET",
+            url: "{{route('superadmin.datapasien.id')}}",
+            data: {'pasien': pasien},
+            dataType: 'json',
+            success:  function(data) {
+                console.log(data);
+            $('#nama_pasien').val(data.nama_pasien);
+            $('#NIK').val(data.NIK);
+            $('#tanggal_lahir').val(data.tanggal_lahir);
+            $('#tempat_lahir').val(data.tempat_lahir);
+            $('#umur').val(data.umur);
+            $('#pekerjaan').val(data.pekerjaan);
+            $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+            $('#divisi').val(data.divisi.nama_divisi_pasien);
+            $('#jabatan').val(data.jabatan.nama_jabatan);
+            $('#jenis_kelamin').val(data.jenis_kelamin);
+            $('#alamat').val(data.alamat);
+            $('#telepon').val(data.telepon);
+            $('#email').val(data.email);
+        },
+        error: function(response) {
+            alert(response.responseJSON.message);
+        }
         });
-    }
-</script>
+    });
+  </script>
+
     <script>
          $(".form-select").select2();
      </script>
