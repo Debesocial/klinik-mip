@@ -291,7 +291,7 @@
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <input type="text" id="id_pasien" class="form-control"
-                                        name="id_pasien" placeholder="Masukkan pemeriksaan penunjang">
+                                        name="id_pasien" placeholder="Masukkan keterangan pemeriksaan penunjang">
                                 </div>
                                 <div class="col-md-6">
                                 </div>
