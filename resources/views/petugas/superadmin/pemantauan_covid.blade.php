@@ -299,7 +299,7 @@
                                                     </div> <br><br><br>
                                                     
                                                     <div class="col-md-4">
-                                                        <h2>Rapid Test</h2>
+                                                        <h2>Rontgen Thorax</h2>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                     </div>
