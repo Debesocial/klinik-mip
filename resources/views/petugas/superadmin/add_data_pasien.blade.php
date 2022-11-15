@@ -1,3 +1,5 @@
+
+
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
@@ -98,16 +100,16 @@
                                                     name="tanggal_lahir">
                                             </div>
                                             <div class="form-group">
-                                                <label for="umur">Umur <b class="color-red">*</b></label>
+                                                <label for="umur">Umur <b class="color-red">*</b></label>s
                                                 <input type="number" id="umur" class="form-control" name="umur"
-                                                    placeholder="Masukkan tempat lahir">
+                                                    placeholder="Masukkan umur">
                                             </div>
                                             <div class="form-group">
                                                 <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="jenis_kelamin">
                                                     <option disabled selected>Pilih Jenis Kelamin</option>
-                                                    <option value="Pria">Laki-laki</option>
-                                                    <option value="Wanita">Perempuan</option>
+                                                    <option value="Laki-Laki">Laki-laki</option>
+                                                    <option value="Perempuan">Perempuan</option>
                                                 </select>
                                             </div>
                                             <div class="form-group">
@@ -154,7 +156,7 @@
                                                     id="hamil_menyusui" value="0" checked> Tidak
                                                     <input class="form-check-input" type="radio" name="hamil_menyusui"
                                                         id="hamil_menyusui" value="1"> Ya
-                                                </label>
+                                                
                                             </div>
                                         </div>
 
@@ -223,4 +225,5 @@
     <script>
         $(".form-select").select2();
     </script>
+   
 @endsection

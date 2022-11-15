@@ -328,8 +328,12 @@
                                             <label>Nama Tindakan</label>
                                         </div>
                                         <div class="col-md-4 form-group">
-                                            <input type="text" id="nama_tindakan" class="form-control"
-                                                name="nama_tindakan" placeholder="Nama Tindakan">
+                                            <select class="choices form-select" name="tindakan_id" id="tindakan_id">
+                                                <option disabled selected>Pilih Tindakan</option>
+                                                @foreach ($tindakan as $tindak)
+                                                <option value="{{ $tindak->id }}">{{ $tindak->nama_tindakan }}</option>
+                                                @endforeach
+                                        </select>
                                         </div>
                                         <div class="col-md-6">
                                             </div>
@@ -337,14 +341,12 @@
                                                 <label>Nama Alat Kesehatan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select class="choices form-select">
-                                                    <optgroup label="nama_alat">
-                                                        <option value="romboid">IT</option>
-                                                        <option value="trapeze">HSE</option>
-                                                        <option value="triangle">Triangle</option>
-                                                        <option value="polygon">Polygon</option>
-                                                    </optgroup>
-                                                </select>
+                                                <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
+                                                    <option disabled selected>Pilih Alat Kesehatan</option>
+                                                    @foreach ($namaobat as $nama)
+                                                    <option value="{{ $nama->id }}">{{ $nama->nama_obat }}</option>
+                                                    @endforeach
+                                            </select>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -352,11 +354,11 @@
                                                 <div class="col-md-2">
                                                     <label>Jumlah Pengguna Alat Kesehatan</label>
                                                 </div>
-                                                <div class="col-md-2 form-group">
+                                                <div class="col-md-4 form-group">
                                                     <input type="text" id="pengguna_alat" class="form-control"
                                                         name="pengguna_alat" placeholder="Jumlah Pengguna Alat">
                                                 </div>
-                                                <div class="col-md-8">
+                                                <div class="col-md-6">
                                                     </div>
 
                                                     <div class="col-md-2">
@@ -391,8 +393,6 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>Martuani</td>
-                                                                <td>Sitohang</td>
                                                             </tr>
                                                             <tr>
                                                                 

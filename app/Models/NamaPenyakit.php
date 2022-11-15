@@ -52,4 +52,8 @@ class NamaPenyakit extends Model
     public function sub_klasifikasi(){
         return $this->belongsTo(SubKlasifikasi::class);
     }
+
+    public function izinistirahat() {
+        return $this->hasMany(IzinIstirahat::class);
+    }
 }

@@ -31,7 +31,6 @@
                         <td>{{ $nama->primer }}</td>
                         <td>{{ $nama->sekunder }}</td>
                         <td>{{ $nama->sub_klasifikasi->nama_penyakit }}</td>
-                        <td></td>
                         <td><div class="buttons">
                             <a href="/ubah/nama/penyakit/{{ $nama['id'] }}" class="btn btn-success rounded-pill" title="Ubah diagnosa"><i class="fa fa-edit"></i></a>
                             </div>

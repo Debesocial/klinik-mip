@@ -16,4 +16,9 @@ class HasilPemantauan extends Model
         'created_by',
         'updated_by'
     ];
+
+    public function pemantauancovid(){
+        return $this->belongsTo(PemantauanCovid::class);
+    }
+
 }

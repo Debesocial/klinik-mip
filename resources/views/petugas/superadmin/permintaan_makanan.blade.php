@@ -29,8 +29,12 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="seacrh" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="No Surat">
+                                                <select name="pasien_id" id="pasien_id" class="form-select">
+                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    @foreach ($pasien_id as $pas)
+                                                        <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-2">
                                                 
@@ -57,7 +61,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien"  required disabled>
+                                                    name="nama_pasien"   disabled>
                                             </div>
 
                                             <div class="col-md-2">               
@@ -70,7 +74,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="tanggal_lahir" class="form-control"
-                                                    name="tanggal_lahir"  required disabled>
+                                                    name="tanggal_lahir"   disabled>
                                             </div>
                                                 <div class="col-md-2">
                                             </div>
@@ -82,7 +86,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-                                                    name="umur"  required disabled>
+                                                    name="umur"   disabled>
                                             </div>
                                                 <div class="col-md-2">
                                             </div>
@@ -94,7 +98,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-                                                    name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                    name="pekerjaan" placeholder="Pekerjaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -103,7 +107,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Perusahaan" required disabled>
+                                                    name="perusahaan" placeholder="Perusahaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -112,7 +116,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="divisi" class="form-control"
-                                                        name="divisi" placeholder="Divisi" required disabled>
+                                                        name="divisi" placeholder="Divisi"  disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -122,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="jabatan" class="form-control"
-                                                            name="jabatan" placeholder="Jabatan" required disabled>
+                                                            name="jabatan" placeholder="Jabatan"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -131,11 +135,12 @@
                                                             <label>Diagnosa</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <select class="choices form-select">
-                                                                <option value="others">Others</option>
-                                                                <option value="jantung">Jantung</option>
-                                                                <option value="hati">Hati</option>
-                                                            </select>
+                                                            <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
+                                                                <option disabled selected>Pilih Nama Penyakit</option>
+                                                                @foreach ($namapenyakit as $nama)
+                                                                <option value="{{ $nama->id }}">{{ $nama->primer }}</option>
+                                                                @endforeach
+                                                        </select>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -229,5 +234,56 @@
                 
             </div>
         </section>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                
+                <script
+                  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+                  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+                  crossorigin="anonymous"></script>
+                
+                
+                
+                <script type="text/javascript">
+                    $("#pasien_id").click(function(e) {
+                        var pasien = $(this).val();
+                
+                        console.log(pasien);
+                        
+                        $.ajax({
+                            type: "GET",
+                            url: "{{route('superadmin.datapasien.id')}}",
+                            data: {'pasien': pasien},
+                            dataType: 'json',
+                            success:  function(data) {
+                                console.log(data);
+                            $('#nama_pasien').val(data.nama_pasien);
+                            $('#NIK').val(data.NIK);
+                            $('#tanggal_lahir').val(data.tanggal_lahir);
+                            $('#tempat_lahir').val(data.tempat_lahir);
+                            $('#umur').val(data.umur);
+                            $('#pekerjaan').val(data.pekerjaan);
+                            $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+                            $('#divisi').val(data.divisi.nama_divisi_pasien);
+                            $('#jabatan').val(data.jabatan.nama_jabatan);
+                            $('#jenis_kelamin').val(data.jenis_kelamin);
+                            $('#alamat').val(data.alamat);
+                            $('#telepon').val(data.telepon);
+                            $('#email').val(data.email);
+                        },
+                        error: function(response) {
+                            alert(response.responseJSON.message);
+                        }
+                        });
+                    });
+                  </script>
+                
+                    <script>
+                         $(".form-select").select2();
+                     </script>
 
 @endsection

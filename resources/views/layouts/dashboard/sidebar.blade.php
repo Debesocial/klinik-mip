@@ -112,24 +112,31 @@
                             <span>Screening</span>
                         </a>
                         <ul class="submenu">
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.pemeriksaannarkoba') }}"> Pemeriksaan Narkotika</a>
+                                <a href="{{ route('pemeriksaan.datapemeriksaannarkoba') }}"> Pemeriksaan Narkotika</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.pemeriksaancovid') }}"> Pemeriksaan Covid</a>
+                                <a href="{{ route('pemeriksaan.datapemeriksaancovid') }}"> Pemeriksaan Covid</a>
                             </li>
+                            @endif
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemeriksaanantigen') }}"><i class="bi bi-arrow-return-right"></i> Kebutuhan Pemeriksaan Antigen</a>
                             </li>
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemantauancovid') }}"> Pemantauan Covid</a>
                             </li>
+                            @endif
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.hasilpemantauan') }}"><i class="bi bi-arrow-return-right"></i> Kode Hasil Pemantauan Covid</a>
                             </li>
                         </ul>
                     </li>
 
+                    @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
@@ -138,7 +145,7 @@
 
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.rekammedis') }}"> Rekam Medis</a>
+                                <a href="{{ route('rekammedis.datarekammedis') }}"> Rekam Medis</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.klasifikasipenyakit') }}"><i class="bi bi-arrow-return-right"></i> Klasifikasi Penyakit</a>
@@ -151,6 +158,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
 
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -161,15 +169,21 @@
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rawatinap') }}"> Daftar Pasien Rawat Inap</a>
                             </li>
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rawatinapdokter') }}"> Pemeriksaan Rawat Inap Intruksi Dokter</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" )
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rawatinapperawat') }}"> Pemeriksaan Rawat Inap Intervensi Keperawatan</a>
                             </li>
+                            @endif
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.permintaanmakanan') }}"> Permintaan Makanan (Gizi)</a>
+                                <a href="{{ route('makanan.datapermintaanmakanan') }}"> Permintaan Makanan (Gizi)</a>
                             </li>
+                            @endif
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemantauantandavital') }}">Pemantauan Tanda Vital</a>
                             </li>
@@ -198,15 +212,18 @@
                             <span>Kecelakaan Kerja</span>
                         </a>
                         <ul class="submenu">
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.kecelakaankerja') }}"> Kecelakaan Kerja</a>
                             </li>
+                            @endif
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.lokasikejadian') }}"><i class="bi bi-arrow-return-right"></i> Lokasi Kejadian </a>
                             </li>
                         </ul>
                     </li>
 
+                    @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-title"><strong>SURAT KETERANGAN</strong></li>
                     <li class="sidebar-item">
                         <a href="{{ route('superadmin.keteranganberobat') }}" class='sidebar-link'>
@@ -214,6 +231,8 @@
                             <span>Keterangan Berobat</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
@@ -229,11 +248,12 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('superadmin.izinistirahat') }}" class='sidebar-link'>
+                        <a href="{{ route('istirahat.dataizinistirahat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Izin Istirahat</span>
                         </a>
                     </li>
+                    @endif
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
@@ -243,9 +263,11 @@
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.datasuratrujukan') }}">Data Surat Rujukan</a>
                             </li>
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.suratrujukan') }}">Surat Rujukan</a>
                             </li>
+                            @endif
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rsrujukan') }}"><i class="bi bi-arrow-return-right"></i> Rumah Sakit Rujukan</a>
                             </li>
@@ -254,18 +276,22 @@
                             </li>
                         </ul>
                     </li>
+                    @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item">
                         <a href="{{ route('superadmin.keterangansehat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Keterangan Sehat</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item">
                         <a href="{{ route('superadmin.persetujuantindakanmedis') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Persetujuan Tindakan Medis</span>
                         </a>
                     </li>
+                    @endif
 
                     <li class="sidebar-title"><strong>AKUN</strong></li>
                     <li class="sidebar-item">
