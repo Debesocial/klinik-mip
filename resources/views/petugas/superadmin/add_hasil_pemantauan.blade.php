@@ -5,7 +5,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Tambah Hasil Pemantauan')
+        @section('judul', 'Tambah Hasil Pemantauan Covid')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -36,9 +36,9 @@
                                 <div class="row">
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="kode">Kode</label>
+                                            <label for="kode">Kode<b class="color-red">*</b></label>
                                             <input type="text" id="kode" class="form-control"
-                                                 name="kode"  placeholder="Masukkan kode">
+                                                 name="kode"  placeholder="Masukkan kode" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -47,9 +47,9 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="nama_pemantauan">Deskripsi</label>
+                                                <label for="nama_pemantauan">Deskripsi<b class="color-red">*</b></label>
                                                 <input type="text" id="nama_pemantauan" class="form-control"
-                                                     name="nama_pemantauan" placeholder="Masukkan deskripsi">
+                                                     name="nama_lokasi" placeholder="Masukkan deskripsi"required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -60,7 +60,7 @@
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

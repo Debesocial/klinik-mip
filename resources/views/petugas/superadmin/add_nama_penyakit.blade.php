@@ -38,7 +38,7 @@
                                         <div class="form-group">
                                             <label for="primer">Nama Penyakit <b class="color-red">*</b></label>
                                             <input type="text" id="primer" class="form-control"
-                                                 name="primer" placeholder="Masukkan Nama" required>
+                                                 name="primer" placeholder="Masukkan nama penyakit" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -46,9 +46,9 @@
 
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label for="sekunder">Nama Penyakit Sekunder<b class="color-red">*</b></label>
+                                            <label for="sekunder">Nama Penyakit Sekunder</label>
                                             <input type="text" id="sekunder" class="form-control"
-                                                 name="sekunder" placeholder="Masukkan Nama">
+                                                 name="sekunder" placeholder="Masukkan nama penyakit">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -71,7 +71,7 @@
                                     
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"
-                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                         <button type="reset"
                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                     </div>

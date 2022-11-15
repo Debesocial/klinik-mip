@@ -315,7 +315,7 @@
                                                     </div> <br><br><br>
 
                                                     <div class="col-md-4">
-                                                        <h2>Rapid Test</h2>
+                                                        <h2>Rontgen Thorax</h2>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                     </div>
@@ -446,7 +446,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="kota_asal" class="form-control"
-                                                            name="kota_asal" placeholder="Kabupaten/Kota Asal">
+                                                            name="kota_asal" placeholder="Masukkan kabupaten/kota Asal">
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -456,7 +456,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="kota_tujuan" class="form-control"
-                                                                name="kota_tujuan" placeholder="Kota Tujuan">
+                                                                name="kota_tujuan" placeholder="Masukkan kota tujuan">
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -464,7 +464,7 @@
                                                             </div>
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>

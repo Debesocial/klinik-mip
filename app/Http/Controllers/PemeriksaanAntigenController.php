@@ -35,7 +35,7 @@ class PemeriksaanAntigenController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/pemeriksaan/antigen')->with('success', 'Successfully!');
+        return redirect('/pemeriksaan/antigen')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Antigen!');
     }
 
     public function ubahpemeriksaanantigen($id)
@@ -49,7 +49,7 @@ class PemeriksaanAntigenController extends Controller
         $pemeriksaanantigen->kebutuhan = $request->input('kebutuhan');
         $pemeriksaanantigen->update();
 
-        return redirect('/pemeriksaan/antigen')->with('success', 'Successfully!');
+        return redirect('/pemeriksaan/antigen')->with('success', 'Berhasil Mengubah Data Pemeriksaan Antigen!');
     }
 
     /**
