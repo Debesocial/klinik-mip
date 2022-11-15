@@ -33,8 +33,20 @@ class RekamMedis extends Model
         return $this->belongsTo(NamaPenyakit::class);
     }
 
+    public function klasifikasipenyakit() {
+        return $this->belongsTo(KlasifikasiPenyakit::class);
+    }
+
+    public function subklasifikasi() {
+        return $this->belongsTo(SubKlasifikasi::class);
+    }
+
     public function tindakan() {
         return $this->belongsTo(Tindakan::class);
+    }
+
+    public function jenisobat() {
+        return $this->belongsTo(JenisObat::class);
     }
 
     public function kecelakaankerja() {

@@ -38,4 +38,7 @@ class PemantauanCovid extends Model
     public function user() {
         return $this->hasMany(User::class);
     }
+    public function hasilpemantauan() {
+        return $this->hasMany(HasilPemantauan::class);
+    }
 }

@@ -20,6 +20,11 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PerawatController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\PemeriksaanNarkobaController;
+use App\Http\Controllers\PemeriksaanCovidController;
+use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\IzinIstirahatController;
+use App\Http\Controllers\PermintaanMakananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,15 +44,19 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi,perawat']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-    Route::group(['middleware' => ['auth', 'checkRole:superadmin']], function () {
+    Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker']], function () {
 
+    Route::get('/{id}/password', [DivisiController::class, 'password'])->name('superadmin.password');
+
+    Route::get('/data/pemeriksaan/narkoba', [PemeriksaanNarkobaController::class, 'datapemeriksaannarkoba'])->name('pemeriksaan.datapemeriksaannarkoba');
     Route::get('/pemeriksaan/narkoba', [SuperAdminController::class, 'pemeriksaannarkoba'])->name('superadmin.pemeriksaannarkoba');
     Route::post('/pemeriksaan/narkoba', [SuperAdminController::class, 'addpemeriksaannarkoba'])->name('superadmin.addpemeriksaannarkoba');
 
+    Route::get('/data/pemeriksaan/covid', [PemeriksaanCovidController::class, 'datapemeriksaancovid'])->name('pemeriksaan.datapemeriksaancovid');
     Route::get('/pemeriksaan/covid', [SuperAdminController::class, 'pemeriksaancovid'])->name('superadmin.pemeriksaancovid');
     Route::post('/pemeriksaan/covid', [SuperAdminController::class, 'addpemeriksaancovid'])->name('superadmin.addpemeriksaancovid');
 
@@ -61,6 +70,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
 
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
 
+    Route::get('/data/permintaan/makanan', [PermintaanMakananController::class, 'datapermintaanmakanan'])->name('makanan.datapermintaanmakanan');
     Route::get('/permintaan/makanan', [SuperAdminController::class, 'permintaanmakanan'])->name('superadmin.permintaanmakanan');
 
     Route::get('/kecelakaan/kerja', [SuperAdminController::class, 'kecelakaankerja'])->name('superadmin.kecelakaankerja');
@@ -78,13 +88,15 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::get('/print/izin/berobat/{id}', [SuperAdminController::class, 'print'])->name('superadmin.printizinberobat');
     Route::get('/proses', [SuperAdminController::class, 'proses'])->name('proses');
 
+    Route::get('/data/izin/istirahat', [IzinIstirahatController::class, 'dataizinistirahat'])->name('istirahat.dataizinistirahat');
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
 
     Route::get('/data/surat/rujukan', [SuperAdminController::class, 'datasuratrujukan'])->name('superadmin.datasuratrujukan');
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
     Route::post('/surat/rujukan', [SuperAdminController::class, 'addsuratrujukan'])->name('superadmin.addsuratrujukan');
     Route::get('/print/surat/rujukan/{id}', [SuperAdminController::class, 'printsuratrujukan'])->name('superadmin.printsuratrujukan');
-    
+  
+    Route::get('/data/rekam/medis', [RekamMedisController::class, 'datarekammedis'])->name('rekammedis.datarekammedis');
     Route::get('rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
     Route::post('/rekam/inqmedis', [SuperAdminController::class, 'autorekam'])->name('superadmin.rekammedisautocomplete');
 
@@ -99,6 +111,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
     Route::post('/ubah/pemeriksaan/antigen/{id}', [PemeriksaanAntigenController::class, 'changepemeriksaanantigen'])->name('superadmin.changepemeriksaanantigen');
 
     Route::get('/data/pasien', [SuperAdminController::class, 'datapasien'])->name('superadmin.datapasien');
+    Route::get('/view/data/pasien/{id}', [SuperAdminController::class, 'viewdatapasien'])->name('superadmin.viewdatapasien');
     Route::get('/data/single/pasien', [SuperAdminController::class, 'datapasienById'])->name('superadmin.datapasien.id');
     Route::get('/add/data/pasien', [SuperAdminController::class, 'addpasien'])->name('superadmin.adddatapasien');
     Route::post('/add/data/pasien', [SuperAdminController::class, 'tambahpasien'])->name('add.pasien');
@@ -238,5 +251,4 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,far
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
     Route::get('/perawat/daftar', [PerawatController::class, 'daftar'])->name('perawat.daftar');
-    Route::get('/perawat', [DashboardController::class, 'indexperawat'])->name('dashboard1');
 });

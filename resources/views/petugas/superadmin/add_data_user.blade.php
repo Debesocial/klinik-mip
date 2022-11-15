@@ -126,14 +126,14 @@
                                     </div>
 
                                     {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
-                                    <div class="col-md-6 col-12">
+                                    {{-- <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="telp">Tanda Tangan <b class="color-red">*</b></label>
                                             <input class="form-control" type="file" id="ttd" name="ttd">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-sm-6 d-flex justify-content-end">
                                         <button type="submit"

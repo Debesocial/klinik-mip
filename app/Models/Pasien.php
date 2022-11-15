@@ -38,8 +38,8 @@ class Pasien extends Model
         'updated_by'
     ];
 
-    public function getCreatedAtAttribute(){
-        return Carbon::parse($this->attributes['tanggal_lahir'])->translatedFormat('l, d F Y');
+    public function getCreatedAtAttribute($value) {
+        return Carbon::parse($value)->format('D, Y-m-d H:i:s');
     }
 
     public function namapenyakit() {
@@ -48,6 +48,10 @@ class Pasien extends Model
 
     public function pemeriksaancovid() {
         return $this->belongsTo(PemeriksaanCovid::class);
+    }
+
+    public function pemantauancovid() {
+        return $this->belongsTo(PemantauanCovid::class);
     }
 
     public function pemeriksaanantigen() {
@@ -141,4 +145,5 @@ class Pasien extends Model
     public function satuanobat() {
         return $this->belongsTo(SatuanObat::class);
     }
+    
 }

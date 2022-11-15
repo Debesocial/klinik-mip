@@ -45,8 +45,12 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="search" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan ID pasien">
+                                                <select name="pasien_id" id="pasien_id" class="form-select">
+                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    @foreach ($pasien_id as $pas)
+                                                        <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -60,21 +64,12 @@
 
                                                 <div class="col-md-6">
                                                     </div>
-                                            <div class="col-md-2">
-                                                <label>No Surat</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="no_surat" class="form-control"
-                                                    name="no_surat" placeholder="Masukkan no surat" required disabled>
-                                            </div>
-                                            <div class="col-md-6">
-                                                </div>
                                                 <div class="col-md-2">
                                                     <label>Tempat Lahir</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="pasien_tempat_lahir" class="form-control"
-                                                        name="pasien_tempat_lahir" placeholder="Masukkan tempat lahir" required disabled>
+                                                    <input type="text" id="tempat_lahir" class="form-control"
+                                                        name="tempat_lahir" placeholder="Masukkan tempat lahir" required disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -82,8 +77,8 @@
                                                         <label>Tanggal Lahir</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="date" id="pasien_tanggal_lahir" class="form-control"
-                                                            name="pasien_tanggal_lahir" placeholder="Masukkan tanggal lahir" required disabled>
+                                                        <input type="date" id="tanggal_lahir" class="form-control"
+                                                            name="tanggal_lahir" placeholder="Masukkan tanggal lahir" required disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -119,8 +114,8 @@
                                                 <label>Divisi</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Masukkan divisi" required disabled>
+                                                <input type="text" id="divisi" class="form-control"
+                                                    name="divisi" placeholder="Masukkan divisi" required disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -370,6 +365,56 @@
 
         </div>
                 </div> 
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+                
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                
+                <script
+                  src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+                  integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+                  crossorigin="anonymous"></script>
+                
+                
+                
+                <script type="text/javascript">
+                    $("#pasien_id").click(function(e) {
+                        var pasien = $(this).val();
+                
+                        console.log(pasien);
+                        
+                        $.ajax({
+                            type: "GET",
+                            url: "{{route('superadmin.datapasien.id')}}",
+                            data: {'pasien': pasien},
+                            dataType: 'json',
+                            success:  function(data) {
+                                console.log(data);
+                            $('#nama_pasien').val(data.nama_pasien);
+                            $('#NIK').val(data.NIK);
+                            $('#tanggal_lahir').val(data.tanggal_lahir);
+                            $('#tempat_lahir').val(data.tempat_lahir);
+                            $('#umur').val(data.umur);
+                            $('#pekerjaan').val(data.pekerjaan);
+                            $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+                            $('#divisi').val(data.divisi.nama_divisi_pasien);
+                            $('#jabatan').val(data.jabatan.nama_jabatan);
+                            $('#jenis_kelamin').val(data.jenis_kelamin);
+                            $('#alamat').val(data.alamat);
+                            $('#telepon').val(data.telepon);
+                            $('#email').val(data.email);
+                        },
+                        error: function(response) {
+                            alert(response.responseJSON.message);
+                        }
+                        });
+                    });
+                  </script>
+                
+                    <script>
+                         $(".form-select").select2();
+                     </script>
 
 
 @endsection

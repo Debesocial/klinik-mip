@@ -95,6 +95,16 @@
                                             <div class="col-md-6">
                                                 </div>
 
+                                                <div class="col-md-2">
+                                                    <label>Divisi</label>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <input type="text" id="divisi" class="form-control"
+                                                        name="divisi" placeholder="Divisi" disabled>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    </div>
+
                                                  {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                 <div class="col-md-2">
                                                     <label>Tanda Tangan</label>
@@ -162,6 +172,7 @@
             $('#umur').val(data.umur);
             $('#pekerjaan').val(data.pekerjaan);
             $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
+            $('#divisi').val(data.divisi.nama_divisi_pasien);
         },
         error: function(response) {
             alert(response.responseJSON.message);

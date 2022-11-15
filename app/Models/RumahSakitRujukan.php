@@ -21,4 +21,8 @@ class RumahSakitRujukan extends Model
     public function izinistirahat() {
         return $this->hasMany(IzinIstirahat::class);
     }
+
+    public function keteranganberobat() {
+        return $this->hasMany(KeteranganBerobat::class);
+    }
 }

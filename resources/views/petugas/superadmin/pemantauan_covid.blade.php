@@ -166,41 +166,57 @@
                                                 <div class="col-md-2">
                                                     <label>Suhu Pagi</label>
                                                 </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="suhu_pagi" class="form-control"
-                                                        name="suhu_pagi" placeholder="suhu pagi" >
+                                                <div class="col-md-4 form-group">
+                                                    <select class="choices form-select" name="suhu_pagi" id="suhu_pagi">
+                                                        <option disabled selected>Pilih Pemantauan</option>
+                                                        @foreach ($hasilpemantauan as $hasil)
+                                                        <option value="{{ $hasil->id }}">{{ $hasil->nama_pemantauan }}</option>
+                                                        @endforeach
+                                                </select>
                                                 </div> 
-                                                <div class="col-md-7">
+                                                <div class="col-md-6">
                                                     </div>
                                             
                                                     <div class="col-md-2">
                                                         <label>TD</label>
                                                     </div>
-                                                    <div class="col-md-2 form-group">
-                                                        <input type="text" id="td" class="form-control"
-                                                            name="td" placeholder="TD">
+                                                    <div class="col-md-4 form-group">
+                                                        <select class="choices form-select" name="td" id="td">
+                                                            <option disabled selected>Pilih Pemantauan</option>
+                                                            @foreach ($hasilpemantauan as $hasil)
+                                                            <option value="{{ $hasil->id }}">{{ $hasil->nama_pemantauan }}</option>
+                                                            @endforeach
+                                                    </select>
                                                     </div>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-6">
                                                         </div>
 
                                                     <div class="col-md-2">
                                                             <label>HR</label>
                                                     </div>
-                                                    <div class="col-md-2 form-group">
-                                                        <input type="text" id="hr" class="form-control"
-                                                                name="hr" placeholder="HR">
+                                                    <div class="col-md-4 form-group">
+                                                        <select class="choices form-select" name="hr" id="hr">
+                                                            <option disabled selected>Pilih Pemantauan</option>
+                                                            @foreach ($hasilpemantauan as $hasil)
+                                                            <option value="{{ $hasil->id }}">{{ $hasil->nama_pemantauan }}</option>
+                                                            @endforeach
+                                                    </select>
                                                     </div>
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-6">
                                                      </div>    
                                             
                                                      <div class="col-md-2">
                                                         <label>SPO2</label>
                                                 </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="spo2" class="form-control"
-                                                            name="spo2" placeholder="SPO2" >
+                                                <div class="col-md-4 form-group">
+                                                    <select class="choices form-select" name="spo2" id="spo2">
+                                                        <option disabled selected>Pilih Pemantauan</option>
+                                                        @foreach ($hasilpemantauan as $hasil)
+                                                        <option value="{{ $hasil->id }}">{{ $hasil->nama_pemantauan }}</option>
+                                                        @endforeach
+                                                </select>
                                                 </div>
-                                                <div class="col-md-7">
+                                                <div class="col-md-6">
                                                  </div> 
 
                                                  <div class="col-md-2">
@@ -297,9 +313,52 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                     </div> <br><br><br>
-                                                    
+
                                                     <div class="col-md-4">
                                                         <h2>Rapid Test</h2>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        </div>    <br><br>
+
+                                                        <div class="col-md-2">
+                                                            <label>Hasil Rapid Test</label>
+                                                        </div>
+                                                        <div class="col-md-1">
+                                                            <input type="checkbox" class="form-check-input" id="checkbox2">
+                                                        </div>
+                                                        <div class="col-md-7 form-group">
+                                                            <textarea type="text" id="nama_tindakan" class="form-control"
+                                                                name="nama_tindakan" > </textarea>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            </div>
+
+                                                            <div class="col-md-2">
+                                                                <label>Lampiran Hasil Rapid Test</label>
+                                                            </div>
+                                                            <div class="col-md-8 form-group">
+                                                                <input class="form-control" type="file" id="dokumen" multiple>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                </div>
+
+
+                                                                <div class="col-md-2">
+                                                                    <label>Tanggal Pemeriksaan</label>
+                                                                </div>
+                                                                <div class="col-md-2 form-group">
+                                                                    <input type="date" id="pengguna_alat" class="form-control"
+                                                                        name="pengguna_alat" >
+                                                                </div>
+                                                                <div class="col-md-8">
+                                                                </div> 
+
+                                                    <br><br><br>
+                                                    
+                                                    <div class="col-md-4">
+                                                        <h2>Rontgen Thorax</h2>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                     </div>

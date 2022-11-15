@@ -20,16 +20,20 @@ use App\Models\IzinBerobat;
 use App\Models\Jabatan;
 use App\Models\KategoriPasien;
 use App\Models\KeteranganBerobat;
+use App\Models\KlasifikasiPenyakit;
 use App\Models\Level;
 use App\Models\NamaPenyakit;
+use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
 use App\Models\RekamMedis;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
+use App\Models\SubKlasifikasi;
 use App\Models\SuratRujukan;
 use App\Models\TestUrin;
+use App\Models\Tindakan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +41,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Validator;
 use PDF;
 use Response;
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 
 class SuperAdminController extends Controller
 {
@@ -46,6 +52,7 @@ class SuperAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+     
 
     public function pemeriksaannarkoba()
     {
@@ -127,13 +134,17 @@ class SuperAdminController extends Controller
     public function pemantauancovid()
     {
         $pasien_id = Pasien::get();
+        $covid = PemantauanCovid::all();
+        $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.pemantauan_covid', compact('pasien_id'));
+        return view('petugas.superadmin.pemantauan_covid', compact('pasien_id', 'covid', 'hasilpemantauan'));
     }
 
     public function pemantauantandavital()
     {
-        return view('petugas.superadmin.pemantauan_tanda_vital');
+        $pasien_id = Pasien::get();
+
+        return view('petugas.superadmin.pemantauan_tanda_vital', compact('pasien_id'));
     }
 
     public function keteranganpemeriksaan()
@@ -147,8 +158,13 @@ class SuperAdminController extends Controller
         
 
         $pasien_id = Pasien::all();
+        $namapenyakit = NamaPenyakit::all();
+        $klasifikasi = KlasifikasiPenyakit::all();
+        $subklasifikasi = SubKlasifikasi::all(); 
+        $tindakan = Tindakan::all();
+        $namaobat = NamaObat::all();
 
-        return view('petugas.superadmin.rekam_medis', compact('pasien_id'));
+        return view('petugas.superadmin.rekam_medis', compact('pasien_id', 'namapenyakit', 'klasifikasi', 'subklasifikasi', 'tindakan', 'namaobat'));
     }
 
     public function pengesahanhasil()
@@ -168,20 +184,31 @@ class SuperAdminController extends Controller
     public function rawatinapdokter()
     {
         $pasien_id = Pasien::get();
+        $namapenyakit = NamaPenyakit::all();
+        $tindakan = Tindakan::all();
+        $jenisobat = JenisObat::all();
+        $namaobat = NamaObat::all();
 
-        return view('petugas.superadmin.rawat_inap_dokter', compact('pasien_id'));
+        return view('petugas.superadmin.rawat_inap_dokter', compact('pasien_id', 'namapenyakit', 'tindakan', 'jenisobat', 'namaobat'));
     }
 
     public function rawatinapperawat()
     {
         $pasien_id = Pasien::get();
+        $namapenyakit = NamaPenyakit::all();
+        $tindakan = Tindakan::all();
+        $jenisobat = JenisObat::all();
+        $namaobat = NamaObat::all();
 
-        return view('petugas.superadmin.rawat_inap_perawat', compact('pasien_id'));
+        return view('petugas.superadmin.rawat_inap_perawat', compact('pasien_id', 'namapenyakit', 'tindakan', 'jenisobat', 'namaobat'));
     }
 
     public function permintaanmakanan()
     {
-        return view('petugas.superadmin.permintaan_makanan');
+        $pasien_id = Pasien::get();
+        $namapenyakit = NamaPenyakit::all();
+
+        return view('petugas.superadmin.permintaan_makanan', compact('pasien_id', 'namapenyakit'));
     }
 
     public function kecelakaankerja()
@@ -196,8 +223,9 @@ class SuperAdminController extends Controller
         $pasien_id = Pasien::get();
         $keterangan = KeteranganBerobat::all();
         $namapenyakit = NamaPenyakit::all();
+        $rsrujukan = RumahSakitRujukan::all();
 
-        return view('petugas.superadmin.keterangan_berobat', compact('pasien_id', 'namapenyakit', 'keterangan'));
+        return view('petugas.superadmin.keterangan_berobat', compact('pasien_id', 'namapenyakit', 'keterangan', 'rsrujukan'));
     }
 
     public function addketeranganberobat(Request $request)
@@ -289,8 +317,10 @@ class SuperAdminController extends Controller
     public function izinistirahat()
     {
         $pasien_id = Pasien::get();
+        $rsrujukan = RumahSakitRujukan::all();
+        $spesialisrujukan = SpesialisRujukan::all();
 
-        return view('petugas.superadmin.izin_istirahat', compact('pasien_id'));
+        return view('petugas.superadmin.izin_istirahat', compact('pasien_id', 'rsrujukan', 'spesialisrujukan'));
     }
 
     public function datasuratrujukan()
@@ -453,9 +483,29 @@ class SuperAdminController extends Controller
      */
     public function datapasien()
     {
-        $pasien = Pasien::all();
+        $now = CarbonImmutable::now()->locale('id_ID');
+        $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
+        $end_week = $now->endOfWeek()->format('m-d');
+
+        $pasien =  Pasien::all();
+
         return view('petugas.superadmin.data_pasien')->with('pasiens', $pasien);
     }
+    
+    public function viewdatapasien($id)
+    {
+
+        $pasien = Pasien::find($id);
+        $kategori = KategoriPasien::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
+        $jabatan = Jabatan::all();
+        $keluarga = Keluarga::all();
+        $namapenyakit = NamaPenyakit::all();
+
+        return view('petugas.superadmin.view_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
+    }
+
     public function addpasien()
     {
         $pasien = Pasien::all();
@@ -464,6 +514,8 @@ class SuperAdminController extends Controller
         $divisi = Divisi::all();
         $jabatan = Jabatan::all();
         $namapenyakit = NamaPenyakit::all();
+
+        $now = CarbonImmutable::now()->locale('id_ID');
 
         return view('petugas.superadmin.add_data_pasien', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien', 'namapenyakit'));
     }
@@ -980,6 +1032,8 @@ class SuperAdminController extends Controller
         //
     }
 
+
+
     public function datapasienById(Request $request) {
         if ($request->pasien) {
             $pasien = Pasien::where('id', $request->pasien)->first();
@@ -989,4 +1043,7 @@ class SuperAdminController extends Controller
             return response()->json($pasien, 200);
         }
     }
+
+
+    
 }

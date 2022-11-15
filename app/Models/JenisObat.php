@@ -18,4 +18,16 @@ class JenisObat extends Model
     public function obatalkes() {
         return $this->hasMany(ObatAlkes::class);
     }
+
+    public function rawatinap() {
+        return $this->hasMany(RawatInap::class);
+    }
+
+    public function rekammedis() {
+        return $this->hasMany(RekamMedis::class);
+    }
+
+    public function izinistirahat() {
+        return $this->hasMany(IzinIstirahat::class);
+    }
 }

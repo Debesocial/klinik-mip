@@ -43,7 +43,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>Maukkan ID pasien</label>
+                                                <label>Masukkan ID pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" class="form-select">
@@ -115,8 +115,8 @@
                                                 <label>Divisi</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="perusahaan" class="form-control"
-                                                    name="perusahaan" placeholder="Masukkan divisi" required disabled>
+                                                <input type="text" id="divisi" class="form-control"
+                                                    name="divisi" placeholder="Masukkan divisi" required disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -174,7 +174,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID " required >
+                                                            name="id_pasien" placeholder="Anamnesis " required >
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,58 +304,21 @@
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Klasifikasi Penyakit</label>
+                                                        <label>Nama Penyakit</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                            <option value="others">Others</option>
-                                                            <option value="jantung">Jantung</option>
-                                                            <option value="hati">Hati</option>
+                                                        <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
+                                                            <option disabled selected>Pilih Nama Penyakit</option>
+                                                            @foreach ($namapenyakit as $nama)
+                                                            <option value="{{ $nama->id }}">{{ $nama->primer }}</option>
+                                                            @endforeach
                                                     </select>
                                                 </div>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Sub-Klasifikasi Penyakit</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                            <option value="others">Others</option>
-                                                            <option value="jantung">Jantung</option>
-                                                            <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="enter text">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Diagnosa</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
+                                            
+                                           
                                             
                                             <div class="col-md-12">
                                                 <div class="row">
@@ -363,10 +326,8 @@
                                                         <label>Diagnosa Sekunder</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
+                                                        <input type="text" id="sekunder" class="form-control"
+                                                        name="sekunder" placeholder=""  >
                                                     </select>
                                                 </div>
                                                 </div>
@@ -402,8 +363,12 @@
                                                 <label>Nama Tindakan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="nama_tindakan" class="form-control"
-                                                    name="nama_tindakan" placeholder="Nama Tindakan">
+                                                <select class="choices form-select" name="tindakan_id" id="tindakan_id">
+                                                    <option disabled selected>Pilih Tindakan</option>
+                                                    @foreach ($tindakan as $tindak)
+                                                    <option value="{{ $tindak->id }}">{{ $tindak->nama_tindakan }}</option>
+                                                    @endforeach
+                                            </select>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -411,14 +376,12 @@
                                                     <label>Nama Alat Kesehatan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <optgroup label="nama_alat">
-                                                            <option value="romboid">IT</option>
-                                                            <option value="trapeze">HSE</option>
-                                                            <option value="triangle">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </optgroup>
-                                                    </select>
+                                                    <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
+                                                        <option disabled selected>Pilih Alat Kesehatan</option>
+                                                        @foreach ($namaobat as $nama)
+                                                        <option value="{{ $nama->id }}">{{ $nama->nama_obat }}</option>
+                                                        @endforeach
+                                                </select>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -470,8 +433,6 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Martuani</td>
-                                                                    <td>Sitohang</td>
                                                                 </tr>
                                                                 <tr>
                                                                     
@@ -521,8 +482,12 @@
                                                 <label>Nama Obat</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="ID Pasien">
+                                                <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
+                                                    <option disabled selected>Pilih Alat Kesehatan</option>
+                                                    @foreach ($namaobat as $nama)
+                                                    <option value="{{ $nama->id }}">{{ $nama->nama_obat }}</option>
+                                                    @endforeach
+                                            </select>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -531,17 +496,15 @@
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien">
+                                                        name="nama_pasien" placeholder="jumlah">
                                                 </div>
                                                 <div class="col-md-2 form-group">
-                                                    <select class="choices form-select">
-                                                        <optgroup label="klasifikasi">
-                                                            <option value="romboid">IT</option>
-                                                            <option value="trapeze">HSE</option>
-                                                            <option value="triangle">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </optgroup>
-                                                    </select>
+                                                    <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
+                                                        <option disabled selected>Pilih Nama Obat</option>
+                                                        @foreach ($namaobat as $nama)
+                                                        <option value="{{ $nama->id }}">{{ $nama->nama_obat }}</option>
+                                                        @endforeach
+                                                </select>
                                                 </div>
                                                 <div class="col-md-5">
                                                     </div>
@@ -593,8 +556,6 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Martuani</td>
-                                                                    <td>Sitohang</td>
                                                                 </tr>
                                                                 <tr>
                                                                     

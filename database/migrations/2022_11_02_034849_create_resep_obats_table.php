@@ -15,6 +15,7 @@ class CreateResepObatsTable extends Migration
     {
         Schema::create('resep_obats', function (Blueprint $table) {
             $table->id();
+            $table->string('id_doc');
             $table->foreignId('rekam_medis_id')->constrained();
             $table->foreignId('nama_obat_id')->constrained();
             $table->string('jumlah');
