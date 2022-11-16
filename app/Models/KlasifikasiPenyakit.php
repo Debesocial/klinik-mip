@@ -26,4 +26,8 @@ class KlasifikasiPenyakit extends Model
     public function subklasifikasi() {
         return $this->hasMany(SubKlasifikasi::class);
     }
+
+    public function rekammedis() {
+        return $this->hasMany(RekamMedis::class);
+    }
 }

@@ -123,6 +123,16 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
+
+                                                    <div class="col-md-2">
+                                                        <label>Jenis Kelamin</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <input type="text" id="jenis_kelamin" class="form-control"
+                                                            name="jenis_kelamin" placeholder="Jenis Kelamin"  disabled>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        </div>
                                             
                                         </div>
                                     </div>
@@ -150,37 +160,6 @@
                                 <form class="form form-horizontal">
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>ID Rekam Medis</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="search" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Rekam Medis">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Anamnesis/Kronologi</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="" required >
-                                                    </div
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Pemeriksa Fisik*</label>
-                                                    </div>
-                                                    
-                                                </div>
-                                            </div>
-                                            <br>
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -283,88 +262,31 @@
                                                </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                       <label>Status Lokalis</label>
-                                                   </div>
-                                                   <div class="col-md-5 form-group">
-                                                       <textarea type="text" id="status_lokasi" class="form-control"
-                                                           name="status_lokasi">Status Lokalis</textarea>
-                                                   </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Klasifikasi Penyakit</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                            <option value="others">Others</option>
-                                                            <option value="jantung">Jantung</option>
-                                                            <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Sub-Klasifikasi Penyakit</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                            <option value="others">Others</option>
-                                                            <option value="jantung">Jantung</option>
-                                                            <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="enter text">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Diagnosa</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
                                             
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Diagnosa Sekunder</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
+                                                       <label>Hasil Pemeriksaan</label>
+                                               </div>
+                                               <div class="col-md-4 form-group">
+                                                <input class="form-check-input" type="radio" name="hasil"
+                                                id="hasil" value="1" checked> Sehat
+                                                <input class="form-check-input " type="radio" name="hasil"
+                                                    id="hasil" value="0"> Tidak Sehat
+                                               </div>
                                                 </div>
                                             </div>
+                                            
+
+                                            {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
+                                            <div class="col-md-2">
+                                                <label>Tanda Tangan</label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="file" id="ttd" name="ttd">
+                                            </div>
+                                            <div class="col-md-6">
+                                                </div>
 
                                             <div class="col-sm-5 d-flex justify-content-end">
                                                 <button type="submit"

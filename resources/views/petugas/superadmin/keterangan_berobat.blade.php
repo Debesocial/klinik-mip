@@ -145,8 +145,12 @@
                                                         <label>Nama Klinik Praktek/Rumah Sakit</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="klinik" class="form-control"
-                                                            name="klinik" placeholder="Masukkan nama klinik/RS">
+                                                        <select class="choices form-select" name="rs_rujukan_id" id="rs_rujukan_id">
+                                                            <option disabled selected>Pilih Rumah Sakit Rujukan</option>
+                                                            @foreach ($rsrujukan as $rujukan)
+                                                            <option value="{{ $rujukan->id }}">{{ $rujukan->nama_RS_rujukan }}</option>
+                                                            @endforeach
+                                                    </select>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -157,7 +161,7 @@
                                                 <div class="col-md-2">
                                                     <label>Diagnosa</label>
                                                 </div>
-                                                <div class="col-md-6 form-group">
+                                                <div class="col-md-4 form-group">
                                                     <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
                                                         <option disabled selected>Pilih Nama Penyakit</option>
                                                         @foreach ($namapenyakit as $nama)
@@ -165,7 +169,7 @@
                                                         @endforeach
                                                     </select>
                                             </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                 </div>
 
                                                 <div class="col-md-2">

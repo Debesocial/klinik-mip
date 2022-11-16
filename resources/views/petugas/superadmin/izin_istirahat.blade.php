@@ -176,7 +176,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="search" id="id_rekam_medis" class="form-control"
-                                                        name="id_rekam_medis" placeholder="ID Rekam Medis" required disabled>
+                                                        name="id_rekam_medis" placeholder="ID Rekam Medis" required >
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>    
@@ -186,7 +186,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="diagnosa" class="form-control"
-                                                            name="diagnosa" placeholder="Diagnosa" required disabled>
+                                                            name="diagnosa" placeholder="Diagnosa" required >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -196,7 +196,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="diagnosa_sekunder" class="form-control"
-                                                                name="diagnosa_sekunder" placeholder="Diagnosa Sekunder" required disabled>
+                                                                name="diagnosa_sekunder" placeholder="Diagnosa Sekunder" required >
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -482,11 +482,12 @@
                                                                            <label for="">Dokter Spesialis Rujukan</label>
                                                                         </div>
                                                                         <div class="col-md-4">
-                                                                            <select class="choices form-select">
-                                                                                <option value="others">Others</option>
-                                                                                <option value="jantung"></option>
-                                                                                <option value="hati"></option>
-                                                                        </select>
+                                                                            <select name="spesialis_rujukan_id" id="spesialis_rujukan_id" class="choices form-select" required>
+                                                                                <option disabled selected>Pilih Dokter Spesialis</option>
+                                                                                @foreach ($spesialisrujukan as $spesialis)
+                                                                                    <option value="{{ $spesialis['id'] }}">{{ $spesialis['nama_spesialis_rujukan'] }}</option>
+                                                                                @endforeach
+                                                                            </select>
                                                                             </div>   
                                                                             <div class="col-md-4">
                                                                                 </div> 
@@ -497,11 +498,12 @@
                                                                                    <label for="">Rumah Sakit Rujukan</label>
                                                                                 </div>
                                                                                 <div class="col-md-4">
-                                                                                    <select class="choices form-select">
-                                                                                        <option value="others">Others</option>
-                                                                                        <option value="jantung"></option>
-                                                                                        <option value="hati"></option>
-                                                                                </select>
+                                                                                    <select name="rumah_sakit_rujukan_id" id="rumah_sakit_rujukan_id" class="choices form-select" required>
+                                                                                        <option disabled selected>Pilih Rumah Sakit</option>
+                                                                                        @foreach ($rsrujukan as $rs)
+                                                                                            <option value="{{ $rs['id'] }}">{{ $rs['nama_RS_rujukan'] }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                     </div>   
                                                                                     <div class="col-md-4">
                                                                                         </div> 

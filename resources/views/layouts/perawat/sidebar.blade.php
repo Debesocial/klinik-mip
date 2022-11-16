@@ -97,7 +97,7 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.pemeriksaannarkoba') }}"> Pemeriksaan Narkotika</a>
+                                <a href="{{ route('pemeriksaan.datapemeriksaannarkoba') }}"> Pemeriksaan Narkotika</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemeriksaancovid') }}"> Pemeriksaan Covid</a>

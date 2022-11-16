@@ -58,7 +58,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="nama_pasien" class="form-control"
-                                                                name="nama_pasien" placeholder="nama_pasien"  disabled>
+                                                                name="nama_pasien" placeholder="Nama Pasien"  disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -212,48 +212,50 @@
                                         
                                             <div class="form-body">
                                                 <div class="row">
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-5">
                                                         <label>Penggunaan Obat-obatan dalam seminggu terakhir</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
+                                                    <div class="col-md-5 form-group">
                                                         <input type="text" id="penggunaan_obat" class="form-control"
                                                             name="penggunaan_obat" placeholder="Masukkan cara penggunaan" required>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        </div>
                                                     <div class="col-md-2">
+                                                        </div>
+                                                    <div class="col-md-5">
                                                         <label>Jenis Obat yang Digunakan</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
+                                                    <div class="col-md-5 form-group">
                                                         <input type="text" id="jenis_obat" class="form-control"
                                                             name="jenis_obat" placeholder="Masukkan jenis obat" required>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2">
                                                         </div>
-                                                        <div class="col-md-2">
+
+                                                        <div class="col-md-5">
                                                         <label>Asal Obat</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
+                                                    <div class="col-md-5 form-group">
                                                         <input type="text" id="asal_obat" class="form-control"
                                                             name="asal_obat" placeholder="Masukkan asal obat" required>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        </div>
                                                     <div class="col-md-2">
+                                                        </div>
+
+                                                    <div class="col-md-5">
                                                         <label>Terakhir Digunakan</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
+                                                    <div class="col-md-5 form-group">
                                                         <input type="text" id="terakhir_digunakan" class="form-control"
                                                             name="terakhir_digunakan" placeholder="Terakhir Digunakan" required>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2">
                                                         </div>
 
                                                         <br><br><br><br>
                                                     <h4>Hasil Test Urin</h4>
 
 
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-5">
                                                         <label>Amphetamine(AMP)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
@@ -265,10 +267,10 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
 
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-5">
                                                         <label>Methamphetamine(MET)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
@@ -282,10 +284,10 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
                                                         
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-5">
                                                         <label>TetraHydroCannibinol(THC)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
@@ -300,10 +302,10 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
 
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-5">
                                                         <label>Benzodiazepine(BZO)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
@@ -318,10 +320,10 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
 
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-5">
                                                         <label>Morphine(MOP)</label>
                                                     </div>
                                                     <div class="col-md-3 form-group">
@@ -336,10 +338,10 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
 
-                                                        <div class="col-md-3">
+                                                        <div class="col-md-5">
                                                         <label>Cocaine(COC)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
@@ -354,12 +356,13 @@
                                                              Positif
                                                           </label>
                                                   </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-3">
                                                         </div>
 
+                                                        <br><br><br>
                                                         
 
-                                                        <div class="col-6 d-flex justify-content-end">
+                                                        <div class="col-7 d-flex justify-content-end">
                                                     <button type="submit"
                                                         class="btn btn-primary me-1 mb-1">Submit</button>
                                                     <button type="reset"

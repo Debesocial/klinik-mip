@@ -43,6 +43,14 @@ class RawatInap extends Model
         return $this->belongsTo(Tindakan::class);
     }
 
+    public function jenisobat() {
+        return $this->belongsTo(JenisObat::class);
+    }
+
+    public function namaobat() {
+        return $this->belongsTo(NamaObat::class);
+    }
+
     public function pasien() {
         return $this->belongsTo(Pasien::class);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Data Pasien Mitra Kerja')
+@section('title', 'Data Mitra Kerja')
 
 
 <div class="page-heading">
