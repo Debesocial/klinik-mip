@@ -524,6 +524,160 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Berat Badan</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            <div class="input-group-append">
+                                                              <span class="input-group-text" id="basic-addon2">KG</span>
+                                                            </div>
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">                                                    
+                                                    <div class="col-md-2">
+                                                            <label>Suhu Tubuh</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                            <div class="input-group-append">
+                                                              <span class="input-group-text" id="basic-addon2">Celcius</span>
+                                                            </div>
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       <label>Tekanan Darah</label>
+                                               </div>
+                                               <div class="col-md-4 form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                      <span class="input-group-text" id="basic-addon2">mmHg</span>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       <label>Denyut Nadi</label>
+                                               </div>
+                                               <div class="col-md-4 form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                      <span class="input-group-text" id="basic-addon2">/Menit</span>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       <label>Laju Pernapasan</label>
+                                               </div>
+                                               <div class="col-md-4 form-group">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                    <div class="input-group-append">
+                                                      <span class="input-group-text" id="basic-addon2">/Menit</span>
+                                                    </div>
+                                                  </div>
+                                            </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       <label>Saturasi Oksigen</label>
+                                               </div>
+                                               <div class="col-md-2 form-group">
+                                                   <input type="text" id="saturasi_oksigen" class="form-control"
+                                                           name="saturasi_oksigen" placeholder="Masukkan saturasi oksigen" required >
+                                               </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                       <label>Status Lokalis</label>
+                                                   </div>
+                                                   <div class="col-md-5 form-group">
+                                                       <textarea type="text" id="status_lokasi" class="form-control"
+                                                           name="status_lokasi"></textarea>
+                                                   </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Klasifikasi Penyakit</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                            <option value="others">Others</option>
+                                                            <option value="jantung">Jantung</option>
+                                                            <option value="hati">Hati</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Sub-Klasifikasi Penyakit</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                            <option value="others">Others</option>
+                                                            <option value="jantung">Jantung</option>
+                                                            <option value="hati">Hati</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <input type="text" id="" class="form-control"
+                                                            name="" placeholder="enter text">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Diagnosa</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                        <option value="others">Others</option>
+                                                        <option value="jantung">Jantung</option>
+                                                        <option value="hati">Hati</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
                                             
                                         </section>
                                         </div>
