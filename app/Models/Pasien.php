@@ -145,5 +145,9 @@ class Pasien extends Model
     public function satuanobat() {
         return $this->belongsTo(SatuanObat::class);
     }
+
+    public function historytindakan() {
+        return $this->hasMany(HistoryTindakan::class);
+    }
     
 }

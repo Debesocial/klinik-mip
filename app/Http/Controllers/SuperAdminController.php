@@ -143,8 +143,9 @@ class SuperAdminController extends Controller
     public function pemantauantandavital()
     {
         $pasien_id = Pasien::get();
+        $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.pemantauan_tanda_vital', compact('pasien_id'));
+        return view('petugas.superadmin.pemantauan_tanda_vital', compact('pasien_id', 'hasilpemantauan'));
     }
 
     public function keteranganpemeriksaan()
@@ -927,6 +928,8 @@ class SuperAdminController extends Controller
     public function hasilpemantauan()
     {
         $hasilpemantauan = HasilPemantauan::all();
+
+
         return view('petugas.superadmin.hasil_pemantauan')->with('hasilpemantauan', $hasilpemantauan);
     }
 

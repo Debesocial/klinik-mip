@@ -206,7 +206,7 @@
                                                      </div>    
                                             
                                                      <div class="col-md-2">
-                                                        <label>SPO2</label>
+                                                        <label>SPO</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="spo2" id="spo2">
@@ -315,7 +315,7 @@
                                                     </div> <br><br><br>
 
                                                     <div class="col-md-4">
-                                                        <h2>Rontgen Thorax</h2>
+                                                        <h2>Rapid Test</h2>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                     </div>

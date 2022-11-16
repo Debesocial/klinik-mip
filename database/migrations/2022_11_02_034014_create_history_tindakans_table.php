@@ -16,7 +16,7 @@ class CreateHistoryTindakansTable extends Migration
         Schema::create('history_tindakans', function (Blueprint $table) {
             $table->id();
             $table->string('id_doc');
-            $table->foreignId('rekam_medis_id')->constrained();
+            $table->foreignId('rekam_medis_id')->nullable()->constrained();
             $table->foreignId('tindakan_id')->constrained();
             $table->string('alkes');
             $table->string('jumlah_pengguna');
