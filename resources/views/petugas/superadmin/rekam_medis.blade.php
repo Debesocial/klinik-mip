@@ -536,10 +536,141 @@
                                                     <div class="col-md-6">
                                                     </div>
 
+<<<<<<< HEAD
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Diagnosa</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                        <option value="others">Others</option>
+                                                        <option value="jantung">Jantung</option>
+                                                        <option value="hati">Hati</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Diagnosa Sekunder</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                        <option value="others">Others</option>
+                                                        <option value="jantung">Jantung</option>
+                                                        <option value="hati">Hati</option>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Obat Yang Dikonsumsi</label>
+                                                    </div>
+                                                    <div class="col-md-4 form-group">
+                                                        <textarea type="text" id="obat_sebelumnya" class="form-control"
+                                                            name="obat_sebelumnya"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label>Dokumen Pendukung</label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input class="form-control" type="file" id="dokumen" multiple>
+                                            </div>
+                                            <div class="col-md-6">
+
+                                                </div>
+
+                                        
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        </div>
+
+        <div class="tab-pane fade" id="list-tindakan" role="tabpanel"
+                                        aria-labelledby="list-tindakan-list">
+                                        <section id="basic-horizontal-layouts">
+            <div class="row match-height">
+            <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"></h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <form class="form form-horizontal">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>Nama Tindakan</label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input type="text" id="nama_tindakan" class="form-control"
+                                                    name="nama_tindakan" placeholder="Masukkan nama tindakan">
+                                            </div>
+                                            <div class="col-md-6">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>Nama Alat Kesehatan</label>
+                                                </div>
+                                                <div class="col-md-4 form-group">
+                                                    <select class="choices form-select">
+                                                        <optgroup label="nama_alat">
+                                                            <option value="romboid">IT</option>
+                                                            <option value="trapeze">HSE</option>
+                                                            <option value="triangle">Triangle</option>
+                                                            <option value="polygon">Polygon</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    </div>
+                                                
+=======
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     <div class="col-md-2">
                                                         <label>Jumlah Pengguna Alat Kesehatan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
+<<<<<<< HEAD
+                                                        <input type="text" id="pengguna_alat" class="form-control"
+                                                            name="pengguna_alat" placeholder="Masukkan jumlah pengguna alat">
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        </div>
+
+                                                        <div class="col-md-2">
+                                                            <label>Keterangan</label>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <textarea type="text" id="keterangan" class="form-control"
+                                                                name="keterangan"></textarea>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            </div>
+                                                            
+                                    </div>
+                                    <div class="row" id="table-hover-row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Daftar Tindakan</h4>
+=======
                                                         <input type="text" id="jumlah_pengguna"
                                                             class="history form-control" name="jumlah_pengguna"
                                                             placeholder="Jumlah Pengguna Alat">
@@ -565,6 +696,7 @@
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
 
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
@@ -618,6 +750,49 @@
             </div>
 
 
+<<<<<<< HEAD
+        <div class="tab-pane fade" id="list-resep" role="tabpanel"
+                                        aria-labelledby="list-resep-list">
+                                        <section id="basic-horizontal-layouts">
+            <div class="row match-height">
+            <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"></h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <form class="form form-horizontal">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <label>Nama Obat</label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input type="text" id="id_pasien" class="form-control"
+                                                    name="id_pasien" placeholder="Masukkan nama obat">
+                                            </div>
+                                            <div class="col-md-6">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label>Jumlah Obat</label>
+                                                </div>
+                                                <div class="col-md-2 form-group">
+                                                    <input type="text" id="nama_pasien" class="form-control"
+                                                        name="nama_pasien" placeholder="Masukkan jumlah obat">
+                                                </div>
+                                                <div class="col-md-2 form-group">
+                                                    <select class="choices form-select">
+                                                        <optgroup label="klasifikasi">
+                                                            <option value="romboid">IT</option>
+                                                            <option value="trapeze">HSE</option>
+                                                            <option value="triangle">Triangle</option>
+                                                            <option value="polygon">Polygon</option>
+                                                        </optgroup>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-5">
+=======
             <div class="tab-pane fade" id="list-resep" role="tabpanel" aria-labelledby="list-resep-list">
                 <section id="basic-horizontal-layouts">
                     <div class="row match-height">
@@ -633,6 +808,7 @@
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Nama Obat</label>
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
@@ -669,11 +845,38 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="aturan_obat" class="form-control"
+<<<<<<< HEAD
+                                                            name="aturan_obat" placeholder="Masukkan aturan pakai">
+=======
                                                             name="aturan_obat" placeholder="Aturan Pakai" required>
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
 
+<<<<<<< HEAD
+                                                        <div class="col-md-2">
+                                                            <label>Keterangan</label>
+                                                        </div>
+                                                        <div class="col-md-4 form-group">
+                                                            <textarea type="text" id="keterangan" class="form-control"
+                                                                name="keterangan"></textarea>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            </div>
+                                                            <div class="col-sm-5 d-flex justify-content-end">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
+                                                                <button type="reset"
+                                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                            </div>
+                                    </div>
+                                    <div class="row" id="table-hover-row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Daftar Resep Obat</h4>
+=======
                                                     <div class="col-md-2">
                                                         <label>Keterangan</label>
                                                     </div>
@@ -689,6 +892,7 @@
                                                         <button type="reset"
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
