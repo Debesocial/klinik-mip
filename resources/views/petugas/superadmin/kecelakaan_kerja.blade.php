@@ -59,7 +59,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien"  disabled>
+                                                        name="nama_pasien" placeholder="Masukkan nama pasien"  disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -69,7 +69,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="pekerjaan" class="form-control"
-                                                            name="pekerjaan" placeholder="Pekerjaan"  disabled>
+                                                            name="pekerjaan" placeholder="Masukkan pekerjaan"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -79,7 +79,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="perusahaan" class="form-control"
-                                                            name="perusahaan" placeholder="Perusahaan" disabled >
+                                                            name="perusahaan" placeholder="Masukkan perusahaan" disabled >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -89,7 +89,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="divisi" class="form-control"
-                                                    name="divisi" placeholder="Divisi"  disabled>
+                                                    name="divisi" placeholder="Masukkan divisi"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -99,7 +99,7 @@
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <input type="date" id="tanggal_kejadian" class="form-control"
-                                                                    name="tanggal_kejadian" placeholder="Tanggal Kejadian">
+                                                                    name="tanggal_kejadian">
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
@@ -108,6 +108,7 @@
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
                                                                     <select class="choices form-select">
+                                                                        <option disabled selected>Pilih lokasi kejadian</option>
                                                                         <option value="others">Rumah</option>
                                                                         <option value="jantung">Kantor</option>
                                                                         <option value="hati">Lapangan</option>
@@ -121,7 +122,7 @@
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
                                                                         <input type="text" id="nama_pengantar" class="form-control"
-                                                                            name="nama_pengantar" placeholder="Nama Pengantar">
+                                                                            name="nama_pengantar" placeholder="Masukkan nama pengantar">
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -158,7 +159,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="search" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Rekam Medis">
+                                                            name="id_pasien" placeholder="Masukkan ID">
                                                     </div>
                                                 </div>
                                             </div>
@@ -169,7 +170,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="id_pasien" class="form-control"
-                                                            name="id_pasien" placeholder="ID Pasien" required disabled>
+                                                            name="id_pasien" placeholder="Masukkan kronologi" required disabled>
                                                     </div>
                                                 </div>
                                             </div>
@@ -191,7 +192,7 @@
                                                         <div class="input-group mb-3">
                                                             <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                             <div class="input-group-append">
-                                                              <span class="input-group-text" id="basic-addon2">cm</span>
+                                                              <span class="input-group-text" id="basic-addon2">CM</span>
                                                             </div>
                                                           </div>
                                                     </div>
@@ -206,7 +207,7 @@
                                                         <div class="input-group mb-3">
                                                             <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                             <div class="input-group-append">
-                                                              <span class="input-group-text" id="basic-addon2">kg</span>
+                                                              <span class="input-group-text" id="basic-addon2">KG</span>
                                                             </div>
                                                           </div>
                                                     </div>
@@ -251,7 +252,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                      <span class="input-group-text" id="basic-addon2">/menit</span>
+                                                      <span class="input-group-text" id="basic-addon2">/Menit</span>
                                                     </div>
                                                   </div>
                                             </div>
@@ -267,7 +268,7 @@
                                                 <div class="input-group mb-3">
                                                     <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                     <div class="input-group-append">
-                                                      <span class="input-group-text" id="basic-addon2">/menit</span>
+                                                      <span class="input-group-text" id="basic-addon2">/Menit</span>
                                                     </div>
                                                   </div>
                                             </div>
@@ -280,7 +281,7 @@
                                                </div>
                                                <div class="col-md-2 form-group">
                                                    <input type="text" id="saturasi_oksigen" class="form-control"
-                                                           name="saturasi_oksigen" placeholder="" required >
+                                                           name="saturasi_oksigen" placeholder="Masukkan saturasi oksigen" required >
                                                </div>
                                                 </div>
                                             </div>
@@ -291,7 +292,7 @@
                                                    </div>
                                                    <div class="col-md-5 form-group">
                                                        <textarea type="text" id="status_lokasi" class="form-control"
-                                                           name="status_lokasi">Status Lokalis</textarea>
+                                                           name="status_lokasi"></textarea>
                                                    </div>
                                                 </div>
                                             </div>
@@ -444,7 +445,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan">Keterangan</textarea>
+                                                                name="keterangan"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -454,7 +455,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 {{-- <div class="card-header">
-                                                    <h4 class="card-title">Hoverable rows</h4>
+                                                    <h4 class="card-title">Daftar Tindakan</h4>
                                                 </div> --}}
                                                 
                                                     <div class="table-responsive">
@@ -521,7 +522,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="ID Pasien">
+                                                    name="id_pasien" placeholder="Masukkan nama obat">
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -530,7 +531,7 @@
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien">
+                                                        name="nama_pasien" placeholder="Masukkan jumlah obat">
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <select class="choices form-select">
@@ -550,7 +551,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="aturan_obat" class="form-control"
-                                                            name="aturan_obat" placeholder="Aturan Pakai">
+                                                            name="aturan_obat" placeholder="Masukkan aturan pakai">
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -560,13 +561,13 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan">Keterangan</textarea>
+                                                                name="keterangan"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>
@@ -590,8 +591,8 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Martuani</td>
-                                                                    <td>Sitohang</td>
+                                                                    <td></td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     

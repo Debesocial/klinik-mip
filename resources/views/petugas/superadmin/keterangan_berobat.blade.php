@@ -61,7 +61,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="nama_pasien" class="form-control"
-                                                                name="nama_pasien" placeholder="Nama Pasien" disabled>
+                                                                name="nama_pasien" placeholder="Masukkan nama pasien" disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -71,7 +71,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="umur" class="form-control"
-                                                            name="umur" placeholder="Umur"  disabled>
+                                                            name="umur" placeholder="Masukkan umur"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -81,7 +81,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="pekerjaan" class="form-control"
-                                                                name="pekerjaan" placeholder="Pekerjaan"  disabled>
+                                                                name="pekerjaan" placeholder="Masukkan pekerjaan"  disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -91,7 +91,7 @@
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <input type="text" id="perusahaan" class="form-control"
-                                                                    name="perusahaan" placeholder="Perusahaan"  disabled    >
+                                                                    name="perusahaan" placeholder="Masukkan perusahaan"  disabled    >
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
@@ -101,7 +101,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="divisi" class="form-control"
-                                                            name="divisi" placeholder="Divisi"  disabled>
+                                                            name="divisi" placeholder="Masukkan divisi"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -110,7 +110,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="jabatan" class="form-control"
-                                                                name="jabatan" placeholder="Jabatan"  disabled>
+                                                                name="jabatan" placeholder="Masukkan jabatan"  disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -146,7 +146,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="klinik" class="form-control"
-                                                            name="klinik" placeholder="Nama Klinik">
+                                                            name="klinik" placeholder="Masukkan nama klinik/RS">
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -227,7 +227,7 @@
 
                                                             <div class=" d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1 btn-form">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1 btn-form">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
                                                             </div>

@@ -307,7 +307,7 @@
                                                         
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>
@@ -323,18 +323,16 @@
                                                         <table class="table table-hover mb-0">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Kode</th>
-                                                                    <th>Nama</th>
-                                                                    <th>Satuan</th>
-                                                                    <th>Bobot</th>
-                                                                    <th>Komposisi</th>
+                                                                    <th>Nama Obat</th>
+                                                                    <th>Jumlah Obat</th>
+                                                                    <th>Aturan Pakai</th>
                                                                     <th>Keterangan</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Martuani</td>
-                                                                    <td>Sitohang</td>
+                                                                    <td></td>
+                                                                    <td></td>
                                                                 </tr>
                                                                 <tr>
                                                                     

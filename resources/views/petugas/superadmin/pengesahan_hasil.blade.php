@@ -53,7 +53,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-                                                    name="nama_pasien" placeholder="nama pasien"   disabled>
+                                                    name="nama_pasien" placeholder="nama pasien"    disabled>
                                             </div>
 
                                             <div class="col-md-2">               
@@ -121,7 +121,7 @@
 
                                             <div class="col-sm-12 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>

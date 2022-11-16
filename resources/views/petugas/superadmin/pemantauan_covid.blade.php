@@ -224,7 +224,7 @@
                                          </div> 
 
                                          <div class="col-md-2">
-                                            <label>SPO2</label>
+                                            <label>Tanggal Pemeriksaan</label>
                                     </div>
                                     <div class="col-md-2 form-group">
                                         <input type="date" id="tanggal_pemeriksaan" class="form-control"

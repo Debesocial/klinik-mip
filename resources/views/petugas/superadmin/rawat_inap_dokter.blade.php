@@ -46,17 +46,12 @@
                                                 <label>ID pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-<<<<<<< HEAD
-                                                <input type="search" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan ID pasien">
-=======
                                                 <select name="pasien_id" id="pasien_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
                                                     @endforeach
                                                 </select>
->>>>>>> 266a9a769e6171a04b11e316ac4e58a6652582ee
                                             </div>
                                             <div class="col-md-6">
                                                 </div>

@@ -464,7 +464,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_tindakan" class="form-control"
-                                                    name="nama_tindakan" placeholder="Nama Tindakan">
+                                                    name="nama_tindakan" placeholder="Masukkan nama tindakan">
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -487,11 +487,11 @@
                                                     <div class="col-md-2">
                                                         <label>Jumlah Pengguna Alat Kesehatan</label>
                                                     </div>
-                                                    <div class="col-md-2 form-group">
+                                                    <div class="col-md-4 form-group">
                                                         <input type="text" id="pengguna_alat" class="form-control"
-                                                            name="pengguna_alat" placeholder="Jumlah Pengguna Alat">
+                                                            name="pengguna_alat" placeholder="Masukkan jumlah pengguna alat">
                                                     </div>
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-6">
                                                         </div>
 
                                                         <div class="col-md-2">
@@ -499,7 +499,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan">Keterangan</textarea>
+                                                                name="keterangan"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -509,7 +509,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Hoverable rows</h4>
+                                                    <h4 class="card-title">Daftar Tindakan</h4>
                                                 </div>
                                                 
                                                     <div class="table-responsive">
@@ -576,7 +576,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="ID Pasien">
+                                                    name="id_pasien" placeholder="Masukkan nama obat">
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -585,7 +585,7 @@
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Nama Pasien">
+                                                        name="nama_pasien" placeholder="Masukkan jumlah obat">
                                                 </div>
                                                 <div class="col-md-2 form-group">
                                                     <select class="choices form-select">
@@ -605,7 +605,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="aturan_obat" class="form-control"
-                                                            name="aturan_obat" placeholder="Aturan Pakai">
+                                                            name="aturan_obat" placeholder="Masukkan aturan pakai">
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -615,13 +615,13 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan">Keterangan</textarea>
+                                                                name="keterangan"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>
@@ -630,7 +630,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 <div class="card-header">
-                                                    <h4 class="card-title">Hoverable rows</h4>
+                                                    <h4 class="card-title">Daftar Resep Obat</h4>
                                                 </div>
                                                 
                                                     <div class="table-responsive">
