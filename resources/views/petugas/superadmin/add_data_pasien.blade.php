@@ -43,9 +43,9 @@
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label for="NIK">NIK <b class="color-red">*</b></label>
+                                                <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
                                                 <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK"
-                                                    placeholder="Masukkan NIK" maxlength = "16" required>
+                                                    placeholder="Masukkan Nomor Induk Karyawan" maxlength = "16" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>

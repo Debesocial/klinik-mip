@@ -44,7 +44,7 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,farmasi,perawat']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,tenaga teknis kefarmasian,perawat']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 

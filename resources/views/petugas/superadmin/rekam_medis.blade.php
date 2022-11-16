@@ -506,7 +506,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal">
+                                        <form class="form form-horizontal" id="form-input">
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -520,6 +520,60 @@
                                                             @endforeach
                                                     </select>
                                                     </div>
+
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            update();
+                                                        });
+                                                        $("#tombol-simpan").click(function () {
+                                                            //validasi form
+                                                            $('#form-input').validate({
+                                                                rules: {
+                                                                    tindakan_id: {
+                                                                        required: true
+                                                                    },
+                                                                    alkes: {
+                                                                        required: true
+                                                                    },
+                                                                    jumlah_pengguna: {
+                                                                        required: true
+                                                                    },
+                                                                    keterangan: {
+                                                                        required: true
+                                                                    }
+                                                                },
+                                                                //jika validasi sukses maka lakukan
+                                                                submitHandler: function (form) {
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: "{{route('superadmin.datapasien.id')}}",
+                                                                        data: $('#form-input').serialize(),
+                                                                        success: function () {
+                                                                            //setelah simpan data, update data terbaru
+                                                                            update()
+                                                                        }
+                                                                    });
+                                                                    //kosongkan form nama dan jurusan
+                                                                    document.getElementById("tindakan_id").value = "";
+                                                                    document.getElementById("alkes").value = "";
+                                                                    document.getElementById("jumlah_pengguna").value = "";
+                                                                    document.getElementById("keterangan").value = "";
+                                                                    return false;
+                                                                }
+                                                            });
+                                                        });
+                                                    
+                                                        //fungsi tampil data
+                                                        function update() {
+                                                            $.ajax({
+                                                                url: 'datamahasiswa.php',
+                                                                type: 'get',
+                                                                success: function(data) {
+                                                                    $('#tabeldata').html(data);
+                                                                }
+                                                            });
+                                                        }
+                                                    </script>
                                                     <div class="col-md-6">
                                                     </div>
                                                     <div class="col-md-2">
@@ -536,7 +590,6 @@
                                                     <div class="col-md-6">
                                                     </div>
 
-<<<<<<< HEAD
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -641,8 +694,6 @@
                                                 <div class="col-md-6">
                                                     </div>
                                                 
-=======
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     <div class="col-md-2">
                                                         <label>Jumlah Pengguna Alat Kesehatan</label>
                                                     </div>
@@ -690,13 +741,20 @@
                                                     </div>
 
                                                     <div class="col-sm-5 d-flex justify-content-end">
-                                                        <button class="addListBtn">Click</button>
-
+                                                        <button type="submit" id="tombol-simpan"
+                                                            class="btn btn-primary me-1 mb-1">Submit</button>
                                                         <button type="reset"
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
 
+<<<<<<< HEAD
+
+
+
+
+=======
 >>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
+>>>>>>> 0c9b34b93dce9f024c2a409b3df6e8c26cbbd3bd
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
@@ -823,21 +881,11 @@
                                                     <div class="col-md-2">
                                                         <label>Jumlah Obat</label>
                                                     </div>
-                                                    <div class="col-md-2 form-group">
-                                                        <input type="text" id="nama_pasien" class="form-control"
-                                                            name="nama_pasien" placeholder="Nama Pasien">
+                                                    <div class="col-md-4 form-group">
+                                                        <input type="text" id="jumlah_obat" class="form-control"
+                                                            name="jumlah_obat" placeholder="Jumlah Obat">
                                                     </div>
-                                                    <div class="col-md-2 form-group">
-                                                        <select class="choices form-select">
-                                                            <optgroup label="klasifikasi">
-                                                                <option value="romboid">nama_penyakit</option>
-                                                                <option value="trapeze">Batuk</option>
-                                                                <option value="triangle">Flu</option>
-                                                                <option value="polygon">Demam</option>
-                                                            </optgroup>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-6">
                                                     </div>
 
                                                     <div class="col-md-2">
@@ -913,8 +961,6 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
-                                                                            <td>Martuani</td>
-                                                                            <td>Sitohang</td>
                                                                         </tr>
                                                                         <tr>
 
@@ -948,8 +994,17 @@
         </div>
     </div>
 
-    <script src="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-    <script src="{{asset ('ref/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+
+
+
+
+
+
+<script src="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+<script src="{{asset ('ref/assets/js/bootstrap.bundle.min.js')}}"></script>
     
 <!-- Include Choices JavaScript -->
 <script src="{{asset ('ref/assets/vendors/choices.js/choices.min.js')}}"></script>

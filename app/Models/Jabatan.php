@@ -9,8 +9,6 @@ class Jabatan extends Model
 {
     use HasFactory;
 
-    use HasFactory;
-
     protected $table = 'jabatans';
     protected $primaryKey = 'id';
     protected $fillable = [
