@@ -29,17 +29,12 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-<<<<<<< HEAD
-                                                <input type="seacrh" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan ID pasien">
-=======
                                                 <select name="pasien_id" id="pasien_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
                                                     @endforeach
                                                 </select>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                             <div class="col-md-2">
                                                 
@@ -66,11 +61,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="nama_pasien" class="form-control"
-<<<<<<< HEAD
-                                                    name="nama_pasien" required disabled>
-=======
                                                     name="nama_pasien"   disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
 
                                             <div class="col-md-2">               
@@ -83,11 +74,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="tanggal_lahir" class="form-control"
-<<<<<<< HEAD
-                                                    name="tanggal_lahir" required disabled>
-=======
                                                     name="tanggal_lahir"   disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                                 <div class="col-md-2">
                                             </div>
@@ -99,11 +86,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="umur" class="form-control"
-<<<<<<< HEAD
-                                                    name="umur" required disabled>
-=======
                                                     name="umur"   disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                                 <div class="col-md-2">
                                             </div>
@@ -115,11 +98,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="pekerjaan" class="form-control"
-<<<<<<< HEAD
-                                                    name="pekerjaan" required disabled>
-=======
                                                     name="pekerjaan" placeholder="Pekerjaan"  disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -128,11 +107,7 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="perusahaan" class="form-control"
-<<<<<<< HEAD
-                                                    name="perusahaan" required disabled>
-=======
                                                     name="perusahaan" placeholder="Perusahaan"  disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -141,11 +116,7 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="text" id="divisi" class="form-control"
-<<<<<<< HEAD
-                                                        name="divisi" required disabled>
-=======
                                                         name="divisi" placeholder="Divisi"  disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                 </div>
                                                 <div class="col-md-6">
                                                     </div>
@@ -155,11 +126,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="jabatan" class="form-control"
-<<<<<<< HEAD
-                                                            name="jabatan" required disabled>
-=======
-                                                            name="jabatan" placeholder="Jabatan"  disabled>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
+                                                            name="jabatan" placeholder="Masukkan jabatan"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
