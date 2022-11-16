@@ -590,6 +590,7 @@
                                                     <div class="col-md-6">
                                                     </div>
 
+<<<<<<< HEAD
                                             <div class="col-md-12">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -694,34 +695,12 @@
                                                 <div class="col-md-6">
                                                     </div>
                                                 
+=======
+>>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     <div class="col-md-2">
                                                         <label>Jumlah Pengguna Alat Kesehatan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-<<<<<<< HEAD
-                                                        <input type="text" id="pengguna_alat" class="form-control"
-                                                            name="pengguna_alat" placeholder="Masukkan jumlah pengguna alat">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        </div>
-
-                                                        <div class="col-md-2">
-                                                            <label>Keterangan</label>
-                                                        </div>
-                                                        <div class="col-md-4 form-group">
-                                                            <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            </div>
-                                                            
-                                    </div>
-                                    <div class="row" id="table-hover-row">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title">Daftar Tindakan</h4>
-=======
                                                         <input type="text" id="jumlah_pengguna"
                                                             class="history form-control" name="jumlah_pengguna"
                                                             placeholder="Jumlah Pengguna Alat">
@@ -735,7 +714,7 @@
                                                     <div class="col-md-4 form-group">
                                                         <textarea type="text" id="keterangan"
                                                             class="history form-control"
-                                                            name="keterangan">Keterangan</textarea>
+                                                            name="keterangan"></textarea>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -747,14 +726,7 @@
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
 
-<<<<<<< HEAD
-
-
-
-
-=======
 >>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
->>>>>>> 0c9b34b93dce9f024c2a409b3df6e8c26cbbd3bd
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
@@ -808,49 +780,6 @@
             </div>
 
 
-<<<<<<< HEAD
-        <div class="tab-pane fade" id="list-resep" role="tabpanel"
-                                        aria-labelledby="list-resep-list">
-                                        <section id="basic-horizontal-layouts">
-            <div class="row match-height">
-            <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title"></h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <form class="form form-horizontal">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label>Nama Obat</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan nama obat">
-                                            </div>
-                                            <div class="col-md-6">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>Jumlah Obat</label>
-                                                </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Masukkan jumlah obat">
-                                                </div>
-                                                <div class="col-md-2 form-group">
-                                                    <select class="choices form-select">
-                                                        <optgroup label="klasifikasi">
-                                                            <option value="romboid">IT</option>
-                                                            <option value="trapeze">HSE</option>
-                                                            <option value="triangle">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-5">
-=======
             <div class="tab-pane fade" id="list-resep" role="tabpanel" aria-labelledby="list-resep-list">
                 <section id="basic-horizontal-layouts">
                     <div class="row match-height">
@@ -866,7 +795,6 @@
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Nama Obat</label>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
@@ -893,38 +821,11 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="aturan_obat" class="form-control"
-<<<<<<< HEAD
-                                                            name="aturan_obat" placeholder="Masukkan aturan pakai">
-=======
-                                                            name="aturan_obat" placeholder="Aturan Pakai" required>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
+                                                            name="aturan_obat" placeholder="Masukkan aturan pakai" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
 
-<<<<<<< HEAD
-                                                        <div class="col-md-2">
-                                                            <label>Keterangan</label>
-                                                        </div>
-                                                        <div class="col-md-4 form-group">
-                                                            <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            </div>
-                                                            <div class="col-sm-5 d-flex justify-content-end">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                                <button type="reset"
-                                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                                            </div>
-                                    </div>
-                                    <div class="row" id="table-hover-row">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title">Daftar Resep Obat</h4>
-=======
                                                     <div class="col-md-2">
                                                         <label>Keterangan</label>
                                                     </div>
@@ -936,11 +837,10 @@
                                                     </div>
                                                     <div class="col-sm-5 d-flex justify-content-end">
                                                         <button type="submit"
-                                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                                            class="btn btn-primary me-1 mb-1">Simpan</button>
                                                         <button type="reset"
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">

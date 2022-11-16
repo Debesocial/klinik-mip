@@ -20,7 +20,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Rawat Inap Dokter')
+        @section('judul', 'Rawat Inap Instruksi Dokter')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -421,13 +421,13 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan">Keterangan</textarea>
+                                                                name="keterangan"></textarea>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>
@@ -436,7 +436,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 {{-- <div class="card-header">
-                                                    <h4 class="card-title">Hoverable rows</h4>
+                                                    <h4 class="card-title">Daftar Tindakan</h4>
                                                 </div> --}}
                                                 
                                                     <div class="table-responsive">
@@ -542,7 +542,7 @@
                                                             </div>
                                                             <div class="col-sm-5 d-flex justify-content-end">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                 <button type="reset"
                                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                             </div>
@@ -551,7 +551,7 @@
                                         <div class="col-12">
                                             <div class="card">
                                                 {{-- <div class="card-header">
-                                                    <h4 class="card-title">Hoverable rows</h4>
+                                                    <h4 class="card-title">Daftar Terapi Tambahan</h4>
                                                 </div> --}}
                                                 
                                                     <div class="table-responsive">
