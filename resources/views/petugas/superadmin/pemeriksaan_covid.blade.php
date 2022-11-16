@@ -76,11 +76,11 @@
                                             </div>
 
                                 <div class="col-md-2">
-                                    <label>NIK</label>
+                                    <label>Nomor Induk Karyawan</label>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <input type="text" id="NIK" class="form-control"
-                                        name="NIK" placeholder="NIK" disabled>
+                                        name="NIK" placeholder="Nomor Induk Karyawan" disabled>
                                 </div>
 
                                 <div class="col-md-6">

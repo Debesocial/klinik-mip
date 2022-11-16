@@ -30,7 +30,7 @@
                                         <div class="col-md-6 col-12">
                                             
                                             <div class="form-group">
-                                                <label for="NIK">NIK <b class="color-red">*</b></label>
+                                                <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
                                                 <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                                  name="NIK" value="{{ $pasien['NIK'] }}" maxlength="16" disabled>
                                             </div>

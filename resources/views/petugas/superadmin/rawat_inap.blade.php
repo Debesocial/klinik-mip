@@ -13,7 +13,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>NIK</th>
+                        <th>Nomor Induk Karyawan</th>
                         <th>Nama</th>
                         <th>Mulai Rawat Inap</th>
                         <th>Berakhir Rawat Inap</th>

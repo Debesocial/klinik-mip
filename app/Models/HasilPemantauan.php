@@ -21,4 +21,8 @@ class HasilPemantauan extends Model
         return $this->belongsTo(PemantauanCovid::class);
     }
 
+    public function tandavital() {
+        return $this->belongsTo(TandaVital::class);
+    }
+
 }

@@ -68,4 +68,8 @@ class RekamMedis extends Model
     public function user() {
         return $this->hasMany(User::class);
     }
+
+    public function historytindakan() {
+        return $this->hasMany(HistoryTindakan::class);
+    }
 }

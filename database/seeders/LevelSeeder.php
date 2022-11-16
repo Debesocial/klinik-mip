@@ -29,7 +29,7 @@ class LevelSeeder extends Seeder
                     'nama_level' => 'apoteker',
                 ],
                 [
-                    'nama_level' => 'farmasi',
+                    'nama_level' => 'tenaga teknis kefarmasian',
                 ]
             ],
         );
