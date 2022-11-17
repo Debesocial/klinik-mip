@@ -48,10 +48,16 @@ class RekamMedisController extends Controller
      */
     public function datarekammedis()
     {
-        $rekammedis = RekamMedis::all();
+        $pasien = Pasien::all();
 
+        return view('petugas.rekammedis.data_rekam_medis', compact('pasien'));
+    }
 
-        return view('petugas.rekammedis.data_rekam_medis', compact('rekammedis'));
+    public function viewrekammedis($id)
+    {
+        $pasien = Pasien::find($id);
+
+        return view('petugas.rekammedis.view_rekam_medis', compact('pasien'));
     }
 
     /**

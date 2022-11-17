@@ -77,35 +77,36 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>ID Pasien</label>
+                                                        <label>No Rekam Medis</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                             <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih No Rekam Medis</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{   $pas['jenis_kelamin'] }}|{{   $pas['alamat'] }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{   $pas['jenis_kelamin'] }}|{{   $pas['alamat'] }}">{{ $pas['no_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
                                                         </div>
                                                         <div class="col-md-6">
                                                         </div>
-                                                        <div class="col-md-2">
+                                                        {{-- <div class="col-md-2">
                                                             <label>ID Pasien</label>
                                                         </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput0" class="form-control"
-                                                            name="myInput0" placeholder="" disabled>
-                                                            <input type="text" id="myInput0" class="form-control"
-                                                            name="myInput0" placeholder="ID Pasien" hidden>
-                                                    </div>
-                                                    
+                                                            name="myInput0" placeholder="" disabled> --}}
+                                                            
+                                                    {{-- </div> --}}
+{{--                                                     
                                                     <div class="col-md-6">
                                                         
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-md-2">
                                                         <label>Nama Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
+                                                        <input type="text" id="myInput0" class="form-control"
+                                                            name="myInput0" placeholder="ID Pasien" hidden>
                                                         <input type="text" id="myInput1" class="form-control"
                                                             name="myInput1" placeholder="nama pasien" disabled>
                                                     </div>
@@ -241,8 +242,7 @@
                                                                 <label>Anamnesis/Kronologi</label>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <input type="text" id="id_pasien" class="form-control"
-                                                                    name="id_pasien" placeholder="Anamnesis " required>
+                                                                <textarea name="kronologi" id="kronologi" cols="36" rows="3 "></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -506,7 +506,7 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" id="form-input">
+                                        <form class="form form-horizontal">
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
@@ -520,60 +520,6 @@
                                                             @endforeach
                                                     </select>
                                                     </div>
-
-                                                    <script>
-                                                        $(document).ready(function () {
-                                                            update();
-                                                        });
-                                                        $("#tombol-simpan").click(function () {
-                                                            //validasi form
-                                                            $('#form-input').validate({
-                                                                rules: {
-                                                                    tindakan_id: {
-                                                                        required: true
-                                                                    },
-                                                                    alkes: {
-                                                                        required: true
-                                                                    },
-                                                                    jumlah_pengguna: {
-                                                                        required: true
-                                                                    },
-                                                                    keterangan: {
-                                                                        required: true
-                                                                    }
-                                                                },
-                                                                //jika validasi sukses maka lakukan
-                                                                submitHandler: function (form) {
-                                                                    $.ajax({
-                                                                        type: 'POST',
-                                                                        url: "{{route('superadmin.datapasien.id')}}",
-                                                                        data: $('#form-input').serialize(),
-                                                                        success: function () {
-                                                                            //setelah simpan data, update data terbaru
-                                                                            update()
-                                                                        }
-                                                                    });
-                                                                    //kosongkan form nama dan jurusan
-                                                                    document.getElementById("tindakan_id").value = "";
-                                                                    document.getElementById("alkes").value = "";
-                                                                    document.getElementById("jumlah_pengguna").value = "";
-                                                                    document.getElementById("keterangan").value = "";
-                                                                    return false;
-                                                                }
-                                                            });
-                                                        });
-                                                    
-                                                        //fungsi tampil data
-                                                        function update() {
-                                                            $.ajax({
-                                                                url: 'datamahasiswa.php',
-                                                                type: 'get',
-                                                                success: function(data) {
-                                                                    $('#tabeldata').html(data);
-                                                                }
-                                                            });
-                                                        }
-                                                    </script>
                                                     <div class="col-md-6">
                                                     </div>
                                                     <div class="col-md-2">
@@ -590,138 +536,10 @@
                                                     <div class="col-md-6">
                                                     </div>
 
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Diagnosa</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Diagnosa Sekunder</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <option value="others">Others</option>
-                                                        <option value="jantung">Jantung</option>
-                                                        <option value="hati">Hati</option>
-                                                    </select>
-                                                </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="col-md-2">
-                                                        <label>Obat Yang Dikonsumsi</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <textarea type="text" id="obat_sebelumnya" class="form-control"
-                                                            name="obat_sebelumnya"></textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label>Dokumen Pendukung</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-control" type="file" id="dokumen" multiple>
-                                            </div>
-                                            <div class="col-md-6">
-
-                                                </div>
-
-                                        
-
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-            </div>
-        </section>
-        </div>
-
-        <div class="tab-pane fade" id="list-tindakan" role="tabpanel"
-                                        aria-labelledby="list-tindakan-list">
-                                        <section id="basic-horizontal-layouts">
-            <div class="row match-height">
-            <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title"></h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <form class="form form-horizontal">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label>Nama Tindakan</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="nama_tindakan" class="form-control"
-                                                    name="nama_tindakan" placeholder="Masukkan nama tindakan">
-                                            </div>
-                                            <div class="col-md-6">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>Nama Alat Kesehatan</label>
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <select class="choices form-select">
-                                                        <optgroup label="nama_alat">
-                                                            <option value="romboid">IT</option>
-                                                            <option value="trapeze">HSE</option>
-                                                            <option value="triangle">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    </div>
-                                                
                                                     <div class="col-md-2">
                                                         <label>Jumlah Pengguna Alat Kesehatan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-<<<<<<< HEAD
-                                                        <input type="text" id="pengguna_alat" class="form-control"
-                                                            name="pengguna_alat" placeholder="Masukkan jumlah pengguna alat">
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        </div>
-
-                                                        <div class="col-md-2">
-                                                            <label>Keterangan</label>
-                                                        </div>
-                                                        <div class="col-md-4 form-group">
-                                                            <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            </div>
-                                                            
-                                    </div>
-                                    <div class="row" id="table-hover-row">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title">Daftar Tindakan</h4>
-=======
                                                         <input type="text" id="jumlah_pengguna"
                                                             class="history form-control" name="jumlah_pengguna"
                                                             placeholder="Jumlah Pengguna Alat">
@@ -741,20 +559,12 @@
                                                     </div>
 
                                                     <div class="col-sm-5 d-flex justify-content-end">
-                                                        <button type="submit" id="tombol-simpan"
-                                                            class="btn btn-primary me-1 mb-1">Submit</button>
+                                                        <button class="addListBtn">Click</button>
+
                                                         <button type="reset"
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
->>>>>>> 0c9b34b93dce9f024c2a409b3df6e8c26cbbd3bd
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
@@ -808,49 +618,6 @@
             </div>
 
 
-<<<<<<< HEAD
-        <div class="tab-pane fade" id="list-resep" role="tabpanel"
-                                        aria-labelledby="list-resep-list">
-                                        <section id="basic-horizontal-layouts">
-            <div class="row match-height">
-            <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title"></h4>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-body">
-                                <form class="form form-horizontal">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label>Nama Obat</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan nama obat">
-                                            </div>
-                                            <div class="col-md-6">
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <label>Jumlah Obat</label>
-                                                </div>
-                                                <div class="col-md-2 form-group">
-                                                    <input type="text" id="nama_pasien" class="form-control"
-                                                        name="nama_pasien" placeholder="Masukkan jumlah obat">
-                                                </div>
-                                                <div class="col-md-2 form-group">
-                                                    <select class="choices form-select">
-                                                        <optgroup label="klasifikasi">
-                                                            <option value="romboid">IT</option>
-                                                            <option value="trapeze">HSE</option>
-                                                            <option value="triangle">Triangle</option>
-                                                            <option value="polygon">Polygon</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-5">
-=======
             <div class="tab-pane fade" id="list-resep" role="tabpanel" aria-labelledby="list-resep-list">
                 <section id="basic-horizontal-layouts">
                     <div class="row match-height">
@@ -866,7 +633,6 @@
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Nama Obat</label>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
@@ -881,11 +647,21 @@
                                                     <div class="col-md-2">
                                                         <label>Jumlah Obat</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="jumlah_obat" class="form-control"
-                                                            name="jumlah_obat" placeholder="Jumlah Obat">
+                                                    <div class="col-md-2 form-group">
+                                                        <input type="text" id="nama_pasien" class="form-control"
+                                                            name="nama_pasien" placeholder="Nama Pasien">
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2 form-group">
+                                                        <select class="choices form-select">
+                                                            <optgroup label="klasifikasi">
+                                                                <option value="romboid">nama_penyakit</option>
+                                                                <option value="trapeze">Batuk</option>
+                                                                <option value="triangle">Flu</option>
+                                                                <option value="polygon">Demam</option>
+                                                            </optgroup>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-5">
                                                     </div>
 
                                                     <div class="col-md-2">
@@ -893,38 +669,11 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="aturan_obat" class="form-control"
-<<<<<<< HEAD
-                                                            name="aturan_obat" placeholder="Masukkan aturan pakai">
-=======
                                                             name="aturan_obat" placeholder="Aturan Pakai" required>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
 
-<<<<<<< HEAD
-                                                        <div class="col-md-2">
-                                                            <label>Keterangan</label>
-                                                        </div>
-                                                        <div class="col-md-4 form-group">
-                                                            <textarea type="text" id="keterangan" class="form-control"
-                                                                name="keterangan"></textarea>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            </div>
-                                                            <div class="col-sm-5 d-flex justify-content-end">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                                <button type="reset"
-                                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                                            </div>
-                                    </div>
-                                    <div class="row" id="table-hover-row">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h4 class="card-title">Daftar Resep Obat</h4>
-=======
                                                     <div class="col-md-2">
                                                         <label>Keterangan</label>
                                                     </div>
@@ -940,7 +689,6 @@
                                                         <button type="reset"
                                                             class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                     </div>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                                 </div>
                                                 <div class="row" id="table-hover-row">
                                                     <div class="col-12">
@@ -961,6 +709,8 @@
                                                                     </thead>
                                                                     <tbody>
                                                                         <tr>
+                                                                            <td>Martuani</td>
+                                                                            <td>Sitohang</td>
                                                                         </tr>
                                                                         <tr>
 
@@ -994,17 +744,8 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
-
-
-
-
-
-
-<script src="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<script src="{{asset ('ref/assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset ('ref/assets/js/bootstrap.bundle.min.js')}}"></script>
     
 <!-- Include Choices JavaScript -->
 <script src="{{asset ('ref/assets/vendors/choices.js/choices.min.js')}}"></script>

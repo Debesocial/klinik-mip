@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$timeout = 15; // setting timeout dalam menit
+	$timeout = 60; // setting timeout dalam menit
 	$logout = "/logout"; // redirect halaman logout
 
 	$timeout = $timeout * 60; // menit ke detik
@@ -18,7 +18,7 @@
 
 <div id="app">
     <div id="sidebar" class="active">
-        <div class="sidebar-wrapper active">
+        <div class="sidebar-wrapper active" style="width: 350px;">
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
                     <div class="logo flex-column gap-4 mb-6 align-items-center justify-content-center">
@@ -123,6 +123,39 @@
                         </ul>
                     </li>
 
+                    <li class="sidebar-item  has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>MD Pemeriksaan</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.pemeriksaanantigen') }}"> Kebutuhan Pemeriksaan Antigen</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.hasilpemantauan') }}">  Kode Hasil Pemantauan Covid</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Klasifikasi Penyakit</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.subklasifikasi') }}">Sub Klasifikasi Penyakit</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.namapenyakit') }}"> Diagnosa</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.lokasikejadian') }}"> Lokasi Kejadian</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.rsrujukan') }}"> Rumah Sakit Rujukan</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.spesialisrujukan') }}"> Dokter Spesialis Rujukan</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-title"><strong>PEMERIKSAAN</strong></li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -140,17 +173,11 @@
                                 <a href="{{ route('pemeriksaan.datapemeriksaancovid') }}"> Pemeriksaan Covid</a>
                             </li>
                             @endif
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.pemeriksaanantigen') }}"><i class="bi bi-arrow-return-right"></i> Kebutuhan Pemeriksaan Antigen</a>
-                            </li>
                             @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.pemantauancovid') }}"> Pemantauan Covid</a>
                             </li>
                             @endif
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.hasilpemantauan') }}"><i class="bi bi-arrow-return-right"></i> Kode Hasil Pemantauan Covid</a>
-                            </li>
                         </ul>
                     </li>
 
@@ -164,15 +191,6 @@
                         <ul class="submenu">
                             <li class="submenu-item ">
                                 <a href="{{ route('rekammedis.datarekammedis') }}"> Rekam Medis</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.klasifikasipenyakit') }}"><i class="bi bi-arrow-return-right"></i> Klasifikasi Penyakit</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.subklasifikasi') }}"><i class="bi bi-arrow-return-right"></i> Sub Klasifikasi Penyakit</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.namapenyakit') }}"><i class="bi bi-arrow-return-right"></i> Diagnosa</a>
                             </li>
                         </ul>
                     </li>
@@ -235,9 +253,6 @@
                                 <a href="{{ route('superadmin.kecelakaankerja') }}"> Kecelakaan Kerja</a>
                             </li>
                             @endif
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.lokasikejadian') }}"><i class="bi bi-arrow-return-right"></i> Lokasi Kejadian </a>
-                            </li>
                         </ul>
                     </li>
 
@@ -286,12 +301,6 @@
                                 <a href="{{ route('superadmin.suratrujukan') }}">Surat Rujukan</a>
                             </li>
                             @endif
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.rsrujukan') }}"><i class="bi bi-arrow-return-right"></i> Rumah Sakit Rujukan</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.spesialisrujukan') }}"><i class="bi bi-arrow-return-right"></i> Dokter Spesialis Rujukan</a>
-                            </li>
                         </ul>
                     </li>
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
