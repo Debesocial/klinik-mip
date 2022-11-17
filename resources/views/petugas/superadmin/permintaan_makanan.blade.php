@@ -44,17 +44,12 @@
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-<<<<<<< HEAD
-                                                <input type="seacrh" id="id_pasien" class="form-control"
-                                                    name="id_pasien" placeholder="Masukkan ID pasien">
-=======
                                                 <select name="pasien_id" id="pasien_id" class="form-select">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
->>>>>>> fd1f7088f688dafde6c729ad72c64752cd028f22
                                             </div>
                                             <div class="col-md-2">
                                                 

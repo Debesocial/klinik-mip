@@ -38,7 +38,7 @@
                                     <a class="list-group-item list-group-item-action" id="list-tindakan-list"
                                         data-bs-toggle="list" href="#list-tindakan" role="tab">Tindakan</a>
                                         <a class="list-group-item list-group-item-action" id="list-resep-list"
-                                        data-bs-toggle="list" href="#list-resep" role="tab">Resep Obat</a>
+                                        data-bs-toggle="list" href="#list-resep" role="tab">Terapi Tambahan</a>
                                         <a class="list-group-item list-group-item-action" id="list-dokter-list"
                                         data-bs-toggle="list" href="#list-dokter" role="tab">Rekomendasi Dokter</a>
                                 </div>

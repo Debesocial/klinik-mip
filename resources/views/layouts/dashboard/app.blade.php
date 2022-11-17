@@ -34,7 +34,7 @@
 
 <body>
 	@include('layouts.dashboard.sidebar')
-	<div id="main">
+	<div id="main" style="margin-left: 350px;">
 		<header class="mb-3">
 
 			<a href="#" class="burger-btn d-block d-xl-none">
