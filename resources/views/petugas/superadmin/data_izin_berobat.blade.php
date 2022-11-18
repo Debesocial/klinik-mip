@@ -1,20 +1,20 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Izin Berobat')
-
+@section('izinberobat', 'active')
 
 @section('judul', 'Data Izin Berobat')
 @section('container')
 
 <section class="section">
     <div class="card">
-        {{-- <div class="card-header">
+        <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="" class="btn btn-success rounded-pill">
+                    <a href="{{ route('superadmin.izinberobat') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
                 </div>
-        </div> --}}
+        </div>
         <div class="card-body">
             <table class="table" id="table1">
                 <thead>

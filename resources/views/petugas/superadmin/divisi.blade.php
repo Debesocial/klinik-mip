@@ -1,5 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Data Divisi')
+@section('organisasi', 'active')
+@section('divisi', 'active')
+@section('organ', 'active')
+
 @section('judul', 'Data Divisi')
 @section('container')
 

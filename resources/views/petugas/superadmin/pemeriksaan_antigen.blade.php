@@ -1,5 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Pemeriksaan Antigen')
+@section('md', 'active')
+@section('periksa', 'active')
+@section('anti', 'active')
+
 @section('judul', 'Data Pemeriksaan Antigen')
 @section('container')
 

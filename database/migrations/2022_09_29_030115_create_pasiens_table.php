@@ -35,6 +35,7 @@ class CreatePasiensTable extends Migration
             $table->boolean('alergi_obat');
             $table->boolean('hamil_menyusui');
             $table->unsignedInteger('nama_penyakit_id')->nullable();
+            $table->text('upload')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

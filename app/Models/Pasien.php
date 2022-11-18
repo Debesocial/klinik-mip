@@ -34,6 +34,7 @@ class Pasien extends Model
         'alergi_obat',
         'hamil_menyusui',
         'nama_penyakit_id',
+        'upload',
         'created_by',
         'updated_by'
     ];

@@ -1,9 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Ubah Data Petugas')
+@section('title', 'Ubah Data Obat')
+@section('obalkes', 'active')
+@section('obat', 'active')
+@section('alkes', 'active')
 
-
-@section('judul', 'Ubah Data Petugas')
+@section('judul', 'Ubah Data Obat')
 @section('container')    
 <div class="page-heading">
     <section id="multiple-column-form">

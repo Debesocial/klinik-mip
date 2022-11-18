@@ -1,7 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Jadwal Petugas')
-
+@section('data', 'active')
+@section('jadwal', 'active')
+@section('side', 'active')
 
 @section('judul', 'Data Jadwal Petugas')
 @section('container')
