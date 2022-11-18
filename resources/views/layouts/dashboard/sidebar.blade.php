@@ -1,20 +1,25 @@
 <?php
-	session_start();
-	$timeout = 60; // setting timeout dalam menit
-	$logout = "/logout"; // redirect halaman logout
+session_start();
+$timeout = 60; // setting timeout dalam menit
+$logout = "/logout"; // redirect halaman logout
 
-	$timeout = $timeout * 60; // menit ke detik
-	if(isset($_SESSION['start_session'])){
-		$elapsed_time = time()-$_SESSION['start_session'];
-		if($elapsed_time >= $timeout){
-			session_destroy();
-			echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
-		}
-	}
+$timeout = $timeout * 60; // menit ke detik
+if (isset($_SESSION['start_session'])) {
+    $elapsed_time = time() - $_SESSION['start_session'];
+    if ($elapsed_time >= $timeout) {
+        session_destroy();
+        echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
+    }
+}
 
-	$_SESSION['start_session']=time();
+$_SESSION['start_session'] = time();
 
 ?>
+<style>
+    .sidebar-wrapper .menu .sidebar-link {
+        font-size: .85rem;
+    }
+</style>
 
 <div id="app">
     <div id="sidebar" class="active">
@@ -32,7 +37,11 @@
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-title"><strong>MAIN MENU</strong></li>
+<<<<<<< HEAD
                     <li class="sidebar-item @yield('dashboard')">
+=======
+                    <li class="sidebar-item">
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                         <a href="/dashboard" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
@@ -50,6 +59,7 @@
                                 <a href="{{ route('superadmin.datauser') }}"> Data Petugas</a>
                                 </a>
                             </li>
+<<<<<<< HEAD
                             <li class="submenu-item @yield('level')">
                                 <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Kategori Petugas</a>
                             </li>
@@ -57,8 +67,17 @@
                                 <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
                             </li>
                             <li class="submenu-item @yield('mitra')">
+=======
+                            <!-- <li class="submenu-item ">
+                                <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
+                            </li> -->
+                            <li class="submenu-item ">
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                                 <a href="{{ route('superadmin.mitrakerja') }}"> Data Mitra Kerja</a>
                                 </a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.level') }}"> Kategori User</a>
                             </li>
                         </ul>
                     </li>
@@ -96,16 +115,31 @@
                         </ul>
                     </li>
 
+<<<<<<< HEAD
                     <li class="sidebar-item @yield('obalkes') has-sub">
+=======
+                    <li class="sidebar-item has-sub">
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>MD Obat & Alkes</span>
                         </a>
+<<<<<<< HEAD
                         <ul class="submenu @yield('obat')">
                             <li class="submenu-item @yield('alkes')">
                                 <a href="{{ route('superadmin.dataobat') }}"> Data Obat / Alkes</a>
                             </li>
                             <li class="submenu-item @yield('nama')">
+=======
+                        <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataobat') }}"> Data Alat Kesehatan</a>
+                            </li>
+                            <!-- <li class="submenu-item ">
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                                 <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama O/A</a>
                             </li>
                             <li class="submenu-item @yield('jenis')">
@@ -119,7 +153,7 @@
                             </li>
                             <li class="submenu-item @yield('bobot')">
                                 <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
@@ -132,8 +166,13 @@
                             <li class="submenu-item @yield('anti')">
                                 <a href="{{ route('superadmin.pemeriksaanantigen') }}"> Kebutuhan Pemeriksaan Antigen</a>
                             </li>
+<<<<<<< HEAD
                             <li class="submenu-item @yield('cov')">
                                 <a href="{{ route('superadmin.hasilpemantauan') }}">  Kode Hasil Pemantauan Covid</a>
+=======
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Hasil Pemantauan Covid</a>
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                             </li>
                             <li class="submenu-item @yield('klas')">
                                 <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Klasifikasi Penyakit</a>
@@ -144,8 +183,13 @@
                             <li class="submenu-item @yield('dia')">
                                 <a href="{{ route('superadmin.namapenyakit') }}"> Diagnosa</a>
                             </li>
+<<<<<<< HEAD
                             <li class="submenu-item @yield('lok')">
                                 <a href="{{ route('superadmin.lokasikejadian') }}"> Lokasi Kejadian</a>
+=======
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.lokasikejadian') }}"> Lokasi Kejadian Kecelakaan</a>
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                             </li>
                             <li class="submenu-item @yield('rs')">
                                 <a href="{{ route('superadmin.rsrujukan') }}"> Rumah Sakit Rujukan</a>
@@ -255,11 +299,27 @@
                     </li>
                     @endif
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+<<<<<<< HEAD
                     <li class="sidebar-item  @yield('izinberobat')">
                         <a href{{ route('superadmin.dataizinberobat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Izin Berobat</span>
                         </a>
+=======
+                    <li class="sidebar-item">
+                        <a href="{{ route('superadmin.dataizinberobat') }}" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>Izin Berobat</span>
+                        </a>
+                        <!-- <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataizinberobat') }}"> Data Surat Izin Berobat </a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.izinberobat') }}"><i class="bi bi-arrow-return-right"></i> Form Surat Izin </a>
+                            </li>
+                        </ul> -->
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                     </li>
                     <li class="sidebar-item @yield('izinistirahat')">
                         <a href="{{ route('istirahat.dataizinistirahat') }}" class='sidebar-link'>
@@ -268,11 +328,28 @@
                         </a>
                     </li>
                     @endif
+<<<<<<< HEAD
                     <li class="sidebar-item  @yield('suratrujukan')">
+=======
+                    <li class="sidebar-item">
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                         <a href="{{ route('superadmin.datasuratrujukan') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Rujukan</span>
                         </a>
+<<<<<<< HEAD
+=======
+                        <!-- <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.datasuratrujukan') }}">Data Surat Rujukan</a>
+                            </li>
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.suratrujukan') }}">Surat Rujukan</a>
+                            </li>
+                            @endif
+                        </ul> -->
+>>>>>>> c9e32e78c563bc568cc4199a05d17dbe7138b7b6
                     </li>
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item @yield('keterangansehat')">
