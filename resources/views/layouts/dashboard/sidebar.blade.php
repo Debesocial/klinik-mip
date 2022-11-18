@@ -1,20 +1,25 @@
 <?php
-	session_start();
-	$timeout = 60; // setting timeout dalam menit
-	$logout = "/logout"; // redirect halaman logout
+session_start();
+$timeout = 60; // setting timeout dalam menit
+$logout = "/logout"; // redirect halaman logout
 
-	$timeout = $timeout * 60; // menit ke detik
-	if(isset($_SESSION['start_session'])){
-		$elapsed_time = time()-$_SESSION['start_session'];
-		if($elapsed_time >= $timeout){
-			session_destroy();
-			echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
-		}
-	}
+$timeout = $timeout * 60; // menit ke detik
+if (isset($_SESSION['start_session'])) {
+    $elapsed_time = time() - $_SESSION['start_session'];
+    if ($elapsed_time >= $timeout) {
+        session_destroy();
+        echo "<script type='text/javascript'>alert('Sesi telah berakhir');window.location='$logout'</script>";
+    }
+}
 
-	$_SESSION['start_session']=time();
+$_SESSION['start_session'] = time();
 
 ?>
+<style>
+    .sidebar-wrapper .menu .sidebar-link {
+        font-size: .85rem;
+    }
+</style>
 
 <div id="app">
     <div id="sidebar" class="active">
@@ -32,7 +37,7 @@
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-title"><strong>MAIN MENU</strong></li>
-                    <li class="sidebar-item active ">
+                    <li class="sidebar-item">
                         <a href="/dashboard" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
                             <span>Dashboard</span>
@@ -50,15 +55,15 @@
                                 <a href="{{ route('superadmin.datauser') }}"> Data Petugas</a>
                                 </a>
                             </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Kategori Petugas</a>
-                            </li>
-                            <li class="submenu-item ">
+                            <!-- <li class="submenu-item ">
                                 <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
-                            </li>
+                            </li> -->
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.mitrakerja') }}"> Data Mitra Kerja</a>
                                 </a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.level') }}"> Kategori User</a>
                             </li>
                         </ul>
                     </li>
@@ -96,16 +101,19 @@
                         </ul>
                     </li>
 
-                    <li class="sidebar-item  has-sub">
+                    <li class="sidebar-item has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>MD Obat & Alkes</span>
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat / Alkes</a>
+                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat</a>
                             </li>
                             <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataobat') }}"> Data Alat Kesehatan</a>
+                            </li>
+                            <!-- <li class="submenu-item ">
                                 <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama O/A</a>
                             </li>
                             <li class="submenu-item ">
@@ -119,7 +127,7 @@
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
 
@@ -133,7 +141,7 @@
                                 <a href="{{ route('superadmin.pemeriksaanantigen') }}"> Kebutuhan Pemeriksaan Antigen</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.hasilpemantauan') }}">  Kode Hasil Pemantauan Covid</a>
+                                <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Hasil Pemantauan Covid</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Klasifikasi Penyakit</a>
@@ -145,7 +153,7 @@
                                 <a href="{{ route('superadmin.namapenyakit') }}"> Diagnosa</a>
                             </li>
                             <li class="submenu-item ">
-                                <a href="{{ route('superadmin.lokasikejadian') }}"> Lokasi Kejadian</a>
+                                <a href="{{ route('superadmin.lokasikejadian') }}"> Lokasi Kejadian Kecelakaan</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.rsrujukan') }}"> Rumah Sakit Rujukan</a>
@@ -266,19 +274,19 @@
                     </li>
                     @endif
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                    <li class="sidebar-item">
+                        <a href="{{ route('superadmin.dataizinberobat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Izin Berobat</span>
                         </a>
-                        <ul class="submenu">
+                        <!-- <ul class="submenu">
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.dataizinberobat') }}"> Data Surat Izin Berobat </a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.izinberobat') }}"><i class="bi bi-arrow-return-right"></i> Form Surat Izin </a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="sidebar-item">
                         <a href="{{ route('istirahat.dataizinistirahat') }}" class='sidebar-link'>
@@ -287,12 +295,12 @@
                         </a>
                     </li>
                     @endif
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                    <li class="sidebar-item">
+                        <a href="{{ route('superadmin.datasuratrujukan') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Rujukan</span>
                         </a>
-                        <ul class="submenu">
+                        <!-- <ul class="submenu">
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.datasuratrujukan') }}">Data Surat Rujukan</a>
                             </li>
@@ -301,7 +309,7 @@
                                 <a href="{{ route('superadmin.suratrujukan') }}">Surat Rujukan</a>
                             </li>
                             @endif
-                        </ul>
+                        </ul> -->
                     </li>
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item">
