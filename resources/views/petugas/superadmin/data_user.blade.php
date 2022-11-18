@@ -3,7 +3,6 @@
 @section('user', 'active')
 @section('data', 'active')
 @section('side', 'active')
-
 @section('judul', 'Data Petugas')
 @section('container')
 
