@@ -1,8 +1,5 @@
 @extends('layouts.dashboard.app')
-
 @section('title', 'Nama Penyakit')
-
-
 @section('judul', 'Data Nama Penyakit')
 @section('container')
 
@@ -10,10 +7,10 @@
     <div class="card">
         <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.addnamapenyakit') }}" class="btn btn-success rounded-pill">
-                        <i class="fa fa-plus"></i>
+                <a href="{{ route('superadmin.addnamapenyakit') }}" class="btn btn-success rounded-pill">
+                    <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
-                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table" id="table1">
@@ -31,8 +28,9 @@
                         <td>{{ $nama->primer }}</td>
                         <td>{{ $nama->sekunder }}</td>
                         <td>{{ $nama->sub_klasifikasi->nama_penyakit }}</td>
-                        <td><div class="buttons">
-                            <a href="/ubah/nama/penyakit/{{ $nama['id'] }}" class="btn btn-success rounded-pill" title="Ubah diagnosa"><i class="fa fa-edit"></i></a>
+                        <td>
+                            <div class="buttons">
+                                <a href="/ubah/nama/penyakit/{{ $nama['id'] }}" class="btn btn-success rounded-pill" title="Ubah diagnosa"><i class="fa fa-edit"></i></a>
                             </div>
                         </td>
                     </tr>
@@ -41,11 +39,7 @@
             </table>
         </div>
     </div>
-</div>
 </section>
 
-<!-- // Basic multiple Column Form section end -->
-
-</div>
-@include('sweetalert::alert') 
+@include('sweetalert::alert')
 @endsection

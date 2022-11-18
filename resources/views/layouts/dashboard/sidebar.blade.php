@@ -101,36 +101,6 @@ $_SESSION['start_session'] = time();
                         </ul>
                     </li>
 
-                    <li class="sidebar-item has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>MD Obat & Alkes</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.dataobat') }}"> Data Alat Kesehatan</a>
-                            </li>
-                            <!-- <li class="submenu-item ">
-                                <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.jenisobat') }}"><i class="bi bi-arrow-return-right"></i> Jenis O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.golonganobat') }}"><i class="bi bi-arrow-return-right"></i> Golongan O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
-                            </li> -->
-                        </ul>
-                    </li>
-
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
@@ -160,6 +130,33 @@ $_SESSION['start_session'] = time();
                             </li>
                             <li class="submenu-item ">
                                 <a href="{{ route('superadmin.spesialisrujukan') }}"> Dokter Spesialis Rujukan</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sidebar-item has-sub">
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-stack"></i>
+                            <span>MD Obat & Alkes</span>
+                        </a>
+                        <ul class="submenu">
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat & Alkes</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama O/A</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.jenisobat') }}"><i class="bi bi-arrow-return-right"></i> Jenis O/A</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.golonganobat') }}"><i class="bi bi-arrow-return-right"></i> Golongan O/A</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan O/A</a>
+                            </li>
+                            <li class="submenu-item ">
+                                <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
                             </li>
                         </ul>
                     </li>
