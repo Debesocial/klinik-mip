@@ -1,6 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'View Data Pasien')
+@section('kate', 'active')
+@section('pasien', 'active')
+@section('da', 'active')
 
 <div class="page-heading">
     <div class="page-title">
@@ -143,6 +146,15 @@
                                                     <input type="email_keluarga" id="email_keluarga" class="form-control"
                                                         name="email_keluarga" value="{{ $pasien->keluarga->email }}" disabled>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="email_keluarga">Coba </label>
+                                                <input type="text" id="" class="form-control"
+                                                    name="" value="<?php
+                                                    $pasien = $pasien->created_at;
+                                                    echo 'RM'.substr( date($pasien, 'Y'), -2).''.$month.''.str_pad($no,4,"0",STR_PAD_LEFT);
+                                                    ?>" >
+                                        </div>
                                            
                                         </div>
                                 </form>

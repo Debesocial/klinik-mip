@@ -49,7 +49,7 @@
                                             <div class="form-group">
                                                 <label for="nama_pemantauan">Deskripsi<b class="color-red">*</b></label>
                                                 <input type="text" id="nama_pemantauan" class="form-control"
-                                                     name="nama_lokasi" placeholder="Masukkan deskripsi"required>
+                                                     name="nama_pemantauan" placeholder="Masukkan deskripsi"required>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">

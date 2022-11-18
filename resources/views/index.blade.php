@@ -2,6 +2,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Dashboard')
+@section('dashboard', 'active')
 
 @section('container')
 <h4 class="card-title">Welcome, {{ Auth::user()->name }}</h4>

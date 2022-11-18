@@ -3,6 +3,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Add Data Pasien')
+@section('kate', 'active')
+@section('pasien', 'active')
+@section('da', 'active')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <div class="page-heading">
@@ -157,6 +160,11 @@
                                                     <input class="form-check-input" type="radio" name="hamil_menyusui"
                                                         id="hamil_menyusui" value="1"> Ya
                                                 
+                                            </div>
+                                            {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
+                                            <div class="form-group">
+                                                <label for="alamat">Alamat <b class="color-red">*</b></label>
+                                                <input type="file" id="upload" class="form-control" name="upload"">
                                             </div>
                                         </div>
 

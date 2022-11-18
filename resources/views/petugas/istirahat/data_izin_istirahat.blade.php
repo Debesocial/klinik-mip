@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Izin Istirahat')
-
+@section('izinistirahat', 'active')
 
 @section('judul', 'Data Izin Istirahat')
 @section('container')
