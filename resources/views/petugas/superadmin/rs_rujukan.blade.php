@@ -1,7 +1,8 @@
 @extends('layouts.dashboard.app')
-
 @section('title', 'Rumah Sakit Rujukan')
-
+@section('md', 'active')
+@section('periksa', 'active')
+@section('rs', 'active')
 
 @section('judul', 'Rumah Sakit Rujukan')
 @section('container')
@@ -10,10 +11,10 @@
     <div class="card">
         <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.addrsrujukan') }}" class="btn btn-success rounded-pill">
-                        <i class="fa fa-plus"></i>
+                <a href="{{ route('superadmin.addrsrujukan') }}" class="btn btn-success rounded-pill">
+                    <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
-                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table" id="table1">
@@ -27,22 +28,18 @@
                     @foreach ($rumah_sakit_rujukans as $rsrujukan)
                     <tr>
                         <td>{{ $rsrujukan['nama_RS_rujukan'] }}</td>
-                        <td><div class="buttons">
-                            <a href="/ubah/rs/rujukan/{{ $rsrujukan['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                            </div></td>
+                        <td>
+                            <div class="buttons">
+                                <a href="/ubah/rs/rujukan/{{ $rsrujukan['id'] }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 </section>
 
-
-
-<!-- // Basic multiple Column Form section end -->
-
-</div>
-@include('sweetalert::alert') 
+@include('sweetalert::alert')
 @endsection

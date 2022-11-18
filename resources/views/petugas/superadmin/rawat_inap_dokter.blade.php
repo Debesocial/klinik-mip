@@ -1,6 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Rawat Inap Dokter')
+@section('rawat', 'active')
+@section('inap', 'active')
+@section('dokter', 'active')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />
@@ -40,7 +43,7 @@
                                     <a class="list-group-item list-group-item-action" id="list-tindakan-list"
                                         data-bs-toggle="list" href="#list-tindakan" role="tab">Tindakan</a>
                                         <a class="list-group-item list-group-item-action" id="list-resep-list"
-                                        data-bs-toggle="list" href="#list-resep" role="tab">Resep Obat</a>
+                                        data-bs-toggle="list" href="#list-resep" role="tab">Terapi Tambahan</a>
                                 </div>
 
             <div class="tab-content text-justify">

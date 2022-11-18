@@ -23,18 +23,31 @@
 	@yield('css')
 
 	<style>
-        table.dataTable td{
-            padding: 15px 8px;
-        }
-        .fontawesome-icons .the-icon svg {
-            font-size: 24px;
-        }
-    </style>
+		table.dataTable td {
+			padding: 15px 8px;
+		}
+
+		.fontawesome-icons .the-icon svg {
+			font-size: 24px;
+		}
+
+		.btn {
+			font-size: .85rem;
+		}
+
+		.form-control {
+			font-size: .85rem;
+		}
+
+		.form-select {
+			font-size: .85rem;
+		}
+	</style>
 </head>
 
-<body>
+<body style="font-size: 0.8rem ;">
 	@include('layouts.dashboard.sidebar')
-	<div id="main">
+	<div id="main" style="margin-left: 350px;">
 		<header class="mb-3">
 
 			<a href="#" class="burger-btn d-block d-xl-none">
@@ -64,9 +77,9 @@
 
 
 	<script src="{{asset ('ref/assets/vendors/jquery/jquery.min.js')}}"></script>
-<script src="{{asset ('ref/assets/vendors/jquery-datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset ('ref/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js')}}"></script>
-<script src="{{asset ('ref/assets/vendors/fontawesome/all.min.js')}}"></script>
+	<script src="{{asset ('ref/assets/vendors/jquery-datatables/jquery.dataTables.min.js')}}"></script>
+	<script src="{{asset ('ref/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js')}}"></script>
+	<script src="{{asset ('ref/assets/vendors/fontawesome/all.min.js')}}"></script>
 
 
 
@@ -75,15 +88,11 @@
 		// Jquery Datatable
 		let jquery_datatable = $("#table1").DataTable()
 	</script>
-	 <script type="text/javascript">
-		function yesnoCheck_lainnya(that)
-		{
-			if (that.value == "lainnya")
-			{
+	<script type="text/javascript">
+		function yesnoCheck_lainnya(that) {
+			if (that.value == "lainnya") {
 				document.getElementById("lain").style.display = "block";
-			}
-			else
-			{
+			} else {
 				document.getElementById("lain").style.display = "none";
 			}
 		}

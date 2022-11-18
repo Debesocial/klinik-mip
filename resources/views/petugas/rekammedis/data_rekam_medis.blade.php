@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Rekam Medis')
-
+@section('medis', 'active')
 
 @section('judul', 'Data Rekam Medis')
 @section('container')
@@ -19,25 +19,48 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Nama Pasien</th>
-                        <th>Tempat</th>
-                        <th>Tanggal</th>
-                        <th>riwayat</th>
-                        <th>Obat yang Diberikan</th>
+                        
+                        <th>ID Rekam Medis</th>
+                        <th>NIK</th>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Perusahaan</th>
+                        <th>Jabatan</th>
+                        <th>Alergi Obat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($rekammedis as $rekam)
+                    @foreach ($pasien as $pas)
                     <tr>
-                            <td>{{ $narko->penggunaan_obat }}</td>
-                            <td>{{ $narko->jenis_obat }}</td>
-                            <td>{{ $narko->asal_obat }}</td>
-                            <td>{{ $narko->terakhir_digunakan }}</td>
+                        
+                            <td>{{ $pas['no_rekam_medis'] }}</td>
+                            <td>{{ $pas['NIK'] }}</td>
+                            <td>{{ $pas['nama_pasien'] }}</td>
+                            <td><?php 
+                                $tanggal_lahir = $pas->tanggal_lahir;
+                                $lahir    =new DateTime($tanggal_lahir);
+                                $today        =new DateTime('today');
+                                $usia = $today->diff($lahir);
+                                echo $usia->y; echo " Tahun ";
+                                ?></td>
+                            <td>{{ $pas->perusahaan->nama_perusahaan_pasien }}</td>
+                            <td>{{ $pas->jabatan->nama_jabatan }}</td>
+                            <td><?php
+                                $pass = $pas->alergi_obat;
+                                switch($pass) {
+                                  case 0:
+                                    echo "";
+                                    break;
+                                  case 1:
+                                    echo "<i class='fa fa-check'></i>";
+                                    break;
+                                }
+                                ?></td>
                             <td><div class="buttons">
-                                <a href="#" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="#" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                                </div></td>
+                                <a href="/view/rekam/medis/{{ $pas->id}}" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                </div></td>  
+                            
                     </tr>
                     @endforeach
                 </tbody>

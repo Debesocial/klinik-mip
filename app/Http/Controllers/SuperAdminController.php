@@ -573,6 +573,7 @@ class SuperAdminController extends Controller
             'nama_penyakit_id' => $request->nama_penyakit_id,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
+            'upload' => $request->upload,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id
         ]);

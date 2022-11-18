@@ -1,6 +1,8 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Izin Istirahat')
+@section('izinistirahat', 'active')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />
@@ -38,7 +40,7 @@
                                     <a class="list-group-item list-group-item-action" id="list-tindakan-list"
                                         data-bs-toggle="list" href="#list-tindakan" role="tab">Tindakan</a>
                                         <a class="list-group-item list-group-item-action" id="list-resep-list"
-                                        data-bs-toggle="list" href="#list-resep" role="tab">Resep Obat</a>
+                                        data-bs-toggle="list" href="#list-resep" role="tab">Terapi Tambahan</a>
                                         <a class="list-group-item list-group-item-action" id="list-dokter-list"
                                         data-bs-toggle="list" href="#list-dokter" role="tab">Rekomendasi Dokter</a>
                                 </div>

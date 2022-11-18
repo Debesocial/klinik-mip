@@ -96,9 +96,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::post('/surat/rujukan', [SuperAdminController::class, 'addsuratrujukan'])->name('superadmin.addsuratrujukan');
     Route::get('/print/surat/rujukan/{id}', [SuperAdminController::class, 'printsuratrujukan'])->name('superadmin.printsuratrujukan');
   
+    Route::get('/view/rekam/medis/{id}', [RekamMedisController::class, 'viewrekammedis'])->name('rekammedis.viewrekammedis');
     Route::get('/data/rekam/medis', [RekamMedisController::class, 'datarekammedis'])->name('rekammedis.datarekammedis');
     Route::get('rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
-    Route::post('/rekam/inqmedis', [SuperAdminController::class, 'autorekam'])->name('superadmin.rekammedisautocomplete');
+    Route::post('/rekam/medis', [SuperAdminController::class, 'autorekam'])->name('superadmin.rekammedisautocomplete');
 
     Route::get('/keterangan/sehat', [SuperAdminController::class, 'keterangansehat'])->name('superadmin.keterangansehat');
 

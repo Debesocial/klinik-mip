@@ -1,7 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Pemeriksaan Covid-19')
-
+@section('pemeriksaan', 'active')
+@section('screen', 'active')
+@section('covid', 'active')
 
 @section('judul', 'Data Pemeriksaan Covid-19')
 @section('container')
