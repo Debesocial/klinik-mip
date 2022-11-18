@@ -1,6 +1,10 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Pemeriksaan Narkoba')
+@section('pemeriksaan', 'active')
+@section('screen', 'active')
+@section('narko', 'active')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />

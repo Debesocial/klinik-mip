@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Kecelakan Kerja')
-
+@section('kecelakaan', 'active')
 
 <div class="page-heading">
     <div class="page-title">

@@ -1,7 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Pemantauan Covid-19')
-
+@section('pemeriksaan', 'active')
+@section('screen', 'active')
+@section('pemantauan', 'active')
 
 <div class="page-heading">
     <div class="page-title">

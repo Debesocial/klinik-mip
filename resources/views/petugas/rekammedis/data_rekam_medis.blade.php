@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Rekam Medis')
-
+@section('medis', 'active')
 
 @section('judul', 'Data Rekam Medis')
 @section('container')

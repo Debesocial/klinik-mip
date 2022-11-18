@@ -1,6 +1,17 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Data Mitra Kerja')
-@section('judul', 'Data Mitra Kerja')
+@section('data', 'active')
+@section('mitra', 'active')
+@section('side', 'active')
+
+<div class="page-heading">
+    <div class="page-title">
+        @section('judul', 'Data Petugas Mitra Kerja')
+        @section('container')
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-2 order-first">
+            </div>
+            @section('judul', 'Data Mitra Kerja')
 @section('container')
 
 <section class="section">
@@ -10,7 +21,6 @@
                 <a href="{{ route('superadmin.addmitrakerja') }}" class="btn btn-success rounded-pill">
                     <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
-            </div>
         </div>
         <div class="card-body">
             <table class="table" id="table1">
