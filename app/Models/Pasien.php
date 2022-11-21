@@ -24,7 +24,6 @@ class Pasien extends Model
         'nama_pasien',
         'tempat_lahir',
         'tanggal_lahir',
-        'umur',
         'jenis_kelamin',
         'alamat',
         'alamat_mess',

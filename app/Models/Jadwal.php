@@ -12,13 +12,16 @@ class Jadwal extends Model
     protected $table = 'jadwals';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'hari',
-        'shift',
-        'dari',
-        'sampai'
+        'senin',
+        'selasa',
+        'rabu',
+        'kamis',
+        'jumat',
+        'sabtu',
+        'minggu'
     ];
     
     public function user() {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

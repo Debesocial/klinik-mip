@@ -723,32 +723,37 @@ class SuperAdminController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'status' => 'required',
-            'jadwal_id' => 'required',
             'telp' => 'required',
             'level_id' => 'required'
         ]);
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        $request['password'] = Hash::make($request['password']);
+        
 
-        if($request->hasFile('ttd')) {
-            $file = $request->file('ttd');
+        $jadwal = Jadwal::create([
+            'senin' => $request->senin,
+            'selasa' => $request->selasa,
+            'rabu' => $request->rabu,
+            'kamis' => $request->kamis,
+            'jumat' => $request->jumat,
+            'sabtu' => $request->sabtu,
+            'minggu' => $request->minggu,
+        ]);
 
-            $filename = time().'_'.$file->getClientOriginalName();
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'jadwal_id' => $jadwal->id,
+            'status' => $request->status,
+            'telp' => $request->telp,
+            'level_id' => $request->level_id,
+        ]);
 
-            $file->move('petugas/ttd/file', $filename);
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => $request->password,
-                'status' => $request->status,
-                'jadwal_id' => $request->jadwal_id,
-                'telp' => $request->telp,
-                'level_id' => $request->level_id,
-                'ttd' => $filename,
-            ]);
-        }
-
+        if ($user) {
         return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
+    }   
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function ubahuser($id)
@@ -764,10 +769,18 @@ class SuperAdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->status = $request->input('status');
-        $user->jadwal_id = $request->input('jadwal_id');
         $user->telp = $request->input('telp');
         $user->level_id = $request->input('level_id');
         $user->update();
+        $jadwal = Jadwal::find($id);
+        $jadwal->senin = $request->input('senin');
+        $jadwal->selasa = $request->input('selasa');
+        $jadwal->rabu = $request->input('rabu');
+        $jadwal->kamis = $request->input('kamis');
+        $jadwal->jumat = $request->input('jumat');
+        $jadwal->sabtu = $request->input('senin');
+        $jadwal->minggu = $request->input('minggu');
+        $jadwal->update();
 
         return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
     }
@@ -786,17 +799,23 @@ class SuperAdminController extends Controller
     public function tambahjadwal(Request $request)
     {
         $validatedData = $request->validate([
-            'hari' => 'required',
-            'shift' => 'required',
-            'dari' => 'required',
-            'sampai' => 'required'
+            'senin' => 'required',
+            'selasa' => 'required',
+            'rabu' => 'required',
+            'kamis' => 'required',
+            'jumat' => 'required',
+            'sabtu' => 'required',
+            'minggu' => 'required'
         ]);
 
         Jadwal::create([
-            'hari' => $request->hari,
-            'shift' => $request->shift,
-            'dari' => $request->dari,
-            'sampai' => $request->sampai,
+            'senin' => $request->senin,
+            'selasa' => $request->selasa,
+            'rabu' => $request->rabu,
+            'kamis' => $request->kamis,
+            'jumat' => $request->jumat,
+            'sabtu' => $request->sabtu,
+            'minggu' => $request->minggu,
         ]);
 
         return redirect('/jadwal')->with('success', 'Berhasil Menambahkan Jadwal!');

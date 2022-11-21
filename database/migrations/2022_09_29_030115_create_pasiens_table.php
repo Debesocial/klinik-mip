@@ -25,7 +25,6 @@ class CreatePasiensTable extends Migration
             $table->string('nama_pasien', 50);
             $table->string('tempat_lahir', 20);
             $table->date('tanggal_lahir');
-            $table->bigInteger('umur');
             $table->string('jenis_kelamin', 10);
             $table->string('alamat', 50);
             $table->string('alamat_mess', 20)->nullable();
