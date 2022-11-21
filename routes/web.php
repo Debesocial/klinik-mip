@@ -163,6 +163,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/ubah/bobot/obat/{id}', [BobotObatController::class, 'ubahbobotobat'])->name('superadmin.ubahbobotobat');
     Route::post('/ubah/bobot/obat/{id}', [BobotObatController::class, 'changebobotobat'])->name('superadmin.changebobotobat');
 
+    Route::get('/view/user/{id}', [SuperAdminController::class, 'viewuser'])->name('superadmin.viewuser');
     Route::get('/data/user', [SuperAdminController::class, 'datauser'])->name('superadmin.datauser');
     Route::get('/add/data/user', [SuperAdminController::class, 'adduser'])->name('superadmin.adddatauser');
     Route::post('/add/data/user', [SuperAdminController::class, 'tambahuser'])->name('superadmin.tambahdatauser');
