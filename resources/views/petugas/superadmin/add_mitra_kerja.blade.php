@@ -46,9 +46,9 @@
                                             <label for="jadwal_id">Perusahaan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="perusahaan" id="perusahaan">
                                                 <option disabled selected>Pilih Perusahaan</option>
-                                                <!-- @foreach ($jadwal as $jadwal)
-                                                <option value="{{ $jadwal->id }}">{{ $jadwal->hari }} shift {{ $jadwal->shift }}</option>
-                                                @endforeach -->
+                                                 @foreach ($perusahaan as $peru)
+                                                <option value="{{ $peru->id }}">{{ $peru->nama_perusahaan_pasien }} </option>
+                                                @endforeach 
                                             </select>
                                         </div>
                                     </div>
@@ -56,10 +56,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="tempat_lahir">Divisi <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="divisi" id="divisi">
+                                            <select class="choices form-select" name="level_id" id="level_id" required>
                                                 <option disabled selected>Pilih Divisi</option>
-                                                <option name="HRD">HRD</option>
-                                                <option name="HSE">HSE</option>
+                                                @foreach ($divisi as $div)
+                                                <option value="{{ $div->id }}">{{ $div->nama_divisi_pasien }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

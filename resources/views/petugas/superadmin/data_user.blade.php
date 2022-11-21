@@ -36,7 +36,7 @@
                         <td>{{ $user->telp }}</td>
                         <td>
                             <a href="/ubah/data/user/{{ $user->id }}" class="btn btn-success rounded-pill" title="Ubah data petugas"><i class="fa fa-edit"></i></a>
-                            <a href="/ubah/data/user/{{ $user->id }}" class="btn btn-danger rounded-pill" title="Ubah data petugas"><i class="fa fa-eye"></i></a>
+                            <a href="/view/user/{{ $user->id }}" class="btn btn-danger rounded-pill" title="View data petugas"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
                     @endforeach

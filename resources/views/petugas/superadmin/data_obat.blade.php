@@ -40,7 +40,6 @@
                         <td>{{ $obat->bobot_obat->bobot_obat }}</td>
                         <td>{{ $obat->komposisi_obat }}</td>
                             <td><div class="buttons">
-                                <a href="" title="Lihat data obat/alkes" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
                                 <a href="/ubah/data/obat/{{ $obat->id }}" class="btn btn-success rounded-pill" title="Ubah data obat/alkes"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>

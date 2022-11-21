@@ -173,11 +173,7 @@
                                             <div class="col-6">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>
-                                            {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
-                                            <div class="form-group">
-                                                <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                                <input type="file" id="upload" class="form-control" name="upload"">
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
