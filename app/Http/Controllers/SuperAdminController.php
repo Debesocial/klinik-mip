@@ -532,7 +532,6 @@ class SuperAdminController extends Controller
             'nama_pasien' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
-            'umur' => 'required',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
             'pekerjaan' => 'required',
@@ -563,7 +562,6 @@ class SuperAdminController extends Controller
             'nama_pasien' => $request->nama_pasien,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
-            'umur' => $request->umur,
             'jenis_kelamin' => $request->jenis_kelamin,
             'alamat' => $request->alamat,
             'alamat_mess' => $request->alamat_mess,
@@ -642,9 +640,11 @@ class SuperAdminController extends Controller
     public function addmitrakerja()
     {
         $jadwal = Jadwal::all();
+        $perusahaan = Perusahaan::all();
         $level = Level::all();
+        $divisi = Divisi::all();
 
-        return view('petugas.superadmin.add_mitra_kerja', compact('jadwal', 'level'));
+        return view('petugas.superadmin.add_mitra_kerja', compact('jadwal', 'level', 'perusahaan', 'divisi'));
     }
     public function tambahmitrakerja(Request $request)
     {
@@ -705,6 +705,14 @@ class SuperAdminController extends Controller
 
 
         return view('petugas.superadmin.data_user')->with('users', $users);
+    }
+
+    public function viewuser($id)
+    {
+        $user = User::find($id);
+        $jadwal = Jadwal::all();
+        $level = Level::all();
+        return view('petugas.superadmin.view_user', compact('user', 'jadwal', 'level'));
     }
 
     public function adduser()
@@ -930,7 +938,7 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.add_spesialis_rujukan');
     }
 
-    public function tambahspessialisrujukan(Request $request)
+    public function tambahspesialisrujukan(Request $request)
     {
         $validatedData = $request->validate([
             'nama_spesialis_rujukan' => 'required'

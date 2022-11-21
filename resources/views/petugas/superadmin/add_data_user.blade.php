@@ -84,7 +84,7 @@
                                             <tr>
                                                 <td>Senin</td>
                                                 <td>
-                                                    <select class="choices form-select" name="senin" id="senin" required>
+                                                    <select class="choices form-select" name="senin" id="senin" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
@@ -94,7 +94,7 @@
                                             <tr>
                                                 <td>Selasa</td>
                                                 <td>
-                                                    <select class="choices form-select" name="selasa" id="selasa" required>
+                                                    <select class="choices form-select" name="selasa" id="selasa" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
@@ -104,7 +104,7 @@
                                             <tr>
                                                 <td>Rabu</td>
                                                 <td>
-                                                    <select class="choices form-select" name="rabu" id="rabu" required>
+                                                    <select class="choices form-select" name="rabu" id="rabu" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
@@ -124,7 +124,7 @@
                                             <tr>
                                                 <td>Jumat</td>
                                                 <td>
-                                                    <select class="choices form-select" name="jumat" id="jumat" required>
+                                                    <select class="choices form-select" name="jumat" id="jumat" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
@@ -134,7 +134,7 @@
                                             <tr>
                                                 <td>Sabtu</td>
                                                 <td>
-                                                    <select class="choices form-select" name="sabtu" id="sabtu" required>
+                                                    <select class="choices form-select" name="sabtu" id="sabtu" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
@@ -144,7 +144,7 @@
                                             <tr>
                                                 <td>Minggu</td>
                                                 <td>
-                                                    <select class="choices form-select" name="minggu" id="minggu" required>
+                                                    <select class="choices form-select" name="minggu" id="minggu" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
