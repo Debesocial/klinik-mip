@@ -1,10 +1,8 @@
 @extends('layouts.dashboard.app')
-
 @section('title', 'Golongan Obat')
 @section('obalkes', 'active')
 @section('obat', 'active')
 @section('golongan', 'active')
-
 @section('judul', 'Data Golongan Obat')
 @section('container')
 
@@ -12,10 +10,10 @@
     <div class="card">
         <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.addgolonganobat') }}" class="btn btn-success rounded-pill">
-                        <i class="fa fa-plus"></i>
+                <a href="{{ route('superadmin.addgolonganobat') }}" class="btn btn-success rounded-pill">
+                    <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
-                </div>
+            </div>
         </div>
         <div class="card-body">
             <table class="table" id="table1">
@@ -29,20 +27,18 @@
                     @foreach ($golonganobat as $golongan)
                     <tr>
                         <td>{{ $golongan['nama_golongan_obat'] }}</td>
-                        <td><div class="buttons">
+                        <td>
+                            <div class="buttons">
                                 <a href="/ubah/golongan/obat/{{ $golongan->id }}" class="btn btn-success rounded-pill" title="Ubah golongan obat/alkes"><i class="fa fa-edit"></i></a>
-                                </div></td>
+                            </div>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
-</div>
 </section>
 
-<!-- // Basic multiple Column Form section end -->
-
-</div>
-@include('sweetalert::alert') 
+@include('sweetalert::alert')
 @endsection

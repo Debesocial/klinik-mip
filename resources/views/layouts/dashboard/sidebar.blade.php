@@ -124,7 +124,7 @@ $_SESSION['start_session'] = time();
                             </li>
                             <li class="submenu-item @yield('bobot')">
                                 <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
-                            </li> -->
+                            </li>
                         </ul>
                     </li>
 
@@ -138,7 +138,7 @@ $_SESSION['start_session'] = time();
                                 <a href="{{ route('superadmin.pemeriksaanantigen') }}"> Kebutuhan Pemeriksaan Antigen</a>
                             </li>
                             <li class="submenu-item @yield('cov')">
-                                <a href="{{ route('superadmin.hasilpemantauan') }}">  Kode Hasil Pemantauan Covid</a>
+                                <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Hasil Pemantauan Covid</a>
                             </li>
                             <li class="submenu-item @yield('klas')">
                                 <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Klasifikasi Penyakit</a>
@@ -193,7 +193,7 @@ $_SESSION['start_session'] = time();
                             <span>Rekam Medis</span>
                         </a>
                     </li>
-                    
+
                     @endif
 
                     <li class="sidebar-item @yield('rawat') has-sub">
