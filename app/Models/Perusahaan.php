@@ -18,4 +18,7 @@ class Perusahaan extends Model
     public function pasien() {
         return $this->hasMany(Pasien::class);
     }
+    public function user() {
+        return $this->hasMany(User::class);
+    }
 }

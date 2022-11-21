@@ -15,10 +15,13 @@ class CreateJadwalsTable extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->string('hari', 20);
-            $table->string('shift', 20);
-            $table->time('dari');
-            $table->time('sampai');
+            $table->string('senin')->nullable();
+            $table->string('selasa')->nullable();
+            $table->string('rabu')->nullable();
+            $table->string('kamis')->nullable();
+            $table->string('jumat')->nullable();
+            $table->string('sabtu')->nullable();
+            $table->string('minggu')->nullable();
             $table->timestamps();
         });
     }

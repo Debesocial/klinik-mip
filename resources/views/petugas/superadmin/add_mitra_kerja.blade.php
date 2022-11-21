@@ -1,5 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Add Data Mitra Kerja')
+@section('data', 'active')
+@section('mitra', 'active')
+@section('side', 'active')
+
 @section('judul', 'Tambah Data Mitra Kerja')
 @section('container')
 

@@ -56,17 +56,14 @@ $_SESSION['start_session'] = time();
                                 </a>
                             </li>
                             <li class="submenu-item @yield('level')">
-                                <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Kategori Petugas</a>
+                                <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Level Petugas</a>
                             </li>
-                            <li class="submenu-item @yield('jadwal')">
+                            {{-- <li class="submenu-item @yield('jadwal')">
                                 <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
-                            </li>
+                            </li> --}}
                             <li class="submenu-item @yield('mitra')">
                                 <a href="{{ route('superadmin.mitrakerja') }}"> Data Mitra Kerja</a>
                                 </a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.level') }}"> Kategori User</a>
                             </li>
                         </ul>
                     </li>

@@ -1,5 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Add Kategori')
+@section('data', 'active')
+@section('level', 'active')
+@section('side', 'active')
+
 @section('judul', 'Tambah Kategori')
 @section('container')
 

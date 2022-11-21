@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Data Kategori Petugas')
+@section('title', 'Data Level Petugas')
 @section('data', 'active')
 @section('level', 'active')
 @section('side', 'active')
 
-@section('judul', 'Data Kategori Petugas')
+@section('judul', 'Data Level Petugas')
 @section('container')
 
 <section class="section">
@@ -20,7 +20,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Kategori</th>
+                        <th>Level</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
