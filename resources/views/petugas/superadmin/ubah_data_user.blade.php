@@ -1,5 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Ubah Data Petugas')
+@section('user', 'active')
+@section('data', 'active')
+@section('side', 'active')
+
 @section('judul', 'Ubah Data Petugas')
 @section('container')
 
@@ -25,6 +29,7 @@
                                         <div class="form-group">
                                             <label for="email">Email Petugas</label>
                                             <input type="email" id="email" class="form-control" name="email" value="{{ $user['email'] }}" required>
+                                            
                                         </div>
                                     </div>
 
@@ -77,7 +82,8 @@
                                             <tr>
                                                 <td>Senin</td>
                                                 <td>
-                                                    <select class="choices form-select" name="senin">
+                                                    <select class="choices form-select" name="senin" id="senin">
+                                                        <option value=">{{ $user->jadwal->senin }}">{{ $user->jadwal->senin }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -88,6 +94,7 @@
                                                 <td>Selasa</td>
                                                 <td>
                                                     <select class="choices form-select" name="selasa">
+                                                        <option value=">{{ $user->jadwal->selasa }}">{{ $user->jadwal->selasa }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -98,6 +105,7 @@
                                                 <td>Rabu</td>
                                                 <td>
                                                     <select class="choices form-select" name="rabu">
+                                                        <option value=">{{ $user->jadwal->rabu }}">{{ $user->jadwal->rabu }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -108,6 +116,7 @@
                                                 <td>Kamis</td>
                                                 <td>
                                                     <select class="choices form-select" name="kamis">
+                                                        <option value=">{{ $user->jadwal->kamis }}">{{ $user->jadwal->kamis }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -118,6 +127,7 @@
                                                 <td>Jumat</td>
                                                 <td>
                                                     <select class="choices form-select" name="jumat">
+                                                        <option value=">{{ $user->jadwal->jumat }}">{{ $user->jadwal->jumat }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -128,6 +138,7 @@
                                                 <td>Sabtu</td>
                                                 <td>
                                                     <select class="choices form-select" name="sabtu">
+                                                        <option value=">{{ $user->jadwal->sabtu }}">{{ $user->jadwal->sabtu }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>
@@ -138,6 +149,7 @@
                                                 <td>Minggu</td>
                                                 <td>
                                                     <select class="choices form-select" name="minggu">
+                                                        <option value=">{{ $user->jadwal->minggu }}">{{ $user->jadwal->minggu }}</option>
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18-30 - 06:30 )">Shift 2 ( 18-30 - 06:30 )</option>

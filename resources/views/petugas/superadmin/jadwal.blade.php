@@ -31,10 +31,10 @@
                 <tbody>
                     @foreach ($jadwal as $jad)
                     <tr>
-                        <td>{{ $jad['hari'] }}</td>
-                        <td>{{ $jad['shift'] }}</td>
-                        <td>{{ $jad['dari'] }}</td>
-                        <td>{{ $jad['sampai'] }}</td>
+                        <td>{{ $jad['senin'] }}</td>
+                        <td>{{ $jad['selasa'] }}</td>
+                        <td>{{ $jad['rabu'] }}</td>
+                        <td>{{ $jad['kamis'] }}</td>
                         <td><div class="buttons">
                                 <a href="/ubah/jadwal/{{ $jad->id }}" class="btn btn-success rounded-pill" title="Ubah jadwal petugas"><i class="fa fa-edit"></i></a>
                                 </div></td>

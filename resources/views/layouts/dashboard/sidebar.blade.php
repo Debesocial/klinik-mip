@@ -56,17 +56,14 @@ $_SESSION['start_session'] = time();
                                 </a>
                             </li>
                             <li class="submenu-item @yield('level')">
-                                <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Kategori Petugas</a>
+                                <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Level Petugas</a>
                             </li>
-                            <li class="submenu-item @yield('jadwal')">
+                            {{-- <li class="submenu-item @yield('jadwal')">
                                 <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
-                            </li>
+                            </li> --}}
                             <li class="submenu-item @yield('mitra')">
                                 <a href="{{ route('superadmin.mitrakerja') }}"> Data Mitra Kerja</a>
                                 </a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.level') }}"> Kategori User</a>
                             </li>
                         </ul>
                     </li>
@@ -127,7 +124,7 @@ $_SESSION['start_session'] = time();
                             </li>
                             <li class="submenu-item @yield('bobot')">
                                 <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
-                            </li> -->
+                            </li>
                         </ul>
                     </li>
 
@@ -160,33 +157,6 @@ $_SESSION['start_session'] = time();
                             </li>
                             <li class="submenu-item @yield('spes')">
                                 <a href="{{ route('superadmin.spesialisrujukan') }}"> Dokter Spesialis Rujukan</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-stack"></i>
-                            <span>MD Obat & Alkes</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.dataobat') }}"> Data Obat & Alkes</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.jenisobat') }}"><i class="bi bi-arrow-return-right"></i> Jenis O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.golonganobat') }}"><i class="bi bi-arrow-return-right"></i> Golongan O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan O/A</a>
-                            </li>
-                            <li class="submenu-item ">
-                                <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
                             </li>
                         </ul>
                     </li>

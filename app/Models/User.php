@@ -23,8 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'status',
         'jadwal_id',
+        'status',
         'telp',
         'level_id',
         'ttd'
@@ -53,6 +53,14 @@ class User extends Authenticatable
 
     public function jadwal() {
         return $this->belongsTo(Jadwal::class);
+    }
+
+    public function divisi() {
+        return $this->belongsTo(Divisi::class);
+    }
+
+    public function perusahaan() {
+        return $this->belongsTo(Perusahaan::class);
     }
 
     public function level() {
