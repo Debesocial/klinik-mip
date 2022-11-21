@@ -114,7 +114,7 @@
                                             <tr>
                                                 <td>Kamis</td>
                                                 <td>
-                                                    <select class="choices form-select" name="kamis" id="kamis" required>
+                                                    <select class="choices form-select" name="kamis" id="kamis" >
                                                         <option value="">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
