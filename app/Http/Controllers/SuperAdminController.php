@@ -641,7 +641,7 @@ class SuperAdminController extends Controller
     {
         $jadwal = Jadwal::all();
         $perusahaan = Perusahaan::all();
-        $level = Level::all();
+        $level = Level::where("nama_level", "mitrakerja")->get();
         $divisi = Divisi::all();
 
         return view('petugas.superadmin.add_mitra_kerja', compact('jadwal', 'level', 'perusahaan', 'divisi'));
@@ -649,21 +649,35 @@ class SuperAdminController extends Controller
     public function tambahmitrakerja(Request $request)
     {
 
+        // dd($request);
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8',
             'status' => 'required',
-            'jadwal_id' => 'required',
             'telp' => 'required',
-            'level_id' => 'required'
+            'level_id' => 'required',
+            'divisi_id' => 'required',
+            'perusahaan_id' => 'required'
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
 
-        User::create($validatedData);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'status' => $request->status,
+            'telp' => $request->telp,
+            'level_id' => $request->level_id,
+            'divisi_id' => $request->divisi_id,
+            'perusahaan_id' => $request->perusahaan_id,
+        ]);
 
-        return redirect()->back()->with('fail', 'Gagal Menambahkan Data Pasien!');
+        if ($user) {
+        return redirect('/mitra/kerja')->with('success', 'Berhasil Menambahkan Data Petugas!');
+    }   
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function ubahmitrakerja($id)
@@ -672,8 +686,10 @@ class SuperAdminController extends Controller
         $user = User::find($id);
         $jadwal = Jadwal::all();
         $level = Level::all();
+        $perusahaan = Perusahaan::all();
+        $divisi = Divisi::all();
 
-        return view('petugas.superadmin.ubah_mitra_kerja', compact('user', 'jadwal', 'level'));
+        return view('petugas.superadmin.ubah_mitra_kerja', compact('user', 'jadwal', 'level', 'perusahaan', 'divisi'));
     }
 
     function changemitrakerja(Request $request, $id) {
@@ -681,9 +697,9 @@ class SuperAdminController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->status = $request->input('status');
-        $user->jadwal_id = $request->input('jadwal_id');
         $user->telp = $request->input('telp');
-        $user->level_id = $request->input('level_id');
+        $user->divisi_id = $request->input('divisi_id');
+        $user->perusahaan_id = $request->input('perusahaan_id');
         $user->update();
 
         return redirect('/mitra/kerja')->with('success', 'Berhasil Mengubah Data Mitra Kerja!');
@@ -764,15 +780,16 @@ class SuperAdminController extends Controller
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
-    public function ubahuser($id)
+    public function ubahuser($id, $jadwal_id)
     {
         $user = User::find($id);
-        $jadwal = Jadwal::all();
+        $jadwal = Jadwal::find($jadwal_id);
         $level = Level::all();
         return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level'));
     }
 
-    function changeuser(Request $request, $id) {
+    function changeuser(Request $request, $id, $jadwal_id) {
+        // dd($request->input('senin'));
         $user = User::find($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -780,7 +797,7 @@ class SuperAdminController extends Controller
         $user->telp = $request->input('telp');
         $user->level_id = $request->input('level_id');
         $user->update();
-        $jadwal = Jadwal::find($id);
+        $jadwal = Jadwal::find($jadwal_id);
         $jadwal->senin = $request->input('senin');
         $jadwal->selasa = $request->input('selasa');
         $jadwal->rabu = $request->input('rabu');
@@ -788,7 +805,9 @@ class SuperAdminController extends Controller
         $jadwal->jumat = $request->input('jumat');
         $jadwal->sabtu = $request->input('senin');
         $jadwal->minggu = $request->input('minggu');
+        
         $jadwal->update();
+
 
         return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
     }
