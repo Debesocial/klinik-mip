@@ -38,43 +38,6 @@
                     {{-- <div class="card-header">
                             <h4 class="card-title"></h4>
                         </div> --}}
-<<<<<<< HEAD
-                        <div class="card-content">
-                            <div class="card-body">
-                                <form class="form form-horizontal">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-md-2">
-                                                <label>ID Pasien</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <select name="pasien_id" id="pasien_id" class="form-select">
-                                                    <option disabled selected>Pilih ID Pasien</option>
-                                                    @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-2">
-                                                
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            </div>
-                                            <br>
-                                            <div class="col-md-2">
-                                                <label>ID Rawat Inap</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="search" id="id_rawat_inap" class="form-control"
-                                                    name="id_rawat_inap" required disabled>
-                                            </div>
-                                            <div class="col-md-2">
-                                                
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                    
-                                            </div>
-=======
                     <div class="card-content">
                         <div class="card-body">
                             <form class="form form-horizontal">
@@ -103,7 +66,6 @@
                                             <input type="search" id="id_rawat_inap" class="form-control" name="id_rawat_inap" placeholder="ID Rawat Inap" required disabled>
                                         </div>
                                         <div class="col-md-2">
->>>>>>> ad986f5ce79e6ecfe74595babbcde988730b9899
 
                                         </div>
                                         <div class="col-md-4 form-group">
