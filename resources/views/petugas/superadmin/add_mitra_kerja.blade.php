@@ -43,8 +43,20 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Perusahaan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="perusahaan" id="perusahaan">
+                                            <label for="level_id">Level Petugas <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="level_id" id="level_id">
+                                                <option disabled selected>Pilih Perusahaan</option>
+                                                 @foreach ($level as $lev)
+                                                <option value="{{ $lev->id }}">{{ $lev->nama_level }} </option>
+                                                @endforeach 
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Perusahaan <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id">
                                                 <option disabled selected>Pilih Perusahaan</option>
                                                  @foreach ($perusahaan as $peru)
                                                 <option value="{{ $peru->id }}">{{ $peru->nama_perusahaan_pasien }} </option>
@@ -55,8 +67,8 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="tempat_lahir">Divisi <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="level_id" id="level_id" required>
+                                            <label for="divisi_id">Divisi <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="divisi_id" id="divisi_id" required>
                                                 <option disabled selected>Pilih Divisi</option>
                                                 @foreach ($divisi as $div)
                                                 <option value="{{ $div->id }}">{{ $div->nama_divisi_pasien }}</option>
