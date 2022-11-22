@@ -38,23 +38,22 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="jadwal_id">Perusahaan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="perusahaan" id="perusahaan">
-                                                <option disabled selected>Pilih Perusahaan</option>
-                                                <!-- @foreach ($jadwal as $jadwal)
-                                                <option value="{{ $jadwal->id }}">{{ $jadwal->hari }} shift {{ $jadwal->shift }}</option>
-                                                @endforeach -->
+                                            <label for="">Perusahaan <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id">
+                                                @foreach ($perusahaan as $peru)
+                                                <option value="{{ $peru->id }}" {{ $peru->id == $user->perusahaan->id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="tempat_lahir">Divisi <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="divisi" id="divisi">
-                                                <option disabled selected>Pilih Divisi</option>
-                                                <option name="HRD">HRD</option>
-                                                <option name="HSE">HSE</option>
+                                            <label for="">Divisi <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="divisi_id" id="divisi_id">
+                                                @foreach ($divisi as $div)
+                                                <option value="{{ $div->id }}" {{ $div->id == $user->divisi->id ? 'selected' : '' }}>{{ $div->nama_divisi_pasien }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

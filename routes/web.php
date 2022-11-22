@@ -167,8 +167,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/data/user', [SuperAdminController::class, 'datauser'])->name('superadmin.datauser');
     Route::get('/add/data/user', [SuperAdminController::class, 'adduser'])->name('superadmin.adddatauser');
     Route::post('/add/data/user', [SuperAdminController::class, 'tambahuser'])->name('superadmin.tambahdatauser');
-    Route::get('/ubah/data/user/{id}', [SuperAdminController::class, 'ubahuser'])->name('superadmin.ubahdatauser');
-    Route::post('/ubah/data/user/{id}', [SuperAdminController::class, 'changeuser'])->name('superadmin.changedatauser');
+    Route::get('/ubah/data/user/{id}/{jadwal_id}', [SuperAdminController::class, 'ubahuser'])->name('superadmin.ubahdatauser');
+    Route::post('/ubah/data/user/{id}/{jadwal_id}', [SuperAdminController::class, 'changeuser'])->name('superadmin.changedatauser');
 
     Route::get('/jadwal', [SuperAdminController::class, 'jadwal'])->name('superadmin.jadwal');
     Route::get('/add/jadwal', [SuperAdminController::class, 'addjadwal'])->name('superadmin.addjadwal');

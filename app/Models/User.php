@@ -24,6 +24,8 @@ class User extends Authenticatable
         'email',
         'password',
         'jadwal_id',
+        'perusahaan_id',
+        'divisi_id',
         'status',
         'telp',
         'level_id',

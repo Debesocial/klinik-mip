@@ -116,16 +116,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="col-12"><br>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
-                                            </div>
-                                            <div class="col-6">
-                                                <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </form>
