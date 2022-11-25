@@ -55,7 +55,8 @@
                                         <div class="form-group">
                                             <label for="status">Status</label> <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="status" id="status" required>
-                                                <option disabled selected>Pilih Status</option>
+                                                
+                                                <option value="{{ $user->status }}">{{ $user->status }}</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                             </select>

@@ -49,8 +49,10 @@
                         <td>{{ $patient['jenis_kelamin'] }}</td>
                         <td>{{ $patient->perusahaan->nama_perusahaan_pasien }}</td>
                         <td>{{ $patient->jabatan->nama_jabatan }}</td>
-                        <td>{{ $patient['alergi_obat'] }}</td>
-                        <td>{{ $patient['hamil_menyusui'] }}</td>
+                        <td>
+                            <i class="{{ $patient->alergi_obat == 1 ? "fas fa-check" : "fas fa-times" }}"></i>
+                            </td>
+                        <td><i class="{{ $patient->hamil_menyusui == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
                         <td>
                             <div class="buttons" width="100px">
                                 <a href="/ubah/data/pasien/{{ $patient->id }}" class="btn btn-success rounded-pill" title="Ubah data pasien"><i class="fa fa-edit"></i></a>

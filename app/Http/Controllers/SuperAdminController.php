@@ -43,6 +43,7 @@ use PDF;
 use Response;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class SuperAdminController extends Controller
 {
@@ -541,6 +542,8 @@ class SuperAdminController extends Controller
             'hamil_menyusui' => 'required'
         ]);
 
+        // $id_rekam_medis = IdGenerator::generate(['table' => 'pasiens', 'length' => 10, 'prefix' =>'RM-']);
+
         $keluarga = Keluarga::create([
             'nama' => $request->nama_keluarga,
             'hubungan' => $request->hubungan_keluarga,
@@ -554,6 +557,7 @@ class SuperAdminController extends Controller
 
         $pasien = Pasien::create([
             'kategori_pasien_id' => $request->kategori_pasien_id,
+            // 'id_rekam_medis' => $request->$id_rekam_medis,
             'NIK' => $request->NIK,
             'perusahaan_id' => $request->perusahaan_id,
             'divisi_id' => $request->divisi_id,
@@ -607,7 +611,6 @@ class SuperAdminController extends Controller
         $pasien->nama_pasien = $request->input('nama_pasien');
         $pasien->tempat_lahir = $request->input('tempat_lahir');
         $pasien->tanggal_lahir = $request->input('tanggal_lahir');
-        $pasien->umur = $request->input('umur');
         $pasien->jenis_kelamin = $request->input('jenis_kelamin');
         $pasien->alamat = $request->input('alamat');
         $pasien->pekerjaan = $request->input('pekerjaan');
