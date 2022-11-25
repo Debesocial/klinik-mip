@@ -28,7 +28,7 @@
 
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
+                                            <label for="email">Email <b class="color-red">*</b></label>
                                             <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" required>
                                         </div>
                                     </div>
@@ -50,7 +50,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="level_id" id="level_id" required>
+                                            <select required aria-required="true" class="choices form-select" name="level_id" id="level_id" >
                                                 <option disabled selected>Pilih level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>

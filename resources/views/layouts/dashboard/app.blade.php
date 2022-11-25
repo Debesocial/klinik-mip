@@ -88,15 +88,7 @@
 		// Jquery Datatable
 		let jquery_datatable = $("#table1").DataTable()
 	</script>
-	<script type="text/javascript">
-		function yesnoCheck_lainnya(that) {
-			if (that.value == "lainnya") {
-				document.getElementById("lain").style.display = "block";
-			} else {
-				document.getElementById("lain").style.display = "none";
-			}
-		}
-	</script>
+	
 	@yield('js')
 </body>
 

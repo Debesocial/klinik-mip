@@ -54,11 +54,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12"><br>
-                                        <div class="form-group"><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="col-6">

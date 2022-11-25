@@ -20,7 +20,7 @@ class CreateObatAlkesTable extends Migration
             $table->foreignId('nama_obat_id')->constrained();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();
-            $table->string('komposisi_obat');
+            $table->string('komposisi_obat')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
