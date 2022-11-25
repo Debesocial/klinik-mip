@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="shortcut icon" href="{{asset ('ref/assets/images/favicon.svg" type="image/x-icon')}}">
 
+    
+
 @section('css')
 <style>
     ::placeholder {
@@ -397,10 +399,10 @@
                                                                 <label>Klasifikasi Penyakit</label>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <select class="choices form-select" name="klasifikasi_penyakit_id" id="klasifikasi_penyakit_id">
-                                                                    <option disabled selected>Pilih Klasifikasi Penyakit</option>
+                                                                <select class="choices form-select" name="klasifikasi_penyakit_id" id="klasi">
+                                                                    {{-- <option disabled selected>Pilih Klasifikasi Penyakit</option> --}}
                                                                     @foreach ($klasifikasi as $klasi)
-                                                                    <option value="{{ $klasi->id }}">{{ $klasi->klasifikasi_penyakit }}</option>
+                                                                    <option value="{{ $klasi->id }}">{{$klasi->id}}</option>
                                                                     @endforeach
                                                             </select>
                                                             </div>
@@ -413,15 +415,33 @@
                                                                 <label>Sub-Klasifikasi Penyakit</label>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <select class="choices form-select" name="klasifikasi_penyakit_id" id="klasifikasi_penyakit_id">
-                                                                    <option disabled selected>Pilih Sub-Klasifikasi Penyakit</option>
+                                                                <select class="choices form-select" name="klasifikasi_penyakit_id" id="sub">
+                                                                    {{-- <option >Pilih Sub-Klasifikasi Penyakit</option> --}}
                                                                     @foreach ($subklasifikasi as $sub)
-                                                                    <option value="{{ $sub->id }}">{{ $sub->nama_penyakit }}</option>
+                                                                    <option value="{{ $sub->klasifikasi_penyakit_id }}-{{ $sub->id }}">{{ $sub->klasifikasi_penyakit_id }}-{{ $sub->id }}</option>
                                                                     @endforeach
                                                             </select>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                                                    <script type="text/javascript">
+                                                        $(function() {
+                                                          var interval = $('#sub option').clone();
+                                                          $('#klasi').on('change', function() {
+                                                            var val = this.value;
+                                                            $("#sub option").show(); 
+                                
+                                                            if(val!="")
+                                                              $('#sub').html( 
+                                                                interval.filter(function() { 
+                                                                  return this.value.indexOf( val + '-' ) === 0; 
+                                                                })
+                                                                );
+                                                          })
+                                                          .change();
+                                                        });
+                                                      </script>
                                                     <div class="col-md-12">
                                                         <div class="row">
                                                             <div class="col-md-2">
@@ -745,6 +765,7 @@
 
         </div>
     </div>
+
 
     <script src="{{asset ('ref/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset ('ref/assets/js/bootstrap.bundle.min.js')}}"></script>

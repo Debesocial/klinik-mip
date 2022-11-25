@@ -36,7 +36,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon</label> <b class="color-red">*</b></label>
-                                            <input type="text" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13">
+                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13">
                                         </div>
                                     </div>
 
@@ -64,8 +64,9 @@
                                     </div>
 
                                     <div class="col-md-12"><br>
-                                        <div class="form-group"><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
+                                        <input type="text" id="telp" class="form-control" value="klinikMIP2022!" name="password" hidden>
+                                        <div class="form-group"><input type="checkbox" id="cek" name="cek" value="x">
+                                            <label for="cek"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
                                         </div>
                                     </div>
                                 </div>
