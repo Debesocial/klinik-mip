@@ -542,7 +542,7 @@ class SuperAdminController extends Controller
             'hamil_menyusui' => 'required'
         ]);
 
-        // $id_rekam_medis = IdGenerator::generate(['table' => 'pasiens', 'length' => 10, 'prefix' =>'RM-']);
+        // $id_rekam_medis = IdGenerator::generate(['table' => 'pasiens', 'field' => 'id_rekam_medis', 'length' => 10, 'prefix' =>'RM-']);
 
         $keluarga = Keluarga::create([
             'nama' => $request->nama_keluarga,
@@ -559,6 +559,7 @@ class SuperAdminController extends Controller
             'kategori_pasien_id' => $request->kategori_pasien_id,
             // 'id_rekam_medis' => $request->$id_rekam_medis,
             'NIK' => $request->NIK,
+            // 'penduduk' => $request->penduduk,
             'perusahaan_id' => $request->perusahaan_id,
             'divisi_id' => $request->divisi_id,
             'jabatan_id' => $request->jabatan_id,
@@ -572,7 +573,6 @@ class SuperAdminController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
-            'nama_penyakit_id' => $request->nama_penyakit_id,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'upload' => $request->upload,
@@ -795,6 +795,9 @@ class SuperAdminController extends Controller
         // dd($request->input('senin'));
         $user = User::find($id);
         $user->name = $request->input('name');
+        if ($request->input('cek')== 'x'){
+            $user->password = Hash::make( $request->input('password'));
+        }
         $user->email = $request->input('email');
         $user->status = $request->input('status');
         $user->telp = $request->input('telp');

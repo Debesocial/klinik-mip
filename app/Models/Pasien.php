@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class Pasien extends Model
 {
@@ -15,7 +16,9 @@ class Pasien extends Model
 
     protected $fillable = [
         'kategori_pasien_id',
+        'id_rekam_medis',
         'NIK',
+        // 'penduduk',
         'perusahaan_id',
         'lain',
         'divisi_id',
@@ -32,11 +35,26 @@ class Pasien extends Model
         'email',
         'alergi_obat',
         'hamil_menyusui',
-        'nama_penyakit_id',
         'upload',
         'created_by',
         'updated_by'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        $year  =  date('Y'); 
+        $month =  date('m');
+        $year   = substr( $year, -2). ''. $month;
+        self::creating(function ($model) {
+            $model->id_rekam_medis = IdGenerator::generate([
+                'table'  => 'pasiens',
+                'field'  => 'id_rekam_medis',
+                'length' => '10',
+                'prefix' => 'RM' .substr( date('Y'), -2). date('m'),
+            ]);
+        });
+    }
 
     public function getCreatedAtAttribute($value) {
         return Carbon::parse($value)->format('D, Y-m-d H:i:s');

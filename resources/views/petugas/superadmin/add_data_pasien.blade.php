@@ -36,6 +36,10 @@
                                         <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK" placeholder="Masukkan Nomor Induk Karyawan" maxlength="16" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="NIK">Nomor Induk Kependudukan </label>
+                                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="penduduk" class="form-control" name="penduduk" placeholder="Masukkan Nomor Induk Kependudukan" maxlength="16" >
+                                    </div>
+                                    <div class="form-group">
                                         <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required onchange="yesnoCheck_lainnya(this);" required>
                                             <option disabled selected>Pilih Perusahaan</option>
