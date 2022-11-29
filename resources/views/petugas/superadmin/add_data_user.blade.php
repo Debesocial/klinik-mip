@@ -38,9 +38,7 @@
                                             <label for="password">Password <b class="color-red">*</b></label>
                                             <input type="password" name="password" id="password" class="form-control form-control" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan password" required>
                                             <input type="checkbox" onclick="myFunction()">Show Password
-                                            </div>
                                         </div>
-                                        
                                     </div>
 
                                     <div class="col-12">

@@ -42,7 +42,7 @@
                         <td>{{ $user['status'] }}</td>
                         <td>
                             <div class="buttons" width="100px">
-                                <a href="" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                <a href="/view/mitra/kerja/{{ $user->id }}" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
                                 <a href="/ubah/mitra/kerja/{{ $user->id }}" class="btn btn-success rounded-pill" title="Ubah data mitra kerja"><i class="fa fa-edit"></i></a>
                             </div>
                         </td>

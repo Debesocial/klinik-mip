@@ -17,7 +17,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5>Jadwal Petugas</h5><br>
+                                    <h5>Data Petugas</h5><br>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Nama Petugas</label> <b class="color-red">*</b></label>
