@@ -639,6 +639,14 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.mitra_kerja', compact('users'));
     }
 
+    public function viewmitrakerja($id)
+    {
+        $user = User::find($id);
+        $jadwal = Jadwal::all();
+        $level = Level::all();
+        return view('petugas.superadmin.view_mitra_kerja', compact('user', 'jadwal', 'level'));
+    }
+
     public function addmitrakerja()
     {
         $jadwal = Jadwal::all();
