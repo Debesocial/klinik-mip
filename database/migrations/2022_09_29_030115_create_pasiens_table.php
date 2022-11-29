@@ -17,7 +17,8 @@ class CreatePasiensTable extends Migration
             $table->id();
             $table->string('id_rekam_medis')->nullable();
             $table->foreignId('kategori_pasien_id')->constrained();
-            $table->string('NIK', 16);
+            $table->string('NIK', 16)->nullable();
+            $table->string('penduduk')->nullable();
             $table->foreignId('perusahaan_id')->constrained();
             $table->foreignId('divisi_id')->constrained();
             $table->foreignId('jabatan_id')->constrained();
