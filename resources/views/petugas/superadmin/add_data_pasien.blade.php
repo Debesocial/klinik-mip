@@ -23,7 +23,7 @@
                                     <h5 class="mb-4">Data Pasien</h5>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id" required>
+                                        <select class="choices form-select" name="kategori_pasien_id" required onchange="yesnoCheck_penduduk(this);">
                                             <option disabled selected>Pilih Kategori Pasien</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
@@ -31,12 +31,25 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <script type="text/javascript">
+                                        function yesnoCheck_penduduk(that) {
+                                            if (that.value == $kate->id->5) {
+                                                document.getElementById("penduduk").style.display = "none";
+                                            } else {
+                                                document.getElementById("penduduk").style.display = "block";
+                                            }
+                                        }
+                                    </script>
+                                    <div class="form-group">
+                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien" required>
+                                    </div>
                                     <div class="form-group">
                                         <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
                                         <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK" placeholder="Masukkan Nomor Induk Karyawan" maxlength="16" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="NIK">Nomor Induk Kependudukan </label>
+                                    <div class="form-group" id="penduduk" name="penduduk" style="display: block;">
+                                        <label for="penduduk">Nomor Induk Kependudukan </label>
                                         <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="penduduk" class="form-control" name="penduduk" placeholder="Masukkan Nomor Induk Kependudukan" maxlength="16" >
                                     </div>
                                     <div class="form-group">
@@ -75,10 +88,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien" required>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                         <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Masukkan tempat lahir" required>

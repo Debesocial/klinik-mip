@@ -18,7 +18,7 @@ class Pasien extends Model
         'kategori_pasien_id',
         'id_rekam_medis',
         'NIK',
-        // 'penduduk',
+        'penduduk',
         'perusahaan_id',
         'lain',
         'divisi_id',

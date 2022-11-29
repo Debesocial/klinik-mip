@@ -557,9 +557,8 @@ class SuperAdminController extends Controller
 
         $pasien = Pasien::create([
             'kategori_pasien_id' => $request->kategori_pasien_id,
-            // 'id_rekam_medis' => $request->$id_rekam_medis,
             'NIK' => $request->NIK,
-            // 'penduduk' => $request->penduduk,
+            'penduduk' => $request->penduduk,
             'perusahaan_id' => $request->perusahaan_id,
             'divisi_id' => $request->divisi_id,
             'jabatan_id' => $request->jabatan_id,
