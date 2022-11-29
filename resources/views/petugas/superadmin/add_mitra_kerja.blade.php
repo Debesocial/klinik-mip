@@ -45,7 +45,6 @@
                                         <div class="form-group">
                                             <label for="level_id">Level Petugas <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id">
-                                                <option disabled selected>Pilih Perusahaan</option>
                                                  @foreach ($level as $lev)
                                                 <option value="{{ $lev->id }}">{{ $lev->nama_level }} </option>
                                                 @endforeach 

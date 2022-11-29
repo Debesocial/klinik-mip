@@ -17,7 +17,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5>Jadwal Petugas</h5><br>
+                                    <h5>Data Petugas</h5><br>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Nama Petugas</label> <b class="color-red">*</b></label>
@@ -54,11 +54,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12"><br>
-                                        <div class="form-group"><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                                            <label for="vehicle1"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="col-6">

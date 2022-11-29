@@ -15,8 +15,10 @@ class CreatePasiensTable extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
+            $table->string('id_rekam_medis')->nullable();
             $table->foreignId('kategori_pasien_id')->constrained();
-            $table->string('NIK', 16);
+            $table->string('NIK', 16)->nullable();
+            $table->string('penduduk')->nullable();
             $table->foreignId('perusahaan_id')->constrained();
             $table->foreignId('divisi_id')->constrained();
             $table->foreignId('jabatan_id')->constrained();
@@ -30,10 +32,9 @@ class CreatePasiensTable extends Migration
             $table->string('alamat_mess', 20)->nullable();
             $table->string('pekerjaan', 20);
             $table->string('telepon', 20);
-            $table->string('email', 30);
+            $table->string('email', 30)->nullable();
             $table->boolean('alergi_obat');
             $table->boolean('hamil_menyusui');
-            $table->unsignedInteger('nama_penyakit_id')->nullable();
             $table->text('upload')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

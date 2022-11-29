@@ -43,6 +43,7 @@ use PDF;
 use Response;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class SuperAdminController extends Controller
 {
@@ -541,6 +542,8 @@ class SuperAdminController extends Controller
             'hamil_menyusui' => 'required'
         ]);
 
+        // $id_rekam_medis = IdGenerator::generate(['table' => 'pasiens', 'field' => 'id_rekam_medis', 'length' => 10, 'prefix' =>'RM-']);
+
         $keluarga = Keluarga::create([
             'nama' => $request->nama_keluarga,
             'hubungan' => $request->hubungan_keluarga,
@@ -555,6 +558,7 @@ class SuperAdminController extends Controller
         $pasien = Pasien::create([
             'kategori_pasien_id' => $request->kategori_pasien_id,
             'NIK' => $request->NIK,
+            'penduduk' => $request->penduduk,
             'perusahaan_id' => $request->perusahaan_id,
             'divisi_id' => $request->divisi_id,
             'jabatan_id' => $request->jabatan_id,
@@ -568,7 +572,6 @@ class SuperAdminController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
-            'nama_penyakit_id' => $request->nama_penyakit_id,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'upload' => $request->upload,
@@ -607,7 +610,6 @@ class SuperAdminController extends Controller
         $pasien->nama_pasien = $request->input('nama_pasien');
         $pasien->tempat_lahir = $request->input('tempat_lahir');
         $pasien->tanggal_lahir = $request->input('tanggal_lahir');
-        $pasien->umur = $request->input('umur');
         $pasien->jenis_kelamin = $request->input('jenis_kelamin');
         $pasien->alamat = $request->input('alamat');
         $pasien->pekerjaan = $request->input('pekerjaan');
@@ -635,6 +637,14 @@ class SuperAdminController extends Controller
         // dd($pasien);
 
         return view('petugas.superadmin.mitra_kerja', compact('users'));
+    }
+
+    public function viewmitrakerja($id)
+    {
+        $user = User::find($id);
+        $jadwal = Jadwal::all();
+        $level = Level::all();
+        return view('petugas.superadmin.view_mitra_kerja', compact('user', 'jadwal', 'level'));
     }
 
     public function addmitrakerja()
@@ -792,6 +802,9 @@ class SuperAdminController extends Controller
         // dd($request->input('senin'));
         $user = User::find($id);
         $user->name = $request->input('name');
+        if ($request->input('cek')== 'x'){
+            $user->password = Hash::make( $request->input('password'));
+        }
         $user->email = $request->input('email');
         $user->status = $request->input('status');
         $user->telp = $request->input('telp');

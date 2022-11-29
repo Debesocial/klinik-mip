@@ -42,4 +42,17 @@
 </section>
 
 @include('sweetalert::alert')
+
+<script>
+    @if($message = session('succes_message'))
+    Swal.fire(
+      'Good job!',
+      '{{ $message }}',
+      'success'
+    )
+    function(){ 
+       location.reload();
+   }
+    @endif
+    </script>
 @endsection

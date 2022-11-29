@@ -46,4 +46,5 @@
 </section>
 
 @include('sweetalert::alert')
+
 @endsection

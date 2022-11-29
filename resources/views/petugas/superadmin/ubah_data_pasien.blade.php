@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="jenis_kelamin" id="jenis_kelamin">
-                                            <option disabled selected></option>
+                                            <option value="{{ $pasien->jenis_kelamin }}">{{ $pasien->jenis_kelamin }}</option>
                                             <option value="Laki_laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_mess">Alamat Mess</label>
-                                        <input type="text" id="alamat_mess" class="form-control" name="alamat_mess" value="{{ $pasien['alamat_mess'] }}" required>
+                                        <input type="text" id="alamat_mess" class="form-control" name="alamat_mess" value="{{ $pasien['alamat_mess'] }}">
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan">Pekerjaan <b class="color-red">*</b></label>
@@ -105,24 +105,24 @@
                                         <input type="text" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon" value="{{ $pasien['telepon'] }}" maxlength="13" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="email">Email<b>*</b></label>
+                                        <label for="email">Email</label>
                                         <input type="email" id="email" class="form-control" name="email" value="{{ $pasien['email'] }}" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label>Alergi Obat</label>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0"> Tidak
-                                        <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="1" checked> Ya
+                                        <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0" {{ !$pasien->alergi_obat ? "checked" : "" }}> Tidak
+                                        <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="1" {{ $pasien->alergi_obat ? "checked" : "" }}> Ya
                                     </div>
 
                                     <div class="col-md-2">
                                         <label>Hamil/Menyusui</label>
                                     </div>
                                     <div class="col-md-4 form-group">
-                                        <input class="form-check-input" type="radio" name="hamil_menyusui" id="hamil_menyusui" value="0"> Tidak
+                                        <input class="form-check-input" type="radio" name="hamil_menyusui" id="hamil_menyusui" value="0" {{ !$pasien->hamil_menyusui ? "checked" : "" }}> Tidak
                                         <label for="">
-                                            <input class="form-check-input" type="radio" name="hamil_menyusui" id="hamil_menyusui" value="1" checked> Ya
+                                            <input class="form-check-input" type="radio" name="hamil_menyusui" id="hamil_menyusui" value="1" {{ $pasien->hamil_menyusui ? "checked" : "" }}> Ya
                                         </label>
                                     </div>
                                 </div>
@@ -136,10 +136,8 @@
                                     <div class="form-group">
                                         <label for="hubungan_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
                                         <select class="choices form-select" id="hubungan_keluarga" name="hubungan_keluarga">
-                                            <option disabled selected>Pilih Hubungan Keluarga</option>
-                                            @foreach ($keluarga as $kel)
-                                            <option value="{{ $kel->id }}" {{ $kel->id == $pasien->keluarga->id ? 'selected' : '' }}>{{ $kel->hubungan }}</option>
-                                            @endforeach
+                                            <option value="{{ $pasien->keluarga->hubungan }}">{{ $pasien->keluarga->hubungan }}</option>
+                                           
                                             <option value="Ayah">Ayah</option>
                                             <option value="Ibu">Ibu</option>
                                             <option value="Adik">Adik</option>
@@ -163,7 +161,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email_keluarga">Email </label>
-                                        <input type="email_keluarga" id="email_keluarga" class="form-control" name="email_keluarga" value="{{ $pasien->keluarga->email }}" required>
+                                        <input type="email_keluarga" id="email_keluarga" class="form-control" name="email_keluarga" value="{{ $pasien->keluarga->email }}">
                                     </div>
                                     <div class="col-md-12"><br>
                                         <div class="row">
