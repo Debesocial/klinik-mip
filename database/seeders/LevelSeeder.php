@@ -30,6 +30,9 @@ class LevelSeeder extends Seeder
                 ],
                 [
                     'nama_level' => 'tenaga teknis kefarmasian',
+                ],
+                [
+                    'nama_level' => 'mitrakerja'
                 ]
             ],
         );

@@ -557,9 +557,8 @@ class SuperAdminController extends Controller
 
         $pasien = Pasien::create([
             'kategori_pasien_id' => $request->kategori_pasien_id,
-            // 'id_rekam_medis' => $request->$id_rekam_medis,
             'NIK' => $request->NIK,
-            // 'penduduk' => $request->penduduk,
+            'penduduk' => $request->penduduk,
             'perusahaan_id' => $request->perusahaan_id,
             'divisi_id' => $request->divisi_id,
             'jabatan_id' => $request->jabatan_id,
@@ -638,6 +637,14 @@ class SuperAdminController extends Controller
         // dd($pasien);
 
         return view('petugas.superadmin.mitra_kerja', compact('users'));
+    }
+
+    public function viewmitrakerja($id)
+    {
+        $user = User::find($id);
+        $jadwal = Jadwal::all();
+        $level = Level::all();
+        return view('petugas.superadmin.view_mitra_kerja', compact('user', 'jadwal', 'level'));
     }
 
     public function addmitrakerja()

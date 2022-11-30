@@ -124,6 +124,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/mitra/kerja', [SuperAdminController::class, 'mitrakerja'])->name('superadmin.mitrakerja');
     Route::get('/add/mitra/kerja', [SuperAdminController::class, 'addmitrakerja'])->name('superadmin.addmitrakerja');
     Route::post('/add/mitra/kerja', [SuperAdminController::class, 'tambahmitrakerja'])->name('superadmin.tambahmitrakerja');
+    Route::get('/view/mitra/kerja/{id}', [SuperAdminController::class, 'viewmitrakerja'])->name('superadmin.viewmitrakerja');
     Route::get('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'ubahmitrakerja'])->name('superadmin.ubahmitrakerja');
     Route::post('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'changemitrakerja'])->name('superadmin.changemitrakerja');
 
