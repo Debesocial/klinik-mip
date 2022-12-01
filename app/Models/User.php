@@ -27,6 +27,7 @@ class User extends Authenticatable
         'perusahaan_id',
         'divisi_id',
         'status',
+        'nik',
         'telp',
         'level_id',
         'ttd'

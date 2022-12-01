@@ -34,7 +34,7 @@
                     @foreach ($pasien as $pas)
                     <tr>
                         
-                            <td>{{ $pas['no_rekam_medis'] }}</td>
+                            <td>{{ $pas['id_rekam_medis'] }}</td>
                             <td>{{ $pas['NIK'] }}</td>
                             <td>{{ $pas['nama_pasien'] }}</td>
                             <td><?php 
@@ -46,17 +46,7 @@
                                 ?></td>
                             <td>{{ $pas->perusahaan->nama_perusahaan_pasien }}</td>
                             <td>{{ $pas->jabatan->nama_jabatan }}</td>
-                            <td><?php
-                                $pass = $pas->alergi_obat;
-                                switch($pass) {
-                                  case 0:
-                                    echo "";
-                                    break;
-                                  case 1:
-                                    echo "<i class='fa fa-check'></i>";
-                                    break;
-                                }
-                                ?></td>
+                            <td><i class="{{ $pas->alergi_obat == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
                             <td><div class="buttons">
                                 <a href="/view/rekam/medis/{{ $pas->id}}" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
                                 </div></td>  

@@ -27,6 +27,13 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="nik">Nomor Induk Karyawan</label> <b class="color-red">*</b></label>
+                                            <input type="text" id="nik" class="form-control" name="statsu" value="{{ $user['nik'] }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="email">Email Mitra Kerja</label>
                                             <input type="text" id="email" class="form-control" name="email" value="{{ $user['email'] }}" disabled>
                                             
@@ -35,22 +42,8 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="telp">No Telepon</label> <b class="color-red">*</b></label>
-                                            <input type="text" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
                                             <label for="level_id">Level Petugas</label> <b class="color-red">*</b></label>
                                             <input type="level_id" id="level_id" class="form-control" name="email" value="{{ $user->level->nama_level }}" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="status">Status</label> <b class="color-red">*</b></label>
-                                            <input type="text" id="statsu" class="form-control" name="statsu" value="{{ $user['status'] }}" disabled>
                                         </div>
                                     </div>
 
@@ -67,7 +60,25 @@
                                             <input type="text" id="divisi" class="form-control" name="divisi" value="{{ $user->divisi->nama_divisi_pasien }}" disabled>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="telp">No Telepon</label> <b class="color-red">*</b></label>
+                                            <input type="text" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13" disabled>
+                                        </div>
+                                    </div>
+
                                     
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="status">Status</label> <b class="color-red">*</b></label>
+                                            <input type="text" id="statsu" class="form-control" name="statsu" value="{{ $user['status'] }}" disabled>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                 </div>
 
                                             </form>

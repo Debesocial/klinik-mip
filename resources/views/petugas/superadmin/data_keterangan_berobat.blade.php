@@ -1,16 +1,16 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Data Izin Berobat')
+@section('title', 'Data Keterangan Berobat')
 @section('izinberobat', 'active')
 
-@section('judul', 'Data Izin Berobat')
+@section('judul', 'Data Keterangan Berobat')
 @section('container')
 
 <section class="section">
     <div class="card">
         <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.izinberobat') }}" class="btn btn-success rounded-pill">
+                    <a href="{{ route('superadmin.keteranganberobat') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
                 </div>
@@ -20,18 +20,24 @@
                 <thead>
                     <tr>
                         <th>Nama Pasien</th>
-                        <th>Tempat</th>
+                        <th>Kliniks</th>
+                        <th>Nama Penyakit</th>
+                        <th>Resep</th>
+                        <th>Saran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($izin as $berobat)
+                    @foreach ($keterangan as $ket)
                     <tr>
-                        <td>{{ $berobat->pasien->nama_pasien }}</td>
-                            <td>{{ $berobat->tempat }}</td>
+                        <td>{{ $ket->pasien->nama_pasien }}</td>
+                            <td>{{ $ket->klinik }}</td>
+                            <td>{{ $ket->namapenyakit->primer }}</td>
+                            <td>{{ $ket->resep }}</td>
+                            <td>{{ $ket->saran }}</td>
                             <td><div class="buttons">
-                                <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="/view/izin/berobat/{{ $berobat->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach
