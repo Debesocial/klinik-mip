@@ -79,12 +79,14 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
 
     Route::get('/keterangan/pemeriksaan', [SuperAdminController::class, 'keteranganpemeriksaan'])->name('superadmin.keteranganpemeriksaan');
 
+    Route::get('/data/keterangan/berobat', [SuperAdminController::class, 'dataketeranganberobat'])->name('superadmin.dataketeranganberobat');
     Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
     Route::post('/keterangan/berobat', [SuperAdminController::class, 'addketeranganberobat'])->name('superadmin.addketeranganberobat');
 
     Route::get('/data/izin/berobat', [SuperAdminController::class, 'dataizinberobat'])->name('superadmin.dataizinberobat');
     Route::get('/izin/berobat', [SuperAdminController::class, 'izinberobat'])->name('superadmin.izinberobat');
     Route::post('/izin/berobat', [SuperAdminController::class, 'addizinberobat'])->name('superadmin.addizinberobat');
+    Route::get('/view/izin/berobat/{id}', [SuperAdminController::class, 'viewizinberobat'])->name('superadmin.viewizinberobat');
     Route::get('/print/izin/berobat/{id}', [SuperAdminController::class, 'print'])->name('superadmin.printizinberobat');
     Route::get('/proses', [SuperAdminController::class, 'proses'])->name('proses');
 

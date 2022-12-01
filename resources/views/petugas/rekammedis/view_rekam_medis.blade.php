@@ -24,7 +24,7 @@
                                         <div class="form-group">
                                             <label for="name">No Rekam Medis</label>
                                             <input type="text" id="name" class="form-control"
-                                                 name="name" value="{{ $pasien['no_rekam_medis'] }}" >
+                                                 name="name" value="{{ $pasien['id_rekam_medis'] }}" >
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

@@ -18,6 +18,14 @@
                                         <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="NIK" value="{{ $pasien['NIK'] }}" maxlength="16" disabled>
                                     </div>
                                     <div class="form-group">
+                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Kategori pasien <b class="color-red">*</b></label>
+                                        <input type="text" id="" class="form-control" name="" value="{{ $pasien->kategori_pasien_id }}" disabled>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
                                         <input type="text" id="perusahaan_id" class="form-control" name="perusahaan_id" value="{{ $pasien->perusahaan->nama_perusahaan_pasien }}" disabled>
                                     </div>
@@ -33,10 +41,7 @@
                                         <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
                                         <input type="text" id="jabatan_id" class="form-control" name="jabatan_id" value="{{ $pasien->jabatan->nama_jabatan }}" disabled>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" disabled>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                         <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" value="{{ $pasien['tempat_lahir'] }}" disabled>
@@ -45,7 +50,7 @@
                                         <label for="tanggal_lahir">Tanggal Lahir <b class="color-red">*</b></label>
                                         <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" value="{{ $pasien['tanggal_lahir'] }}" disabled>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="umur">Umur <b class="color-red">*</b></label>
                                         <input type="number" id="umur" class="form-control" name="umur" value="<?php
                                         $tanggal_lahir = $pasien['tanggal_lahir'];
@@ -55,7 +60,7 @@
                                         echo $usia->y;
                                         echo " Tahun ";
                                         ?>" disabled>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
                                         <input type="text" id="jenis_kelamin" class="form-control" name="jenis_kelamin" value="{{ $pasien['jenis_kelamin'] }}" disabled>

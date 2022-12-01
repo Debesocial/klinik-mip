@@ -52,7 +52,7 @@
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
                                             <select required aria-required="true" class="choices form-select" name="level_id" id="level_id" >
-                                                <option disabled selected>Pilih level</option>
+                                                <option disabled selected value="">Pilih level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>
                                                 @endforeach
@@ -64,13 +64,15 @@
                                         <div class="form-group">
                                             <label for="status">Status <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="status" id="status" required>
-                                                <option disabled selected>Pilih status</option>
+                                                <option disabled selected value="">Pilih status</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                 </div>
+
 
                                 <div class="col-6">
                                     <h5>Jadwal Petugas</h5>
@@ -86,7 +88,7 @@
                                                 <td>Senin</td>
                                                 <td>
                                                     <select class="choices form-select" name="senin" id="senin" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -96,7 +98,7 @@
                                                 <td>Selasa</td>
                                                 <td>
                                                     <select class="choices form-select" name="selasa" id="selasa" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -106,7 +108,7 @@
                                                 <td>Rabu</td>
                                                 <td>
                                                     <select class="choices form-select" name="rabu" id="rabu" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -116,7 +118,7 @@
                                                 <td>Kamis</td>
                                                 <td>
                                                     <select class="choices form-select" name="kamis" id="kamis" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -126,7 +128,7 @@
                                                 <td>Jumat</td>
                                                 <td>
                                                     <select class="choices form-select" name="jumat" id="jumat" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -136,7 +138,7 @@
                                                 <td>Sabtu</td>
                                                 <td>
                                                     <select class="choices form-select" name="sabtu" id="sabtu" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -146,7 +148,7 @@
                                                 <td>Minggu</td>
                                                 <td>
                                                     <select class="choices form-select" name="minggu" id="minggu" >
-                                                        <option value="">-</option>
+                                                        <option value="-">-</option>
                                                         <option value="Shift 1 ( 06:30 - 18-30 )">Shift 1 ( 06:30 - 18-30 )</option>
                                                         <option value="Shift 2 ( 18:30 - 06:30 )">Shift 2 ( 18:30 - 06:30 )</option>
                                                     </select>
@@ -162,6 +164,11 @@
                                             <div class="col-6">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>
+                                            {{-- <div class="col-6">
+                                            <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
+                                        </div> --}}
+
+                                            {{-- <a href="javascript:window.history.back();">Back</a> --}}
                                         </div>
                                     </div>
                                 </div>

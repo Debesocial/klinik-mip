@@ -28,8 +28,8 @@ class CreatePasiensTable extends Migration
             $table->string('tempat_lahir', 20);
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin', 10);
-            $table->string('alamat', 50);
-            $table->string('alamat_mess', 20)->nullable();
+            $table->text('alamat');
+            $table->text('alamat_mess')->nullable();
             $table->string('pekerjaan', 20);
             $table->string('telepon', 20);
             $table->string('email', 30)->nullable();

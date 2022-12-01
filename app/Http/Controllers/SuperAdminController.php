@@ -220,6 +220,16 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.kecelakaan_kerja', compact('pasien_id'));
     }
 
+    public function dataketeranganberobat()
+    {
+        $keterangan = KeteranganBerobat::all();
+        $pasien = Pasien::all();
+        $namapenyakit = NamaPenyakit::all();
+        $rsrujukan = RumahSakitRujukan::all();
+
+        return view('petugas.superadmin.data_keterangan_berobat', compact( 'keterangan', 'pasien', 'keterangan', 'rsrujukan'));
+    }
+
     public function keteranganberobat()
     {
         $pasien_id = Pasien::get();
@@ -268,12 +278,19 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.data_izin_berobat', compact( 'izin', 'pasien'));
     }
 
+    public function viewizinberobat($id)
+    {
+        $izin = IzinBerobat::find($id);
+        $pasien = Pasien::all();
+        return view('petugas.superadmin.view_izin_berobat', compact('izin', 'pasien'));
+    }
+
     public function print($id)
     {
         $izin = IzinBerobat::find($id);
         $pasien = Pasien::all();
   
-        $pdf = PDF::loadView('petugas.superadmin.print_izin_berobat', ['izin' => $izin])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView('petugas.superadmin.print_izin_berobat', ['izin' => $izin])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'portrait');
         
         $pdf->save(storage_path().'izin.pdf');
         return $pdf->stream();
@@ -497,6 +514,10 @@ class SuperAdminController extends Controller
     public function viewdatapasien($id)
     {
 
+        $now = CarbonImmutable::now()->locale('id_ID');
+        $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
+        $end_week = $now->endOfWeek()->format('m-d');
+        
         $pasien = Pasien::find($id);
         $kategori = KategoriPasien::all();
         $perusahaan = Perusahaan::all();
@@ -537,7 +558,6 @@ class SuperAdminController extends Controller
             'alamat' => 'required',
             'pekerjaan' => 'required',
             'telepon' => 'required',
-            'email' => 'required',
             'alergi_obat' => 'required',
             'hamil_menyusui' => 'required'
         ]);
@@ -614,7 +634,6 @@ class SuperAdminController extends Controller
         $pasien->alamat = $request->input('alamat');
         $pasien->pekerjaan = $request->input('pekerjaan');
         $pasien->telepon = $request->input('telepon');
-        $pasien->nama_penyakit_id = request('nama_penyakit_id');
         $pasien->email = $request->input('email');
         $pasien->alergi_obat = $request->input('alergi_obat');
         $pasien->hamil_menyusui = $request->input('hamil_menyusui');
@@ -665,18 +684,20 @@ class SuperAdminController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
             'status' => 'required',
+            'nik' => 'required',
             'telp' => 'required',
             'level_id' => 'required',
             'divisi_id' => 'required',
             'perusahaan_id' => 'required'
         ]);
 
-        $validatedData['password'] = Hash::make($validatedData['password']);
+        $request['password'] = Hash::make($validatedData['password']);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'nik' => $request->nik,
             'status' => $request->status,
             'telp' => $request->telp,
             'level_id' => $request->level_id,
@@ -705,6 +726,7 @@ class SuperAdminController extends Controller
     function changemitrakerja(Request $request, $id) {
         $user = User::find($id);
         $user->name = $request->input('name');
+        $user->nik = $request->input('nik');
         $user->email = $request->input('email');
         $user->status = $request->input('status');
         $user->telp = $request->input('telp');
@@ -727,7 +749,7 @@ class SuperAdminController extends Controller
      */
     public function datauser()
     {
-        $users = User::all();
+        $users = User::where("level_id", "1")->orWhere("level_id", "2")->orWhere("level_id", "3")->orWhere("level_id", "4")->orWhere("level_id", "5")->get();
 
 
         return view('petugas.superadmin.data_user')->with('users', $users);
@@ -786,6 +808,7 @@ class SuperAdminController extends Controller
 
         if ($user) {
         return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
+        
     }   
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
@@ -823,6 +846,7 @@ class SuperAdminController extends Controller
 
 
         return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
+        
     }
 
     public function jadwal()

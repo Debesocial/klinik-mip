@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('level_id');
             $table->unsignedInteger('divisi_id')->nullable();
             $table->unsignedInteger('perusahaan_id')->nullable();
+            $table->string('nik')->nullable();
             $table->string('status');
             $table->text('ttd')->nullable();
             $table->rememberToken();

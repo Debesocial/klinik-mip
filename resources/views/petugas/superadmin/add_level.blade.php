@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Add Kategori')
+@section('title', 'Add Level')
 @section('data', 'active')
 @section('level', 'active')
 @section('side', 'active')
 
-@section('judul', 'Tambah Kategori')
+@section('judul', 'Tambah Level')
 @section('container')
 
 <section id="multiple-column-form">
@@ -19,19 +19,24 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_level">Kategori Petugas</label>
-                                            <input type="text" class="form-control" name="nama_level" id="nama_level" placeholder="Masukkan kategori petugas" required>
+                                            <label for="nama_level">Level Petugas</label>
+                                            <input type="text" class="form-control" name="nama_level" id="nama_level" placeholder="Masukkan Level petugas" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            <div class="col-4">
+                                                <button type="button"  class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div>
+                                            
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
