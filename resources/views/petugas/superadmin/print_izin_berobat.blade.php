@@ -1,31 +1,28 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <title>Surat Izin Berobat</title>
-    <meta charset="utf-8">
-    <style>
-        #judul{
-            text-align:center;
-        }
-
-        #halaman{
-            width: auto; 
-            height: auto; 
-            position: absolute; 
-            padding-top: 30px; 
-            padding-left: 30px; 
-            padding-right: 30px; 
-            padding-bottom: 80px;
-        }
-
-    </style>
-
+    <title> Surat Izin Berobat  </title>
+    <style type= "text/css">
+    body {font-family: arial;  }
+    .rangkasurat {width : 650px;margin:0 auto;;height: 500px;padding: 20px;}
+    .surat {border-bottom: 5px solid black; padding: 2px}
+    .tengah {text-align : center;line-height: 5px;}
+     </style >
 </head>
-
 <body>
-    <div id=halaman>
-        <h3 id=judul>Surat Izin Berobat</h3>
-        <br><br>
-        <div style="width: 50%; text-align: left; float: right;">Site Krassi,.................</div><br>
+<div class = "rangkasurat">
+     <table class="surat" width = "100%">
+           <tr>
+                 <td> <img src="{{ public_path('assets/image/bg/1.png')}}"> </td>
+                 <td class = "tengah">
+                       <h2>PT. MANDIRI PERKASA</h2>
+                       <h3>Site Lagub Sembakung - Nunukan KAL-TIM</h3>
+                       <h3><i>Telp : 021 - 5670037 Ext. 496</i></h3>
+                 </td>
+            </tr>
+     </table >
+     <div><br><br><br>
+     <div style="width: 50%; text-align: left; float: right;">Site Krassi,.................</div><br>
 
         <p>Kepada Yth.</p>
         <p>...........................................</p>
@@ -44,7 +41,7 @@
             <tr>
                 <td style="width: 30%;">Tempat, tanggal lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{$izin->pasien->tanggal_lahir}}</td>
+                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{$izin->pasien->tanggal_lahir}}  </td>
             </tr>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Alamat</td>
@@ -61,11 +58,19 @@
         <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan unutk diberikan izin untuk berobat ke tarakan.</p>
         <p>Demikian Surat ini saya buat, atas perhatian dan kerja samanya kami ucapkan terimakasih.</p>
 
-        <div style="width: 50%; text-align: left; float: right;">Salam</div><br>
+        <div style="width: 10%; text-align: left; float: right;">Salam</div><br>
         <br><br><br><br><br>
-        <div style="width: 50%; text-align: left; float: right;">Klinik PT MIP</div>
-
+        {{-- <td>@php
+            $image = $izin->ttd;
+            $imageData = base64_encode(file_get_contents($image));
+            $src = 'data:' . mime_content_type($image) . ';base64,' . $imageData;
+        @endphp 
+            <img src="{{$src}}" width="140px"> </td>
+        <br><br><br> --}}
+        <div style="width: 15%; text-align: left; border-top: 5px solid black; float: right; ">Klinik PT MIP</div>
+        <br><br>
+        <div style="width: 44%; text-align: left;  float: right; ">No. Revisi : 00</div>
+        <div style="width: 49%; text-align: left;  float: right; ">(No:MIP/FRM/KLN/015)</div>
     </div>
-</body>
-
+    
 </html>

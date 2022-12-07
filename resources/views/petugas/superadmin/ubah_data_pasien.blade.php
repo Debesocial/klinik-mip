@@ -24,11 +24,15 @@
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
-                                            <option disabled selected>Pilih Kategori Pasien</option>
+                                            <option value="">Pilih Kategori Pasien</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}</option>
                                             @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
@@ -47,7 +51,7 @@
                                     </div>
                                     <div class="form-group" id="lain" style="display: none;">
                                         <label for="lain">Lain-lain</label>
-                                        <input type="text" id="lain" class="form-control" name="lain" placeholder="lainnya">
+                                        <input type="text" id="lain" class="form-control" name="lain" value="{{ $pasien['lain'] }}" placeholder="lainnya">
                                     </div>
                                     <div class="form-group">
                                         <label for="divisi_id">Divisi <b class="color-red">*</b></label>
@@ -67,10 +71,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" required>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                         <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" value="{{ $pasien['tempat_lahir'] }}" required>
@@ -106,7 +107,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" name="email" value="{{ $pasien['email'] }}" required>
+                                        <input type="email" id="email" class="form-control" name="email" value="{{ $pasien['email'] }}" >
                                     </div>
                                     <div class="col-md-4">
                                         <label>Alergi Obat</label>
@@ -165,11 +166,14 @@
                                     </div>
                                     <div class="col-md-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            <div class="col-4">
+                                                <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -184,3 +188,13 @@
 </section>
 
 @endsection
+
+<script type="text/javascript">
+    function yesnoCheck_lainnya(that) {
+        if (that.value == "9") {
+            document.getElementById("lain").style.display = "block";
+        } else {
+            document.getElementById("lain").style.display = "none";
+        }
+    }
+</script>

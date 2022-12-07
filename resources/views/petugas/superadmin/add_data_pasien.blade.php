@@ -23,39 +23,32 @@
                                     <h5 class="mb-4">Data Pasien</h5>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id" required onchange="yesnoCheck_penduduk(this);">
-                                            <option disabled selected>Pilih Kategori Pasien</option>
+                                        <select class="choices form-select" name="kategori_pasien_id"  onchange="yesnoCheck_penduduk(this);" required>
+                                            <option disabled selected value="">Pilih Kategori Pasien</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
                                             </option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <script type="text/javascript">
-                                        function yesnoCheck_penduduk(that) {
-                                            if (that.value == $kate->id->5) {
-                                                document.getElementById("penduduk").style.display = "none";
-                                            } else {
-                                                document.getElementById("penduduk").style.display = "block";
-                                            }
-                                        }
-                                    </script>
+                                    
                                     <div class="form-group">
                                         <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
                                         <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
+                                    <div class="form-group" id="nik" name="nik"  style="display: block;">
+                                        <label for="NIK">Nomor Induk Karyawan </label>
                                         <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK" placeholder="Masukkan Nomor Induk Karyawan" maxlength="16" required>
                                     </div>
-                                    <div class="form-group" id="penduduk" name="penduduk" style="display: block;">
+                                    
+                                    <div class="form-group" id="penduduk" name="penduduk">
                                         <label for="penduduk">Nomor Induk Kependudukan </label>
                                         <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="penduduk" class="form-control" name="penduduk" placeholder="Masukkan Nomor Induk Kependudukan" maxlength="16" >
                                     </div>
                                     <div class="form-group">
                                         <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required onchange="yesnoCheck_lainnya(this);" required>
-                                            <option disabled selected>Pilih Perusahaan</option>
+                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required onchange="yesnoCheck_lainnya(this);" >
+                                            <option disabled selected value="">Pilih Perusahaan</option>
                                             <option value="9">other</option>
                                             @foreach ($perusahaan as $peru)
                                             <option value="{{ $peru->id }}">
@@ -71,7 +64,7 @@
                                     <div class="form-group">
                                         <label for="divisi_id">Divisi <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="divisi_id" id="divisi_id" required>
-                                            <option disabled selected>Pilih Divisi</option>
+                                            <option disabled selected value="">Pilih Divisi</option>
                                             @foreach ($divisi as $divi)
                                             <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
                                             </option>
@@ -81,7 +74,7 @@
                                     <div class="form-group">
                                         <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="jabatan_id" required>
-                                            <option disabled selected>Pilih Jabatan</option>
+                                            <option disabled selected value="">Pilih Jabatan</option>
                                             @foreach ($jabatan as $jabat)
                                             <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
                                             </option>
@@ -100,7 +93,7 @@
                                     <div class="form-group">
                                         <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="jenis_kelamin" required>
-                                            <option disabled selected>Pilih Jenis Kelamin</option>
+                                            <option disabled selected value="">Pilih Jenis Kelamin</option>
                                             <option value="Laki-Laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
@@ -124,7 +117,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" required>
+                                        <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" >
                                     </div>
                                     <div class="col-md-4">
                                         <label>Alergi Obat <b class="color-red">*</b></label>
@@ -153,7 +146,7 @@
                                     <div class="form-group">
                                         <label for="nama_keluarga">Hubungan <b class="color-red">*</b></label>
                                         <select class="choices form-select" name="hubungan_keluarga" required>
-                                            <option disabled selected>Pilih Hubungan Keluarga</option>
+                                            <option disabled selected value="">Pilih Hubungan Keluarga</option>
                                             <option value="Ayah">Ayah</option>
                                             <option value="Ibu">Ibu</option>
                                             <option value="Adik">Adik</option>
@@ -181,13 +174,16 @@
                                     </div>
                                     <div class="col-md-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
-                                            </div>
-                                            <div class="col-6">
-                                                <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            <div class="col-4">
+                                                <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
                                             
+                                            <div class="col-4">
+                                                <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -199,6 +195,15 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    function yesnoCheck_penduduk(that) {
+        if (that.value == '5') {
+            document.getElementById("nik").style.display = "none";
+        } else {
+            document.getElementById("nik").style.display = "block";
+        }
+    }
+</script>
 
 <script type="text/javascript">
     function yesnoCheck_lainnya(that) {

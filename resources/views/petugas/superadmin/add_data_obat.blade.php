@@ -19,7 +19,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="jenis_obat_id">Jenis Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
+                                            <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id" required>
                                                 <option value="">Pilih</option>
                                                 @foreach ($jenisobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_jenis_obat }}</option>
@@ -31,7 +31,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="golongan_obat_id">Golongan Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="golongan_obat_id" id="golongan_obat_id">
+                                            <select class="choices form-select" name="golongan_obat_id" id="golongan_obat_id" required>
                                                 <option value="">Pilih</option>
                                                 @foreach ($golonganobat as $golonganobat)
                                                 <option value="{{ $golonganobat->id }}">{{ $golonganobat->nama_golongan_obat }}</option>
@@ -43,7 +43,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_obat_id">Nama Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="nama_obat_id" id="nama_obat_id">
+                                            <select class="choices form-select" name="nama_obat_id" id="nama_obat_id" required>
                                                 <option value="">Pilih </option>
                                                 @foreach ($namaobat as $namaobat)
                                                 <option value="{{ $namaobat->id }}">{{ $namaobat->nama_obat }}</option>
@@ -55,7 +55,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="satuan_obat_id">Satuan Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id">
+                                            <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id" required>
                                                 <option value="">Pilih </option>
                                                 @foreach ($satuanobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->satuan_obat }}</option>
@@ -67,7 +67,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="bobot_obat_id">Bobot Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
+                                            <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id" required>
                                                 <option value="">Pilih </option>
                                                 @foreach ($bobotobat as $bobotobat)
                                                 <option value="{{ $bobotobat->id }}">{{ $bobotobat->bobot_obat }}</option>
@@ -79,7 +79,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_obat_id">Komposisi Obat</label>
-                                            <input type="text" id="komposisi_obat" class="form-control" placeholder="Komposisi Obat" name="komposisi_obat">
+                                            <textarea name="komposisi_obat" id="komposisi_obat" cols="50" rows="5"></textarea>
+                                            
                                         </div>
                                     </div>
 

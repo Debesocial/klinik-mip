@@ -68,7 +68,8 @@
                                         <div class="form-group"><input type="checkbox" id="cek" name="cek" value="x">
                                             <label for="cek"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
                                         </div>
-                                    </div>
+                                    </div><br><br>
+                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                 </div>
 
                                 <div class="col-6">

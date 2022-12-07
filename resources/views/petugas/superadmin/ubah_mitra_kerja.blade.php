@@ -32,6 +32,13 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="nik">Nomor Induk Karyawan</label>
+                                            <input type="number" id="nik" class="form-control" name="nik" value="{{ $user['nik'] }}"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  maxlength="13" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="email">Petugas Email</label>
                                             <input type="email" id="email" class="form-control" name="email" value="{{ $user['email'] }}" required>
                                         </div>
@@ -78,11 +85,14 @@
 
                                     <div class="col-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            <div class="col-4">
+                                                <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
                                             </div>
                                         </div>
                                     </div>

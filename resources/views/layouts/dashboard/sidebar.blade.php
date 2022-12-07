@@ -253,7 +253,7 @@
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-title"><strong>SURAT KETERANGAN</strong></li>
                     <li class="sidebar-item @yield('berobat')">
-                        <a href="{{ route('superadmin.keteranganberobat') }}" class='sidebar-link'>
+                        <a href="{{ route('superadmin.dataketeranganberobat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Keterangan Berobat</span>
                         </a>
@@ -261,7 +261,7 @@
                     @endif
                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <li class="sidebar-item  @yield('izinberobat')">
-                        <a href{{ route('superadmin.dataizinberobat') }}" class='sidebar-link'>
+                        <a href="{{ route('superadmin.dataizinberobat') }}" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
                             <span>Izin Berobat</span>
                         </a>
