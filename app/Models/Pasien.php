@@ -137,7 +137,7 @@ class Pasien extends Model
     }
 
     public function kategori() {
-        return $this->belongsTo(KategoriPasien::class);
+        return $this->belongsTo(KategoriPasien::class, 'kategori_pasien_id', 'id');
     }
 
     public function jabatan() {

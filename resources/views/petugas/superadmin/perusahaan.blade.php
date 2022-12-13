@@ -10,6 +10,13 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
+            @if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('superadmin.perusahaan') }}" }})
+                </script>
+            @endif
             <div class="buttons" width="100px">
                 <a href="{{ route('superadmin.addperusahaan') }}" class="btn btn-success rounded-pill">
                     <i class="fa fa-plus"></i>

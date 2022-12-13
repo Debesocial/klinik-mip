@@ -36,7 +36,7 @@ class KlasifikasiPenyakitController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/klasifikasi/penyakit')->with('success', 'Berhasil Menambahkan Klasifikasi Penyakit!');
+        return redirect('/klasifikasi/penyakit')->with('message', 'Berhasil Menambahkan Klasifikasi Penyakit!');
     }
 
     public function ubahklasifikasipenyakit($id)
@@ -50,7 +50,7 @@ class KlasifikasiPenyakitController extends Controller
         $klasifikasipenyakit->klasifikasi_penyakit = $request->input('klasifikasi_penyakit');
         $klasifikasipenyakit->update();
 
-        return redirect('/klasifikasi/penyakit')->with('success', 'Berhasil Mengubah Klasifikasi Penyakit!');
+        return redirect('/klasifikasi/penyakit')->with('message', 'Berhasil Mengubah Klasifikasi Penyakit!');
     }
 
     /**

@@ -16,7 +16,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_kategori">Kategori Pasien</label>
-                                            <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" placeholder="Masukkan kategori pasien" required>
+                                            <input type="text" class="form-control" name="nama_kategori" id="nama_kategori" placeholder="Masukkan kategori pasien" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

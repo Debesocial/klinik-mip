@@ -1,4 +1,8 @@
 @extends('layouts.dashboard.app')
+
+@section('obalkes', 'active')
+@section('obat', 'active')
+@section('nama', 'active')
 @section('title', 'Ubah Nama Obat')
 @section('judul', 'Ubah Nama Obat')
 @section('container')

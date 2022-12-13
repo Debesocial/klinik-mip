@@ -37,7 +37,7 @@ class NamaObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/nama/obat')->with('success', 'Berhasil Menambahkan Nama Obat/Alkes!');
+        return redirect('/nama/obat')->with('message', 'Berhasil Menambahkan Nama Obat!');
     }
 
     public function ubahnamaobat($id)
@@ -51,7 +51,7 @@ class NamaObatController extends Controller
         $namaobat->nama_obat = $request->input('nama_obat');
         $namaobat->update();
 
-        return redirect('/nama/obat')->with('success', 'Berhasil Mengubah Nama Obat/Alkes!');
+        return redirect('/nama/obat')->with('message', 'Berhasil Mengubah Nama Obat!');
     }
     /**
      * Show the form for creating a new resource.

@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
+                                    
                                 </div>
 
                                 <div class="col-6">
@@ -109,13 +109,16 @@
                                                 <td>
                                                     <input type="text" id="minggu" class="form-control" name="minggu" value="{{ $user->jadwal->minggu }}" disabled>
                                                 </td>
+                                                
                                             </tr>
                                             
                                         </tbody>
+                                        
                                     </table>
-                                    
+                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                 </div>
                             </div>
+                            
                         </form>
                     </div>
                 </div>

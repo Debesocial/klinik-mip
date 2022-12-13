@@ -37,7 +37,7 @@ class BobotObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/bobot/obat')->with('success', 'Successfully!');
+        return redirect('/bobot/obat')->with('message', 'Sukses Menambah Bobot Obat!');
     }
 
     public function ubahbobotobat($id)
@@ -51,7 +51,7 @@ class BobotObatController extends Controller
         $bobotobat->bobot_obat = $request->input('bobot_obat');
         $bobotobat->update();
 
-        return redirect('/bobot/obat')->with('success', 'Successfully!');
+        return redirect('/bobot/obat')->with('message', 'Sukses Menambah Bobot Obat!');
     }
 
     /**

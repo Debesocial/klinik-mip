@@ -14,7 +14,6 @@ class IzinIstirahat extends Model
         'kejadian',
         'kontrol_kembali',
         'pengantar',
-        'rekam_medis_id',
         'anamnesis',
         'tinggi_badan',
         'berat_badan',
@@ -47,11 +46,7 @@ class IzinIstirahat extends Model
     public function spesialisrujukan() {
         return $this->belongsTo(SpesialisRujukan::class);
     }
-
-    public function rekammedis() {
-        return $this->belongsTo(RekamMedis::class);
-    }
-
+    
     public function tindakan() {
         return $this->belongsTo(Tindakan::class);
     }

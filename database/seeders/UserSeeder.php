@@ -25,22 +25,6 @@ class UserSeeder extends Seeder
                 'status' => 'aktif',
             ],
             [
-                'name' => 'Cyntia Simamora',
-                'email' => 'cyntia@gmail.com',
-                'password' => Hash::make('cyntia123'),
-                'telp' => '082287321234',
-                'level_id' => 2,
-                'status' => 'aktif',
-            ],
-            [
-                'name' => 'Revi Siahaan',
-                'email' => 'revi@gmail.com',
-                'password' => Hash::make('revi123'),
-                'telp' => '0822098123',
-                'level_id' => 3,
-                'status' => 'aktif',
-            ],
-            [
                 'name' => 'Darwin Sibarani',
                 'email' => 'darwin@gmail.com',
                 'password' => Hash::make('poibe123'),

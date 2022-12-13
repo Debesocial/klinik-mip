@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'View Izin Berobat')
-@section('View Izin berobat', 'active')
+@section('izinberobat', 'active')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <div class="page-heading">

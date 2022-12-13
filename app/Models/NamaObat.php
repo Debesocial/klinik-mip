@@ -26,4 +26,7 @@ class NamaObat extends Model
     public function izinistirahat() {
         return $this->hasMany(IzinIstirahat::class);
     }
+    public function obat() {
+        return $this->hasMany(Obat::class);
+    }
 }

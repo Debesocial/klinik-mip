@@ -25,21 +25,21 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="name">Petugas Nama</label>
+                                            <label for="name">Nama Mitra Kerja <b class="color-red">*</b></label>
                                             <input type="text" id="name" class="form-control" name="name" placeholder="Nama Petugas" value="{{ $user['name'] }}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nik">Nomor Induk Karyawan</label>
+                                            <label for="nik">Nomor Induk Karyawan <b class="color-red">*</b></label>
                                             <input type="number" id="nik" class="form-control" name="nik" value="{{ $user['nik'] }}"  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"  maxlength="13" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="email">Petugas Email</label>
+                                            <label for="email">Email <b class="color-red">*</b></label>
                                             <input type="email" id="email" class="form-control" name="email" value="{{ $user['email'] }}" required>
                                         </div>
                                     </div>
@@ -67,19 +67,26 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="telp">No Telepon</label>
+                                            <label for="telp">No Telepon <b class="color-red">*</b></label>
                                             <input type="text" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13">
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="status">Status</label>
+                                            <label for="status">Status <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="status" id="status" required>
                                                 <option value="{{ $user['status'] }}">{{ $user['status'] }}</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12"><br>
+                                        <input type="text" id="telp" class="form-control" value="klinikMIP2022!" name="password" hidden>
+                                        <div class="form-group"><input type="checkbox" id="cek" name="cek" value="x">
+                                            <label for="cek"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
                                         </div>
                                     </div>
 
