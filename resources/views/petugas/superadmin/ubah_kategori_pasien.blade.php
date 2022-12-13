@@ -16,7 +16,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_kategori">Hari</label>
-                                            <input type="text" class="form-control" name="nama_kategori" value="{{ $kategoripasien['nama_kategori'] }}" required>
+                                            <input type="text" class="form-control" name="nama_kategori" value="{{ $kategoripasien['nama_kategori'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 d-flex justify-content-end">

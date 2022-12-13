@@ -16,42 +16,32 @@ class GolonganObatSeeder extends Seeder
     {
         GolonganObat::insert([
             [
-                'nama_golongan_obat' => 'Disposable',
+                'nama_golongan_obat' => 'Obat Bebas',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_golongan_obat' => 'Obat bebas',
+                'nama_golongan_obat' => 'Obat Bebas Terbatas',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_golongan_obat' => 'Obat bebas terbatas',
+                'nama_golongan_obat' => 'Obat Keras',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_golongan_obat' => 'Obat keras',
+                'nama_golongan_obat' => 'Fitofarmaka',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_golongan_obat' => 'Obat golongan narkotika',
+                'nama_golongan_obat' => 'Herbal Terstandar',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_golongan_obat' => 'Obat fitofarmaka',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_golongan_obat' => 'Obat herbal terstandar',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_golongan_obat' => 'Obat herbal (jamu)',
+                'nama_golongan_obat' => 'Jamu',
                 'created_by' => 1,
                 'updated_by' => 1
             ],

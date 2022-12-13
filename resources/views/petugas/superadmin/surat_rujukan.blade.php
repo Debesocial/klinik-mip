@@ -49,9 +49,9 @@
                                             <div class="form-group">
                                                 <label for="last-name-column">ID pasien <b class="color-red">*</b></label>
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" required>
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                        <option value="{{ $pas['id'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -163,7 +163,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="">Tanda Tangan <b class="color-red">*</b></label>
-                                                <input class="form-control" type="file" id="ttd" name="ttd" multiple required>
+                                                <input class="form-control" type="file" id="ttd" name="ttd" multiple >
                                             </div>
                                         </div>
                                         

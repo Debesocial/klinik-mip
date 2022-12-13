@@ -19,24 +19,25 @@
                             <div class="row">
                                 <div class="col-6">
                                     <h5>Data Petugas</h5><br>
-                                    <div class="col-12">
+                                    
+                                    <div class="col-12"> 
                                         <div class="form-group">
                                             <label for="name">Nama Petugas <b class="color-red">*</b></label>
-                                            <input type="text" id="name" class="form-control" name="name" placeholder="Masukkan nama" required>
+                                            <input type="text" id="name" class="form-control" name="name" placeholder="Masukkan nama" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="email">Email <b class="color-red">*</b></label>
-                                            <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" required>
+                                            <input type="email" id="email" class="form-control" name="email" placeholder="Masukkan email" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="password">Password <b class="color-red">*</b></label>
-                                            <input type="password" name="password" id="password" class="form-control form-control" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan password" required>
+                                            <input type="password" name="password" id="password" class="form-control form-control" minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan password" required >
                                             <input type="checkbox" onclick="myFunction()">Show Password
                                         </div>
                                     </div>
@@ -44,14 +45,14 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon <b class="color-red">*</b></label>
-                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" placeholder="Masukkan no telepon" maxlength="13" required>
+                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" placeholder="Masukkan no telepon" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
-                                            <select required aria-required="true" class="choices form-select" name="level_id" id="level_id" >
+                                            <select required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/ class="choices form-select" name="level_id" id="level_id" >
                                                 <option disabled selected value="">Pilih level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>
@@ -63,14 +64,14 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="status">Status <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="status" id="status" required>
+                                            <select class="choices form-select" name="status" id="status" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                                 <option disabled selected value="">Pilih status</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
+                                    
                                 </div>
 
 
@@ -158,11 +159,14 @@
                                     </table>
                                     <div class="col-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            <div class="col-4">
+                                                <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
                                             </div>
                                             {{-- <div class="col-6">
                                             <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>

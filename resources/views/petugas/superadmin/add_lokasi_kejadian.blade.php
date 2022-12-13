@@ -16,7 +16,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_lokasi">Nama Lokasi</label>
-                                            <input type="text" class="form-control" name="nama_lokasi" placeholder="Masukkan lokasi kejadian" required>
+                                            <input type="text" class="form-control" name="nama_lokasi" placeholder="Masukkan lokasi kejadian" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

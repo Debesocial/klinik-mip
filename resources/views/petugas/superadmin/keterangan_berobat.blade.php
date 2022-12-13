@@ -45,9 +45,9 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select name="pasien_id" id="pasien_id" class="choices form-select">
-                                                            <option disabled selected>Pilih ID Pasien</option>
+                                                            <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                             @foreach ($pasien_id as $pas)
-                                                            <option value="{{ $pas['id'] }}">{{ $pas['id'] }}</option>
+                                                            <option value="{{ $pas['id'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -59,15 +59,6 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan nama pasien" disabled>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                    </div>
-
-                                                    <div class="col-md-2">
-                                                        <label>Umur</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="umur" class="form-control" name="umur" placeholder="Masukkan umur" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -136,10 +127,10 @@
                                                     <label>Nama Klinik Praktek/Rumah Sakit</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <select class="choices form-select" name="rs_rujukan_id" id="rs_rujukan_id">
+                                                    <select name="rumah_sakit_rujukans_id" id="rumah_sakit_rujukans_id" class="form-select">
                                                         <option disabled selected>Pilih Rumah Sakit Rujukan</option>
-                                                        @foreach ($rsrujukan as $rujukan)
-                                                        <option value="{{ $rujukan->id }}">{{ $rujukan->nama_RS_rujukan }}</option>
+                                                        @foreach ($rsrujukan as $rs)
+                                                        <option value="{{ $rs['id'] }}">{{ $rs['nama_RS_rujukan'] }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

@@ -54,9 +54,9 @@
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                        <option disabled selected>Pilih ID Pasien</option>
+                                                        <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                         @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{ $pas['jenis_kelamin'] }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{ $pas['jenis_kelamin'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                         @endforeach
                                                     </select>
                                                 </div>

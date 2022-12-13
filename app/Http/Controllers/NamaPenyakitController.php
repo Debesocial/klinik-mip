@@ -46,7 +46,7 @@ class NamaPenyakitController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/nama/penyakit')->with('success', 'Berhasil Menambahkan Diagnosa!');
+        return redirect('/nama/penyakit')->with('message', 'Berhasil Menambahkan Diagnosa!');
     }
 
     public function ubahnamapenyakit($id)
@@ -63,7 +63,7 @@ class NamaPenyakitController extends Controller
         $namapenyakit->sub_klasifikasi_id = $request->input('sub_klasifikasi_id');
         $namapenyakit->update();
 
-        return redirect('/nama/penyakit')->with('success', 'Berhasil Mengubah Diagnosa!');
+        return redirect('/nama/penyakit')->with('message', 'Berhasil Mengubah Diagnosa!');
     }
 
 

@@ -38,7 +38,7 @@ class KategoriPasienController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/kategori/pasien')->with('success', 'Successfully!');
+        return redirect('/kategori/pasien')->with('message', 'Sukses mengubah kategori pasien!');
     }
 
     public function ubahkategoripasien($id)
@@ -52,7 +52,7 @@ class KategoriPasienController extends Controller
         $kategoripasien->nama_kategori = $request->input('nama_kategori');
         $kategoripasien->update();
 
-        return redirect('/kategori/pasien')->with('success', 'Successfully!');
+        return redirect('/kategori/pasien')->with('message', 'Sukses mengubah kategori pasien!');
     }
 
     /**

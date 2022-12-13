@@ -39,7 +39,8 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" action="/persetujuan/tindakan/medis" method="post" enctype='multipart/form-data'>
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -47,9 +48,9 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -59,15 +60,6 @@
                                             <div class="col-md-4 form-group">
                                             </div>
                                             <br>
-                                            <div class="col-md-2">
-                                                <label>No Rekam Medis</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="no_rekam_medis" class="form-control"
-                                                    name="no_rekam_medis" placeholder="No Rekam Medis" required >
-                                            </div> 
-                                            <div class="col-md-6">
-                                            </div>
 
                                             <div class="col-md-2">
                                                 <label>ID Pasien</label>
@@ -157,8 +149,8 @@
                                                                 <label>Riwayat Perjalanan Penyakit</label>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <textarea type="text" id="permintaan_makanan" class="form-control"
-                                                                    name="permintaan_makanan" ></textarea>
+                                                                <textarea type="text" id="riwayat" class="form-control"
+                                                                    name="riwayat" ></textarea>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
@@ -166,9 +158,9 @@
                                                                     <label>Hasil Pernyataan</label>
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
-                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> Setuju
+                                                                    <input class="form-check-input" type="radio" name="hasil" id="hasil" value="1"> Setuju
                                                                     <label for="">
-                                                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> Tidak Setuju
+                                                                    <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" checked> Tidak Setuju
                                                                     </label>
                                                                 </div>
                                                                 <div class="col-md-6">

@@ -38,7 +38,7 @@ class JabatanController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/jabatan')->with('success', 'Successfully!');
+        return redirect('/jabatan')->with('message', 'Successfully!');
     }
 
     public function ubahjabatan($id)
@@ -52,7 +52,7 @@ class JabatanController extends Controller
         $jabatan->nama_jabatan = $request->input('nama_jabatan');
         $jabatan->update();
 
-        return redirect('/jabatan')->with('success', 'Successfully!');
+        return redirect('/jabatan')->with('message', 'Successfully!');
     }
 
     /**

@@ -38,7 +38,7 @@ class DivisiController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/divisi')->with('success', 'Successfully!');
+        return redirect('/divisi')->with('message', 'Successfully!');
     }
 
     public function ubahdivisi($id)
@@ -52,7 +52,7 @@ class DivisiController extends Controller
         $divisi->nama_divisi_pasien = $request->input('nama_divisi_pasien');
         $divisi->update();
 
-        return redirect('/jabatan')->with('success', 'Successfully!');
+        return redirect('/jabatan')->with('message', 'Successfully!');
     }
     /**
      * Show the form for creating a new resource.

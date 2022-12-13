@@ -36,9 +36,9 @@
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" data-live-search="true" class="choices form-select" required>
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}">{{ $pas['nama_pasien'] }}</option>
+                                                        <option value="{{ $pas['id'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -97,14 +97,14 @@
                                                     </div>
 
                                                  {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
-                                                {{-- <div class="col-md-2">
+                                                <div class="col-md-2">
                                                     <label>Tanda Tangan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input class="form-control" type="file" id="ttd" name="ttd">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    </div> --}}
+                                                    </div>
 
 
                                             <div class="col-sm-4 d-flex justify-content-end">

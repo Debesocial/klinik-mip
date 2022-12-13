@@ -17,7 +17,6 @@ class CreateIzinIstirahatsTable extends Migration
             $table->id();
             $table->foreignId('pasien_id')->constrained();
             $table->string('keluhan');
-            $table->foreignId('rekam_medis_id')->constrained();
             $table->foreignId('tindakan_id')->constrained();
             $table->string('nama_alat');
             $table->string('jumlah_pengguna');
@@ -33,7 +32,7 @@ class CreateIzinIstirahatsTable extends Migration
             $table->boolean('rujukan')->nullable();
             $table->foreignId('spesialis_rujukan_id')->constrained();
             $table->foreignId('rumah_sakit_rujukan_id')->constrained();
-            $table->text('ttd');
+            $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

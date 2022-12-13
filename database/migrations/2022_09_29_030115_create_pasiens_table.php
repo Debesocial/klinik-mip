@@ -16,13 +16,13 @@ class CreatePasiensTable extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->string('id_rekam_medis')->nullable();
-            $table->foreignId('kategori_pasien_id')->constrained();
+            $table->foreignId('kategori_pasien_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('NIK', 16)->nullable();
             $table->string('penduduk')->nullable();
-            $table->foreignId('perusahaan_id')->constrained();
-            $table->foreignId('divisi_id')->constrained();
-            $table->foreignId('jabatan_id')->constrained();
-            $table->foreignId('keluarga_id')->nullable()->constrained();
+            $table->foreignId('perusahaan_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('divisi_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('jabatan_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('keluarga_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('lain')->nullable();
             $table->string('nama_pasien', 50);
             $table->string('tempat_lahir', 20);

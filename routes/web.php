@@ -9,6 +9,8 @@ use App\Http\Controllers\PemeriksaanAntigenController;
 use App\Http\Controllers\SubKlasifikasiController;
 use App\Http\Controllers\NamaPenyakitController;
 use App\Http\Controllers\NamaObatController;
+use App\Http\Controllers\AlkesController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\BobotObatController;
 use App\Http\Controllers\JenisObatController;
 use App\Http\Controllers\GolonganObatController;
@@ -19,6 +21,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PerawatController;
+use App\Http\Controllers\ObatController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\PemeriksaanNarkobaController;
 use App\Http\Controllers\PemeriksaanCovidController;
@@ -82,6 +85,9 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/data/keterangan/berobat', [SuperAdminController::class, 'dataketeranganberobat'])->name('superadmin.dataketeranganberobat');
     Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
     Route::post('/keterangan/berobat', [SuperAdminController::class, 'addketeranganberobat'])->name('superadmin.addketeranganberobat');
+    Route::get('/print/ket/berobat/{id}', [SuperAdminController::class, 'printketberobat'])->name('superadmin.printketberobat');
+    Route::get('/ubah/ket/berobat/{id}', [SuperAdminController::class, 'ubahketberobat'])->name('superadmin.ubahketberobat');
+    Route::post('/ubah/ket/berobat/{id}', [SuperAdminController::class, 'changeketberobat'])->name('superadmin.changeketberobat');
 
     Route::get('/data/izin/berobat', [SuperAdminController::class, 'dataizinberobat'])->name('superadmin.dataizinberobat');
     Route::get('/izin/berobat', [SuperAdminController::class, 'izinberobat'])->name('superadmin.izinberobat');
@@ -89,6 +95,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/view/izin/berobat/{id}', [SuperAdminController::class, 'viewizinberobat'])->name('superadmin.viewizinberobat');
     Route::get('/print/izin/berobat/{id}', [SuperAdminController::class, 'print'])->name('superadmin.printizinberobat');
     Route::get('/proses', [SuperAdminController::class, 'proses'])->name('proses');
+    Route::get('/ubah/izin/berobat/{id}', [SuperAdminController::class, 'ubahizinberobat'])->name('superadmin.ubahizinberobat');
+    Route::post('/ubah/izin/berobat/{id}', [SuperAdminController::class, 'changeizinberobat'])->name('superadmin.changeizinberobat');
 
     Route::get('/data/izin/istirahat', [IzinIstirahatController::class, 'dataizinistirahat'])->name('istirahat.dataizinistirahat');
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
@@ -96,6 +104,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/data/surat/rujukan', [SuperAdminController::class, 'datasuratrujukan'])->name('superadmin.datasuratrujukan');
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');
     Route::post('/surat/rujukan', [SuperAdminController::class, 'addsuratrujukan'])->name('superadmin.addsuratrujukan');
+    Route::get('/ubah/surat/rujukan/{id}', [SuperAdminController::class, 'ubahsuratrujukan'])->name('superadmin.ubahdatasuratrujukan');
+    Route::post('/ubah/surat/rujukan/{id}', [SuperAdminController::class, 'changesuratrujukan'])->name('superadmin.changedatasuratrujukan');
     Route::get('/print/surat/rujukan/{id}', [SuperAdminController::class, 'printsuratrujukan'])->name('superadmin.printsuratrujukan');
   
     Route::get('/view/rekam/medis/{id}', [RekamMedisController::class, 'viewrekammedis'])->name('rekammedis.viewrekammedis');
@@ -103,9 +113,14 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
     Route::post('/rekam/medis', [SuperAdminController::class, 'autorekam'])->name('superadmin.rekammedisautocomplete');
 
+    Route::get('data/keterangan/sehat', [SuperAdminController::class, 'dataketerangansehat'])->name('superadmin.dataketerangansehat');
     Route::get('/keterangan/sehat', [SuperAdminController::class, 'keterangansehat'])->name('superadmin.keterangansehat');
-
+    
     Route::get('/persetujuan/tindakan/medis', [SuperAdminController::class, 'persetujuantindakanmedis'])->name('superadmin.persetujuantindakanmedis');
+    Route::post('/persetujuan/tindakan/medis', [SuperAdminController::class, 'addpersetujuantindakanmedis'])->name('superadmin.addpersetujuantindakanmedis');
+    Route::get('/ubah/persetujuan/tindakan/medis', [SuperAdminController::class, 'ubahpersetujuantindakanmedis'])->name('superadmin.ubahpersetujuantindakanmedis');
+    Route::post('/ubah/persetujuan/tindakan/medis', [SuperAdminController::class, 'changepersetujuantindakanmedis'])->name('superadmin.changepersetujuantindakanmedis');
+    Route::get('/data/tindakan/medis', [SuperAdminController::class, 'datatindakanmedis'])->name('superadmin.datatindakanmedis');
 
     Route::get('/pemeriksaan/antigen', [PemeriksaanAntigenController::class, 'pemeriksaanantigen'])->name('superadmin.pemeriksaanantigen');
     Route::get('/add/pemeriksaan/antigen', [PemeriksaanAntigenController::class, 'addpemeriksaanantigen'])->name('superadmin.addpemeriksaanantigen');
@@ -129,6 +144,36 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/view/mitra/kerja/{id}', [SuperAdminController::class, 'viewmitrakerja'])->name('superadmin.viewmitrakerja');
     Route::get('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'ubahmitrakerja'])->name('superadmin.ubahmitrakerja');
     Route::post('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'changemitrakerja'])->name('superadmin.changemitrakerja');
+
+    Route::get('/data/produk', [ProdukController::class, 'dataproduk'])->name('obat.dataproduk');
+    Route::get('/add/produk', [ProdukController::class, 'addproduk'])->name('obat.addproduk');
+    Route::post('/add/produk', [ProdukController::class, 'tambahproduk'])->name('obat.tambahproduk');
+    Route::get('/ubah/produk/{id}', [ProdukController::class, 'ubahproduk'])->name('obat.ubahproduk');
+    Route::post('/ubah/produk/{id}', [ProdukController::class, 'changeproduk'])->name('obat.changeproduk');
+
+    Route::get('/data/alkes', [AlkesController::class, 'dataalkes'])->name('obat.dataalkes');
+    Route::get('/add/alkes', [AlkesController::class, 'addalkes'])->name('obat.addalkes');
+    Route::post('/add/alkes', [AlkesController::class, 'tambahalkes'])->name('obat.tambahalkes');
+    Route::get('/ubah/alkes/{id}', [AlkesController::class, 'ubahalkes'])->name('obat.ubahalkes');
+    Route::post('/ubah/alkes/{id}', [AlkesController::class, 'changealkes'])->name('obat.changealkes');
+
+    Route::get('/nama/alkes', [AlkesController::class, 'namaalkes'])->name('obat.namaalkes');
+    Route::get('/add/nama/alkes', [AlkesController::class, 'addnamaalkes'])->name('obat.addnamaalkes');
+    Route::post('/add/nama/alkes', [AlkesController::class, 'tambahnamaalkes'])->name('obat.tambahnamaalkes');
+    Route::get('/ubah/nama/alkes/{id}', [AlkesController::class, 'ubahnamaalkes'])->name('obat.ubahnamaalkes');
+    Route::post('/ubah/nama/alkes/{id}', [AlkesController::class, 'changenamaalkes'])->name('obat.changenamaalkes');
+
+    Route::get('/golongan/alkes', [AlkesController::class, 'golonganalkes'])->name('obat.golonganalkes');
+    Route::get('/add/golongan/alkes', [AlkesController::class, 'addgolonganalkes'])->name('obat.addgolonganalkes');
+    Route::post('/add/golongan/alkes', [AlkesController::class, 'tambahgolonganalkes'])->name('obat.tambahgolonganalkes');
+    Route::get('/ubah/golongan/alkes/{id}', [AlkesController::class, 'ubahgolonganalkes'])->name('obat.ubahgolonganalkes');
+    Route::post('/ubah/golongan/alkes/{id}', [AlkesController::class, 'changegolonganalkes'])->name('obat.changegolonganalkes');
+
+    Route::get('/data/obats', [ObatController::class, 'dataobats'])->name('obat.dataobats');
+    Route::get('/add/obats', [ObatController::class, 'addobats'])->name('obat.addobats');
+    Route::post('/add/obats', [ObatController::class, 'tambahobats'])->name('obat.tambahobats');
+    Route::get('/ubah/obats/{id}', [ObatController::class, 'ubahobats'])->name('obat.ubahobats');
+    Route::post('/ubah/obats/{id}', [ObatController::class, 'changeobats'])->name('obat.changeobats');
 
     Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
     Route::get('/data/obat', [SuperAdminController::class, 'dataobat'])->name('superadmin.dataobat');

@@ -17,18 +17,18 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h5>Jadwal Petugas</h5><br>
+                                    <h5>Data Petugas</h5><br>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Nama Petugas</label> <b class="color-red">*</b></label>
-                                            <input type="text" id="name" class="form-control" name="name" placeholder="Nama Petugas" value="{{ $user['name'] }}" required>
+                                            <input type="text" id="name" class="form-control" name="name" placeholder="Nama Petugas" value="{{ $user['name'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="email">Email Petugas</label>
-                                            <input type="email" id="email" class="form-control" name="email" value="{{ $user['email'] }}" required>
+                                            <label for="email">Email</label> <b class="color-red">*</b>
+                                            <input type="email" id="email" class="form-control" name="email" value="{{ $user['email'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                             
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon</label> <b class="color-red">*</b></label>
-                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13">
+                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
 
@@ -69,7 +69,8 @@
                                             <label for="cek"> <B>Reset Password</B> <I>*klinikMIP2022!</I></label>
                                         </div>
                                     </div><br><br>
-                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
+
+                                    
                                 </div>
 
                                 <div class="col-6">
@@ -163,11 +164,14 @@
                                     </table>
                                     <div class="col-12"><br>
                                         <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                            <div class="col-4">
+                                                <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
                                             </div>
                                         </div>
                                     </div>

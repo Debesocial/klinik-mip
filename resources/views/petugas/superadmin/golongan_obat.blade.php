@@ -16,6 +16,13 @@
             </div>
         </div>
         <div class="card-body">
+            @if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('superadmin.golonganobat') }}" }})
+                </script>
+            @endif
             <table class="table" id="table1">
                 <thead>
                     <tr>

@@ -20,4 +20,10 @@ class BobotObat extends Model
     public function obatalkes() {
         return $this->hasMany(ObatAlkes::class);
     }
+    public function obat() {
+        return $this->hasMany(Obat::class);
+    }
+    public function produk() {
+        return $this->hasMany(Produk::class);
+    }
 }

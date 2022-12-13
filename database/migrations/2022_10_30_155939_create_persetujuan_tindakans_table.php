@@ -16,10 +16,9 @@ class CreatePersetujuanTindakansTable extends Migration
         Schema::create('persetujuan_tindakans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
-            $table->foreignId('rekam_medis_id')->constrained();
             $table->string('riwayat');
             $table->boolean('hasil');;
-            $table->text('ttd');
+            $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
