@@ -477,25 +477,28 @@ class SuperAdminController extends Controller
         return redirect()->back()->with('fail', 'Data Fail!');
     }
 
-    public function ubahsuratrujukan($id, $jadwal_id)
+    public function ubahsuratrujukan($id)
     {
         $surat = SuratRujukan::find($id);
         $pasien = Pasien::all();
         $spesialisrujukan = SpesialisRujukan::all();
         $rsrujukan = RumahSakitRujukan::all();;
-        return view('petugas.superadmin.ubah_data_user', compact('surat', 'pasien', 'spesialisrujukan', 'rsrujukan'));
+        return view('petugas.superadmin.ubah_surat_rujukan', compact('surat', 'pasien', 'spesialisrujukan', 'rsrujukan'));
     }
 
-    function changesuratrujukan(Request $request, $id, $jadwal_id) {
+    function changesuratrujukan(Request $request, $id) {
         $surat = SuratRujukan::find($id);
-        $surat->email = $request->input('email');
-        $surat->status = $request->input('status');
-        $surat->telp = $request->input('telp');
-        $surat->level_id = $request->input('level_id');
+        $surat->tempat = $request->input('tempat');
+        $surat->tanggal = $request->input('tanggal');
+        $surat->riwayat = $request->input('riwayat');
+        $surat->obat_diberikan = $request->input('obat_diberikan');
+        $surat->hasil_pengobatan = $request->input('hasil_pengobatan');
+        $surat->spesialis_rujukan_id = $request->input('spesialis_rujukan_id');
+        $surat->rumah_sakit_rujukan_id = $request->input('rumah_sakit_rujukan_id');
         $surat->update();
 
 
-        return redirect('/data/user')->with('message', 'Berhasil Mengubah Data Petugas!');
+        return redirect('/data/user')->with('message', 'Successfully!');
         
     }
 
@@ -549,7 +552,7 @@ class SuperAdminController extends Controller
         ]);
 
 
-        return redirect('/data/izin/berobat')->with('message', 'Successfully!');
+        return redirect('/data/tindakan/medis')->with('message', 'Successfully!');
     }
 
     public function ubahpersetujuantindakanmedis($id)
@@ -569,6 +572,18 @@ class SuperAdminController extends Controller
 
         return redirect('/data/tindakan/medis')->with('message', 'Successfully');
         
+    }
+
+    public function printpersetujuantindakan($id)
+    {
+        $tindakan = PersetujuanTindakan::find($id);
+        $pasien = Pasien::all();
+  
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('petugas.superadmin.print_persetujuan_tindakan', ['tindakan' => $tindakan])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'portrait');
+        
+        $pdf->save(storage_path().'persetujuantindakanmedis.pdf');
+        return $pdf->stream();
     }
 
     public function dataobat()

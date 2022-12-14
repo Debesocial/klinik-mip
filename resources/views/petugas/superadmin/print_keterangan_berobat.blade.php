@@ -23,7 +23,7 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 50%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($keterangan->created_at)->format('d F Y') }}</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($keterangan->created_at)->format('d F Y') }}</div><br>
 
      <p>Perihal : <b><i> Surat Keterangan Berobat</i></b></p>
 
@@ -61,26 +61,19 @@
 
         <p>(Dibawah ini diisi oleh dokter yang memeriksa).</p>
         <p>Yang bersangkutan adalah benar telah berobat di (nama klinik praktek / Rumah Sakit).</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p><br>
+        <p>{{$keterangan->rumahsakitrujukan->nama_RS_rujukan}}</p><br>
 
-        <p>Pada hasil pemeriksaan didapatkan diagnosa penyakit</p>
-        <p>.......................................................................................</p><br>
+        <p>Pada hasil pemeriksaan didapatkan diagnosa penyakit :</p>
+        <p>{{$keterangan->namapenyakit->primer}}</p><br>
 
         <p>Dan pasien diresepkan obat</p>
         <p>R/</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p><br>
+        <p>{{$keterangan->resep}}</p><br>
 
         <p>Saran untuk pasien :</p>
-        <p>.......................................................................................</p>
-        <p>.......................................................................................</p><br>
+        <p>{{$keterangan->saran}}</p><br>
 
-        <p>Pasien (harus / tidak harus) kontrol kembali pada ......................................</p>
+        <p>Pasien (harus / tidak harus) kontrol kembali pada{{ Carbon\Carbon::parse($keterangan->tanggal_kembali)->format('d F Y') }}.</p>
         <p>() = coret yang tidak perlu.</p><br>
 
         <div style="width: 23%; text-align: left; float: left;">Dokter yang merujuk</div>
@@ -95,7 +88,7 @@
         
         <br><br><br><br>
         <div style="width: 20%; text-align: left;  float: right; ">No. Revisi : 00</div>
-        <div style="width: 49%; text-align: left;  float: left; ">(No:MIP/FRM/KLN/015)</div>
+        <div style="width: 49%; text-align: left;  float: left; ">(No:MIP/FRM/KLN/014)</div>
     </div>
     
 

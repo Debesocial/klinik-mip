@@ -49,7 +49,7 @@
                             <td>{{ $surat->hasil_pengobatan }}</td>
                             <td><div class="buttons">
                                 <a href="/print/surat/rujukan/{{ $surat->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/ubah/surat/rujukan/{{ $surat->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

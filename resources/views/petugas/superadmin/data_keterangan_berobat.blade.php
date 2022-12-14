@@ -28,8 +28,7 @@
                     <tr>
                         <th>Tanggal dibuat</th>
                         <th>Nama Pasien</th>
-                        <th>Kliniks</th>
-                        
+                        <th>Klinik </th>
                         <th>Resep</th>
                         <th>Saran</th>
                         <th>Aksi</th>
@@ -42,7 +41,7 @@
                             <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $ket->pasien->nama_pasien }}</td>
-                            <td>{{ $ket->klinik }}</td>
+                            <td>{{ $ket->rumahsakitrujukan->nama_RS_rujukan }}</td>
                             
                             <td>{{ $ket->resep }}</td>
                             <td>{{ $ket->saran }}</td>
