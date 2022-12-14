@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Surat Izin Berobat  </title>
+    <title> Surat Persetujuan Tindakan Medis</title>
     <style type= "text/css">
     body {font-family: arial;  }
     .rangkasurat {width : 650px;margin:0 auto;;height: 500px;padding: 20px;}
@@ -22,40 +22,40 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($izin->created_at)->format('d F Y') }}</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($tindakan->created_at)->format('d F Y') }}</div><br>
 
         <p>Kepada Yth.</p>
         <p>...........................................</p>
         <p>...........................................</p>
         <p>di-</p>&ensp;
         <p>Tempat</p>
-        <p>Perihal : <b><i> Surat Izin Berobat</i></b></p>
+        <p>Perihal : <b><i> Surat Persetujuan Tindakan Medis</i></b></p>
 
         <table>
             <p>Bersama Surat Ini saya sampaikan bahwa:</p>
             <tr>
                 <td style="width: 30%;">Nama</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->nama_pasien}}</td>
+                <td style="width: 65%;">{{$tindakan->pasien->nama_pasien}}</td>
             </tr>
             <tr>
                 <td style="width: 30%;">Tempat, tanggal lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($izin->pasien->tanggal_lahir)->format('d F Y') }}  </td>
+                <td style="width: 65%;">{{$tindakan->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($tindakan->pasien->tanggal_lahir)->format('d F Y') }}  </td>
             </tr>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Alamat</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->alamat}}</td>
+                <td style="width: 65%;">{{$tindakan->pasien->alamat}}</td>
             </tr>
             <tr>
                 <td style="width: 30%;">Pekerjaan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->pekerjaan}}</td>
+                <td style="width: 65%;">{{$tindakan->pasien->pekerjaan}}</td>
             </tr>
         </table>
 
-        <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan untuk diberikan izin untuk berobat ke tarakan.</p>
+        <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan unutk diberikan izin untuk berobat ke tarakan.</p>
         <p>Demikian Surat ini saya buat, atas perhatian dan kerja samanya kami ucapkan terimakasih.</p>
 
         <div style="width: 10%; text-align: left; float: right;">Salam</div><br>

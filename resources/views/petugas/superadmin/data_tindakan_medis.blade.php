@@ -28,6 +28,8 @@
                     <tr>
                         <th>Tanggal dibuat</th>
                         <th>Nama Pasien</th>
+                        <th>Riwayat</th>
+                        <th>Hasil Pernyataan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,10 +40,13 @@
                             <br>{{ Carbon\Carbon::parse($tin->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $tin->pasien->nama_pasien }}</td>
-                            <td>{{ $tin->tempat }}</td>
+                            <td>{{ $tin->riwayat }}</td>
+                            <td>
+                                <i class="{{ $tin->hasil == 1 ? "fas fa-check" : "fas fa-times" }}"></i>
+                                </td>
                             <td><div class="buttons">
-                                <a href="" title="print Data" href="#" class="btn btn-success rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="" class="btn btn-danger rounded-pill" title="View"><i class="fa fa-eye"></i></a>
+                                <a href="/print/persetujuan/tindakan/medis/{{ $tin->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="/ubah/persetujuan/tindakan/medis/{{ $tin->id }}" class="btn btn-success rounded-pill" title="Ubah"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

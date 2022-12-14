@@ -22,7 +22,7 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 50%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($surat->created_at)->format('d F Y') }}</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($surat->created_at)->format('d F Y') }}</div><br>
 
         <p>Perihal : <b><i> Surat Izin Rujukan</i></b></p>
         <table>
@@ -88,7 +88,7 @@
         <div style="width: 15%; text-align: left; border-top: 5px solid black; float: right; ">Klinik PT MIP</div>
         <br><br><br>
         <div style="width: 18%; text-align: left;  float: right; ">No. Revisi : 00</div>
-        <div style="width: 90%; text-align: left;  float: right; ">(No:MIP/FRM/KLN/015)</div>
+        <div style="width: 90%; text-align: left;  float: right; ">(No:MIP/FRM/KLN/013)</div>
     </div>
     
 </html>

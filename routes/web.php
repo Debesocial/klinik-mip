@@ -118,9 +118,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     
     Route::get('/persetujuan/tindakan/medis', [SuperAdminController::class, 'persetujuantindakanmedis'])->name('superadmin.persetujuantindakanmedis');
     Route::post('/persetujuan/tindakan/medis', [SuperAdminController::class, 'addpersetujuantindakanmedis'])->name('superadmin.addpersetujuantindakanmedis');
-    Route::get('/ubah/persetujuan/tindakan/medis', [SuperAdminController::class, 'ubahpersetujuantindakanmedis'])->name('superadmin.ubahpersetujuantindakanmedis');
-    Route::post('/ubah/persetujuan/tindakan/medis', [SuperAdminController::class, 'changepersetujuantindakanmedis'])->name('superadmin.changepersetujuantindakanmedis');
+    Route::get('/ubah/persetujuan/tindakan/medis/{id}', [SuperAdminController::class, 'ubahpersetujuantindakanmedis'])->name('superadmin.ubahpersetujuantindakanmedis');
+    Route::post('/ubah/persetujuan/tindakan/medis/{id}', [SuperAdminController::class, 'changepersetujuantindakanmedis'])->name('superadmin.changepersetujuantindakanmedis');
     Route::get('/data/tindakan/medis', [SuperAdminController::class, 'datatindakanmedis'])->name('superadmin.datatindakanmedis');
+    Route::get('/print/persetujuan/tindakan/medis/{id}', [SuperAdminController::class, 'printpersetujuantindakan'])->name('superadmin.printpersetujuantindakan');
 
     Route::get('/pemeriksaan/antigen', [PemeriksaanAntigenController::class, 'pemeriksaanantigen'])->name('superadmin.pemeriksaanantigen');
     Route::get('/add/pemeriksaan/antigen', [PemeriksaanAntigenController::class, 'addpemeriksaanantigen'])->name('superadmin.addpemeriksaanantigen');
