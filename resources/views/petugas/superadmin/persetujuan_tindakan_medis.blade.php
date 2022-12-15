@@ -43,7 +43,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Pasien</label>
+                                                <label>ID Rekam Medis</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">

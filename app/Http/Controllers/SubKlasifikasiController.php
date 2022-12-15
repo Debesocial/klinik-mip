@@ -44,7 +44,7 @@ class SubKlasifikasiController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/sub/klasifikasi')->with('success', 'Berhasil Menambahkan Sub Klasifikasi Penyakit!');
+        return redirect('/sub/klasifikasi')->with('success', 'Berhasil Menambahkan Data Sub Klasifikasi Penyakit');
     }
 
     public function ubahsubklasifikasi($id)
@@ -60,7 +60,7 @@ class SubKlasifikasiController extends Controller
         $subklasifikasi->klasifikasi_penyakit_id = $request->input('klasifikasi_penyakit_id');
         $subklasifikasi->update();
 
-        return redirect('/sub/klasifikasi')->with('success', 'Berhasil Mengubah Sub Klasifikasi Penyakit!');
+        return redirect('/sub/klasifikasi')->with('success', 'Berhasil Mengubah Data Sub Klasifikasi Penyakit');
     }
 
     /**

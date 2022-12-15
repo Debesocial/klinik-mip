@@ -38,7 +38,7 @@ class PerusahaanController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/perusahaan')->with('success', 'Berhasil Menambahkan Data Perusahaan!');
+        return redirect('/perusahaan')->with('success', 'Berhasil Menambahkan Data Perusahaan');
     }
 
     public function ubahperusahaan($id)
@@ -52,7 +52,7 @@ class PerusahaanController extends Controller
         $perusahaan->nama_perusahaan_pasien = $request->input('nama_perusahaan_pasien');
         $perusahaan->update();
 
-        return redirect('/perusahaan')->with('success', 'Berhasil Mengubah Data Perusahaan!');
+        return redirect('/perusahaan')->with('success', 'Berhasil Mengubah Data Perusahaan');
     }
 
     /**
