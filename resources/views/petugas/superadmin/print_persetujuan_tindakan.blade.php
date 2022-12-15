@@ -22,7 +22,7 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($tindakan->created_at)->format('d F Y') }}</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($tindakan->created_at)->isoFormat('D MMMM Y') }}</div><br>
 
         <p>Kepada Yth.</p>
         <p>...........................................</p>

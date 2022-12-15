@@ -13,7 +13,7 @@
 <div class = "rangkasurat">
      <table class="surat" width = "100%">
            <tr>
-                 <td> <img src="{{ public_path('assets/image/bg/1.png')}}"> </td>
+                 <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/220px-Lion_waiting_in_Namibia.jpg"></td>
                  <td class = "tengah">
                     <h2>PT. MANDIRI INTIPERKASA</h2>
                     <h3>Site Lagub, Sembakung, Kab. Nunukan</h3>
@@ -23,7 +23,7 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($keterangan->created_at)->format('d F Y') }}</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($keterangan->created_at)->isoFormat('D MMMM Y') }}</div><br>
 
      <p>Perihal : <b><i> Surat Keterangan Berobat</i></b></p>
 
