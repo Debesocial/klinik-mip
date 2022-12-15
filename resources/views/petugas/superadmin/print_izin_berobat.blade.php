@@ -22,7 +22,8 @@
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($izin->created_at)->format('d F Y') }}</div><br>
+        
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($izin->created_at)->isoFormat('D MMMM Y') }}</div><br>
 
         <p>Kepada Yth.</p>
         <p>...........................................</p>
@@ -41,7 +42,7 @@
             <tr>
                 <td style="width: 30%;">Tempat, tanggal lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($izin->pasien->tanggal_lahir)->format('d F Y') }}  </td>
+                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($izin->pasien->tanggal_lahir)->isoFormat('D MMMM Y') }}  </td>
             </tr>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Alamat</td>

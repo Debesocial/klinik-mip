@@ -18,7 +18,9 @@ class IzinBerobat extends Model
         'updated_by'
     ];
 
-    
+    // public function getCreatedAtAttribute() {
+    //     return Carbon::parse($this->attributes['created_at'])->translatedFormat('l, d F Y');
+    // }
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);

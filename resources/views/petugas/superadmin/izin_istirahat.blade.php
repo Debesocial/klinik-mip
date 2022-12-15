@@ -60,11 +60,11 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Pasien</label>
+                                                <label>ID Rekam Medis Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                    <option disabled selected>Pilih ID Pasien</option>
+                                                    <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                     @foreach ($pasien_id as $pas)
                                                         <option value="{{ $pas['id'] }}|{{ $pas['NIK'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
@@ -73,16 +73,9 @@
                                             <div class="col-md-6 form-group">
                                             </div>
                                             <br>
-
-                                            <div class="col-md-2">
-                                                <label>ID Pasien</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
                                                 <input type="text" id="myInput0" class="form-control"
-                                                    name="myInput0" placeholder="ID Pasien"  disabled>
-                                            </div>
-                                            <div class="col-md-6">               
-                                            </div>
+                                                    name="myInput0" placeholder="ID Rekam Medis Pasien"  hidden>
+                                            
 
                                             <div class="col-md-2">
                                                 <label>Nomor Induk Karyawan</label>

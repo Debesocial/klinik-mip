@@ -32,7 +32,6 @@
                         <th>riwayat</th>
                         <th>Obat yang Diberikan</th>
                         <th>Hasil Pengobatan</th>
-                        <th>Dokter Spesialis</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
