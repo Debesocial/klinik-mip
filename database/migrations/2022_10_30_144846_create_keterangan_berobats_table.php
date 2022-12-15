@@ -16,11 +16,11 @@ class CreateKeteranganBerobatsTable extends Migration
         Schema::create('keterangan_berobats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
-            $table->string('klinik');
+            $table->foreignId('rumah_sakit_rujukans_id')->constrained();
             $table->foreignId('nama_penyakit_id')->constrained();
-            $table->string('sekunder');
-            $table->string('resep');
-            $table->string('saran');
+            $table->string('sekunder')->nullable();
+            $table->text('resep');
+            $table->text('saran');
             $table->boolean('kontrol');
             $table->date('tanggal_kembali');;
             $table->unsignedBigInteger('created_by');

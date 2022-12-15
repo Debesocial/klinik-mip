@@ -66,7 +66,7 @@
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['NIK'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['NIK'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -114,7 +114,7 @@
                                                 <div class="col-md-6">
                                             </div>
 
-                                            <div class="col-md-2">
+                                            {{-- <div class="col-md-2">
                                                 <label>Umur</label>
                                             </div>
                                             <div class="col-md-4 form-group">
@@ -122,7 +122,7 @@
                                                     name="myInput4" placeholder="Umur"  disabled>
                                             </div>
                                                 <div class="col-md-6">
-                                            </div>
+                                            </div> --}}
 
                                             <div class="col-md-2">
                                                 <label>Pekerjaan</label>

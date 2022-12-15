@@ -27,11 +27,11 @@ class SuratRujukan extends Model
         return $this->belongsTo(Pasien::class);
     }
     public function rumahsakitrujukan() {
-        return $this->belongsTo(RumahSakitRujukan::class);
+        return $this->belongsTo(RumahSakitRujukan::class, 'rumah_sakit_rujukan_id', 'id');
     }
 
     public function spesialisrujukan() {
-        return $this->belongsTo(SpesialisRujukan::class);
+        return $this->belongsTo(SpesialisRujukan::class, 'spesialis_rujukan_id', 'id');
     }
 
     public function user() {

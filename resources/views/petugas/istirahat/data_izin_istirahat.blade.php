@@ -16,24 +16,30 @@
                 </div>
         </div>
         <div class="card-body">
+            @if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('superadmin.dataizinistirahat') }}" }})
+                </script>
+            @endif
             <table class="table" id="table1">
                 <thead>
                     <tr>
+                        <th>Tanggal Dibuat</th>
                         <th>Nama Pasien</th>
-                        <th>Tempat</th>
-                        <th>Tanggal</th>
-                        <th>ID Rekam Medis</th>
-                        <th>Obat yang Diberikan</th>
+                        <th>Keterangan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($izinistirahat as $izin)
                     <tr>
-                            <td>{{ $izin->rekam_medis_id }}</td>
-                            <td>{{ $izin->tindakan_id }}</td>
-                            <td>{{ $izin->nama_alat }}</td>
-                            <td>{{ $izin->pasien_id }}</td>
+                        <td><B>{{ Carbon\Carbon::parse($izin->created_at)->format('d F Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($izin->created_at)->format('H:i:s') }}
+                        </td>
+                            <td>{{ $izin->pasien->nama_pasien }}</td>
+                            <td>{{ $izin->keterangan }}</td>
                             <td><div class="buttons">
                                 <a href="#" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
                                 <a href="#" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>

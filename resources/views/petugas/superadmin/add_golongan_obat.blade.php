@@ -1,4 +1,7 @@
 @extends('layouts.dashboard.app')
+@section('obalkes', 'active')
+@section('obat', 'active')
+@section('golongan', 'active')
 @section('title', 'Tambah Golongan Obat')
 @section('judul', 'Tambah Golongan Obat/Alkes')
 @section('container')

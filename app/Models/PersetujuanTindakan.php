@@ -11,7 +11,6 @@ class PersetujuanTindakan extends Model
 
     protected $fillable = [
         'pasien_id',
-        'rekam_medis_id',
         'riwayat',
         'hasil',
         'ttd',
@@ -19,10 +18,6 @@ class PersetujuanTindakan extends Model
         'created_by',
         'updated_by'
     ];
-
-    public function rekammedis() {
-        return $this->belongsTo(RekamMedis::class);
-    }
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);

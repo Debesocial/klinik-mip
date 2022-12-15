@@ -13,16 +13,16 @@
 <div class = "rangkasurat">
      <table class="surat" width = "100%">
            <tr>
-                 <td> <img src="{{ public_path('assets/image/bg/1.png')}}"> </td>
+                 <td> <img width="50" height="50" src="1.png"> </td>
                  <td class = "tengah">
-                       <h2>PT. MANDIRI PERKASA</h2>
+                       <h2>PT. MANDIRI INTIPERKASA</h2>
                        <h3>Site Lagub Sembakung - Nunukan KAL-TIM</h3>
                        <h3><i>Telp : 021 - 5670037 Ext. 496</i></h3>
                  </td>
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 50%; text-align: left; float: right;">Site Krassi,.................</div><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($izin->created_at)->format('d F Y') }}</div><br>
 
         <p>Kepada Yth.</p>
         <p>...........................................</p>
@@ -41,7 +41,7 @@
             <tr>
                 <td style="width: 30%;">Tempat, tanggal lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{$izin->pasien->tanggal_lahir}}  </td>
+                <td style="width: 65%;">{{$izin->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($izin->pasien->tanggal_lahir)->format('d F Y') }}  </td>
             </tr>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Alamat</td>
@@ -55,7 +55,7 @@
             </tr>
         </table>
 
-        <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan unutk diberikan izin untuk berobat ke tarakan.</p>
+        <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan untuk diberikan izin untuk berobat ke tarakan.</p>
         <p>Demikian Surat ini saya buat, atas perhatian dan kerja samanya kami ucapkan terimakasih.</p>
 
         <div style="width: 10%; text-align: left; float: right;">Salam</div><br>

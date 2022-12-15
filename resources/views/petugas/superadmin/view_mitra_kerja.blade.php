@@ -34,7 +34,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="email">Email Mitra Kerja</label>
+                                            <label for="email">Email <b class="color-red">*</b></label>
                                             <input type="text" id="email" class="form-control" name="email" value="{{ $user['email'] }}" disabled>
                                             
                                         </div>
@@ -42,7 +42,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="level_id">Level Petugas</label> <b class="color-red">*</b></label>
+                                            <label for="level_id">Level </label> <b class="color-red">*</b></label>
                                             <input type="level_id" id="level_id" class="form-control" name="email" value="{{ $user->level->nama_level }}" disabled>
                                         </div>
                                     </div>

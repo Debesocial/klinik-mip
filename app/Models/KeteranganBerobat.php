@@ -11,7 +11,7 @@ class KeteranganBerobat extends Model
 
     protected $fillable = [
         'pasien_id',
-        'klinik',
+        'rumah_sakit_rujukans_id',
         'nama_penyakit_id',
         'sekunder',
         'resep',
@@ -23,11 +23,11 @@ class KeteranganBerobat extends Model
     ];
 
     public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class);
+        return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
     }
 
     public function rumahsakitrujukan() {
-        return $this->belongsTo(RumahSakitRujukan::class);
+        return $this->belongsTo(RumahSakitRujukan::class, 'rumah_sakit_rujukans_id', 'id');
     }
 
     public function pasien() {

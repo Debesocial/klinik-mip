@@ -1,99 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Surat Rujukan</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-    body {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        color: #333;
-        text-align: left;
-        font-size: 18px;
-        margin: 0;
-    }
-    .container {
-        margin: 0 auto;
-        margin-top: 0px;
-        /* padding: 40px;
-        width: 750px; */
-        height: auto;
-        background-color: #fff;
-    }
-    caption {
-        font-size: 28px;
-        margin-bottom: 15px;
-    }
-    table {
-        border: none;
-        border-collapse: collapse;
-        /* margin: 0 auto;
-        width: 790px; */
-    }
-    td,
-    tr,
-    th {
-        border: none;
-        font-size: 13px;
-        width: 109px;
-    }
-    th {
-        background-color: #f0f0f0;
-    }
-    h4,
-    p {
-        margin: 0px;
-    }
-    
-    </style>
+    <title> Surat Izin Rujukan  </title>
+    <style type= "text/css">
+    body {font-family: arial;  }
+    .rangkasurat {width : 650px;margin:0 auto;;height: 500px;padding: 20px;}
+    .surat {border-bottom: 5px solid black; padding: 2px}
+    .tengah {text-align : center;line-height: 5px;}
+     </style >
 </head>
-
 <body>
-    <div class="container">
-        <h4>&nbsp;&nbsp;Data Surat Izin Berobat </h4>
+<div class = "rangkasurat">
+     <table class="surat" width = "100%">
+           <tr>
+                 {{-- <td> <img src="{{ public_path('assets/image/bg/1.png')}}"> </td> --}}
+                 <td class = "tengah">
+                       <h2>PT. MANDIRI INTIPERKASA</h2>
+                       <h3>Site Lagub, Kecematan Sembakung, Kab. Nunukan</h3>
+                       <h3><i>Telp : 021 - 5670037 Ext. 496</i></h3>
+                 </td>
+            </tr>
+     </table >
+     <div><br><br><br>
+     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($surat->created_at)->format('d F Y') }}</div><br>
 
-        <br><br>
-        <h4>Data Pasien</h4>
-        <br>
-        <table class="table">
-            <thead>
-                <tr style="text-align: center;">
-                    <th>Nama Pasien</th>
-                    <th>Umur</th>
-                    <th>Pekerjaan</th>
-                    <th>Telepon</th>
-                    <th>Tempat</th>
-                    <th>Tanggal</th>
-                    <th>riwayat</th>
-                    <th>Obat yang Diberikan</th>
-                    <th>Hasil Pengobatan</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="text-align: center;">
-                    <td>{{$surat->pasien->nama_pasien}}</td>
-                    <td>{{$surat->pasien->umur}}</td>
-                    <td>{{$surat->pasien->pekerjaan}}</td>
-                    <td>{{$surat->pasien->telepon}}</td>
-                    <td>{{$surat->tempat}}</td>
-                    <td>{{$surat->tanggal}}</td>
-                    <td>{{$surat->riwayat}}</td>
-                    <td>{{$surat->obat_diberikan}}</td>
-                    <td>{{$surat->hasil_pengobatan}}</td>
-                    <td>
-                        <img src="{{ asset($surat->ttd) }}" style="width: 50px; height: 50px">
-                    </td>
-                </tr>
-                </select>
-            </tbody>
+        <p>Perihal : <b><i> Surat Izin Rujukan</i></b></p>
+        <table>
+            <p>Dengan surat ini, kami sampaikan bahwa:</p><br>
+            <tr>
+                <td style="width: 30%;">Nama</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{$surat->pasien->nama_pasien}}</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Umur</td>
+                <td style="width: 5%;">:</td>
+                <td><?php
+                    $tanggal_lahir = $surat->pasien->tanggal_lahir;
+                    $lahir    = new DateTime($tanggal_lahir);
+                    $today        = new DateTime('today');
+                    $usia = $today->diff($lahir);
+                    echo $usia->y;
+                    echo " Tahun ";
+                    ?></td>
+            </tr>
+            <tr>
+                <td style="width: 30%; vertical-align: top;">Pekerjaan</td>
+                <td style="width: 5%; vertical-align: top;">:</td>
+                <td style="width: 65%;">{{$surat->pasien->pekerjaan}}</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Perusahaan</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{$surat->pasien->perusahaan->nama_perusahaan_pasien}}</td>
+            </tr>
         </table>
 
-    </div>
-</body>
+        
 
+        <p>Riwayat Perjalanan Penyakit:</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <br>
+        <p>Pada pasien telah kami berikan obat:</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <br>
+        <p>Dan hasil pengobatan pada pasien:</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <p>-----------------------------------------------------------------------------------------------------------------------------------------</p>
+        <br>
+
+        <p>Mohon penanganan dan pengobatan yang lebih intesif. Atas perhatian rekan sejawat, kami mengucapkan terima kasih.</p>
+
+        <div style="width: 10%; text-align: left; float: right;">Salam</div><br>
+        <br><br><br><br><br>
+        
+        <div style="width: 15%; text-align: left; border-top: 5px solid black; float: right; ">Klinik PT MIP</div>
+        <br><br><br>
+        <div style="width: 18%; text-align: left;  float: right; ">No. Revisi : 00</div>
+        <div style="width: 90%; text-align: left;  float: right; ">(No:MIP/FRM/KLN/013)</div>
+    </div>
+    
 </html>

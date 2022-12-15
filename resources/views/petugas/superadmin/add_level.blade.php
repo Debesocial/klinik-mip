@@ -20,7 +20,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_level">Level Petugas</label>
-                                            <input type="text" class="form-control" name="nama_level" id="nama_level" placeholder="Masukkan Level petugas" required>
+                                            <input type="text" class="form-control" name="nama_level" id="nama_level" placeholder="Masukkan Level petugas" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>
