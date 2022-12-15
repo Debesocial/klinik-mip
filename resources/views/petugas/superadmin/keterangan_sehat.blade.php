@@ -50,7 +50,7 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>ID Pasien</label>
+                                                    <label>ID Rekam Medis Pasien</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -63,14 +63,14 @@
                                                 <div class="col-md-6">
                                                 </div>
 
-                                                <div class="col-md-2">
+                                                {{-- <div class="col-md-2">
                                                     <label>ID Pasien</label>
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput0" class="form-control" name="myInput0" placeholder="ID Pasien" disabled>
-                                                </div>
-                                                <div class="col-md-6">
-                                                </div>
+                                                </div> --}}
+                                                
+                                                    <input type="text" id="myInput0" class="form-control" name="myInput0" placeholder="ID Pasien" hidden>
+                                               
+                                                {{-- <div class="col-md-6">
+                                                </div> --}}
 
                                                 <div class="col-md-2">
                                                     <label>Nama Pasien</label>
@@ -126,7 +126,7 @@
                                                     <label>Divisi</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput7" class="form-control" name="myInput7" placeholder="Perusahaan" disabled>
+                                                    <input type="text" id="myInput7" class="form-control" name="myInput7" placeholder="Divisi" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>

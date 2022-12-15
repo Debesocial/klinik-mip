@@ -270,15 +270,17 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        return redirect('/data/keterangan/berobat')->with('message', 'Berhasil menambah surat keterangan berobat!');
     }
 
     public function printketberobat($id)
     {
         $keterangan = KeteranganBerobat::find($id);
         $pasien = Pasien::all();
+
+        $today = Carbon::now()->isoFormat('D MMMM Y');
   
-        $pdf = PDF::loadView('petugas.superadmin.print_keterangan_berobat', ['keterangan' => $keterangan])->setOptions(['defaultFont' => 'sans-serif'])->setPaper('a4', 'portrait');
+        $pdf = PDF::loadView('petugas.superadmin.print_keterangan_berobat', ['keterangan' => $keterangan])->setOptions(['defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->setPaper('a4', 'portrait');
         
         $pdf->save(storage_path().'keteranganberobat.pdf');
         return $pdf->stream();
@@ -306,7 +308,7 @@ class SuperAdminController extends Controller
         $keterangan->tanggal_kembali = $request->input('tanggal_kembali');
         $keterangan->update();
 
-        return redirect('/data/keterangan/berobat')->with('message', 'Successfully');
+        return redirect('/data/keterangan/berobat')->with('message', 'Berhasil mengubah surat keterangan berobat');
         
     }
 
@@ -371,7 +373,7 @@ class SuperAdminController extends Controller
         ]);
 
 
-        return redirect('/data/izin/berobat')->with('message', 'Successfully!');
+        return redirect('/data/izin/berobat')->with('message', 'Berhasil menambah surat izin berobat!');
     }
 
     public function ubahizinberobat($id)
@@ -388,7 +390,7 @@ class SuperAdminController extends Controller
         $izin->tempat = $request->input('tempat');
         $izin->update();
 
-        return redirect('/data/izin/berobat')->with('message', 'Successfully');
+        return redirect('/data/izin/berobat')->with('message', 'Berhasil mengubah surat izin berobat');
         
     }
 
@@ -472,7 +474,7 @@ class SuperAdminController extends Controller
         ]);
 
         if($surat) {
-            return redirect('/data/surat/rujukan')->with('message', 'Successfully!');
+            return redirect('/data/surat/rujukan')->with('message', 'Berhasil menambah surat rujukan!');
         }
         return redirect()->back()->with('fail', 'Data Fail!');
     }
@@ -490,8 +492,8 @@ class SuperAdminController extends Controller
         $surat->update();
 
 
-        return redirect('/data/user')->with('message', 'Successfully!');
-    
+        return redirect('/data/user')->with('message', 'Berhasil mengubah surat rujukan!');
+        
     }
 
     public function dataketerangansehat()
@@ -544,7 +546,7 @@ class SuperAdminController extends Controller
         ]);
 
 
-        return redirect('/data/tindakan/medis')->with('message', 'Successfully!');
+        return redirect('/data/tindakan/medis')->with('message', 'Berhasil menambah surat persetujuan tindakan medis!');
     }
 
     public function ubahpersetujuantindakanmedis($id)
@@ -562,7 +564,7 @@ class SuperAdminController extends Controller
         $tindakan->hasil = $request->input('hasil');
         $tindakan->update();
 
-        return redirect('/data/tindakan/medis')->with('message', 'Successfully');
+        return redirect('/data/tindakan/medis')->with('message', 'Berhasil mengubah surat persetujuan tindakan medis!');
         
     }
 

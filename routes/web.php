@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-    Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker']], function () {
+    Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,perawat']], function () {
 
     Route::get('/{id}/password', [DivisiController::class, 'password'])->name('superadmin.password');
 
