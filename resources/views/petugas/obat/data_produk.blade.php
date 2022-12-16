@@ -35,11 +35,11 @@
             <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
-                        <th>Nama Produk Kesehatan</th>
-                        <th>Satuan Produk Kesehatan</th>
-                        <th>Bobot Produk Kesehatan</th>
-                        <th>Komposisi Produk Kesehatan</th>
-                        <th>Aksi</th>
+                        <th>Nama </th>
+                        <th>Satuan </th>
+                        <th>Bobot </th>
+                        <th>Komposisi </th>
+                        <th>Aksi </th>
                     </tr>
                 </thead>
                 <tbody>

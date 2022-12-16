@@ -99,7 +99,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Narkoba');
     }
 
 
@@ -131,7 +131,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pasien')->with('success', 'Successfully!');
+        return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
     }
 
     public function pemantauancovid()
@@ -381,7 +381,7 @@ class SuperAdminController extends Controller
         $izin = IzinBerobat::find($id);
         $pasien = Pasien::all();
 
-        return view('petugas.superadmin.ubah_izin_berobat', compact('izin', 'pasien'));
+        return redirect('/data/izin/berobat')->with('success', 'Successfully!');
     }
 
     function changeizinberobat(Request $request, $id) {
@@ -478,15 +478,7 @@ class SuperAdminController extends Controller
         }
         return redirect()->back()->with('fail', 'Data Fail!');
     }
-
-    public function ubahsuratrujukan($id)
-    {
-        $surat = SuratRujukan::find($id);
-        $pasien = Pasien::all();
-        $spesialisrujukan = SpesialisRujukan::all();
-        $rsrujukan = RumahSakitRujukan::all();;
-        return view('petugas.superadmin.ubah_surat_rujukan', compact('surat', 'pasien', 'spesialisrujukan', 'rsrujukan'));
-    }
+    
 
     function changesuratrujukan(Request $request, $id) {
         $surat = SuratRujukan::find($id);
@@ -629,7 +621,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/obat')->with('success', 'Berhasil Menambahkan Data Obat/Alkes!');
+        return redirect('/data/obat')->with('success', 'Berhasil Menambahkan Data Obat!');
     }
 
     public function ubahobat($id)
@@ -654,7 +646,7 @@ class SuperAdminController extends Controller
         $obatalkes->komposisi_obat = $request->input('komposisi_obat');
         $obatalkes->update();
 
-        return redirect('/data/obat')->with('success', 'Berhasil Mengubah Data Obat/Alkes!');
+        return redirect('/data/obat')->with('success', 'Berhasil Mengubah Data Obat!');
     }
 
     /**
@@ -771,12 +763,11 @@ class SuperAdminController extends Controller
                 'updated_by' => auth()->user()->id
             ]);
 
-            if($pasien) {
-                return redirect('/data/pasien')->with('message', 'Successfully!');
-            }
-        
-        return redirect()->back()->with('fail', 'Data Fail!');
+        if ($pasien) {
+            return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pasien!');
+        }
 
+        return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
     public function ubahpasien($id)
@@ -821,7 +812,7 @@ class SuperAdminController extends Controller
         $keluarga->email = $request->input('email_keluarga');
         $keluarga->update();
 
-        return redirect('/data/pasien')->with('message', 'Berhasil Mengubah Data Pasien!');
+        return redirect('/data/pasien')->with('success', 'Berhasil Mengubah Data Pasien!');
     }
 
     public function mitrakerja(Request $request)
@@ -880,7 +871,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($user) {
-        return redirect('/mitra/kerja')->with('message', 'Berhasil Menambahkan Data Mitra Kerja!');
+        return redirect('/mitra/kerja')->with('success', 'Berhasil Menambahkan Data Petugas!');
     }   
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
@@ -911,7 +902,7 @@ class SuperAdminController extends Controller
         $user->perusahaan_id = $request->input('perusahaan_id');
         $user->update();
 
-        return redirect('/mitra/kerja')->with('message', 'Berhasil Mengubah Data Mitra Kerja!');
+        return redirect('/mitra/kerja')->with('success', 'Berhasil Mengubah Data Mitra Kerja!');
     }
 
 
@@ -984,7 +975,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($user) {
-        return redirect('/data/user')->with('message', 'Berhasil Menambahkan Data Petugas!');
+        return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
         
     }   
         return redirect()->back()->with('fail', 'Fail Create Data!');
@@ -1022,7 +1013,7 @@ class SuperAdminController extends Controller
         $jadwal->update();
 
 
-        return redirect('/data/user')->with('message', 'Berhasil Mengubah Data Petugas!');
+        return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
         
     }
 
@@ -1059,7 +1050,7 @@ class SuperAdminController extends Controller
             'minggu' => $request->minggu,
         ]);
 
-        return redirect('/jadwal')->with('success', 'Berhasil Menambahkan Jadwal!');
+        return redirect('/jadwal')->with('success', 'Berhasil Menambahkan Jadwal');
     }
 
     public function ubahjadwal($id)
@@ -1077,7 +1068,7 @@ class SuperAdminController extends Controller
         $jadwal->sampai = $request->input('sampai');
         $jadwal->update();
 
-        return redirect('/jadwal')->with('success', 'Berhasil Mengubah Jadwal!');
+        return redirect('/jadwal')->with('success', 'Berhasil Mengubah Jadwal');
     }
 
     public function lokasikejadian()
@@ -1103,7 +1094,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/lokasi/kejadian')->with('message', 'Berhasil Menambahkan Lokasi Kejadian!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil Menambahkan Lokasi Kejadian!');
     }
 
     public function ubahlokasikejadian($id)
@@ -1117,7 +1108,7 @@ class SuperAdminController extends Controller
         $lokasikejadian->nama_lokasi = $request->input('nama_lokasi');
         $lokasikejadian->update();
 
-        return redirect('/lokasi/kejadian')->with('message', 'Berhasil Mengubah Lokasi Kejadian!');
+        return redirect('/lokasi/kejadian')->with('success', 'Berhasil Mengubah Lokasi Kejadian!');
     }
 
     public function rsrujukan()
@@ -1143,7 +1134,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/rs/rujukan')->with('message', 'Berhasil Menambahkan Rumah Sakit Rujukan!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil Menambahkan Rumah Sakit Rujukan!');
     }
 
     public function ubahrsrujukan($id)
@@ -1157,7 +1148,7 @@ class SuperAdminController extends Controller
         $rsrujukan->nama_RS_rujukan = $request->input('nama_RS_rujukan');
         $rsrujukan->update();
 
-        return redirect('/rs/rujukan')->with('message', 'Berhasil Mengubah Rumah Sakit Rujukan!');
+        return redirect('/rs/rujukan')->with('success', 'Berhasil Mengubah Rumah Sakit Rujukan!');
     }
 
     public function spesialisrujukan()
@@ -1227,7 +1218,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/hasil/pemantauan')->with('message', 'Succesfully!');
+        return redirect('/hasil/pemantauan')->with('success', 'Berhasil!');
     }
 
     public function ubahhasilpemantauan($id)

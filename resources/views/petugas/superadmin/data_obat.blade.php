@@ -19,13 +19,13 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Jenis obat</th>
-                        <th>Golongan Obat</th>
-                        <th>Nama Obat</th>
-                        <th>Satuan Obat</th>
-                        <th>Bobot Obat</th>
-                        <th>Komposisi obat</th>
-                        <th>Aksi</th>
+                        <th>Jenis </th>
+                        <th>Golongan </th>
+                        <th>Nama </th>
+                        <th>Satuan </th>
+                        <th>Bobot </th>
+                        <th>Komposisi </th>
+                        <th>Aksi </th>
                     </tr>
                 </thead>
                 <tbody>
