@@ -26,12 +26,12 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Golongan Alat/Bahan Kesehatan</th>
-                        <th>Nama Alat/Bahan Kesehatan</th>
-                        <th>Satuan Alat/Bahan Kesehatan</th>
-                        <th>Bobot Alat/Bahan Kesehatan</th>
-                        <th>Komposisi Alat/Bahan Kesehatan</th>
-                        <th>Aksi</th>
+                        <th>Golongan </th>
+                        <th>Nama </th>
+                        <th>Satuan </th>
+                        <th>Bobot </th>
+                        <th>Komposisi </th>
+                        <th>Aksi </th>
                     </tr>
                 </thead>
                 <tbody>
