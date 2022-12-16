@@ -13,23 +13,18 @@
 <div class = "rangkasurat">
      <table class="surat" width = "100%">
            <tr>
-                 <td> <img width="50" height="50" src="1.png"> </td>
+                 <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/220px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"> </td>
                  <td class = "tengah">
-                       <h2>PT. MANDIRI INTIPERKASA</h2>
-                       <h3>Site Lagub Sembakung - Nunukan KAL-TIM</h3>
-                       <h3><i>Telp : 021 - 5670037 Ext. 496</i></h3>
+                       <h2>PT MANDIRI INTIPERKASA</h2>
+                       <h3><i>Site</i> Krassi, Kabupaten Nunukan & Tana Tidung,</h3>
+                       <h3>Provinsi Kalimantan Utara</h3>
+                       <h3><i>Email: mip-site@mandirigroup.net</i></h3>
                  </td>
             </tr>
      </table >
      <div><br><br><br>
-     <div style="width: 35%; text-align: left; float: right;">Site Krassi, {{ Carbon\Carbon::parse($tindakan->created_at)->isoFormat('D MMMM Y') }}</div><br>
-
-        <p>Kepada Yth.</p>
-        <p>...........................................</p>
-        <p>...........................................</p>
-        <p>di-</p>&ensp;
-        <p>Tempat</p>
-        <p>Perihal : <b><i> Surat Persetujuan Tindakan Medis</i></b></p>
+        <div style="width: 60%; text-align: left; float: center; padding-left: 170px;"><h4>SURAT PERSETUJUAN TINDAKAN MEDIS</h4></div><br>
+        <div style="width: 50%; text-align: left; float: left; padding-left: 250px;"><h4><i>(INFORMED CONSENT)</i></h4></div><br><br><br>
 
         <table>
             <p>Bersama Surat Ini saya sampaikan bahwa:</p>
@@ -39,38 +34,61 @@
                 <td style="width: 65%;">{{$tindakan->pasien->nama_pasien}}</td>
             </tr>
             <tr>
-                <td style="width: 30%;">Tempat, tanggal lahir</td>
+                <td style="width: 30%;">Umur/Tanggal Lahir</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$tindakan->pasien->tempat_lahir}}, {{ Carbon\Carbon::parse($tindakan->pasien->tanggal_lahir)->format('d F Y') }}  </td>
+                <td style="width: 65%;"><?php
+                    $tanggal_lahir = $tindakan->pasien->tanggal_lahir;
+                    $lahir    = new DateTime($tanggal_lahir);
+                    $today        = new DateTime('today');
+                    $usia = $today->diff($lahir);
+                    echo $usia->y;
+                    echo " Tahun ";
+                    ?>, {{ Carbon\Carbon::parse($tindakan->pasien->tanggal_lahir)->isoFormat('D MMMM Y') }}  </td>
             </tr>
             <tr>
-                <td style="width: 30%; vertical-align: top;">Alamat</td>
+                <td style="width: 30%; vertical-align: top;">Jabatan</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{$tindakan->pasien->alamat}}</td>
+                <td style="width: 65%;">{{$tindakan->pasien->jabatan->nama_jabatan}}</td>
             </tr>
             <tr>
-                <td style="width: 30%;">Pekerjaan</td>
+                <td style="width: 30%;">Perusahaan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{$tindakan->pasien->pekerjaan}}</td>
+                <td style="width: 65%;">{{$tindakan->pasien->perusahaan->nama_perusahaan_pasien}}</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Riwayat Penyakit</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{$tindakan->riwayat}}</td>
             </tr>
         </table>
+        <br>
 
-        <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan unutk diberikan izin untuk berobat ke tarakan.</p>
-        <p>Demikian Surat ini saya buat, atas perhatian dan kerja samanya kami ucapkan terimakasih.</p>
+        <p>Dengan ini menyatakan <b>SETUJU/MENOLAK</b> untuk dilakukan tindakan medis berupa</p>
+        <p>........................................................................................................................................</p><br>
 
-        <div style="width: 10%; text-align: left; float: right;">Salam</div><br>
-        <br><br><br><br><br>
-        {{-- <td>@php
-            $image = $izin->ttd;
-            $imageData = base64_encode(file_get_contents($image));
-            $src = 'data:' . mime_content_type($image) . ';base64,' . $imageData;
-        @endphp 
-            <img src="{{$src}}" width="140px"> </td>
-        <br><br><br> --}}
-        <div style="width: 15%; text-align: left; border-top: 5px solid black; float: right; ">Klinik PT MIP</div>
+        <p>Pernyataan ini saya buat dengan sesungguhnya bahwa :</p><br>
+
+        <p>1.	Saya telah diberikan penjelasan oleh dokter mengenai tindakan medis yang diperlukan, juga akan bahaya, resiko serta kemungkinan-kemungkinan yang dapat timbul sebagai akibat tindakan medis tersebut.</p>
+        <p>2.	Saya telah memahami sepenuhnya penjelasan yang diberikan dokter tersebut dan menerima resiko yang timbul akibat dari tindakan medis tersebut.</p>
+
         <br><br>
-        <div style="width: 44%; text-align: left;  float: right; ">No. Revisi : 00</div>
-        <div style="width: 49%; text-align: left;  float: right; ">(No:MIP/FRM/KLN/015)</div>
+
+        <p>Atas perhatiannya kami ucapkan terima kasih.</p><br><br>
+
+        <div style="width: 23%; text-align: left; float: left; padding-left: 110px;">Hormat kami,</div>
+        <div style="width: 9%; text-align: left; float: right;"></div><br>
+
+        <br><br><br><br><br>
+        
+        <div style="width: 15%; text-align: left;  float: left; padding-left: 80px;">(.................................)</div>
+        <div style="width: 15%; text-align: left;  float: right; padding-right: 200px;">(.........................)</div><br>
+
+        <div style="width: 30%; text-align: left;  float: right; padding-right: 50px">Klinik PT. MIP</div>
+        <div style="width: 15%; text-align: left;  float: left; padding-left: 200px">Karyawan</div><br>
+
+        <br><br><br><br>
+        <div style="width: 20%; text-align: left;  float: right; ">No. Revisi : 00</div>
+        <div style="width: 49%; text-align: left;  float: left; ">(No:MIP/FRM/KLN/003)</div>
     </div>
     
 </html>

@@ -13,7 +13,7 @@
 <div class = "rangkasurat">
      <table class="surat" width = "100%">
            <tr>
-                 {{-- <td> <img src="{{ public_path('assets/image/bg/1.png')}}"> </td> --}}
+            <td> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/220px-Lion_waiting_in_Namibia.jpg"></td>
                  <td class = "tengah">
                        <h2>PT. MANDIRI INTIPERKASA</h2>
                        <h3>Site Lagub, Kecematan Sembakung, Kab. Nunukan</h3>
