@@ -60,8 +60,8 @@
         </table>
 
         <p>(Dibawah ini diisi oleh dokter yang memeriksa).</p>
-        <p>Yang bersangkutan adalah benar telah berobat di (nama klinik praktek / Rumah Sakit).</p>
-        <p>{{$keterangan->rumahsakitrujukan->nama_RS_rujukan}}</p><br>
+        <p>Yang bersangkutan adalah benar telah berobat di {{$keterangan->rumahsakitrujukan->nama_RS_rujukan}}.</p>
+        <p></p><br>
 
         <p>Pada hasil pemeriksaan didapatkan diagnosa penyakit :</p>
         <p>{{$keterangan->namapenyakit->primer}}</p><br>
