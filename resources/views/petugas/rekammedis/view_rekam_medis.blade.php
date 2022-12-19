@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'View Rekam Medis')
+@section('title', 'Lihat Data Rekam Medis')
 
 
-@section('judul', 'Data Rekam Medis')
+@section('judul', 'Lihat Data Rekam Medis')
 @section('container')    
 <div class="page-heading">
     <section id="multiple-column-form">

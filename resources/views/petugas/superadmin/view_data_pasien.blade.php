@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
-@section('title', 'View Data Pasien')
-@section('judul', 'View Data Pasien')
+@section('title', 'Lihat Data Pasien')
+@section('judul', 'Lihat Data Pasien')
 @section('container')
 
 <section id="multiple-column-form">

@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.app')
-@section('title', 'View Data Petugas')
+@section('title', 'Lihat Data Petugas')
 @section('user', 'active')
 @section('data', 'active')
 @section('side', 'active')
 
-@section('judul', 'View Data Petugas')
+@section('judul', 'Lihat Data Petugas')
 @section('container')
 
 <section id="multiple-column-form">

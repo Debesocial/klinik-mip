@@ -37,7 +37,7 @@ class GolonganObatController extends Controller
             'updated_by' => auth()->user()->id
         ]);
 
-        return redirect('/golongan/obat')->with('message', 'Berhasil Menambahkan Golongan Obat!');
+        return redirect('/golongan/obat')->with('message', 'Berhasil Menambahkan Golongan Obat');
     }
 
     public function ubahgolonganobat($id)
@@ -51,7 +51,7 @@ class GolonganObatController extends Controller
         $golonganobat->nama_golongan_obat = $request->input('nama_golongan_obat');
         $golonganobat->update();
 
-        return redirect('/golongan/obat')->with('message', 'Berhasil Menambahkan Golongan Obat!');
+        return redirect('/golongan/obat')->with('message', 'Berhasil Menambahkan Golongan Obat');
     }
 
     /**
