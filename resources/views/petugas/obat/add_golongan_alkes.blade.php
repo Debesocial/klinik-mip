@@ -18,8 +18,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="golongan_alkes">Golongan Obat</label>
-                                            <input type="text" class="form-control" name="golongan_alkes" id="golongan_alkes" placeholder="Masukkan golongan alat kesehatan" required>
+                                            <label for="golongan_alkes">Golongan Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <input type="text" class="form-control" name="golongan_alkes" id="golongan_alkes" placeholder="Masukkan golongan alat/bahan kesehatan" required>
                                         </div>
                                     </div>
                                     <div class="col-12"><br>

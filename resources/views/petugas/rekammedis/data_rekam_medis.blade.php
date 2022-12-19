@@ -19,7 +19,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        
+                        <th>Tanggal dibuat</th>
                         <th>ID Rekam Medis</th>
                         <th>NIK</th>
                         <th>Nama</th>
@@ -33,7 +33,9 @@
                 <tbody>
                     @foreach ($pasien as $pas)
                     <tr>
-                        
+                        <td><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i:s') }}
+                        </td>
                             <td>{{ $pas['id_rekam_medis'] }}</td>
                             <td>{{ $pas['NIK'] }}</td>
                             <td>{{ $pas['nama_pasien'] }}</td>

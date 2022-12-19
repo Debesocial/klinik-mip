@@ -16,16 +16,16 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">Nama Produk Kesehatan</label>
+                                    <label for="">Nama Produk Kesehatan <b class="color-red">*</b></label>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" id="nama_produk" class="form-control" name="nama_produk" value="{{ $produk['nama_produk'] }}" required >
+                                            <input type="text" id="nama_produk" class="form-control" name="nama_produk" placeholder="Masukkan nama produk kesehatan" value="{{ $produk['nama_produk'] }}" required >
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="satuan_obat_id">Satuan Produk Kesehatan</label>
+                                            <label for="satuan_obat_id">Satuan Produk Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id">
                                                 @foreach ($satuanobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->satuan_obat }}</option>
@@ -36,7 +36,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat_id">Bobot Produk Kesehatan</label>
+                                            <label for="bobot_obat_id">Bobot Produk Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
                                                 @foreach ($bobotobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->bobot_obat }}</option>

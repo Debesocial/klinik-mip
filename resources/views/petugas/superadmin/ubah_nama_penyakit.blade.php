@@ -15,19 +15,19 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="primer">Nama Penyakit</label>
-                                            <input type="text" id="primer" class="form-control" name="primer" placeholder="Nama Penyakit" value="{{ $namapenyakit['primer'] }}" required>
+                                            <label for="primer">Nama Penyakit <b class="color-red">*</b></label>
+                                            <input type="text" id="primer" class="form-control" name="primer" placeholder="Masukkan nama penyakit" value="{{ $namapenyakit['primer'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="sekunder">Nama Penyakit Sekunder</label>
-                                            <input type="text" id="sekunder" class="form-control" name="sekunder" placeholder="Nama Penyakit Sekunder" value="{{ $namapenyakit['sekunder'] }}">
+                                            <label for="sekunder">Nama Penyakit Sekunder </label>
+                                            <input type="text" id="sekunder" class="form-control" name="sekunder" placeholder="Masukkan nama penyakit sekunder" value="{{ $namapenyakit['sekunder'] }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="sub_klasifikasi_id">Sub Klasifikasi</label>
+                                            <label for="sub_klasifikasi_id">Sub Klasifikasi Penyakit <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="sub_klasifikasi_id" id="sub_klasifikasi_id">
                                                 @foreach ($subklasifikasi as $sub)
                                                 <option value="{{ $sub->id }}" {{ $sub->id == $namapenyakit->sub_klasifikasi->id ? 'selected' : '' }}>{{ $sub->nama_penyakit }}</option>

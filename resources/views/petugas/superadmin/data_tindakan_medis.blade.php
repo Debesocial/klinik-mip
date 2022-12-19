@@ -36,7 +36,7 @@
                 <tbody>
                     @foreach ($tindakan as $tin)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($tin->created_at)->format('d F Y') }}</B>
+                        <td><B>{{ Carbon\Carbon::parse($tin->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($tin->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $tin->pasien->nama_pasien }}</td>

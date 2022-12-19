@@ -26,7 +26,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Golongan Obat</th>
+                        <th>Golongan </th>
                         <th>Aksi</th>
                     </tr>
                 </thead>

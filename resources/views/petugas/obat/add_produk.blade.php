@@ -27,7 +27,7 @@
                                         <div class="form-group">
                                             <label for="satuan_obat_id">Satuan Produk Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id" required>
-                                                <option value="" disabled selected>Pilih satuan produk</option>
+                                                <option value="" disabled selected>Pilih satuan produk kesehatan</option>
                                                 @foreach ($satuanobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->satuan_obat }}</option>
                                                 @endforeach
@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label for="bobot_obat_id">Bobot Produk Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id" required>
-                                                <option value="" disabled selected>Pilih bobot produk</option>
+                                                <option value="" disabled selected>Pilih bobot produk kesehatan</option>
                                                 @foreach ($bobotobat as $bobotobat)
                                                 <option value="{{ $bobotobat->id }}">{{ $bobotobat->bobot_obat }}</option>
                                                 @endforeach

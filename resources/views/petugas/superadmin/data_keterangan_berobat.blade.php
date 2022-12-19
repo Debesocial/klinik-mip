@@ -37,7 +37,7 @@
                 <tbody>
                     @foreach ($keterangan as $ket)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($ket->created_at)->format('d F Y') }}</B>
+                        <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $ket->pasien->nama_pasien }}</td>

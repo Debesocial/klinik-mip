@@ -19,7 +19,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_alkes">Nama Obat</label>
+                                            <label for="nama_alkes">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="nama_alkes" id="nama_alkes" placeholder="Masukkan nama alat kesehatan" required>
                                         </div>
                                     </div>

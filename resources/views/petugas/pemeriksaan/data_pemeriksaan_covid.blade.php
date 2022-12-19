@@ -21,19 +21,20 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
+                        <th>Tanggal dibuat</th>
                         <th>Nama Pasien</th>
-                        <th>Tempat</th>
-                        <th>Tanggal</th>
-                        <th>riwayat</th>
-                        <th>Obat yang Diberikan</th>
+                        <th>Pemeriksaan Antigen</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($covid as $cov)
                     <tr>
-                            <td>{{ $cov->pemeriksaan_antigen_id }}</td>
-                            <td>{{ $cov->hasil_pemeriksaan }}</td>
+                        <td><B>{{ Carbon\Carbon::parse($cov->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($cov->created_at)->format('H:i:s') }}
+                        </td>
+                            <td>{{ $cov->pasien->nama_pasien }}</td>
+                            <td>{{ $cov->pemeriksaan->kebutuhan }}</td>
                             <td><div class="buttons">
                                 <a href="#" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
                                 <a href="#" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>

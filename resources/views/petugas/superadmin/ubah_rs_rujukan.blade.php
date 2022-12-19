@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_RS_rujukan">Nama Lokasi</label>
-                                            <input type="text" id="nama_RS_rujukan" class="form-control" name="nama_RS_rujukan" placeholder="" value="{{ $rsrujukan['nama_RS_rujukan'] }}" required>
+                                            <label for="nama_RS_rujukan">Rumah Sakit Rujukan <b class="color-red">*</b></label>
+                                            <input type="text" id="nama_RS_rujukan" class="form-control" name="nama_RS_rujukan" placeholder="Masukkan rumah sakit rujukan" value="{{ $rsrujukan['nama_RS_rujukan'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

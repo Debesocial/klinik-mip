@@ -26,6 +26,6 @@ class PemeriksaanCovid extends Model
     }
 
     public function pemeriksaan() {
-        return $this->belongsTo(PemeriksaanAntigen::class);
+        return $this->belongsTo(PemeriksaanAntigen::class, 'pemeriksaan_antigen_id', 'id');
     }
 }

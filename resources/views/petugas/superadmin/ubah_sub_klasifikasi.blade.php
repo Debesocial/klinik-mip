@@ -15,13 +15,13 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_penyakit">Sub Klasifikasi</label>
-                                            <input type="text" id="nama_penyakit" class="form-control" name="nama_penyakit" placeholder="Nama Penyakit" value="{{ $subklasifikasi['nama_penyakit'] }}" required>
+                                            <label for="nama_penyakit">Sub Klasifikasi Penyakit <b class="color-red">*</b></label>
+                                            <input type="text" id="nama_penyakit" class="form-control" name="nama_penyakit" placeholder="Masukkan sub klasifikasi" value="{{ $subklasifikasi['nama_penyakit'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="klasifikasi_penyakit_id">Klasifikasi Penyakit</label>
+                                            <label for="klasifikasi_penyakit_id">Klasifikasi Penyakit <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="klasifikasi_penyakit_id" id="klasifikasi_penyakit_id">
                                                 @foreach ($klasifikasipenyakit as $klasifikasi)
                                                 <option value="{{ $klasifikasi->id }}" {{ $klasifikasi->id == $subklasifikasi->klasifikasi_penyakit->id ? 'selected' : '' }}>{{ $klasifikasi->klasifikasi_penyakit }}</option>

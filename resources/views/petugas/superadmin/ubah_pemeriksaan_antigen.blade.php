@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="kebutuhan">Kebutuhan Antigen</label>
-                                            <input type="text" id="kebutuhan" class="form-control" name="kebutuhan" placeholder="" value="{{ $pemeriksaanantigen['kebutuhan'] }}" required>
+                                            <label for="kebutuhan">Kebutuhan Antigen <b class="color-red">*</b></label>
+                                            <input type="text" id="kebutuhan" class="form-control" name="kebutuhan" placeholder="Masukkan kebutuhan pemeriksaan" value="{{ $pemeriksaanantigen['kebutuhan'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

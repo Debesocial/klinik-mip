@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_spesialis_rujukan">Dokter Spesialis Rujukan</label>
+                                            <label for="nama_spesialis_rujukan">Dokter Spesialis Rujukan <b class="color-red">*</b></label>
                                             <input type="text" id="nama_spesialis_rujukan" class="form-control" name="nama_spesialis_rujukan" placeholder="Masukkan dokter spesialis">
                                         </div>
                                     </div>

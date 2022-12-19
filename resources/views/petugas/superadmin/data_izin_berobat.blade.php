@@ -35,7 +35,7 @@
                 <tbody>
                     @foreach ($izin as $berobat)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($berobat->created_at)->format('l, d F Y') }}</B>
+                        <td><B>{{ Carbon\Carbon::parse($berobat->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($berobat->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $berobat->pasien->nama_pasien }}</td>

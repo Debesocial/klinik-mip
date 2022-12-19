@@ -18,8 +18,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="golongan_alkes">Hari</label>
-                                            <input type="text" class="form-control" id="golongan_alkes" name="golongan_alkes" value="{{ $golonganalkes['golongan_alkes'] }}" required>
+                                            <label for="golongan_alkes">Golongan Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <input type="text" class="form-control" id="golongan_alkes" name="golongan_alkes" placeholder="Masukkan golongan alat/bahan kesehatan" value="{{ $golonganalkes['golongan_alkes'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12"><br>
