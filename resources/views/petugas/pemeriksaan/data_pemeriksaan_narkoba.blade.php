@@ -21,6 +21,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
+                        <th>Tanggal dibuat</th>
                         <th>Nama Pasien</th>
                         <th>Tempat</th>
                         <th>Tanggal</th>
@@ -32,6 +33,9 @@
                 <tbody>
                     @foreach ($narkoba as $narko)
                     <tr>
+                        <td><B>{{ Carbon\Carbon::parse($narko->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($narko->created_at)->format('H:i:s') }}
+                        </td>
                             <td>{{ $narko->penggunaan_obat }}</td>
                             <td>{{ $narko->jenis_obat }}</td>
                             <td>{{ $narko->asal_obat }}</td>

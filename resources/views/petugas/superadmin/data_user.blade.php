@@ -26,6 +26,7 @@
             <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
+                        <td>Tanggal dibuat</td>
                         <th>Nama</th>
                         <th>Level</th>
                         <th>Email</th>
@@ -36,6 +37,9 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
+                        <td><B>{{ Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($user->created_at)->format('H:i:s') }}
+                        </td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->level->nama_level }}</td>
                         <td>{{ $user->email }}</td>

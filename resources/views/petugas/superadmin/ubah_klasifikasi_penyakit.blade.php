@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_lokasi">Klasifikasi Penyakit</label>
-                                            <input type="text" id="klasifikasi_penyakit" class="form-control" name="klasifikasi_penyakit" value="{{ $klasifikasipenyakit['klasifikasi_penyakit'] }}" required>
+                                            <label for="nama_lokasi">Klasifikasi Penyakit <b class="color-red">*</b></label>
+                                            <input type="text" id="klasifikasi_penyakit" class="form-control" name="klasifikasi_penyakit" placeholder="Masukkan klasifikasi penyakit"value="{{ $klasifikasipenyakit['klasifikasi_penyakit'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

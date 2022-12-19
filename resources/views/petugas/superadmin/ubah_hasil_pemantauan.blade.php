@@ -15,14 +15,14 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="kode">kode</label>
-                                            <input type="text" id="kode" class="form-control" name="kode" placeholder="" value="{{ $hasilpemantauan['kode'] }}">
+                                            <label for="kode">Kode <b class="color-red">*</b></label>
+                                            <input type="text" id="kode" class="form-control" name="kode" placeholder="Masukkan kode" value="{{ $hasilpemantauan['kode'] }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_pemantauan"></label>
-                                            <input type="text" id="nama_pemantauan" class="form-control" name="nama_pemantauan" placeholder="" value="{{ $hasilpemantauan['nama_pemantauan'] }}">
+                                            <label for="nama_pemantauan">Deskirpsi <b class="color-red">*</b></label>
+                                            <input type="text" id="nama_pemantauan" class="form-control" name="nama_pemantauan" placeholder="Masukkan deskirpsi" value="{{ $hasilpemantauan['nama_pemantauan'] }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

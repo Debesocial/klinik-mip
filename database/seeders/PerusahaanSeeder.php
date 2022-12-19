@@ -55,6 +55,11 @@ class PerusahaanSeeder extends Seeder
                 'created_by' => 1,
                 'updated_by' => 1
             ],
+            [
+                'nama_perusahaan_pasien' => 'others',
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
         ]);
     }
 }

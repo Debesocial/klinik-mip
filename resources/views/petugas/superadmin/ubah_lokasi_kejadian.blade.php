@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_lokasi">Nama Lokasi</label>
-                                            <input type="text" id="nama_lokasi" class="form-control" name="nama_lokasi" placeholder="" value="{{ $lokasikejadian['nama_lokasi'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                            <label for="nama_lokasi">Nama Lokasi Kejadian<b class="color-red">*</b></label>
+                                            <input type="text" id="nama_lokasi" class="form-control" name="nama_lokasi" placeholder="Masukkan nama lokasi kejadian" value="{{ $lokasikejadian['nama_lokasi'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

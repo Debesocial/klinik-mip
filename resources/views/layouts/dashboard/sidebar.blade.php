@@ -107,7 +107,7 @@
                     <li class="sidebar-item @yield('obalkes') has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-stack"></i>
-                            <span>MD Obat, Produk Kesehatan & Alkes</span>
+                            <span>MD Obat, Produk Kesehatan & Alat/Bahan Kesehatan</span>
                         </a>
                         <ul class="submenu @yield('obat')">
                             <li class="submenu-item @yield('alkes')">
@@ -120,10 +120,10 @@
                                 <a href="{{ route('superadmin.golonganobat') }}"><i class="bi bi-arrow-return-right"></i> Golongan Obat</a>
                             </li>
                             <li class="submenu-item @yield('satuan')">
-                                <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan O/A</a>
+                                <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan </a>
                             </li>
                             <li class="submenu-item @yield('bobot')">
-                                <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot O/A</a>
+                                <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot </a>
                             </li>
                             <li class="submenu-item @yield('produk')">
                                 <a href="{{ route('obat.dataproduk') }}"> Data Produk Kesehatan</a>
@@ -132,10 +132,10 @@
                                 <a href="{{ route('obat.dataalkes') }}"> Data Alat/Bahan Kesehatan</a>
                             </li>
                             <li class="submenu-item @yield('namkes')">
-                                <a href="{{ route('obat.namaalkes') }}"><i class="bi bi-arrow-return-right"></i> Nama Alat Kesehatan</a>
+                                <a href="{{ route('obat.namaalkes') }}"><i class="bi bi-arrow-return-right"></i> Nama Alat/Bahan Kesehatan</a>
                             </li>
                             <li class="submenu-item @yield('golkes')">
-                                <a href="{{ route('obat.golonganalkes') }}"><i class="bi bi-arrow-return-right"></i> Golongan Alat Kesehatan</a>
+                                <a href="{{ route('obat.golonganalkes') }}"><i class="bi bi-arrow-return-right"></i> Golongan Alat/Bahan Kesehatan</a>
                             </li>
                             
                         </ul>

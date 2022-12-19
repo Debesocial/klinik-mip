@@ -35,16 +35,20 @@
             <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
-                        <th>Nama Produk Kesehatan</th>
-                        <th>Satuan Produk Kesehatan</th>
-                        <th>Bobot Produk Kesehatan</th>
-                        <th>Komposisi Produk Kesehatan</th>
+                        <td>Tanggal dibuat</td>
+                        <th>Nama </th>
+                        <th>Satuan </th>
+                        <th>Bobot </th>
+                        <th>Komposisi </th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($produk as $pro)
                     <tr>
+                        <td><B>{{ Carbon\Carbon::parse($pro->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($pro->created_at)->format('H:i:s') }}
+                        </td>
                         <td>{{ $pro->nama_produk }}</td>
                         <td>{{ $pro->satuan_obat->satuan_obat }}</td>
                         <td>{{ $pro->bobot_obat->bobot_obat }}</td>

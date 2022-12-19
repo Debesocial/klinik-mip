@@ -33,6 +33,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
+                        <td>Tanggal dibuat</td>
                         <th>Nama</th>
                         <th>Divisi</th>
                         <th>Perusahaan</th>
@@ -43,6 +44,9 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
+                        <td><B>{{ Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($user->created_at)->format('H:i:s') }}
+                        </td>
                         <td>{{ $user['name'] }}</td>
                         <td>{{ $user->divisi->nama_divisi_pasien }}</td>
                         <td>{{ $user->perusahaan->nama_perusahaan_pasien }}</td>

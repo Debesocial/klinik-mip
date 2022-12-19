@@ -19,8 +19,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="hari">Hari</label>
-                                            <input type="text" class="form-control" id="nama_alkes" name="nama_alkes" value="{{ $nama['nama_alkes'] }}" required>
+                                            <label for="hari">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <input type="text" class="form-control" id="nama_alkes" name="nama_alkes" placeholder="Masukkan nama alat/bahan kesehatan" value="{{ $nama['nama_alkes'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12"><br>

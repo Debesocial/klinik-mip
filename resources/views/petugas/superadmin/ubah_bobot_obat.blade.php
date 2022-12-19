@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="hari">Hari</label>
-                                            <input type="text" class="form-control" name="bobot_obat" value="{{ $bobotobat['bobot_obat'] }}" required>
+                                            <label for="hari">Bobot Obat <b class="color-red">*</b></label>
+                                            <input type="text" class="form-control" name="bobot_obat" placeholder="Masukkan bobot obat"value="{{ $bobotobat['bobot_obat'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12"><br>

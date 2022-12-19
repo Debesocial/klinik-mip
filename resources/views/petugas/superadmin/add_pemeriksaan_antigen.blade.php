@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="kebutuhan">Kebutuhan Pemeriksaan</label>
+                                            <label for="kebutuhan">Kebutuhan Pemeriksaan <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="kebutuhan" placeholder="Masukkan kebutuhan pemeriksaan" required>
                                         </div>
                                     </div>

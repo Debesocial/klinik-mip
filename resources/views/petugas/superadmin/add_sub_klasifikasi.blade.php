@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_penyakit">Nama Sub Klasifikasi <b class="color-red">*</b></label>
-                                            <input type="text" id="nama_penyakit" class="form-control" name="nama_penyakit" placeholder="Masukkan Nama" required>
+                                            <label for="nama_penyakit">Sub Klasifikasi Penyakit<b class="color-red">*</b></label>
+                                            <input type="text" id="nama_penyakit" class="form-control" name="nama_penyakit" placeholder="Masukkan sub klasifikasi" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

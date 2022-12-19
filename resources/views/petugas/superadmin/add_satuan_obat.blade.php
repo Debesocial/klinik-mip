@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="satuan_obat">Satuan Obat/Alkes</label>
+                                            <label for="satuan_obat">Satuan Obat <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="satuan_obat" id="satuan_obat" placeholder="Masukkan satuan obat/alkes" required>
                                         </div>
                                     </div>

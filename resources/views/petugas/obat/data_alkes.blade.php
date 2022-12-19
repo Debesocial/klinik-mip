@@ -26,17 +26,21 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Golongan Alat/Bahan Kesehatan</th>
-                        <th>Nama Alat/Bahan Kesehatan</th>
-                        <th>Satuan Alat/Bahan Kesehatan</th>
-                        <th>Bobot Alat/Bahan Kesehatan</th>
-                        <th>Komposisi Alat/Bahan Kesehatan</th>
+                        <th>Tanggal dibuat</th>
+                        <th>Golongan </th>
+                        <th>Nama </th>
+                        <th>Satuan </th>
+                        <th>Bobot </th>
+                        <th>Komposisi </th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($alkes as $al)
                     <tr>
+                        <td><B>{{ Carbon\Carbon::parse($al->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($al->created_at)->format('H:i:s') }}
+                        </td>
                         <td>{{ $al->golongan_alkes->golongan_alkes }}</td>
                         <td>{{ $al->nama_alkes->nama_alkes }}</td>
                         <td>{{ $al->satuan_obat->satuan_obat }}</td>

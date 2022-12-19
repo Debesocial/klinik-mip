@@ -38,7 +38,7 @@
                 <tbody>
                     @foreach ($suratrujukan as $surat)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($surat->created_at)->format('d F Y') }}</B>
+                        <td><B>{{ Carbon\Carbon::parse($surat->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($surat->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $surat->pasien->nama_pasien }}</td>

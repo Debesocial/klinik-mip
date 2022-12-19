@@ -41,7 +41,7 @@
                 <tbody>
                     @foreach ($pasiens as $patient)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($patient->created_at)->format('d F Y') }}</B>
+                        <td><B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($patient->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $patient['nama_pasien'] }}</td>

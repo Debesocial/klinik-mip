@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_spesialis_rujukan">Nama Spesialis Rujukan</label>
-                                            <input type="text" id="nama_spesialis_rujukan" class="form-control" name="nama_spesialis_rujukan" placeholder="" value="{{ $spesialisrujukan['nama_spesialis_rujukan'] }}" required>
+                                            <label for="nama_spesialis_rujukan">Nama Spesialis Rujukan <b class="color-red">*</b></label>
+                                            <input type="text" id="nama_spesialis_rujukan" class="form-control" name="nama_spesialis_rujukan" placeholder="Masukkan dokter spesialis" value="{{ $spesialisrujukan['nama_spesialis_rujukan'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

@@ -15,8 +15,8 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="satuan_obat">Hari</label>
-                                            <input type="text" class="form-control" name="satuan_obat" value="{{ $satuanobat['satuan_obat'] }}" required>
+                                            <label for="satuan_obat">Satuan Obat <b class="color-red">*</b></label>
+                                            <input type="text" class="form-control" name="satuan_obat" placeholder="Masukkan satuan obat" value="{{ $satuanobat['satuan_obat'] }}" required>
                                         </div>
                                     </div>
                                     <div class="col-12"><br>
