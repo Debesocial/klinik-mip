@@ -316,7 +316,7 @@
 
                     <li class="sidebar-title"><strong>AKUN</strong></li>
                     <li class="sidebar-item">
-                        <a href="" class='sidebar-link'>
+                        <a href="/ubah/password/{{ Auth::user()->id }}" class='sidebar-link'>
                             <i class="bi bi-gear"></i>
                             <span>Change Password</span>
                         </a>

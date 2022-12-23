@@ -18,7 +18,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="jenis_obat_id">Jenis Obat</label>
+                                            <label for="jenis_obat_id">Jenis Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jenis_obat_id" id="jenis_obat_id">
                                                 @foreach ($jenisobat as $jenis)
                                                 <option value="{{ $jenis->id }}">{{ $jenis->nama_jenis_obat }}</option>
@@ -29,7 +29,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="golongan_obat_id">Golongan Obat</label>
+                                            <label for="golongan_obat_id">Golongan Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="golongan_obat_id" id="golongan_obat_id">
                                                 @foreach ($golonganobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_golongan_obat }}</option>
@@ -62,7 +62,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat_id">Bobot obat</label>
+                                            <label for="bobot_obat_id">Bobot obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
                                                 @foreach ($bobotobat as $item)
                                                 <option value="{{ $item->id }}">{{ $item->bobot_obat }}</option>
@@ -73,7 +73,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="komposisi_obat">Komposisi Obat</label>
+                                            <label for="komposisi_obat">Komposisi Obat <b class="color-red">*</b></label>
                                             <input type="text" id="komposisi_obat" class="form-control" name="komposisi_obat" value="{{ $obatalkes['komposisi_obat'] }}">
                                         </div>
                                     </div>

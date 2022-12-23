@@ -4,6 +4,17 @@
 @section('obat', 'active')
 @section('alkes', 'active')
 @section('judul', 'Data Obat')
+
+<style>
+    td {
+        width: auto;
+  min-width: 0;
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: normal;
+    }
+</style>
+
 @section('container')
 
 <section class="section">

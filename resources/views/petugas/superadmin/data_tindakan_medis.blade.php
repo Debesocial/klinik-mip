@@ -23,10 +23,10 @@
                 if (result.isConfirmed) { window.location.href = "{{ route('superadmin.datatindakanmedis') }}" }})
                 </script>
             @endif
-            <table class="table" id="table1">
+            <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
-                        <th>Tanggal dibuat</th>
+                        <th>Tanggal </th>
                         <th>Nama Pasien</th>
                         <th>Riwayat</th>
                         <th>Hasil Pernyataan</th>
@@ -40,12 +40,12 @@
                             <br>{{ Carbon\Carbon::parse($tin->created_at)->format('H:i:s') }}
                         </td>
                         <td>{{ $tin->pasien->nama_pasien }}</td>
-                            <td>{{ $tin->riwayat }}</td>
+                            <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $tin->riwayat }}</td>
                             <td>
                                 <i class="{{ $tin->hasil == 1 ? "fas fa-check" : "fas fa-times" }}"></i>
                                 </td>
                             <td><div class="buttons">
-                                <a href="/print/persetujuan/tindakan/medis/{{ $tin->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="/print/persetujuan/tindakan/medis/{{ $tin->id }}" title="print Data" href="#" class="btn btn-secondary rounded-pill"><i class="fa fa-print"></i></a>
                                 <a href="/ubah/persetujuan/tindakan/medis/{{ $tin->id }}" class="btn btn-success rounded-pill" title="Ubah"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>

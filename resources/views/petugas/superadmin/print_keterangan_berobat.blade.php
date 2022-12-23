@@ -73,7 +73,7 @@
         <p>Saran untuk pasien :</p>
         <p>{{$keterangan->saran}}</p><br>
 
-        <p>Pasien (harus / tidak harus) kontrol kembali pada{{ Carbon\Carbon::parse($keterangan->tanggal_kembali)->format('d F Y') }}.</p>
+        <p>Pasien <a class="{{ $keterangan->kontrol == 1 ? "fas fa-check" : "harus" }}"></a> kontrol kembali pada{{ Carbon\Carbon::parse($keterangan->tanggal_kembali)->format('d F Y') }}.</p>
         <p>() = coret yang tidak perlu.</p><br>
 
         <div style="width: 23%; text-align: left; float: left;">Dokter yang merujuk</div>

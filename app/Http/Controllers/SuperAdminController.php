@@ -381,7 +381,7 @@ class SuperAdminController extends Controller
         $izin = IzinBerobat::find($id);
         $pasien = Pasien::all();
 
-        return redirect('/data/izin/berobat')->with('success', 'Successfully!');
+        return view('petugas.superadmin.ubah_izin_berobat', compact('izin', 'pasien'));
     }
 
     function changeizinberobat(Request $request, $id) {
@@ -478,6 +478,15 @@ class SuperAdminController extends Controller
         }
         return redirect()->back()->with('fail', 'Data Fail!');
     }
+
+    public function ubahsuratrujukan($id)
+    {
+        $surat = SuratRujukan::find($id);
+        $pasien = Pasien::all();
+        $spesialisrujukan = SpesialisRujukan::all();
+        $rsrujukan = RumahSakitRujukan::all();;
+        return view('petugas.superadmin.ubah_surat_rujukan', compact('surat', 'pasien', 'spesialisrujukan', 'rsrujukan'));
+    }
     
 
     function changesuratrujukan(Request $request, $id) {
@@ -492,7 +501,7 @@ class SuperAdminController extends Controller
         $surat->update();
 
 
-        return redirect('/data/user')->with('message', 'Berhasil mengubah surat rujukan!');
+        return redirect('/data/surat/rujukan')->with('message', 'Berhasil mengubah surat rujukan!');
         
     }
 
