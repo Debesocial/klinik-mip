@@ -132,11 +132,13 @@
                                                                             
                                             
 
-                                            <div class="col-sm-12 d-flex justify-content-end">
+                                            <div class="col-sm-12 d-flex centered-content-end">
+                                                <div class="col-md-4">
                                                 <button type="submit"
                                                     class="btn btn-primary me-1 mb-1">Submit</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

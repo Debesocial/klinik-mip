@@ -5,8 +5,26 @@
 @section('dashboard', 'active')
 
 @section('container')
-<h4 class="card-title">Welcome, {{ Auth::user()->name }}</h4>
 
+                <div class="col-12">
+                <div class="btn-group mb-1" style=" float: right;">
+                                <div class="dropdown" >
+                                    <button class="btn btn-primary dropdown-toggle me-1" type="button"
+                                        id="dropdownMenuButtonIcon" data-bs-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        <i class="bi bi-error-circle me-50"></i> {{ Auth::user()->name }}
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonIcon">
+                                        <a class="dropdown-item" href="/ubah/profile/{{ Auth::user()->id }}"><i class="bi bi-person me-50"></i>
+                                            Profile</a>
+                                        <a class="dropdown-item" href="/ubah/password/{{ Auth::user()->id }}"><i class="bi bi-key me-50"></i> Ubah Password</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+ <h4 class="card-title">Welcome, {{ Auth::user()->name }}</h4>
 <br><br>
 <div class="page-content">
     <section class="row">

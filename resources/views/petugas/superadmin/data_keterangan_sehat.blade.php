@@ -26,7 +26,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Tanggal dibuat</th>
+                        <th>Tanggal </th>
                         <th>Nama Pasien</th>
                         <th>Tempat</th>
                         <th>riwayat</th>

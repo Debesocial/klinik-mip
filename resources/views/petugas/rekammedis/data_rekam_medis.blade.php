@@ -31,30 +31,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($pasien as $pas)
                     <tr>
-                        <td><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
-                            <br>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i:s') }}
-                        </td>
-                            <td>{{ $pas['id_rekam_medis'] }}</td>
-                            <td>{{ $pas['NIK'] }}</td>
-                            <td>{{ $pas['nama_pasien'] }}</td>
-                            <td><?php 
-                                $tanggal_lahir = $pas->tanggal_lahir;
-                                $lahir    =new DateTime($tanggal_lahir);
-                                $today        =new DateTime('today');
-                                $usia = $today->diff($lahir);
-                                echo $usia->y; echo " Tahun ";
-                                ?></td>
-                            <td>{{ $pas->perusahaan->nama_perusahaan_pasien }}</td>
-                            <td>{{ $pas->jabatan->nama_jabatan }}</td>
-                            <td><i class="{{ $pas->alergi_obat == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
+                            <td>22 Desember</td>
+                            <td>RM2212001</td>
+                            <td>5271571627</td>
+                            <td>Martuani</td>
+                            <td>19 Tahun</td>
+                            <td>MIP</td>
+                            <td>Staff</td>
+                            <td>Ya</td>
                             <td><div class="buttons">
-                                <a href="/view/rekam/medis/{{ $pas->id}}" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                </div></td>  
+                                <a href="/lihat/rekam/medis" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                </div>
+                            </td>  
                             
                     </tr>
-                    @endforeach
+                    
                 </tbody>
             </table>
         </div>

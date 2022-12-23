@@ -2,8 +2,18 @@
 
 @section('title', 'Data Keterangan Berobat')
 @section('berobat', 'active')
-
 @section('judul', 'Data Keterangan Berobat')
+
+{{-- <style>
+    td {
+        width: auto;
+  min-width: 0;
+  max-width: 50px;
+  text-overflow: ellipsis;
+  white-space: normal;
+    }
+</style> --}}
+
 @section('container')
 
 <section class="section">
@@ -23,10 +33,10 @@
                 if (result.isConfirmed) { window.location.href = "{{ route('superadmin.dataketeranganberobat') }}" }})
                 </script>
             @endif
-            <table class="table" id="table1">
+            <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
-                        <th>Tanggal dibuat</th>
+                        <th>Tanggal </th>
                         <th>Nama Pasien</th>
                         <th>Klinik </th>
                         <th>Resep</th>
@@ -40,13 +50,13 @@
                         <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
                         </td>
-                        <td>{{ $ket->pasien->nama_pasien }}</td>
+                        <td style="width: 110px">{{ $ket->pasien->nama_pasien }}</td>
                             <td>{{ $ket->rumahsakitrujukan->nama_RS_rujukan }}</td>
                             
-                            <td>{{ $ket->resep }}</td>
-                            <td>{{ $ket->saran }}</td>
+                            <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->resep }}</td>
+                            <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->saran }}</td>
                             <td><div class="buttons">
-                                <a href="/print/ket/berobat/{{ $ket->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="/print/ket/berobat/{{ $ket->id }}" title="print Data" href="#" class="btn btn-secondary rounded-pill"><i class="fa fa-print"></i></a>
                                 <a href="/ubah/ket/berobat/{{ $ket->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>

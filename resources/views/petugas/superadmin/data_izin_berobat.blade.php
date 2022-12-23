@@ -26,7 +26,7 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Tanggal Dibuat</th>
+                        <th>Tanggal </th>
                         <th>Nama Pasien</th>
                         <th>Tempat</th>
                         <th>Aksi</th>
@@ -41,7 +41,7 @@
                         <td>{{ $berobat->pasien->nama_pasien }}</td>
                             <td>{{ $berobat->tempat }}</td>
                             <td><div class="buttons">
-                                <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-secondary rounded-pill"><i class="fa fa-print"></i></a>
                                 <a href="/ubah/izin/berobat/{{$berobat->id }}" class="btn btn-success rounded-pill" title="View"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
