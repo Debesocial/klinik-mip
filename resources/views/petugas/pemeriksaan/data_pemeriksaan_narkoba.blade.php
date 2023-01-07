@@ -26,7 +26,6 @@
                         <th>Tempat</th>
                         <th>Tanggal</th>
                         <th>riwayat</th>
-                        <th>Obat yang Diberikan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -36,13 +35,14 @@
                         <td><B>{{ Carbon\Carbon::parse($narko->created_at)->isoFormat('D MMMM Y') }}</B>
                             <br>{{ Carbon\Carbon::parse($narko->created_at)->format('H:i:s') }}
                         </td>
+                            <td>{{ $narko->pasien->nama_pasien }}</td>
                             <td>{{ $narko->penggunaan_obat }}</td>
-                            <td>{{ $narko->jenis_obat }}</td>
                             <td>{{ $narko->asal_obat }}</td>
                             <td>{{ $narko->terakhir_digunakan }}</td>
                             <td><div class="buttons">
-                                <a href="#" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="#" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="/view/pemeriksaan/narkoba/{{$narko->id }}" title="Lihat Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
+                                <a href="/print/pemeriksaan/narkoba/{{ $narko->id }}" title="Lihat Data" href="#" class="btn btn-secondary rounded-pill"><i class="fa fa-print"></i></a>
+                                <a href="/ubah/pemeriksaan/narkoba/{{$narko->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>
                     @endforeach

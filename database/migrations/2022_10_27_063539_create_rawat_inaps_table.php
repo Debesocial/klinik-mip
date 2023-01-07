@@ -16,6 +16,7 @@ class CreateRawatInapsTable extends Migration
         Schema::create('rawat_inaps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
+            $table->string('id_rawat_inap');
             $table->string('anamnesis');
             $table->string('tinggi_badan');
             $table->string('berat_badan');

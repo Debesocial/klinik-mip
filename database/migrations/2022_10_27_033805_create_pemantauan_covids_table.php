@@ -16,16 +16,20 @@ class CreatePemantauanCovidsTable extends Migration
         Schema::create('pemantauan_covids', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
+            $table->string('no_kamar');
             $table->string('suhu_pagi');
             $table->string('td');
             $table->string('hr');
             $table->string('spo');
             $table->string('gejala');
             $table->string('jenis_pemeriksaan');
-            $table->string('spoo');
+            $table->date('tanggal_pemeriksaan');
             $table->string('hasil_laboratorium');
             $table->text('lampiran_laboratorium');
-            $table->date('tanggal_pemeriksaan');
+            $table->date('tanggal_laboratorium');
+            $table->string('hasil_rapid');
+            $table->text('lampiran_rapid');
+            $table->date('tanggal_rapid');
             $table->string('hasil_rontgen');
             $table->text('lampiran_rontgen');
             $table->date('tanggal_rontgen');
