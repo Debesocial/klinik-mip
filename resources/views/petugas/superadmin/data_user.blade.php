@@ -31,6 +31,7 @@
                         <th>Level</th>
                         <th>Email</th>
                         <th>Telepon</th>
+                        <th>Status</th>
                         <th width="15%">Aksi</th>
                     </tr>
                 </thead>
@@ -44,6 +45,14 @@
                         <td>{{ $user->level->nama_level }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->telp }}</td>
+                        <td>
+                        @if ($user->status == 'Aktif')
+                        <span class="badge bg-primary">Aktif</span>
+                        
+                        @else 
+                        <span class="badge bg-secondary">NonAktif</span>
+                        </td>
+                        @endif
                         <td>
                             <a href="/view/user/{{ $user->id }}" class="btn btn-danger rounded-pill" title="View data petugas"><i class="fa fa-eye"></i></a>
                             <a href="/ubah/data/user/{{ $user->id }}/{{ $user->jadwal_id }}" class="btn btn-success rounded-pill" title="Ubah data petugas"><i class="fa fa-edit"></i></a>

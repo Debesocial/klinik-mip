@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Pemeriksaan Narkoba')
+@section('title', 'Ubah Pemeriksaan Narkoba')
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('narko', 'active')
@@ -24,7 +24,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Data Pemeriksaan Narkoba')
+        @section('judul', 'Ubah Pemeriksaan Narkoba')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -53,34 +53,20 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="/pemeriksaan/narkoba" method="post">
+                                        <form class="form form-horizontal" action="/ubah/pemeriksaan/narkoba/{{$narkoba->id}}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
-                                                        
-                                                    <div class="col-md-2">
-                                                        <label>ID Pasien</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <select id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                            <option disabled selected>Pilih ID Pasien</option>
-                                                            @foreach ($pasien_id as $pas)
-                                                                <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['NIK'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{   $pas['alamat'] }}|{{ $pas['pekerjaan'] }}| {{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{   $pas['jenis_kelamin'] }}|{{ $pas['telepon'] }}|{{ $pas['email'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        </div>
-                                                            <input type="text" id="myInput0" class="form-control"
-                                                                name="pasien_id" placeholder="ID Pasien"  hidden>
-                                                        
+
+                                                    <input type="text" id="pasien_id" class="form-control"
+                                                                name="pasien_id" value="{{ $narkoba->pasien->id_pasien }}"  hidden>
 
                                                         <div class="col-md-2">
                                                             <label>Nama Pasien</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="myInput1" class="form-control"
-                                                                name="myInput1" placeholder="Nama Pasien"  disabled>
+                                                                name="myInput1" value="{{ $narkoba->pasien->nama_pasien }}"  disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -92,7 +78,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="myInput2" class="form-control"
-                                                                name="myInput2" placeholder="Nomor Induk Karyawan" disabled>
+                                                                name="myInput2" value="{{ $narkoba->pasien->NIK }}" disabled>
                                                         </div>
     
                                                         <div class="col-md-6">
@@ -103,7 +89,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput3" class="form-control"
-                                                            name="myInput4" placeholder="tempat lahir"  disabled>
+                                                            name="myInput4" value="{{ $narkoba->pasien->tempat_lahir }}"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -112,7 +98,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="date" id="myInput4" class="form-control"
-                                                            name="myInput5" placeholder="Tanggal Lahir"  disabled>
+                                                            name="myInput5" value="{{ $narkoba->pasien->tanggal_lahir }}"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -121,7 +107,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput5" class="form-control"
-                                                            name="myInput6" placeholder="alamat" disabled >
+                                                            name="myInput6" value="{{ $narkoba->pasien->alamat }}" disabled >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -130,7 +116,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput6" class="form-control"
-                                                            name="myInput7" placeholder="pekerjaan"  disabled>
+                                                            name="myInput7" value="{{ $narkoba->pasien->pekerjaan }}"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -140,7 +126,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput7" class="form-control"
-                                                    name="myInput8" placeholder="perusahaan" disabled>
+                                                    name="myInput8" value="{{ $narkoba->pasien->perusahaan->nama_perusahaan_pasien }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -149,7 +135,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput8" class="form-control"
-                                                    name="myInput9" placeholder="divisi" disabled>
+                                                    name="myInput9" value="{{ $narkoba->pasien->divisi->nama_divisi_pasien }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -158,7 +144,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="myInput9" class="form-control"
-                                                    name="myInput10" placeholder="jabatan" disabled>
+                                                    name="myInput10" value="{{ $narkoba->pasien->jabatan->nama_jabatan }}" disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -168,7 +154,7 @@
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
                                                                     <input type="text" id="myInput10" class="form-control"
-                                                                  name="myInput11" placeholder="jenis kelamin" disabled>
+                                                                  name="myInput11" value="{{ $narkoba->pasien->jenis_kelamin }}" disabled>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     </div>
@@ -178,7 +164,7 @@
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
                                                                         <input type="text" id="myInput11" class="form-control"
-                                                                            name="myInput12" placeholder="telepon"  disabled>
+                                                                            name="myInput12" value="{{ $narkoba->pasien->telepon }}"  disabled>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -188,13 +174,10 @@
                                                                         </div>
                                                                         <div class="col-md-4 form-group">
                                                                             <input type="email" id="myInput12" class="form-control"
-                                                                                name="myInput13" placeholder="email" disabled >
+                                                                                name="myInput13" value="{{ $narkoba->pasien->email }}" disabled >
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             </div>
-
-                                                                
-
                                                 </div>
                                             </div>
                                         
@@ -226,7 +209,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="penggunaan_obat" class="form-control"
-                                                            name="penggunaan_obat" placeholder="Masukkan cara penggunaan" required>
+                                                            name="penggunaan_obat" value="{{ $narkoba->penggunaan_obat }}" required>
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -235,7 +218,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="jenis_obat" class="form-control"
-                                                            name="jenis_obat" placeholder="Masukkan jenis obat" required>
+                                                            name="jenis_obat" value="{{ $narkoba->jenis_obat }}" required>
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -245,7 +228,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="asal_obat" class="form-control"
-                                                            name="asal_obat" placeholder="Masukkan asal obat" required>
+                                                            name="asal_obat" value="{{ $narkoba->asal_obat }}" required>
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -255,7 +238,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="terakhir_digunakan" class="form-control"
-                                                            name="terakhir_digunakan" placeholder="Terakhir Digunakan" required>
+                                                            name="terakhir_digunakan" value="{{ $narkoba->terakhir_digunakan }}" required>
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -268,13 +251,8 @@
                                                         <label>Amphetamine(AMP)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input class="form-check-input" type="radio" name="amp"
-                                                        id="amp" value="0"> Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="amp"
-                                                          id="amp" value="1">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="amp" id="amp" value="0" {{ !$narkoba->amp ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="amp" id="amp" value="1" {{ $narkoba->amp ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -283,15 +261,8 @@
                                                         <label>Methamphetamine(MET)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input class="form-check-input" type="radio" name="met"
-                                                        id="met" value="0">
-                                                          <label class="form-check-label" for="tidak">
-                                                              Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="met"
-                                                          id="met" value="1">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="met" id="met" value="0" {{ !$narkoba->met ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="met" id="met" value="1" {{ $narkoba->met ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -300,16 +271,8 @@
                                                         <label>TetraHydroCannibinol(THC)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input class="form-check-input" type="radio" name="thc"
-                                                        id="thc" value="0">
-                                                          <label class="form-check-label" for="tidak">
-                                                              Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="thc"
-                                                          id="thc" value="1">
-                                                          <label class="form-check-label" for="ya">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="thc" id="thc" value="0" {{ !$narkoba->thc ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="thc" id="thc" value="1" {{ $narkoba->thc ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -318,16 +281,8 @@
                                                         <label>Benzodiazepine(BZO)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input class="form-check-input" type="radio" name="bzo"
-                                                        id="bzo" value="0">
-                                                          <label class="form-check-label" for="tidak">
-                                                              Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="bzo"
-                                                          id="bzo" value="1">
-                                                          <label class="form-check-label" for="ya">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="bzo" id="bzo" value="0" {{ !$narkoba->bzo ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="bzo" id="bzo" value="1" {{ $narkoba->bzo ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -336,16 +291,8 @@
                                                         <label>Morphine(MOP)</label>
                                                     </div>
                                                     <div class="col-md-3 form-group">
-                                                        <input class="form-check-input" type="radio" name="mop"
-                                                        id="mop" value="0">
-                                                          <label class="form-check-label" for="tidak">
-                                                              Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="mop"
-                                                          id="mop" value="1">
-                                                          <label class="form-check-label" for="ya">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="mop" id="mop" value="0" {{ !$narkoba->mop ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="mop" id="mop" value="1" {{ $narkoba->mop ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -354,16 +301,8 @@
                                                         <label>Cocaine(COC)</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input class="form-check-input" type="radio" name="coc"
-                                                        id="coc" value="0">
-                                                          <label class="form-check-label" for="no">
-                                                              Tidak
-                                                          </label>&emsp;
-                                                          <input class="form-check-input" type="radio" name="coc"
-                                                          id="coc" value="1">
-                                                          <label class="form-check-label" for="yes">
-                                                             Positif
-                                                          </label>
+                                                        <input class="form-check-input" type="radio" name="coc" id="coc" value="0" {{ !$narkoba->coc ? "checked" : "" }}> Negatif
+                                                        <input class="form-check-input" type="radio" name="coc" id="coc" value="1" {{ $narkoba->coc ? "checked" : "" }}> Positif
                                                   </div>
                                                     <div class="col-md-3">
                                                         </div>
@@ -405,103 +344,6 @@
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
                     
-                        
-                    
-                        {{-- <script src="assets/js/mazer.js"></script> --}}
-                    
-                        {{-- <script>
-                             $(document).ready(function () {
-                            $('#pasien_id').select2();
-                            $('#pasien_id').on('change', function (e) {
-                                var data = $('#pasien_id').select2("val");
-                                @this.set('pasien_id', data);
-                            });
-                        });
-                        </script> --}}
-                    
-                    <script type="text/javascript">
-                            function myChangeFunction(input1) {
-                      let text = input1.value;
-                      const myArray = text.split("|");
-                      var input0 = document.getElementById('myInput0');
-                      var input1 = document.getElementById('myInput1');
-                      var input2 = document.getElementById('myInput2');
-                      var input3 = document.getElementById('myInput3');
-                      var input4 = document.getElementById('myInput4');
-                      var input5 = document.getElementById('myInput5');
-                      var input6 = document.getElementById('myInput6');
-                      var input7 = document.getElementById('myInput7');
-                      var input8 = document.getElementById('myInput8');
-                      var input9 = document.getElementById('myInput9');
-                      var input10 = document.getElementById('myInput10');
-                      var input11 = document.getElementById('myInput11');
-                      var input12 = document.getElementById('myInput12');
-                      input0.value = myArray[0];
-                      input1.value = myArray[1];
-                      input2.value = myArray[2];
-                      input3.value = myArray[3];
-                      input4.value = myArray[4];
-                      input5.value = myArray[5];
-                      input6.value = myArray[6];
-                      input7.value = myArray[7];
-                      input8.value = myArray[8];
-                      input9.value = myArray[9];
-                      input10.value = myArray[10];
-                      input11.value = myArray[11];
-                      input12.value = myArray[12];
-                    }
-                        </script>
-                    
-                        {{-- <script>
-                            const userList = document.querySelectorAll(".name-list tr");
-                        const history = document.querySelector(".history");
-                        const addListBtn = document.querySelector(".addListBtn");
-                    
-                        addListBtn.addEventListener('click', function(){
-                            const newLi = document.createElement('LI');
-                            const liContent = document.createTextNode('sdf');
-                            
-                            newLi.appendChild(liContent);
-                            userList.appendChild(newLi);
-                        });
-                        </script> --}}
-                    
-                        <script
-                        src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
-                        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
-                        crossorigin="anonymous"></script>
-                    
-                        <script type="text/javascript">
-                            $("#pasien_id").click(function(e) {
-                            var pasien = $(this).val();
-                    
-                            console.log(pasien);
-                            
-                            $.ajax({
-                                type: "GET",
-                                url: "{{route('superadmin.datapasien.id')}}",
-                                data: {'pasien': pasien},
-                                dataType: 'json',
-                                success:  function(data) {
-                                    console.log(data);
-                                $('#nama_pasien').val(data.nama_pasien);
-                                $('#tempat_lahir').val(data.tempat_lahir);
-                                $('#tanggal_lahir').val(data.tanggal_lahir);
-                                $('#pekerjaan').val(data.pekerjaan);
-                                $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
-                                $('#divisi').val(data.divisi.nama_divisi_pasien);
-                                $('#jabatan').val(data.jabatan.nama_jabatan);
-                                $('#jenis_kelamin').val(data.jenis_kelamin);
-                                $('#alamat').val(data.alamat);
-                                $('#telepon').val(data.telepon);
-                                $('#email').val(data.email);
-                            },
-                            error: function(response) {
-                                alert(response.responseJSON.message);
-                            }
-                            });
-                        });
-                        </script>
 
 
 @include('sweetalert::alert') 

@@ -99,7 +99,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Narkoba');
+        return redirect('/data/pemeriksaan/narkoba')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Narkoba');
     }
 
 
@@ -131,7 +131,7 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
+        return redirect('/data/pemeriksaan/covid')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
     }
 
     public function pemantauancovid()
@@ -141,6 +141,78 @@ class SuperAdminController extends Controller
         $hasilpemantauan = HasilPemantauan::all();
 
         return view('petugas.superadmin.pemantauan_covid', compact('pasien_id', 'covid', 'hasilpemantauan'));
+    }
+
+    public function addpemantauancovid(Request $request)
+    {
+
+    dd($request);
+
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'tempat' => 'required',
+            'suhu_pagi' => 'required',
+            'td' => 'required',
+            'hr' => 'required',
+            'spo' => 'required',
+            'gejala' => 'required',
+            'jenis_pemeriksaan' => 'required',
+            'spoo' => 'required',
+            'hasil_laboratorium' => 'required',
+            'tanggal_pemeriksaan' => 'required',
+            'hasil_rontgen' => 'required',
+            'lampiran_rontgen' => 'required',
+            'tanggal_rontgen' => 'required',
+            'keterangan' => 'required',
+            'perjalanan' => 'required',
+            'asal' => 'required',
+            'kota_tujuan' => 'required',
+        ]);
+
+        if($request->hasFile('lampiran_laboratorium')) {
+            $file = $request->file('lampiran_laboratorium');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $filename);
+        }else {
+            $filename = '';
+        }
+
+        if($request->hasFile('lampiran_rontgen')) {
+            $file = $request->file('lampiran_rontgen');
+
+            $nama = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $nama);
+        }else {
+            $nama = '';
+        }
+        
+        PemantauanCovid::create([
+            'pasien_id' => $request->pasien_id,
+            'tempat' => $request->tempat,
+            'suhu_pagi' => $request->suhu_pagi,
+            'td' => $request->td,
+            'hr' => $request->hr,
+            'spo' => $request->spo,
+            'gejala' => $request->gejala,
+            'jenis_pemeriksaan' => $request->jenis_pemeriksaan,
+            'spoo' => $request->spoo,
+            'hasil_laboratorium' => $request->hasil_laboratorium,
+            'tanggal_pemeriksaan' => $request->tanggal_pemeriksaan,
+            'hasil_rontgen' => $request->hasil_rontgen,
+            'tanggal_rontgen' => $request->tanggal_rontgen,
+            'keterangan' => $request->keterangan,
+            'perjalanan' => $request->perjalanan,
+            'asal' => $request->asal,
+            'kota_tujuan' => $request->kota_tujuan,
+            'lampiran_laboratorium' => $filename,
+            'lampiran_rontgen' => $nama,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+
+        return redirect('/data/izin/berobat')->with('message', 'Berhasil menambah surat izin berobat!');
     }
 
     public function pemantauantandavital()

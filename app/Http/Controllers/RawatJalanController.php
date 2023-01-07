@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Divisi;
 use App\Models\Pasien;
 use App\Models\User;
@@ -20,17 +19,25 @@ use App\Models\IzinBerobat;
 use App\Models\Jabatan;
 use App\Models\KategoriPasien;
 use App\Models\KeteranganBerobat;
+use App\Models\KeteranganSehat;
+use App\Models\KlasifikasiPenyakit;
 use App\Models\Level;
 use App\Models\NamaPenyakit;
+use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
+use App\Models\PersetujuanTindakan;
 use App\Models\Perusahaan;
+use App\Models\RawatInap;
 use App\Models\RekamMedis;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
+use App\Models\SubKlasifikasi;
 use App\Models\SuratRujukan;
 use App\Models\TestUrin;
+use App\Models\Tindakan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Validator;
@@ -38,20 +45,20 @@ use PDF;
 use Response;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
-class PemeriksaanCovidController extends Controller
+class RawatJalanController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function datapemeriksaancovid()
+    public function daftarrawatjalan()
     {
-        $covid = PemeriksaanCovid::all();
+        $pasien = Pasien::get();
 
-
-        return view('petugas.pemeriksaan.data_pemeriksaan_covid', compact('covid'));
+        return view('petugas.rawatjalan.daftar_rawat_jalan', compact('pasien'));
     }
 
     /**
@@ -59,12 +66,9 @@ class PemeriksaanCovidController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewpemeriksaancovid($id)
+    public function create()
     {
-        $covid = PemeriksaanCovid::find($id);
-
-
-        return view('petugas.pemeriksaan.view_pemeriksaan_covid', compact('covid'));
+        //
     }
 
     /**
@@ -73,23 +77,9 @@ class PemeriksaanCovidController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function ubahpemeriksaancovid($id)
+    public function store(Request $request)
     {
-        $covid = PemeriksaanCovid::find($id);
-        $pemeriksaan = PemeriksaanAntigen::all();
-
-        return view('petugas.pemeriksaan.ubah_pemeriksaan_covid', compact('covid', 'pemeriksaan'));
-    }
-
-    function changepemeriksaancovid(Request $request, $id) {
-        $covid = PemeriksaanCovid::find($id);
-        $covid->pemeriksaan_antigen_id = $request->input('pemeriksaan_antigen_id');
-        $covid->hasil_pemeriksaan = $request->input('hasil_pemeriksaan');
-        $covid->update();
-
-
-        return redirect('/data/pemeriksaan/Covid')->with('success', 'Berhasil Mengubah Data Pemeriksaan Covid!');
-        
+        //
     }
 
     /**
@@ -98,34 +88,9 @@ class PemeriksaanCovidController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function nambahpemeriksaancovid($id)
+    public function show($id)
     {
-        $pasien = Pasien::find($id);
-        $pemeriksaan = PemeriksaanAntigen::all();
-        $covid = PemeriksaanCovid::all();
-
-
-        return view('petugas.pemeriksaan.add_pemeriksaan_covid', compact('pasien', 'pemeriksaan', 'covid'));
-    }
-
-    public function tambahpemeriksaancovid(Request $request)
-    {
-
-        $validatedData = $request->validate([
-            'pasien_id' => 'required',
-            'pemeriksaan_antigen_id' => 'required',
-            'hasil_pemeriksaan' => 'required'
-        ]);
-
-        PemeriksaanCovid::create([
-            'pasien_id' => $request->pasien_id,
-            'pemeriksaan_antigen_id' => $request->pemeriksaan_antigen_id,
-            'hasil_pemeriksaan' => $request->hasil_pemeriksaan,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
-
-        return redirect('/data/pemeriksaan/covid')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
+        //
     }
 
     /**

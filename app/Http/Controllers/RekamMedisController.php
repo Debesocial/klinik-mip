@@ -22,6 +22,7 @@ use App\Models\KategoriPasien;
 use App\Models\KeteranganBerobat;
 use App\Models\Level;
 use App\Models\NamaPenyakit;
+use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
@@ -48,6 +49,10 @@ class RekamMedisController extends Controller
      */
     public function datarekammedis()
     {
+        $now = CarbonImmutable::now()->locale('id_ID');
+        $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
+        $end_week = $now->endOfWeek()->format('m-d');
+
         $pasien = Pasien::all();
 
         return view('petugas.rekammedis.data_rekam_medis', compact('pasien'));
@@ -60,11 +65,13 @@ class RekamMedisController extends Controller
         return view('petugas.rekammedis.view_rekam_medis', compact('pasien'));
     }
 
-    public function lihatrekammedis()
+    public function lihatrekammedis($id)
     {
-        $pasien = Pasien::all();
+        $pasien = Pasien::find($id);
+        $test = TestUrin::where("pasien_id", $id)->get();
+        $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
 
-        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien'));
+        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'covid'));
     }
 
     /**

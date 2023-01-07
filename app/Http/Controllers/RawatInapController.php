@@ -12,9 +12,9 @@ class RawatInapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewrawatinap()
+    public function viewrawatinap($id)
     {
-        $pasien = Pasien::all();
+        $pasien = Pasien::find($id);
 
         return view('petugas.rawatinap.view_rawat_inap', compact('pasien'));
     }

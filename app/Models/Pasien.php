@@ -88,6 +88,10 @@ class Pasien extends Model
         return $this->belongsTo(RawatInap::class);
     }
 
+    public function rawatjalan(){
+        return $this->belongsTo(RawatJalan::class);
+    }
+
     public function permintaanmakanan() {
         return $this->belongsTo(PermintaanMakanan::class);
     }

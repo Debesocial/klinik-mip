@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold"> Daftar Pasien</h6>
-                                    <h6 class="font-extrabold mb-0">450</h6>
+                                    <h6 class="font-extrabold mb-0">{{$pasien}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Karyawan MIP</h6>
-                                    <h6 class="font-extrabold mb-0">300</h6>
+                                    <h6 class="font-extrabold mb-0">{{$kategori}}</h6>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Mitra Kerja</h6>
-                                    <h6 class="font-extrabold mb-0">112</h6>
+                                    <h6 class="font-extrabold mb-0">{{$mitra}}</h6>
                                 </div>
                             </div>
                         </div>

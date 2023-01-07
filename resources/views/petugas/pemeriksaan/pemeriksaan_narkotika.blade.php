@@ -53,34 +53,27 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="/pemeriksaan/narkoba" method="post">
+                                        <form class="form form-horizontal" action="/pemeriksaan/narkotika/{{$pasien->id}}" method="post">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
                                                         
                                                     <div class="col-md-2">
-                                                        <label>ID Pasien</label>
+                                                        <label>ID Rekam Medis Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                            <option disabled selected>Pilih ID Pasien</option>
-                                                            @foreach ($pasien_id as $pas)
-                                                                <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['NIK'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{   $pas['alamat'] }}|{{ $pas['pekerjaan'] }}| {{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{   $pas['jenis_kelamin'] }}|{{ $pas['telepon'] }}|{{ $pas['email'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control" value="{{ $pasien->id_rekam_medis }}"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
-                                                            <input type="text" id="myInput0" class="form-control"
-                                                                name="pasien_id" placeholder="ID Pasien"  hidden>
+                                                        <input type="text" id="pasien_id" class="form-control" name="pasien_id" value="{{ $pasien->id }}"  hidden>
                                                         
 
                                                         <div class="col-md-2">
                                                             <label>Nama Pasien</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <input type="text" id="myInput1" class="form-control"
-                                                                name="myInput1" placeholder="Nama Pasien"  disabled>
+                                                            <input type="text" class="form-control" value="{{ $pasien->nama_pasien }}" disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -92,7 +85,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="myInput2" class="form-control"
-                                                                name="myInput2" placeholder="Nomor Induk Karyawan" disabled>
+                                                                name="myInput2" placeholder="{{ $pasien->NIK }}" disabled>
                                                         </div>
     
                                                         <div class="col-md-6">
@@ -101,9 +94,8 @@
                                                     <div class="col-md-2">
                                                         <label>Tempat Lahir</label>
                                                     </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput3" class="form-control"
-                                                            name="myInput4" placeholder="tempat lahir"  disabled>
+                                                    <div class="col-md-4 form-group"> 
+                                                        <input type="text" class="form-control" value="{{ $pasien->tempat_lahir }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -111,8 +103,7 @@
                                                         <label>Tanggal Lahir</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="date" id="myInput4" class="form-control"
-                                                            name="myInput5" placeholder="Tanggal Lahir"  disabled>
+                                                        <input type="date" class="form-control" value="{{ $pasien->tanggal_lahir }}"  disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -120,8 +111,7 @@
                                                         <label>Alamat</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput5" class="form-control"
-                                                            name="myInput6" placeholder="alamat" disabled >
+                                                        <input type="text" class="form-control" value="{{ $pasien->alamat }}" disabled >
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -129,8 +119,7 @@
                                                         <label>Pekerjaan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput6" class="form-control"
-                                                            name="myInput7" placeholder="pekerjaan"  disabled>
+                                                        <input type="text" class="form-control" value="{{ $pasien->pekerjaan }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -139,8 +128,7 @@
                                                         <label>Perusahaan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput7" class="form-control"
-                                                    name="myInput8" placeholder="perusahaan" disabled>
+                                                        <input type="text" class="form-control" value="{{ $pasien->perusahaan->nama_perusahaan_pasien }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -148,8 +136,7 @@
                                                         <label>Divisi</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput8" class="form-control"
-                                                    name="myInput9" placeholder="divisi" disabled>
+                                                        <input type="text" class="form-control" value="{{ $pasien->divisi->nama_divisi_pasien }}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                         </div>
@@ -157,8 +144,7 @@
                                                             <label>Jabatan</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <input type="text" id="myInput9" class="form-control"
-                                                    name="myInput10" placeholder="jabatan" disabled>
+                                                            <input type="text" class="form-control" value="{{ $pasien->jabatan->nama_jabatan }}" disabled>
                                                         </div>
                                                         <div class="col-md-6">
                                                             </div>
@@ -167,8 +153,7 @@
                                                                     <label>Jenis kelamin</label>
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
-                                                                    <input type="text" id="myInput10" class="form-control"
-                                                                  name="myInput11" placeholder="jenis kelamin" disabled>
+                                                                    <input type="text" class="form-control" value="{{ $pasien->jenis_kelamin }}" disabled>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     </div>
@@ -177,8 +162,7 @@
                                                                         <label>Telepon</label>
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
-                                                                        <input type="text" id="myInput11" class="form-control"
-                                                                            name="myInput12" placeholder="telepon"  disabled>
+                                                                        <input type="text" class="form-control" value="{{ $pasien->telepon }}" disabled>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -187,8 +171,7 @@
                                                                             <label>Email</label>
                                                                         </div>
                                                                         <div class="col-md-4 form-group">
-                                                                            <input type="email" id="myInput12" class="form-control"
-                                                                                name="myInput13" placeholder="email" disabled >
+                                                                            <input type="email"  class="form-control" value="{{ $pasien->email }}" disabled >
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             </div>
@@ -269,7 +252,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="amp"
-                                                        id="amp" value="0"> Tidak
+                                                        id="amp" value="0"> Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="amp"
                                                           id="amp" value="1">
@@ -286,7 +269,7 @@
                                                         <input class="form-check-input" type="radio" name="met"
                                                         id="met" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="met"
                                                           id="met" value="1">
@@ -303,7 +286,7 @@
                                                         <input class="form-check-input" type="radio" name="thc"
                                                         id="thc" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="thc"
                                                           id="thc" value="1">
@@ -321,7 +304,7 @@
                                                         <input class="form-check-input" type="radio" name="bzo"
                                                         id="bzo" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="bzo"
                                                           id="bzo" value="1">
@@ -339,7 +322,7 @@
                                                         <input class="form-check-input" type="radio" name="mop"
                                                         id="mop" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="mop"
                                                           id="mop" value="1">
@@ -357,7 +340,7 @@
                                                         <input class="form-check-input" type="radio" name="coc"
                                                         id="coc" value="0">
                                                           <label class="form-check-label" for="no">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="coc"
                                                           id="coc" value="1">
@@ -404,105 +387,6 @@
                     
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-                    
-                        
-                    
-                        {{-- <script src="assets/js/mazer.js"></script> --}}
-                    
-                        {{-- <script>
-                             $(document).ready(function () {
-                            $('#pasien_id').select2();
-                            $('#pasien_id').on('change', function (e) {
-                                var data = $('#pasien_id').select2("val");
-                                @this.set('pasien_id', data);
-                            });
-                        });
-                        </script> --}}
-                    
-                    <script type="text/javascript">
-                            function myChangeFunction(input1) {
-                      let text = input1.value;
-                      const myArray = text.split("|");
-                      var input0 = document.getElementById('myInput0');
-                      var input1 = document.getElementById('myInput1');
-                      var input2 = document.getElementById('myInput2');
-                      var input3 = document.getElementById('myInput3');
-                      var input4 = document.getElementById('myInput4');
-                      var input5 = document.getElementById('myInput5');
-                      var input6 = document.getElementById('myInput6');
-                      var input7 = document.getElementById('myInput7');
-                      var input8 = document.getElementById('myInput8');
-                      var input9 = document.getElementById('myInput9');
-                      var input10 = document.getElementById('myInput10');
-                      var input11 = document.getElementById('myInput11');
-                      var input12 = document.getElementById('myInput12');
-                      input0.value = myArray[0];
-                      input1.value = myArray[1];
-                      input2.value = myArray[2];
-                      input3.value = myArray[3];
-                      input4.value = myArray[4];
-                      input5.value = myArray[5];
-                      input6.value = myArray[6];
-                      input7.value = myArray[7];
-                      input8.value = myArray[8];
-                      input9.value = myArray[9];
-                      input10.value = myArray[10];
-                      input11.value = myArray[11];
-                      input12.value = myArray[12];
-                    }
-                        </script>
-                    
-                        {{-- <script>
-                            const userList = document.querySelectorAll(".name-list tr");
-                        const history = document.querySelector(".history");
-                        const addListBtn = document.querySelector(".addListBtn");
-                    
-                        addListBtn.addEventListener('click', function(){
-                            const newLi = document.createElement('LI');
-                            const liContent = document.createTextNode('sdf');
-                            
-                            newLi.appendChild(liContent);
-                            userList.appendChild(newLi);
-                        });
-                        </script> --}}
-                    
-                        <script
-                        src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
-                        integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
-                        crossorigin="anonymous"></script>
-                    
-                        <script type="text/javascript">
-                            $("#pasien_id").click(function(e) {
-                            var pasien = $(this).val();
-                    
-                            console.log(pasien);
-                            
-                            $.ajax({
-                                type: "GET",
-                                url: "{{route('superadmin.datapasien.id')}}",
-                                data: {'pasien': pasien},
-                                dataType: 'json',
-                                success:  function(data) {
-                                    console.log(data);
-                                $('#nama_pasien').val(data.nama_pasien);
-                                $('#tempat_lahir').val(data.tempat_lahir);
-                                $('#tanggal_lahir').val(data.tanggal_lahir);
-                                $('#pekerjaan').val(data.pekerjaan);
-                                $('#perusahaan').val(data.perusahaan.nama_perusahaan_pasien);
-                                $('#divisi').val(data.divisi.nama_divisi_pasien);
-                                $('#jabatan').val(data.jabatan.nama_jabatan);
-                                $('#jenis_kelamin').val(data.jenis_kelamin);
-                                $('#alamat').val(data.alamat);
-                                $('#telepon').val(data.telepon);
-                                $('#email').val(data.email);
-                            },
-                            error: function(response) {
-                                alert(response.responseJSON.message);
-                            }
-                            });
-                        });
-                        </script>
-
-
+    
 @include('sweetalert::alert') 
     @endsection
