@@ -35,6 +35,10 @@ use App\Models\SpesialisRujukan;
 use App\Models\SubKlasifikasi;
 use App\Models\SuratRujukan;
 use App\Models\TestUrin;
+use App\Models\McuAkhir;
+use App\Models\McuAwal;
+use App\Models\McuBerkala;
+use App\Models\McuKhusus;
 use App\Models\Tindakan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Illuminate\Http\Request;
@@ -57,16 +61,16 @@ class SuperAdminController extends Controller
 
      
 
-    public function pemeriksaannarkoba()
+    public function periksanarkoba()
     {
         $pasien_id = Pasien::get();
         $test = TestUrin::all();
 
 
-        return view('petugas.superadmin.pemeriksaan_narkoba', compact('pasien_id', 'test'));
+        return view('petugas.superadmin.periksa_narkoba', compact('pasien_id', 'test'));
     }
 
-    public function addpemeriksaannarkoba(Request $request)
+    public function addperiksanarkoba(Request $request)
     {
 
         $validatedData = $request->validate([
@@ -83,12 +87,22 @@ class SuperAdminController extends Controller
             'coc' => 'required',
         ]);
 
+        if($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move('pemeriksaan/narkoba/file', $filename);
+        }else {
+            $filename = '';
+        }
+
         TestUrin::create([
             'pasien_id' => $request->pasien_id,
             'penggunaan_obat' => $request->penggunaan_obat,
             'jenis_obat' => $request->jenis_obat,
             'asal_obat' => $request->asal_obat,
             'terakhir_digunakan' => $request->terakhir_digunakan,
+            'dokumen' => $filename,
             'amp' => $request->amp,
             'met' => $request->met,
             'thc' => $request->thc,
@@ -123,15 +137,32 @@ class SuperAdminController extends Controller
             'hasil_pemeriksaan' => 'required'
         ]);
 
+        if($request->hasFile('file')) {
+            $file = $request->file('file');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move('pemeriksaan/narkoba/file', $filename);
+        }else {
+            $filename = '';
+        }
+
         PemeriksaanCovid::create([
             'pasien_id' => $request->pasien_id,
             'pemeriksaan_antigen_id' => $request->pemeriksaan_antigen_id,
             'hasil_pemeriksaan' => $request->hasil_pemeriksaan,
+            'file' => $filename,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pemeriksaan/covid')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
+        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil Menambahkan Data Pemeriksaan Covid');
+    }
+
+    public function datapemantauancovid()
+    {
+        $pemantauan = PemantauanCovid::all();
+
+        return view('petugas.superadmin.data_pemantauan_covid', compact('pemantauan'));
     }
 
     public function pemantauancovid()
@@ -146,22 +177,23 @@ class SuperAdminController extends Controller
     public function addpemantauancovid(Request $request)
     {
 
-    dd($request);
+    // dd($request);
 
         $validatedData = $request->validate([
             'pasien_id' => 'required',
-            'tempat' => 'required',
+            'no_kamar' => 'required',
             'suhu_pagi' => 'required',
             'td' => 'required',
             'hr' => 'required',
             'spo' => 'required',
             'gejala' => 'required',
             'jenis_pemeriksaan' => 'required',
-            'spoo' => 'required',
-            'hasil_laboratorium' => 'required',
             'tanggal_pemeriksaan' => 'required',
+            'hasil_laboratorium' => 'required',
+            'tanggal_laboratorium' => 'required',
+            'hasil_rapid' => 'required',
+            'tanggal_rapid' => 'required',
             'hasil_rontgen' => 'required',
-            'lampiran_rontgen' => 'required',
             'tanggal_rontgen' => 'required',
             'keterangan' => 'required',
             'perjalanan' => 'required',
@@ -178,42 +210,128 @@ class SuperAdminController extends Controller
             $filename = '';
         }
 
+        if($request->hasFile('lampiran_rapid')) {
+            $file = $request->file('lampiran_rapid');
+
+            $rapid = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $rapid);
+        }else {
+            $rapid = '';
+        }
+
         if($request->hasFile('lampiran_rontgen')) {
             $file = $request->file('lampiran_rontgen');
 
-            $nama = time().'_'.$file->getClientOriginalName();
-            $file->move('petugas/pemantauan_covid/file', $nama);
+            $rontgen = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $rontgen);
         }else {
-            $nama = '';
+            $rontgen = '';
         }
         
         PemantauanCovid::create([
             'pasien_id' => $request->pasien_id,
-            'tempat' => $request->tempat,
+            'no_kamar' => $request->no_kamar,
             'suhu_pagi' => $request->suhu_pagi,
             'td' => $request->td,
             'hr' => $request->hr,
             'spo' => $request->spo,
             'gejala' => $request->gejala,
             'jenis_pemeriksaan' => $request->jenis_pemeriksaan,
-            'spoo' => $request->spoo,
-            'hasil_laboratorium' => $request->hasil_laboratorium,
             'tanggal_pemeriksaan' => $request->tanggal_pemeriksaan,
+            'hasil_laboratorium' => $request->hasil_laboratorium,
+            'tanggal_laboratorium' => $request->tanggal_laboratorium,
+            'lampiran_laboratorium' => $filename,
+            'hasil_rapid' => $request->hasil_rapid,
+            'tanggal_rapid' => $request->tanggal_rapid,
+            'lampiran_rapid' => $rapid,
             'hasil_rontgen' => $request->hasil_rontgen,
             'tanggal_rontgen' => $request->tanggal_rontgen,
             'keterangan' => $request->keterangan,
             'perjalanan' => $request->perjalanan,
             'asal' => $request->asal,
             'kota_tujuan' => $request->kota_tujuan,
-            'lampiran_laboratorium' => $filename,
-            'lampiran_rontgen' => $nama,
+            'lampiran_rontgen' => $rontgen,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
 
+        
 
-        return redirect('/data/izin/berobat')->with('message', 'Berhasil menambah surat izin berobat!');
+        return redirect('/data/pemantauan/covid')->with('message', 'Berhasil!');
     }
+
+    public function viewpemantauancovid(Request $request, $id)
+    {
+        $pemantauan = PemantauanCovid::find($id);
+
+        return view('petugas.superadmin.view_pemantauan_covid', compact('pemantauan'));
+    }
+
+    public function ubahpemantauancovid(Request $request, $id)
+    {
+        $pemantauan = PemantauanCovid::find($id);
+        $hasilpemantauan = HasilPemantauan::all();
+
+        return view('petugas.superadmin.ubah_pemantauan_covid', compact('pemantauan', 'hasilpemantauan'));
+    }
+
+    function changepemantauancovid(Request $request, $id) {
+        
+        if($request->hasFile('lampiran_laboratorium')) {
+            $file = $request->file('lampiran_laboratorium');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $filename);
+        }else {
+            $filename = '';
+        }
+
+        if($request->hasFile('lampiran_rapid')) {
+            $file = $request->file('lampiran_rapid');
+
+            $rapid = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $rapid);
+        }else {
+            $rapid = '';
+        }
+
+        if($request->hasFile('lampiran_rontgen')) {
+            $file = $request->file('lampiran_rontgen');
+
+            $rontgen = time().'_'.$file->getClientOriginalName();
+            $file->move('petugas/pemantauan_covid/file', $rontgen);
+        }else {
+            $rontgen = '';
+        }
+
+        $pemantauan = PemantauanCovid::find($id);
+        $pemantauan->no_kamar = $request->input('no_kamar');
+        $pemantauan->suhu_pagi = $request->input('suhu_pagi');
+        $pemantauan->td = $request->input('td');
+        $pemantauan->hr = $request->input('hr');
+        $pemantauan->spo = $request->input('spo');
+        $pemantauan->gejala = $request->input('gejala');
+        $pemantauan->jenis_pemeriksaan = $request->input('jenis_pemeriksaan');
+        $pemantauan->tanggal_pemeriksaan = $request->input('tanggal_pemeriksaan');
+        $pemantauan->hasil_laboratorium = $request->input('hasil_laboratorium');
+        $pemantauan->tanggal_laboratorium = $request->input('tanggal_laboratorium');
+        $pemantauan->lampiran_laboratorium = $filename;
+        $pemantauan->hasil_rapid = $request->input('hasil_rapid');
+        $pemantauan->tanggal_rapid = $request->input('tanggal_rapid');
+        $pemantauan->lampiran_rapid = $rapid;
+        $pemantauan->hasil_rontgen = $request->input('hasil_rontgen');
+        $pemantauan->tanggal_rontgen = $request->input('tanggal_rontgen');
+        $pemantauan->keterangan = $request->input('keterangan');
+        $pemantauan->perjalanan = $request->input('perjalanan');
+        $pemantauan->kota_tujuan = $request->input('asal');
+        $pemantauan->lampiran_rontgen = $rontgen;
+        
+        $pemantauan->update();
+
+        return redirect('/data/pemantauan/covid')->with('message', 'Berhasil');
+        
+    }
+
 
     public function pemantauantandavital()
     {
@@ -228,6 +346,36 @@ class SuperAdminController extends Controller
         $pasien_id = Pasien::all();
 
         return view('petugas.superadmin.keterangan_pemeriksaan', compact('pasien_id'));
+    }
+
+    public function addketeranganpemeriksaan(Request $request)
+    {
+
+        // dd($request);
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'deskripsi_hasil' => 'required',
+            'deskripsi_obat' => 'required',
+            'tanggal_pemeriksaan' => 'required',
+            'rekomendasi' => 'required',
+            'jenis_pemeriksaan' => 'required',
+            'status' => 'required',
+        ]);
+        
+        McuAkhir::create([
+            'pasien_id' => $request->pasien_id,
+            'deskripsi_hasil' => $request->deskripsi_hasil,
+            'deskripsi_obat' => $request->deskripsi_obat,
+            'tanggal_pemeriksaan' => $request->tanggal_pemeriksaan,
+            'rekomendasi' => $request->rekomendasi,
+            'jenis_pemeriksaan' => $request->jenis_pemeriksaan,
+            'status' => $request->status,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+
+        return redirect('/data/rekam/medis')->with('message', 'Berhasil!');
     }
 
     public function rekammedis(Request $request){
@@ -246,16 +394,33 @@ class SuperAdminController extends Controller
     public function pengesahanhasil()
     {
         $pasien_id = Pasien::all();
+        $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.pengesahan_hasil', compact('pasien_id'));
+        return view('petugas.superadmin.pengesahan_hasil', compact('pasien_id', 'hasilpemantauan'));
     }
 
-    public function rawatinap()
+    public function addpengesahanhasil(Request $request)
     {
-        $pasien_id = Pasien::get();
 
-        return view('petugas.superadmin.rawat_inap', compact('pasien_id'));
+        // dd($request);
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'hasil_pemantauan_id' => 'required',
+            'anjuran' => 'required',
+        ]);
+        
+        McuAwal::create([
+            'pasien_id' => $request->pasien_id,
+            'hasil_pemantauan_id' => $request->hasil_pemantauan_id,
+            'anjuran' => $request->anjuran,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+
+        return redirect('/data/rekam/medis')->with('message', 'Berhasil!');
     }
+
 
     public function rawatinapdokter()
     {
@@ -579,10 +744,9 @@ class SuperAdminController extends Controller
 
     public function dataketerangansehat()
     {
-        $pasien = Pasien::all();
         $sehat = KeteranganSehat::all();
 
-        return view('petugas.superadmin.data_keterangan_sehat', compact( 'pasien', 'sehat'));
+        return view('petugas.superadmin.data_keterangan_sehat', compact( 'sehat'));
     }
 
     public function keterangansehat()
@@ -590,6 +754,76 @@ class SuperAdminController extends Controller
         $pasien_id = Pasien::get();
 
         return view('petugas.superadmin.keterangan_sehat', compact('pasien_id'));
+    }
+
+    public function addketerangansehat(Request $request)
+    {
+
+        // dd($request);
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'tinggi_badan' => 'required',
+            'berat_badan' => 'required',
+            'suhu_tubuh' => 'required',
+            'tekanan_darah' => 'required',
+            'denyut_nadi' => 'required',
+            'laju_pernapasan' => 'required',
+            'saturasi' => 'required',
+            'hasil' => 'required',
+        ]);
+        
+        KeteranganSehat::create([
+            'pasien_id' => $request->pasien_id,
+            'tinggi_badan' => $request->tinggi_badan,
+            'berat_badan' => $request->berat_badan,
+            'suhu_tubuh' => $request->suhu_tubuh,
+            'tekanan_darah' => $request->tekanan_darah,
+            'denyut_nadi' => $request->denyut_nadi,
+            'laju_pernapasan' => $request->laju_pernapasan,
+            'saturasi' => $request->saturasi,
+            'hasil' => $request->hasil,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        return redirect('/data/keterangan/sehat')->with('message', 'Berhasil!');
+    }
+
+    public function ubahketerangansehat($id)
+    {
+        $keterangan = KeteranganSehat::find($id);
+
+        return view('petugas.superadmin.ubah_keterangan_sehat', compact('keterangan'));
+    }
+
+    function changeketerangansehat(Request $request, $id) {
+        
+        $keterangan = KeteranganSehat::find($id);
+        $keterangan->tinggi_badan = $request->input('tinggi_badan');
+        $keterangan->berat_badan = $request->input('berat_badan');
+        $keterangan->suhu_tubuh = $request->input('suhu_tubuh');
+        $keterangan->tekanan_darah = $request->input('tekanan_darah');
+        $keterangan->denyut_nadi = $request->input('denyut_nadi');
+        $keterangan->laju_pernapasan = $request->input('laju_pernapasan');
+        $keterangan->saturasi = $request->input('saturasi');
+        $keterangan->hasil = $request->input('hasil');
+        $keterangan->update();
+
+        return redirect('/data/keterangan/sehat')->with('message', 'Berhasil ');
+        
+    }
+
+    public function printketerangansehat($id)
+    {
+        $keterangan = KeteranganSehat::find($id);
+        $pasien = Pasien::all();
+
+        $today = Carbon::now()->isoFormat('D MMMM Y');
+  
+        $pdf = PDF::loadView('petugas.superadmin.print_keterangan_sehat', ['keterangan' => $keterangan])->setOptions(['defaultFont' => 'sans-serif', 'isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->setPaper('a4', 'portrait');
+        
+        $pdf->save(storage_path().'keterangansehat.pdf');
+        return $pdf->stream();
     }
 
     public function datatindakanmedis()
@@ -845,7 +1079,7 @@ class SuperAdminController extends Controller
             ]);
 
         if ($pasien) {
-            return redirect('/data/pasien')->with('success', 'Berhasil Menambahkan Data Pasien!');
+            return redirect('/data/pasien')->with('message', 'Berhasil Menambahkan Data Pasien!');
         }
 
         return redirect()->back()->with('fail', 'Fail Create Data!');
@@ -893,7 +1127,7 @@ class SuperAdminController extends Controller
         $keluarga->email = $request->input('email_keluarga');
         $keluarga->update();
 
-        return redirect('/data/pasien')->with('success', 'Berhasil Mengubah Data Pasien!');
+        return redirect('/data/pasien')->with('message', 'Berhasil Mengubah Data Pasien!');
     }
 
     public function mitrakerja(Request $request)
@@ -952,7 +1186,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($user) {
-        return redirect('/mitra/kerja')->with('success', 'Berhasil Menambahkan Data Petugas!');
+        return redirect('/mitra/kerja')->with('message', 'Berhasil Menambahkan Data Petugas!');
     }   
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
@@ -983,7 +1217,7 @@ class SuperAdminController extends Controller
         $user->perusahaan_id = $request->input('perusahaan_id');
         $user->update();
 
-        return redirect('/mitra/kerja')->with('success', 'Berhasil Mengubah Data Mitra Kerja!');
+        return redirect('/mitra/kerja')->with('message', 'Berhasil Mengubah Data Mitra Kerja!');
     }
 
 
@@ -1056,7 +1290,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($user) {
-        return redirect('/data/user')->with('success', 'Berhasil Menambahkan Data Petugas!');
+        return redirect('/data/user')->with('message', 'Berhasil Menambahkan Data Petugas!');
         
     }   
         return redirect()->back()->with('fail', 'Fail Create Data!');
@@ -1094,7 +1328,7 @@ class SuperAdminController extends Controller
         $jadwal->update();
 
 
-        return redirect('/data/user')->with('success', 'Berhasil Mengubah Data Petugas!');
+        return redirect('/data/user')->with('message', 'Berhasil Mengubah Data Petugas!');
         
     }
 

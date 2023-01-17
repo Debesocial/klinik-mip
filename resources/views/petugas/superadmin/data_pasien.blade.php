@@ -62,8 +62,8 @@
                         <td style="width: 50px"><i class="{{ $patient->hamil_menyusui == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
                         <td>
                             <div class="buttons" width="100px">
+                                <a href="/view/data/pasien/{{ $patient->id }}" title="View Data Pasien" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                 <a href="/ubah/data/pasien/{{ $patient->id }}" class="btn btn-success rounded-pill" title="Ubah data pasien"><i class="fa fa-edit"></i></a>
-                                <a href="/view/data/pasien/{{ $patient->id }}" title="View Data Pasien" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
                             </div>
                         </td>
                     </tr>

@@ -25,13 +25,13 @@ class CreatePemantauanCovidsTable extends Migration
             $table->string('jenis_pemeriksaan');
             $table->date('tanggal_pemeriksaan');
             $table->string('hasil_laboratorium');
-            $table->text('lampiran_laboratorium');
+            $table->text('lampiran_laboratorium')->nullable();
             $table->date('tanggal_laboratorium');
             $table->string('hasil_rapid');
-            $table->text('lampiran_rapid');
+            $table->text('lampiran_rapid')->nullable();
             $table->date('tanggal_rapid');
             $table->string('hasil_rontgen');
-            $table->text('lampiran_rontgen');
+            $table->text('lampiran_rontgen')->nullable();
             $table->date('tanggal_rontgen');
             $table->string('keterangan');
             $table->date('perjalanan');

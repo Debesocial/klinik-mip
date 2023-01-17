@@ -99,7 +99,9 @@
                                             <a class="list-group-item list-group-item-action" id="list-pemeriksaan-list"
                                                 data-bs-toggle="list" href="#list-pemeriksaan" role="tab">Pemeriksaan Covid-19</a>
                                             <a class="list-group-item list-group-item-action" id="list-covid-list"
-                                                data-bs-toggle="list" href="#list-covid" role="tab">Pemantaauan Covid-19</a>
+                                                data-bs-toggle="list" href="#list-covid" role="tab">Pemantauan Covid-19</a>
+                                            <a class="list-group-item list-group-item-action" id="list-mcu-list"
+                                                data-bs-toggle="list" href="#list-mcu" role="tab">MCU</a>
                                         </div>
 
                                         <div class="tab-content text-justify">
@@ -145,7 +147,7 @@
                                                                                         <td>{{ $tes->asal_obat }}</td>
                                                                                         <td>{{ $tes->terakhir_digunakan }}</td>
                                                                                         <td><div class="buttons">
-                                                                                            <a href="/view/pemeriksaan/narkoba/{{$tes->id }}" title="Lihat Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                                                                            <a href="/view/pemeriksaan/narkoba/{{$tes->id }}" title="Lihat Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                                                                             <a href="/ubah/pemeriksaan/narkoba/{{$tes->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                                                                             </div>
                                                                                         </td>
@@ -195,7 +197,7 @@
                                                                                             <td><a href="/view/data/pasien/{{$pasien->id}}">{{ $cov->pasien->nama_pasien }}</a></td>
                                                                                             <td>{{ $cov->pemeriksaan->kebutuhan }}</td>
                                                                                             <td><div class="buttons">
-                                                                                                <a href="/view/rawat/inap/{{$pasien->id}}" title="Lihat Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                                                                                <a href="/view/rawat/inap/{{$pasien->id}}" title="Lihat Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                                                                                 <a href="/ubah/pemeriksaan/covid/{{$cov->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                                                                                 </div>
                                                                                             </td>
@@ -232,15 +234,71 @@
                                     <table class="table" id="TABLE_3">
                                         <thead>
                                             <tr>
+                                                <th>Tanggal Pemeriksaan</th>
+                                                <th>Nama Pasien</th>
+                                                <th>No. Kamar</th>
+                                                <th>Tanggal Perjalanan</th>
+                                                <th>Kota Asal/Kota Tujuan</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pemantauan as $pantau)
+                                            <tr>
+                                                    <td><B>{{ Carbon\Carbon::parse($pantau->tanggal_pemeriksaan)->isoFormat('D MMMM Y') }}</B></td>
+                                                    <td>{{ $pantau->pasien->nama_pasien }}</td>
+                                                    <td>{{ $pantau->no_kamar }}</td>
+                                                    <td>{{ $pantau->perjalanan }}</td>
+                                                    <td>{{ $pantau->asal }}/{{ $pantau->kota_tujuan }}</td>
+                                                    <td><div class="buttons">
+                                                        <a href="/view/pemantauan/covid/{{$pantau->id}}" title="print Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
+                                                        <a href="" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
+                                                        </div></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="tab-pane fade" id="list-mcu" role="tabpanel" aria-labelledby="list-mcu-list">
+    <section id="basic-horizontal-layouts">
+        <div class="row match-height">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="buttons" width="100px">
+                            <a href="/pengesahan/hasil" class="btn btn-success rounded-pill">
+                                <i class="fa fa-plus"></i>
+                                <span>Tambah MCU Awal</span></a>
+                                <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
+                                    <i class="fa fa-plus"></i>
+                                    <span>Tambah MCU Khusus</span></a>
+                                    <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
+                                        <i class="fa fa-plus"></i>
+                                        <span>Tambah MCU Bertahap</span></a>
+                                        <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
+                                            <i class="fa fa-plus"></i>
+                                            <span>Tambah MCU Akhir</span></a>
+                        </div>
+                    </div>
+                        <div class="card-body">
+                            <form class="form form-horizontal">
+                                <div class="form-body table-responsive">
+                                    <table class="table" id="TABLE_3">
+                                        <thead>
+                                            <tr>
                                                 <th>Tanggal Permintaan</th>
                                                 <th>ID Rawat Inap</th>
                                                 <th>Nama Pasien</th>
                                                 <th>Diagnosa</th>
-                                                <th>Permintaan Makanan</th>
-                                                <th>Catatan</th>
-                                                <th>Tanggal diberikan</th>
-                                                <th>Tanggal berakhirnya</th>
-                                                <th>Total Pemberian</th>
+                                                <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -250,14 +308,10 @@
                                                 <td><a href="/view/rawat/inap">RI22120001</a></td>
                                                 <td>Martuani</td>
                                                 <td>Masuk angin</td>
-                                                <td>Kepiting</td>
-                                                <td>Supaya lekas sembuh</td>
-                                                <td>22 Desember 2022</td>
-                                                <td>22 Desember 2022</td>
-                                                <td>30 haris</td>
+                                                <td>22</td>
                                                 <td>
                                                     <div class="buttons">
-                                                        <a href="/lihat/rekam/medis" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                                        <a href="/lihat/rekam/medis" title="Lihat Data" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                                         <a href="" class="btn btn-success rounded-pill" title="Ubah data"><i class="fa fa-edit"></i></a>
                                                     </div>
                                                 </td>
@@ -272,7 +326,13 @@
         </div>
     </section>
 </div>
+
 </div>
+
+
+
+
+
                                     </div>
                                 </div>
                             </form>

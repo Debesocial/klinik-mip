@@ -11,18 +11,15 @@ class KeteranganSehat extends Model
 
     protected $fillable = [
         'pasien_id',
-        'anamnesis',
         'tinggi_badan',
         'berat_badan',
-        'suhu_badan',
+        'suhu_tubuh',
         'tekanan_darah',
         'denyut_nadi',
         'laju_pernapasan',
         'saturasi',
-        'status',
         'hasil',
         'ttd',
-        'catatan',
         'created_by',
         'updated_by'
     ];

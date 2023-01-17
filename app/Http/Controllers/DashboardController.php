@@ -13,7 +13,7 @@ class DashboardController extends Controller
 {
     public function index() {
 
-        $user = User::all();
+        $user = User::count();
         $jadwal = Jadwal::all();
         $level = Level::all();
         $pasien= Pasien::count();

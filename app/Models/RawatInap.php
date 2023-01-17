@@ -13,25 +13,9 @@ class RawatInap extends Model
     protected $fillable = [
         'pasien_id',
         'id_rawat_inap',
-        'anamnesis',
-        'tinggi_badan',
-        'berat_badan',
-        'suhu_badan',
-        'tekanan_darah',
-        'denyut_nadi',
-        'laju_pernapasan',
-        'saturasi_oksigen',
-        'pemeriksaan_penunjang',
+        'mulai_rawat',
+        'berakhir_rawat',
         'nama_penyakit_id',
-        'tindakan_id',
-        'alat_kesehatan',
-        'jumlah_pengguna',
-        'keterangan',
-        'nama_obat',
-        'jumlah_obat',
-        'aturan',
-        'keterangan_obat',
-        'catatan',
         'created_by',
         'updated_by'
     ];
@@ -52,9 +36,8 @@ class RawatInap extends Model
         });
     }
 
-
     public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class);
+        return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
     }
 
     public function tindakan() {

@@ -12,7 +12,7 @@
     <div class="card">
         <div class="card-header">
             <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.pemeriksaannarkoba') }}" class="btn btn-success rounded-pill">
+                    <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-success rounded-pill">
                         <i class="fa fa-plus"></i>
                     <span>Tambah</span></a>
                 </div>

@@ -26,18 +26,32 @@
             <table class="table" id="table1">
                 <thead>
                     <tr>
-                        <th>Tanggal </th>
+                        <th>Tanggal Pemeriksaan</th>
+                        <th>ID Rekam Medis</th>
                         <th>Nama Pasien</th>
-                        <th>Tempat</th>
-                        <th>riwayat</th>
-                        <th>Obat yang Diberikan</th>
-                        <th>Hasil Pengobatan</th>
-                        <th>Dokter Spesialis</th>
+                        <th>Alamat</th>
+                        <th>Hasil Pemeriksaan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach ($sehat as $ket)
+                    <tr>
+                        <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
+                        </td>
+                        <td style="width: 80px;">{{ $ket->pasien->id_rekam_medis }}</td>
+                        <td style="width: 80px;">{{ $ket->pasien->nama_pasien }}</td>
+                        <td>{{ $ket->pasien->alamat }}</td>
+                        <td><i class="{{ $ket->hasil == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
+                        <td>
+                            <div class="buttons" width="100px">
+                                <a href="" title="Print Data " class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
+                                <a href="/ubah/keterangan/sehat/{{$ket->id}}" class="btn btn-success rounded-pill" title="Ubah data pasien"><i class="fa fa-edit"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -29,6 +29,7 @@ use App\Models\PemeriksaanCovid;
 use App\Models\PersetujuanTindakan;
 use App\Models\Perusahaan;
 use App\Models\RawatInap;
+use App\Models\RawatJalan;
 use App\Models\RekamMedis;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
@@ -56,9 +57,70 @@ class RawatJalanController extends Controller
      */
     public function daftarrawatjalan()
     {
-        $pasien = Pasien::get();
+        $rawat_jalan = RawatJalan::get();
 
-        return view('petugas.rawatjalan.daftar_rawat_jalan', compact('pasien'));
+        return view('petugas.rawatjalan.daftar_rawat_jalan', compact('rawat_jalan'));
+    }
+
+    public function addrawatjalan()
+    {
+        $pasien_id = Pasien::get();
+        $nama_penyakit = NamaPenyakit::get();
+        $tindakan = Tindakan::get();
+
+        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'nama_penyakit', 'tindakan'));
+    }
+
+    public function tambahrawatjalan(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'tanggal_berobat' => 'required',
+            'nama_penyakit_id' => 'required',
+            'tindakan_id' => 'required',
+            
+        ]);
+
+        RawatJalan::create([
+            'pasien_id' => $request->pasien_id,
+            'tanggal_berobat' => $request->tanggal_berobat,
+            'nama_penyakit_id' => $request->nama_penyakit_id,
+            'tindakan_id' => $request->tindakan_id,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        return redirect('/daftar/rawat/jalan')->with('message', 'Berhasil Menambahkan Data Rawat Jalan');
+    }
+
+    public function viewrawatjalan($id)
+    {
+        $pasien = Pasien::find($id);
+        $rawat_jalan = RawatJalan::find($id);
+
+        return view('petugas.rawatjalan.view_rawat_jalan', compact('pasien', 'rawat_jalan'));
+    }
+
+    public function ubahrawatjalan($id)
+    {
+        $rawat_jalan = RawatJalan::find($id);
+        $namapenyakit = NamaPenyakit::all();
+        $tindakan = Tindakan::all();
+
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'namapenyakit', 'tindakan'));
+    }
+
+    function changerawatjalan(Request $request, $id) {
+        
+        $rawat_jalan = RawatJalan::find($id);
+        $rawat_jalan->tanggal_berobat = $request->input('tanggal_berobat');
+        $rawat_jalan->nama_penyakit_id = $request->input('nama_penyakit_id');
+        $rawat_jalan->tindakan_id = $request->input('tindakan_id');
+        $rawat_jalan->update();
+
+        return redirect('/daftar/rawat/jalan')->with('message', 'Berhasil mengubah data rawat jalan');
+        
     }
 
     /**

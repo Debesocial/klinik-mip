@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NamaPenyakit;
 use Illuminate\Http\Request;
 use App\Models\Pasien;
+use App\Models\RawatInap;
 
 class RawatInapController extends Controller
 {
@@ -15,8 +17,66 @@ class RawatInapController extends Controller
     public function viewrawatinap($id)
     {
         $pasien = Pasien::find($id);
+        $rawat_inap = RawatInap::find($id);
 
-        return view('petugas.rawatinap.view_rawat_inap', compact('pasien'));
+        return view('petugas.rawatinap.view_rawat_inap', compact('pasien', 'rawat_inap'));
+    }
+
+    public function daftarrawatinap()
+    {
+        $rawat_inap = RawatInap::get();
+
+        return view('petugas.rawatinap.daftar_rawat_inap', compact('rawat_inap'));
+    }
+
+    public function addrawatinap()
+    {
+        $pasien_id = Pasien::get();
+        $nama_penyakit = NamaPenyakit::get();
+
+        return view('petugas.rawatinap.add_rawat_inap', compact('pasien_id', 'nama_penyakit'));
+    }
+
+    public function tambahrawatinap(Request $request)
+    {
+
+        $validatedData = $request->validate([
+            'pasien_id' => 'required',
+            'mulai_rawat' => 'required',
+            'berakhir_rawat' => 'required',
+            'nama_penyakit_id' => 'required',
+        ]);
+
+        RawatInap::create([
+            'pasien_id' => $request->pasien_id,
+            'mulai_rawat' => $request->mulai_rawat,
+            'berakhir_rawat' => $request->berakhir_rawat,
+            'nama_penyakit_id' => $request->nama_penyakit_id,
+            'created_by' => auth()->user()->id,
+            'updated_by' => auth()->user()->id,
+        ]);
+
+        return redirect('/daftar/rawat/inap')->with('success', 'Berhasil Menambahkan Data');
+    }
+
+    public function ubahrawatinap($id)
+    {
+        $rawat_inap = RawatInap::find($id);
+        $namapenyakit = NamaPenyakit::all();
+
+        return view('petugas.rawatinap.ubah_rawat_inap', compact('rawat_inap', 'namapenyakit'));
+    }
+
+    function changerawatinap(Request $request, $id) {
+        
+        $rawat_inap = RawatInap::find($id);
+        $rawat_inap->mulai_rawat = $request->input('mulai_rawat');
+        $rawat_inap->berakhir_rawat = $request->input('berakhir_rawat');
+        $rawat_inap->nama_penyakit_id = $request->input('nama_penyakit_id');
+        $rawat_inap->update();
+
+        return redirect('/daftar/rawat/inap')->with('message', 'Berhasil mengubah data rawat inap');
+        
     }
 
     /**

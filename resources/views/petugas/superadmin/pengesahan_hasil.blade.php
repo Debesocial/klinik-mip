@@ -40,21 +40,22 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" action="/pengesahan/hasil" method="post">
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>ID Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
+                                                <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
                                                 <input type="seacrh" id="myInput0" class="form-control"
-                                                    name="myInput0" placeholder="ID Pasien" disabled>
+                                                    name="pasien_id" placeholder="ID Pasien" hidden>
                                             </div>
                                             
 
@@ -94,23 +95,11 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Umur</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput3" class="form-control"
-                                                    name="myInput3" placeholder="umur"   disabled>
-                                            </div>
-                                                <div class="col-md-2">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            </div>
-
-                                            <div class="col-md-2">
                                                 <label>Pekerjaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput4" class="form-control"
-                                                    name="myInput4" placeholder="pekerjaan"  disabled>
+                                                <input type="text" id="myInput3" class="form-control"
+                                                    name="myInput3" placeholder="pekerjaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -118,8 +107,8 @@
                                                 <label>Perusahaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput5" class="form-control"
-                                                    name="myInput5" placeholder="perusahaan"  disabled>
+                                                <input type="text" id="myInput4" class="form-control"
+                                                    name="myInput4" placeholder="perusahaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -128,10 +117,12 @@
                                                     <label>Hasil Rekomendasi</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <select class="choices form-select" name="hasil" id="hasil">
-                                                        <option value="others">Others</option>
-                                                                <option value=""></option>
-                                                                <option value=""></option>
+                                                    <select class="choices form-select" name="hasil_pemantauan_id" id="hasil_pemantauan_id">
+                                                        <option disabled selected>Pilih Pemantauan</option>
+                                                        @foreach ($hasilpemantauan as $hasil)
+                                                        <option value="{{ $hasil->id }}">{{
+                                                            $hasil->nama_pemantauan }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">

@@ -18,6 +18,7 @@ class CreatePemeriksaanCovidsTable extends Migration
             $table->foreignId('pasien_id')->constrained();
             $table->foreignId('pemeriksaan_antigen_id')->constrained();
             $table->boolean('hasil_pemeriksaan');
+            $table->text('file')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

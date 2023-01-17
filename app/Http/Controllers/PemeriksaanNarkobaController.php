@@ -130,12 +130,22 @@ class PemeriksaanNarkobaController extends Controller
             'coc' => 'required',
         ]);
 
+        if($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+
+            $filename = time().'_'.$file->getClientOriginalName();
+            $file->move('pemeriksaan/narkoba/file', $filename);
+        }else {
+            $filename = '';
+        }
+
         TestUrin::create([
             'pasien_id' => $request->pasien_id,
             'penggunaan_obat' => $request->penggunaan_obat,
             'jenis_obat' => $request->jenis_obat,
             'asal_obat' => $request->asal_obat,
             'terakhir_digunakan' => $request->terakhir_digunakan,
+            'dokumen' => $filename,
             'amp' => $request->amp,
             'met' => $request->met,
             'thc' => $request->thc,

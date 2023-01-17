@@ -111,7 +111,7 @@
 
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="">Tanda Tangan <b class="color-red">*</b></label>
+                                                <label for="">File Pendukung <b class="color-red">*</b></label>
                                                 <input class="form-control" type="file" id="ttd" name="ttd" multiple >
                                             </div>
                                         </div>

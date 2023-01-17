@@ -79,7 +79,6 @@ class ObatController extends Controller
             'nama_obat_id' => 'required',
             'bobot_obat_id' => 'required',
             'satuan_obat_id' => 'required',
-            'komposisi_obat' => 'required'
         ]);
 
         Obat::create([

@@ -25,4 +25,8 @@ class HasilPemantauan extends Model
         return $this->belongsTo(TandaVital::class);
     }
 
+    public function mcuawal() {
+        return $this->belongsTo(McuAwal::class);
+    }
+
 }

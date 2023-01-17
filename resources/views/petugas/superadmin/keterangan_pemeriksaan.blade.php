@@ -40,21 +40,22 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal">
+                                <form class="form form-horizontal" accept="/keterangan/pemeriksaan" method="post">
+                                    @csrf
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <label>ID Surat</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
+                                                <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
                                                     <option disabled selected>Pilih ID Pasien</option>
                                                     @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}">{{ $pas['id'] }} - {{ $pas['nama_pasien'] }} </option>
                                                     @endforeach
                                                 </select>
                                                 <input type="seacrh" id="myInput0" class="form-control"
-                                                    name="myInput0" placeholder="ID Pasien" disabled>
+                                                    name="pasien_id" placeholder="ID Pasien" hidden>
                                             </div>
                                             
 
@@ -62,8 +63,8 @@
                                                 <label>Deskripsi Hasil MCU</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <textarea type="text" id="anjuran" class="form-control"
-                                                    name="anjuran" required > </textarea>
+                                                <textarea type="text" id="deskripsi_hasil" class="form-control"
+                                                    name="deskripsi_hasil" required > </textarea>
                                             </div>
                                             <div class="col-md-12">
                                             </div>
@@ -80,8 +81,8 @@
                                                 <label>Deskripsi Obat/Tindakan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <textarea type="text" id="deskripsi" class="form-control"
-                                                    name="deskripsi" required > </textarea>
+                                                <textarea type="text" id="deskripsi_obat" class="form-control"
+                                                    name="deskripsi_obat" required > </textarea>
                                             </div>
                                             <div class="col-md-12">
                                             </div>
@@ -106,23 +107,11 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Umur</label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput3" class="form-control"
-                                                    name="myInput3" placeholder="Umur"  disabled>
-                                            </div>
-                                                <div class="col-md-2">
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                            </div>
-
-                                            <div class="col-md-2">
                                                 <label>Pekerjaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput4" class="form-control"
-                                                    name="myInput4" placeholder="Pekerjaan"  disabled>
+                                                <input type="text" id="myInput3" class="form-control"
+                                                    name="myInpu3" placeholder="Pekerjaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -131,8 +120,8 @@
                                                 <label>Perusahaan</label>
                                             </div>
                                             <div class="col-md-4 form-group">
-                                                <input type="text" id="myInput5" class="form-control"
-                                                    name="myInput5" placeholder="Perusahaan"  disabled>
+                                                <input type="text" id="myInput4" class="form-control"
+                                                    name="myInput4" placeholder="Perusahaan"  disabled>
                                             </div>
                                             <div class="col-md-6">
                                                 </div>
@@ -141,7 +130,7 @@
                                                     <label>Tanggal Pemeriksaan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="tanggal_pemeriksaan" class="form-control"
+                                                    <input type="date" id="tanggal_pemeriksaan" class="form-control"
                                                         name="tanggal_pemeriksaan" placeholder="Perusahaan"  >
                                                 </div>
                                                 <div class="col-md-6">
@@ -152,9 +141,10 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="jenis_pemeriksaan" id="jenis_pemeriksaan" required>
-                                                            <option value="others">Others</option>
-                                                                    <option value=""></option>
-                                                                    <option value=""></option>
+                                                            <option value="" disabled selected>Pilih Pemeriksaan</option>
+                                                                    <option value="Khusus">Khusus</option>
+                                                                    <option value="Berkala">Berkala</option>
+                                                                    <option value="Akhir">Akhir</option>
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
@@ -165,9 +155,9 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <select class="choices form-select" name="status" id="status" required>
-                                                                <option value="others">Others</option>
-                                                                        <option value=""></option>
-                                                                        <option value=""></option>
+                                                                <option value="" disabled selected>Pilih</option>
+                                                                        <option value="Aktif">Aktif</option>
+                                                                        <option value="NonAktif">NonAktif</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-6">

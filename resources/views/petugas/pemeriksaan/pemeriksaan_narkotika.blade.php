@@ -243,6 +243,15 @@
                                                     <div class="col-md-2">
                                                         </div>
 
+                                                        <div class="col-md-5">
+                                                            <label>File Pendukung</label>
+                                                        </div>
+                                                        <div class="col-md-5 form-group">
+                                                            <input class="form-control" type="file" id="dokumen" name="dokumen">
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            </div>
+
                                                         <br><br><br><br>
                                                     <h4>Hasil Test Urin</h4>
 
