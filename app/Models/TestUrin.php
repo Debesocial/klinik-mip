@@ -15,6 +15,7 @@ class TestUrin extends Model
         'pasien_id',
         'asal_obat',
         'terakhir_digunakan',
+        'dokumen',
         'amp',
         'met',
         'thc',

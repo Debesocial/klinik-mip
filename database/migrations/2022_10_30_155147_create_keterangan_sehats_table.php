@@ -16,7 +16,6 @@ class CreateKeteranganSehatsTable extends Migration
         Schema::create('keterangan_sehats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
-            $table->string('anamnesis');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
             $table->string('suhu_tubuh');
@@ -24,9 +23,8 @@ class CreateKeteranganSehatsTable extends Migration
             $table->string('denyut_nadi');
             $table->string('laju_pernapasan');
             $table->string('saturasi');
-            $table->string('status');
             $table->boolean('hasil');
-            $table->text('ttd');
+            $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

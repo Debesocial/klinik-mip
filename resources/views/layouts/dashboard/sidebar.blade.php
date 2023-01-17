@@ -193,7 +193,7 @@
                                 <a href="{{ route('rawatjalan.daftarrawatjalan') }}">Daftar Pasien Rawat Jalan</a>
                             </li>
                             <li class="submenu-item @yield('inap')">
-                                <a href="{{ route('superadmin.rawatinap') }}">Daftar Pasien Rawat Inap</a>
+                                <a href="{{ route('superadmin.daftarrawatinap') }}">Daftar Pasien Rawat Inap</a>
                             </li>
                         </ul>
                     </li>
@@ -247,7 +247,7 @@
                             @endif
                             @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item @yield('pemantauan')">
-                                <a href="{{ route('superadmin.pemantauancovid') }}"> Pemantauan Covid</a>
+                                <a href="{{ route('superadmin.datapemantauancovid') }}"> Pemantauan Covid</a>
                             </li>
                             @endif
                         </ul>

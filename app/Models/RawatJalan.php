@@ -14,6 +14,8 @@ class RawatJalan extends Model
         'pasien_id',
         'id_rawat_inap',
         'tanggal_berobat',
+        'nama_penyakit_id',
+        'tindakan_id',
         'created_by',
         'updated_by'
     ];
@@ -35,7 +37,11 @@ class RawatJalan extends Model
     }
 
     public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class);
+        return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
+    }
+
+    public function tindakan() {
+        return $this->belongsTo(Tindakan::class);
     }
 
     public function pasien() {

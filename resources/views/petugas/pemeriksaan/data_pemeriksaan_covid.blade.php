@@ -18,6 +18,13 @@
                 </div>
         </div>
         <div class="card-body">
+            @if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('superadmin.datapemeriksaancovid') }}" }})
+                </script>
+            @endif
             <table class="table" id="table1">
                 <thead>
                     <tr>
@@ -36,7 +43,7 @@
                             <td>{{ $cov->pasien->nama_pasien }}</td>
                             <td>{{ $cov->pemeriksaan->kebutuhan }}</td>
                             <td><div class="buttons">
-                                <a href="/view/pemeriksaan/covid/{{ $cov->id }}" title="print Data" href="#" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                <a href="/view/pemeriksaan/covid/{{ $cov->id }}" title="print Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                 <a href="/ubah/pemeriksaan/covid/{{ $cov->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
                                 </div></td>
                     </tr>

@@ -15,7 +15,7 @@ class CreatePasiensTable extends Migration
     {
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
-            $table->string('id_rekam_medis')();
+            $table->string('id_rekam_medis');
             $table->foreignId('kategori_pasien_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('NIK', 16)->nullable();
             $table->string('penduduk')->nullable();

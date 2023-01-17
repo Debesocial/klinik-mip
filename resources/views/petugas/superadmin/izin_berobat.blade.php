@@ -116,7 +116,7 @@
 
                                                  {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                 <div class="col-md-2">
-                                                    <label>Tanda Tangan</label>
+                                                    <label>File Pendukung</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input class="form-control" type="file" id="ttd" name="ttd">

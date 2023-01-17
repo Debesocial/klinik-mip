@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('martuani123'),
                 'telp' => '082276858074',
                 'level_id' => 1,
-                'status' => 'aktif',
+                'status' => 'Aktif',
             ],
             [
                 'name' => 'Darwin Sibarani',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('poibe123'),
                 'telp' => '082209876523',
                 'level_id' => 4,
-                'status' => 'aktif',
+                'status' => 'Aktif',
             ],
             [
                 'name' => 'Daniel Simamora',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('merry123'),
                 'telp' => '087843651234',
                 'level_id' => 5,
-                'status' => 'aktif',
+                'status' => 'Aktif',
             ],
         ]);
     }

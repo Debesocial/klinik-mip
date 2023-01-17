@@ -46,17 +46,18 @@
                         </div> --}}
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-horizontal">
+                                    <form class="form form-horizontal" action="/keterangan/sehat" method="post" >
+                                        @csrf
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <label>ID Rekam Medis Pasien</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
+                                                    <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
                                                         <option disabled selected>Pilih ID Rekam Medis Pasien</option>
                                                         @foreach ($pasien_id as $pas)
-                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['umur'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{ $pas['jenis_kelamin'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                        <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tempat_lahir'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}|{{ $pas['jenis_kelamin'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -67,7 +68,7 @@
                                                     <label>ID Pasien</label>
                                                 </div> --}}
                                                 
-                                                    <input type="text" id="myInput0" class="form-control" name="myInput0" placeholder="ID Pasien" hidden>
+                                                    <input type="text" id="myInput0" class="form-control" name="pasien_id" placeholder="ID Pasien" hidden>
                                                
                                                 {{-- <div class="col-md-6">
                                                 </div> --}}
@@ -98,18 +99,10 @@
                                                 <div class="col-md-6">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <label>Umur</label>
-                                                </div>
-                                                <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput4" class="form-control" name="myInput4" placeholder="Umur" disabled>
-                                                </div>
-                                                <div class="col-md-6">
-                                                </div>
-                                                <div class="col-md-2">
                                                     <label>Pekerjaan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput5" class="form-control" name="myInput5" placeholder="Pekerjaan" disabled>
+                                                    <input type="text" id="myInput4" class="form-control" name="myInput4" placeholder="Pekerjaan" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>
@@ -117,7 +110,7 @@
                                                     <label>Perusahaan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput6" class="form-control" name="myInput6" placeholder="Perusahaan" disabled>
+                                                    <input type="text" id="myInput5" class="form-control" name="myInput5" placeholder="Perusahaan" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>
@@ -126,7 +119,7 @@
                                                     <label>Divisi</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput7" class="form-control" name="myInput7" placeholder="Divisi" disabled>
+                                                    <input type="text" id="myInput6" class="form-control" name="myInput6" placeholder="Divisi" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>
@@ -134,7 +127,7 @@
                                                     <label>Jabatan</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput8" class="form-control" name="myInput8" placeholder="Jabatan" disabled>
+                                                    <input type="text" id="myInput7" class="form-control" name="myInput7" placeholder="Jabatan" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>
@@ -143,14 +136,14 @@
                                                     <label>Jenis Kelamin</label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
-                                                    <input type="text" id="myInput9" class="form-control" name="myInput9" placeholder="Jenis Kelamin" disabled>
+                                                    <input type="text" id="myInput8" class="form-control" name="myInput8" placeholder="Jenis Kelamin" disabled>
                                                 </div>
                                                 <div class="col-md-6">
                                                 </div>
 
                                             </div>
                                         </div>
-                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -170,7 +163,6 @@
                         </div> --}}
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-horizontal">
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -180,7 +172,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="tinggi_badan" id="tinggi_badan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">cm</span>
                                                                 </div>
@@ -195,7 +187,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="berat_badan" id="berat_badan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">kg</span>
                                                                 </div>
@@ -210,7 +202,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="suhu_tubuh" id="suhu_tubuh" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">Celcius</span>
                                                                 </div>
@@ -225,7 +217,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="tekanan_darah" id="tekanan_darah" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">mmHg</span>
                                                                 </div>
@@ -240,7 +232,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="denyut_nadi" id="denyut_nadi" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">/menit</span>
                                                                 </div>
@@ -256,7 +248,7 @@
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
-                                                                <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                <input type="text" class="form-control" name="laju_pernapasan" id="laju_pernapasan" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                                                 <div class="input-group-append">
                                                                     <span class="input-group-text" id="basic-addon2">/menit</span>
                                                                 </div>
@@ -270,7 +262,7 @@
                                                             <label>Saturasi Oksigen</label>
                                                         </div>
                                                         <div class="col-md-2 form-group">
-                                                            <input type="text" id="saturasi_oksigen" class="form-control" name="saturasi_oksigen" placeholder="" required>
+                                                            <input type="text" id="saturasi" class="form-control" name="saturasi" placeholder="" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -281,8 +273,8 @@
                                                             <label>Hasil Pemeriksaan</label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
-                                                            <input class="form-check-input" type="radio" name="hasil" id="hasil" value="1" checked> Sehat
-                                                            <input class="form-check-input " type="radio" name="hasil" id="hasil" value="0"> Tidak Sehat
+                                                            <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" checked> Tidak Sehat
+                                                            <input class="form-check-input " type="radio" name="hasil" id="hasil" value="1"> Sehat
                                                         </div>
                                                     </div>
                                                 </div>

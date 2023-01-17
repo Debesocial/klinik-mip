@@ -44,7 +44,7 @@
                         </div> --}}
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form form-horizontal" action="/pemeriksaan/covid" method="post">
+                                <form class="form form-horizontal" action="/pemeriksaan/covid" method="post" enctype="multipart/form-data">
                                     @csrf 
                                     <div class="form-body">
                                         <div class="row">
@@ -91,8 +91,8 @@
                                                  id="hasil_pemeriksaan" value="0">
                                             <label class="form-check-label" for="negatif">    Negatif
                                             </label>
-                                            <input class="form-check-input" type="radio" name="positif"
-                                                 id="positif" value="1">
+                                            <input class="form-check-input" type="radio" name="hasil_pemeriksaan"
+                                                 id="hasil_pemeriksaan" value="1">
                                             <label class="form-check-label" for="positif"> Positif
                                              </label>  
                                             </div>
@@ -105,8 +105,12 @@
                                         name="NIK" placeholder="Nomor Induk Karyawan" disabled>
                                 </div>
 
-                                <div class="col-md-6">
-                                    </div>
+                                <div class="col-md-2">
+                                    <label>File Pendukung</label>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <input class="form-control" type="file" id="file" name="file">
+                                </div>
                             
                             <div class="col-md-2">
                                 <label>Tempat Lahir</label>

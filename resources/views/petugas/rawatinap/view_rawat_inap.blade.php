@@ -20,8 +20,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="name">Tanggal Mulai Rawat Inap</label>
-                                            <input type="text" id="" class="form-control" no_rekam medis="name" value=""
-                                                placeholder="Tanggal Mulai Rawat Inap" disabled>
+                                            <input type="date" id="" class="form-control"  value="{{ ($rawat_inap->mulai_rawat) }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -30,8 +29,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="name">Tanggal Berakhirnya Rawat Inap</label>
-                                            <input type="text" id="" class="form-control" no_rekam medis="name" value=""
-                                                placeholder="Tanggal Berakhirnya Rawat Inap" disabled>
+                                            <input type="date" id="" class="form-control"  value="{{ ($rawat_inap->berakhir_rawat) }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -40,8 +38,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="name">ID Rawat Inap</label>
-                                            <input type="text" id="" class="form-control" no_rekam medis="name" value=""
-                                                placeholder="ID Rawat Inap" disabled>
+                                            <input type="text" id="" class="form-control"  value="{{ ($rawat_inap->id_rawat_inap) }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -70,8 +67,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="nama_pasien">Diagnosa</label>
-                                            <input type="text" id="diagnosa" class="form-control" name="diagnosa"
-                                                value="" placeholder="Diagnosa" disabled>
+                                            <input type="text" id="diagnosa" class="form-control" value="{{ ($rawat_inap->namapenyakit->primer) }}" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

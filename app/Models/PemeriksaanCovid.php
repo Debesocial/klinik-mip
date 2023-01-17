@@ -13,6 +13,7 @@ class PemeriksaanCovid extends Model
         'pasien_id',
         'pemeriksaan_antigen_id',
         'hasil_pemeriksaan',
+        'file',
         'created_by',
         'updated_by'
     ];

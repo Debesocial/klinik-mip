@@ -21,6 +21,8 @@ use App\Models\Jabatan;
 use App\Models\KategoriPasien;
 use App\Models\KeteranganBerobat;
 use App\Models\Level;
+use App\Models\McuAkhir;
+use App\Models\McuAwal;
 use App\Models\NamaPenyakit;
 use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
@@ -70,8 +72,11 @@ class RekamMedisController extends Controller
         $pasien = Pasien::find($id);
         $test = TestUrin::where("pasien_id", $id)->get();
         $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
+        $mcu_awal = McuAwal::where("pasien_id", $id)->get();
+        $mcu_akhir = McuAkhir::where("pasien_id", $id)->get();
+        $pemantauan = PemantauanCovid::where("pasien_id", $id)->get();
 
-        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'covid'));
+        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'covid', 'mcu_awal', 'mcu_akhir', 'pemantauan'));
     }
 
     /**

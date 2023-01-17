@@ -18,6 +18,13 @@
                 </div>
         </div> --}}
         <div class="card-body">
+            @if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('rekammedis.datarekammedis') }}" }})
+                </script>
+            @endif
             <table class="table" id="table1">
                 <thead>
                     <tr>
@@ -50,7 +57,7 @@
                             <td>{{ $pas->jabatan->nama_jabatan }}</td>
                             <td> <i class="{{ $pas->alergi_obat == 1 ? "fas fa-check" : "fas fa-times" }}"></i></td>
                             <td><div class="buttons">
-                                <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
+                                <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
                                 </div>
                             </td>
                     </tr>

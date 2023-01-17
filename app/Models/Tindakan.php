@@ -34,4 +34,8 @@ class Tindakan extends Model
     public function izinistirahat() {
         return $this->hasMany(IzinIstirahat::class);
     }
+
+    public function rawatjalan() {
+        return $this->hasMany(RawatJalan::class);
+    }
 }

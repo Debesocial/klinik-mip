@@ -172,4 +172,16 @@ class Pasien extends Model
         return $this->hasMany(HistoryTindakan::class);
     }
     
+    public function mcuawal() {
+        return $this->belongsTo(McuAwal::class);
+    }
+    public function mcuakhir() {
+        return $this->belongsTo(McuAkhir::class);
+    }
+    public function mcuberkala() {
+        return $this->belongsTo(McuBerkala::class);
+    }
+    public function mcukhusus() {
+        return $this->belongsTo(McuKhusus::class);
+    }
 }

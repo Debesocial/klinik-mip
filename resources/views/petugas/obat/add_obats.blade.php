@@ -68,7 +68,6 @@
                                         <div class="form-group">
                                             <label for="nama_obat_id">Komposisi Obat</label>
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5"></textarea>
-                                            
                                         </div>
                                     </div>
 
