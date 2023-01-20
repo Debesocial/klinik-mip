@@ -26,13 +26,10 @@ class AuthController extends Controller
 
     public function login(Request $request){
 
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'status' => ['Aktif'],
-        ]);
+        $email = $request->get('email');
+        $password = $request->get('password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'status' => 'Aktif'])) {
             $request->session()->regenerate();
  
             return redirect()->intended('dashboard');

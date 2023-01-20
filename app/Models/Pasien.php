@@ -33,6 +33,7 @@ class Pasien extends Model
         'pekerjaan',
         'telepon',
         'email',
+        'alergi',
         'alergi_obat',
         'hamil_menyusui',
         'upload',

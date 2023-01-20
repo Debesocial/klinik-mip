@@ -16,10 +16,9 @@ class TandaVital extends Model
         'bp',
         'temp',
         'rr',
-        'nama_obat',
-        'jumlah_obat',
-        'aturan',
-        'waktu',
+        'saturasi_oksigen',
+        'keterangan',
+        'dokumen',
         'created_by',
         'updated_by'
     ];

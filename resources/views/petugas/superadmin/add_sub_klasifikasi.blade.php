@@ -23,7 +23,7 @@
                                         <div class="form-group">
                                             <label for="klasifikasi_penyakit_id">Klasifikasi Penyakit<b class="color-red">*</b></label>
                                             <select class="choices form-select" name="klasifikasi_penyakit_id" id="klasifikasi_penyakit_id">
-                                                <option value="">Pilih Sub-Klasifikasi</option>
+                                                <option value="">Pilih Klasifikasi</option>
                                                 @foreach ($klasifikasipenyakit as $klasifikasi)
                                                 <option value="{{ $klasifikasi->id }}">{{ $klasifikasi->klasifikasi_penyakit }}</option>
                                                 @endforeach

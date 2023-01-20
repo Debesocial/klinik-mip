@@ -22,10 +22,8 @@ class CreateTandaVitalsTable extends Migration
             $table->string('temp');
             $table->string('rr');
             $table->string('saturasi_oksigen');
-            $table->string('nama_obat');
-            $table->string('jumlah_obat');
-            $table->string('aturan');
-            $table->time('waktu');
+            $table->string('keterangan')->nullable();
+            $table->text('dokumen')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

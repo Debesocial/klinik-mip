@@ -23,7 +23,7 @@
                                     <h5 class="mb-4">Data Pasien</h5>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id"  onchange="yesnoCheck_penduduk(this);" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="kategori_pasien_id"  onchange="yesnoCheck_penduduk(this);" required >
                                             <option disabled selected value="">Pilih Kategori Pasien</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}">{{ $kate->nama_kategori }}
@@ -34,11 +34,11 @@
                                     
                                     <div class="form-group">
                                         <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" placeholder="Masukkan Nama Pasien" required >
                                     </div>
                                     <div class="form-group" id="nik" name="nik"  style="display: block;" >
                                         <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
-                                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK" placeholder="Masukkan Nomor Induk Karyawan" maxlength="16" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="NIK" class="form-control" name="NIK" placeholder="Masukkan Nomor Induk Karyawan" maxlength="16" required >
                                     </div>
                                     
                                     <div class="form-group" id="penduduk" name="penduduk">
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required onchange="yesnoCheck_lainnya(this);" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required onchange="yesnoCheck_lainnya(this);" >
                                             <option disabled selected value="">Pilih Perusahaan</option>
                                             <option value="9">other</option>
                                             @foreach ($perusahaan as $peru)
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="divisi_id">Divisi <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="divisi_id" id="divisi_id" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="divisi_id" id="divisi_id" required >
                                             <option disabled selected value="">Pilih Divisi</option>
                                             @foreach ($divisi as $divi)
                                             <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="jabatan_id" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="jabatan_id" required >
                                             <option disabled selected value="">Pilih Jabatan</option>
                                             @foreach ($jabatan as $jabat)
                                             <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
@@ -84,15 +84,15 @@
                                     
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
-                                        <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Masukkan tempat lahir" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" placeholder="Masukkan tempat lahir" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="tanggal_lahir">Tanggal Lahir <b class="color-red">*</b></label>
-                                        <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="jabatan_id">Jenis Kelamin <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="jenis_kelamin" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="jenis_kelamin" required >
                                             <option disabled selected value="">Pilih Jenis Kelamin</option>
                                             <option value="Laki-Laki">Laki-laki</option>
                                             <option value="Perempuan">Perempuan</option>
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_mess">Alamat Mess</label>
@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan">Pekerjaan <b class="color-red">*</b></label>
-                                        <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" placeholder="Masukkan Pekerjaan" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="pekerjaan" class="form-control" name="pekerjaan" placeholder="Masukkan Pekerjaan" required >
                                     </div>
 
                                     <div class="form-group">
@@ -133,7 +133,10 @@
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0" checked> Tidak
                                         <input class="form-check-input " type="radio" name="alergi_obat" id="alergi_obat" value="1"> Ya
                                     </div>
-                                    
+                                    <div class="form-group">
+                                        <label for="alergi">Alergi obat terhadap</label>
+                                        <textarea class="form-control" name="alergi" id="alergi"></textarea>
+                                    </div>
 
                                     <div class="col-md-4">
                                         <label>Hamil/Menyusui <b class="color-red">*</b></label>
@@ -149,11 +152,11 @@
                                     <h5 class="mb-4">Data Keluarga</h5>
                                     <div class="form-group">
                                         <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" placeholder="Masukkan Nama Keluarga" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" placeholder="Masukkan Nama Keluarga" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="nama_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="hubungan_keluarga" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <select class="choices form-select" name="hubungan_keluarga" required >
                                             <option disabled selected value="">Pilih Hubungan Keluarga</option>
                                             <option value="Ayah">Ayah</option>
                                             <option value="Ibu">Ibu</option>
@@ -166,15 +169,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
-                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" placeholder="Masukkan Pekerjaan Keluarga" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" placeholder="Masukkan Pekerjaan Keluarga" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="telepon_keluarga">Nomor Telepon <b class="color-red">*</b></label>
-                                        <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="email_keluarga">Email</label>

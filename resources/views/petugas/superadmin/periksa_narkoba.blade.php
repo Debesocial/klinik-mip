@@ -178,7 +178,7 @@
                                                                     </div>
                                                                     <div class="col-md-4 form-group">
                                                                         <input type="text" id="myInput11" class="form-control"
-                                                                            name="myInput12" placeholder="telepon"  disabled>
+                                                                            name="myInput11" placeholder="telepon"  disabled>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         </div>
@@ -188,7 +188,7 @@
                                                                         </div>
                                                                         <div class="col-md-4 form-group">
                                                                             <input type="email" id="myInput12" class="form-control"
-                                                                                name="myInput13" placeholder="email" disabled >
+                                                                                name="myInput12" placeholder="email" disabled >
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             </div>
@@ -260,11 +260,12 @@
                                                     <div class="col-md-2">
                                                         </div>
 
+                                                        {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                         <div class="col-md-5">
                                                             <label>File Pendukung</label>
                                                         </div>
                                                         <div class="col-md-5 form-group">
-                                                            <input class="form-control" type="file" id="dokumen" name="dokumen" >
+                                                            <input class="form-control" type="file" id="dokumen" name="dokumen" multiple>
                                                         </div>
                                                         <div class="col-md-2">
                                                             </div>

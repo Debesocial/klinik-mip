@@ -47,7 +47,7 @@
                 href="#list-perjalanan" role="tab">Riwayat Perjalanan</a>
         </div>
 
-        <form class="form form-horizontal" action="/pemantauan/covid" method="post" enctype='multipart/form-data'>
+        <form class="form form-horizontal" action="/pantau/covid/{{$pasien_id->id}}" method="post" enctype='multipart/form-data'>
             @csrf
         <div class="tab-content text-justify">
             <div class="tab-pane fade show active" id="list-datapasien" role="tabpanel"
@@ -62,44 +62,24 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>ID Pasien</label>
+                                                        <label>ID Rekam Medis</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select id="pasien_id" class="choices form-select"
-                                                            onchange="myChangeFunction(this)">
-                                                            <option disabled selected>Pilih ID Pasien</option>
-                                                            @foreach ($pasien_id as $pas)
-                                                            <option
-                                                                value="{{ $pas['id'] }}|{{ $pas['id_rekam_medis'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['tanggal_lahir'] }}|{{ $pas['pekerjaan'] }}| {{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}">
-                                                                {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }}
-                                                            </option>
-                                                            @endforeach
-                                                        </select>
+                                                        <input type="text" class="form-control"
+                                                            value="{{$pasien_id->id_rekam_medis}}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
 
-                                                    <input type="text" id="myInput0" class="form-control"
-                                                        name="pasien_id" placeholder="ID Pasien" hidden>
-
-                                                    <div class="col-md-2">
-                                                        <label>No Rekam Medis</label>
-                                                    </div>
-                                                    <div class="col-md-4 form-group">
-                                                        <input type="text" id="myInput1" class="form-control"
-                                                            name="no_rekam_medis" placeholder="No Rekam Medis" required
-                                                            disabled>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                    </div>
+                                                    <input type="text" id="pasien_id" class="form-control"
+                                                        name="pasien_id" value="{{ $pasien_id->id }}" hidden>
 
                                                     <div class="col-md-2">
                                                         <label>Nama Pasien</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput2" class="form-control"
-                                                            name="nama_pasien" placeholder="Nama Pasien" required
+                                                            name="nama_pasien" value="{{$pasien_id->nama_pasien}}"
                                                             disabled>
                                                     </div>
                                                     <div class="col-md-6">
@@ -110,7 +90,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="date" id="myInput3" class="form-control"
-                                                            name="tanggal_lahir" required disabled>
+                                                            value="{{$pasien_id->taggal_lahir}}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -120,7 +100,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput4" class="form-control"
-                                                            name="pekerjaan" placeholder="Pekerjaan" required disabled>
+                                                            value="{{$pasien_id->pekerjaan}}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -130,7 +110,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput5" class="form-control"
-                                                            name="perusahaan" placeholder="Perusahaan" required
+                                                            value="{{$pasien_id->perusahaan->nama_perusahaan_pasien}}"
                                                             disabled>
                                                     </div>
                                                     <div class="col-md-6">
@@ -141,7 +121,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="myInput6" class="form-control"
-                                                            name="divisi" placeholder="Perusahaan" required disabled>
+                                                            value="{{$pasien_id->divisi->nama_divisi_pasien}}" disabled>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>

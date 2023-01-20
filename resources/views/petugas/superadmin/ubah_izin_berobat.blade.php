@@ -51,6 +51,14 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
+                                                            <label for="temapt">Tanggal Keluar</label>
+                                                            <input type="text" id="tanggal_keluar" class="form-control" name="tanggal_keluar" value="{{ $izin['tanggal_keluar'] }}" required>
+                                                            
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
                                                             <label for="">Perusahaan</label>
                                                             <input type="text" id="perusahaan" class="form-control" name="perusahaan" placeholder="Nama perusahaan" value="{{ $izin->pasien->perusahaan->nama_perusahaan_pasien }}" disabled>
                                                         </div>

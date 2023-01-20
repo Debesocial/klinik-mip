@@ -223,7 +223,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="buttons" width="100px">
-                            <a href="/pemantauan/covid" class="btn btn-success rounded-pill">
+                            <a href="/pantau/covid/{{ $pasien->id }}" class="btn btn-success rounded-pill">
                                 <i class="fa fa-plus"></i>
                                 <span>Tambah</span></a>
                         </div>

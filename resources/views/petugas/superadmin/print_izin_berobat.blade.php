@@ -54,6 +54,11 @@
                 <td style="width: 5%;">:</td>
                 <td style="width: 65%;">{{$izin->pasien->pekerjaan}}</td>
             </tr>
+            <tr>
+                <td style="width: 30%;">Tanggal Izin Keluar</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{ Carbon\Carbon::parse($izin->tanggal_keluar)->isoFormat('D MMMM Y') }}</td>
+            </tr>
         </table>
 
         <p>Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan untuk diberikan izin untuk berobat ke tarakan.</p>

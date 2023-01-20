@@ -22,7 +22,7 @@
             <script>Swal.fire({ 
                 icon: "success", 
                 text: "{{Session('message')}}" }).then((result) => {
-                if (result.isConfirmed) { window.location.href = "{{ route('superadmin.datapemeriksaancovid') }}" }})
+                if (result.isConfirmed) { window.location.href = "{{ route('pemeriksaan.datapemeriksaancovid') }}" }})
                 </script>
             @endif
             <table class="table" id="table1">
