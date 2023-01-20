@@ -86,11 +86,18 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/data/pemantauan/covid', [SuperAdminController::class, 'datapemantauancovid'])->name('superadmin.datapemantauancovid');
     Route::get('/pemantauan/covid', [SuperAdminController::class, 'pemantauancovid'])->name('superadmin.pemantauancovid');
     Route::post('/pemantauan/covid', [SuperAdminController::class, 'addpemantauancovid'])->name('superadmin.addpemantauancovid');
+    Route::get('/pantau/covid/{id}', [SuperAdminController::class, 'pantaucovid'])->name('superadmin.pantaucovid');
+    Route::post('/pantau/covid/{id}', [SuperAdminController::class, 'addpantaucovid'])->name('superadmin.addpantaucovid');
     Route::get('/view/pemantauan/covid/{id}', [SuperAdminController::class, 'viewpemantauancovid'])->name('superadmin.viewpemantauancovid');
     Route::get('/ubah/pemantauan/covid/{id}', [SuperAdminController::class, 'ubahpemantauancovid'])->name('superadmin.ubahpemantauancovid');
     Route::post('/ubah/pemantauan/covid/{id}', [SuperAdminController::class, 'changepemantauancovid'])->name('superadmin.changepemantauancovid');
 
+    Route::get('/data/pemantauan/tandavital', [SuperAdminController::class, 'datapemantauantandavital'])->name('superadmin.datapemantauantandavital');
     Route::get('/pemantauan/tandavital', [SuperAdminController::class, 'pemantauantandavital'])->name('superadmin.pemantauantandavital');
+    Route::post('/pemantauan/tandavital', [SuperAdminController::class, 'addpemantauantandavital'])->name('superadmin.addpemantauantandavital');
+    Route::get('/view/pemantauan/tandavital/{id}', [SuperAdminController::class, 'viewpemantauantandavital'])->name('superadmin.viewpemantauantandavital');
+    Route::get('/ubah/pemantauan/tandavital/{id}', [SuperAdminController::class, 'ubahpemantauantandavital'])->name('superadmin.ubahpemantauantandavital');
+    Route::post('/ubah/pemantauan/tandavital/{id}', [SuperAdminController::class, 'changepemantauantandavital'])->name('superadmin.changepemantauantandavital');
 
     Route::get('/daftar/rawat/inap', [RawatInapController::class, 'daftarrawatinap'])->name('superadmin.daftarrawatinap');
     Route::get('/view/rawat/inap/{id}', [RawatInapController::class, 'viewrawatinap'])->name('rawatinap.viewrawatinap');

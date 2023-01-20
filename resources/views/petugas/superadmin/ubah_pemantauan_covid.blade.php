@@ -128,7 +128,7 @@
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="no_kamar" class="form-control"
-                                                            name="no_kamar" value="{{ $pemantauan->no_kamar }}" required>
+                                                            name="no_kamar" value="{{ $pemantauan->no_kamar }}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>

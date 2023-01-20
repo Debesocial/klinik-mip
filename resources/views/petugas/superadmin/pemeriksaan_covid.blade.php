@@ -105,11 +105,12 @@
                                         name="NIK" placeholder="Nomor Induk Karyawan" disabled>
                                 </div>
 
+                                {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                 <div class="col-md-2">
                                     <label>File Pendukung</label>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <input class="form-control" type="file" id="file" name="file">
+                                    <input class="form-control" type="file" id="file" name="file" multiple>
                                 </div>
                             
                             <div class="col-md-2">

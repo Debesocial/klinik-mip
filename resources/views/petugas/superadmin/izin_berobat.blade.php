@@ -75,6 +75,16 @@
                                             </div>
 
                                             <div class="col-md-2">
+                                                <label>Tanggal keluar</label>
+                                            </div>
+                                            <div class="col-md-4 form-group">
+                                                <input id="pasienmart" type="date" id="tanggal_keluar" class="form-control"
+                                                    name="tanggal_keluar" placeholder="tanggal keluar" required >
+                                            </div>
+                                            <div class="col-md-6">
+                                            </div>
+
+                                            <div class="col-md-2">
                                                 <label>Nama Pasien</label>
                                             </div>
                                             <div class="col-md-4 form-group">

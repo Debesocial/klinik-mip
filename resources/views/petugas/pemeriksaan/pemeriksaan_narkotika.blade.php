@@ -53,7 +53,7 @@
                                 </div> --}}
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form form-horizontal" action="/pemeriksaan/narkotika/{{$pasien->id}}" method="post">
+                                        <form class="form form-horizontal" action="/pemeriksaan/narkotika/{{$pasien->id}}" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
                                                 <div class="row">
@@ -243,11 +243,12 @@
                                                     <div class="col-md-2">
                                                         </div>
 
+                                                        {{-- TODO: Remember this must can upload multiple file and save to db with format (fileone, filetwo, filethree) include the paht  --}}
                                                         <div class="col-md-5">
                                                             <label>File Pendukung</label>
                                                         </div>
                                                         <div class="col-md-5 form-group">
-                                                            <input class="form-control" type="file" id="dokumen" name="dokumen">
+                                                            <input class="form-control" type="file" id="dokumen" name="dokumen" multiple>
                                                         </div>
                                                         <div class="col-md-2">
                                                             </div>

@@ -121,6 +121,10 @@
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0" {{ !$pasien->alergi_obat ? "checked" : "" }}> Tidak
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="1" {{ $pasien->alergi_obat ? "checked" : "" }}> Ya
                                     </div>
+                                    <div class="form-group">
+                                        <label for="alamat_mess">Alergi Obat terhadap</label>
+                                        <textarea class="form-control" name="alergi" id="alergi">{{ $pasien['alergi'] }}</textarea>
+                                    </div>
 
                                     <div class="col-md-2">
                                         <label>Hamil/Menyusui</label>

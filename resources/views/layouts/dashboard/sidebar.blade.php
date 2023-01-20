@@ -250,6 +250,11 @@
                                 <a href="{{ route('superadmin.datapemantauancovid') }}"> Pemantauan Covid</a>
                             </li>
                             @endif
+                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                            <li class="submenu-item @yield('tandavital')">
+                                <a href="{{ route('superadmin.datapemantauantandavital') }}"> Pemantauan Tanda Vital</a>
+                            </li>
+                            @endif
                         </ul>
                     </li>
 

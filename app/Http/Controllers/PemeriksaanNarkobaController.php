@@ -96,7 +96,7 @@ class PemeriksaanNarkobaController extends Controller
         $narkoba->update();
 
 
-        return redirect('/data/pemeriksaan/narkoba')->with('success', 'Berhasil Mengubah Data Pemeriksaan Narkoba!');
+        return redirect('/data/pemeriksaan/narkoba')->with('message', 'Berhasil Mengubah Data Pemeriksaan Narkoba!');
         
     }
 
@@ -156,7 +156,7 @@ class PemeriksaanNarkobaController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pemeriksaan/narkoba')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Narkoba');
+        return redirect('/data/pemeriksaan/narkoba')->with('message', 'Berhasil Menambahkan Data Pemeriksaan Narkoba');
     }
 
     /**

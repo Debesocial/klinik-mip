@@ -17,6 +17,7 @@ class CreateIzinBerobatsTable extends Migration
             $table->id();
             $table->foreignId('pasien_id')->constrained();
             $table->string('tempat');
+            $table->date('tanggal_keluar');
             $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
