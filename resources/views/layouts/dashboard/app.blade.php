@@ -17,13 +17,13 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 	<link rel="stylesheet" href="{{asset ('assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css')}}">
-	<link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon">
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo/logo-klinik.JPG')}}" />
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css"> --}}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- sweet alert -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	{{-- <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 	@yield('css')
 
 	<style>

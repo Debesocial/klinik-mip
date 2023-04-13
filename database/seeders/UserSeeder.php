@@ -17,6 +17,14 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
+                'name' => 'Hiskia Pulungan',
+                'email' => 'hiski46@gmail.com',
+                'password' => Hash::make('123123'),
+                'telp' => '085896224113',
+                'level_id' => 1,
+                'status' => 'Aktif',
+            ],
+            [
                 'name' => 'Martuani Sitohang',
                 'email' => 'sitohangmartuani@gmail.com',
                 'password' => Hash::make('martuani123'),

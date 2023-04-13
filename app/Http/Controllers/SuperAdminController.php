@@ -1260,7 +1260,7 @@ class SuperAdminController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
-            'alergi' => $request->alergi,
+            // 'alergi' => $request->alergi,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'upload' => $filename,

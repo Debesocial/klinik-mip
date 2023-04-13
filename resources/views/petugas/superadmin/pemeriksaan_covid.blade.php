@@ -49,7 +49,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Pasien</label>
+                                                <label>ID Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -60,7 +60,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Kebutuhan Pemeriksaan</label>
+                                                <label>Kebutuhan Pemeriksaan <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pemeriksaan_antigen_id" id="pemeriksaan_antigen_id" class="form-select">
@@ -84,7 +84,7 @@
 
 
                                             <div class="col-md-2">
-                                                <label>Hasil Pasien</label>
+                                                <label>Hasil Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                             <input class="form-check-input" type="radio" name="hasil_pemeriksaan"

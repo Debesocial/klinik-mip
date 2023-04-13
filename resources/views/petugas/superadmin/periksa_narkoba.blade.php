@@ -59,7 +59,7 @@
                                                 <div class="row">
                                                         
                                                     <div class="col-md-2">
-                                                        <label>ID Pasien</label>
+                                                        <label>ID Pasien <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -222,11 +222,11 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <label>Penggunaan Obat-obatan dalam seminggu terakhir</label>
+                                                        <label>Penggunaan Obat-obatan dalam seminggu terakhir </label>
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="penggunaan_obat" class="form-control"
-                                                            name="penggunaan_obat" placeholder="Masukkan cara penggunaan" required>
+                                                            name="penggunaan_obat" placeholder="Masukkan cara penggunaan" >
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -235,7 +235,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="jenis_obat" class="form-control"
-                                                            name="jenis_obat" placeholder="Masukkan jenis obat" required>
+                                                            name="jenis_obat" placeholder="Masukkan jenis obat" >
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -245,7 +245,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="asal_obat" class="form-control"
-                                                            name="asal_obat" placeholder="Masukkan asal obat" required>
+                                                            name="asal_obat" placeholder="Masukkan asal obat" >
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -255,7 +255,7 @@
                                                     </div>
                                                     <div class="col-md-5 form-group">
                                                         <input type="text" id="terakhir_digunakan" class="form-control"
-                                                            name="terakhir_digunakan" placeholder="Terakhir Digunakan" required>
+                                                            name="terakhir_digunakan" placeholder="Terakhir Digunakan" >
                                                     </div>
                                                     <div class="col-md-2">
                                                         </div>
@@ -271,15 +271,15 @@
                                                             </div>
 
                                                         <br><br><br><br>
-                                                    <h4>Hasil Test Urin</h4>
+                                                    <h4>Hasil Test Urin </h4>
 
 
                                                     <div class="col-md-5">
-                                                        <label>Amphetamine(AMP)</label>
+                                                        <label>Amphetamine(AMP) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="amp"
-                                                        id="amp" value="0"> Tidak
+                                                        id="amp" value="0"> Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="amp"
                                                           id="amp" value="1">
@@ -290,13 +290,13 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Methamphetamine(MET)</label>
+                                                        <label>Methamphetamine(MET) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="met"
                                                         id="met" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="met"
                                                           id="met" value="1">
@@ -307,13 +307,13 @@
                                                         </div>
                                                         
                                                         <div class="col-md-5">
-                                                        <label>TetraHydroCannibinol(THC)</label>
+                                                        <label>TetraHydroCannibinol(THC) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="thc"
                                                         id="thc" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="thc"
                                                           id="thc" value="1">
@@ -325,13 +325,13 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Benzodiazepine(BZO)</label>
+                                                        <label>Benzodiazepine(BZO) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="bzo"
                                                         id="bzo" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="bzo"
                                                           id="bzo" value="1">
@@ -343,13 +343,13 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Morphine(MOP)</label>
+                                                        <label>Morphine(MOP) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-3 form-group">
                                                         <input class="form-check-input" type="radio" name="mop"
                                                         id="mop" value="0">
                                                           <label class="form-check-label" for="tidak">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="mop"
                                                           id="mop" value="1">
@@ -361,13 +361,13 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Cocaine(COC)</label>
+                                                        <label>Cocaine(COC) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="coc"
                                                         id="coc" value="0">
                                                           <label class="form-check-label" for="no">
-                                                              Tidak
+                                                              Negatif
                                                           </label>&emsp;
                                                           <input class="form-check-input" type="radio" name="coc"
                                                           id="coc" value="1">

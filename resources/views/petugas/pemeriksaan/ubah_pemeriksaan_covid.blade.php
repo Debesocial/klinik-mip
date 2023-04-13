@@ -55,7 +55,7 @@
                                                 <input type="text" class="form-control" name="pasien_id" value="{{ $covid->pasien->id_rekam_medis }}" disabled> 
                                             </div>
                                             <div class="col-md-2">
-                                                <label>Kebutuhan Pemeriksaan</label>
+                                                <label>Kebutuhan Pemeriksaan <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select class="choices form-select" name="pemeriksaan_antigen_id" id="pemeriksaan_antigen_id" required>
@@ -78,7 +78,7 @@
 
 
                                             <div class="col-md-2">
-                                                <label>Hasil Pasien</label>
+                                                <label>Hasil Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                             <input class="form-check-input" type="radio" name="hasil_pemeriksaan" id="hasil_pemeriksaan" value="0" {{ !$covid->hasil_pemeriksaan ? "checked" : "" }}> Negatif

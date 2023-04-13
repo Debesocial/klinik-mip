@@ -48,14 +48,13 @@
                         <td>
                         @if ($user->status == 'Aktif')
                         <span class="badge bg-primary">Aktif</span>
-                        
                         @else 
                         <span class="badge bg-secondary">NonAktif</span>
                         </td>
                         @endif
                         <td>
-                            <a href="/view/user/{{ $user->id }}" class="btn btn-light rounded-pill" title="View data petugas"><i class="fa fa-eye"></i></a>
-                            <a href="/ubah/data/user/{{ $user->id }}/{{ $user->jadwal_id }}" class="btn btn-success rounded-pill" title="Ubah data petugas"><i class="fa fa-edit"></i></a>
+                            <a href="/view/user/{{ $user->id }}" class="btn btn-outline-secondary rounded-3" title="View data petugas"><i class="bi  bi-eye-fill"></i></a>
+                            <a href="/ubah/data/user/{{ $user->id }}/{{ $user->jadwal_id }}" class="btn btn-outline-secondary rounded-3" title="Ubah data petugas"><i class="bi  bi-pencil-square"></i></a>
                             
                         </td>
                     </tr>

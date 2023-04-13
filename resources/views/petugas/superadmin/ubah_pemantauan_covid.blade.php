@@ -124,7 +124,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nomor Kamar</label>
+                                                        <label>Nomor Kamar <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="no_kamar" class="form-control"
@@ -157,7 +157,7 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Suhu Pagi</label>
+                                                        <label>Suhu Pagi <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="suhu_pagi" id="suhu_pagi" required>
@@ -171,7 +171,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>TD</label>
+                                                        <label>TD <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="td" id="td" required>
@@ -185,7 +185,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>HR</label>
+                                                        <label>HR <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="hr" id="hr" required>
@@ -199,7 +199,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>SPO2</label>
+                                                        <label>SPO2 <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="spo" id="spo" required>
@@ -213,7 +213,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Gejala</label>
+                                                        <label>Gejala <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <textarea type="text" id="gejala" class="form-control"
@@ -223,7 +223,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Jenis Pemeriksaan</label>
+                                                        <label>Jenis Pemeriksaan </label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <textarea type="text" id="jenis_pemeriksaan"
@@ -233,7 +233,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Tanggal Pemeriksaan</label>
+                                                        <label>Tanggal Pemeriksaan <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-2 form-group">
                                                         <input type="date" id="tanggal_pemeriksaan" class="form-control"

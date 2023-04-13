@@ -111,7 +111,7 @@
 
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label for="">File Pendukung <b class="color-red">*</b></label>
+                                                <label for="">File Pendukung </label>
                                                 <input class="form-control" type="file" id="ttd" name="ttd" multiple >
                                             </div>
                                         </div>
@@ -175,7 +175,7 @@
                                         
                                         <div class=" d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1 btn-form">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1 btn-form">Simpan</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
                                             </div>  

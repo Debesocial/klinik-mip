@@ -15,7 +15,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_perusahaan_pasien">Nama Perusahaan</label>
+                                            <label for="nama_perusahaan_pasien">Nama Perusahaan <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="nama_perusahaan_pasien" id="nama_perusahaan_pasien" placeholder="masukkan nama perusahaan" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/> 
                                         </div>
                                     </div>

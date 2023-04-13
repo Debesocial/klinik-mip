@@ -1,12 +1,12 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Ubah Password')
+@section('title', 'Ubah Kata Sandi')
 @section('izinberobat', 'active')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Ubah Password')
+        @section('judul', 'Ubah Kata Sandi')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">
@@ -45,7 +45,7 @@
                                                 <div class="col-md-6">
                                                     <div class="col-md-12">
                                                         <div class="form-group{{ $errors->has('current_password') ? ' has-error' : '' }}">
-                                                            <label for="">Kata Sandi Lama</label>
+                                                            <label for="">Kata Sandi Lama <b class="color-red">*</b></label>
                                                             <input type="password" id="current_password" class="form-control" name="current_password" placeholder="Masukkan kata sandi lama" required>
                                                         </div>
                                                     </div>
@@ -57,7 +57,7 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
-                                                            <label for="new_password">Kata Sandi Baru</label>
+                                                            <label for="new_password">Kata Sandi Baru <b class="color-red">*</b></label>
                                                             <input type="password" id="new_password" class="form-control" name="new_password"  minlength="12" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}" title="Minimum 12 characters, at least one uppercase letter, one lowercase letter and one number (EXAMPLE : Passuser2022)" placeholder="Masukkan kata sandi baru" required>
                                                         </div>
                                                     </div>
@@ -69,7 +69,7 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="">Konfirmasi Kata Sandi Baru</label>
+                                                            <label for="">Konfirmasi Kata Sandi Baru <b class="color-red">*</b></label>
                                                             <input type="password" id="new_password_confirm" class="form-control" name="new_password_confirma" placeholder="Konfirmasi kata sandi baru"  required>
                                                         </div>
                                                     </div>

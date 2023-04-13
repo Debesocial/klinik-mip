@@ -15,7 +15,7 @@
                                 <div class="col-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_jabatan">Nama Jabatan</label>
+                                            <label for="nama_jabatan">Nama Jabatan <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="nama_jabatan" id="nama_jabatan" placeholder="Masukkan jabatan" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>

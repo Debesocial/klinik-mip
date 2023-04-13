@@ -102,7 +102,7 @@
                                                     </div>
                                             
                                                     <div class="col-md-2">
-                                                        <label>Tanggal Berobat</label>
+                                                        <label>Tanggal Berobat <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="tanggal_berobat" type="date" class="form-control"
@@ -112,7 +112,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Penyakit</label>
+                                                        <label>Nama Penyakit <b class="color-red">*</b> </label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id" required>
@@ -126,7 +126,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Tindakan</label>
+                                                        <label>Nama Tindakan <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="tindakan_id" id="tindakan_id" required>

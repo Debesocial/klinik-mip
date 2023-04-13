@@ -51,7 +51,7 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>ID Rekam Medis Pasien</label>
+                                                    <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -168,7 +168,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Tinggi Badan</label>
+                                                            <label>Tinggi Badan <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -183,7 +183,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Berat Badan</label>
+                                                            <label>Berat Badan <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -198,7 +198,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Suhu Tubuh</label>
+                                                            <label>Suhu Tubuh <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -213,7 +213,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Tekanan Darah</label>
+                                                            <label>Tekanan Darah <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -228,7 +228,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Denyut Nadi</label>
+                                                            <label>Denyut Nadi <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -244,7 +244,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Laju Pernapasan</label>
+                                                            <label>Laju Pernapasan <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <div class="input-group mb-3">
@@ -259,7 +259,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Saturasi Oksigen</label>
+                                                            <label>Saturasi Oksigen <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-2 form-group">
                                                             <input type="text" id="saturasi" class="form-control" name="saturasi" placeholder="" required>
@@ -270,7 +270,7 @@
                                                 <div class="col-md-12">
                                                     <div class="row">
                                                         <div class="col-md-2">
-                                                            <label>Hasil Pemeriksaan</label>
+                                                            <label>Hasil Pemeriksaan <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" checked> Tidak Sehat
@@ -280,7 +280,7 @@
                                                 </div>
 
                                                 <div class="col-sm-5 d-flex justify-content-end">
-                                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
                                                     <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                 </div>
                                             </div>

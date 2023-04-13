@@ -60,7 +60,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Rekam Medis Pasien</label>
+                                                <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="pasien_id" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -182,7 +182,7 @@
                                         <div class="row">
 
                                             <div class="col-md-2">
-                                                <label>Keluhan</label>
+                                                <label>Keluhan <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <textarea type="text" id="keluhan" class="form-control"
@@ -192,7 +192,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>ID Rekam Medis</label>
+                                                    <label>ID Rekam Medis <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="search" id="id_rekam_medis" class="form-control"
@@ -202,7 +202,7 @@
                                                     </div>    
 
                                                     <div class="col-md-2">
-                                                        <label>Diagnosa</label>
+                                                        <label>Diagnosa <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input type="text" id="diagnosa" class="form-control"
@@ -212,7 +212,7 @@
                                                         </div>
 
                                                         <div class="col-md-2">
-                                                            <label>Diagnosa Sekunder</label>
+                                                            <label>Diagnosa Sekunder <b class="color-red">*</b></label>
                                                         </div>
                                                         <div class="col-md-4 form-group">
                                                             <input type="text" id="diagnosa_sekunder" class="form-control"
@@ -249,7 +249,7 @@
                                         <div class="row">
 
                                             <div class="col-md-2">
-                                                <label>Nama Tindakan</label>
+                                                <label>Nama Tindakan </label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="tindakan" class="form-control"
@@ -555,7 +555,7 @@
                                                                                                 </div>
                                                                                                 <div class="col-sm-5 d-flex justify-content-end">
                                                                                                     <button type="submit"
-                                                                                                        class="btn btn-primary me-1 mb-1">Submit</button>
+                                                                                                        class="btn btn-primary me-1 mb-1">Simpan</button>
                                                                                                     <button type="reset"
                                                                                                         class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                                                                 </div>

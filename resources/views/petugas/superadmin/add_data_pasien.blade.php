@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="telepon_keluarga">Nomor Telepon <b class="color-red">*</b></label>
-                                        <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required >
+                                        <input type="number" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required >
                                     </div>
                                     <div class="form-group">
                                         <label for="email_keluarga">Email</label>

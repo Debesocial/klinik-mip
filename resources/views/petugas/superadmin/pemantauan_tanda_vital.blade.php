@@ -59,7 +59,7 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>ID pasien</label>
+                                                        <label>ID pasien <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select id="pasien_id" class="choices form-select"
@@ -178,12 +178,12 @@
                                             <div class="form-body">
                                                 <div class="row">
                                                     <div class="col-md-2">
-                                                        <label>Skala Nyeri</label>
+                                                        <label>Skala Nyeri <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="skala_nyeri"
                                                             id="skala_nyeri">
-                                                            <option disabled selected>Pilih Pemantauan</option>
+                                                            <option disabled selected>Pilih Pemantauan </option>
                                                             @foreach ($hasilpemantauan as $hasil)
                                                             <option value="{{ $hasil->nama_pemantauan }}">{{
                                                                 $hasil->nama_pemantauan }}</option>
@@ -194,7 +194,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>HR</label>
+                                                        <label>HR <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="hr" id="hr">
@@ -209,7 +209,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>BP</label>
+                                                        <label>BP <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="bp" id="bp">
@@ -224,7 +224,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Temp</label>
+                                                        <label>Temp <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="temp" id="temp">
@@ -239,7 +239,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>RR</label>
+                                                        <label>RR <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="rr" id="rr">
@@ -254,7 +254,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Saturasi Oksigen</label>
+                                                        <label>Saturasi Oksigen <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="saturasi_oksigen"

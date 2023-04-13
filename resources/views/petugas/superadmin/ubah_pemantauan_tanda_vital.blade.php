@@ -162,7 +162,7 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Skala Nyeri</label>
+                                                    <label>Skala Nyeri <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="skala_nyeri" id="skala_nyeri" required>
@@ -176,7 +176,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>HR</label>
+                                                    <label>HR <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="hr" id="hr" required>
@@ -190,7 +190,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>BP</label>
+                                                    <label>BP <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="bp" id="bp" required>
@@ -204,7 +204,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>Temp</label>
+                                                    <label>Temp <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="temp" id="temp" required>
@@ -218,7 +218,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>RR</label>
+                                                    <label>RR <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="rr" id="rr" required>
@@ -232,7 +232,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>Saturasi Oksigen</label>
+                                                    <label>Saturasi Oksigen <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select class="choices form-select" name="saturasi_oksigen" id="saturasi_oksigen" required>

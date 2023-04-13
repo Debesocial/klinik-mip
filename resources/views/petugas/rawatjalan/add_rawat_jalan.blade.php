@@ -49,7 +49,7 @@
 
 
                                             <div class="col-md-2">
-                                                <label>ID Rekam Medis Pasien</label>
+                                                <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -107,7 +107,7 @@
                                                     </div>
                                             
                                                     <div class="col-md-2">
-                                                        <label>Tanggal Berobat</label>
+                                                        <label>Tanggal Berobat <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="tanggal_berobat" type="date" class="form-control"
@@ -117,7 +117,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Penyakit</label>
+                                                        <label>Nama Penyakit <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" id="nama_penyakit_id" name="nama_penyakit_id" required oninput="this.setCustomValidity('')"/>
@@ -131,10 +131,10 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Tindakan</label>
+                                                        <label>Nama Tindakan <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <select class="choices form-select" id="tindakan_id" name="tindakan_id" required oninput="this.setCustomValidity('')"/>
+                                                        <select class="choices form-select" id="tindakan_id" name="tindakan_id" required oninput="this.setCustomValidity('')" />
                                                             <option disabled selected value="">Pilih Tindakan</option>
                                                         @foreach ($tindakan as $tin)
                                                             <option value="{{ $tin->id }}">{{ $tin->nama_tindakan }}</option>

@@ -47,7 +47,7 @@
 
 
                                             <div class="col-md-2">
-                                                <label>ID Rekam Medis Pasien</label>
+                                                <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -65,7 +65,7 @@
                                                     name="pasien_id"  placeholder="ID Pasien" hidden>
 
                                             <div class="col-md-2">
-                                                <label>Tempat Pemeriksaan</label>
+                                                <label>Tempat Pemeriksaan <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input id="pasienmart" type="text" id="tempat" class="form-control"
@@ -75,7 +75,7 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <label>Tanggal keluar</label>
+                                                <label>Tanggal keluar <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input id="pasienmart" type="date" id="tanggal_keluar" class="form-control"

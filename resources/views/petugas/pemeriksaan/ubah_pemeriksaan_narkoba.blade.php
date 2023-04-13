@@ -248,7 +248,7 @@
 
 
                                                     <div class="col-md-5">
-                                                        <label>Amphetamine(AMP)</label>
+                                                        <label>Amphetamine(AMP) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="amp" id="amp" value="0" {{ !$narkoba->amp ? "checked" : "" }}> Negatif
@@ -258,7 +258,7 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Methamphetamine(MET)</label>
+                                                        <label>Methamphetamine(MET) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="met" id="met" value="0" {{ !$narkoba->met ? "checked" : "" }}> Negatif
@@ -268,7 +268,7 @@
                                                         </div>
                                                         
                                                         <div class="col-md-5">
-                                                        <label>TetraHydroCannibinol(THC)</label>
+                                                        <label>TetraHydroCannibinol(THC) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="thc" id="thc" value="0" {{ !$narkoba->thc ? "checked" : "" }}> Negatif
@@ -278,7 +278,7 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Benzodiazepine(BZO)</label>
+                                                        <label>Benzodiazepine(BZO) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="bzo" id="bzo" value="0" {{ !$narkoba->bzo ? "checked" : "" }}> Negatif
@@ -288,7 +288,7 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Morphine(MOP)</label>
+                                                        <label>Morphine(MOP) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-3 form-group">
                                                         <input class="form-check-input" type="radio" name="mop" id="mop" value="0" {{ !$narkoba->mop ? "checked" : "" }}> Negatif
@@ -298,7 +298,7 @@
                                                         </div>
 
                                                         <div class="col-md-5">
-                                                        <label>Cocaine(COC)</label>
+                                                        <label>Cocaine(COC) <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input class="form-check-input" type="radio" name="coc" id="coc" value="0" {{ !$narkoba->coc ? "checked" : "" }}> Negatif

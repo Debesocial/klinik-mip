@@ -47,7 +47,7 @@
 
 
                                             <div class="col-md-2">
-                                                <label>ID Rekam Medis Pasien</label>
+                                                <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
@@ -105,7 +105,7 @@
                                                     </div>
                                             
                                                     <div class="col-md-2">
-                                                        <label>Mulai Rawat Inap</label>
+                                                        <label>Mulai Rawat Inap <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="mulai_rawat" type="date" class="form-control"
@@ -115,7 +115,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Berakhirnya Rawat Inap</label>
+                                                        <label>Berakhirnya Rawat Inap <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="berakhir_rawat" type="date" class="form-control"
@@ -125,7 +125,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Penyakit</label>
+                                                        <label>Nama Penyakit <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" id="nama_penyakit_id" name="nama_penyakit_id" required oninput="this.setCustomValidity('')"/>

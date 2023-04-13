@@ -45,7 +45,7 @@
                                     <div class="form-body">
                                         <div class="row">
                                             <div class="col-md-2">
-                                                <label>ID Rawat Inap Pasien</label>
+                                                <label>ID Rawat Inap Pasien <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input type="text" id="" class="form-control"
@@ -99,7 +99,7 @@
                                                     </div>
                                             
                                                     <div class="col-md-2">
-                                                        <label>Mulai Rawat Inap</label>
+                                                        <label>Mulai Rawat Inap <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="mulai_rawat" type="date" class="form-control"
@@ -109,7 +109,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Berakhirnya Rawat Inap</label>
+                                                        <label>Berakhirnya Rawat Inap <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <input id="berakhir_rawat" type="date" class="form-control"
@@ -119,7 +119,7 @@
                                                     </div>
 
                                                     <div class="col-md-2">
-                                                        <label>Nama Penyakit</label>
+                                                        <label>Nama Penyakit <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id" required>

@@ -57,7 +57,7 @@
                                         <h5></h5><br><br>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Klinik Rujukan</label>
+                                                <label for="">Klinik Rujukan <b class="color-red">*</b></label>
                                                 <select class="choices form-select" name="rumah_sakit_rujukans_id" id="rumah_sakit_rujukans_id">
                                                     @foreach ($rsrujukan as $rujukan)
                                                     <option value="{{ $rujukan->id }}" {{ $rujukan->id == $keterangan->rumahsakitrujukan->id ? 'selected' : '' }}>{{ $rujukan->nama_RS_rujukan }}</option>
@@ -68,7 +68,7 @@
     
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Diagnosa</label> 
+                                                <label for="">Diagnosa <b class="color-red">*</b></label> 
                                                 <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
                                                     @foreach ($namapenyakit as $nama)
                                                     <option value="{{ $nama->id }}" {{ $nama->id == $keterangan->namapenyakit->id ? 'selected' : '' }}>{{ $nama->primer }}</option>
@@ -79,14 +79,14 @@
     
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Pasien diresepkan obat</label> </label>
+                                                <label for="">Pasien diresepkan obat <b class="color-red">*</b></label> </label>
                                                 <input type="text" id="resep" name="resep" class="form-control" value="{{ $keterangan->resep}}"  >
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Saran untuk pasien</label> </label>
+                                                <label for="">Saran untuk pasien <b class="color-red">*</b></label> </label>
                                                 <input type="text" id="saran" name="saran" class="form-control" value="{{ $keterangan->saran }}"  >
                                             </div>
                                         </div>
@@ -94,7 +94,7 @@
                                         
                                         <div class="col-md-12">
                                             <div class="col-md-4">
-                                                <label>Pasien harus kontrol Kembali</label>
+                                                <label>Pasien harus kontrol Kembali <b class="color-red">*</b></label>
                                             </div>
                                             <div class="col-md-4 form-group">
                                                 <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="0" {{ !$keterangan->kontrol ? "checked" : "" }}> Tidak
@@ -104,7 +104,7 @@
     
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="">Tanggal Pengembalian Surat</label> </label>
+                                                <label for="">Tanggal Pengembalian Surat <b class="color-red">*</b></label> </label>
                                                 <input type="date" id="tanggal_kembali" name="tanggal_kembali" class="form-control" value="{{ $keterangan->tanggal_kembali }}" >
                                             </div>
                                         </div>

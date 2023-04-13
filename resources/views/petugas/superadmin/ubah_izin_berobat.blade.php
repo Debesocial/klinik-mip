@@ -43,7 +43,7 @@
                 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="temapt">Tempat Pemeriksaan</label>
+                                                            <label for="temapt">Tempat Pemeriksaan <b class="color-red">*</b></label>
                                                             <input type="text" id="tempat" class="form-control" name="tempat" value="{{ $izin['tempat'] }}" required>
                                                             
                                                         </div>
@@ -51,7 +51,7 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="temapt">Tanggal Keluar</label>
+                                                            <label for="temapt">Tanggal Keluar <b class="color-red">*</b>   </label>
                                                             <input type="text" id="tanggal_keluar" class="form-control" name="tanggal_keluar" value="{{ $izin['tanggal_keluar'] }}" required>
                                                             
                                                         </div>

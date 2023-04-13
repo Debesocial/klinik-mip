@@ -56,11 +56,11 @@
 
 
                                                     <div class="col-md-2">
-                                                        <label>ID Rekam Pasien Pasien</label>
+                                                        <label>ID Rekam Pasien Pasien <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
                                                         <select name="" id="pasien_id" class="choices form-select" onchange="myChangeFunction(this)">
-                                                            <option disabled selected>Pilih ID Rekam Medis Pasien</option>
+                                                            <option disabled selected>Pilih ID Rekam Medis Pasien </option>
                                                             @foreach ($pasien_id as $pas)
                                                                 <option value="{{ $pas['id'] }}|{{ $pas['nama_pasien'] }}|{{ $pas['pekerjaan'] }}|{{  $pas->perusahaan->nama_perusahaan_pasien }}|{{  $pas->divisi->nama_divisi_pasien }}|{{  $pas->jabatan->nama_jabatan }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                                             @endforeach
@@ -142,7 +142,7 @@
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Nama Klinik Praktek/Rumah Sakit</label>
+                                                    <label>Nama Klinik Praktek/Rumah Sakit <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select name="rumah_sakit_rujukans_id" id="rumah_sakit_rujukans_id" class="form-select">
@@ -159,7 +159,7 @@
 
 
                                                 <div class="col-md-2">
-                                                    <label>Diagnosa</label>
+                                                    <label>Diagnosa <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
@@ -173,7 +173,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>Diagnosa Sekunder</label>
+                                                    <label>Diagnosa Sekunder <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <textarea type="text" id="sekunder" class="form-control" name="sekunder"> </textarea>
@@ -184,7 +184,7 @@
 
 
                                                 <div class="col-md-2">
-                                                    <label>Pasien diresepkan obat</label>
+                                                    <label>Pasien diresepkan obat <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <textarea type="text" id="resep" class="form-control" name="resep"> </textarea>
@@ -194,7 +194,7 @@
 
 
                                                 <div class="col-md-2">
-                                                    <label>Saran untuk Pasien</label>
+                                                    <label>Saran untuk Pasien <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <textarea type="text" id="saran" class="form-control" name="saran"></textarea>
@@ -204,7 +204,7 @@
 
 
                                                 <div class="col-md-2">
-                                                    <label>Pasien Harus Kontrol Kembali</label>
+                                                    <label>Pasien Harus Kontrol Kembali <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="0" checked> Tidak
@@ -216,7 +216,7 @@
                                                 </div>
 
                                                 <div class="col-md-2">
-                                                    <label>Tanggal Pengembalian Surat Rujukan</label>
+                                                    <label>Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
                                                 </div>
                                                 <div class="col-md-4 form-group">
                                                     <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali">

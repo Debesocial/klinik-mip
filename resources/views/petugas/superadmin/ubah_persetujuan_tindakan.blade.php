@@ -110,16 +110,16 @@
                                                         
 
                                                             <div class="col-md-2">
-                                                                <label>Riwayat Perjalanan Penyakit</label>
+                                                                <label>Riwayat Perjalanan Penyakit <b class="color-red">*</b></label>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <textarea type="text" id="riwayat" class="form-control"
-                                                                    name="riwayat" >{{ $tindakan->riwayat }}</textarea>
+                                                                    name="riwayat" required>{{ $tindakan->riwayat }}</textarea>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 </div>
                                                                 <div class="col-md-2">
-                                                                    <label>Hasil Pernyataan</label>
+                                                                    <label>Hasil Pernyataan <b class="color-red">*</b></label>
                                                                 </div>
                                                                 <div class="col-md-4 form-group">
                                                                     <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" {{ !$tindakan->hasil ? "checked" : "" }}> Tidak
@@ -135,7 +135,7 @@
                                             <div class="col-sm-12 d-flex centered-content-end">
                                                 <div class="col-md-4">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Submit</button>
+                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                 <button type="reset"
                                                     class="btn btn-light-secondary me-1 mb-1">Reset</button>
                                                 </div>
