@@ -4,11 +4,14 @@
 @section('data', 'active')
 @section('side', 'active')
 
-@section('judul', 'Tambah Data Petugas')
+{{-- @section('judul', 'Tambah Data Petugas') --}}
 @section('container')
 
-
 <section id="multiple-column-form">
+    {{ Breadcrumbs::render('tambah_data_petugas') }}
+    <div class="page-heading">
+        <h3>Tambah Data Petugas</h3>
+    </div>
     <div class="row match-height">
         <div class="col-12">
             <div class="card">

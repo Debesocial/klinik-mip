@@ -7,15 +7,34 @@
     height: 40px;
 }
 
+textarea::-webkit-input-placeholder {
+    /* Edge */
+    color: red;
+}
 
-textarea::-webkit-input-placeholder { /* Edge */
+textarea:-ms-input-placeholder {
+    /* Internet Explorer */
     color: red;
-  }
-  
-  textarea:-ms-input-placeholder { /* Internet Explorer */
+}
+
+textarea::placeholder {
     color: red;
-  }
-  
-  textarea::placeholder {
-    color: red;
-  }
+}
+/* Data Tables-Hiskia */
+.dataTables_length label select {
+    padding-left: 0.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+}
+.dataTables_filter label input {
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+}
+
+/* .table-responsive {
+    position: relative;
+    max-height: 70vh;
+    overflow: auto;
+    display: block;
+} */

@@ -52,13 +52,11 @@
 <body style="font-size: 0.8rem ;">
 	@include('layouts.dashboard.sidebar')
 	<div id="main" style="margin-left: 350px;">
-		<header class="mb-3">
-
+		<header class="">
 			<a href="#" class="burger-btn d-block d-xl-none">
 				<i class="bi bi-justify fs-3"></i>
 			</a>
 		</header>
-
 		<div class="page-heading">
 			<h3>@yield('judul')</h3>
 		</div>
@@ -90,7 +88,17 @@
 	<script src="{{ asset('assets/js/mazer.js') }}"></script>
 	<script>
 		// Jquery Datatable
-		let jquery_datatable = $("#table1").DataTable()
+		let jquery_datatable = $("#table1").DataTable({
+			"language": {
+				"search": "Cari:",	
+				"lengthMenu":     "Tampilkan _MENU_ data",
+				"emptyTable":     "Tidak ada data yang tersedia pada tabel ini",
+    			"info":           "Menampilkan _START_ sampai _END_, dari _TOTAL_ data",
+    			"infoEmpty":      "Menampikan 0 sampai 0, dari 0 data",
+				"zeroRecords":    "Tidak ditemukan data yang cocok",
+				"infoFiltered":   "(Didapatkan dari _MAX_ total seluruh data)",
+			}
+		})
 	</script>
 	
 	@yield('js')

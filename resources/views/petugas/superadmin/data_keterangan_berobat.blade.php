@@ -2,7 +2,7 @@
 
 @section('title', 'Data Keterangan Berobat')
 @section('berobat', 'active')
-@section('judul', 'Data Keterangan Berobat')
+{{-- @section('judul', 'Data Keterangan Berobat') --}}
 
 {{-- <style>
     td {
@@ -17,14 +17,21 @@
 @section('container')
 
 <section class="section">
-    <div class="card">
-        <div class="card-header">
-            <div class="buttons" width="100px">
-                    <a href="{{ route('superadmin.keteranganberobat') }}" class="btn btn-success rounded-pill">
-                        <i class="fa fa-plus"></i>
-                    <span>Tambah</span></a>
-                </div>
+    <div class="row">
+        <div class="col">
+            <div class="page-heading">
+                    <h3>Data Keterangan Berobat</h3>
+            </div>
         </div>
+        <div class="col">
+            <div class="buttons text-end">
+                <a href="{{ route('superadmin.addketeranganberobat') }}" class="btn btn-success rounded-pill">
+                    <i class="bi bi-plus-circle"></i>
+                    <span>Tambah</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow">
         <div class="card-body">
             @if (Session('message'))
             <script>Swal.fire({ 
@@ -33,36 +40,40 @@
                 if (result.isConfirmed) { window.location.href = "{{ route('superadmin.dataketeranganberobat') }}" }})
                 </script>
             @endif
-            <table class="table" id="table1" width="100%">
-                <thead>
-                    <tr>
-                        <th>Tanggal </th>
-                        <th>Nama Pasien</th>
-                        <th>Klinik </th>
-                        <th>Resep</th>
-                        <th>Saran</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($keterangan as $ket)
-                    <tr>
-                        <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
-                            <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
-                        </td>
-                        <td style="width: 110px">{{ $ket->pasien->nama_pasien }}</td>
-                            <td>{{ $ket->rumahsakitrujukan->nama_RS_rujukan }}</td>
-                            
-                            <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->resep }}</td>
-                            <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->saran }}</td>
-                            <td><div class="buttons">
-                                <a href="/print/ket/berobat/{{ $ket->id }}" title="print Data" href="#" class="btn btn-secondary rounded-pill"><i class="fa fa-print"></i></a>
-                                <a href="/ubah/ket/berobat/{{ $ket->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                                </div></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-hover" id="table1" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Tanggal </th>
+                            <th>Nama Pasien</th>
+                            <th>Klinik </th>
+                            <th>Resep</th>
+                            <th>Saran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($keterangan as $ket)
+                        <tr>
+                            <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
+                                <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
+                            </td>
+                            <td style="width: 110px">{{ $ket->pasien->nama_pasien }}</td>
+                                <td>{{ $ket->rumahsakitrujukan->nama_RS_rujukan }}</td>
+                                
+                                <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->resep }}</td>
+                                <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $ket->saran }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        <a href="/print/ket/berobat/{{ $ket->id }}" title="print Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                        <a href="/ubah/ket/berobat/{{ $ket->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                    </div>
+                                </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

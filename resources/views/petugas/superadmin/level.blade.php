@@ -4,39 +4,49 @@
 @section('level', 'active')
 @section('side', 'active')
 
-@section('judul', 'Data Level Petugas')
+{{-- @section('judul', 'Data Level Petugas') --}}
 @section('container')
 
 <section class="section">
-    <div class="card">
-        <div class="card-header">
-            <div class="buttons" width="100px">
-                <a href="{{ route('superadmin.addlevel') }}" class="btn btn-success rounded-pill">
-                    <i class="fa fa-plus"></i>
-                    <span>Tambah</span></a>
+    <div class="row">
+        <div class="col">
+            <div class="page-heading">
+                    <h3>Data Level Petugas</h3>
             </div>
         </div>
+        <div class="col">
+            <div class="buttons text-end" >
+                    <a href="{{ route('superadmin.addlevel') }}" class="btn btn-success rounded-pill">
+                        <i class="bi bi-plus-circle"></i>
+                        <span>Tambah</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="card shadow">
         <div class="card-body">
-            <table class="table" id="table1">
-                <thead>
-                    <tr>
-                        <th>Level</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($level as $lev)
-                    <tr>
-                        <td>{{ $lev['nama_level'] }}</td>
-                        <td>
-                            <div class="buttons">
-                                <a href="/ubah/level/{{ $lev->id }}" class="btn btn-success rounded-pill" title="Ubah kategori petugas"><i class="fa fa-edit"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="table-responsive pt-2 pe-2">
+                <table class="table table-hover" id="table1">
+                    <thead>
+                        <tr>
+                            <th style="width: 70%">Level</th>
+                            <th style="width: 30%">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($level as $lev)
+                        <tr>
+                            <td>{{ $lev['nama_level'] }}</td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group" >
+                                    <a href="/ubah/level/{{ $lev->id }}" class="btn btn-outline-secondary" title="Ubah level petugas"><i class="bi bi-pencil-square"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
 </section>
