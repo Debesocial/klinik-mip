@@ -4,6 +4,7 @@
 @section('rekam', 'active')
 @section('rawat', 'active')
 @section('jalan', 'active')
+@section('breadcrumb', 'tambah_rawat_jalan')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />
@@ -46,8 +47,6 @@
                                     @csrf
                                     <div class="form-body">
                                         <div class="row">
-
-
                                             <div class="col-md-2">
                                                 <label>ID Rekam Medis Pasien <b class="color-red">*</b></label>
                                             </div>
@@ -142,16 +141,16 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6 form-group">
+                                                        
                                                     </div>
 
-
-
-                                            <div class="col-sm-4 d-flex justify-content-end">
-                                                <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                <button type="reset"
-                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                            </div>
+                                                    <div class="col-sm-6 d-flex justify-content-end">
+                                                        <button type="reset"
+                                                        class="btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                                                        <button type="submit"
+                                                            class="btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                                    </div>
+                                                    
                                         </div>
                                     </div>
                                 </form>

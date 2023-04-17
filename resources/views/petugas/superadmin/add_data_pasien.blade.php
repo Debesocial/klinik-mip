@@ -3,6 +3,7 @@
 @section('kate', 'active')
 @section('da', 'active')
 @section('pasien', 'active')
+@section('breadcrumb', 'tambah_data_pasien')
 
 @section('judul', 'Tambah Data Pasien')
 @section('container')
@@ -184,16 +185,16 @@
                                         <input type="email_keluarga" id="email_keluarga" class="form-control" name="email_keluarga" placeholder="Masukkan Email Keluarga">
                                     </div>
                                     <div class="col-md-12"><br>
-                                        <div class="row">
-                                            <div class="col-4">
+                                        <div class="row justify-content-end">
+                                            {{-- <div class="col-4">
                                                 <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                             </div>
                                             
                                             <div class="col-4">
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>

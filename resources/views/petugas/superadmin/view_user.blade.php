@@ -3,6 +3,7 @@
 @section('user', 'active')
 @section('data', 'active')
 @section('side', 'active')
+@section('breadcrumb', 'lihat_data_petugas')
 
 @section('judul', 'Lihat Data Petugas')
 @section('container')
@@ -115,7 +116,7 @@
                                         </tbody>
                                         
                                     </table>
-                                    <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
+                                    {{-- <button type="button" style="width: 50%" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button> --}}
                                 </div>
                             </div>
                             

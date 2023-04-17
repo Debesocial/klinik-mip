@@ -4,6 +4,7 @@
 @section('obat', 'active')
 @section('alkes', 'active')
 @section('judul', 'Tambah Alat Kesehatan/Bahan Kesehatan')
+@section('breadcrumb', 'tambah_alat_kesehatan')
 @section('container')
 
 <section id="multiple-column-form">
@@ -73,12 +74,9 @@
                                     </div>
 
                                     <div class="col-12"><br>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
-                                            </div>
-                                            <div class="col-6">
-                                                <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
+                                        <div class="row justify-content-end">
+                                            <div class="col-4">
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>

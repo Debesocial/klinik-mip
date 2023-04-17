@@ -2,6 +2,7 @@
 
 @section('title', 'Rekam Medis')
 @section('medis', 'active')
+@section('breadcrumb', 'tambah_rekam_medis')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 

@@ -9,10 +9,11 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Daftar Pasien Rawat Jalan</h3>
+                    {{ Breadcrumbs::render('rawat_jalan') }}
             </div>
         </div>
         <div class="col">

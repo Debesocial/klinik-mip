@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Lihat Data Rawat Inap')
+@section('breadcrumb', 'lihat_rawat_inap')
 
 @section('judul', 'Lihat Rawat Inap')
 @section('container')

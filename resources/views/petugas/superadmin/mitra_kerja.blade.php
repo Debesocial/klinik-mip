@@ -7,10 +7,13 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Petugas Mitra Kerja</h3>
+            </div>
+            <div>
+                {{ Breadcrumbs::render('mitra_kerja') }}
             </div>
         </div>
         <div class="col">

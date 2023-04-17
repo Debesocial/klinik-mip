@@ -4,6 +4,7 @@
 @section('rekam', 'active')
 @section('rawat', 'active')
 @section('jalan', 'active')
+@section('breadcrumb', 'lihat_rawat_jalan')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />

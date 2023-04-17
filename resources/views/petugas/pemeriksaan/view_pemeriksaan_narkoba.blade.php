@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Lihat Pemeriksaan Narkoba')
+@section('breadcrumb', 'lihat_pemeriksaan_narkoba')
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('narko', 'active')
@@ -24,7 +25,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Data Pemeriksaan Narkoba')
+        @section('judul', 'Lihat Pemeriksaan Narkoba')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">

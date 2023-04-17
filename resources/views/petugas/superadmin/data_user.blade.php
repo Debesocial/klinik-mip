@@ -5,13 +5,13 @@
 @section('side', 'active')
 {{-- @section('judul', 'Data Petugas') --}}
 @section('container')
-{{ Breadcrumbs::render('data_petugas') }}
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
-                    <h3>Data Petugas</h3>
+                <h3>Data Petugas</h3>
+                {{ Breadcrumbs::render('data_petugas') }}
             </div>
         </div>
         <div class="col">
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div class="card shadow">
+    <div class="card">
         {{-- <div class="card-header pb-0">
         </div> --}}
         <div class="card-body">

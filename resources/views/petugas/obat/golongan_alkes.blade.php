@@ -7,10 +7,11 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Golongan Alat Kesehatan</h3>
+                    {{ Breadcrumbs::render('golongan_alat_kesehatan') }}
             </div>
         </div>
         <div class="col">

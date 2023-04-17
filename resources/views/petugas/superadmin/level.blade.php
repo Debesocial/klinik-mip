@@ -4,14 +4,16 @@
 @section('level', 'active')
 @section('side', 'active')
 
+
 {{-- @section('judul', 'Data Level Petugas') --}}
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Level Petugas</h3>
+                    <div>{{ Breadcrumbs::render('level_petugas') }}</div>
             </div>
         </div>
         <div class="col">

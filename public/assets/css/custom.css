@@ -38,3 +38,7 @@ textarea::placeholder {
     overflow: auto;
     display: block;
 } */
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}

@@ -2,6 +2,7 @@
 
 @section('title', 'Ubah Pemeriksaan Narkoba')
 @section('pemeriksaan', 'active')
+@section('breadcrumb', 'ubah_pemeriksaan_narkoba')
 @section('screen', 'active')
 @section('narko', 'active')
 

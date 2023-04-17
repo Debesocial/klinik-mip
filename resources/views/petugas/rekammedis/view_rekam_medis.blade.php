@@ -2,7 +2,6 @@
 
 @section('title', 'Lihat Data Rekam Medis')
 
-
 @section('judul', 'Lihat Data Rekam Medis')
 @section('container')    
 <div class="page-heading">

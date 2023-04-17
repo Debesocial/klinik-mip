@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Pemeriksaan Narkoba')
+@section('breadcrumb', 'tambah_pemeriksaan_narkoba')
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('narko', 'active')

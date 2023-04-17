@@ -9,10 +9,11 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Rekam Medis</h3>
+                    {{ Breadcrumbs::render('rekam_medis') }}
             </div>
         </div>
         <div class="col">
@@ -66,7 +67,7 @@
                                 <td class="text-center"> <i class="{{ $pas->alergi_obat == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                        <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-outline-secondary"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                     </div>
                                 </td>
                         </tr>

@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('title', 'Lihat Data Pasien')
 @section('judul', 'Lihat Data Pasien')
+@section('breadcrumb', 'lihat_data_pasien')
 @section('container')
 
 <section id="multiple-column-form">
@@ -128,11 +129,11 @@
                                                         name="email_keluarga" value="{{ $pasien->keluarga->email }}" disabled>
                                             </div>
 
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <div class="col-4">
                                                     <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                            
                                         </div>
                                 </form>
