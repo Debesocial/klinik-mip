@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Ubah Keterangan Sehat')
+@section('breadcrumb', 'ubah_keterangan_sehat')
 @section('keterangansehat', 'active')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 

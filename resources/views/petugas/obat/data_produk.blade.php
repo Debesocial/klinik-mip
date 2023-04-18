@@ -44,7 +44,7 @@
                 <table class="table table-hover" id="table1" width="100%">
                     <thead>
                         <tr>
-                            <th>Tanggal dibuat</th>
+                            {{-- <th>Tanggal dibuat</th> --}}
                             <th>Nama </th>
                             <th>Satuan </th>
                             <th>Bobot </th>
@@ -55,9 +55,9 @@
                     <tbody>
                         @foreach ($produk as $pro)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($pro->created_at)->isoFormat('D MMMM Y') }}</B>
+                            {{-- <td><B>{{ Carbon\Carbon::parse($pro->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($pro->created_at)->format('H:i:s') }}
-                            </td>
+                            </td> --}}
                             <td>{{ $pro->nama_produk }}</td>
                             <td>{{ $pro->satuan_obat->satuan_obat }}</td>
                             <td>{{ $pro->bobot_obat->bobot_obat }}</td>

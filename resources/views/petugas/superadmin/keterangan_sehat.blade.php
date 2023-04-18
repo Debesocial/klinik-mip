@@ -2,6 +2,7 @@
 
 @section('title', 'Keterangan Sehat')
 @section('keterangansehat', 'active')
+@section('breadcrumb', 'tambah_keterangan_sehat')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />

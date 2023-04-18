@@ -7,10 +7,11 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Keterangan Sehat</h3>
+                    {{ Breadcrumbs::render('keterangan_sehat') }}
             </div>
         </div>
         <div class="col">
@@ -54,8 +55,8 @@
                             <td class="text-center"><i class="{{ $ket->hasil == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <a href="" title="Print Data " class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                     <a href="/ubah/keterangan/sehat/{{$ket->id}}" class="btn btn-outline-secondary" title="Ubah data pasien"><i class="bi bi-pencil-square"></i></a>
+                                    <a href="" title="Print Data " class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                 </div>
                             </td>
                         </tr>

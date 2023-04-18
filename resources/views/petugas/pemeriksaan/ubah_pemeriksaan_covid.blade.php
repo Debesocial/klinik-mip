@@ -2,6 +2,7 @@
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('covid', 'active')
+@section('breadcrumb', 'ubah_pemeriksaan_covid')
 
 @section('title', 'Ubah Pemeriksaan Covid-19')
 
@@ -183,10 +184,10 @@
                                                                 </div>
                                             
                                             <div class="col-sm-6 d-flex justify-content-end">
-                                                <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
                                                 <button type="reset"
-                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                class="btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>

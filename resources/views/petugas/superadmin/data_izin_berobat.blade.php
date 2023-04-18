@@ -7,10 +7,11 @@
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Izin Berobat</h3>
+                    {{ Breadcrumbs::render('izin_berobat') }}
             </div>
         </div>
         <div class="col">
@@ -50,8 +51,8 @@
                                 <td>{{ $berobat->tempat }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                        <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                         <a href="/ubah/izin/berobat/{{$berobat->id }}" class="btn btn-outline-secondary" title="View"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>
                         </tr>

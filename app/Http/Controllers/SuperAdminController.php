@@ -68,7 +68,7 @@ class SuperAdminController extends Controller
         $test = TestUrin::all();
 
 
-        return view('petugas.superadmin.periksa_narkoba', compact('pasien_id', 'test'));
+        return view('petugas.superadmin.rev.new_periksa_narkoba', compact('pasien_id', 'test'));
     }
 
     public function addperiksanarkoba(Request $request)

@@ -58,8 +58,8 @@
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                                         <a href="/view/pemeriksaan/narkoba/{{$narko->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
-                                        <a href="/print/pemeriksaan/narkoba/{{ $narko->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                         <a href="/ubah/pemeriksaan/narkoba/{{$narko->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="/print/pemeriksaan/narkoba/{{ $narko->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>
                         </tr>

@@ -1,9 +1,10 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Pemantauan Covid-19')
+@section('title', 'Tambah Pemantauan Covid-19')
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('pemantauan', 'active')
+@section('breadcrumb', 'tambah_pemantauan_covid')
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
@@ -25,7 +26,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Pemantauan Covid')
+        @section('judul', 'Tambah Pemantauan Covid')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">

@@ -19,11 +19,14 @@
 	<link rel="stylesheet" href="{{asset ('assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css')}}">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo/logo-klinik.JPG')}}" />
 	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css"> --}}
+	{{-- stepper --}}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- sweet alert -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	{{-- <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
+
 	@yield('css')
 
 	<style>
@@ -88,6 +91,7 @@
 	<script src="{{asset ('ref/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js')}}"></script>
 	<script src="{{asset ('ref/assets/vendors/fontawesome/all.min.js')}}"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 
 
 	<script src="{{ asset('assets/js/mazer.js') }}"></script>

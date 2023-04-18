@@ -2,6 +2,7 @@
 
 @section('title', 'Ubah Surat Rujukan')
 @section('suratrujukan', 'active')
+@section('breadcrumb', 'ubah_surat_rujukan')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 @section('css')
@@ -135,11 +136,11 @@
                                         </div>
                                         
                                         <div class=" d-flex justify-content-end">
-                                                <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1 btn-form">Simpan</button>
-                                                <button type="reset"
-                                                    class="btn btn-light-secondary me-1 mb-1 btn-form">Reset</button>
-                                            </div>  
+                                            <button type="reset"
+                                            class="btn btn-outline-secondary me-1 mb-1 btn-form"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                                            <button type="submit"
+                                                class="btn btn-primary me-1 mb-1 btn-form"><i class="bi bi-save"></i> Simpan</button>
+                                        </div>  
 
                                         </form>
                                             

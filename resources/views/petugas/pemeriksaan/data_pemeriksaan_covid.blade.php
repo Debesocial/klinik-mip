@@ -4,15 +4,15 @@
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('covid', 'active')
-
 {{-- @section('judul', 'Data Pemeriksaan Covid-19') --}}
 @section('container')
 
 <section class="section">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
                     <h3>Data Pemeriksaan Covid-19</h3>
+                    {{ Breadcrumbs::render('pemeriksaan_covid') }}
             </div>
         </div>
         <div class="col">

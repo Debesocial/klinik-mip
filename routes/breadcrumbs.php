@@ -412,3 +412,143 @@ Breadcrumbs::for('lihat_pemeriksaan_narkoba', function (BreadcrumbTrail $trail) 
      $trail->parent('pemeriksaan_narkoba');
      $trail->push('Lihat Pemeriksaan Narkoba');
 }); 
+
+/** Pemeriksaan Covid */
+Breadcrumbs::for('pemeriksaan_covid', function (BreadcrumbTrail $trail) {
+     $trail->push('Pemeriksaan', route('pemeriksaan.datapemeriksaancovid'));
+     $trail->push('Data Pemeriksaan Covid',route('pemeriksaan.datapemeriksaancovid') );
+});  
+Breadcrumbs::for('tambah_pemeriksaan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemeriksaan_covid');
+     $trail->push('Tambah Pemeriksaan Covid',);
+});  
+Breadcrumbs::for('ubah_pemeriksaan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemeriksaan_covid');
+     $trail->push('Ubah Pemeriksaan Covid');
+}); 
+Breadcrumbs::for('lihat_pemeriksaan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemeriksaan_covid');
+     $trail->push('Lihat Pemeriksaan Covid');
+});
+
+/** Pemantauan Covid */
+Breadcrumbs::for('pemantauan_covid', function (BreadcrumbTrail $trail) {
+     $trail->push('Pemeriksaan', route('superadmin.datapemantauancovid'));
+     $trail->push('Data Pemantauan Covid',route('superadmin.datapemantauancovid') );
+});  
+Breadcrumbs::for('tambah_pemantauan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_covid');
+     $trail->push('Tambah Pemantauan Covid',);
+});  
+Breadcrumbs::for('ubah_pemantauan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_covid');
+     $trail->push('Ubah Pemantauan Covid');
+}); 
+Breadcrumbs::for('lihat_pemantauan_covid', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_covid');
+     $trail->push('Lihat Pemantauan Covid');
+}); 
+/** Pemantauan Tanda Vital */
+Breadcrumbs::for('pemantauan_tanda_vital', function (BreadcrumbTrail $trail) {
+     $trail->push('Pemeriksaan', route('superadmin.datapemantauantandavital'));
+     $trail->push('Data Pemantauan Tanda Vital',route('superadmin.datapemantauantandavital') );
+});  
+Breadcrumbs::for('tambah_pemantauan_tanda_vital', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_tanda_vital');
+     $trail->push('Tambah Pemantauan Tanda Vital',);
+});  
+Breadcrumbs::for('ubah_pemantauan_tanda_vital', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_tanda_vital');
+     $trail->push('Ubah Pemantauan Tanda Vital');
+}); 
+Breadcrumbs::for('lihat_pemantauan_tanda_vital', function (BreadcrumbTrail $trail) {
+     $trail->parent('pemantauan_tanda_vital');
+     $trail->push('Lihat Pemantauan Tanda Vital');
+}); 
+/** Keterangan Berobat */
+Breadcrumbs::for('keterangan_berobat', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.dataketeranganberobat'));
+     $trail->push('Data Keterangan Berobat',route('superadmin.dataketeranganberobat') );
+});  
+Breadcrumbs::for('tambah_keterangan_berobat', function (BreadcrumbTrail $trail) {
+     $trail->parent('keterangan_berobat');
+     $trail->push('Tambah Keterangan Berobat',);
+});  
+Breadcrumbs::for('ubah_keterangan_berobat', function (BreadcrumbTrail $trail) {
+     $trail->parent('keterangan_berobat');
+     $trail->push('Ubah Keterangan Berobat');
+}); 
+/** Izin Berobat */
+Breadcrumbs::for('izin_berobat', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.dataizinberobat'));
+     $trail->push('Data Izin Berobat',route('superadmin.dataizinberobat') );
+});  
+Breadcrumbs::for('tambah_izin_berobat', function (BreadcrumbTrail $trail) {
+     $trail->parent('izin_berobat');
+     $trail->push('Tambah Izin Berobat',);
+});  
+Breadcrumbs::for('ubah_izin_berobat', function (BreadcrumbTrail $trail) {
+     $trail->parent('izin_berobat');
+     $trail->push('Ubah Izin Berobat');
+}); 
+/** Izin Istirahat */
+Breadcrumbs::for('izin_istirahat', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('istirahat.dataizinistirahat'));
+     $trail->push('Data Izin Istirahat',route('istirahat.dataizinistirahat') );
+});  
+Breadcrumbs::for('tambah_izin_istirahat', function (BreadcrumbTrail $trail) {
+     $trail->parent('izin_istirahat');
+     $trail->push('Tambah Izin Istirahat',);
+});  
+Breadcrumbs::for('ubah_izin_istirahat', function (BreadcrumbTrail $trail) {
+     $trail->parent('izin_istirahat');
+     $trail->push('Ubah Izin Istirahat');
+}); 
+/** Surat Rujukan */
+Breadcrumbs::for('surat_rujukan', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.datasuratrujukan'));
+     $trail->push('Data Surat Rujukan',route('superadmin.datasuratrujukan') );
+});  
+Breadcrumbs::for('tambah_surat_rujukan', function (BreadcrumbTrail $trail) {
+     $trail->parent('surat_rujukan');
+     $trail->push('Tambah Surat Rujukan',);
+});  
+Breadcrumbs::for('ubah_surat_rujukan', function (BreadcrumbTrail $trail) {
+     $trail->parent('surat_rujukan');
+     $trail->push('Ubah Surat Rujukan');
+}); 
+/** Keterangan Sehat */
+Breadcrumbs::for('keterangan_sehat', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.dataketerangansehat'));
+     $trail->push('Data Keterangan Sehat',route('superadmin.dataketerangansehat') );
+});  
+Breadcrumbs::for('tambah_keterangan_sehat', function (BreadcrumbTrail $trail) {
+     $trail->parent('keterangan_sehat');
+     $trail->push('Tambah Keterangan Sehat',);
+});  
+Breadcrumbs::for('ubah_keterangan_sehat', function (BreadcrumbTrail $trail) {
+     $trail->parent('keterangan_sehat');
+     $trail->push('Ubah Keterangan Sehat');
+}); 
+/** Tindakan Medis */
+Breadcrumbs::for('tindakan_medis', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.datatindakanmedis'));
+     $trail->push('Data Persetujuan Tindikan Medis',route('superadmin.datatindakanmedis') );
+});  
+Breadcrumbs::for('tambah_tindakan_medis', function (BreadcrumbTrail $trail) {
+     $trail->parent('tindakan_medis');
+     $trail->push('Tambah Persetujuan Tindikan Medis',);
+});  
+Breadcrumbs::for('ubah_tindakan_medis', function (BreadcrumbTrail $trail) {
+     $trail->parent('tindakan_medis');
+     $trail->push('Ubah Persetujuan Tindikan Medis');
+}); 
+
+Breadcrumbs::for('ubah_password', function (BreadcrumbTrail $trail) {
+     $trail->push('Akun');
+     $trail->push('Ubah Kata Sandi');
+}); 
+Breadcrumbs::for('ubah_profil', function (BreadcrumbTrail $trail) {
+     $trail->push('Akun');
+     $trail->push('Ubah Profil User');
+}); 

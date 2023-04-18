@@ -2,6 +2,7 @@
 
 @section('title', 'Izin Istirahat')
 @section('izinistirahat', 'active')
+@section('breadcrumb', 'tambah_izin_istirahat')
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 

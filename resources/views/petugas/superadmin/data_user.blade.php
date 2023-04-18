@@ -37,7 +37,7 @@
                 <table class="table table-hover" id="table1" >
                     <thead>
                         <tr>
-                            <th>Tanggal dibuat</th>
+                            {{-- <th>Tanggal dibuat</th> --}}
                             <th>Nama</th>
                             <th>Level</th>
                             <th>Email</th>
@@ -49,9 +49,9 @@
                     <tbody>
                         @foreach ($users as $user)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</B>
+                            {{-- <td><B>{{ Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($user->created_at)->format('H:i:s') }}
-                            </td>
+                            </td> --}}
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->level->nama_level }}</td>
                             <td>{{ $user->email }}</td>
@@ -61,8 +61,8 @@
                             <span class="badge bg-primary">Aktif</span>
                             @else   
                             <span class="badge bg-danger">Tidak Aktif</span>
-                            </td>
                             @endif
+                            </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/view/user/{{ $user->id }}" class="btn btn-outline-secondary" title="Lihat detail data petugas"><i class="bi  bi-eye-fill"></i></a>

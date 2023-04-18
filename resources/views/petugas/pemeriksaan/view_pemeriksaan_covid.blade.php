@@ -3,7 +3,8 @@
 @section('screen', 'active')
 @section('covid', 'active')
 
-@section('title', 'Data Pemeriksaan Covid-19')
+@section('title', 'Lihat Data Pemeriksaan Covid-19')
+@section('breadcrumb', 'lihat_pemeriksaan_covid')
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
@@ -25,7 +26,7 @@
 
 <div class="page-heading">
     <div class="page-title">
-        @section('judul', 'Data Pemeriksaan Covid-19')
+        @section('judul', 'Lihat Data Pemeriksaan Covid-19')
         @section('container')
         <div class="row">
             <div class="col-12 col-md-6 order-md-2 order-first">

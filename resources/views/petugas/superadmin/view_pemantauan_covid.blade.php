@@ -4,6 +4,7 @@
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('pemantauan', 'active')
+@section('breadcrumb', 'lihat_pemantauan_covid')
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">

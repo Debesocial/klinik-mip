@@ -2,6 +2,7 @@
 
 @section('title', 'Izin Berobat')
 @section('izinberobat', 'active')
+@section('breadcrumb', 'tambah_izin_berobat')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 <link rel="stylesheet" href="assets/vendors/choices.js/choices.min.css" />
@@ -135,11 +136,9 @@
                                                     </div>
 
 
-                                            <div class="col-sm-4 d-flex justify-content-end">
+                                            <div class="col-sm-6 d-flex justify-content-end">
                                                 <button type="submit"
-                                                    class="btn btn-primary me-1 mb-1">Simpan</button>
-                                                <button type="reset"
-                                                    class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                    class="btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>

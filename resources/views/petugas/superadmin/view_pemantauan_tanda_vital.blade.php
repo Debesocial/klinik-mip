@@ -4,6 +4,7 @@
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('tandavital', 'active')
+@section('breadcrumb', 'lihat_pemantauan_tanda_vital')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 

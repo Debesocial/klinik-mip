@@ -37,7 +37,7 @@
                 <table class="table table-hover" id="table1" width="100%">
                     <thead>
                         <tr>
-                            <th>Tanggal</th>
+                            {{-- <th>Tanggal</th> --}}
                             <th>Nama</th>
                             <th>Umur</th>
                             <th>Jenis Kelamin</th>
@@ -51,9 +51,9 @@
                     <tbody>
                         @foreach ($pasiens as $patient)
                         <tr>
-                            <td style="white-space: nowrap;"><B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
+                            {{-- <td style="white-space: nowrap;"><B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($patient->created_at)->format('H:i:s') }}
-                            </td>
+                            </td> --}}
                             <td>{{ $patient['nama_pasien'] }}</td>
                             <td><?php
                                 $tanggal_lahir = $patient->tanggal_lahir;
