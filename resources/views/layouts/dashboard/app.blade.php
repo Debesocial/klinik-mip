@@ -26,7 +26,9 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	{{-- <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
-
+	
+	{{-- Selectize --}}
+	<link href="https://cdn.bootcdn.net/ajax/libs/selectize.js/0.15.2/css/selectize.bootstrap5.min.css" rel="stylesheet">
 	@yield('css')
 
 	<style>
@@ -90,8 +92,12 @@
 	<script src="{{asset ('ref/assets/vendors/jquery-datatables/jquery.dataTables.min.js')}}"></script>
 	<script src="{{asset ('ref/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js')}}"></script>
 	<script src="{{asset ('ref/assets/vendors/fontawesome/all.min.js')}}"></script>
-
+	{{-- stepper --}}
 	<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+	{{-- selectize --}}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js" integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ==" crossorigin="anonymous" referrerpolicy="no-referrer" ></script>
+
+	
 
 
 	<script src="{{ asset('assets/js/mazer.js') }}"></script>
