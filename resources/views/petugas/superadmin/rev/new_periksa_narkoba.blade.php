@@ -162,7 +162,8 @@
                             <div class="d-flex justify-content-between">
                                 <div></div>
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="lanjut1()"><b>Selanjutnya</b></button>
+                                    onclick="lanjut1()"><b>Selanjutnya</b> <i
+                                        class="bi bi-arrow-right-circle"></i></button>
                             </div>
                         </div>
                         <div id="test-nl-2" class="content">
@@ -251,9 +252,11 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.previous()"><b>Sebelumnya</b></button>
+                                    onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
+                                    <b>Sebelumnya</b></button>
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="lanjut2()"><b>Selanjutnya</b></button>
+                                    onclick="lanjut2()"><b>Selanjutnya</b> <i
+                                        class="bi bi-arrow-right-circle"></i></button>
                             </div>
                         </div>
                         <div id="test-nl-3" class="content">
@@ -389,9 +392,11 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.previous()"><b>Sebelumnya</b></button>
+                                    onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
+                                    <b>Sebelumnya</b></button>
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="lanjut3()"><b>Selanjutnya</b></button>
+                                    onclick="lanjut3()"><b>Selanjutnya</b> <i
+                                        class="bi bi-arrow-right-circle"></i></button>
                             </div>
                         </div>
                         <div id="test-nl-4" class="content">
@@ -512,9 +517,10 @@
                             </div>
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.previous()"><b>Sebelumnya</b></button>
+                                    onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
+                                    <b>Sebelumnya</b></button>
                                 <button type="submit" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.next()"><b>Simpan</b></button>
+                                    onclick="stepper2.next()"><b>Simpan</b> <i class="bi bi-save"></i></button>
                             </div>
                         </div>
                     </form>
