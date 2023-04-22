@@ -76,10 +76,10 @@ class SuperAdminController extends Controller
 
         $validatedData = $request->validate([
             'pasien_id' => 'required',
-            'penggunaan_obat' => 'required',
-            'jenis_obat' => 'required',
-            'asal_obat' => 'required',
-            'terakhir_digunakan' => 'required',
+            // 'penggunaan_obat' => 'required',
+            // 'jenis_obat' => 'required',
+            // 'asal_obat' => 'required',
+            // 'terakhir_digunakan' => 'required',
             'amp' => 'required',
             'met' => 'required',
             'thc' => 'required',

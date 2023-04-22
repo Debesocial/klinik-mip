@@ -4,112 +4,120 @@
 @section('breadcrumb', 'lihat_data_pasien')
 @section('container')
 
-<section id="multiple-column-form">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 border-end">
-                    <h5>Data Pasien</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th>Kategori pasien</th>
-                                    <td>: {{ $pasien->kategori->nama_kategori }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nama Pasien</th>
-                                    <td>: {{ ucwords($pasien->nama_pasien) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nomor Induk Karyawan</th>
-                                    <td>: {{ $pasien->NIK }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nomor Induk Kependudukan</th>
-                                    <td>: {{ $pasien->penduduk ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Perusahaan</th>
-                                    <td>: {{ $pasien->perusahaan->nama_perusahaan_pasien }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Divisi</th>
-                                    <td>: {{ $pasien->divisi->nama_divisi_pasien }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Jabatan</th>
-                                    <td>: {{ $pasien->jabatan->nama_jabatan }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Tempat/Tanggal Lahir</th>
-                                    <td>: {{ $pasien->tempat_lahir.', '.$pasien->tanggal_lahir }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Jenis Kelamin</th>
-                                    <td>: {{ $pasien->jenis_kelamin }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td>: {{ $pasien->alamat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat Mess</th>
-                                    <td>: {{ $pasien->alamat_mess ?? '-' }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Pekerjaan</th>
-                                    <td>: {{ $pasien->pekerjaan }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Telepon</th>
-                                    <td>: {{ $pasien->telepon }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>: {{ $pasien->email ?? '-' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+    <section id="multiple-column-form">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>Data Pasien</h5>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>Kategori pasien</th>
+                                                <td>: {{ $pasien->kategori->nama_kategori }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nama Pasien</th>
+                                                <td>: {{ ucwords($pasien->nama_pasien) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nomor Induk Karyawan</th>
+                                                <td>: {{ $pasien->NIK }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nomor Induk Kependudukan</th>
+                                                <td>: {{ $pasien->penduduk ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Perusahaan</th>
+                                                <td>: {{ $pasien->perusahaan->nama_perusahaan_pasien }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Divisi</th>
+                                                <td>: {{ $pasien->divisi->nama_divisi_pasien }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jabatan</th>
+                                                <td>: {{ $pasien->jabatan->nama_jabatan }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tempat/Tanggal Lahir</th>
+                                                <td>: {{ $pasien->tempat_lahir . ', ' . $pasien->tanggal_lahir }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Jenis Kelamin</th>
+                                                <td>: {{ $pasien->jenis_kelamin }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Alamat</th>
+                                                <td>: {{ $pasien->alamat }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Alamat Mess</th>
+                                                <td>: {{ $pasien->alamat_mess ?? '-' }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Pekerjaan</th>
+                                                <td>: {{ $pasien->pekerjaan }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Telepon</th>
+                                                <td>: {{ $pasien->telepon }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+                                                <td>: {{ $pasien->email ?? '-' }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <h5>Data Keluarga</h5>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th>Nama Keluarga</th>
-                                    <td>{{ $pasien->keluarga->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Hubungan Keluarga</th>
-                                    <td>{{ $pasien->keluarga->hubungan }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td>{{ $pasien->keluarga->alamat }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Pekerjaan</th>
-                                    <td>{{ $pasien->keluarga->pekerjaan }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Nomor Telepon</th>
-                                    <td>{{ $pasien->keluarga->telepon }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{{ $pasien->keluarga->email ?? '-' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-md-6">
+                        <h5>Data Keluarga</h5>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nama Keluarga</th>
+                                                <td>{{ $pasien->keluarga->nama }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Hubungan Keluarga</th>
+                                                <td>{{ $pasien->keluarga->hubungan }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Alamat</th>
+                                                <td>{{ $pasien->keluarga->alamat }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Pekerjaan</th>
+                                                <td>{{ $pasien->keluarga->pekerjaan }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Nomor Telepon</th>
+                                                <td>{{ $pasien->keluarga->telepon }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Email</th>
+                                                <td>{{ $pasien->keluarga->email ?? '-' }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- <div class="row match-height">
+        {{-- <div class="row match-height">
         <div class="col-12">
             <div class="card">
                 <div class="card-content">
@@ -160,7 +168,7 @@
                                         <label for="tanggal_lahir">Tanggal Lahir </label>
                                         <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" value="{{ $pasien['tanggal_lahir'] }}" disabled>
                                     </div> --}}
-                                    {{-- <div class="form-group">
+        {{-- <div class="form-group">
                                         <label for="umur">Umur </label>
                                         <input type="number" id="umur" class="form-control" name="umur" value="<?php
                                         //$tanggal_lahir = $pasien['tanggal_lahir'];
@@ -171,7 +179,7 @@
                                         // echo " Tahun ";
                                         ?>" disabled>
                                     </div> --}}
-                                    {{-- <div class="form-group">
+        {{-- <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin </label>
                                         <input type="text" id="jenis_kelamin" class="form-control" name="jenis_kelamin" value="{{ $pasien['jenis_kelamin'] }}" disabled>
                                     </div>
@@ -233,13 +241,13 @@
                                                         name="email_keluarga" value="{{ $pasien->keluarga->email }}" disabled>
                                             </div> --}}
 
-                                            {{-- <div class="form-group">
+        {{-- <div class="form-group">
                                                 <div class="col-4">
                                                     <button type="button" class="form-control btn btn-secondary me-1 mb-1" onclick="javascript:window.history.back();"> Kembali</button>
                                                 </div>
                                             </div> --}}
-                                           
-                                        {{-- </div>
+
+        {{-- </div>
                                 </form>
                             </div>
                         </form>
@@ -248,6 +256,6 @@
             </div>
         </div>
     </div> --}}
-</section>
+    </section>
 
 @endsection
