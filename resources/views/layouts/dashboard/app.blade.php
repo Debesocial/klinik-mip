@@ -105,7 +105,7 @@
     <script src="{{ asset('assets/js/mazer.js') }}"></script>
     <script>
         // Jquery Datatable
-        let jquery_datatable = $("#table1").DataTable({
+        let jquery_datatable = $("table[id*='table1']").DataTable({
             "language": {
                 "search": "Cari:",
                 "lengthMenu": "Tampilkan _MENU_ data",

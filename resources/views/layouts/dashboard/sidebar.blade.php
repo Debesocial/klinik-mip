@@ -250,11 +250,11 @@
                                 <a href="{{ route('pemeriksaan.datapemeriksaancovid') }}"> Pemeriksaan Covid</a>
                             </li>
                             @endif
-                            @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                            {{-- @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item @yield('pemantauan')">
                                 <a href="{{ route('superadmin.datapemantauancovid') }}"> Pemantauan Covid</a>
                             </li>
-                            @endif
+                            @endif --}}
                             @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <li class="submenu-item @yield('tandavital')">
                                 <a href="{{ route('superadmin.datapemantauantandavital') }}"> Pemantauan Tanda Vital</a>

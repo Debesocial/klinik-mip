@@ -124,9 +124,10 @@ class SuperAdminController extends Controller
         $pasien_id = Pasien::get();
         $pemeriksaanantigen = PemeriksaanAntigen::all();
         $covid = PemeriksaanCovid::all();
+        
 
 
-        return view('petugas.superadmin.pemeriksaan_covid', compact('pasien_id', 'pemeriksaanantigen'));
+        return view('petugas.superadmin.rev.new_pemeriksaan_covid', compact('pasien_id', 'pemeriksaanantigen'));
     }
 
     public function addpemeriksaancovid(Request $request)
@@ -1306,7 +1307,7 @@ class SuperAdminController extends Controller
         $pasien->pekerjaan = $request->input('pekerjaan');
         $pasien->telepon = $request->input('telepon');
         $pasien->email = $request->input('email');
-        $pasien->alergi = $request->input('alergi');
+        // $pasien->alergi = $request->input('alergi');
         $pasien->alergi_obat = $request->input('alergi_obat');
         $pasien->hamil_menyusui = $request->input('hamil_menyusui');
         $pasien->update();

@@ -433,8 +433,8 @@ Breadcrumbs::for('lihat_pemeriksaan_covid', function (BreadcrumbTrail $trail) {
 
 /** Pemantauan Covid */
 Breadcrumbs::for('pemantauan_covid', function (BreadcrumbTrail $trail) {
-     $trail->push('Pemeriksaan', route('superadmin.datapemantauancovid'));
-     $trail->push('Data Pemantauan Covid',route('superadmin.datapemantauancovid') );
+     $trail->push('Pemeriksaan', route('pemeriksaan.datapemeriksaancovid'));
+     $trail->push('Data Pemantauan Covid',route('pemeriksaan.datapemeriksaancovid') );
 });  
 Breadcrumbs::for('tambah_pemantauan_covid', function (BreadcrumbTrail $trail) {
      $trail->parent('pemantauan_covid');

@@ -51,8 +51,8 @@
                                         </div>
                                     </div>
                                     
-
-                                    <div class="col-md-12">
+                                    <input type="text" name="level_id" value="6" hidden>
+                                    {{-- <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="level_id">Level Petugas <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="level_id" id="level_id" required>
@@ -61,7 +61,7 @@
                                                 @endforeach 
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-12">
                                         <div class="form-group">

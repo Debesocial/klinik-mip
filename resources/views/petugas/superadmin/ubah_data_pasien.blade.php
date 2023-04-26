@@ -141,11 +141,11 @@
                                 <div class="col-md-6 col-12">
                                     <h5 class="mb-4">Data Keluarga</h5>
                                     <div class="form-group">
-                                        <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" value="{{ $pasien->keluarga->nama }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <label for="nama_keluarga">Nama Keluarga</label>
+                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" value="{{ $pasien->keluarga->nama }}" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="hubungan_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
+                                        <label for="hubungan_keluarga">Hubungan Keluarga</label>
                                         <select class="choices form-select" id="hubungan_keluarga" name="hubungan_keluarga">
                                             <option value="{{ $pasien->keluarga->hubungan }}">{{ $pasien->keluarga->hubungan }}</option>
                                            
@@ -159,16 +159,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" value="{{ $pasien->keluarga->alamat }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <label for="alamat_keluarga">Alamat</label>
+                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" value="{{ $pasien->keluarga->alamat }}" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
-                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" value="{{ $pasien->keluarga->pekerjaan }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <label for="pekerjaan_keluarga">Pekerjaan</label>
+                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" value="{{ $pasien->keluarga->pekerjaan }}" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="telepon_keluarga">Nomor Telepon <b class="color-red">*</b></label>
-                                        <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" value="{{ $pasien->keluarga->telepon }}" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <label for="telepon_keluarga">Nomor Telepon</label>
+                                        <input type="text" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" value="{{ $pasien->keluarga->telepon }}" maxlength="13" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="email_keluarga">Email </label>

@@ -152,12 +152,12 @@
                                 <div class="col-md-6 col-12">
                                     <h5 class="mb-4">Data Keluarga</h5>
                                     <div class="form-group">
-                                        <label for="nama_keluarga">Nama Keluarga <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" placeholder="Masukkan Nama Keluarga" required >
+                                        <label for="nama_keluarga">Nama Keluarga</label>
+                                        <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" placeholder="Masukkan Nama Keluarga" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="nama_keluarga">Hubungan Keluarga <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="hubungan_keluarga" required >
+                                        <label for="nama_keluarga">Hubungan Keluarga</label>
+                                        <select class="choices form-select" name="hubungan_keluarga" >
                                             <option disabled selected value="">Pilih Hubungan Keluarga</option>
                                             <option value="Ayah">Ayah</option>
                                             <option value="Ibu">Ibu</option>
@@ -169,16 +169,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat_keluarga">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" required >
+                                        <label for="alamat_keluarga">Alamat</label>
+                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="pekerjaan_keluarga">Pekerjaan <b class="color-red">*</b></label>
-                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" placeholder="Masukkan Pekerjaan Keluarga" required >
+                                        <label for="pekerjaan_keluarga">Pekerjaan</label>
+                                        <input type="text" id="pekerjaan_keluarga" class="form-control" name="pekerjaan_keluarga" placeholder="Masukkan Pekerjaan Keluarga" >
                                     </div>
                                     <div class="form-group">
-                                        <label for="telepon_keluarga">Nomor Telepon <b class="color-red">*</b></label>
-                                        <input type="number" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" required >
+                                        <label for="telepon_keluarga">Nomor Telepon</label>
+                                        <input type="number" id="telepon_keluarga" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon_keluarga" placeholder="Masukkan No Telepon Keluarga" maxlength="13" >
                                     </div>
                                     <div class="form-group">
                                         <label for="email_keluarga">Email</label>

@@ -1,21 +1,12 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Pemeriksaan Narkoba')
-@section('breadcrumb', 'tambah_pemeriksaan_narkoba')
+@section('title', 'Ubah Pemeriksaan Narkoba')
 @section('pemeriksaan', 'active')
+@section('breadcrumb', 'ubah_pemeriksaan_narkoba')
 @section('screen', 'active')
 @section('narko', 'active')
-
-@section('judul', 'Data Pemeriksaan Narkoba')
+ @section('judul', 'Ubah Pemeriksaan Narkoba')
 @section('container')
-@section('css')
-    <style>
-        input[type=radio] {
-            transform: scale(1.5);
-            margin-right: 0.3rem;
-        }
-    </style>
-@stop
 
 <section>
     <div class="card">
@@ -25,7 +16,7 @@
                     <div class="step" data-target="#test-nl-1">
                         <button type="button" class="btn step-trigger">
                             <span class="bs-stepper-circle"><i class="bi bi-person-fill"></i></span>
-                            <span class="bs-stepper-label">Pilih Pasien</span>
+                            <span class="bs-stepper-label">Pasien</span>
                         </button>
                     </div>
                     <div class="line"></div>
@@ -55,36 +46,13 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form class="form needs-validation" action="/periksa/narkoba" method="post"
+                    <form class="form needs-validation" action="/ubah/pemeriksaan/narkoba/{{$narkoba->id}}" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
-                        <input type="hidden" name="pasien_id">
+                        <input type="hidden" name="pasien_id" value="{{ $narkoba->pasien->id }}">
                         <div id="test-nl-1" class="content">
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Silahkan pilih Pasien berdasarkan <b>ID rekam
-                                                medis</b><b class="color-red"> *</b></label>
-                                        <select id="select_pasien_id" class="form-select" onchange="pilihPasien(this)"
-                                            required>
-                                            <option value="" selected>Pasien</option>
-                                            @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}"
-                                                    perusahaan="{{ $pas->perusahaan->nama_perusahaan_pasien }}"
-                                                    divisi={{ $pas->divisi->nama_divisi_pasien }}
-                                                    jabatan={{ $pas->jabatan->nama_jabatan }}>
-                                                    {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-feedback">
-                                            Data sudah benar
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Silahkan pilih salah satu pasien.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-3" id="detail_pasien" style="display: none">
+                                <div class="row mt-3" id="detail_pasien">
                                     <div class="col">
                                         <div class="card bg-light">
                                             <div class="card-body">
@@ -94,27 +62,27 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
+                                                                    <td id="nama">: {{ $narkoba->pasien->nama_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
+                                                                    <td id="rekam_medis">: {{ $narkoba->pasien->id_rekam_medis }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
+                                                                    <td id="nomor_induk_karyawan">: {{ $narkoba->pasien->NIK }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
+                                                                    <td id="ttl">: {{ $narkoba->pasien->tempat_lahir }}, {{ $narkoba->pasien->tanggal_lahir }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Alamat</th>
-                                                                    <td id="alamat"></td>
+                                                                    <td id="alamat">: {{ $narkoba->pasien->alamat }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
+                                                                    <td id="pekerjaan">: {{ $narkoba->pasien->pekerjaan }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -122,30 +90,29 @@
                                                     <div class="col-md-6">
                                                         <table>
                                                             <tbody>
-
                                                                 <tr>
                                                                     <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
+                                                                    <td id="perusahaan">: {{ $narkoba->pasien->perusahaan->nama_perusahaan_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Divisi</th>
-                                                                    <td id="divisi"></td>
+                                                                    <td id="divisi">: {{ $narkoba->pasien->divisi->nama_divisi_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
+                                                                    <td id="jabatan">: {{ $narkoba->pasien->jabatan->nama_jabatan }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
+                                                                    <td id="jenis_kelamin">: {{ $narkoba->pasien->jenis_kelamin }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Telepon</th>
-                                                                    <td id="telepon"></td>
+                                                                    <td id="telepon">: {{ $narkoba->pasien->telepon }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Email</th>
-                                                                    <td id="email"></td>
+                                                                    <td id="email">: {{ $narkoba->pasien->email }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -162,7 +129,7 @@
                             <div class="d-flex justify-content-between">
                                 <div></div>
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="lanjut1()"><b>Selanjutnya</b> <i
+                                    onclick="stepper2.next()"><b>Selanjutnya</b> <i
                                         class="bi bi-arrow-right-circle"></i></button>
                             </div>
                         </div>
@@ -171,30 +138,30 @@
                                 <div class="row mb-3">
                                     <div class="col" id="pertanyaan-obatobatan">
                                         <p class="">Apakah pasien ada menggunakan obat-obatan dalam <b>seminggu
-                                                terakhir</b> <b class="color-red"> *</b></p>
+                                                terakhir</b> <b class="color-red"> *</b></p>      
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="obat-obatan"
-                                                id="obat-obatan1" value="tidak" checked>
+                                                id="obat-obatan1" value="tidak" {{ ($narkoba->penggunaan_obat==null)? 'checked':'' }}>
                                             <label class="form-check-label" for="obat-obatan1">
                                                 Tidak
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="obat-obatan"
-                                                id="obat-obatan2" value="ya">
+                                                id="obat-obatan2" value="ya" {{ ($narkoba->penggunaan_obat!=null)? 'checked':'' }}>
                                             <label class="form-check-label" for="obat-obatan2">
                                                 Ya
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-md-8" id="form-obatobatan" style="display: none;">
+                                    <div class="col-md-8" id="form-obatobatan" style="{{ $narkoba->penggunaan_obat ?? 'display:none' }}" >
                                         <div class="card bg-light">
                                             <div class="card-body">
                                                 <div class="mb-3">
                                                     <label class="form-label">Cara Penggunaan Obat <b
                                                             class="color-red"> *</b></label>
                                                     <input type="text" id="penggunaan_obat" class="form-control"
-                                                        name="penggunaan_obat" placeholder="Masukkan cara penggunaan">
+                                                        name="penggunaan_obat" placeholder="Masukkan cara penggunaan" value="{{ $narkoba->penggunaan_obat }}">
                                                     <div class="invalid-feedback" id="inval_penggunaan_obat">
                                                         Cara penggunaan obat harus diisi
                                                     </div>
@@ -206,7 +173,7 @@
                                                     <label class="form-label">Jenis Obat <b class="color-red">
                                                             *</b></label>
                                                     <input type="text" id="jenis_obat" class="form-control"
-                                                        name="jenis_obat" placeholder="Masukkan jenis obat">
+                                                        name="jenis_obat" placeholder="Masukkan jenis obat" value="{{ $narkoba->jenis_obat }}">
                                                     <div class="invalid-feedback" id="inval_jenis_obat">
                                                         Jenis obat harus diisi
                                                     </div>
@@ -218,7 +185,7 @@
                                                     <label class="form-label">Asal Obat <b class="color-red">
                                                             *</b></label>
                                                     <input type="text" id="asal_obat" class="form-control"
-                                                        name="asal_obat" placeholder="Masukkan asal obat">
+                                                        name="asal_obat" placeholder="Masukkan asal obat" value="{{ $narkoba->asal_obat }}">
                                                     <div class="invalid-feedback" id="inval_asal_obat">
                                                         Asal obat harus diisi
                                                     </div>
@@ -231,7 +198,7 @@
                                                             *</b></label>
                                                     <input type="text" id="terakhir_digunakan"
                                                         class="form-control" name="terakhir_digunakan"
-                                                        placeholder="Terakhir Digunakan">
+                                                        placeholder="Terakhir Digunakan" value="{{ $narkoba->terakhir_digunakan }}">
                                                     <div class="invalid-feedback" id="inval_terakhir_digunakan">
                                                         Terakhir digunakan harus diisi
                                                     </div>
@@ -240,7 +207,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label class="form-label">File Pendukung</label>
+                                                    <label class="form-label">File Pendukung :</label>
+                                                    <a href="{{ $narkoba->file_pendukung ?? '#' }}">{{ $narkoba->file_pendukung ?? "-" }}</a>
                                                     <input class="form-control" type="file" id="dokumen"
                                                         name="dokumen" multiple>
                                                 </div>
@@ -271,12 +239,11 @@
                                                         <th>Amphetamine(AMP) <b class="text-danger">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="amp" id="amp" value="0">
-
+                                                                name="amp" id="amp" value="0" {{ ($narkoba->amp==0)? 'checked':'' }}>
                                                             Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="amp" id="amp" value="1">
+                                                                name="amp" id="amp" value="1" {{ ($narkoba->amp==1)? 'checked':'' }}>
 
                                                             Positif
                                                             </label>
@@ -289,13 +256,13 @@
                                                         <th>Methamphetamine(MET) <b class="color-red">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="met" id="met" value="0">
+                                                                name="met" id="met" value="0" {{ ($narkoba->met==0)? 'checked':'' }}>
                                                             <label class="form-check-label" for="tidak">
 
                                                                 Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="met" id="met" value="1">
+                                                                name="met" id="met" value="1" {{ ($narkoba->met==1)? 'checked':'' }}>
 
                                                             Positif
                                                             </label>
@@ -308,13 +275,13 @@
                                                         <th>TetraHydroCannibinol(THC) <b class="color-red">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="thc" id="thc" value="0">
+                                                                name="thc" id="thc" value="0" {{ ($narkoba->thc==0)? 'checked':'' }}>
                                                             <label class="form-check-label" for="tidak">
 
                                                                 Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="thc" id="thc" value="1">
+                                                                name="thc" id="thc" value="1" {{ ($narkoba->thc==1)? 'checked':'' }}>
                                                             <label class="form-check-label" for="ya">
 
                                                                 Positif
@@ -328,13 +295,13 @@
                                                         <th>Benzodiazepine(BZO) <b class="color-red">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="bzo" id="bzo" value="0">
+                                                                name="bzo" id="bzo" value="0" {{ ($narkoba->bzo==0)? 'checked':'' }}>
                                                             <label class="form-check-label" for="tidak">
 
                                                                 Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="bzo" id="bzo" value="1">
+                                                                name="bzo" id="bzo" value="1" {{ ($narkoba->bzo==1)? 'checked':'' }}>
                                                             <label class="form-check-label" for="ya">
 
                                                                 Positif
@@ -348,13 +315,13 @@
                                                         <th>Morphine(MOP) <b class="color-red">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="mop" id="mop" value="0">
+                                                                name="mop" id="mop" value="0" {{ ($narkoba->mop==0)? 'checked':'' }}>
                                                             <label class="form-check-label" for="tidak">
 
                                                                 Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="mop" id="mop" value="1">
+                                                                name="mop" id="mop" value="1" {{ ($narkoba->mop==1)? 'checked':'' }}>
                                                             <label class="form-check-label" for="ya">
 
                                                                 Positif
@@ -368,13 +335,13 @@
                                                         <th>Cocaine(COC) <b class="color-red">*</b></th>
                                                         <td>
                                                             <input class="form-check-input" type="radio"
-                                                                name="coc" id="coc" value="0">
+                                                                name="coc" id="coc" value="0" {{ ($narkoba->coc==0)? 'checked':'' }}>
                                                             <label class="form-check-label" for="no">
 
                                                                 Negatif
                                                             </label>&emsp;
                                                             <input class="form-check-input" type="radio"
-                                                                name="coc" id="coc" value="1">
+                                                                name="coc" id="coc" value="1" {{ ($narkoba->coc==1)? 'checked':'' }}>
                                                             <label class="form-check-label" for="yes">
 
                                                                 Positif
@@ -416,23 +383,23 @@
                                                     <tbody>
                                                         <tr>
                                                             <th>Nama Pasien</th>
-                                                            <td id="nama"></td>
+                                                            <td id="nama">: {{ $narkoba->pasien->nama_pasien }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>ID Rekam Medis</th>
-                                                            <td id="rekam_medis"></td>
+                                                            <td id="rekam_medis">: {{ $narkoba->pasien->id_rekam_medis }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Tempat Tanggal Lahir</th>
-                                                            <td id="ttl"></td>
+                                                            <td id="ttl">: {{ $narkoba->pasien->tempat_lahir.', '.$narkoba->pasien->tanggal_lahir }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Alamat</th>
-                                                            <td id="alamat"></td>
+                                                            <td id="alamat">: {{ $narkoba->pasien->alamat }}</td>
                                                         </tr>
                                                         <tr>
                                                             <th>Pekerjaan</th>
-                                                            <td id="pekerjaan"></td>
+                                                            <td id="pekerjaan">: {{ $narkoba->pasien->pekerjaan }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -526,183 +493,113 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
-
-    @section('js')
-        <script>
-            var value_obatobatan = $('input[name="obat-obatan"]:checked').val();
-            var stepper2 = new Stepper(document.querySelector('#stepper2'), {
-                linear: true,
-                animation: true
-            })
-            $(document).ready(function() {
-                $('#select_pasien_id').select2({
-                    theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
-                });
-
-                tampilkanFormObat();
-                // pilihPasien();
-
-                // Obat-obatan
-                $('input[name="obat-obatan"]').change(function() {
-                    setObatObatan($(this).val());
-                    if ($(this).val() === "ya") {
-                        $('#pertanyaan-obatobatan').removeClass().addClass('col-md-4');
-                        $('#form-obatobatan').fadeIn('slow')
-
-                    } else {
-                        clearFormObat();
-                        $('#form-obatobatan').hide()
-                        $('#pertanyaan-obatobatan').removeClass().addClass('col');
-                    }
-                })
-                $('input').keyup(function(event) {
-                    if ($(this).hasClass('is-invalid')) {
-                        $(this).removeClass('is-invalid')
-                    }
-                })
-                $('#select_pasien_id').change(function() {
-                    if ($(this).val() !== "") {
-                        $(this).removeClass('is-invalid')
-
-                    }
-                })
-
-                $('input[class="form-check-input"]').click(function() {
-                    $(this).siblings('.invalid-feedback').hide()
-                })
-            });
-
-            function setObatObatan(value) {
-                value_obatobatan = value;
-            }
-
-
-            function pilihPasien(data) {
-                var pasien_index = $('#select_pasien_id').val();
-                if (pasien_index === '') {
-                    $('#detail_pasien').fadeOut('slow')
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
-                    $('.invalid-feedback').addClass('d-block')
-                } else {
-                    var pasien = @json($pasien_id)[pasien_index];
-                    $('[name=pasien_id]').val(pasien.id)
-                    $('td#nama').text(": " + pasien.nama_pasien);
-                    $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                    $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                    $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                    $('td#alamat').text(": " + pasien.alamat)
-                    $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                    $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                    $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                    $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                    $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                    $('td#telepon').text(": " + pasien.telepon)
-                    var email = pasien.email ?? '-'
-                    $('td#email').text(": " + email);
-                    $('.invalid-feedback').removeClass('d-block')
-                    $('#detail_pasien').fadeIn('slow')
-
-                }
-            }
-
-            function tampilkanFormObat() {
-                if (value_obatobatan === "ya") {
+</section>
+@section('js')
+    <script>
+        var value_obatobatan = $('input[name="obat-obatan"]:checked').val();
+        var dataAwal = @json($narkoba);
+        var stepper2 = new Stepper(document.querySelector('#stepper2'), {
+            linear: true,
+            animation: true
+        })
+        
+        $(document).ready(function(){
+            // Obat-obatan
+            $('input[name="obat-obatan"]').change(function() {
+                setObatObatan($(this).val());
+                if ($(this).val() === "ya") {
+                    resetFormObat();
                     $('#pertanyaan-obatobatan').removeClass().addClass('col-md-4');
                     $('#form-obatobatan').fadeIn('slow')
-                }
-            }
-
-            function lanjut1() {
-                var pasien_index = $('#select_pasien_id').val();
-                if (pasien_index == "") {
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
                 } else {
-                    $('#select_pasien_id').removeClass('is-invalid')
-                    $('#select_pasien_id').addClass('is-valid')
-                    stepper2.next()
+                    clearFormObat();
+                    $('#form-obatobatan').hide()
+                    $('#pertanyaan-obatobatan').removeClass().addClass('col');
                 }
-            }
+            })
+        })
+        function setObatObatan(value) {
+            value_obatobatan = value;
+        }
+        function clearFormObat() {
+            var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
+            inputs.forEach(input => {
+                $('input[name="' + input + '"]').val("");
+            });
+        }
+        function resetFormObat(){
+            var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
+            inputs.forEach(input => {
+                $('input[name="' + input + '"]').val(dataAwal[input]);
+            });
 
-            function lanjut2() {
-                var validated = true;
-                if (value_obatobatan === "tidak") {
-                    $('.invalid-feedback').removeClass('d-block')
-                    validated = true;
-                } else {
-                    var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
-                    inputs.forEach(input => {
-                        var value_input = $('input[name="' + input + '"]').val();
-                        if (value_input == "") {
-                            validated = false
-                            $('input[name="' + input + '"]').removeClass('is-valid')
-                            $('input[name="' + input + '"]').addClass('is-invalid')
-                        } else {
-                            $('input[name="' + input + '"]').removeClass('is-invalid')
-                            $('input[name="' + input + '"]').addClass('is-valid')
-                        }
-                    });
-                }
-                if (validated === true) {
-                    stepper2.next()
-                }
-            }
-
-            function lanjut3() {
-                var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc'];
-                var validation_hasil = true;
-                tests.forEach(test => {
-                    var value_test = $('input[name="' + test + '"]:checked').val()
-                    if (value_test === undefined) {
-                        $('#invalid-' + test).show();
-                        validation_hasil = false;
-                    }
-                    setReviewHasilNarkoba(test, value_test);
-                });
-                setReviewObat();
-
-                if (validation_hasil === true) {
-                    stepper2.next()
-                }
-            }
-
-            function clearFormObat() {
+        }
+        function lanjut2() {
+            var validated = true;
+            if (value_obatobatan === "tidak") {
+                $('.invalid-feedback').removeClass('d-block')
+                validated = true;
+            } else {
                 var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
                 inputs.forEach(input => {
-                    $('input[name="' + input + '"]').val("");
+                    var value_input = $('input[name="' + input + '"]').val();
+                    if (value_input == "") {
+                        validated = false
+                        $('input[name="' + input + '"]').removeClass('is-valid')
+                        $('input[name="' + input + '"]').addClass('is-invalid')
+                    } else {
+                        $('input[name="' + input + '"]').removeClass('is-invalid')
+                        $('input[name="' + input + '"]').addClass('is-valid')
+                    }
                 });
             }
-
-            function setReviewObat() {
-                if (value_obatobatan === "tidak") {
-                    $('#review-obat2').hide();
-                    $('#review-obat1').show();
-                } else {
-                    $('#review-obat2').show();
-                    $('#review-obat1').hide();
-                    var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
-                    inputs.forEach(input => {
-                        var value_input = $('input[name="' + input + '"]').val();
-                        $('td#' + input).text(": " + value_input);
-                    });
+            if (validated === true) {
+                stepper2.next()
+            }
+        }
+        function lanjut3() {
+            var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc'];
+            var validation_hasil = true;
+            tests.forEach(test => {
+                var value_test = $('input[name="' + test + '"]:checked').val()
+                if (value_test === undefined) {
+                    $('#invalid-' + test).show();
+                    validation_hasil = false;
                 }
-            }
+                setReviewHasilNarkoba(test, value_test);
+            });
+            setReviewObat();
 
-            function setReviewHasilNarkoba(test, val_test) {
-                if (val_test == "0")
-                    $('#review-' + test).html(': <span class="badge bg-primary">Negatif</span>')
-                else
-                    $('#review-' + test).html(': <span class="badge bg-danger">Positif</span>')
+            if (validation_hasil === true) {
+                stepper2.next()
             }
-        </script>
-    @stop
+        }
+        function setReviewObat() {
+            if (value_obatobatan === "tidak") {
+                $('#review-obat2').hide();
+                $('#review-obat1').show();
+            } else {
+                $('#review-obat2').show();
+                $('#review-obat1').hide();
+                var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
+                inputs.forEach(input => {
+                    var value_input = $('input[name="' + input + '"]').val();
+                    $('td#' + input).text(": " + value_input);
+                });
+            }
+        }
 
-</section>
-@include('sweetalert::alert')
+        function setReviewHasilNarkoba(test, val_test) {
+            if (val_test == "0")
+                $('#review-' + test).html(': <span class="badge bg-primary">Negatif</span>')
+            else
+                $('#review-' + test).html(': <span class="badge bg-danger">Positif</span>')
+        }
+    </script>
+@stop
+
+
+@include('sweetalert::alert') 
 @endsection

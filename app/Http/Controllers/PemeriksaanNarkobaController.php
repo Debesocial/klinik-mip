@@ -77,7 +77,7 @@ class PemeriksaanNarkobaController extends Controller
     {
         $narkoba = TestUrin::find($id);
 
-        return view('petugas.pemeriksaan.ubah_pemeriksaan_narkoba', compact('narkoba'));
+        return view('petugas.superadmin.rev.new_ubah_periksa_narkoba', compact('narkoba'));
     }
 
     function changepemeriksaannarkoba(Request $request, $id) {

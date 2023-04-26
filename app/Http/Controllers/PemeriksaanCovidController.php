@@ -22,6 +22,7 @@ use App\Models\KategoriPasien;
 use App\Models\KeteranganBerobat;
 use App\Models\Level;
 use App\Models\NamaPenyakit;
+use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
@@ -49,9 +50,10 @@ class PemeriksaanCovidController extends Controller
     public function datapemeriksaancovid()
     {
         $covid = PemeriksaanCovid::all();
+        $pemantauan = PemantauanCovid::all();
 
 
-        return view('petugas.pemeriksaan.data_pemeriksaan_covid', compact('covid'));
+        return view('petugas.pemeriksaan.data_pemeriksaan_covid', compact('covid', 'pemantauan'));
     }
 
     /**
