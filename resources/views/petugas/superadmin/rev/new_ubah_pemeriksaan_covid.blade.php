@@ -2,10 +2,13 @@
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('covid', 'active')
-@section('breadcrumb', 'tambah_pemeriksaan_covid')
-@section('title', 'Pemeriksaan Covid-19')
-@section('judul', 'Pemeriksaan Covid-19')
+@section('breadcrumb', 'ubah_pemeriksaan_covid')
+
+@section('title', 'Ubah Pemeriksaan Covid-19')
+@section('judul', 'Ubah Pemeriksaan Covid-19')
 @section('container')
+
+
 @section('css')
     <style>
         input[type=radio] {
@@ -49,36 +52,15 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form class="form needs-validation" action="/pemeriksaan/covid" method="post"
+                    <form class="form needs-validation" action="/ubah/pemeriksaan/covid/{{ $covid->id }}" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
-                        <input type="text" id="myInput0" class="form-control" name="pasien_id" placeholder="ID Pasien"  hidden>
+                        <input type="text" id="myInput0" class="form-control" name="pasien_id" placeholder="ID Pasien" value="{{ $covid->pasien_id }}"  hidden>
                         <div id="test-nl-1" class="content">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Silahkan pilih Pasien berdasarkan <b>ID rekam
-                                                medis</b><b class="color-red"> *</b></label>
-                                        <select id="select_pasien_id" class="form-select" onchange="pilihPasien(this)"
-                                            required>
-                                            <option value="" selected>Pasien</option>
-                                            @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}"
-                                                    perusahaan="{{ $pas->perusahaan->nama_perusahaan_pasien }}"
-                                                    divisi={{ $pas->divisi->nama_divisi_pasien }}
-                                                    jabatan={{ $pas->jabatan->nama_jabatan }}>
-                                                    {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-feedback">
-                                            Data sudah benar
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Silahkan pilih salah satu pasien.
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="row mt-3" id="detail_pasien" style="display: none">
+                                <div class="row mt-3" id="detail_pasien">
                                     <div class="col">
                                         <div class="card bg-light">
                                             <div class="card-body">
@@ -88,27 +70,27 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
+                                                                    <td id="nama">: {{ $covid->pasien->nama_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
+                                                                    <td id="rekam_medis">: {{ $covid->pasien->id_rekam_medis }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
+                                                                    <td id="nomor_induk_karyawan">: {{ $covid->pasien->NIK }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
+                                                                    <td id="ttl">: {{ $covid->pasien->tempat_lahir.', '.$covid->pasien->tanggal_lahir }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Alamat</th>
-                                                                    <td id="alamat"></td>
+                                                                    <td id="alamat">: {{ $covid->pasien->alamat }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
+                                                                    <td id="pekerjaan">: {{ $covid->pasien->pekerjaan }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -119,27 +101,27 @@
 
                                                                 <tr>
                                                                     <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
+                                                                    <td id="perusahaan">: {{ $covid->pasien->perusahaan->nama_perusahaan_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Divisi</th>
-                                                                    <td id="divisi"></td>
+                                                                    <td id="divisi">: {{ $covid->pasien->divisi->nama_divisi_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
+                                                                    <td id="jabatan">: {{ $covid->pasien->jabatan->nama_jabatan }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
+                                                                    <td id="jenis_kelamin">: {{ $covid->pasien->jenis_kelamin }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Telepon</th>
-                                                                    <td id="telepon"></td>
+                                                                    <td id="telepon">: {{ $covid->pasien->telepon }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Email</th>
-                                                                    <td id="email"></td>
+                                                                    <td id="email">: {{ $covid->pasien->email }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -155,7 +137,7 @@
                             <div class="d-flex justify-content-between">
                                 <div></div>
                                 <button type="button" class="btn btn-primary rounded-pill"
-                                    onclick="lanjut1()"><b>Selanjutnya</b> <i
+                                    onclick="stepper2.next()"><b>Selanjutnya</b> <i
                                         class="bi bi-arrow-right-circle"></i></button>
                             </div>
                         </div>
@@ -164,9 +146,9 @@
                                 <div class="row mb-3 align-items-center">
                                     <div class="col-md-6">
                                         <label class="form-label">Hasil Pemeriksaan <b class="color-red">*</b></label>
-                                        <input class="form-check-input ms-2" type="radio" name="hasil_pemeriksaan"id="hasil_pemeriksaan" value="0">
+                                        <input class="form-check-input ms-2" type="radio" name="hasil_pemeriksaan"id="hasil_pemeriksaan" value="0" {{ ($covid->hasil_pemeriksaan==0)? 'checked':'' }}>
                                         <label class="form-check-label" for="negatif"> Negatif</label>&emsp;
-                                        <input class="form-check-input ms-2" type="radio" name="hasil_pemeriksaan" id="hasil_pemeriksaan" value="1">
+                                        <input class="form-check-input ms-2" type="radio" name="hasil_pemeriksaan" id="hasil_pemeriksaan" value="1" {{ ($covid->hasil_pemeriksaan==1)? 'checked':'' }}>
                                         <label class="form-check-label" for="positif"> Positif </label> 
                                         <div class="valid-feedback" id="validHasil">
                                             Data sudah benar
@@ -178,9 +160,9 @@
                                     <div class="col-md-6">
                                         <label class="form-label">Kebutuhan Pemeriksaan <b class="color-red">*</b></label>
                                         <select name="pemeriksaan_antigen_id" id="pemeriksaan_antigen_id" class="form-select">
-                                            <option disabled selected>Kebutuhan Pemeriksaan</option>
+                                            <option disabled>Kebutuhan Pemeriksaan</option>
                                             @foreach ($pemeriksaanantigen as $antigen)
-                                                <option value="{{ $antigen['id'] }}">{{ $antigen['kebutuhan'] }}</option>
+                                                <option value="{{ $antigen['id'] }}" {{ ($covid->pemeriksaan_antigen_id==$antigen['id'])? 'selected':'' }}>{{ $antigen['kebutuhan'] }}</option>
                                             @endforeach
                                         </select>
                                         <div class="valid-feedback">
@@ -213,23 +195,27 @@
                                                 <tbody>
                                                     <tr>
                                                         <th>Nama Pasien</th>
-                                                        <td id="nama"></td>
+                                                        <td id="nama">: {{ $covid->pasien->nama_pasien }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>ID Rekam Medis</th>
-                                                        <td id="rekam_medis"></td>
+                                                        <td id="rekam_medis">: {{ $covid->pasien->id_rekam_medis }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Nomor Induk Karyawan</th>
+                                                        <td id="nomor_induk_karyawan">: {{ $covid->pasien->NIK }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Tempat Tanggal Lahir</th>
-                                                        <td id="ttl"></td>
+                                                        <td id="ttl">: {{ $covid->pasien->tempat_lahir.', '.$covid->pasien->tanggal_lahir }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Alamat</th>
-                                                        <td id="alamat"></td>
+                                                        <td id="alamat">: {{ $covid->pasien->alamat }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th>Pekerjaan</th>
-                                                        <td id="pekerjaan"></td>
+                                                        <td id="pekerjaan">: {{ $covid->pasien->pekerjaan }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -352,35 +338,7 @@
                 stepper2.next();
             }
         }
-        function pilihPasien(data) {
-            var pasien_index = $('#select_pasien_id').val();
-            if (pasien_index === '') {
-                $('#detail_pasien').fadeOut('slow')
-                $('#select_pasien_id').removeClass('is-valid')
-                $('#select_pasien_id').addClass('is-invalid')
-                $('.invalid-feedback').addClass('d-block')
-            } else {
-                var pasien = @json($pasien_id)[pasien_index];
-                $('#select_pasien_id').removeClass('is-invalid')
-                $('[name=pasien_id]').val(pasien.id)
-                $('td#nama').text(": " + pasien.nama_pasien);
-                $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                $('td#alamat').text(": " + pasien.alamat)
-                $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                $('td#telepon').text(": " + pasien.telepon)
-                var email = pasien.email ?? '-'
-                $('td#email').text(": " + email);
-                $('.invalid-feedback').removeClass('d-block')
-                $('#detail_pasien').fadeIn('slow')
-
-            }
-        }
+        
         
     </script>
 @stop

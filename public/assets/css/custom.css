@@ -20,6 +20,7 @@ textarea:-ms-input-placeholder {
 textarea::placeholder {
     color: red;
 }
+
 /* Data Tables-Hiskia */
 .dataTables_length label select {
     padding-left: 0.5rem !important;
@@ -27,6 +28,7 @@ textarea::placeholder {
     padding-top: 0.1rem !important;
     padding-bottom: 0.1rem !important;
 }
+
 .dataTables_filter label input {
     padding-top: 0.1rem !important;
     padding-bottom: 0.1rem !important;

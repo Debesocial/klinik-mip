@@ -173,7 +173,7 @@ class SuperAdminController extends Controller
         $covid = PemantauanCovid::all();
         $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.pemantauan_covid', compact('pasien_id', 'covid', 'hasilpemantauan'));
+        return view('petugas.superadmin.rev.new_pemantauan_covid', compact('pasien_id', 'covid', 'hasilpemantauan'));
     }
 
     public function addpemantauancovid(Request $request)

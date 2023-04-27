@@ -78,9 +78,9 @@ class PemeriksaanCovidController extends Controller
     public function ubahpemeriksaancovid($id)
     {
         $covid = PemeriksaanCovid::find($id);
-        $pemeriksaan = PemeriksaanAntigen::all();
+        $pemeriksaanantigen = PemeriksaanAntigen::all();
 
-        return view('petugas.pemeriksaan.ubah_pemeriksaan_covid', compact('covid', 'pemeriksaan'));
+        return view('petugas.superadmin.rev.new_ubah_pemeriksaan_covid', compact('covid', 'pemeriksaanantigen'));
     }
 
     function changepemeriksaancovid(Request $request, $id) {
@@ -90,7 +90,7 @@ class PemeriksaanCovidController extends Controller
         $covid->update();
 
 
-        return redirect('/data/pemeriksaan/Covid')->with('success', 'Berhasil Mengubah Data Pemeriksaan Covid!');
+        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil Mengubah Data Pemeriksaan Covid!');
         
     }
 
@@ -127,7 +127,7 @@ class PemeriksaanCovidController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        return redirect('/data/pemeriksaan/covid')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
+        return redirect('/pemeriksaan/covid')->with('success', 'Berhasil Menambahkan Data Pemeriksaan Covid');
     }
 
     /**

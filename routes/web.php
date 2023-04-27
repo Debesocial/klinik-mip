@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/ubah/pemeriksaan/covid/{id}', [PemeriksaanCovidController::class, 'ubahpemeriksaancovid'])->name('superadmin.ubahpemeriksaancovid');
     Route::post('/ubah/pemeriksaan/covid/{id}', [PemeriksaanCovidController::class, 'changepemeriksaancovid'])->name('superadmin.changepemeriksaancovid');
 
-    Route::get('/data/pemantauan/covid', [SuperAdminController::class, 'datapemantauancovid'])->name('superadmin.datapemantauancovid');
+    // Route::get('/data/pemantauan/covid', [SuperAdminController::class, 'datapemantauancovid'])->name('superadmin.datapemantauancovid');
     Route::get('/pemantauan/covid', [SuperAdminController::class, 'pemantauancovid'])->name('superadmin.pemantauancovid');
     Route::post('/pemantauan/covid', [SuperAdminController::class, 'addpemantauancovid'])->name('superadmin.addpemantauancovid');
     Route::get('/pantau/covid/{id}', [SuperAdminController::class, 'pantaucovid'])->name('superadmin.pantaucovid');

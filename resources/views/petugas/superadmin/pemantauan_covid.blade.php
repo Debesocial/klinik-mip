@@ -440,7 +440,6 @@
                     </section>
                 </div>
 
-
                 <div class="tab-pane fade" id="list-perjalanan" role="tabpanel" aria-labelledby="list-perjalanan-list">
                     <section id="basic-horizontal-layouts">
                         <div class="row match-height">
