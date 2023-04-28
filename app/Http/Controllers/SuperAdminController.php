@@ -188,19 +188,19 @@ class SuperAdminController extends Controller
             'td' => 'required',
             'hr' => 'required',
             'spo' => 'required',
-            'gejala' => 'required',
-            'jenis_pemeriksaan' => 'required',
+            // 'gejala' => 'required',
+            // 'jenis_pemeriksaan' => 'required',
             'tanggal_pemeriksaan' => 'required',
-            'hasil_laboratorium' => 'required',
-            'tanggal_laboratorium' => 'required',
-            'hasil_rapid' => 'required',
-            'tanggal_rapid' => 'required',
-            'hasil_rontgen' => 'required',
-            'tanggal_rontgen' => 'required',
-            'keterangan' => 'required',
-            'perjalanan' => 'required',
-            'asal' => 'required',
-            'kota_tujuan' => 'required',
+            // 'hasil_laboratorium' => 'required',
+            // 'tanggal_laboratorium' => 'required',
+            // 'hasil_rapid' => 'required',
+            // 'tanggal_rapid' => 'required',
+            // 'hasil_rontgen' => 'required',
+            // 'tanggal_rontgen' => 'required',
+            // 'keterangan' => 'required',
+            // 'perjalanan' => 'required',
+            // 'asal' => 'required',
+            // 'kota_tujuan' => 'required',
         ]);
 
         if ($request->hasFile('lampiran_laboratorium')) {
@@ -259,7 +259,7 @@ class SuperAdminController extends Controller
 
 
 
-        return redirect('/data/pemantauan/covid')->with('message', 'Berhasil!');
+        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil!');
     }
 
     public function pantaucovid(Request $request, $id)
@@ -367,7 +367,7 @@ class SuperAdminController extends Controller
         $pemantauan = PemantauanCovid::find($id);
         $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.ubah_pemantauan_covid', compact('pemantauan', 'hasilpemantauan'));
+        return view('petugas.superadmin.rev.new_ubah_pemantauan_covid', compact('pemantauan', 'hasilpemantauan'));
     }
 
     function changepemantauancovid(Request $request, $id)
@@ -424,7 +424,7 @@ class SuperAdminController extends Controller
 
         $pemantauan->update();
 
-        return redirect('/data/pemantauan/covid')->with('message', 'Berhasil');
+        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil');
     }
 
     public function datapemantauantandavital()

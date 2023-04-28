@@ -151,8 +151,7 @@
                                                         <label>Nomor Kamar <b class="color-red">*</b></label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="no_kamar" class="form-control"
-                                                            name="no_kamar" placeholder="Nomor Kamar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
+                                                        <input type="text" id="no_kamar" class="form-control" name="no_kamar" placeholder="Nomor Kamar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>
@@ -316,8 +315,7 @@
                                                         <label>Lampiran Hasil Laboratorium</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
-                                                        <input class="form-control" type="file"
-                                                            id="lampiran_laboratorium" name="lampiran_laboratorium" multiple>
+                                                        <input class="form-control" type="file" id="lampiran_laboratorium" name="lampiran_laboratorium" multiple>
                                                     </div>
                                                     <div class="col-md-2">
                                                     </div>
@@ -327,8 +325,7 @@
                                                         <label>Tanggal Pemeriksaan</label>
                                                     </div>
                                                     <div class="col-md-2 form-group">
-                                                        <input type="date" id="tanggal_laboratorium"
-                                                            class="form-control" name="tanggal_laboratorium" required>
+                                                        <input type="date" id="tanggal_laboratorium" class="form-control" name="tanggal_laboratorium" required>
                                                     </div>
                                                     <div class="col-md-8">
                                                     </div> <br><br><br>
@@ -348,8 +345,7 @@
                                                         <input type="checkbox" class="form-check-input" id="checkbox2">
                                                     </div>
                                                     <div class="col-md-7 form-group">
-                                                        <textarea type="text" id="hasil_rapid" class="form-control"
-                                                            name="hasil_rapid" required> </textarea>
+                                                        <textarea type="text" id="hasil_rapid" class="form-control" name="hasil_rapid" required> </textarea>
                                                     </div>
                                                     <div class="col-md-2">
                                                     </div>
@@ -359,8 +355,7 @@
                                                         <label>Lampiran Hasil Rapid Test</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
-                                                        <input class="form-control" type="file" id="lampiran_rapid"
-                                                            name="lampiran_rapid" multiple>
+                                                        <input class="form-control" type="file" id="lampiran_rapid" name="lampiran_rapid" multiple>
                                                     </div>
                                                     <div class="col-md-2">
                                                     </div>
@@ -370,8 +365,7 @@
                                                         <label>Tanggal Pemeriksaan</label>
                                                     </div>
                                                     <div class="col-md-2 form-group">
-                                                        <input type="date" id="tanggal_rapid" class="form-control"
-                                                            name="tanggal_rapid" required>
+                                                        <input type="date" id="tanggal_rapid" class="form-control" name="tanggal_rapid" required>
                                                     </div>
                                                     <div class="col-md-8">
                                                     </div>
@@ -393,8 +387,7 @@
                                                         <input type="checkbox" class="form-check-input" id="checkbox2">
                                                     </div>
                                                     <div class="col-md-7 form-group">
-                                                        <textarea type="text" id="hasil_rontgen" class="form-control"
-                                                            name="hasil_rontgen" required> </textarea>
+                                                        <textarea type="text" id="hasil_rontgen" class="form-control"name="hasil_rontgen" required> </textarea>
                                                     </div>
                                                     <div class="col-md-2">
                                                     </div>
@@ -404,8 +397,7 @@
                                                         <label>Lampiran Hasil Rontgen Thorax</label>
                                                     </div>
                                                     <div class="col-md-8 form-group">
-                                                        <input class="form-control" type="file" id="lampiran_rontgen"
-                                                            name="lampiran_rontgen" multiple>
+                                                        <input class="form-control" type="file" id="lampiran_rontgen" name="lampiran_rontgen" multiple>
                                                     </div>
                                                     <div class="col-md-2">
                                                     </div>
@@ -415,8 +407,7 @@
                                                         <label>Tanggal Pemeriksaan</label>
                                                     </div>
                                                     <div class="col-md-2 form-group">
-                                                        <input type="date" id="tanggal_rontgen" class="form-control"
-                                                            name="tanggal_rontgen" required>
+                                                        <input type="date" id="tanggal_rontgen" class="form-control"name="tanggal_rontgen" required>
                                                     </div>
                                                     <div class="col-md-8">
                                                     </div>
@@ -427,8 +418,7 @@
                                                     </div>
 
                                                     <div class="col-md-8 form-group">
-                                                        <textarea type="text" id="keterangan" class="form-control"
-                                                            name="keterangan"> </textarea>
+                                                        <textarea type="text" id="keterangan" class="form-control" name="keterangan"> </textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -475,9 +465,7 @@
                                                         <label>Kota Tujuan</label>
                                                     </div>
                                                     <div class="col-md-4 form-group">
-                                                        <input type="text" id="kota_tujuan" class="form-control"
-                                                            name="kota_tujuan" placeholder="Masukkan kota tujuan"
-                                                            required>
+                                                        <input type="text" id="kota_tujuan" class="form-control" name="kota_tujuan" placeholder="Masukkan kota tujuan" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                     </div>

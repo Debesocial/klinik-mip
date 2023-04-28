@@ -1,11 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Tambah Pemantauan Covid-19')
+@section('title', 'Ubah Pemantauan Covid-19')
 @section('pemeriksaan', 'active')
 @section('screen', 'active')
 @section('pemantauan', 'active')
-@section('breadcrumb', 'tambah_pemantauan_covid')
-@section('judul', 'Tambah Pemantauan Covid')
+@section('breadcrumb', 'ubah_pemantauan_covid')
+@section('judul', 'Ubah Pemantauan Covid')
 @section('css')
 <style>
     .step-trigger {
@@ -62,48 +62,13 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form class="form needs-validation" action="/pemantauan/covid" method="post"
+                    <form class="form needs-validation" action="/ubah/pemantauan/covid/{{  $pemantauan->id  }}" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
-                        <input type="hidden" name="pasien_id">
+                        <input type="hidden" name="pasien_id" value="{{ $pemantauan->pasien_id }}">
                         <div id="test-nl-1" class="content">
                             <div class="container mb-3">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Silahkan pilih Pasien berdasarkan <b>ID rekam
-                                                medis</b><b class="color-red"> *</b></label>
-                                        <select id="select_pasien_id" class="form-select" onchange="pilihPasien(this)"
-                                            required>
-                                            <option value="" selected>Pasien</option>
-                                            @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}"
-                                                    perusahaan="{{ $pas->perusahaan->nama_perusahaan_pasien }}"
-                                                    divisi={{ $pas->divisi->nama_divisi_pasien }}
-                                                    jabatan={{ $pas->jabatan->nama_jabatan }}>
-                                                    {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-feedback">
-                                            Data sudah benar
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Silahkan pilih salah satu pasien.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <mb-3>
-                                            <label class="form-label">Nomor Kamar <b class="color-red">*</b></label>
-                                            <input type="text" id="no_kamar" class="form-control" name="no_kamar" placeholder="Nomor Kamar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4">
-                                            <div class="valid-feedback">
-                                                Data sudah benar
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                Nomor kamar harus diisi dan jumlah karakter maksimal 4 karakter.
-                                            </div>
-                                        </mb-3>
-                                    </div>
-                                </div>
-                                <div class="row mt-3" id="detail_pasien" style="display: none">
+                                <div class="row mt-3" id="detail_pasien">
                                     <div class="col">
                                         <div class="card bg-light">
                                             <div class="card-body">
@@ -113,27 +78,27 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
+                                                                    <td id="nama">: {{ $pemantauan->pasien->nama_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
+                                                                    <td id="rekam_medis">: {{ $pemantauan->pasien->id_rekam_medis }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
+                                                                    <td id="nomor_induk_karyawan">: {{ $pemantauan->pasien->NIK }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
+                                                                    <td id="ttl">: {{ $pemantauan->pasien->tempat_lahir.', '.$pemantauan->pasien->tanggal_lahir }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Alamat</th>
-                                                                    <td id="alamat"></td>
+                                                                    <td id="alamat">: {{ $pemantauan->pasien->alamat }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
+                                                                    <td id="pekerjaan">: {{ $pemantauan->pasien->pekerjaan }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -144,27 +109,31 @@
 
                                                                 <tr>
                                                                     <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
+                                                                    <td id="perusahaan">: {{ $pemantauan->pasien->perusahaan->nama_perusahaan_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Divisi</th>
-                                                                    <td id="divisi"></td>
+                                                                    <td id="divisi">: {{ $pemantauan->pasien->divisi->nama_divisi_pasien }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
+                                                                    <td id="jabatan">: {{ $pemantauan->pasien->jabatan->nama_jabatan }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
+                                                                    <td id="jenis_kelamin">: {{ $pemantauan->pasien->jenis_kelamin }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Telepon</th>
-                                                                    <td id="telepon"></td>
+                                                                    <td id="telepon">: {{ $pemantauan->pasien->telepon }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Email</th>
-                                                                    <td id="email"></td>
+                                                                    <td id="email">: {{ $pemantauan->pasien->email }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th>Nomor Kamar</th>
+                                                                    <td id="email">: {{ $pemantauan->no_kamar }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -192,10 +161,9 @@
                                         <div class="mb-3">
                                             <label class="form-label">Suhu Pagi <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="suhu_pagi" id="suhu_pagi">
-                                                <option disabled selected>Pilih Pemantauan</option>
+                                                <option disabled>Pilih Pemantauan</option>
                                                 @foreach ($hasilpemantauan as $hasil)
-                                                <option value="{{ $hasil->nama_pemantauan }}">{{
-                                                    $hasil->nama_pemantauan }}</option>
+                                                <option value="{{ $hasil->nama_pemantauan }}" {{ ($hasil->nama_pemantauan==$pemantauan->suhu_pagi)? 'selected':'' }}>{{ $hasil->nama_pemantauan }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback">
@@ -208,9 +176,9 @@
                                         <div class="mb-3">
                                             <label class="form-label">TD <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="td" id="td">
-                                                <option disabled selected>Pilih Pemantauan</option>
+                                                <option disabled >Pilih Pemantauan</option>
                                                 @foreach ($hasilpemantauan as $hasil)
-                                                <option value="{{ $hasil->nama_pemantauan }}">{{
+                                                <option value="{{ $hasil->nama_pemantauan }}" {{ ($hasil->nama_pemantauan==$pemantauan->td)? 'selected':'' }}>{{
                                                     $hasil->nama_pemantauan }}</option>
                                                 @endforeach
                                             </select>
@@ -224,9 +192,9 @@
                                         <div class="mb-3">
                                             <label class="form-label">HR <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="hr" id="hr">
-                                                <option disabled selected>Pilih Pemantauan</option>
+                                                <option disabled >Pilih Pemantauan</option>
                                                 @foreach ($hasilpemantauan as $hasil)
-                                                <option value="{{ $hasil->nama_pemantauan }}">{{
+                                                <option value="{{ $hasil->nama_pemantauan }}" {{ ($hasil->nama_pemantauan==$pemantauan->hr)? 'selected':'' }}>{{
                                                     $hasil->nama_pemantauan }}</option>
                                                 @endforeach
                                             </select>
@@ -240,9 +208,9 @@
                                         <div class="mb-3">
                                             <label class="form-label">SPO2 <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="spo" id="spo">
-                                                <option disabled selected>Pilih Pemantauan</option>
+                                                <option disabled >Pilih Pemantauan</option>
                                                 @foreach ($hasilpemantauan as $hasil)
-                                                <option value="{{ $hasil->nama_pemantauan }}">{{
+                                                <option value="{{ $hasil->nama_pemantauan }}" {{ ($hasil->nama_pemantauan==$pemantauan->spo)? 'selected':'' }}>{{
                                                     $hasil->nama_pemantauan }}</option>
                                                 @endforeach
                                             </select>
@@ -257,15 +225,15 @@
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label class="form-label">Gejala</label>
-                                            <textarea type="text" id="gejala" class="form-control" name="gejala"></textarea>
+                                            <textarea type="text" id="gejala" class="form-control" name="gejala">{{ $pemantauan->gejala }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Jenis Pemeriksaan</label>
-                                            <textarea type="text" id="jenis_pemeriksaan" class="form-control" name="jenis_pemeriksaan"></textarea>
+                                            <textarea type="text" id="jenis_pemeriksaan" class="form-control" name="jenis_pemeriksaan">{{ $pemantauan->jenis_pemeriksaan }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal Pemeriksaan <b class="color-red">*</b></label>
-                                            <input type="date" id="tanggal_pemeriksaan" class="form-control" name="tanggal_pemeriksaan">
+                                            <input type="date" id="tanggal_pemeriksaan" class="form-control" name="tanggal_pemeriksaan" value="{{ $pemantauan->tanggal_pemeriksaan }}">
                                             <div class="valid-feedback">
                                                 Data sudah benar
                                             </div>
@@ -290,26 +258,26 @@
                                 <p>Silahkan pilih pemeriksaan penunjangan apabila ada pemeriksaan penunjangan.</p>
                                 <div class="row">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="check_laboratorium">
+                                        <input class="form-check-input" type="checkbox" value="1" id="check_laboratorium" {{ ($pemantauan->hasil_laboratorium!=null)? 'checked':'' }}>
                                         <h6 class="form-check-label">Laboratorium</h6>
                                     </div>
-                                    <div id="_laboratorium" style="display: none">
+                                    <div id="_laboratorium" {{ ($pemantauan->hasil_laboratorium==null)? 'style=display:none':''}}>
                                         <div class="col-md-8">
                                             <div class="mb-3">
                                                 <label class="form-label">Hasil Laboratorium <b class="text-danger">*</b></label>
-                                                <textarea type="text" id="hasil_laboratorium" class="form-control" name="hasil_laboratorium"></textarea>
+                                                <textarea type="text" id="hasil_laboratorium" class="form-control" name="hasil_laboratorium">{{ $pemantauan->hasil_laboratorium }}</textarea>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Lampiran Hasil Laboratorium</label>
-                                                        <input class="form-control" type="file" id="lampiran_laboratorium" name="lampiran_laboratorium" multiple>
+                                                        <input class="form-control" type="file" id="lampiran_laboratorium" name="lampiran_laboratorium" value="{{ $pemantauan->lampiran_laboratorium }}" multiple>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label class="form-label">Tanggal Pemeriksaan <b class="text-danger">*</b></label>
-                                                        <input type="date" id="tanggal_laboratorium" class="form-control" name="tanggal_laboratorium">
+                                                        <input type="date" id="tanggal_laboratorium" class="form-control" name="tanggal_laboratorium" value="{{ $pemantauan->tanggal_laboratorium }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -318,24 +286,24 @@
                                 </div>
                                 <div class="row border-top pt-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="check_rapid">
+                                        <input class="form-check-input" type="checkbox" value="1" id="check_rapid" {{ ($pemantauan->hasil_rapid!=null)? 'checked' : '' }}>
                                         <h6 class="form-check-label">Rapid Test</h6>
                                     </div>
-                                    <div id="_rapid" style="display: none">
+                                    <div id="_rapid" {{ ($pemantauan->hasil_rapid==null)? 'style=display:none;' : '' }}>
                                         <div class="col-md-8">
                                             <div class="mb-3">
                                                 <label class="form-label">Hasil Rapid Test <b class="text-danger">*</b></label>
-                                                <textarea type="text" id="hasil_rapid" class="form-control" name="hasil_rapid" ></textarea>
+                                                <textarea type="text" id="hasil_rapid" class="form-control" name="hasil_rapid" >{{ $pemantauan->hasil_rapid }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label class="form-label">Lampiran Hasil Rapid Test</label>
-                                                        <input class="form-control" type="file" id="lampiran_rapid" name="lampiran_rapid" multiple>
+                                                        <input class="form-control" type="file" id="lampiran_rapid" name="lampiran_rapid" value="{{ $pemantauan->lapiran_rapid }}" multiple>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label class="form-label">Tanggal Pemeriksaan <b class="text-danger">*</b></label>
-                                                        <input type="date" id="tanggal_rapid" class="form-control" name="tanggal_rapid" >
+                                                        <input type="date" id="tanggal_rapid" class="form-control" name="tanggal_rapid" value="{{ $pemantauan->tanggal_rapid }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -344,26 +312,26 @@
                                 </div>
                                 <div class="row border-top pt-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="check_rontgen">
+                                        <input class="form-check-input" type="checkbox" value="1" id="check_rontgen" {{ ($pemantauan->hasil_rontgen!=null)? 'checked' : '' }}>
                                         <h6 class="form-check-label">Rontgen Thorax</h6>
                                     </div>
-                                    <div id="_rontgen" style="display: none">
+                                    <div id="_rontgen" style="<?=($pemantauan->hasil_rontgen==null)? 'display:none;' : ''?> ">
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="mb-3">
                                                     <label class="form-label">Hasil Rontgen Thorax <b class="text-danger">*</b></label>
-                                                    <textarea type="text" id="hasil_rontgen" class="form-control"name="hasil_rontgen" ></textarea>
+                                                    <textarea type="text" id="hasil_rontgen" class="form-control"name="hasil_rontgen" >{{ $pemantauan->hasil_rontgen }}</textarea>
                                                 </div>
                                                 <div class="mb-3">
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label class="form-label">Lampiran Hasil Rontgen Thorax</label>
-                                                            <input class="form-control" type="file" id="lampiran_rontgen" name="lampiran_rontgen" multiple>
+                                                            <input class="form-control" type="file" id="lampiran_rontgen" name="lampiran_rontgen" value="{{ $pemantauan->lampiran_rontgen }}" multiple>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="mb-3">
                                                                 <label class="form-label">Tanggal Pemeriksaan <b class="text-danger">*</b></label>
-                                                                <input type="date" id="tanggal_rontgen" class="form-control"name="tanggal_rontgen" >
+                                                                <input type="date" id="tanggal_rontgen" class="form-control"name="tanggal_rontgen" value="{{ $pemantauan->tanggal_rontgen }}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -395,15 +363,15 @@
                                         <p>Silahkan isi formulir riwayat perjalanan jika ada riwayat perjalanan,</p>
                                         <div class="mb-3">
                                             <label class="form-label">Tanggal Perjalanan</label>
-                                            <input type="date" id="perjalanan" class="form-control" name="perjalanan">
+                                            <input type="date" id="perjalanan" class="form-control" name="perjalanan" value="{{ $pemantauan->perjalanan }}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Kabupaten/Kota Asal</label>
-                                            <input type="text" id="asal" class="form-control" name="asal" placeholder="Masukkan kabupaten/kota Asal">
+                                            <input type="text" id="asal" class="form-control" name="asal" placeholder="Masukkan kabupaten/kota Asal" value="{{ $pemantauan->asal }}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Kota Tujuan</label>
-                                            <input type="text" id="kota_tujuan" class="form-control" name="kota_tujuan" placeholder="Masukkan kota tujuan">
+                                            <input type="text" id="kota_tujuan" class="form-control" name="kota_tujuan" placeholder="Masukkan kota tujuan" value="{{ $pemantauan->kota_tujuan }}">
                                         </div>
                                     </div>
                                 </div>
@@ -559,8 +527,7 @@
             var stepper2 = new Stepper(document.querySelector('#stepper2'), {
                 linear: true,
                 animation: true,
-            })
-            // stepper2.to(4);  
+            }) 
             var validatedHasilPemantauan = ['suhu_pagi','td','hr','spo','tanggal_pemeriksaan'];
             var penunjanganForm = ['laboratorium', 'rapid', 'rontgen'];
             var riwayatPerjalanan = ['perjalanan', 'asal','kota_tujuan' ]
@@ -592,14 +559,28 @@
                     }
                 })
                 
-                
+                var cur = {'hasil_laboratorium':"{{ $pemantauan->hasil_laboratorium }}", 'lampiran_laboratorium':"{{ $pemantauan->lampiran_laboratorium }}",'tanggal_laboratorium':"{{ $pemantauan->tanggal_laboratorium }}",
+                            'hasil_rontgen':"{{ $pemantauan->hasil_rontgen }}", 'lampiran_rontgen':"{{ $pemantauan->lampiran_rontgen }}",'tanggal_rontgen':"{{ $pemantauan->tanggal_rontgen }}",
+                            'hasil_rapid':"{{ $pemantauan->hasil_rapid }}", 'lampiran_rapid':"{{ $pemantauan->lampiran_rapid }}",'tanggal_rapid':"{{ $pemantauan->tanggal_rapid }}",
+                            'keterangan':"{{ $pemantauan->keterangan }}"}
+
                 $('input[id^="check_"]').change(function(){
                     var label = $(this).attr('id').split('_')[1];
+                    var required = ['hasil','tanggal','lampiran'];
                     if($(this).is(':checked')==true){
+                        required.forEach(reqs => {
+                            var form = $('#'+reqs+'_'+label);
+                            form.val(cur[reqs+'_'+label]);
+                        });
+                        if(label == 'rontgen'){
+                            $('#keterangan').val(cur['keterangan']);
+                        }
                         $(this).parent().siblings('div[id^="_"]').show();
                         $('#review_'+label).html(': <span class="text-primary"><i class="bi bi-check-circle"></i></span>')
                     }else{
-                        var required = ['hasil','tanggal','lampiran'];
+                        // $(this).parent().siblings('div[id^="_"]').hide();
+                        $('#_'+label).hide();
+                        $('#review_'+label).html(': -')
                         required.forEach(reqs => {
                             var form = $('#'+reqs+'_'+label);
                             form.val('');
@@ -607,69 +588,13 @@
                         if(label == 'rontgen'){
                             $('#keterangan').val('');
                         }
-                        $(this).parent().siblings('div[id^="_"]').hide();
-                        $('#review_'+label).html(': -')
 
                     }
                 })
             });
 
-            
-
-            function pilihPasien(data) {
-                var pasien_index = $('#select_pasien_id').val();
-                if (pasien_index === '') {
-                    $('#detail_pasien').fadeOut('slow')
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
-                    $('.invalid-feedback').addClass('d-block')
-                } else {
-                    var pasien = @json($pasien_id)[pasien_index];
-                    $('[name=pasien_id]').val(pasien.id)
-                    $('td#nama').text(": " + pasien.nama_pasien);
-                    $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                    $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                    $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                    $('td#alamat').text(": " + pasien.alamat)
-                    $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                    $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                    $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                    $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                    $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                    $('td#telepon').text(": " + pasien.telepon)
-                    var email = pasien.email ?? '-'
-                    $('td#email').text(": " + email);
-                    $('.invalid-feedback').removeClass('d-block')
-                    $('#detail_pasien').fadeIn('slow')
-
-                }
-            }
-
             function lanjut1() {
-                var validated = true;
-                var pasien_index = $('#select_pasien_id').val();
-                var no_kamar = $('#no_kamar').val();
-                if (pasien_index == "") {
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
-                    validated = false;
-                } else {
-                    $('#select_pasien_id').removeClass('is-invalid')
-                    $('#select_pasien_id').addClass('is-valid')
-                    
-                }
-                if (no_kamar == ""||no_kamar.length > 4) {
-                    $('#no_kamar').removeClass('is-valid')
-                    $('#no_kamar').addClass('is-invalid')
-                    validated = false;
-                } else {
-                    $('#no_kamar').removeClass('is-invalid')
-                    $('#no_kamar').addClass('is-valid')
-                    $('td#review_no_kamar').text(': '+no_kamar);
-                }
-                if (validated == true) {
-                    stepper2.next();
-                }
+                stepper2.next();
             }
 
             function lanjut2() {
@@ -717,7 +642,7 @@
                 riwayatPerjalanan.forEach(id => {
                     var value = $('#'+id);
                     var review = $('#review_'+id);
-                     if (value.val()) {
+                    if (value.val()) {
                         review.text(': '+value.val());
                     }
                 });
@@ -730,10 +655,7 @@
                     var value = $('#'+pemantauan);
                     td.text(': '+value.val());
                 });
-            }
-            function setRevPerjalanan() {
-                
-            }
+            }           
         </script>
     @stop
 
