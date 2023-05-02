@@ -68,6 +68,20 @@
                         <input type="hidden" name="pasien_id" value="{{ $pemantauan->pasien_id }}">
                         <div id="test-nl-1" class="content">
                             <div class="container mb-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <mb-3>
+                                            <label class="form-label">Nomor Kamar <b class="color-red">*</b></label>
+                                            <input type="text" id="no_kamar" class="form-control" name="no_kamar" placeholder="Nomor Kamar" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="4" value="{{ $pemantauan->no_kamar }}">
+                                            <div class="valid-feedback">
+                                                Data sudah benar
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Nomor kamar harus diisi dan jumlah karakter maksimal 4 karakter.
+                                            </div>
+                                        </mb-3>
+                                    </div>
+                                </div>
                                 <div class="row mt-3" id="detail_pasien">
                                     <div class="col">
                                         <div class="card bg-light">
@@ -130,10 +144,6 @@
                                                                 <tr>
                                                                     <th>Email</th>
                                                                     <td id="email">: {{ $pemantauan->pasien->email }}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Nomor Kamar</th>
-                                                                    <td id="email">: {{ $pemantauan->no_kamar }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

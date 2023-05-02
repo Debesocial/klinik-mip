@@ -37,8 +37,7 @@
             @if (Session('message'))
             <script>Swal.fire({ 
                 icon: "success", 
-                text: "{{Session('message')}}" }).then((result) => {
-                if (result.isConfirmed) { window.location.href = "{{ route('pemeriksaan.datapemeriksaancovid') }}" }})
+                text: "{{Session('message')}}" }).then((result)=>{if (result.isConfirmed) { window.location.href = "{{ route('pemeriksaan.datapemeriksaancovid') }}" }})
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
@@ -98,7 +97,7 @@
                                 <td>{{ $pantau->pasien->nama_pasien }}</td>
                                 <td>{{ $pantau->no_kamar }}</td>
                                 <td>{{ $pantau->perjalanan }}</td>
-                                <td>{{ $pantau->asal }}/{{ $pantau->kota_tujuan }}</td>
+                                <td>{{ ($pantau->asal)??'- ' }}/{{ ($pantau->kota_tujuan)??' -' }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                                         <a href="/view/pemantauan/covid/{{ $pantau->id }}" title="View Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
@@ -115,19 +114,28 @@
 </section>
 @section('js')
     <script>
-        var navPosition = '1'
+        var navPosition = '1';
+        @if(session('position'))
+            navPosition = '2';
+        @endif
         $(document).ready(function(){
             let jquery_datatable = $("table[id*='table2']").DataTable({
-            "language": {
-                "search": "Cari:",
-                "lengthMenu": "Tampilkan _MENU_ data",
-                "emptyTable": "Tidak ada data yang tersedia pada tabel ini",
-                "info": "Menampilkan _START_ sampai _END_, dari _TOTAL_ data",
-                "infoEmpty": "Menampikan 0 sampai 0, dari 0 data",
-                "zeroRecords": "Tidak ditemukan data yang cocok",
-                "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
+                "language": {
+                    "search": "Cari:",
+                    "lengthMenu": "Tampilkan _MENU_ data",
+                    "emptyTable": "Tidak ada data yang tersedia pada tabel ini",
+                    "info": "Menampilkan _START_ sampai _END_, dari _TOTAL_ data",
+                    "infoEmpty": "Menampikan 0 sampai 0, dari 0 data",
+                    "zeroRecords": "Tidak ditemukan data yang cocok",
+                    "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
+                }
+            })
+            if (navPosition!='1') {
+                $('#_judul').text('Data Pemantauan Covid-19');
+                $('#_bread').html(`{{ Breadcrumbs::render("pemantauan_covid") }}`);
+                $('a[class*="nav-link"]').removeClass('active')
+                $('a[position=2]').addClass('active')
             }
-        })
             $('.body-'+navPosition).show();
             $('a[class*="nav-link"]').click(function(){
                 var clickPosition = $(this).attr('position');

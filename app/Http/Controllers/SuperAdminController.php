@@ -419,7 +419,8 @@ class SuperAdminController extends Controller
         $pemantauan->tanggal_rontgen = $request->input('tanggal_rontgen');
         $pemantauan->keterangan = $request->input('keterangan');
         $pemantauan->perjalanan = $request->input('perjalanan');
-        $pemantauan->kota_tujuan = $request->input('asal');
+        $pemantauan->kota_tujuan = $request->input('kota_tujuan');
+        $pemantauan->asal = $request->input('asal');
         $pemantauan->lampiran_rontgen = $rontgen;
 
         $pemantauan->update();
@@ -439,7 +440,7 @@ class SuperAdminController extends Controller
         $pasien_id = Pasien::get();
         $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.pemantauan_tanda_vital', compact('pasien_id', 'hasilpemantauan'));
+        return view('petugas.superadmin.rev.new_pemantauan_tanda_vital', compact('pasien_id', 'hasilpemantauan'));
     }
 
     public function addpemantauantandavital(Request $request)
@@ -447,7 +448,7 @@ class SuperAdminController extends Controller
 
         // dd($request);
 
-        $validatedData = $request->validate([
+        $request->validate([
             'pasien_id' => 'required',
             'skala_nyeri' => 'required',
             'hr' => 'required',
@@ -457,6 +458,7 @@ class SuperAdminController extends Controller
             'saturasi_oksigen' => 'required',
         ]);
 
+    
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
 
@@ -474,8 +476,8 @@ class SuperAdminController extends Controller
             'temp' => $request->temp,
             'rr' => $request->rr,
             'saturasi_oksigen' => $request->saturasi_oksigen,
+            'keterangan' => $request->keterangan,
             'dokumen' => $filename,
-            'kota_tujuan' => $request->kota_tujuan,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
@@ -497,7 +499,7 @@ class SuperAdminController extends Controller
         $pemantauan = TandaVital::find($id);
         $hasilpemantauan = HasilPemantauan::all();
 
-        return view('petugas.superadmin.ubah_pemantauan_tanda_vital', compact('pemantauan', 'hasilpemantauan'));
+        return view('petugas.superadmin.rev.new_ubah_pemantauan_tanda_vital', compact('pemantauan', 'hasilpemantauan'));
     }
 
     function changepemantauantandavital(Request $request, $id)
