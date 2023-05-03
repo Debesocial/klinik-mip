@@ -134,7 +134,7 @@
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0" checked> Tidak
                                         <input class="form-check-input " type="radio" name="alergi_obat" id="alergi_obat" value="1"> Ya
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="_alergi" style="display: none;">
                                         <label for="alergi">Alergi obat terhadap</label>
                                         <textarea class="form-control" name="alergi" id="alergi"></textarea>
                                     </div>
@@ -207,6 +207,26 @@
         </div>
     </div>
 </section>
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[id*="alergi_obat"]').click(function(){
+                var alergi_obat =  $('#alergi_obat:checked').val();
+                cekAlergiObat(alergi_obat);
+            })
+        })
+
+        function cekAlergiObat(status) {
+            if (status == '0') {
+                $('#_alergi').hide('slow')
+                $('#alergi').val('')
+            } else {
+                $('#_alergi').show('slow')
+            }
+        }
+    </script>
+@stop
+
 <script type="text/javascript">
     function yesnoCheck_penduduk(that) {
         if (that.value == '5') {
