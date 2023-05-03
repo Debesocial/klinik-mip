@@ -105,13 +105,13 @@
                                             <form action="{{route('login')}}" method="POST">
                                                 @csrf
                                                 <div class="form-group position-relative has-icon-left mb-4 mt-3">
-                                                    <input type="email" class="form-control form-control-xl" name="email" placeholder="email" required>
+                                                    <input type="email" class="form-control form-control-xl" name="email" placeholder="email" value="hiski46@gmail.com" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>
                                                 </div>
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" required>
+                                                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" value="123123" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-shield-lock"></i>
                                                     </div>
