@@ -34,7 +34,7 @@
             </ul>
         </div>
         <div class="card-body">
-            <div class="card-body body-1 mt-3" style="display:none;">
+            <div class="body-1 mt-3" style="display:none;">
                 @if (Session('message'))
                 <script>Swal.fire({ 
                     icon: "success", 
@@ -77,7 +77,7 @@
                     </table>
                 </div>
             </div>
-            <div class="card-body body-2 mt-3" style="display:none">
+            <div class="body-2 mt-3" style="display:none">
     
                 <div class="table-responsive pt-2 pe-2 ">
                     <table class="table table-hover" id="table2">
