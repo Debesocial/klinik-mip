@@ -27,7 +27,7 @@
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
                     <div class="logo flex-column gap-4 mb-6 align-items-center justify-content-center">
-                        <a href=""><img src="{{asset('assets/images/logo/logo-klinik.JPG')}}" alt="" style="width: 150px; height: 50px;"></a>
+                        <a href=""><img src="{{asset('assets/images/logo/logo-klinik.jpg')}}" alt="" style="width: 150px; height: 50px;"></a>
                     </div>
                     <div class="toggler">
                         <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
