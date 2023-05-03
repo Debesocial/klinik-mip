@@ -52,7 +52,13 @@
                             </td>
                             <td >{{ $narko->pasien->id_rekam_medis }}</td>
                             <td>{{ $narko->pasien->nama_pasien }}</td>
-                            <td></td>
+                            <td class="text-center">
+                                @if ($narko->amp == 0 && $narko->met == 0 && $narko->thc == 0 && $narko->bzo == 0 && $narko->mop == 0 && $narko->coc == 0)
+                                    <span class="badge bg-primary">Tidak Terindikasi</span>
+                                @else
+                                    <span class="badge bg-danger">Terindikasi</span>
+                                @endif
+                            </td>
                             {{-- <td>{{ $narko->asal_obat }}</td>
                             <td>{{ $narko->terakhir_digunakan }}</td> --}}
                             <td class="text-center">
