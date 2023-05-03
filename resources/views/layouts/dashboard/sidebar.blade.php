@@ -247,7 +247,7 @@
                             @endif
                             @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                             <li class="submenu-item @yield('covid')">
-                                <a href="{{ route('pemeriksaan.datapemeriksaancovid') }}"> Pemeriksaan Covid</a>
+                                <a href="{{ route('pemeriksaan.datapemeriksaancovid', ['position'=>'1']) }}"> Pemeriksaan Covid</a>
                             </li>
                             @endif
                             {{-- @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")

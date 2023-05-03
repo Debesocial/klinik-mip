@@ -47,13 +47,14 @@ class PemeriksaanCovidController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function datapemeriksaancovid()
+    public function datapemeriksaancovid($position='1')
     {
         $covid = PemeriksaanCovid::all();
         $pemantauan = PemantauanCovid::all();
+        $pos = $position;
 
 
-        return view('petugas.pemeriksaan.data_pemeriksaan_covid', compact('covid', 'pemantauan'));
+        return view('petugas.pemeriksaan.data_pemeriksaan_covid', compact('covid', 'pemantauan', 'pos'));
     }
 
     /**

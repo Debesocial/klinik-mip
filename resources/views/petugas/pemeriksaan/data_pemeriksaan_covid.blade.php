@@ -9,8 +9,8 @@
 <div class="row align-items-center">
     <div class="col">
         <div class="page-heading head-1">
-                <h3 id="_judul">Data Pemeriksaan Covid-19</h3>
-                <div id="_bread">{{ Breadcrumbs::render('pemeriksaan_covid') }}</div>
+                <h3 id="_judul">{{ ($pos==1)? 'Data Pemeriksaan Covid-19':'Data Pemantauan Covid-19' }}</h3>
+                <div id="_bread">{{ Breadcrumbs::render(($pos==1)?'pemeriksaan_covid':'pemantauan_covid') }}</div>
         </div>
     </div>
     {{-- <div class="col">
@@ -26,19 +26,19 @@
         <div class="card-header py-3">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" position=1 aria-current="true" href="#">Pemeriksaan Covid</a>
+                    <a class="nav-link {{ ($pos==1)? 'active':'' }}" position=1 aria-current="true" href="{{ route('pemeriksaan.datapemeriksaancovid') }}">Pemeriksaan Covid</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " position=2 href="#">Pemantauan Covid</a>
+                    <a class="nav-link {{ ($pos==2)? 'active':'' }}" position=2 href="{{ route('pemeriksaan.datapemeriksaancovid', ['position'=>'2']) }}">Pemantauan Covid</a>
                 </li>
             </ul>
         </div>
         <div class="card-body">
-            <div class="body-1 mt-3" style="display:none;">
+            <div class="body-1 mt-3" style="{{ ($pos==2)? 'display:none':'' }}">
                 @if (Session('message'))
                 <script>Swal.fire({ 
                     icon: "success", 
-                    text: "{{Session('message')}}" }).then((result)=>{if (result.isConfirmed) { window.location.href = "{{ route('pemeriksaan.datapemeriksaancovid') }}" }})
+                    text: "{{Session('message')}}" }).then((result)=>{if (result.isConfirmed) { window.location.href = "{{ route('pemeriksaan.datapemeriksaancovid', ['position'=>$pos]) }}" }})
                     </script>
                 @endif
                 <div class="table-responsive pt-2 pe-2">
@@ -77,7 +77,7 @@
                     </table>
                 </div>
             </div>
-            <div class="body-2 mt-3" style="display:none">
+            <div class="body-2 mt-3" style="{{ ($pos==1)? 'display:none':'' }}">
     
                 <div class="table-responsive pt-2 pe-2 ">
                     <table class="table table-hover" id="table2">
@@ -116,10 +116,7 @@
 </section>
 @section('js')
     <script>
-        var navPosition = '1';
-        @if(session('position'))
-            navPosition = '2';
-        @endif
+        var navPosition = "{{ $pos }}";
         $(document).ready(function(){
             let jquery_datatable = $("table[id*='table2']").DataTable({
                 "language": {
@@ -132,28 +129,7 @@
                     "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
                 }
             })
-            if (navPosition!='1') {
-                $('#_judul').text('Data Pemantauan Covid-19');
-                $('#_bread').html(`{{ Breadcrumbs::render("pemantauan_covid") }}`);
-                $('a[class*="nav-link"]').removeClass('active')
-                $('a[position=2]').addClass('active')
-            }
-            $('.body-'+navPosition).show();
-            $('a[class*="nav-link"]').click(function(){
-                var clickPosition = $(this).attr('position');
-                $('.body-'+navPosition).hide();
-                navPosition = clickPosition;
-                $('.body-'+navPosition).show();
-                $('a[class*="nav-link"]').removeClass('active')
-                if (navPosition==1) {
-                    $('#_judul').text('Data Pemeriksaan Covid-19');
-                    $('#_bread').html(`{{ Breadcrumbs::render("pemeriksaan_covid") }}`);
-                }else{
-                    $('#_judul').text('Data Pemantauan Covid-19');
-                    $('#_bread').html(`{{ Breadcrumbs::render("pemantauan_covid") }}`);
-                }
-                $(this).addClass('active')
-            })
+            
             $('[id*="table1_length"]').parent().removeClass('col-md-6').addClass('col-md-4')
             $('[id*="table1_wrapper"]').children().removeClass('mb-3').addClass('mb-0')
             $('[id*="table2_length"]').parent().removeClass('col-md-6').addClass('col-md-4')
@@ -179,5 +155,4 @@
         })
     </script>
 @stop
-{{-- @include('sweetalert::alert')  --}}
 @endsection

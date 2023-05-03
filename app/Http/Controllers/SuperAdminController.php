@@ -259,7 +259,7 @@ class SuperAdminController extends Controller
 
 
 
-        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil!');
+        return redirect('/data/pemeriksaan/covid/2')->with('message', 'Berhasil!');
     }
 
     public function pantaucovid(Request $request, $id)
@@ -425,7 +425,7 @@ class SuperAdminController extends Controller
 
         $pemantauan->update();
 
-        return redirect('/data/pemeriksaan/covid')->with('message', 'Berhasil');
+        return redirect('/data/pemeriksaan/covid/2')->with('message', 'Berhasil');
     }
 
     public function datapemantauantandavital()
