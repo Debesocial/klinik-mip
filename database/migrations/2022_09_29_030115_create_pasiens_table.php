@@ -34,6 +34,7 @@ class CreatePasiensTable extends Migration
             $table->string('telepon', 20);
             $table->string('email', 30)->nullable();
             $table->boolean('alergi_obat');
+            $table->text('alergi')->nullable();
             $table->boolean('hamil_menyusui');
             $table->text('upload')->nullable();
             $table->unsignedBigInteger('created_by');

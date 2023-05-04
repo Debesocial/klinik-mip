@@ -17,7 +17,7 @@
                         @error('message')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <form class="form" action="{{ route('add.pasien') }}" method="post" enctype="multipart/form-data">
+                        <form class="form" id="form_pasien" action="{{ route('add.pasien') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">
@@ -101,7 +101,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" required >
+                                        <textarea type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" required ></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_mess">Alamat Mess</label>
@@ -137,6 +137,9 @@
                                     <div class="form-group" id="_alergi" style="display: none;">
                                         <label for="alergi">Alergi obat terhadap</label>
                                         <textarea class="form-control" name="alergi" id="alergi"></textarea>
+                                        <div class="invalid-feedback">
+                                            Obat harus diisi apabila pasien memiliki alergi
+                                        </div>
                                     </div>
 
                                     <div class="col-md-4">
@@ -170,7 +173,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_keluarga">Alamat</label>
-                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" >
+                                        <textarea type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" placeholder="Masukkan Alamat Keluarga" ></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan_keluarga">Pekerjaan</label>
@@ -194,7 +197,8 @@
                                                 <button type="reset" class="form-control btn btn-light-secondary me-1 mb-1">Reset</button>
                                             </div> --}}
                                             <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                                <button type="button" onclick="submitForm()" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1" hidden><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -214,6 +218,9 @@
                 var alergi_obat =  $('#alergi_obat:checked').val();
                 cekAlergiObat(alergi_obat);
             })
+             $('#alergi').change(function(){
+                $('#alergi').removeClass('is-invalid')
+            })
         })
 
         function cekAlergiObat(status) {
@@ -222,6 +229,20 @@
                 $('#alergi').val('')
             } else {
                 $('#_alergi').show('slow')
+            }
+        }
+        function submitForm() {
+            var alergi_obat = $('#alergi_obat:checked')
+            var validation = true; 
+            if (alergi_obat.val()=='1') {
+                if($('#alergi').val()==''||$('#alergi').val()==null||$('#alergi')==' '){
+                    validation = false;
+                    $('#alergi').addClass('is-invalid');
+                    $('#alergi').focus();
+                }
+            }
+            if (validation == true) {
+                $('button[type="submit"]').trigger('click');
             }
         }
     </script>

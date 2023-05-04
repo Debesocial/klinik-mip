@@ -17,7 +17,7 @@
                         @error('message')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <form class="form" action="/ubah/data/pasien/{{ $pasien->id }}" method="post">
+                        <form class="form" id="form_pasien" action="/ubah/data/pasien/{{ $pasien->id }}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">
@@ -96,7 +96,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                        <input type="text" id="alamat" class="form-control" name="alamat" value="{{ $pasien['alamat'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <textarea type="text" id="alamat" class="form-control" name="alamat" value="" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')">{{ $pasien['alamat'] }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_mess">Alamat Mess</label>
@@ -122,9 +122,12 @@
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="0" {{ !$pasien->alergi_obat ? "checked" : "" }}> Tidak
                                         <input class="form-check-input" type="radio" name="alergi_obat" id="alergi_obat" value="1" {{ $pasien->alergi_obat ? "checked" : "" }}> Ya
                                     </div>
-                                    <div class="form-group">
-                                        <label for="alamat_mess">Alergi Obat terhadap</label>
+                                    <div class="form-group" id="_alergi">
+                                        <label for="alamat_mess">Alergi Obat terhadap <b class="color-red">*</b></label>
                                         <textarea class="form-control" name="alergi" id="alergi">{{ $pasien['alergi'] }}</textarea>
+                                        <div class="invalid-feedback">
+                                            Obat harus diisi apabila pasien memiliki alergi
+                                        </div>
                                     </div>
 
                                     <div class="col-md-2">
@@ -160,7 +163,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat_keluarga">Alamat</label>
-                                        <input type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" value="{{ $pasien->keluarga->alamat }}" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <textarea type="text" id="alamat_keluarga" class="form-control" name="alamat_keluarga" value="" oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')">{{ $pasien->keluarga->alamat }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="pekerjaan_keluarga">Pekerjaan</label>
@@ -183,7 +186,8 @@
                                                 <button type="reset" class="form-control btn btn-outline-secondary me-1 mb-1"><i class="bi- bi-arrow-repeat"></i> Reset</button>
                                             </div>
                                             <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                                <button type="button" onclick="submitForm()" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1" hidden><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -196,6 +200,51 @@
         </div>
     </div>
 </section>
+
+@section('js')
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('[id*="alergi_obat"]').click(function(){
+                var alergi_obat =  $('#alergi_obat:checked').val();
+                cekAlergiObat(alergi_obat);
+            })
+            var alergi_obat =  $('#alergi_obat:checked').val();
+            cekAlergiObat(alergi_obat);
+
+            $('#alergi').change(function(){
+                $('#alergi').removeClass('is-invalid')
+            })
+
+        })
+
+        function cekAlergiObat(status) {
+            if (status == '0') {
+                $('#_alergi').hide('slow')
+                $('#alergi').val('')
+            } else {
+                $('#_alergi').show('slow')
+                $('#alergi').removeClass('is-invalid')
+            }
+        }
+
+        function submitForm() {
+            var alergi_obat = $('#alergi_obat:checked')
+            var validation = true;
+            
+            if (alergi_obat.val()=='1') {
+                if($('#alergi').val()==''||$('#alergi').val()==null||$('#alergi')==' '){
+                    $('#alergi').addClass('is-invalid');
+                    $('#alergi').focus();
+                    validation = false;
+                }
+            }
+            if (validation == true) {
+                $('button[type="submit"]').trigger('click');
+            }
+        }
+    </script>
+@stop
+
 
 @endsection
 

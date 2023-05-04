@@ -48,14 +48,15 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="telp">No Telepon <b class="color-red">*</b></label>
-                                            <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" placeholder="Masukkan no telepon" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                            {{-- <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" placeholder="Masukkan no telepon" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/> --}}
+                                            <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="telp" class="form-control" name="telp" placeholder="Masukkan no telepon" maxlength="13" required >
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="tempat_lahir">Level <b class="color-red">*</b></label>
-                                            <select required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/ class="choices form-select" name="level_id" id="level_id" >
+                                            <select required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')" class="choices form-select" name="level_id" id="level_id" >
                                                 <option disabled selected value="">Pilih level</option>
                                                 @foreach ($level as $item)
                                                 <option value="{{ $item->id }}">{{ $item->nama_level }}</option>
@@ -67,7 +68,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="status">Status <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="status" id="status" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                            <select class="choices form-select" name="status" id="status" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')">
                                                 <option disabled selected value="">Pilih status</option>
                                                 <option value="Aktif">Aktif</option>
                                                 <option value="NonAktif">NonAktif</option>

@@ -14,6 +14,11 @@
             transform: scale(1.5);
             margin-right: 0.3rem;
         }
+        
+        th{
+            white-space: nowrap;
+            vertical-align: top;
+        }
     </style>
 @stop
 
@@ -191,10 +196,10 @@
                                         <div class="card bg-light">
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Cara Penggunaan Obat <b
+                                                    <label class="form-label">Penggunaan obat-obatan seminggu terakhir <b
                                                             class="color-red"> *</b></label>
-                                                    <input type="text" id="penggunaan_obat" class="form-control"
-                                                        name="penggunaan_obat" placeholder="Masukkan cara penggunaan">
+                                                    <textarea type="text" id="penggunaan_obat" class="form-control"
+                                                        name="penggunaan_obat" placeholder="Masukkan obat-obatan seminggu terakhir"></textarea>
                                                     <div class="invalid-feedback" id="inval_penggunaan_obat">
                                                         Cara penggunaan obat harus diisi
                                                     </div>
@@ -408,7 +413,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-6">
+                                    <div class="col-md-7">
                                         <div class="row mb-2">
                                             <h5 class="card-title">Biodata Pasien</h5>
                                             <div class="table-responsive">
@@ -468,7 +473,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <h5 class="card-title">Hasil Test Urin</h5>
                                         <table class="table table-striped table-borderless table-hover">
                                             <tbody>
@@ -638,14 +643,14 @@
                 } else {
                     var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
                     inputs.forEach(input => {
-                        var value_input = $('input[name="' + input + '"]').val();
-                        if (value_input == "") {
+                        var value_input = $('[name="' + input + '"]').val();
+                        if (value_input == ""||value_input == ' ') {
                             validated = false
-                            $('input[name="' + input + '"]').removeClass('is-valid')
-                            $('input[name="' + input + '"]').addClass('is-invalid')
+                            $('[name="' + input + '"]').removeClass('is-valid')
+                            $('[name="' + input + '"]').addClass('is-invalid')
                         } else {
-                            $('input[name="' + input + '"]').removeClass('is-invalid')
-                            $('input[name="' + input + '"]').addClass('is-valid')
+                            $('[name="' + input + '"]').removeClass('is-invalid')
+                            $('[name="' + input + '"]').addClass('is-valid')
                         }
                     });
                 }
@@ -658,7 +663,7 @@
                 var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc'];
                 var validation_hasil = true;
                 tests.forEach(test => {
-                    var value_test = $('input[name="' + test + '"]:checked').val()
+                    var value_test = $('[name="' + test + '"]:checked').val()
                     if (value_test === undefined) {
                         $('#invalid-' + test).show();
                         validation_hasil = false;
@@ -675,7 +680,7 @@
             function clearFormObat() {
                 var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
                 inputs.forEach(input => {
-                    $('input[name="' + input + '"]').val("");
+                    $('[name="' + input + '"]').val("");
                 });
             }
 
@@ -688,7 +693,7 @@
                     $('#review-obat1').hide();
                     var inputs = ['penggunaan_obat', 'jenis_obat', 'asal_obat', 'terakhir_digunakan']
                     inputs.forEach(input => {
-                        var value_input = $('input[name="' + input + '"]').val();
+                        var value_input = $('[name="' + input + '"]').val();
                         $('td#' + input).text(": " + value_input);
                     });
                 }

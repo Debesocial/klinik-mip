@@ -1263,7 +1263,7 @@ class SuperAdminController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
-            // 'alergi' => $request->alergi,
+            'alergi' => $request->alergi,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'upload' => $filename,
@@ -1309,7 +1309,7 @@ class SuperAdminController extends Controller
         $pasien->pekerjaan = $request->input('pekerjaan');
         $pasien->telepon = $request->input('telepon');
         $pasien->email = $request->input('email');
-        // $pasien->alergi = $request->input('alergi');
+        $pasien->alergi = $request->input('alergi');
         $pasien->alergi_obat = $request->input('alergi_obat');
         $pasien->hamil_menyusui = $request->input('hamil_menyusui');
         $pasien->update();

@@ -7,14 +7,21 @@
 @section('narko', 'active')
 @section('judul', 'Lihat Pemeriksaan Narkoba')
 @section('container')
-
+@section('css')
+    <style>
+        th{
+            white-space: nowrap;
+            vertical-align: top;
+        }
+    </style>
+@stop
 
 <section>
     <div class="card">
         <div class="card-body">
             <p>Tanggal Pemeriksaan :<b>{{ $narkoba->created_at }}</b></p>
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="row mb-2">
                         <h5 class="card-title">Biodata Pasien</h5>
                         <div class="table-responsive">
@@ -75,7 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h5 class="card-title">Hasil Test Urin</h5>
                     <table class="table table-striped table-borderless table-hover">
                         <tbody>
