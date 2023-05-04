@@ -23,7 +23,7 @@
 
 <div id="app">
     <div id="sidebar" class="active">
-        <div class="sidebar-wrapper active" style="width: 350px;">
+        <div class="sidebar-wrapper active">
             <div class="sidebar-header">
                 <div class="d-flex justify-content-between">
                     <div class="logo flex-column gap-4 mb-6 align-items-center justify-content-center">

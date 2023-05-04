@@ -58,7 +58,7 @@
 
 <body style="font-size: 0.8rem ;">
     @include('layouts.dashboard.sidebar')
-    <div id="main" style="margin-left: 350px;" class="mt-4">
+    <div id="main" class="mt-4">
         <header class="">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>

@@ -74,7 +74,7 @@
                                         </tr>
                                         <tr>
                                             <th>Terakhir digunakan</th>
-                                            <td id="terakhir_digunakan">{{  $narkoba->terakhir_digunakan }}</td>
+                                            <td id="terakhir_digunakan">: {{  $narkoba->terakhir_digunakan }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
