@@ -29,17 +29,17 @@
             </div>
         </div>
     </div>
-    <div class="container mt-5" id="container">
-        <div class="row mb-3">
-            <div class="col-md-8">
-                <div class="input-group rounded-pill">
-                    <span class="input-group-text bg-transparent border-0 rounded-pill" id="search-addon">
-                        <i class="fas fa-search"></i>
-                    </span>
-                    <input type="text" id="cari_pasien" class="form-control rounded-pill" placeholder="Cari pasien" aria-label="Search" aria-describedby="search-addon" />
-                </div>
+    <div class="row mb-3 mt-1" id="container">
+        <div class="col-md-8">
+            <div class="input-group rounded-pill">
+                <span class="input-group-text bg-transparent border-0 rounded-pill" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input type="text" id="cari_pasien" class="form-control rounded-pill" placeholder="Cari pasien" aria-label="Search" aria-describedby="search-addon" />
             </div>
         </div>
+    </div>
+    <div class="container" >
         <div class="row" id="tbody" style="display: none">
             @if (Session('message'))
             <script>Swal.fire({ 
@@ -74,7 +74,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div >
-                                                        <h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i>
+                                                       <a href="#"><h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
@@ -152,13 +152,11 @@
             
             if (param.length<2) {
                 $('#tbody1').show();
-                $('#tbody').hide();
-                $('#container').addClass('mt-5')   
+                $('#tbody').hide(); 
             }else{
                 table1.search(param).draw();
                 $('#tbody1').hide();    
                 $('#tbody').show();
-                $('#container').removeClass('mt-5')   
             }
         }
     </script>
