@@ -126,7 +126,6 @@
                                                     <div class="col-md-6">
                                                         <table>
                                                             <tbody>
-
                                                                 <tr>
                                                                     <th>Perusahaan</th>
                                                                     <td id="perusahaan"></td>

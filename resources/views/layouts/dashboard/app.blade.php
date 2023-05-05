@@ -53,7 +53,18 @@
         .form-select {
             font-size: .85rem;
         }
+        th{
+            white-space: nowrap;
+            vertical-align: top;
+        }
+        img#modal-img{
+        /* width: auto;
+        height: 50%; */
+        aspect-ratio: 1; 
+        object-fit: cover; /* use the one you need */
+    }
     </style>
+    
 </head>
 
 <body style="font-size: 0.8rem ;">
@@ -77,7 +88,129 @@
                 @yield('container')
             </section>
         </div>
-
+        
+        {{-- Modal --}}
+        <div class="modal fade" id="modalPasien" tabindex="-1" aria-labelledby="modalPasienLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+                <div class="modal-content rounded-3">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalPasienLabel">Data Pasien</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3 justify-content-center">
+                            <div class="col-md-3 text-center" id="pp"></div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Nama Pasien</th>
+                                            <td id="modal_nama"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>ID Rekam Medis</th>
+                                            <td id="modal_rekam_medis"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nomor Induk Karyawan</th>
+                                            <td id="modal_nomor_induk_karyawan"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Tempat Tanggal Lahir</th>
+                                            <td id="modal_ttl"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Alamat</th>
+                                            <td id="modal_alamat"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pekerjaan</th>
+                                            <td id="modal_pekerjaan"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-6">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Perusahaan</th>
+                                            <td id="modal_perusahaan"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Divisi</th>
+                                            <td id="modal_divisi"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jabatan</th>
+                                            <td id="modal_jabatan"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Jenis Kelamin</th>
+                                            <td id="modal_jenis_kelamin"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Telepon</th>
+                                            <td id="modal_telepon"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td id="modal_email"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Alergi Obat</th>
+                                            <td id="modal_alergi"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Menyusui</th>
+                                            <td id="modal_menyusui"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row border-top pt-2">
+                            <div class="col-md-6">
+                                <h6>Data Keluarga</h6>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Nama Keluarga</th>
+                                            <td id="modal_nama_keluarga"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Hubungan Keluarga</th>
+                                            <td id="modal_hubungan_keluarga"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Alamat</th>
+                                            <td id="modal_alamat_keluarga"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Pekerjaan</th>
+                                            <td id="modal_pekerjaan_keluarga"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nomor Telepon</th>
+                                            <td id="modal_telepon_keluarga"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td id="modal_email_keluarga"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn rounded-pill btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <footer>
 
@@ -117,6 +250,55 @@
             },
             scrollY: 300,
         })
+        function tampilModalPasien(data) {
+            console.log(data);
+            var modalPasien = $('#modalPasien');
+            $('#modal_nama').text(': '+data.nama_pasien);
+            $('#modal_rekam_medis').text(': '+data.id_rekam_medis);
+            $('#modal_nomor_induk_karyawan').text(': '+data.NIK);
+            $('#modal_ttl').text(': '+data.tempat_lahir+', '+data.tanggal_lahir);
+            $('#modal_alamat').text(': '+data.alamat);
+            $('#modal_pekerjaan').text(': '+data.pekerjaan);
+            $('#modal_perusahaan').text(': '+data.perusahaan.nama_perusahaan_pasien);
+            $('#modal_divisi').text(': '+data.divisi.nama_divisi_pasien);
+            $('#modal_jabatan').text(': '+data.jabatan.nama_jabatan);
+            $('#modal_jenis_kelamin').text(': '+data.jenis_kelamin);
+            $('#modal_telepon').text(': '+data.telepon);
+            $('#modal_email').text(': '+data.email);
+            $('#modal_alergi').html(': '+cekAlergi(data.alergi));
+            $('#modal_menyusui').html(': '+cekTrueFalse(data.hamil_menyusui));
+            $('#modal_nama_keluarga').html(': '+cekAlergi(data.keluarga.nama));
+            $('#modal_hubungan_keluarga').html(': '+cekAlergi(data.keluarga.hubungan));
+            $('#modal_alamat_keluarga').html(': '+cekAlergi(data.keluarga.alamat));
+            $('#modal_pekerjaan_keluarga').html(': '+cekAlergi(data.keluarga.pekerjaan));
+            $('#modal_telepon_keluarga').html(': '+cekAlergi(data.keluarga.telepon));
+            $('#modal_email_keluarga').html(': '+cekAlergi(data.keluarga.email));
+            $('#pp').html('<img id="modal-img" class="img-fluid rounded-circle" src="'+cekImg(data.upload)+'">')
+            modalPasien.modal('show') 
+        }
+
+        function cekAlergi(val) {
+            if(val==null){
+                return '<b class="text-primary">-</b>';
+            }else{
+                return val;
+            }
+        }
+        function cekTrueFalse(val) {
+            if(val==1){
+                return '<i class="fas fa-check text-primary"></i>';
+            }else{
+                return '<i class="fas fa-times text-danger"></i>';
+            }
+        }
+        function cekImg(val) {
+            var url = "{{ asset('pasien/foto/file') }}"+'/';
+            if(val==null||val==''||val==' '){
+                return url+'default.jpg';
+            }else{
+                return url+val;
+            }
+        }
     </script>
 
     @yield('js')

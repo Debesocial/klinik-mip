@@ -74,7 +74,8 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div >
-                                                       <a href="#"><h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
+                                                        <div hidden>{{ $pas->perusahaan->nama_perusahaan_pasien }} {{ $pas->jabatan->nama_jabatan }} {{ $pas->divisi->nama_divisi }}{{ $pas->keluarga->nama_keluarga }}</div>
+                                                       <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
@@ -114,7 +115,6 @@
             </div>
         </div>
     </div>
-
 </section>
 
 @section('js')
@@ -135,7 +135,6 @@
         })
         $(document).ready(function(){
             $('#cari_pasien').keyup(function(){
-                console.log($(this).val());
                 clearTable($(this).val())
             })
             // $('input[type="search"]').click(function(){
@@ -159,6 +158,8 @@
                 $('#tbody').show();
             }
         }
+
+        
     </script>
 @stop
 
