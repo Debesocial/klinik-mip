@@ -1,8 +1,7 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Data Pemeriksaan Narkoba')
-@section('pemeriksaan', 'active')
-@section('screen', 'active')
+@section('title', 'Data Pemeriksaan Narkotika')
+@section('periksa', 'active')
 @section('narko', 'active')
 
 {{-- @section('judul', 'Data Pemeriksaan Narkoba') --}}
@@ -12,7 +11,7 @@
     <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
-                    <h3>Data Pemeriksaan Narkoba</h3>
+                    <h3>Data Pemeriksaan Narkotika</h3>
                     {{ Breadcrumbs::render('pemeriksaan_narkoba') }}
             </div>
         </div>

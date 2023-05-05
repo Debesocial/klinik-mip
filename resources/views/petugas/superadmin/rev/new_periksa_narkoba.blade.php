@@ -1,12 +1,11 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Pemeriksaan Narkoba')
+@section('title', 'Pemeriksaan Narkotika')
 @section('breadcrumb', 'tambah_pemeriksaan_narkoba')
-@section('pemeriksaan', 'active')
-@section('screen', 'active')
+@section('periksa', 'active')
 @section('narko', 'active')
 
-@section('judul', 'Data Pemeriksaan Narkoba')
+@section('judul', 'Tambah Pemeriksaan Narkotika')
 @section('container')
 @section('css')
     <style>

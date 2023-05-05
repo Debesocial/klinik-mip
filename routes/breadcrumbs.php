@@ -349,7 +349,6 @@ Breadcrumbs::for('ubah_spesialis_rujukan', function (BreadcrumbTrail $trail) {
 });
 /** Rekam Medis */
 Breadcrumbs::for('rekam_medis', function (BreadcrumbTrail $trail) {
-     $trail->push('Pemeriksaan', route('rekammedis.datarekammedis'));
      $trail->push('Rekam Medis',route('rekammedis.datarekammedis') );
 });  
 Breadcrumbs::for('tambah_rekam_medis', function (BreadcrumbTrail $trail) {
@@ -398,19 +397,19 @@ Breadcrumbs::for('lihat_rawat_inap', function (BreadcrumbTrail $trail) {
 /** Pemeriksaan Narkoba */
 Breadcrumbs::for('pemeriksaan_narkoba', function (BreadcrumbTrail $trail) {
      $trail->push('Pemeriksaan', route('pemeriksaan.datapemeriksaannarkoba'));
-     $trail->push('Data Pemeriksaan Narkoba',route('pemeriksaan.datapemeriksaannarkoba') );
+     $trail->push('Data Pemeriksaan Narkotika',route('pemeriksaan.datapemeriksaannarkoba') );
 });  
 Breadcrumbs::for('tambah_pemeriksaan_narkoba', function (BreadcrumbTrail $trail) {
      $trail->parent('pemeriksaan_narkoba');
-     $trail->push('Tambah Pemeriksaan Narkoba',);
+     $trail->push('Tambah Pemeriksaan Narkotika',);
 });  
 Breadcrumbs::for('ubah_pemeriksaan_narkoba', function (BreadcrumbTrail $trail) {
      $trail->parent('pemeriksaan_narkoba');
-     $trail->push('Ubah Pemeriksaan Narkoba');
+     $trail->push('Ubah Pemeriksaan Narkotika');
 }); 
 Breadcrumbs::for('lihat_pemeriksaan_narkoba', function (BreadcrumbTrail $trail) {
      $trail->parent('pemeriksaan_narkoba');
-     $trail->push('Lihat Pemeriksaan Narkoba');
+     $trail->push('Lihat Pemeriksaan Narkotika');
 }); 
 
 /** Pemeriksaan Covid */

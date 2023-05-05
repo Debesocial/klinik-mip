@@ -1,8 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Rawat Jalan')
-@section('rekam', 'active')
-@section('rawat', 'active')
+@section('periksa', 'active')
 @section('jalan', 'active')
 @section('breadcrumb', 'tambah_rawat_jalan')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">

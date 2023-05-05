@@ -1,7 +1,8 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Rawat Inap')
-@section('izinberobat', 'active')
+@section('periksa', 'active')
+@section('inap', 'active')
 @section('breadcrumb', 'tambah_rawat_inap')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 

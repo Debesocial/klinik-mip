@@ -114,7 +114,8 @@
                 "infoEmpty": "Menampikan 0 sampai 0, dari 0 data",
                 "zeroRecords": "Tidak ditemukan data yang cocok",
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
-            }
+            },
+            scrollY: 300
         })
     </script>
 

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Daftar Pasien Rawat Jalan')
-@section('rekam', 'active')
+@section('periksa', 'active')
 @section('rawat', 'active')
 @section('jalan', 'active')
 
