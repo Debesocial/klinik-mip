@@ -6,6 +6,19 @@
 @section('medis', 'active')
 
 @section('container')
+@section('css')
+<style>
+    img{
+        /* width: auto;
+        height: 50%; */
+        aspect-ratio: 1; 
+        object-fit: cover; /* use the one you need */
+    }
+    table.dataTable td{
+        padding-top: 0 !important;
+    }
+</style>
+@stop
 
 <section class="section">
     <div class="row align-items-center">
@@ -16,8 +29,18 @@
             </div>
         </div>
     </div>
-    <div class="card shadow">
-        <div class="card-body">
+    <div class="container mt-5" id="container">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <div class="input-group rounded-pill">
+                    <span class="input-group-text bg-transparent border-0 rounded-pill" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" id="cari_pasien" class="form-control rounded-pill" placeholder="Cari pasien" aria-label="Search" aria-describedby="search-addon" />
+                </div>
+            </div>
+        </div>
+        <div class="row" id="tbody" style="display: none">
             @if (Session('message'))
             <script>Swal.fire({ 
                 icon: "success", 
@@ -26,46 +49,68 @@
             </script>
             @endif
             <div class="table-responsive">
-                <table class="table table-hover" id="table2">
+                <table class="table table-borderless " id="table2">
                     <thead>
-                        <tr>
-                            <th>Tanggal dibuat</th>
-                            <th>ID Rekam Medis</th>
-                            <th>Nama</th>
-                            <th>Umur</th>
-                            <th>Perusahaan</th>
-                            <th>Jabatan</th>
-                            <th>Alergi Obat</th>
-                            <th>Aksi</th>
+                        <tr style="display: none">
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($pasien as $pas)
-                            <tr>
-                                    <td><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
-                                        <br>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i:s') }}</td>
-                                    <td>{{ $pas->id_rekam_medis }}</td>
-                                    <td>{{ $pas->nama_pasien }}</td>
-                                    <td><?php
-                                        $tanggal_lahir = $pas->tanggal_lahir;
-                                        $lahir    = new DateTime($tanggal_lahir);
-                                        $today        = new DateTime('today');
-                                        $usia = $today->diff($lahir);
-                                        echo $usia->y;
-                                        echo " Tahun ";
-                                        ?></td>
-                                    <td>{{ $pas->perusahaan->nama_perusahaan_pasien }}</td>
-                                    <td>{{ $pas->jabatan->nama_jabatan }}</td>
-                                    <td class="text-center"> <i class="{{ $pas->alergi_obat == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
-                                    <td class="text-center">
-                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                            <tr >
+                                <td>
+                                    <div class="card mb-0">
+                                        <div class="card-body">
+                                            <div class="row mx-0">
+                                                <div class="col-md-1">
+                                                    @php
+                                                        $img = ($pas->upload!=''||$pas->upload!=null)?$pas->upload:'default.jpg';
+                                                        $tanggal_lahir = $pas->tanggal_lahir;
+                                                        $lahir    = new DateTime($tanggal_lahir);
+                                                        $today        = new DateTime('today');
+                                                        $usia = $today->diff($lahir);
+                                                    @endphp
+                                                    <img  src="{{ asset('pasien/foto/file/'.$img) }}" class="img-fluid rounded-circle" style="width: auto" alt="">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div >
+                                                        <h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <div>{{ $usia->y .' Tahun' }}</div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div>Perusahaan: {{ $pas->perusahaan->nama_perusahaan_pasien }} - {{ $pas->jabatan->nama_jabatan }}</div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
+                                                                <i>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i') }}</i>
+                                                            </div>
+                                                        </div>
+            
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 align-self-center text-center">
+                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                                                        <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-outline-secondary"><i class="bi bi-pencil-square"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </td>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div id="tbody1" class="container mt-5">
+            <div class="row">
+                <div class="col text-center" style="border: none">
+                    <i>Silahkan cari Nama, Id, atau Perusahaan Pasien</i>
+                </div>
             </div>
         </div>
     </div>
@@ -74,17 +119,48 @@
 
 @section('js')
     <script>
-        $("table[id*='table2']").DataTable({
+        var table1 = $("table[id*='table2']").DataTable({
             "language": {
-                "search": "Cari:",
+                "search": "",
                 "lengthMenu": "Tampilkan _MENU_ data",
                 "emptyTable": "Tidak ada data yang tersedia pada tabel ini",
                 "info": "Menampilkan _START_ sampai _END_, dari _TOTAL_ data",
                 "infoEmpty": "Menampikan 0 sampai 0, dari 0 data",
                 "zeroRecords": "Tidak ditemukan data yang cocok",
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
-            }
+            },
+            paging:false,
+            info:false,
+            searching:true
         })
+        $(document).ready(function(){
+            $('#cari_pasien').keyup(function(){
+                console.log($(this).val());
+                clearTable($(this).val())
+            })
+            // $('input[type="search"]').click(function(){
+            //     clearTable($(this).val())
+            // })
+            // $('#table2_filter').parent().removeClass('col-md-6')
+            // $('#table2_filter').css('text-align', 'center')
+            //  $('input[type="search"]').attr('placeholder', 'Masukkan kata kunci').removeClass('form-control-sm').addClass('form-control-lg').css('margin-left',0);
+            // $('#table2_filter').parent().siblings().remove()
+            $('#table2_wrapper').children().first().remove()
+        })
+
+        function clearTable(param) {
+            
+            if (param.length<2) {
+                $('#tbody1').show();
+                $('#tbody').hide();
+                $('#container').addClass('mt-5')   
+            }else{
+                table1.search(param).draw();
+                $('#tbody1').hide();    
+                $('#tbody').show();
+                $('#container').removeClass('mt-5')   
+            }
+        }
     </script>
 @stop
 

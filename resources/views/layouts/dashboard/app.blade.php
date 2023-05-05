@@ -115,7 +115,7 @@
                 "zeroRecords": "Tidak ditemukan data yang cocok",
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
             },
-            scrollY: 300
+            scrollY: 300,
         })
     </script>
 
