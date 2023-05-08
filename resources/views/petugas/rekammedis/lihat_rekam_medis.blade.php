@@ -1,364 +1,229 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Lihat Data Rekam Medis')
+@section('title', 'Lihat Rekam Medis')
 @section('breadcrumb', 'lihat_rekam_medis')
-
+@section('rekam', 'active')
 @section('judul', 'Lihat Rekam Medis')
-@section('container')    
-<div class="page-heading">
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    
-                    <div class="card-content">
-                        <div class="card-header">
-                            <h5>Detail Rekam Medis</h5>
+@section('container')
+
+<div hidden>{{ $pasien->perusahaan->nama_perusahaan_pasien }} {{ $pasien->jabatan->nama_jabatan }} {{ $pasien->divisi->nama_divisi }}{{ $pasien->keluarga->nama_keluarga }}</div>
+<div class="container">
+    <h5 class="text-center">Rekam Medis <a href="#" onclick="tampilModalPasien({{ json_encode($pasien) }})">{{ $pasien->nama_pasien }} - <i>{{ $pasien->id_rekam_medis }}</i></a></h5>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-title">
+                                Rawat Inap
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <form class="form" action="">
-                                <div class="row">
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="name">No Rekam Medis</label>
-                                            <input type="text" id="no_rekam medis" class="form-control"
-                                                 no_rekam medis="name" value="{{ $pasien->id_rekam_medis }}" placeholder="No Rekam Medis" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="email">Nomor Induk Karyawan</label>
-                                            <input type="text" id="nik" class="form-control"
-                                                 name="nik" value="{{ $pasien->NIK }}" placeholder="Nomor Induk Karyawan" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-                                    
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="nama_pasien">Nama Pasien</label>
-                                            <input type="text" id="nama_pasien" class="form-control"
-                                                 name="nama_pasien" value="{{ $pasien->nama_pasien }}" placeholder="Nama pasien" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="nama_pasien">Umur</label>
-                                            <input type="text" class="form-control" value="<?php
-                                            $tanggal_lahir = $pasien->tanggal_lahir;
-                                            $lahir    = new DateTime($tanggal_lahir);
-                                            $today        = new DateTime('today');
-                                            $usia = $today->diff($lahir);
-                                            echo $usia->y;
-                                            echo " Tahun ";
-                                            ?>" placeholder="Umur" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="nama_pasien">Nama Perusahaan</label>
-                                            <input type="text" id="nama_pasien" class="form-control"
-                                                 name="nama_pasien" value="{{ $pasien->perusahaan->nama_perusahaan_pasien }}" placeholder="Nama Perusahaan" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="nama_pasien">Nama Jabatan</label>
-                                            <input type="text" id="nama_pasien" class="form-control"
-                                                 name="nama_pasien" value="{{ $pasien->jabatan->nama_jabatan }}" placeholder="Nama Jabatan" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                    </div>
-
-                                    <div class="card-header">
-                                        <h5>Riwayat Pemeriksaan</h5>
-                                    </div>
-
-                                    <div class="page-heading">
-
-                                        <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist"
-                                            style="width: 100%">
-                                            <a class="list-group-item list-group-item-action active"
-                                                id="list-narkoba-list" data-bs-toggle="list" href="#list-narkoba"
-                                                role="tab">Pemeriksaan Narkoba</a>
-                                            <a class="list-group-item list-group-item-action" id="list-pemeriksaan-list"
-                                                data-bs-toggle="list" href="#list-pemeriksaan" role="tab">Pemeriksaan Covid-19</a>
-                                            <a class="list-group-item list-group-item-action" id="list-covid-list"
-                                                data-bs-toggle="list" href="#list-covid" role="tab">Pemantauan Covid-19</a>
-                                            <a class="list-group-item list-group-item-action" id="list-mcu-list"
-                                                data-bs-toggle="list" href="#list-mcu" role="tab">MCU</a>
-                                        </div>
-
-                                        <div class="tab-content text-justify">
-                                            <div class="tab-pane fade show active" id="list-narkoba" role="tabpanel"
-                                                aria-labelledby="list-narkoba-list">
-                                                <section id="basic-horizontal-layouts">
-                                                    <div class="row match-height">
-                                                        <div class="col-12">
-                                                            <div class="card">
-                                                                <div class="card-header">
-                                                                    <div class="buttons" width="100px">
-                                                                        <a href="/pemeriksaan/narkotika/{{ $pasien->id }}" class="btn btn-success rounded-pill">
-                                                                            <i class="fa fa-plus"></i>
-                                                                            <span>Tambah</span></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="card-body">
-                                                                    <form class="form form-horizontal">
-                                                                        <div class="form-body table-responsive">
-                                                                            <table class="table" id="TABLE_1">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>Tanggal Pemeriksaan</th>
-                                                                                        <th>ID Pemeriksaan</th>
-                                                                                        <th>Nama Pasien</th>
-                                                                                        <th>Penggunaan Obat</th>
-                                                                                        <th>Jenis Obat</th>
-                                                                                        <th>Asal Obat</th>
-                                                                                        <th>Terakhir digunakan</th>
-                                                                                        <th>Aksi</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    @foreach ($test as $tes)
-                                                                                    <tr>
-                                                                                        <td><B>{{ Carbon\Carbon::parse($tes->created_at)->isoFormat('D MMMM Y') }}</B>
-                                                                                            <br>{{ Carbon\Carbon::parse($tes->created_at)->format('H:i:s') }}
-                                                                                        </td>
-                                                                                        <td>{{ $tes->pasien->id_rekam_medis }}</td>
-                                                                                        <td><a href="/view/data/pasien/{{$pasien->id}}">{{ $tes->pasien->nama_pasien }}</a></td>
-                                                                                        <td>{{ $tes->penggunaan_obat }}</td>
-                                                                                        <td>{{ $tes->jenis_obat }}</td>
-                                                                                        <td>{{ $tes->asal_obat }}</td>
-                                                                                        <td>{{ $tes->terakhir_digunakan }}</td>
-                                                                                        <td><div class="buttons">
-                                                                                            <a href="/view/pemeriksaan/narkoba/{{$tes->id }}" title="Lihat Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
-                                                                                            <a href="/ubah/pemeriksaan/narkoba/{{$tes->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                                                                                            </div>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    @endforeach
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </section>
+                        <div class="col-md-4 text-end">
+                            <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-sm btn-success rounded-pill">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Tambah</span>
+                            </a> 
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover" id="tableInap">
+                            <thead>
+                                <tr>
+                                    <th>ID Rawat Inap</th>
+                                    <th>Tanggal Awal</th>
+                                    <th>Tanggal Akhir</th>
+                                    <th>Penyakit</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-title">
+                                Rawat Jalan
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-sm btn-success rounded-pill">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Tambah</span>
+                            </a> 
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover" id="tableJalan">
+                            <thead>
+                                <tr>
+                                    <th>ID Rawat Jalan</th>
+                                    <th>Tanggal Berobat</th>
+                                    <th>Penyakit</th>
+                                    <th>Tindakan</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-title">
+                                Pemeriksaan Narkoba
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-sm btn-success rounded-pill">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Tambah</span>
+                            </a> 
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover" id="tableNarkoba">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Hasil</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($test as $test)
+                                    <tr>
+                                        <td>
+                                            <B>{{ Carbon\Carbon::parse($test->created_at)->isoFormat('D MMMM Y') }}</B>
+                                            <i>{{ Carbon\Carbon::parse($test->created_at)->format('H:i') }}</i>
+                                        </td>
+                                        <td class="text-center">
+                                            @if ($test->amp == 0 && $test->met == 0 && $test->thc == 0 && $test->bzo == 0 && $test->mop == 0 && $test->coc == 0)
+                                                <span class="badge bg-primary">Tidak Terindikasi</span>
+                                            @else
+                                                <span class="badge bg-danger">Terindikasi</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                                                <a href="/view/pemeriksaan/narkoba/{{$test->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="/ubah/pemeriksaan/narkoba/{{$test->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                             </div>
-
-                                            <div class="tab-pane fade" id="list-pemeriksaan" role="tabpanel" aria-labelledby="list-pemeriksaan-list">
-                                                <section id="basic-horizontal-layouts">
-                                                    <div class="row match-height">
-                                                        <div class="col-12">
-                                                            <div class="card">
-                                                                <div class="card-header">
-                                                                    <div class="buttons" width="100px">
-                                                                        <a href="/add/pemeriksaan/covid/{{ $pasien->id }}" class="btn btn-success rounded-pill">
-                                                                            <i class="fa fa-plus"></i>
-                                                                            <span>Tambah</span></a>
-                                                                    </div>
-                                                                </div>
-                                                                    <div class="card-body">
-                                                                        <form class="form form-horizontal">
-                                                                            <div class="form-body table-responsive">
-                                                                                <table class="table" id="TABLE_2">
-                                                                                    <thead>
-                                                                                        <tr>
-                                                                                            <th>Tanggal Pemeriksaan</th>
-                                                                                            <th>Nama Pasien</th>
-                                                                                            <th>Pemeriksaan Antigen</th>
-                                                                                            <th>aksi</th>
-                                                                                        </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        @foreach ($covid as $cov)
-                                                                                        <tr>
-                                                                                            <td><B>{{ Carbon\Carbon::parse($cov->created_at)->isoFormat('D MMMM Y') }}</B>
-                                                                                                <br>{{ Carbon\Carbon::parse($cov->created_at)->format('H:i:s') }}
-                                                                                            </td>
-                                                                                            <td><a href="/view/data/pasien/{{$pasien->id}}">{{ $cov->pasien->nama_pasien }}</a></td>
-                                                                                            <td>{{ $cov->pemeriksaan->kebutuhan }}</td>
-                                                                                            <td><div class="buttons">
-                                                                                                <a href="/view/rawat/inap/{{$pasien->id}}" title="Lihat Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
-                                                                                                <a href="/ubah/pemeriksaan/covid/{{$cov->id }}" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                                                                                                </div>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        @endforeach
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                            
-                                                    </div>
-                                                </section>
-                                            </div>
-
-                                            
-<div class="tab-pane fade" id="list-covid" role="tabpanel" aria-labelledby="list-covid-list">
-    <section id="basic-horizontal-layouts">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="buttons" width="100px">
-                            <a href="/pantau/covid/{{ $pasien->id }}" class="btn btn-success rounded-pill">
-                                <i class="fa fa-plus"></i>
-                                <span>Tambah</span></a>
-                        </div>
-                    </div>
-                        <div class="card-body">
-                            <form class="form form-horizontal">
-                                <div class="form-body table-responsive">
-                                    <table class="table" id="TABLE_3">
-                                        <thead>
-                                            <tr>
-                                                <th>Tanggal Pemeriksaan</th>
-                                                <th>Nama Pasien</th>
-                                                <th>No. Kamar</th>
-                                                <th>Tanggal Perjalanan</th>
-                                                <th>Kota Asal/Kota Tujuan</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($pemantauan as $pantau)
-                                            <tr>
-                                                    <td><B>{{ Carbon\Carbon::parse($pantau->tanggal_pemeriksaan)->isoFormat('D MMMM Y') }}</B></td>
-                                                    <td>{{ $pantau->pasien->nama_pasien }}</td>
-                                                    <td>{{ $pantau->no_kamar }}</td>
-                                                    <td>{{ $pantau->perjalanan }}</td>
-                                                    <td>{{ $pantau->asal }}/{{ $pantau->kota_tujuan }}</td>
-                                                    <td><div class="buttons">
-                                                        <a href="/view/pemantauan/covid/{{$pantau->id}}" title="print Data" href="#" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
-                                                        <a href="" class="btn btn-success rounded-pill" title="Edit"><i class="fa fa-edit"></i></a>
-                                                        </div></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </form>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="tab-pane fade" id="list-mcu" role="tabpanel" aria-labelledby="list-mcu-list">
-    <section id="basic-horizontal-layouts">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="buttons" width="100px">
-                            <a href="/pengesahan/hasil" class="btn btn-success rounded-pill">
-                                <i class="fa fa-plus"></i>
-                                <span>Tambah MCU Awal</span></a>
-                                <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
-                                    <i class="fa fa-plus"></i>
-                                    <span>Tambah MCU Khusus</span></a>
-                                    <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
-                                        <i class="fa fa-plus"></i>
-                                        <span>Tambah MCU Bertahap</span></a>
-                                        <a href="/keterangan/pemeriksaan" class="btn btn-success rounded-pill">
-                                            <i class="fa fa-plus"></i>
-                                            <span>Tambah MCU Akhir</span></a>
-                        </div>
-                    </div>
-                        <div class="card-body">
-                            <form class="form form-horizontal">
-                                <div class="form-body table-responsive">
-                                    <table class="table" id="TABLE_3">
-                                        <thead>
-                                            <tr>
-                                                <th>Tanggal Permintaan</th>
-                                                <th>ID Rawat Inap</th>
-                                                <th>Nama Pasien</th>
-                                                <th>Diagnosa</th>
-                                                <th>Tanggal</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>22 Desember 2022</td>
-                                                <td><a href="/view/rawat/inap">RI22120001</a></td>
-                                                <td>Martuani</td>
-                                                <td>Masuk angin</td>
-                                                <td>22</td>
-                                                <td>
-                                                    <div class="buttons">
-                                                        <a href="/lihat/rekam/medis" title="Lihat Data" class="btn btn-light rounded-pill"><i class="fa fa-eye"></i></a>
-                                                        <a href="" class="btn btn-success rounded-pill" title="Ubah data"><i class="fa fa-edit"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </form>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-</div>
-
-
-
-
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card-title">
+                                MCU
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <a href="" class="btn btn-sm btn-success rounded-pill">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Tambah</span>
+                            </a> 
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover" id="tableMcu">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jenis MCU</th>
+                                    <th>Hasil</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </div>
 
-
-<script type="text/javascript" defer="defer">
-    $(document).ready(function() {
-        $("table[id^='TABLE']").DataTable( {    
-            "scrollCollapse": true,
-            "searching": true,
-            "paging": true
-        } );
-    } );
-</script>
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-</script>
+@section('js')
+    <script>
+        $(document).ready(function(){
+            let jquery_datatable_narkoba = $("#tableNarkoba").DataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [ {
+                                'targets': [1,2], /* column index */
+                                'orderable': false, /* true or false */
+                            }],
+                scrollY: 250,
+                searching: false,
+                paging:false,
+                info:false
+            })
+            let jquery_datatable_mcu = $("#tableMcu").DataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [ {
+                                'targets': [1,2], /* column index */
+                                'orderable': false, /* true or false */
+                            }],
+                scrollY: 250,
+                searching: false,
+                paging:false,
+                info:false
+            })
+            let jquery_datatable_inap = $("#tableInap").DataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [ {
+                                'targets': [1,2], /* column index */
+                                'orderable': false, /* true or false */
+                            }],
+                scrollY: 250,
+                searching: false,
+                paging:false,
+                info:false
+            })
+            let jquery_datatable_jalan = $("#tableJalan").DataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [ {
+                                'targets': [1,2], /* column index */
+                                'orderable': false, /* true or false */
+                            }],
+                scrollY: 250,
+                searching: false,
+                paging:false,
+                info:false
+            })
+            $('#tableNarkoba_wrapper').children().first().remove()
+            $('#tableMcu_wrapper').children().first().remove()
+            $('#tableInap_wrapper').children().first().remove()
+            $('#tableJalan_wrapper').children().first().remove()
+        })
+    </script>
+@stop
 
 @include('sweetalert::alert')
 @endsection

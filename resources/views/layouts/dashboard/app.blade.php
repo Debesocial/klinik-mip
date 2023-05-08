@@ -89,8 +89,8 @@
             </section>
         </div>
         
-        {{-- Modal --}}
-        <div class="modal fade" id="modalPasien" tabindex="-1" aria-labelledby="modalPasienLabel" aria-hidden="true">
+        {{-- Modal Pasien--}}
+        <div class="modal fade" id="modalPasien" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPasienLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-3">
                     <div class="modal-header">
@@ -250,56 +250,16 @@
             },
             scrollY: 300,
         })
-        function tampilModalPasien(data) {
-            console.log(data);
-            var modalPasien = $('#modalPasien');
-            $('#modal_nama').text(': '+data.nama_pasien);
-            $('#modal_rekam_medis').text(': '+data.id_rekam_medis);
-            $('#modal_nomor_induk_karyawan').text(': '+data.NIK);
-            $('#modal_ttl').text(': '+data.tempat_lahir+', '+data.tanggal_lahir);
-            $('#modal_alamat').text(': '+data.alamat);
-            $('#modal_pekerjaan').text(': '+data.pekerjaan);
-            $('#modal_perusahaan').text(': '+data.perusahaan.nama_perusahaan_pasien);
-            $('#modal_divisi').text(': '+data.divisi.nama_divisi_pasien);
-            $('#modal_jabatan').text(': '+data.jabatan.nama_jabatan);
-            $('#modal_jenis_kelamin').text(': '+data.jenis_kelamin);
-            $('#modal_telepon').text(': '+data.telepon);
-            $('#modal_email').text(': '+data.email);
-            $('#modal_alergi').html(': '+cekAlergi(data.alergi));
-            $('#modal_menyusui').html(': '+cekTrueFalse(data.hamil_menyusui));
-            $('#modal_nama_keluarga').html(': '+cekAlergi(data.keluarga.nama));
-            $('#modal_hubungan_keluarga').html(': '+cekAlergi(data.keluarga.hubungan));
-            $('#modal_alamat_keluarga').html(': '+cekAlergi(data.keluarga.alamat));
-            $('#modal_pekerjaan_keluarga').html(': '+cekAlergi(data.keluarga.pekerjaan));
-            $('#modal_telepon_keluarga').html(': '+cekAlergi(data.keluarga.telepon));
-            $('#modal_email_keluarga').html(': '+cekAlergi(data.keluarga.email));
-            $('#pp').html('<img id="modal-img" class="img-fluid rounded-circle" src="'+cekImg(data.upload)+'">')
-            modalPasien.modal('show') 
-        }
-
-        function cekAlergi(val) {
-            if(val==null){
-                return '<b class="text-primary">-</b>';
-            }else{
-                return val;
-            }
-        }
-        function cekTrueFalse(val) {
-            if(val==1){
-                return '<i class="fas fa-check text-primary"></i>';
-            }else{
-                return '<i class="fas fa-times text-danger"></i>';
-            }
-        }
         function cekImg(val) {
-            var url = "{{ asset('pasien/foto/file') }}"+'/';
-            if(val==null||val==''||val==' '){
-                return url+'default.jpg';
-            }else{
-                return url+val;
+            var url = "{{ asset('pasien/foto/file') }}" + '/';
+            if (val == null || val == '' || val == ' ') {
+                return url + 'default.jpg';
+            } else {
+                return url + val;
             }
         }
     </script>
+    <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
 
     @yield('js')
 </body>
