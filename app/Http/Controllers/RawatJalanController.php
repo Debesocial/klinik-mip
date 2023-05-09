@@ -105,10 +105,10 @@ class RawatJalanController extends Controller
     public function ubahrawatjalan($id)
     {
         $rawat_jalan = RawatJalan::find($id);
-        $namapenyakit = NamaPenyakit::all();
+        $nama_penyakit = NamaPenyakit::all();
         $tindakan = Tindakan::all();
 
-        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'namapenyakit', 'tindakan'));
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'nama_penyakit', 'tindakan'));
     }
 
     function changerawatjalan(Request $request, $id) {

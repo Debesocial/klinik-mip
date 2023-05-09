@@ -306,128 +306,126 @@
 
         </div>
     </div>
-
-    @section('js')
-        <script>
-            var stepper2 = new Stepper(document.querySelector('#stepper2'), {
-                linear: true,
-                animation: true
-            })
-            $(document).ready(function() {
-                $('select').select2({
-                    theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
-                });
-
-                $('input').keyup(function(event) {
-                    if ($(this).hasClass('is-invalid')) {
-                        $(this).removeClass('is-invalid')
-                    }
-                })
-                $('input').change(function(event) {
-                    if ($(this).hasClass('is-invalid')) {
-                        $(this).removeClass('is-invalid')
-                    }
-                })
-                $('select').change(function() {
-                    if ($(this).val() !== "") {
-                        $(this).removeClass('is-invalid')
-
-                    }
-                })
-
-                $('input[class="form-check-input"]').click(function() {
-                    $(this).siblings('.invalid-feedback').hide()
-                })
+</section>
+@section('js')
+    <script>
+        var stepper2 = new Stepper(document.querySelector('#stepper2'), {
+            linear: true,
+            animation: true
+        })
+        $(document).ready(function() {
+            $('select').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
             });
 
+            $('input').keyup(function(event) {
+                if ($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+            $('input').change(function(event) {
+                if ($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+            $('select').change(function() {
+                if ($(this).val() !== "") {
+                    $(this).removeClass('is-invalid')
 
-            function pilihPasien(data) {
-                var pasien_index = $('#select_pasien_id').val();
-                if (pasien_index === '') {
-                    $('#detail_pasien').fadeOut('slow')
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
-                    $('.invalid-feedback').addClass('d-block')
+                }
+            })
+
+            $('input[class="form-check-input"]').click(function() {
+                $(this).siblings('.invalid-feedback').hide()
+            })
+        });
+
+
+        function pilihPasien(data) {
+            var pasien_index = $('#select_pasien_id').val();
+            if (pasien_index === '') {
+                $('#detail_pasien').fadeOut('slow')
+                $('#select_pasien_id').removeClass('is-valid')
+                $('#select_pasien_id').addClass('is-invalid')
+                $('.invalid-feedback').addClass('d-block')
+            } else {
+                var pasien = @json($pasien_id)[pasien_index];
+                $('[name=pasien_id]').val(pasien.id)
+                $('td#nama').text(": " + pasien.nama_pasien);
+                $('td#umur').text(": " + getAge(pasien.tanggal_lahir));
+                $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
+                $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
+                $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
+                $('td#alamat').text(": " + pasien.alamat)
+                $('td#pekerjaan').text(": " + pasien.pekerjaan)
+                $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
+                $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
+                $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
+                $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
+                $('td#telepon').text(": " + pasien.telepon)
+                var email = pasien.email ?? '-'
+                $('td#email').text(": " + email);
+                $('.invalid-feedback').removeClass('d-block')
+                $('#detail_pasien').fadeIn('slow')
+
+            }
+        }
+        function getAge(dateString) {
+            var today = new Date();
+            var birthDate = new Date(dateString);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+
+        function lanjut1() {
+            var pasien_index = $('#select_pasien_id').val();
+            if (pasien_index == "") {
+                $('#select_pasien_id').removeClass('is-valid')
+                $('#select_pasien_id').addClass('is-invalid')
+            } else {
+                $('#select_pasien_id').removeClass('is-invalid')
+                $('#select_pasien_id').addClass('is-valid')
+                stepper2.next()
+            }
+        }
+
+        function lanjut2() {
+            var validated = true;
+            
+            var inputs = ['tanggal_berobat', 'nama_penyakit_id', 'tindakan_id'];
+            inputs.forEach(input => {
+                var value_input = $('[name="' + input + '"]').val();                    
+                var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
+
+                if (value_input == ""||value_input == ' ') {
+                    validated = false
+                    $('[name="' + input + '"]').removeClass('is-valid')
+                    $('[name="' + input + '"]').addClass('is-invalid')
                 } else {
-                    var pasien = @json($pasien_id)[pasien_index];
-                    $('[name=pasien_id]').val(pasien.id)
-                    $('td#nama').text(": " + pasien.nama_pasien);
-                    $('td#umur').text(": " + getAge(pasien.tanggal_lahir));
-                    $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                    $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                    $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                    $('td#alamat').text(": " + pasien.alamat)
-                    $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                    $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                    $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                    $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                    $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                    $('td#telepon').text(": " + pasien.telepon)
-                    var email = pasien.email ?? '-'
-                    $('td#email').text(": " + email);
-                    $('.invalid-feedback').removeClass('d-block')
-                    $('#detail_pasien').fadeIn('slow')
-
+                    $('[name="' + input + '"]').removeClass('is-invalid')
+                    $('[name="' + input + '"]').addClass('is-valid')
+                    setResult(input, text_input);
                 }
+            });
+            
+            if (validated === true) {
+                stepper2.next()
             }
-            function getAge(dateString) {
-                var today = new Date();
-                var birthDate = new Date(dateString);
-                var age = today.getFullYear() - birthDate.getFullYear();
-                var m = today.getMonth() - birthDate.getMonth();
-                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                    age--;
-                }
-                return age;
+        }
+
+        function setResult(id, value) {
+            if(id=='tanggal_berobat'){
+                value = $('[name="' + id + '"]').val(); 
             }
-
-            function lanjut1() {
-                var pasien_index = $('#select_pasien_id').val();
-                if (pasien_index == "") {
-                    $('#select_pasien_id').removeClass('is-valid')
-                    $('#select_pasien_id').addClass('is-invalid')
-                } else {
-                    $('#select_pasien_id').removeClass('is-invalid')
-                    $('#select_pasien_id').addClass('is-valid')
-                    stepper2.next()
-                }
-            }
-
-            function lanjut2() {
-                var validated = true;
-                
-                var inputs = ['tanggal_berobat', 'nama_penyakit_id', 'tindakan_id'];
-                inputs.forEach(input => {
-                    var value_input = $('[name="' + input + '"]').val();                    
-                    var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
-
-                    if (value_input == ""||value_input == ' ') {
-                        validated = false
-                        $('[name="' + input + '"]').removeClass('is-valid')
-                        $('[name="' + input + '"]').addClass('is-invalid')
-                    } else {
-                        $('[name="' + input + '"]').removeClass('is-invalid')
-                        $('[name="' + input + '"]').addClass('is-valid')
-                        setResult(input, text_input);
-                    }
-                });
-                
-                if (validated === true) {
-                    stepper2.next()
-                }
-            }
-
-            function setResult(id, value) {
-                if(id=='tanggal_berobat'){
-                    value = $('[name="' + id + '"]').val(); 
-                }
-                $('#_'+id).text(': '+value);
-            }
-        </script>
-    @stop
-
-</section>
+            $('#_'+id).text(': '+value);
+        }
+    </script>
+@stop
 
 @endsection

@@ -37,7 +37,7 @@
                 <table class="table table-hover" id="table1">
                     <thead>
                         <tr>
-                            <th>ID Rawat Inap</th>
+                            <th>ID Rawat Jalan</th>
                             <th>Nama Pasien</th>
                             <th>Tanggal Berobat</th>
                             <th>Nama Penyakit</th>
@@ -47,10 +47,11 @@
                     <tbody>
                         @foreach ($rawat_jalan as $jalan)
                         <tr>
-                            <td>{{ $jalan->id_rawat_jalan }}</td>
-                            <td>{{ $jalan->pasien->nama_pasien }}</td>
-                            <td>{{ $jalan->tanggal_berobat }}</td>
-                            <td>{{ $jalan->namapenyakit->primer }}</td>
+                            <td class="text-center">{{ $jalan->id_rawat_jalan }}</td>
+                            <div hidden>{{ $jalan->pasien->perusahaan->nama_perusahaan_pasien . $jalan->pasien->divisi->nama_divisi_pasien . $jalan->pasien->jabatan->nama_jabatan . $jalan->pasien->keluarga}}</div>
+                            <td><a href="#" onclick="tampilModalPasien({{ json_encode($jalan->pasien) }})">{{ $jalan->pasien->nama_pasien }}</a></td>
+                            <td class="text-center">{{ $jalan->tanggal_berobat }}</td>
+                            <td class="text-center">{{ $jalan->namapenyakit->primer }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                 <a href="/view/rawat/jalan/{{  $jalan->id  }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>

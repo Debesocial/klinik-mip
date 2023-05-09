@@ -47,11 +47,12 @@
                     <tbody>
                         @foreach ($rawat_inap as $inap)
                         <tr class="">
-                            <td>{{ $inap->id_rawat_inap }}</td>
-                            <td>{{ $inap->pasien->nama_pasien }}</td>
-                            <td><B>{{ Carbon\Carbon::parse($inap->mulai_rawat)->isoFormat('D MMMM Y') }}</B></td>
-                            <td><B>{{ Carbon\Carbon::parse($inap->berakhir_rawat)->isoFormat('D MMMM Y') }}</B></td>
-                            <td class="text-center">
+                            <td class="text-center">{{ $inap->id_rawat_inap }}</td>
+                            <div hidden>{{ $inap->pasien->perusahaan->nama_perusahaan_pasien . $inap->pasien->divisi->nama_divisi_pasien . $inap->pasien->jabatan->nama_jabatan . $inap->pasien->keluarga}}</div>
+                            <td><a href="#" onclick="tampilModalPasien({{ json_encode($inap->pasien) }})">{{ $inap->pasien->nama_pasien }}</a></td>
+                            <td class="text-center"><B>{{ Carbon\Carbon::parse($inap->mulai_rawat)->isoFormat('D MMMM Y') }}</B></td>
+                            <td class="text-center"><B>{{ Carbon\Carbon::parse($inap->berakhir_rawat)->isoFormat('D MMMM Y') }}</B></td>
+                            <td class="text-center" class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/view/rawat/inap/{{  $inap->id  }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                     <a href="/ubah/rawat/inap/{{  $inap->id  }}" class="btn btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>

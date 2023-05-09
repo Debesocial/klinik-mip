@@ -62,9 +62,9 @@ class RawatInapController extends Controller
     public function ubahrawatinap($id)
     {
         $rawat_inap = RawatInap::find($id);
-        $namapenyakit = NamaPenyakit::all();
+        $nama_penyakit = NamaPenyakit::all();
 
-        return view('petugas.rawatinap.ubah_rawat_inap', compact('rawat_inap', 'namapenyakit'));
+        return view('petugas.rawatinap.ubah_rawat_inap', compact('rawat_inap', 'nama_penyakit'));
     }
 
     function changerawatinap(Request $request, $id) {

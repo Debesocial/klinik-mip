@@ -75,11 +75,12 @@
                                                 <div class="col-md-9">
                                                     <div >
                                                         <div hidden>{{ $pas->perusahaan->nama_perusahaan_pasien }} {{ $pas->jabatan->nama_jabatan }} {{ $pas->divisi->nama_divisi }}{{ $pas->keluarga->nama_keluarga }}</div>
-                                                       <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><h6 style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
+                                                       <a href="/lihat/rekam/medis/{{ $pas->id }}" ><h6 class="mb-0" style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <div>{{ $usia->y .' Tahun' }}</div>
+                                                            <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><small style="display: inline-block;">NIK.{{ $pas->penduduk }}</small></a>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div>Perusahaan: {{ $pas->perusahaan->nama_perusahaan_pasien }} - {{ $pas->jabatan->nama_jabatan }}</div>
@@ -90,11 +91,6 @@
                                                             </div>
                                                         </div>
             
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 align-self-center text-center">
-                                                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
-                                                        <a href="/lihat/rekam/medis/{{ $pas->id }}" title="Lihat Data" class="btn btn-outline-secondary"><i class="bi bi-pencil-square"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
