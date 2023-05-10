@@ -32,6 +32,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RawatInapController;
 use App\Http\Controllers\RawatJalanController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstruksiDokterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::post('/add/rawat/inap', [RawatInapController::class, 'tambahrawatinap'])->name('rawatinap.tambahrawatinap');
     Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
+
+    Route::get('/instruksi_dokter/form_tambah/{id}',[InstruksiDokterController::class, 'tampilFormTambah']);
+    Route::get('/instruksi_dokter/form_edit/{id}',[InstruksiDokterController::class, 'tampilFormTambah']);
+    Route::post('/instruksi_dokter/tambah',[InstruksiDokterController::class, 'simpan']);
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');
@@ -347,6 +352,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::post('/ubah/hasil/pemantauan/{id}', [SuperAdminController::class, 'changehasilpemantauan'])->name('superadmin.changehasilpemantauan');
 
     Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
+
+    
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

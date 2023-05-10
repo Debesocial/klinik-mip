@@ -59,4 +59,8 @@ class RawatInap extends Model
     public function user() {
         return $this->hasMany(User::class);
     }
+
+    public function instruksidokter() {
+        return $this->hasMany(InstruksiDokter::class, 'id_rawat_inap', 'id');
+    }
 }

@@ -16,10 +16,10 @@ class RawatInapController extends Controller
      */
     public function viewrawatinap($id)
     {
-        $pasien = Pasien::find($id);
+        // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
 
-        return view('petugas.rawatinap.view_rawat_inap', compact('pasien', 'rawat_inap'));
+        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap'));
     }
 
     public function daftarrawatinap()
