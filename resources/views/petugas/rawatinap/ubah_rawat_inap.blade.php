@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Ubah Data Rawat Inap')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('inap', 'active')
 @section('breadcrumb', 'ubah_rawat_inap')
 @section('judul', 'Ubah Data Rawap Inap')

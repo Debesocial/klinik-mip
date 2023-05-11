@@ -191,12 +191,12 @@
                             <span>Data Rekam Medis</span>
                         </a>
                     </li>
-                    <li class="sidebar-item @yield('periksa')  has-sub">
+                    <li class="sidebar-item @yield('pemeriksaan')  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-ui-checks"></i>
                             <span>Pemeriksaan</span>
                         </a>
-                        <ul class="submenu @yield('periksa')">
+                        <ul class="submenu @yield('pemeriksaan')">
                             <li class="submenu-item @yield('jalan')">
                                 <a href="{{ route('rawatjalan.daftarrawatjalan') }}">Pasien Rawat Jalan</a>
                             </li>

@@ -2,7 +2,7 @@
 
 @section('title', 'Lihat Data Rawat Inap')
 @section('breadcrumb', 'lihat_rawat_inap')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('inap', 'active')
 @section('judul', 'Lihat Rawat Inap')
 @section('css')
@@ -43,7 +43,7 @@
                             $usia = $today->diff($lahir)->y.' Tahun';
                         @endphp
                         <div hidden>{{ $rawat_inap->pasien->perusahaan->nama_perusahaan_pasien . $rawat_inap->pasien->divisi->nama_divisi_pasien . $rawat_inap->pasien->jabatan->nama_jabatan .$rawat_inap->pasien->keluarga }}</div>
-                        <table>
+                        <table class="table table-borderless">
                             <tbody>
                                 <tr>
                                     <th>Nama Pasien</th>

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Pemeriksaan Narkotika')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('narko', 'active')
 
 {{-- @section('judul', 'Data Pemeriksaan Narkoba') --}}

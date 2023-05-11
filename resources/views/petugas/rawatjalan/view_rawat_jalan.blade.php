@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Lihat Data Rawat Jalan')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('jalan', 'active')
 @section('breadcrumb', 'lihat_rawat_jalan')
 @section('judul', 'Lihat Data Rawap Jalan')

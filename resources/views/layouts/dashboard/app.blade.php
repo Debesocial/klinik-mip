@@ -70,6 +70,7 @@
 <body style="font-size: 0.8rem ;">
     @include('layouts.dashboard.sidebar')
     <div id="main" class="mt-4">
+        
         <header class="">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
@@ -84,6 +85,13 @@
             </div>
         @endif
         <div class="page-content">
+            <div class="preloader js-preloader flex-center">
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
             <section class="row">
                 @yield('container')
             </section>
@@ -248,7 +256,7 @@
                 "zeroRecords": "Tidak ditemukan data yang cocok",
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
             },
-            scrollY: 300,
+            scrollY: 320,
         })
         function cekImg(val) {
             var url = "{{ asset('pasien/foto/file') }}" + '/';
@@ -257,6 +265,21 @@
             } else {
                 return url + val;
             }
+        }
+    </script>
+    <script>
+        $(document).ready(function(){
+            hideLoader();
+        })
+        function showLoader() {
+            $('.preloader').show();
+        }
+        function hideLoader(params) {
+            $('.preloader').fadeOut('slow');
+        }
+        function submitform(id) {
+            $('.preloader').show();
+            $('#'+id).submit();
         }
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>

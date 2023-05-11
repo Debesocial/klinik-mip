@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('title', 'Data Rawat Inap')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('inap', 'active')
 @section('breadcrumb', 'tambah_rawat_inap')
 @section('judul', 'Data Rawap Inap')
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form class="form needs-validation" action="/add/rawat/inap" method="post"
+                    <form id="form-add-jalan" class="form needs-validation" action="/add/rawat/inap" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
                         <input type="hidden" name="pasien_id">
@@ -183,7 +183,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label">Berakhir Dirawat <b class="text-danger">*</b></label>
+                                        <label class="form-label">Berakhir Dirawat</label>
                                         <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat">
                                         <div class="valid-feedback">
                                             Data sudah benar
@@ -292,7 +292,7 @@
                                     onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
                                     <b>Sebelumnya</b></button>
                                 <button type="submit" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.next()"><b>Simpan</b> <i class="bi bi-save"></i></button>
+                                    onclick="submitform('form-add-jalan')"><b>Simpan</b> <i class="bi bi-save"></i></button>
                             </div>
                         </div>
                     </form>
@@ -393,7 +393,7 @@
         function lanjut2() {
             var validated = true;
             
-            var inputs = ['mulai_rawat', 'nama_penyakit_id', 'berakhir_rawat'];
+            var inputs = ['mulai_rawat', 'nama_penyakit_id'];
             inputs.forEach(input => {
                 var value_input = $('[name="' + input + '"]').val();                    
                 var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
@@ -415,7 +415,7 @@
         }
 
         function setResult(id, value) {
-            if(id=='mulai_rawat' || id == 'berakhir_rawat'){
+            if(id=='mulai_rawat'){
                 value = $('[name="' + id + '"]').val(); 
             }
             $('#_'+id).text(': '+value);

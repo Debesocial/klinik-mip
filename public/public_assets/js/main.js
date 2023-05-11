@@ -29,7 +29,7 @@ Author: GrayGrids
         }
 
 
-    
+
 
         // show or hide the back-top-top button
         var backToTo = document.querySelector(".scroll-top");
@@ -40,11 +40,11 @@ Author: GrayGrids
         }
     };
 
-    
+
     // WOW active
     new WOW().init();
 
-    
+
 
     // for menu scroll 
     var pageLink = document.querySelectorAll('.page-scroll');
@@ -59,12 +59,12 @@ Author: GrayGrids
         });
     });
 
-    
-      //===== mobile-menu-btn
-	let navbarToggler = document.querySelector(".mobile-menu-btn");
-	navbarToggler.addEventListener('click', function () {
-		navbarToggler.classList.toggle("active");
-	});
+
+    //===== mobile-menu-btn
+    let navbarToggler = document.querySelector(".mobile-menu-btn");
+    navbarToggler.addEventListener('click', function () {
+        navbarToggler.classList.toggle("active");
+    });
 
     //====== counter up 
     var cu = new counterUp({

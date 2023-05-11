@@ -43,7 +43,6 @@ class RawatInapController extends Controller
         $validatedData = $request->validate([
             'pasien_id' => 'required',
             'mulai_rawat' => 'required',
-            'berakhir_rawat' => 'required',
             'nama_penyakit_id' => 'required',
         ]);
 

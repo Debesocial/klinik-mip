@@ -2,7 +2,7 @@
 
 @section('title', 'Lihat Pemeriksaan Narkotika')
 @section('breadcrumb', 'lihat_pemeriksaan_narkoba')
-@section('periksa', 'active')
+@section('pemeriksaan', 'active')
 @section('narko', 'active')
 @section('judul', 'Lihat Pemeriksaan Narkotika')
 @section('container')

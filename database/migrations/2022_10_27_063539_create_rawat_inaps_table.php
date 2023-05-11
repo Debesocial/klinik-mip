@@ -18,7 +18,7 @@ class CreateRawatInapsTable extends Migration
             $table->foreignId('pasien_id')->constrained();
             $table->string('id_rawat_inap');
             $table->date('mulai_rawat');
-            $table->date('berakhir_rawat');
+            $table->date('berakhir_rawat')->nullable();
             $table->foreignId('nama_penyakit_id')->constrained();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
