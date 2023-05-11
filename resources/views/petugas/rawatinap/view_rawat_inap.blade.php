@@ -28,7 +28,7 @@
                 <h5>Rawat Inap {{ $rawat_inap->id_rawat_inap }}</h5>
             </div>
             <div class="text-end col-1">
-                <a href="#" class="toogle-show" stat=1 onclick="showDetail()" ><span class="badge bg-secondary" id="badge-toogle"><i class="bi bi-caret-up-fill"></i></a>
+                <a href="#" class="toogle-show" stat=1 onclick="showDetail()" ><button class="btn btn-sm text-primary btn-transpatent" id="badge-toogle"><i class="bi bi-chevron-up"></i></button></a>
             </div>
         </div>
         <div class="row mb-3" id="bio-pasien">
@@ -153,7 +153,7 @@
                                     <td>{{ $instruksi->instruksi_pengobatan }}</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                            <a href="#" onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Pemeriksaan Instruksi Dokter')" class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="#" onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')" class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -376,11 +376,11 @@
             var toogle = $('.toogle-show');
             if (toogle.attr('stat')==1) {
                 $('#bio-pasien').hide('slow');
-                $('#badge-toogle').html('<i class="bi bi-caret-down-fill">')
+                $('#badge-toogle').html('<i class="bi bi-chevron-down"></i>')
                 toogle.attr('stat',0);
             }else{
                 $('#bio-pasien').show('slow');
-                $('#badge-toogle').html('<i class="bi bi-caret-up-fill">')
+                $('#badge-toogle').html('<i class="bi bi-chevron-up"></i>')
                 toogle.attr('stat',1);
             }
         }

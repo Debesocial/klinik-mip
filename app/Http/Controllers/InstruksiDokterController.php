@@ -22,6 +22,12 @@ class InstruksiDokterController extends Controller
         return view('/component/form_tambah_instruksi_dokter',$data);
     }
 
+    public function tampilFormUbah($id)
+    {
+        $data ['instruksidokter'] = InstruksiDokter::find($id);
+        return  view('/component/form_tambah_instruksi_dokter',$data);
+    }
+
     public function simpan(Request $request)
     {
         $data = $request->except('_token');
@@ -29,6 +35,16 @@ class InstruksiDokterController extends Controller
         $data['updated_by']=auth()->user()->id;
         if(InstruksiDokter::create($data)){
             return redirect("/view/rawat/inap/".$data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Pemeriksaan Instruksi Dokter!');
+        }
+    }
+
+    public function ubah(Request $request, $id)
+    {
+        $data = $request->except('_token');
+        $data['updated_by']=auth()->user()->id;
+
+        if (InstruksiDokter::where('id', $id)->update($data)) {
+            return redirect("/view/rawat/inap/".$data['id_rawat_inap'])->with('message', 'Berhasil Mengubah Pemeriksaan Instruksi Dokter!');
         }
     }
 }

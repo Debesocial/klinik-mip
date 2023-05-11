@@ -110,8 +110,9 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
 
     Route::get('/instruksi_dokter/form_tambah/{id}',[InstruksiDokterController::class, 'tampilFormTambah']);
-    Route::get('/instruksi_dokter/form_edit/{id}',[InstruksiDokterController::class, 'tampilFormTambah']);
+    Route::get('/instruksi_dokter/form_edit/{id}',[InstruksiDokterController::class, 'tampilFormUbah']);
     Route::post('/instruksi_dokter/tambah',[InstruksiDokterController::class, 'simpan']);
+    Route::post('/instruksi_dokter/ubah/{id}',[InstruksiDokterController::class, 'ubah']);
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');
