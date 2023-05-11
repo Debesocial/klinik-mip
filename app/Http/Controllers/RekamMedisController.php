@@ -28,6 +28,8 @@ use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
 use App\Models\PemeriksaanCovid;
 use App\Models\Perusahaan;
+use App\Models\RawatInap;
+use App\Models\RawatJalan;
 use App\Models\RekamMedis;
 use App\Models\RumahSakitRujukan;
 use App\Models\SpesialisRujukan;
@@ -71,12 +73,14 @@ class RekamMedisController extends Controller
     {
         $pasien = Pasien::find($id);
         $test = TestUrin::where("pasien_id", $id)->get();
-        $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
+        $rawatinap = RawatInap::where("pasien_id", $id)->get();
+        $rawatjalan = RawatJalan::where("pasien_id", $id)->get();
         $mcu_awal = McuAwal::where("pasien_id", $id)->get();
         $mcu_akhir = McuAkhir::where("pasien_id", $id)->get();
-        $pemantauan = PemantauanCovid::where("pasien_id", $id)->get();
+        // $pemantauan = PemantauanCovid::where("pasien_id", $id)->get();
+        // $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
 
-        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'covid', 'mcu_awal', 'mcu_akhir', 'pemantauan'));
+        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'mcu_awal', 'mcu_akhir', 'rawatinap', 'rawatjalan'));
     }
 
     /**

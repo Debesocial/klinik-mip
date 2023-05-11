@@ -7,6 +7,7 @@
 @section('container')
 
 <div hidden>{{ $pasien->perusahaan->nama_perusahaan_pasien }} {{ $pasien->jabatan->nama_jabatan }} {{ $pasien->divisi->nama_divisi }}{{ $pasien->keluarga->nama_keluarga }}</div>
+
 <div class="container">
     <h5 class="text-center">Rekam Medis <a href="#" onclick="tampilModalPasien({{ json_encode($pasien) }})">{{ $pasien->nama_pasien }} - <i>{{ $pasien->id_rekam_medis }}</i></a></h5>
     <div class="row">
@@ -36,6 +37,16 @@
                                     <th>Penyakit</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($rawatinap as $rawatinap)
+                                    <tr>
+                                        <td>{{ $rawatinap->id_rawat_inap }}</td>
+                                        <td>{{ $rawatinap->mulai_rawat }}</td>
+                                        <td>{{ $rawatinap->berakhir_rawat }}</td>
+                                        <td>{{ $rawatinap->namapenyakit->primer }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -64,9 +75,17 @@
                                     <th>ID Rawat Jalan</th>
                                     <th>Tanggal Berobat</th>
                                     <th>Penyakit</th>
-                                    <th>Tindakan</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($rawatjalan as $rawatjalan)
+                                    <tr>
+                                        <td>{{ $rawatjalan->id_rawat_jalan }}</td>
+                                        <td>{{ $rawatjalan->tanggal_berobat }}</td>
+                                        <td>{{ $rawatjalan->namapenyakit->primer }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -196,7 +215,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2], /* column index */
+                                'targets': [1,2,3], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,

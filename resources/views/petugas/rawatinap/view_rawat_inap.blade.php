@@ -151,7 +151,7 @@
                                     <td class="text-center" style="white-space: nowrap"><b>{{ date('Y-m-d',strtotime($instruksi->tanggal)) }}</b> {{ date('H:i',strtotime($instruksi->jam)) }}</td>
                                     <td>{{ $instruksi->hasil_pemeriksaan }}</td>
                                     <td>{{ $instruksi->instruksi_pengobatan }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="#" onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')" class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
                                         </div>
