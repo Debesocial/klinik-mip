@@ -430,6 +430,24 @@ Breadcrumbs::for('lihat_pemeriksaan_covid', function (BreadcrumbTrail $trail) {
      $trail->push('Lihat Pemeriksaan Covid');
 });
 
+/** MCU */
+Breadcrumbs::for('mcu', function (BreadcrumbTrail $trail) {
+     $trail->push('Pemeriksaan', '/mcu');
+     $trail->push('Data MCU','/mcu' );
+});
+Breadcrumbs::for('add_mcu_awal', function (BreadcrumbTrail $trail) {
+     $trail->parent('mcu');
+     $trail->push('Tambah MCU Awal','/add_mcu/awal' );
+});
+Breadcrumbs::for('ubah_mcu_awal', function (BreadcrumbTrail $trail) {
+     $trail->parent('mcu');
+     $trail->push('Ubah MCU Awal','/ubah_mcu/awal' );
+});
+Breadcrumbs::for('view_mcu_awal', function (BreadcrumbTrail $trail) {
+     $trail->parent('mcu');
+     $trail->push('MCU Awal','/ubah_mcu/awal' );
+});
+
 /** Pemantauan Covid */
 Breadcrumbs::for('pemantauan_covid', function (BreadcrumbTrail $trail) {
      $trail->push('Pemeriksaan', route('pemeriksaan.datapemeriksaancovid'));

@@ -100,7 +100,7 @@
     </div>
 </div>
 
-<div class="page-heading mb-1">
+<div class="mb-1">
     <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist"
         style="width: 100%">
         <a class="list-group-item list-group-item-action rounded-end rounded-pill active"
@@ -361,10 +361,9 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2,3], /* column index */
+                                'targets': [1,2,3,4,5,6,7,8,9], /* column index */
                                 'orderable': false, /* true or false */
                             }],
-                scrollY: 500,   
                 searching: false,
                 paging:false,
                 info:false,

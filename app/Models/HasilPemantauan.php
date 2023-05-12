@@ -26,7 +26,7 @@ class HasilPemantauan extends Model
     }
 
     public function mcuawal() {
-        return $this->belongsTo(McuAwal::class);
+        return $this->hasOne(McuAwal::class, 'hasil_pemantauan_id', 'id');
     }
 
 }

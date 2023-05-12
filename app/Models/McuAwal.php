@@ -43,6 +43,6 @@ class McuAwal extends Model
         return $this->hasMany(User::class);
     }
     public function hasilpemantauan() {
-        return $this->belongsTo(HasilPemantauan::class);
+        return $this->belongsTo(HasilPemantauan::class,'hasil_pemantauan_id', 'id');
     }
 }

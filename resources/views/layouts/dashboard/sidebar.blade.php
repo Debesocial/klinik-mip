@@ -203,8 +203,8 @@
                             <li class="submenu-item @yield('inap')">
                                 <a href="{{ route('superadmin.daftarrawatinap') }}">Pasien Rawat Inap</a>
                             </li>
-                            <li class="submenu-item @yield('medis')">
-                                <a href="{{ route('rekammedis.datarekammedis') }}">MCU</a>
+                            <li class="submenu-item @yield('mcu')">
+                                <a href="/mcu">MCU</a>
                             </li>
                             <li class="submenu-item @yield('narko')">
                                 <a href="{{ route('pemeriksaan.datapemeriksaannarkoba') }}"> Pemeriksaan Narkotika</a>

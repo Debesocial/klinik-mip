@@ -597,7 +597,7 @@ class SuperAdminController extends Controller
             'anjuran' => 'required',
         ]);
 
-        McuAwal::create([
+       $save =  McuAwal::create([
             'pasien_id' => $request->pasien_id,
             'hasil_pemantauan_id' => $request->hasil_pemantauan_id,
             'anjuran' => $request->anjuran,
@@ -605,8 +605,10 @@ class SuperAdminController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
+        if($save){
+            return redirect("mcu/$save->id")->with('message', 'Berhasil menambahkan MCU Awal');
+        }
 
-        return redirect('/data/rekam/medis')->with('message', 'Berhasil!');
     }
 
 

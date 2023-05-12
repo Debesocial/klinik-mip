@@ -42,10 +42,10 @@
     <div class="container" >
         <div class="row" id="tbody" style="display: none">
             @if (Session('message'))
-            <script>Swal.fire({ 
+            <script>
+                Swal.fire({ 
                 icon: "success", 
-                text: "{{Session('message')}}" }).then((result) => {
-                if (result.isConfirmed) { window.location.href = "{{ route('rekammedis.datarekammedis') }}" }})
+                text: "{{Session('message')}}" })
             </script>
             @endif
             <div class="table-responsive">

@@ -33,6 +33,7 @@ use App\Http\Controllers\RawatInapController;
 use App\Http\Controllers\RawatJalanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstruksiDokterController;
+use App\Http\Controllers\McuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -354,7 +355,11 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
 
     Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
 
-    
+    Route::get('/mcu', [McuController::class, 'index']);
+    Route::get('/mcu/{id}', [McuController::class, 'detailMcuAwal']);
+    Route::get('/add_mcu/awal', [McuController::class, 'halamanTambahMcuAwal']);
+    Route::get('/ubah_mcu/awal/{id}', [McuController::class, 'halamanUbahMcuAwal']);
+    Route::post('/ubah_mcu/awal/{id}', [McuController::class, 'ubahMcuAwal']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
