@@ -56,7 +56,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
-    Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,perawat']], function () {
+Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,perawat']], function () {
 
     Route::get('/{id}/password', [DivisiController::class, 'password'])->name('superadmin.password');
 
@@ -110,10 +110,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
 
-    Route::get('/instruksi_dokter/form_tambah/{id}',[InstruksiDokterController::class, 'tampilFormTambah']);
-    Route::get('/instruksi_dokter/form_edit/{id}',[InstruksiDokterController::class, 'tampilFormUbah']);
-    Route::post('/instruksi_dokter/tambah',[InstruksiDokterController::class, 'simpan']);
-    Route::post('/instruksi_dokter/ubah/{id}',[InstruksiDokterController::class, 'ubah']);
+    Route::get('/instruksi_dokter/form_tambah/{id}', [InstruksiDokterController::class, 'tampilFormTambah']);
+    Route::get('/instruksi_dokter/form_edit/{id}', [InstruksiDokterController::class, 'tampilFormUbah']);
+    Route::post('/instruksi_dokter/tambah', [InstruksiDokterController::class, 'simpan']);
+    Route::post('/instruksi_dokter/ubah/{id}', [InstruksiDokterController::class, 'ubah']);
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');
@@ -158,7 +158,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/ubah/surat/rujukan/{id}', [SuperAdminController::class, 'ubahsuratrujukan'])->name('superadmin.ubahdatasuratrujukan');
     Route::post('/ubah/surat/rujukan/{id}', [SuperAdminController::class, 'changesuratrujukan'])->name('superadmin.changedatasuratrujukan');
     Route::get('/print/surat/rujukan/{id}', [SuperAdminController::class, 'printsuratrujukan'])->name('superadmin.printsuratrujukan');
-  
+
     Route::get('/view/rekam/medis/{id}', [RekamMedisController::class, 'viewrekammedis'])->name('rekammedis.viewrekammedis');
     Route::get('/data/rekam/medis', [RekamMedisController::class, 'datarekammedis'])->name('rekammedis.datarekammedis');
     Route::get('rekam/medis', [SuperAdminController::class, 'rekammedis'])->name('superadmin.rekammedis');
@@ -171,7 +171,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/ubah/keterangan/sehat/{id}', [SuperAdminController::class, 'ubahketerangansehat'])->name('superadmin.ubahketerangansehat');
     Route::post('/ubah/keterangan/sehat/{id}', [SuperAdminController::class, 'changeketerangansehat'])->name('superadmin.changeketerangansehat');
     Route::get('/print/keterangan/sehat/{id}', [SuperAdminController::class, 'printketerangansehat'])->name('superadmin.printketerangansehat');
-    
+
     Route::get('/persetujuan/tindakan/medis', [SuperAdminController::class, 'persetujuantindakanmedis'])->name('superadmin.persetujuantindakanmedis');
     Route::post('/persetujuan/tindakan/medis', [SuperAdminController::class, 'addpersetujuantindakanmedis'])->name('superadmin.addpersetujuantindakanmedis');
     Route::get('/ubah/persetujuan/tindakan/medis/{id}', [SuperAdminController::class, 'ubahpersetujuantindakanmedis'])->name('superadmin.ubahpersetujuantindakanmedis');
@@ -292,7 +292,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::post('/add/kategori/pasien', [KategoriPasienController::class, 'tambahkategoripasien'])->name('superadmin.tambahkategoripasien');
     Route::get('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'ubahkategoripasien'])->name('superadmin.ubahkategoripasien');
     Route::post('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'changekategoripasien'])->name('superadmin.changekategoripasien');
-    
+
     Route::get('/jabatan', [JabatanController::class, 'jabatan'])->name('superadmin.jabatan');
     Route::get('/add/jabatan', [JabatanController::class, 'addjabatan'])->name('superadmin.addjabatan');
     Route::post('/add/jabatan', [JabatanController::class, 'tambahjabatan'])->name('superadmin.tambahjabatan');
@@ -328,7 +328,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::post('/add/nama/penyakit', [NamaPenyakitController::class, 'tambahnamapenyakit'])->name('superadmin.tambahnamapenyakit');
     Route::get('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'ubahnamapenyakit'])->name('superadmin.ubahnamapenyakit');
     Route::post('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'changenamapenyakit'])->name('superadmin.changenamapenyakit');
-    
+
     Route::get('/lokasi/kejadian', [SuperAdminController::class, 'lokasikejadian'])->name('superadmin.lokasikejadian');
     Route::get('/add/lokasi/kejadian', [SuperAdminController::class, 'addlokasikejadian'])->name('superadmin.addlokasikejadian');
     Route::post('/add/lokasi/kejadian', [SuperAdminController::class, 'tambahlokasikejadian'])->name('superadmin.tambahlokasikejadian');
@@ -360,6 +360,12 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
     Route::get('/add_mcu/awal', [McuController::class, 'halamanTambahMcuAwal']);
     Route::get('/ubah_mcu/awal/{id}', [McuController::class, 'halamanUbahMcuAwal']);
     Route::post('/ubah_mcu/awal/{id}', [McuController::class, 'ubahMcuAwal']);
+
+    Route::get('/add_mcu/lanjutan', [McuController::class, 'halamanTambahMcuLanjutan']);
+    Route::post('/add_mcu/lanjutan', [McuController::class, 'tambahMcuLanjutan']);
+    Route::get('/mcu/lanjutan/{id}', [McuController::class, 'detailMcuLanjutan']);
+    Route::get('/ubah_mcu/lanjutan/{id}', [McuController::class, 'halamanUbahMcuLanjutan']);
+    Route::post('/ubah_mcu/lanjutan/{id}', [McuController::class, 'ubahMcuLanjutan']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

@@ -185,4 +185,7 @@ class Pasien extends Model
     public function mcukhusus() {
         return $this->belongsTo(McuKhusus::class);
     }
+    public function mculanjutan() {
+        return $this->belongsTo(McuLanutan::class);
+    }
 }
