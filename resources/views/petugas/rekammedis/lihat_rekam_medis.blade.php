@@ -41,9 +41,9 @@
                                 @foreach ($rawatinap as $rawatinap)
                                     <tr>
                                         <td>{{ $rawatinap->id_rawat_inap }}</td>
-                                        <td>{{ $rawatinap->mulai_rawat }}</td>
-                                        <td>{{ $rawatinap->berakhir_rawat }}</td>
-                                        <td>{{ $rawatinap->namapenyakit->primer }}</td>
+                                        <td>{{ tanggal($rawatinap->mulai_rawat) }}</td>
+                                        <td>{!! ($rawatinap->berakhir_rawat)? tanggal($rawatinap->berakhir_rawat, false):'<span class="badge bg-primary">Masih dirawat</span>' !!}</td>
+                                        <td>{{ $namapenyakit->find(json_decode($rawatinap->nama_penyakit_id)[0])->primer }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -78,10 +78,11 @@ class RekamMedisController extends Controller
         $rawatjalan = RawatJalan::where("pasien_id", $id)->get();
         $mcu_awal = McuAwal::where("pasien_id", $id)->get();
         $mcu_lanjutan = McuLanjutan::where("pasien_id", $id)->get();
+        $namapenyakit = NamaPenyakit::get();
         // $pemantauan = PemantauanCovid::where("pasien_id", $id)->get();
         // $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
 
-        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'mcu_awal', 'mcu_lanjutan', 'rawatinap', 'rawatjalan'));
+        return view('petugas.rekammedis.lihat_rekam_medis', compact('namapenyakit','pasien', 'test', 'mcu_awal', 'mcu_lanjutan', 'rawatinap', 'rawatjalan'));
     }
 
     /**
