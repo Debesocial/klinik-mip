@@ -19,7 +19,7 @@ class CreateRawatInapsTable extends Migration
             $table->string('id_rawat_inap');
             $table->date('mulai_rawat');
             $table->date('berakhir_rawat')->nullable();
-            $table->foreignId('nama_penyakit_id')->constrained();
+            $table->json('nama_penyakit_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

@@ -23,6 +23,7 @@ use App\Models\KeteranganBerobat;
 use App\Models\Level;
 use App\Models\McuAkhir;
 use App\Models\McuAwal;
+use App\Models\McuLanjutan;
 use App\Models\NamaPenyakit;
 use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanAntigen;
@@ -76,11 +77,11 @@ class RekamMedisController extends Controller
         $rawatinap = RawatInap::where("pasien_id", $id)->get();
         $rawatjalan = RawatJalan::where("pasien_id", $id)->get();
         $mcu_awal = McuAwal::where("pasien_id", $id)->get();
-        $mcu_akhir = McuAkhir::where("pasien_id", $id)->get();
+        $mcu_lanjutan = McuLanjutan::where("pasien_id", $id)->get();
         // $pemantauan = PemantauanCovid::where("pasien_id", $id)->get();
         // $covid = PemeriksaanCovid::where("pasien_id", $id)->get();
 
-        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'mcu_awal', 'mcu_akhir', 'rawatinap', 'rawatjalan'));
+        return view('petugas.rekammedis.lihat_rekam_medis', compact('pasien', 'test', 'mcu_awal', 'mcu_lanjutan', 'rawatinap', 'rawatjalan'));
     }
 
     /**

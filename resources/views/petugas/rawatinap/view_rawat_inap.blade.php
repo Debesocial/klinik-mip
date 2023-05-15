@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="row mb-3" id="bio-pasien">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <div class="row mb-2">
                     <div class="table-responsive">
                         @php
@@ -55,7 +55,7 @@
                                 </tr>
                                 <tr>
                                     <th>Tempat Tanggal Lahir</th>
-                                    <td id="ttl">: {{ $pasien->tempat_lahir .', '. $pasien->tanggal_lahir . ' ('. $usia .')'}}</td>
+                                    <td id="ttl">: {{ $pasien->tempat_lahir .', '. tanggal($pasien->tanggal_lahir, false) . ' ('. $usia .')'}}</td>
                                 </tr>
                                 <tr>
                                     <th>Alamat</th>
@@ -65,36 +65,58 @@
                                     <th>Pekerjaan</th>
                                     <td id="pekerjaan">: {{ $pasien->pekerjaan}}</td>
                                 </tr>
+                                <tr>
+                                    <th>Mulai Dirawat</th>
+                                    <td id="_mulai_rawat">
+                                        :  {{ tanggal($rawat_inap->mulai_rawat, false) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Berakhir Dirawat
+                                    </th>
+                                    <td id="_berakhir_rawat">
+                                        :  {!! $rawat_inap->berakhir_rawat? tanggal($rawat_inap->berakhir_rawat, false): '<span class="badge bg-primary">Masih dirawat</span>' !!}
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 {{-- <h5 class="card-title">Data Pemeriksaan</h5> --}}
-                <table class="table table-striped table-borderless table-hover">
-                    <tbody>
-                        <tr>
-                            <th>Mulai Dirawat</th>
-                            <td id="_mulai_rawat">
-                                :  {{ $rawat_inap->mulai_rawat }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Berakhir Dirawat
-                            </th>
-                            <td id="_berakhir_rawat">
-                                :  {{ $rawat_inap->berakhir_rawat }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Nama Penyakit</th>
-                            <td id="_nama_penyakit_id">
-                                :  {{ $rawat_inap->namapenyakit->primer }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="row">
+                    <h6>Diaknosa Penyakit</h6>
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Primer</th>
+                                        <th>Sekunder</th>
+                                        <th>Sub-Klasifikasi</th>
+                                        <th>Klasifikasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     @foreach (json_decode($rawat_inap->nama_penyakit_id) as $id_penyakit)
+                                        @php
+                                            $penyakit = $nama_penyakit->find($id_penyakit);
+                                        @endphp
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $penyakit->primer }}</td>
+                                            <td>{{ ($penyakit->sekunder)??'-' }}</td>
+                                            <td>{{ $penyakit->sub_klasifikasi->nama_penyakit }}</td>
+                                            <td>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -36,9 +36,9 @@ class RawatInap extends Model
         });
     }
 
-    public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
-    }
+    // public function namapenyakit() {
+    //     return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
+    // }
 
     public function tindakan() {
         return $this->belongsTo(Tindakan::class);

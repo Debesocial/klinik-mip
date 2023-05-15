@@ -167,11 +167,51 @@
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
+                                    <th>Id Mcu</th>
                                     <th>Jenis MCU</th>
                                     <th>Hasil</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($mcu_awal as $awal)
+                                    <tr>
+                                        <td data-sort="{{ $awal->created_at }}" class="text-center">{{ tanggal($awal->created_at, true) }}</td>
+                                        <td>{{ $awal->id_mcu_awal }}</td>
+                                        <td>Awal</td>
+                                        <td>{{ $awal->hasilpemantauan->nama_pemantauan }}</td>
+                                        <td> 
+                                             <div class="btn-group btn-group-sm" role="group"
+                                                aria-label="Basic outlined example">
+                                                <a href="/mcu/{{ $awal->id }}" class="btn btn-outline-secondary"
+                                                    title="Ubah data alkes"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="/ubah_mcu/awal/{{ $awal->id }}"
+                                                    class="btn btn-outline-secondary" title="Ubah data alkes"><i
+                                                        class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                @foreach ($mcu_lanjutan as $lanjut)
+                                    <tr>
+                                        <td data-sort="{{ $lanjut->tanggal_pemeriksaan }}">{{ tanggal($lanjut->tanggal_pemeriksaan, false) }}</td>
+                                        <td>{{ $lanjut->id_mcu_lanjutan }}</td>
+                                        <td>{{ cekMcu($lanjut->jenis_mcu) }}</td>
+                                        <td>{{ $lanjut->deskripsi_hasil }}</td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm" role="group"
+                                                aria-label="Basic outlined example">
+                                                <a href="/mcu/lanjutan/{{ $lanjut->id }}"
+                                                    class="btn btn-outline-secondary" title="Ubah data alkes"><i
+                                                        class="bi bi-eye-fill"></i></a>
+                                                <a href="/ubah_mcu/lanjutan/{{ $lanjut->id }}"
+                                                    class="btn btn-outline-secondary" title="Ubah data alkes"><i
+                                                        class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -208,7 +248,10 @@
                 scrollY: 250,
                 searching: false,
                 paging:false,
-                info:false
+                info:false,
+                order: [
+                    [0, 'desc']
+                ]
             })
             let jquery_datatable_inap = $("#tableInap").DataTable({
                 "language": {

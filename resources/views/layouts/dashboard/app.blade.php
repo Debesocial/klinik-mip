@@ -257,6 +257,7 @@
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
             },
             scrollY: 320,
+            responsive: true,
         })
         function cekImg(val) {
             var url = "{{ asset('pasien/foto/file') }}" + '/';

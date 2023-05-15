@@ -29,9 +29,9 @@ class NamaPenyakit extends Model
         return $this->hasMany(RekamMedis::class);
     }
 
-    public function rawatinap() {
-        return $this->hasMany(RawatInap::class);
-    }
+    // public function rawatinap() {
+    //     return $this->hasMany(RawatInap::class);
+    // }
 
     public function permintaanmakanan() {
         return $this->hasMany(PermintaanMakanan::class);

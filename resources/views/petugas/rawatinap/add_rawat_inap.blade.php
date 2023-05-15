@@ -90,7 +90,7 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                        <table>
+                                                        <table class="table table-borderless">
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Nama Pasien</th>
@@ -124,7 +124,7 @@
                                                         </table>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <table>
+                                                        <table class="table table-borderless">
                                                             <tbody>
                                                                 <tr>
                                                                     <th>Perusahaan</th>
@@ -194,8 +194,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
-                                        <select class="form-select"  name="nama_penyakit_id" id="nama_penyakit_id">
-                                            <option value="" selected>Nama Penyakit</option>
+                                        <select class="form-select"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
                                             @foreach ($nama_penyakit as $penyakit)
                                                 <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                             @endforeach
@@ -206,6 +205,24 @@
                                         <div class="invalid-feedback">
                                             Nama penyakit harus diisi.
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Diaknosa Penyakit</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>No.</th>
+                                                    <th>Penyakit</th>
+                                                    <th>Sub-Klasifikasi</th>
+                                                    <th>Klasifikasi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="body-penyakit">
+                                                
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
@@ -227,11 +244,11 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-md-7">
+                                    <div class="col-md-6">
                                         <div class="row mb-2">
                                             <h5 class="card-title">Biodata Pasien</h5>
                                             <div class="table-responsive">
-                                                <table>
+                                                <table class="table table-borderless" >
                                                     <tbody>
                                                         <tr>
                                                             <th>Nama Pasien</th>
@@ -253,36 +270,41 @@
                                                             <th>Pekerjaan</th>
                                                             <td id="pekerjaan"></td>
                                                         </tr>
+                                                        <tr>
+                                                            <th>Mulai Dirawat</th>
+                                                            <td id="_mulai_rawat">
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Berakhir Dirawat
+                                                            </th>
+                                                            <td id="_berakhir_rawat">
+
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <h5 class="card-title">Data Pemeriksaan</h5>
-                                        <table class="table table-striped table-borderless table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <th>Mulai Dirawat</th>
-                                                    <td id="_mulai_rawat">
-
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Berakhir Dirawat
-                                                    </th>
-                                                    <td id="_berakhir_rawat">
-
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th>Nama Penyakit</th>
-                                                    <td id="_nama_penyakit_id">
-
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div class="col-md-6">
+                                        <h6>Diaknosa Penyakit</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Penyakit</th>
+                                                        <th>Sub-Klasifikasi</th>
+                                                        <th>Klasifikasi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="_body-penyakit">
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -302,18 +324,26 @@
         </div>
     </div>
 </section>
+{{-- @dd($nama_penyakit->find(3)); --}}
 @section('js')
     <script>
         var stepper2 = new Stepper(document.querySelector('#stepper2'), {
             linear: true,
             animation: true
         })
+        
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
             });
+
+            $('#nama_penyakit_id').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            })
 
             $('input').keyup(function(event) {
                 if ($(this).hasClass('is-invalid')) {
@@ -328,8 +358,8 @@
             $('select').change(function() {
                 if ($(this).val() !== "") {
                     $(this).removeClass('is-invalid')
-
                 }
+                drawTableDiagnodsa();
             })
 
             $('input[class="form-check-input"]').click(function() {
@@ -337,7 +367,7 @@
             })
         });
 
-
+        
         function pilihPasien(data) {
             var pasien_index = $('#select_pasien_id').val();
             if (pasien_index === '') {
@@ -392,19 +422,19 @@
 
         function lanjut2() {
             var validated = true;
-            
+            // console.log($('#nama_penyakit_id').val());
             var inputs = ['mulai_rawat', 'nama_penyakit_id'];
             inputs.forEach(input => {
-                var value_input = $('[name="' + input + '"]').val();                    
-                var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
+                var value_input = $('[name*="' + input + '"]').val();                    
+                var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
 
                 if (value_input == ""||value_input == ' ') {
                     validated = false
-                    $('[name="' + input + '"]').removeClass('is-valid')
-                    $('[name="' + input + '"]').addClass('is-invalid')
+                    $('[name*="' + input + '"]').removeClass('is-valid')
+                    $('[name*="' + input + '"]').addClass('is-invalid')
                 } else {
-                    $('[name="' + input + '"]').removeClass('is-invalid')
-                    $('[name="' + input + '"]').addClass('is-valid')
+                    $('[name*="' + input + '"]').removeClass('is-invalid')
+                    $('[name*="' + input + '"]').addClass('is-valid')
                     setResult(input, text_input);
                 }
             });
@@ -416,9 +446,34 @@
 
         function setResult(id, value) {
             if(id=='mulai_rawat'){
-                value = $('[name="' + id + '"]').val(); 
+                value = $('[name*="' + id + '"]').val(); 
             }
+            $('#_berakhir_rawat').text(': '+$('#berakhir_rawat').val())
             $('#_'+id).text(': '+value);
+        }
+
+        var semuaPenyakit = {!! json_encode($nama_penyakit) !!};
+        var subKlasifikasi = {!! json_encode($subKlasifikasi) !!};
+        var klasifikasi = {!! json_encode($klasifikasi) !!};
+        function drawTableDiagnodsa() {
+            var value = $('#nama_penyakit_id').val();
+            var html = ``;
+            var n=1;
+            value.forEach(val => {
+                penyakit = semuaPenyakit.find(data => data.id == val);
+                sub = subKlasifikasi.find(data => data.id == penyakit.sub_klasifikasi_id);
+                klas = klasifikasi.find(data => data.id == sub.klasifikasi_penyakit_id);
+                // console.log(penyakit);
+                html += `<tr>
+                    <td>`+n+`</td>
+                    <td>`+penyakit.primer+`</td>
+                    <td>`+ sub.nama_penyakit +`</td>
+                    <td>`+ klas.klasifikasi_penyakit +`</td>
+                    </tr>`;
+                    n++;
+            });
+            $('#body-penyakit').html(html);
+            $('#_body-penyakit').html(html);
         }
     </script>
 @stop
