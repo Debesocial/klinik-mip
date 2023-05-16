@@ -14,4 +14,12 @@ class InstruksiDokter extends Model
     function rawatinap(){
         return $this->belongsTo(RawatInap::class, 'id_rawat_inap', 'id');
     }
+    function namapenyakit()
+    {
+        return $this->hasMany(NamaPenyakit::class, 'diagnosa','id');
+    }
+    function namapenyakitsekunder()
+    {
+        return $this->hasMany(NamaPenyakit::class, 'diagnosa_sekunder','id');
+    }
 }

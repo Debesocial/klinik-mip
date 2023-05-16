@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\InstruksiDokter;
+use App\Models\KlasifikasiPenyakit;
+use App\Models\NamaPenyakit;
 use App\Models\RawatInap;
+use App\Models\SubKlasifikasi;
 
 class InstruksiDokterController extends Controller
 {
@@ -19,12 +22,14 @@ class InstruksiDokterController extends Controller
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap']= $id;
+        $data ['namapenyakit'] = NamaPenyakit::all();
         return view('/component/form_tambah_instruksi_dokter',$data);
     }
 
     public function tampilFormUbah($id)
     {
         $data ['instruksidokter'] = InstruksiDokter::find($id);
+       
         return  view('/component/form_tambah_instruksi_dokter',$data);
     }
 

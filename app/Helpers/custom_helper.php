@@ -22,3 +22,15 @@ function tanggal($tanggal, $jam = true)
     }
     return date($format, strtotime($tanggal));
 }
+
+/** Untuk validation bootstrap */
+function validasi($field_error = 'field'){
+    $html = '<div class="invalid-feedback">
+        '.$field_error.' harus diisi.
+    </div> 
+    <div class="valid-feedback">
+        Data sudah benar.
+    </div>';
+
+    return $html;
+}

@@ -56,4 +56,13 @@ class NamaPenyakit extends Model
     public function izinistirahat() {
         return $this->hasMany(IzinIstirahat::class);
     }
+
+    public function instruksidokter()
+    {
+        return $this->belongsTo(InstruksiDokter::class, 'diagnosa', 'id');
+    }
+    public function instruksidoktersekunder()
+    {
+        return $this->belongsTo(InstruksiDokter::class, 'diagnosa_sekunder', 'id');
+    }
 }

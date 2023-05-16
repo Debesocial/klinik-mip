@@ -123,8 +123,7 @@
 </div>
 
 <div class="mb-1">
-    <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist"
-        style="width: 100%">
+    <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
         <a class="list-group-item list-group-item-action rounded-end rounded-pill active"
             id="list-dokter-list" data-bs-toggle="list" href="#list-dokter"
             role="tab">Pemeriksaan Instruksi Dokter</a>
@@ -349,8 +348,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalRawatInap" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalRawatInapLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+<div class="modal fade" id="modalRawatInap" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="modalRawatInapLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalRawatInap_title">Modal title</h5>
@@ -378,7 +377,7 @@
 @section('js')
     <script type="text/javascript" defer="defer">
         $(document).ready(function() {
-            $("table[id^='TABLE']").DataTable( {    
+            $("table[id^='TABLE']").dataTable( {    
                 "language": {
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
