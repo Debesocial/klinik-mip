@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alkes;
 use Illuminate\Http\Request;
 use App\Models\InstruksiDokter;
 use App\Models\KlasifikasiPenyakit;
+use App\Models\NamaAlkes;
 use App\Models\NamaPenyakit;
 use App\Models\RawatInap;
+use App\Models\SatuanObat;
 use App\Models\SubKlasifikasi;
 
 class InstruksiDokterController extends Controller
@@ -23,6 +26,9 @@ class InstruksiDokterController extends Controller
     {
         $data['id_rawat_inap']= $id;
         $data ['namapenyakit'] = NamaPenyakit::all();
+        $data['alatkesehatan'] = Alkes::all();
+        $data['namaalkes'] = NamaAlkes::all();
+        $data['satuanobat'] = SatuanObat::all();
         return view('/component/form_tambah_instruksi_dokter',$data);
     }
 

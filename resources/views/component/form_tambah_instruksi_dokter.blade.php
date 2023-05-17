@@ -55,166 +55,286 @@
         </div>
     </div>
     <div class="bs-stepper-content">
-        <form action="{{ $url }}" method="POST" id="formInstruksi">
-            @csrf
-            <input type="hidden" name="id_rawat_inap" value="{{ $rawat_inap }}">
-            <div id="test-nl-1" class="content">
-                <div class="row">
-                    <div class="col-md-5">
-                        
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
-                            <div class="col-10">
-                                <input type="text" name="anamnesis" id="anamnesis" class="form-control">
-                                {!! validasi('Anamenesis') !!}
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Tinggi Badan <b class="text-danger">*</b></label>
-                            <div class="col-8">
-                                <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control">
-                                {!! validasi('Tinggi badan') !!}
-                            </div>
-                            <div class="col-2 p-0 my-auto fs-6">Cm</div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Berat Badan <b class="text-danger">*</b></label>
-                            <div class="col-8">
-                                <input type="number" name="berat_badan" id="berat_badan" class="form-control">
-                                {!! validasi('Berat badan') !!}
-                            </div>
-                            <div class="col-2 p-0 my-auto fs-6">Kg</div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Suhu Tubuh <b class="text-danger">*</b></label>
-                            <div class="col-8">
-                                <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control">
-                                {!! validasi('Suhu tubuh') !!}
-                            </div>
-                            <div class="col-2 p-0 my-auto fs-6">&deg;C</div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
-                            <div class="col-8">
-                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control">
-                                {!! validasi('Tekanan darah') !!}
-                            </div>
-                            <div class="col-2 p-0 my-auto fs-6">mmHg</div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
-                            <div class="col-8">
-                                <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control">
-                                {!! validasi('Saturasi Oksigen') !!}
-                            </div>
-                            <div class="col-2 p-0 my-auto fs-6">mmHg</div>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="row mb-3">
-                            <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
-                            <div class="col-4">
-                                <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control">
-                                {!! validasi('Denyut nadi') !!}
-                            </div>
-                            <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                            <div class="col-4">
-                                <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control">
-                                {!! validasi('Denyut nadi') !!}
-                            </div>
-                            <div class="col-1 p-0 my-auto fs-6">Menit</div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
-                            <div class="col-4">
-                                <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control">
-                                {!! validasi('Laju pernapasan') !!}
-                            </div>
-                            <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                            <div class="col-4">
-                                <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control">
-                                {!! validasi('Laju pernapasan') !!}
-                            </div>
-                            <div class="col-1 p-0 my-auto fs-6">Menit</div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="" class="form-label">Pemeriksaan Penunjang<b class="text-danger">*</b></label>
-                            <div class="row">
+        <div class="container">
+            <form action="{{ $url }}" method="POST" id="formInstruksi">
+                @csrf
+                <input type="hidden" name="id_rawat_inap" value="{{ $rawat_inap }}">
+                <div id="test-nl-1" class="content">
+                    <div class="row justify-content-between">
+                        <div class="col-md-6">
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
                                 <div class="col-10">
-                                    <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control">
-                                    {!! validasi('Pemeriksaan penunjang') !!}
+                                    <input type="text" name="anamnesis" id="anamnesis" class="form-control form-control-sm">
+                                    {!! validasi('Anamenesis') !!}
+                                </div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Tinggi Badan <b class="text-danger">*</b></label>
+                                <div class="col-8">
+                                    <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control form-control-sm">
+                                    {!! validasi('Tinggi badan') !!}
+                                </div>
+                                <div class="col-2 p-0 my-auto fs-6">Cm</div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Berat Badan <b class="text-danger">*</b></label>
+                                <div class="col-8">
+                                    <input type="number" name="berat_badan" id="berat_badan" class="form-control form-control-sm">
+                                    {!! validasi('Berat badan') !!}
+                                </div>
+                                <div class="col-2 p-0 my-auto fs-6">Kg</div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Suhu Tubuh <b class="text-danger">*</b></label>
+                                <div class="col-8">
+                                    <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control form-control-sm">
+                                    {!! validasi('Suhu tubuh') !!}
+                                </div>
+                                <div class="col-2 p-0 my-auto fs-6">&deg;C</div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
+                                <div class="col-8">
+                                    <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control form-control-sm">
+                                    {!! validasi('Tekanan darah') !!}
+                                </div>
+                                <div class="col-2 p-0 my-auto fs-6">mmHg</div>
+                            </div>
+                            <div class="mb-2 row">
+                                <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
+                                <div class="col-8">
+                                    <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control form-control-sm">
+                                    {!! validasi('Saturasi Oksigen') !!}
+                                </div>
+                                <div class="col-2 p-0 my-auto fs-6">mmHg</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row mb-2">
+                                <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
+                                <div class="col-4">
+                                    <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control form-control-sm">
+                                    {!! validasi('Denyut nadi') !!}
+                                </div>
+                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
+                                <div class="col-4">
+                                    <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control form-control-sm">
+                                    {!! validasi('Denyut nadi') !!}
+                                </div>
+                                <div class="col-1 p-0 my-auto fs-6">menit</div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
+                                <div class="col-4">
+                                    <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control form-control-sm">
+                                    {!! validasi('Laju pernapasan') !!}
+                                </div>
+                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
+                                <div class="col-4">
+                                    <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control form-control-sm">
+                                    {!! validasi('Laju pernapasan') !!}
+                                </div>
+                                <div class="col-1 p-0 my-auto fs-6">menit</div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="" class="form-label">Pemeriksaan Penunjang<b class="text-danger">*</b></label>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control form-control-sm">
+                                        {!! validasi('Pemeriksaan penunjang') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">  
+                                <label for="" class="form-label">Diagnosa <b class="text-danger">*</b></label>
+                                <div class="col">
+                                    <select name="diagnosa" id="diagnosa" class="form-select">
+                                        <option value="" selected disabled>Pilih Penyakit</option>
+                                        @foreach ($namapenyakit as $penyakit)
+                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
+                                            <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                        @endforeach
+                                    </select>
+                                    {!! validasi('Diagnosa') !!}
+                                    <div id="diagnosa_klasifikasi" class="mt-1" style="display: none">
+                                        <ul class="m-0">
+                                            <li><b>Subklasifikasi</b> <span id="diagnosa_sub_kla"></span></li>
+                                            <li><b>Klasifikasi</b> <span id="diagnosa_kla"></span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <label for="" class="form-label">Diagnosa Sekunder <b class="text-danger">*</b></label>
+                                <div class="col">
+                                    <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
+                                        <option value="" selected disabled>Pilih Penyakit</option>
+                                        @foreach ($namapenyakit as $penyakit)
+                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
+                                            <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                        @endforeach
+                                    </select>
+                                    {!! validasi('Diagnosa sekunder') !!}
+                                    <div id="diagnosa_sekunder_klasifikasi" class="mt-1" style="display: none">
+                                        <ul class="m-0">
+                                            <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla"></span></li>
+                                            <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla"></span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="" class="form-label">Diagnosa</label>
-                            <div class="col-md-7 pe-0">
-                                <select name="diagnosa" id="diagnosa" class="form-select">
-                                    <option value="" selected disabled>Pilih Penyakit</option>
-                                    @foreach ($namapenyakit as $penyakit)
-                                        <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
-                                        <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div></div>
+                        <button type="button" class="btn btn-primary rounded-pill"
+                            onclick="lanjut1()"><b>Selanjutnya</b> <i
+                                class="bi bi-arrow-right-circle"></i></button>
+                    </div>
+                </div>
+                <div id="test-nl-2" class="content">
+                    <input type="text" name="tindakan" id="tindakan" hidden>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Nama Tindakan <b class="text-danger">*</b></label>
+                                <input type="text" name="" id="nama_tindakan" class="form-control">
+                                {!! validasi('Nama') !!}
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label">Nama Alat Kesehatan <b class="text-danger">*</b></label>
+                                <select name="" id="alat_kesehatan" class="form-select">
+                                    <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                    @foreach ($alatkesehatan as $alat)
+                                        <option value="{{$alat->id}}">{{$alat->nama_alkes->nama_alkes}}</option>
                                     @endforeach
                                 </select>
-                                {!! validasi('Diagnosa') !!}
+                                {!! validasi('Alat Kesehatan') !!}
                             </div>
-                            <div class="col-md-5 p-0">
-                                <ul>
-                                    <li><b>Subklasifikasi</b> <span id="diagnosa_sub_kla"></span></li>
-                                    <li><b>Klasifikasi</b> <span id="diagnosa_kla"></span></li>
-                                </ul>
+                            <div class="mb-2">
+                                <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b class="text-danger">*</b></label>
+                                <input type="number" name="" id="jumlah_pengguna" class="form-control">
+                                {!! validasi('Jumlah Pengguna') !!}
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="" class="form-label">Diagnosa Sekunder</label>
-                            <div class="col-7 pe-0">
-                                <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
-                                    <option value="" selected disabled>Pilih Penyakit</option>
-                                    @foreach ($namapenyakit as $penyakit)
-                                        <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
-                                        <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
-                                    @endforeach
-                                </select>
-                                {!! validasi('Diagnosa sekunder') !!}
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Keterangan <b class="text-danger">*</b></label>
+                                <textarea name="" id="keterangan"  rows="3" class="form-control"></textarea>
+                                {!! validasi('Keterangan') !!}
                             </div>
-                            <div class="col-md-5 p-0">
-                                <ul>
-                                    <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla"></span></li>
-                                    <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla"></span></li>
-                                </ul>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3 text-center">
+                                <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i class="bi bi-arrow-down-circle"></i></b></button>
+                            </div>
+                            <div class="table-responsive">
+                                <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak boleh kosong</span>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Tindakan</th>
+                                            <th>Alat Kesehatan</th>
+                                            <th>Jumlah Pengguna</th>
+                                            <th>Keterangan</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body_tindakan"></tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary rounded-pill"
+                            onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
+                            <b>Sebelumnya</b></button>
+                        <button type="button" class="btn btn-primary rounded-pill"
+                            onclick="lanjut2()"><b>Selanjutnya</b> <i
+                                class="bi bi-arrow-right-circle"></i></button>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between">
-                    <div></div>
-                    <button type="button" class="btn btn-primary rounded-pill"
-                        onclick="lanjut1()"><b>Selanjutnya</b> <i
-                            class="bi bi-arrow-right-circle"></i></button>
+                <div id="test-nl-3" class="content">
+                    <input type="text" name="resep_obat" id="resep_obat" hidden>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Nama Obat <b class="text-danger">*</b></label>
+                                <input type="text" id="nama_obat" class="form-control">
+                                {!! validasi('Nama obat') !!}
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label">Jumlah Obat <b class="text-danger">*</b></label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="number"  id="jumlah_obat" class="form-control">
+                                        {!! validasi('Jumlah obat') !!}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select id="satuan_obat" class="form-select">
+                                            <option value="" selected disabled>Pilih satuan</option>
+                                            @foreach ($satuanobat as $satuan)
+                                                <option value="{{$satuan->id}}">{{$satuan->satuan_obat}}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! validasi('Satuan Obat') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label">Aturan Pakai <b class="text-danger">*</b></label>
+                                <input type="text" id="aturan_pakai" class="form-control">
+                                {!! validasi('Aturan pakai') !!}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Keterangan<b class="text-danger">*</b></label>
+                                <textarea id="keterangan_resep" class="form-control"></textarea>
+                                {!! validasi('Aturan pakai') !!}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center">
+                            <button type="button" class="btn btn-success" onclick="addResep()"><b>Tambah <i class="bi bi-arrow-down-circle"></i></b></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <span id="resep_kosong" class="text-danger" style="display: none">Resep tidak boleh kosong</span>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Obat</th>
+                                            <th>Obat</th>
+                                            <th>Aturan Pakai</th>
+                                            <th>Keterangan</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="body_resep">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-primary rounded-pill"
+                            onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
+                            <b>Sebelumnya</b></button>
+                        <button type="button" class="btn btn-primary rounded-pill"
+                            onclick="lanjut3()"><i class="bi bi-save"></i> <b>Simpan</b></button>
+                    </div>
                 </div>
-            </div>
-            <div id="test-nl-2" class="content">
-                
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary rounded-pill"
-                        onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
-                        <b>Sebelumnya</b></button>
-                    <button type="button" class="btn btn-primary rounded-pill"
-                        onclick="lanjut2()"><b>Selanjutnya</b> <i
-                            class="bi bi-arrow-right-circle"></i></button>
-                </div>
-            </div>
-            <div id="test-nl-3" class="content">
-                <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-primary rounded-pill"
-                        onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
-                        <b>Sebelumnya</b></button>
-                    <button type="button" class="btn btn-primary rounded-pill"
-                        onclick="submitForm()"><i class="bi bi-save"></i> <b>Simpan</b> <i
-                            class="bi bi-arrow-right-circle"></i></button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -223,6 +343,7 @@
             linear: true,
             animation: true
         })
+
         $(document).ready(function(){
             $('select').select2({
                 theme: "bootstrap-5",
@@ -235,18 +356,38 @@
                 var penyakit =namapenyakit.find(data=>data.id == id);
                 $('#diagnosa_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
                 $('#diagnosa_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
+                $('#diagnosa_klasifikasi').show();
             })
             $('#diagnosa_sekunder').change(function(){
                 var id = $(this).val();
                 var penyakit =namapenyakit.find(data=>data.id == id);
                 $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
                 $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
+                $('#diagnosa_sekunder_klasifikasi').show();
+            })
+            $('input').keyup(function(){
+                var id = $(this).val();
+                if (id!=null||id!='') {
+                    $(this).removeClass('is-invalid');
+                }
+            })
+            $('select').change(function(){
+                var id = $(this).val();
+                if (id!=null||id!='') {
+                    $(this).removeClass('is-invalid');
+                }
+            })
+            $('textarea').keyup(function(){
+                var id = $(this).val();
+                if (id!=null||id!='') {
+                    $(this).removeClass('is-invalid');
+                }
             })
         })
     function submitForm(){
         var inputs = ['tanggal', 'jam', 'hasil_pemeriksaan', 'instruksi_pengobatan'];
         var validated= true;
-
+        
         inputs.forEach(input => {
             var form = $('#'+input);
             if(form.val() == null || form.val()==''){
@@ -283,12 +424,135 @@
         });
     }
     function lanjut2() {
-        var validated = true;
-
-        if (validated == true) {
+        if (tindakan.length != 0) {
+            $('#tindakan_kosong').hide();
             stepper2.next();
+        }else{
+            $('#tindakan_kosong').show();
+        }
+    }
+    
+    var alkes = @json($namaalkes);
+    var tindakan = [];
+    var id_tindakan = ['nama_tindakan','alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+    function addTindakan() {
+        var temp ={};
+        var validated=true;
+        id_tindakan.forEach(id => {
+            form = $('#'+id)
+            if (form.val()==null||form.val()=='') {
+                form.addClass('is-invalid');
+                form.removeClass('is-valid');
+                validated=false;
+            }else{
+                form.addClass('is-valid');
+                form.removeClass('is-invalid');
+                temp[id]=form.val();
+            }
+        });
+        if (validated==true) {
+            tindakan.push(temp)
+            drawformTindakan();
         }
     }
 
-    
+    function clearformTindakan() {
+        id_tindakan.forEach(id=>{
+            form = $('#'+id);
+            if(id=='alat_kesehatan'){
+                
+                form.val('').trigger('change');
+            }
+            form.removeClass('is-valid');
+            form.val('');
+        })
+    }
+
+    function drawformTindakan(){
+        html=``;
+            tindakan.forEach((data,key) => {
+                var namaalkes = alkes.find(nama=>nama.id==data.alat_kesehatan);
+                html += `<tr> 
+                    <td>`+data.nama_tindakan+`</td>
+                    <td>`+namaalkes.nama_alkes+`</td>
+                    <td>`+data.jumlah_pengguna+`</td>
+                    <td>`+data.keterangan+`</td>
+                    <td><b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(`+key+`)"><i class="bi bi-trash"></i></b></td>
+                    </tr>`;
+            })
+            clearformTindakan();
+            $('#tindakan').val(JSON.stringify(tindakan));
+            $('#body_tindakan').html(html);
+    }
+
+    function deleteTindakan(id) { 
+       delete tindakan[id];
+       tindakan = tindakan.filter(function(x) { return x !== null }); 
+       drawformTindakan();
+    }
+
+    function lanjut3() {
+        if (resep.length != 0) {
+            $('#resep_kosong').hide();
+            hideModal('modalRawatInap');
+            submitform('formInstruksi')
+        }else{
+            $('#resep_kosong').show();
+        }
+    }
+
+    id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep'];
+    resep =[];
+    var satuanobat = @json($satuanobat);
+    function addResep() {
+        var temp ={};
+        var validated=true;
+        id_resep.forEach(id => {
+            form = $('#'+id)
+            if (form.val()==null||form.val()=='') {
+                form.addClass('is-invalid');
+                form.removeClass('is-valid');
+                validated=false;
+            }else{
+                form.addClass('is-valid');
+                form.removeClass('is-invalid');
+                temp[id]=form.val();
+            }
+        });
+        if (validated==true) {
+            resep.push(temp)
+            drawformResep();
+        }
+    }
+    function drawformResep(){
+        html=``;
+        resep.forEach((data,key) => {
+                satuan  = satuanobat.find(st => st.id==data.satuan_obat);
+                html += `<tr> 
+                        <td>`+data.nama_obat+`</td>
+                        <td>`+data.jumlah_obat+` `+satuan.satuan_obat+`</td>
+                        <td>`+data.aturan_pakai+`</td>
+                        <td>`+data.keterangan_resep+`</td>
+                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(`+key+`)"><i class="bi bi-trash"></i></b></td>
+                    </tr>`;
+            })
+        clearformResep();
+        $('#resep_obat').val(JSON.stringify(resep));
+        $('#body_resep').html(html);
+    }
+    function clearformResep() {
+        id_resep.forEach(id=>{
+            form = $('#'+id);
+            if(id=='satuan_obat'){
+                form.val('').trigger('change');
+            }
+            form.removeClass('is-valid');
+            form.val('');
+        })
+    }
+    function deleteResep(id) { 
+       delete resep[id];
+       resep = resep.filter(function(x) { return x !== null }); 
+       drawformResep();
+    }
 </script>

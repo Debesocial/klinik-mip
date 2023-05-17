@@ -16,10 +16,10 @@ class InstruksiDokter extends Model
     }
     function namapenyakit()
     {
-        return $this->hasMany(NamaPenyakit::class, 'diagnosa','id');
+        return $this->belongsTo(NamaPenyakit::class, 'diagnosa','id');
     }
     function namapenyakitsekunder()
     {
-        return $this->hasMany(NamaPenyakit::class, 'diagnosa_sekunder','id');
+        return $this->belongsTo(NamaPenyakit::class, 'diagnosa_sekunder','id');
     }
 }

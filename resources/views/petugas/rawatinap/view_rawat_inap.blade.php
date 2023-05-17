@@ -93,8 +93,7 @@
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Primer</th>
-                                        <th>Sekunder</th>
+                                        <th>Penyakit</th>
                                         <th>Sub-Klasifikasi</th>
                                         <th>Klasifikasi</th>
                                     </tr>
@@ -107,7 +106,6 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $penyakit->primer }}</td>
-                                            <td>{{ ($penyakit->sekunder)??'-' }}</td>
                                             <td>{{ $penyakit->sub_klasifikasi->nama_penyakit }}</td>
                                             <td>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}</td>
                                         </tr>
@@ -161,17 +159,17 @@
                         <thead>
                             <tr>
                                 <th>Tanggal</th>
-                                <th>Hasil Pengkajian/Pemeriksaan</th>
-                                <th>Instruksi Pengobatan/Tindakan</th>
+                                <th>Diagnosa</th>
+                                <th>Diagnosa Sekunder</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($rawat_inap->instruksidokter as $instruksi)
                                 <tr >
-                                    <td class="text-center" style="white-space: nowrap"><b>{{ date('Y-m-d',strtotime($instruksi->tanggal)) }}</b> {{ date('H:i',strtotime($instruksi->jam)) }}</td>
-                                    <td>{{ $instruksi->hasil_pemeriksaan }}</td>
-                                    <td>{{ $instruksi->instruksi_pengobatan }}</td>
+                                    <td class="text-center" style="white-space: nowrap">{{tanggal($instruksi->created_at)}}</td>
+                                    <td>{{ $instruksi->namapenyakit->primer }}</td>
+                                    <td>{{ $instruksi->namapenyakitsekunder->primer }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
                                             <a href="#" onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')" class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
@@ -349,7 +347,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalRawatInap" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="modalRawatInapLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+  <div class="modal-dialog  modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalRawatInap_title">Modal title</h5>
@@ -366,16 +364,30 @@
   </div>
 </div>
 
-@if (Session('message'))
-    <script>Swal.fire({ 
-            icon: "success", 
-            text: "{{Session('message')}}" 
-        })
-    </script>
-@endif
           
 @section('js')
     <script type="text/javascript" defer="defer">
+        if (window.performance) {
+            var navEntries = window.performance.getEntriesByType('navigation');
+            if (navEntries.length > 0 && navEntries[0].type === 'back_forward') {
+                // console.log('As per API lv2, this page is load from back/forward'); 
+            } else
+            if (window.performance.navigation && window.performance.navigation.type == window.performance.navigation
+                .TYPE_BACK_FORWARD) {
+                // console.log('As per API lv1, this page is load from back/forward'); 
+            } else {
+                // console.log('This is normal page load'); 
+                @if (session()->exists('message'))
+                    Swal.fire({
+                        icon: "success",
+                        text: "{{ session()->get('message') }}"
+                    })
+                    {{ session()->forget('message') }}
+                @endif
+            }
+        } else {
+            console.log("Unfortunately, your browser doesn't support this API");
+        }
         $(document).ready(function() {
             $("table[id^='TABLE']").dataTable( {    
                 "language": {
@@ -419,6 +431,11 @@
             
             modal.modal('show');
         }
+
+        function hideModal(id) { 
+            var modal = $('#'+id);
+            modal.modal('hide');
+         }
     </script>
 @stop
 
