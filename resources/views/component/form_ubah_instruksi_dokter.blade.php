@@ -1,7 +1,7 @@
 @php
     
-    $url = '/instruksi_dokter/tambah';
-    $rawat_inap = $id_rawat_inap;
+    $url = '/instruksi_dokter/ubah/' . $instruksidokter->id;
+    $rawat_inap = $instruksidokter->id_rawat_inap;
     
 @endphp
 
@@ -64,7 +64,7 @@
                                 <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
                                 <div class="col-10">
                                     <input type="text" name="anamnesis" id="anamnesis"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm" value="{{ $instruksidokter->anamnesis }}">
                                     {!! validasi('Anamenesis') !!}
                                 </div>
                             </div>
@@ -73,7 +73,8 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-8">
                                     <input type="number" name="tinggi_badan" id="tinggi_badan"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->tinggi_badan }}">
                                     {!! validasi('Tinggi badan') !!}
                                 </div>
                                 <div class="col-2 p-0 my-auto fs-6">Cm</div>
@@ -83,7 +84,8 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-8">
                                     <input type="number" name="berat_badan" id="berat_badan"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->berat_badan }}">
                                     {!! validasi('Berat badan') !!}
                                 </div>
                                 <div class="col-2 p-0 my-auto fs-6">Kg</div>
@@ -92,7 +94,8 @@
                                 <label for="" class="form-label">Suhu Tubuh <b class="text-danger">*</b></label>
                                 <div class="col-8">
                                     <input type="number" name="suhu_tubuh" id="suhu_tubuh"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->suhu_tubuh }}">
                                     {!! validasi('Suhu tubuh') !!}
                                 </div>
                                 <div class="col-2 p-0 my-auto fs-6">&deg;C</div>
@@ -102,7 +105,8 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-8">
                                     <input type="number" name="tekanan_darah" id="tekanan_darah"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->tekanan_darah }}">
                                     {!! validasi('Tekanan darah') !!}
                                 </div>
                                 <div class="col-2 p-0 my-auto fs-6">mmHg</div>
@@ -112,7 +116,8 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-8">
                                     <input type="number" name="saturasi_oksigen" id="saturasi_oksigen"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->saturasi_oksigen }}">
                                     {!! validasi('Saturasi Oksigen') !!}
                                 </div>
                                 <div class="col-2 p-0 my-auto fs-6">mmHg</div>
@@ -124,13 +129,15 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-4">
                                     <input type="number" name="denyut_nadi" id="denyut_nadi"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->denyut_nadi }}">
                                     {!! validasi('Denyut nadi') !!}
                                 </div>
                                 <div class="col-1 p-0 my-auto text-center fs-5">/</div>
                                 <div class="col-4">
                                     <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->denyut_nadi_menit }}">
                                     {!! validasi('Denyut nadi') !!}
                                 </div>
                                 <div class="col-1 p-0 my-auto fs-6">menit</div>
@@ -140,13 +147,15 @@
                                         class="text-danger">*</b></label>
                                 <div class="col-4">
                                     <input type="number" name="laju_pernapasan" id="laju_pernapasan"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->laju_pernapasan }}">
                                     {!! validasi('Laju pernapasan') !!}
                                 </div>
                                 <div class="col-1 p-0 my-auto text-center fs-5">/</div>
                                 <div class="col-4">
                                     <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm"
+                                        value="{{ $instruksidokter->laju_pernapasan_menit }}">
                                     {!! validasi('Laju pernapasan') !!}
                                 </div>
                                 <div class="col-1 p-0 my-auto fs-6">menit</div>
@@ -157,7 +166,8 @@
                                 <div class="row">
                                     <div class="col-10">
                                         <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang"
-                                            class="form-control form-control-sm">
+                                            class="form-control form-control-sm"
+                                            value="{{ $instruksidokter->pemeriksaan_penunjang }}">
                                         {!! validasi('Pemeriksaan penunjang') !!}
                                     </div>
                                 </div>
@@ -169,15 +179,22 @@
                                     <select name="diagnosa" id="diagnosa" class="form-select">
                                         <option value="" selected disabled>Pilih Penyakit</option>
                                         @foreach ($namapenyakit as $penyakit)
-                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
-                                            <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}
+                                            </div>
+                                            <option value="{{ $penyakit->id }}"
+                                                {{ $penyakit->id == $instruksidokter->diagnosa ? 'selected' : '' }}>
+                                                {{ $penyakit->primer }}</option>
                                         @endforeach
                                     </select>
                                     {!! validasi('Diagnosa') !!}
-                                    <div id="diagnosa_klasifikasi" class="mt-1" style="display: none">
+                                    <div id="diagnosa_klasifikasi" class="mt-1">
                                         <ul class="m-0">
-                                            <li><b>Subklasifikasi</b> <span id="diagnosa_sub_kla"></span></li>
-                                            <li><b>Klasifikasi</b> <span id="diagnosa_kla"></span></li>
+                                            <li><b>Subklasifikasi</b> <span
+                                                    id="diagnosa_sub_kla">{{ $instruksidokter->namapenyakit->sub_klasifikasi->nama_penyakit }}</span>
+                                            </li>
+                                            <li><b>Klasifikasi</b> <span
+                                                    id="diagnosa_kla">{{ $instruksidokter->namapenyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}</span>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -189,15 +206,22 @@
                                     <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
                                         <option value="" selected disabled>Pilih Penyakit</option>
                                         @foreach ($namapenyakit as $penyakit)
-                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
-                                            <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}
+                                            </div>
+                                            <option value="{{ $penyakit->id }}"
+                                                {{ $penyakit->id == $instruksidokter->diagnosa_sekunder ? 'selected' : '' }}>
+                                                {{ $penyakit->primer }}</option>
                                         @endforeach
                                     </select>
                                     {!! validasi('Diagnosa sekunder') !!}
-                                    <div id="diagnosa_sekunder_klasifikasi" class="mt-1" style="display: none">
+                                    <div id="diagnosa_sekunder_klasifikasi" class="mt-1">
                                         <ul class="m-0">
-                                            <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla"></span></li>
-                                            <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla"></span></li>
+                                            <li><b>Subklasifikasi</b> <span
+                                                    id="diagnosa_sekunder_sub_kla">{{ $instruksidokter->namapenyakitsekunder->sub_klasifikasi->nama_penyakit }}</span>
+                                            </li>
+                                            <li><b>Klasifikasi</b> <span
+                                                    id="diagnosa_sekunder_kla"></span>{{ $instruksidokter->namapenyakitsekunder->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -375,6 +399,7 @@
     })
 
     $(document).ready(function() {
+
         $('select').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
@@ -469,8 +494,9 @@
     }
 
     var alkes = @json($namaalkes);
-    var tindakan = [];
+    var tindakan = {!! $instruksidokter->tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+    drawformTindakan();
 
     function addTindakan() {
         var temp = {};
@@ -541,8 +567,9 @@
     }
 
     id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep'];
-    resep = [];
     var satuanobat = @json($satuanobat);
+    resep = {!! $instruksidokter->resep_obat !!};
+    drawformResep()
 
     function addResep() {
         var temp = {};
