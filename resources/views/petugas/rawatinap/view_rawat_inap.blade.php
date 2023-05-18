@@ -211,9 +211,12 @@
                         </div>
                         <div class="col-md-4 text-end">
                             <div class="buttons" width="100px">
-                                <a href="" class="btn btn-sm btn-success rounded-pill">
+                                <button
+                                    onclick="tampilModalRawatInap('/intervensi/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Intervensi Keperawatan')"
+                                    class="btn btn-sm btn-success rounded-pill">
                                     <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span></a>
+                                    <span>Tambah</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -221,34 +224,30 @@
                         <table class="table" id="TABLE_2">
                             <thead>
                                 <tr>
-                                    <th>Tanggal Pemeriksaan</th>
-                                    <th>ID Pemeriksaan</th>
-                                    <th>Nama Pasien</th>
-                                    <th>Diagnosa</th>
-                                    <th>Sub-Klasifikasi Penyakit</th>
-                                    <th>Klasifikasi Penyakit</th>
-                                    <th>Rawat Inap</th>
-                                    <th>aksi</th>
+                                    <th>Tanggal</th>
+                                    <th>Catatan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>22 Desember 2022</td>
-                                    <td><a href="/view/rawat/inap">RI22120001</a></td>
-                                    <td>Martuani</td>
-                                    <td>Masuk angin</td>
-                                    <td>Demam</td>
-                                    <td>Demam tinggi</td>
-                                    <td>aktif</td>
-                                    <td>
-                                        <div class="buttons">
-                                            <a href="/lihat/rekam/medis" title="Lihat Data"
-                                                class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                            <a href="" class="btn btn-success rounded-pill" title="Ubah data"><i
-                                                    class="fa fa-edit"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($rawat_inap->intervensikeperawatan as $inter)
+                                    <tr>
+                                        <td>{{ tanggal($inter->created_at) }}</td>
+                                        <td>{{ $inter->catatan }}</td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/intervensi/{{ $inter->id }}','Intervensi Keperawatan')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-eye"></i></a>
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/intervensi/form_edit/{{ $inter->id }}','Formulir Ubah Intervensi Keperawatan')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

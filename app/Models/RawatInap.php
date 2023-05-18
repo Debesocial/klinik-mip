@@ -23,15 +23,15 @@ class RawatInap extends Model
     public static function boot()
     {
         parent::boot();
-        $year  =  date('Y'); 
+        $year  =  date('Y');
         $month =  date('m');
-        $year   = substr( $year, -2). ''. $month;
+        $year   = substr($year, -2) . '' . $month;
         self::creating(function ($model) {
             $model->id_rawat_inap = IdGenerator::generate([
                 'table'  => 'rawat_inaps',
                 'field'  => 'id_rawat_inap',
                 'length' => '10',
-                'prefix' => 'RI' .substr( date('Y'), -2). date('m'),
+                'prefix' => 'RI' . substr(date('Y'), -2) . date('m'),
             ]);
         });
     }
@@ -40,27 +40,37 @@ class RawatInap extends Model
     //     return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
     // }
 
-    public function tindakan() {
+    public function tindakan()
+    {
         return $this->belongsTo(Tindakan::class);
     }
 
-    public function jenisobat() {
+    public function jenisobat()
+    {
         return $this->belongsTo(JenisObat::class);
     }
 
-    public function namaobat() {
+    public function namaobat()
+    {
         return $this->belongsTo(NamaObat::class);
     }
 
-    public function pasien() {
+    public function pasien()
+    {
         return $this->belongsTo(Pasien::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->hasMany(User::class);
     }
 
-    public function instruksidokter() {
+    public function instruksidokter()
+    {
         return $this->hasMany(InstruksiDokter::class, 'id_rawat_inap', 'id');
+    }
+    public function intervensikeperawatan()
+    {
+        return $this->hasMany(IntervensiKeperawatan::class, 'id_rawat_inap', 'id');
     }
 }

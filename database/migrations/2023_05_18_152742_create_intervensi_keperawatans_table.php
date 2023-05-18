@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInstruksiDoktersTable extends Migration
+class CreateIntervensiKeperawatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class CreateInstruksiDoktersTable extends Migration
      */
     public function up()
     {
-        // Schema::disableForeignKeyConstraints();
-        // Schema::dropIfExists('instruksi_dokters');
-        Schema::create('instruksi_dokters', function (Blueprint $table) {
+        Schema::create('intervensi_keperawatans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_rawat_inap');
             $table->foreign('id_rawat_inap')->references('id')->on('rawat_inaps');
@@ -30,16 +28,14 @@ class CreateInstruksiDoktersTable extends Migration
             $table->integer('laju_pernapasan_menit');
             $table->integer('saturasi_oksigen');
             $table->text('pemeriksaan_penunjang');
-            $table->foreignId('diagnosa')->constrained('nama_penyakits');
-            $table->foreignId('diagnosa_sekunder')->constrained('nama_penyakits');
+            $table->text('catatan_pemeriksaan');
             $table->json('tindakan');
-            $table->json('resep_obat');
+            $table->text('catatan');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
-            Schema::enableForeignKeyConstraints();
         });
     }
 
@@ -50,6 +46,6 @@ class CreateInstruksiDoktersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instruksi_dokters');
+        Schema::dropIfExists('intervensi_keperawatans');
     }
 }

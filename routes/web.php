@@ -34,6 +34,7 @@ use App\Http\Controllers\RawatJalanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstruksiDokterController;
 use App\Http\Controllers\McuController;
+use App\Http\Controllers\IntervensiKeperawatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,13 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/instruksi_dokter/tambah', [InstruksiDokterController::class, 'simpan']);
     Route::post('/instruksi_dokter/ubah/{id}', [InstruksiDokterController::class, 'ubah']);
     Route::get('/instruksi_dokter/{id}', [InstruksiDokterController::class, 'tampil']);
+
+    Route::get('/intervensi/{id}', [IntervensiKeperawatanController::class, 'tampil']);
+    Route::get('/intervensi/form_tambah/{id}', [IntervensiKeperawatanController::class, 'tampilFormTambah']);
+    Route::post('/intervensi/tambah', [IntervensiKeperawatanController::class, 'simpan']);
+    Route::get('/intervensi/form_edit/{id}', [IntervensiKeperawatanController::class, 'tampilFormUbah']);
+    Route::post('/intervensi/ubah/{id}', [IntervensiKeperawatanController::class, 'ubah']);
+
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');
