@@ -73,4 +73,9 @@ class RawatInap extends Model
     {
         return $this->hasMany(IntervensiKeperawatan::class, 'id_rawat_inap', 'id');
     }
+
+    public function permintaanmakanan()
+    {
+        return $this->hasMany(PermintaanMakanan::class, 'id_rawat_inap', 'id');
+    }
 }

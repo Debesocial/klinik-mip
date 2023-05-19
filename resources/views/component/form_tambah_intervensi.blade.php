@@ -424,7 +424,7 @@
             input.removeClass('is-valid');
         } else {
             hideModal('modalRawatInap');
-            submitform('formInstruksi')
+            submitform('formInstruksi');
         }
     }
 </script>

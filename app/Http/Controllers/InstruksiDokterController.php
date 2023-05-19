@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Alkes;
 use Illuminate\Http\Request;
 use App\Models\InstruksiDokter;
-use App\Models\KlasifikasiPenyakit;
+
 use App\Models\NamaAlkes;
 use App\Models\NamaPenyakit;
 use App\Models\RawatInap;
 use App\Models\SatuanObat;
-use App\Models\SubKlasifikasi;
+
 
 class InstruksiDokterController extends Controller
 {

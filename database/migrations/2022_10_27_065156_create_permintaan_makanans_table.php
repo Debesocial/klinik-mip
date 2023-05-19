@@ -15,14 +15,14 @@ class CreatePermintaanMakanansTable extends Migration
     {
         Schema::create('permintaan_makanans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pasien_id')->constrained();
+            $table->unsignedBigInteger('id_rawat_inap');
+            $table->foreign('id_rawat_inap')->references('id')->on('rawat_inaps');
             $table->foreignId('nama_penyakit_id')->constrained();
-            $table->string('permitaan_makanan');
+            $table->string('permintaan_makanan');
             $table->string('catatan');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->string('total');
-            $table->text('ttd');
+            $table->boolean('ttd');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

@@ -262,18 +262,19 @@
                             <h6>Permintaan Makanan</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            <div class="buttons" width="100px">
-                                <a href="" class="btn btn-sm btn-success rounded-pill">
-                                    <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span></a>
-                            </div>
+                            <button
+                                onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Fromulir Permintaan Makanan')"
+                                class="btn btn-sm btn-success rounded-pill">
+                                <i class="bi bi-plus-circle"></i>
+                                <span>Tambah</span>
+                            </button>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table" id="TABLE_3">
                             <thead>
                                 <tr>
-                                    <th>Tanggal Permintaan</th>
+                                    <th>Tanggal</th>
                                     <th>ID Rawat Inap</th>
                                     <th>Nama Pasien</th>
                                     <th>Diagnosa</th>

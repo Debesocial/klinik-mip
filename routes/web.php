@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstruksiDokterController;
 use App\Http\Controllers\McuController;
 use App\Http\Controllers\IntervensiKeperawatanController;
+use App\Models\PermintaanMakanan;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/intervensi/form_edit/{id}', [IntervensiKeperawatanController::class, 'tampilFormUbah']);
     Route::post('/intervensi/ubah/{id}', [IntervensiKeperawatanController::class, 'ubah']);
 
+    Route::get('/permintaan_makanan/tambah/{id}', [PermintaanMakananController::class, 'tampilFormTambah']);
+    Route::post('/permintaan_makanan/tambah', [PermintaanMakananController::class, 'simpan']);
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');
