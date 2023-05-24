@@ -444,7 +444,8 @@
         var validated = true;
         required.forEach(req => {
             var input = $('#' + req);
-            if (input.val() == null || input.val() == '') {
+            console.log(req);
+            if (input.val() == null || input.val() == '' || input.val()==' ') {
                 input.addClass('is-invalid');
                 input.removeClass('is-valid');
                 validated = false;
@@ -453,10 +454,10 @@
                 input.removeClass('is-invalid');
             }
 
-            if (validated == true) {
-                stepper2.next();
-            }
         });
+        if (validated == true) {
+            stepper2.next();
+        }
     }
 
     function lanjut2() {

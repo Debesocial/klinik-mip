@@ -133,7 +133,7 @@
                 href="#list-makanan" role="tab">Permintaan
                 Makanan</a>
             <a class="list-group-item list-group-item-action rounded-start rounded-pill" id="list-tandavital-list"
-                data-bs-toggle="list" href="#list-tandavital" role="tab">Pemantaauan
+                data-bs-toggle="list" href="#list-tandavital" role="tab">Pemantauan
                 Tanda Vital</a>
         </div>
     </div>

@@ -478,10 +478,10 @@
                 input.removeClass('is-invalid');
             }
 
-            if (validated == true) {
-                stepper2.next();
-            }
         });
+        if (validated == true) {
+            stepper2.next();
+        }
     }
 
     function lanjut2() {
