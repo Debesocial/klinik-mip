@@ -10,7 +10,7 @@ class TandaVital extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pasien_id',
+        'id_rawat_inap',
         'skala_nyeri',
         'hr',
         'bp',
@@ -18,6 +18,7 @@ class TandaVital extends Model
         'rr',
         'saturasi_oksigen',
         'keterangan',
+        'terapi',
         'dokumen',
         'created_by',
         'updated_by'
@@ -37,5 +38,10 @@ class TandaVital extends Model
 
     public function hasilpemantauan() {
         return $this->hasMany(HasilPemantauan::class);
+    }
+
+    public function rawatinap()
+    {
+        return $this->belongsTo(RawatInap::class, 'id_rawat_inap','id');
     }
 }

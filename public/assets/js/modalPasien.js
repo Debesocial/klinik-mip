@@ -4,7 +4,7 @@ function tampilModalPasien(data) {
     $('#modal_nama').text(': ' + data.nama_pasien);
     $('#modal_rekam_medis').text(': ' + data.id_rekam_medis);
     $('#modal_nomor_induk_karyawan').text(': ' + data.NIK);
-    $('#modal_ttl').text(': ' + data.tempat_lahir + ', ' + data.tanggal_lahir);
+    $('#modal_ttl').text(': ' + data.tempat_lahir + ', ' + tanggal(data.tanggal_lahir));
     $('#modal_alamat').text(': ' + data.alamat);
     $('#modal_pekerjaan').text(': ' + data.pekerjaan);
     $('#modal_perusahaan').text(': ' + data.perusahaan.nama_perusahaan_pasien);
@@ -31,6 +31,12 @@ function cekAlergi(val) {
     } else {
         return val;
     }
+}
+
+function tanggal(stringdate) {
+    let date = new Date(Date.parse(stringdate));
+    formatDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear();
+    return formatDate;
 }
 
 function cekTrueFalse(val) {

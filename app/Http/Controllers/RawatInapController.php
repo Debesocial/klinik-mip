@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HasilPemantauan;
 use App\Models\KlasifikasiPenyakit;
 use App\Models\NamaPenyakit;
 use Illuminate\Http\Request;
@@ -21,9 +22,10 @@ class RawatInapController extends Controller
         // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
         $nama_penyakit = NamaPenyakit::all();
+        $pemantauan = HasilPemantauan::all();
 
 
-        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit'));
+        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'pemantauan'));
     }
 
     public function daftarrawatinap()

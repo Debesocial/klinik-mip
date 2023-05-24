@@ -34,3 +34,12 @@ function validasi($field_error = 'field'){
 
     return $html;
 }
+
+/** Untuk Menghitung selisih hari dari dua tanggal */
+function diffDay($awal, $akhir){
+    $date1=strtotime($awal);
+    $date2=strtotime($akhir);
+    $diff=abs(($date1-$date2)/ (60 * 60 * 24));
+
+    return $diff . ' hari';
+}

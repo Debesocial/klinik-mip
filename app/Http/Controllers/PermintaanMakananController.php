@@ -27,4 +27,28 @@ class PermintaanMakananController extends Controller
             return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Permintaan Makanan!');
         }
     }
+
+    public function tampilFormUbah($id)
+    {
+        $data['permintaanmakanan'] = PermintaanMakanan::find($id);
+        $data['penyakit'] = NamaPenyakit::all();
+        return view('/component/form_ubah_permintaan_makanan', $data);
+
+    }
+
+    public function ubah(Request $request, $id)
+    {
+        $data = $request->except('_token');
+        $data['updated_by'] = auth()->user()->id;
+
+        if (PermintaanMakanan::where('id', $id)->update($data)) {
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Merubah Permintaan Makanan!');
+        }
+    }
+
+    public function tampil($id)
+    {
+        $data['permintaanmakanan']= PermintaanMakanan::find($id);
+        return view('component/view_permintaan_makanan', $data);
+    }
 }

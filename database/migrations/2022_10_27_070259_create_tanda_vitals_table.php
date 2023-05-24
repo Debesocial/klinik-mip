@@ -15,7 +15,8 @@ class CreateTandaVitalsTable extends Migration
     {
         Schema::create('tanda_vitals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pasien_id')->constrained();
+            $table->unsignedBigInteger('id_rawat_inap');
+            $table->foreign('id_rawat_inap')->references('id')->on('rawat_inaps');
             $table->string('skala_nyeri');
             $table->string('hr');
             $table->string('bp');
@@ -24,6 +25,7 @@ class CreateTandaVitalsTable extends Migration
             $table->string('saturasi_oksigen');
             $table->string('keterangan')->nullable();
             $table->text('dokumen')->nullable();
+            $table->json('terapi');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

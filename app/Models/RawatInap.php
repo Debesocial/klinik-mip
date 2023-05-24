@@ -78,4 +78,9 @@ class RawatInap extends Model
     {
         return $this->hasMany(PermintaanMakanan::class, 'id_rawat_inap', 'id');
     }
+
+    public function tandavital()
+    {
+        return $this->hasMany(TandaVital::class, 'id_rawat_inap','id');
+    }
 }

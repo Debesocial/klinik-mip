@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstruksiDokterController;
 use App\Http\Controllers\McuController;
 use App\Http\Controllers\IntervensiKeperawatanController;
+use App\Http\Controllers\TandaVitalController;
 use App\Models\PermintaanMakanan;
 
 /*
@@ -125,7 +126,17 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/intervensi/ubah/{id}', [IntervensiKeperawatanController::class, 'ubah']);
 
     Route::get('/permintaan_makanan/tambah/{id}', [PermintaanMakananController::class, 'tampilFormTambah']);
+    Route::get('/permintaan_makanan/{id}', [PermintaanMakananController::class, 'tampil']);
     Route::post('/permintaan_makanan/tambah', [PermintaanMakananController::class, 'simpan']);
+    Route::get('/permintaan_makanan/form_edit/{id}', [PermintaanMakananController::class, 'tampilFormUbah']);
+    Route::post('/permintaan_makanan/ubah/{id}', [PermintaanMakananController::class, 'ubah']);
+
+    Route::get('/tanda_vital/{id}', [TandaVitalController::class, 'tampil']);
+    Route::get('/tanda_vital/tambah/{id}', [TandaVitalController::class, 'tampilFormTambah']);
+    Route::post('/tanda_vital/tambah', [TandaVitalController::class, 'simpan']);
+    Route::get('/tanda_vital/form_edit/{id}', [TandaVitalController::class, 'tampilFormUbah']);
+    Route::post('/tanda_vital/ubah/{id}', [TandaVitalController::class, 'ubah']);
+
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');
     Route::get('/add/rawat/jalan', [RawatJalanController::class, 'addrawatjalan'])->name('rawatjalan.addrawatjalan');

@@ -65,14 +65,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Alamat</th>
-                                        <td id="alamat">: {{ $pasien->alamat }}</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Pekerjaan</th>
-                                        <td id="pekerjaan">: {{ $pasien->pekerjaan }}</td>
-                                    </tr>
-                                    <tr>
                                         <th>Mulai Dirawat</th>
                                         <td id="_mulai_rawat">
                                             : {{ tanggal($rawat_inap->mulai_rawat, false) }}
@@ -95,7 +87,7 @@
                 <div class="col-md-6">
                     {{-- <h5 class="card-title">Data Pemeriksaan</h5> --}}
                     <div class="row">
-                        <h6>Diaknosa Penyakit</h6>
+                        <h6>Diagnosa Penyakit</h6>
                         <div class="col-12">
                             <div class="table-responsive">
                                 <table class="table table-hover">
@@ -232,7 +224,7 @@
                             <tbody>
                                 @foreach ($rawat_inap->intervensikeperawatan as $inter)
                                     <tr>
-                                        <td>{{ tanggal($inter->created_at) }}</td>
+                                        <td class="text-center">{{ tanggal($inter->created_at) }}</td>
                                         <td>{{ $inter->catatan }}</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -274,38 +266,34 @@
                         <table class="table" id="TABLE_3">
                             <thead>
                                 <tr>
-                                    <th>Tanggal</th>
-                                    <th>ID Rawat Inap</th>
-                                    <th>Nama Pasien</th>
-                                    <th>Diagnosa</th>
-                                    <th>Permintaan Makanan</th>
-                                    <th>Catatan</th>
-                                    <th>Tanggal diberikan</th>
-                                    <th>Tanggal berakhirnya</th>
+                                    <th>Tanggal Mulai</th>
+                                    <th>Tanggal Selesai</th>
                                     <th>Total Pemberian</th>
+                                    <th>Permintaan Makanan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>22 Desember 2022</td>
-                                    <td><a href="/view/rawat/inap">RI22120001</a></td>
-                                    <td>Martuani</td>
-                                    <td>Masuk angin</td>
-                                    <td>Kepiting</td>
-                                    <td>Supaya lekas sembuh</td>
-                                    <td>22 Desember 2022</td>
-                                    <td>22 Desember 2022</td>
-                                    <td>30 haris</td>
-                                    <td>
-                                        <div class="buttons">
-                                            <a href="/lihat/rekam/medis" title="Lihat Data"
-                                                class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                            <a href="" class="btn btn-success rounded-pill" title="Ubah data"><i
-                                                    class="fa fa-edit"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($rawat_inap->permintaanmakanan->sortByDesc('tanggal_mulai') as $makanan)
+                                    <tr>
+                                        <td class="text-center">{{tanggal($makanan->tanggal_mulai, false)}}</td>
+                                        <td class="text-center">{{tanggal($makanan->tanggal_selesai, false)}}</td>
+                                        <td class="text-center">{{diffDay($makanan->tanggal_mulai,$makanan->tanggal_selesai)}}</td>
+                                        <td>{{$makanan->permintaan_makanan}}</td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/permintaan_makanan/{{ $makanan->id }}','Permintaan Makanan')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-eye"></i></a>
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/permintaan_makanan/form_edit/{{ $makanan->id }}','Formulir Ubah Permintaan Makanan')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -321,9 +309,10 @@
                         </div>
                         <div class="col-md-4 text-end">
                             <div class="buttons" width="100px">
-                                <a href="" class="btn btn-sm btn-success rounded-pill">
+                                <button href="" class="btn btn-sm btn-success rounded-pill" onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Fromulir Pemantauan Tanda Vital')">
                                     <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span></a>
+                                    <span>Tambah</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -331,36 +320,40 @@
                         <table class="table" id="TABLE_4">
                             <thead>
                                 <tr>
-                                    <th>Tanggal Pemeriksaan</th>
-                                    <th>ID Pemeriksaan</th>
-                                    <th>Nama Pasien</th>
+                                    <th>Tanggal</th>
                                     <th>Skala Nyeri</th>
                                     <th>HR</th>
                                     <th>BP</th>
                                     <th>Temp</th>
                                     <th>RR</th>
                                     <th>Saturasi Oksigen</th>
-                                    <th>aksi</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>22 Desember 2022</td>
-                                    <td>RP22120001</td>
-                                    <td>Martuani</td>
-                                    <td>B</td>
-                                    <td>B</td>
-                                    <td>B</td>
-                                    <td>B</td>
-                                    <td>B</td>
-                                    <td>B</td>
-                                    <td>
-                                        <div class="buttons">
-                                            <a href="/lihat/rekam/medis" title="Lihat Data"
-                                                class="btn btn-danger rounded-pill"><i class="fa fa-eye"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach ($rawat_inap->tandavital->sortByDesc('created_at') as $vital)
+                                    <tr class="text-center">
+                                        <td>{{tanggal($vital->created_at)}}</td>
+                                        <td>{{$pemantauan->find($vital->skala_nyeri)->kode}}</td>
+                                        <td>{{$pemantauan->find($vital->hr)->kode}}</td>
+                                        <td>{{$pemantauan->find($vital->bp)->kode}}</td>
+                                        <td>{{$pemantauan->find($vital->temp)->kode}}</td>
+                                        <td>{{$pemantauan->find($vital->rr)->kode}}</td>
+                                        <td>{{$pemantauan->find($vital->saturasi_oksigen)->kode}}</td>
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/tanda_vital/{{ $vital->id }}','Pemeriksaan Tanda Vital')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-eye"></i></a>
+                                                <a href="#"
+                                                    onclick="tampilModalRawatInap('/tanda_vital/form_edit/{{ $vital->id }}','Formulir Ubah Pemeriksaan Tanda Vital')"
+                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                        class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -429,6 +422,7 @@
                 info: false,
                 order: [0, 'desc'],
             });
+
         });
 
         function showDetail(val) {

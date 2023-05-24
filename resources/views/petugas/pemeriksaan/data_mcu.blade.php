@@ -38,7 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
-                                            <th>Id MCU Awal</th>
+                                            <th>ID MCU Awal</th>
                                             <th>Nama</th>
                                             <th>Hasil Pemantauan</th>
                                             <th>Aksi</th>
@@ -95,7 +95,7 @@
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
-                                            <th>Id MCU</th>
+                                            <th>ID MCU</th>
                                             <th>Nama</th>
                                             <th>Jenis MCU</th>
                                             <th>Jenis Pemeriksaan</th>

@@ -34,7 +34,7 @@ class NamaPenyakit extends Model
     // }
 
     public function permintaanmakanan() {
-        return $this->hasMany(PermintaanMakanan::class);
+        return $this->belongsTo(PermintaanMakanan::class, 'nama_penyakit_id', 'id');
     }
 
     public function tandavital() {

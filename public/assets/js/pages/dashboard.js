@@ -187,3 +187,33 @@ let optionsIndonesia = {
         return this;
     }
 }(jQuery));
+
+function getDateDiff(time1, time2) {
+    // console.log(time1);
+    var str1= time1.split('-');
+    var str2= time2.split('-');
+    //                yyyy   , mm       , dd
+    var t1 = new Date(str1[0], str1[1]-1, str1[2]);
+    var t2 = new Date(str2[0], str2[1]-1, str2[2]);
+  
+    var diffMS = t1 - t2;    
+    // console.log(diffMS + ' ms');
+  
+    var diffS = diffMS / 1000;    
+    // console.log(diffS + ' ');
+  
+    var diffM = diffS / 60;
+    // console.log(diffM + ' minutes');
+  
+    var diffH = diffM / 60;
+    // console.log(diffH + ' hours');
+  
+    var diffD = diffH / 24;
+    // console.log(diffD + ' days');
+    // alert(diffD);
+    return Math.abs(diffD);
+  }
+
+  function cekSingle(m) {
+    return m < 10 ? '0'+m: m;
+  }
