@@ -875,7 +875,7 @@
                         </tr>`;
             })
             clearformResep();
-            $('#resep_obat').val(JSON.stringify(resep));
+            $('#resep').val(JSON.stringify(resep));
             $('#body_resep').html(html);
         }
 
