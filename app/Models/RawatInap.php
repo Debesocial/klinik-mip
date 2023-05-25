@@ -10,15 +10,7 @@ class RawatInap extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'id_rawat_inap',
-        'mulai_rawat',
-        'berakhir_rawat',
-        'nama_penyakit_id',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded = ['id'];
 
     public static function boot()
     {

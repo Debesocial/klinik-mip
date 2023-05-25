@@ -25,6 +25,7 @@
             position: absolute;
             border-radius: 50%;
             cursor: crosshair;
+            z-index: 99;
             
             /* Multiple box shadows to achieve the glass effect */
             box-shadow:
@@ -64,6 +65,29 @@
                     </div>
                     <div class="line"></div>
                     <div class="step" data-target="#test-nl-3">
+                        <button class="btn step-trigger">
+                            <span class="bs-stepper-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+                                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Z"/>
+                                    <path d="M10.464 3.314a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z"/>
+                                </svg>
+                            </span>
+                            <span class="bs-stepper-label">Tindakan</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#test-nl-4">
+                        <button class="btn step-trigger">
+                            <span class="bs-stepper-circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                    <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                </svg>
+                            </span>
+                            <span class="bs-stepper-label">Resep Obat</span>
+                        </button>
+                    </div>
+                    <div class="line"></div>
+                    <div class="step" data-target="#test-nl-5">
                         <button type="button" class="btn step-trigger">
                             <span class="bs-stepper-circle"><i class="bi bi-check-circle"></i></i></span>
                             <span class="bs-stepper-label">Simpan Data</span>
@@ -200,7 +224,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Anamnesis</label>
+                                        <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
                                         <input type="text" name="anamnesis" id="anamnesis" class="form-control">
                                         {!!validasi('Anamnesis')!!}
                                     </div>
@@ -210,6 +234,7 @@
                                             <div class="input-group">
                                                 <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">Cm</span>
+                                                {!!validasi('Tinggi badan')!!}
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -217,6 +242,7 @@
                                             <div class="input-group">
                                                 <input type="number" name="berat_badan" id="berat_badan" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">Kg</span>
+                                                {!!validasi('Berat badan')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -226,6 +252,7 @@
                                             <div class="input-group">
                                                 <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">&deg;C</span>
+                                                {!!validasi('Suhu tubuh')!!}
                                             </div>
                                         </div>
                                         <div class="col-6">
@@ -233,6 +260,7 @@
                                             <div class="input-group">
                                                 <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                {!!validasi('Tekanan darah')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -242,6 +270,7 @@
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                {!!validasi('Saturasi oksigen')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -252,6 +281,7 @@
                                             <span class="input-group-text" id="basic-addon1">/</span>
                                             <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control">
                                             <span class="input-group-text" id="basic-addon1">menit</span>
+                                            {!!validasi('Denyut nadi')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -281,7 +311,8 @@
                                         <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
                                         <div class="input-group">
                                             <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
-                                            <textarea type="number" name="status-lokalis" id="status-lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis"></textarea>
+                                            <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis"></textarea>
+                                            {!!validasi('Status lokalis')!!}
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -291,12 +322,7 @@
                                                 <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                             @endforeach
                                         </select>
-                                        <div class="valid-feedback">
-                                            Data sudah benar
-                                        </div>
-                                        <div class="invalid-feedback">
-                                            Nama penyakit harus diisi.
-                                        </div>
+                                        {!!validasi('Nama penyakit')!!}
                                     </div>
                                     <div class="row">
                                         <h6>Diaknosa Penyakit</h6>
@@ -328,6 +354,159 @@
                             </div>
                         </div>
                         <div id="test-nl-3" class="content">
+                            <input type="text" name="tindakan" id="tindakan" hidden>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Nama Tindakan <b
+                                                class="text-danger">*</b></label>
+                                        <input type="text" name="" id="nama_tindakan" class="form-control">
+                                        {!! validasi('Nama') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Nama Alat Kesehatan <b
+                                                class="text-danger">*</b></label>
+                                        <select name="" id="alat_kesehatan" class="form-select">
+                                            <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                            @foreach ($alatkesehatan as $alat)
+                                                <option value="{{ $alat->id }}">{{ $alat->nama_alkes->nama_alkes }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        {!! validasi('Alat Kesehatan') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
+                                                class="text-danger">*</b></label>
+                                        <input type="number" name="" id="jumlah_pengguna" class="form-control">
+                                        {!! validasi('Jumlah Pengguna') !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Keterangan <b
+                                                class="text-danger">*</b></label>
+                                        <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
+                                        {!! validasi('Keterangan') !!}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3 text-center">
+                                        <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i
+                                                    class="bi bi-arrow-down-circle"></i></b></button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
+                                            boleh kosong</span>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tindakan</th>
+                                                    <th>Alat Kesehatan</th>
+                                                    <th>Jumlah Pengguna</th>
+                                                    <th>Keterangan</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="body_tindakan"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
+                                        class="bi bi-arrow-left-circle"></i>
+                                    <b>Sebelumnya</b></button>
+                                <button type="button" class="btn btn-primary rounded-pill"
+                                    onclick="lanjut3()"><b>Selanjutnya</b> <i class="bi bi-arrow-right-circle"></i></button>
+                            </div>
+                        </div>
+                        <div id="test-nl-4" class="content">
+                            <input type="text" name="resep_obat" id="resep_obat" hidden>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Nama Obat <b
+                                                class="text-danger">*</b></label>
+                                        <input type="text" id="nama_obat" class="form-control">
+                                        {!! validasi('Nama obat') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Jumlah Obat <b
+                                                class="text-danger">*</b></label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="number" id="jumlah_obat" class="form-control">
+                                                {!! validasi('Jumlah obat') !!}
+                                            </div>
+                                            <div class="col-md-6">
+                                                <select id="satuan_obat" class="form-select">
+                                                    <option value="" selected disabled>Pilih satuan</option>
+                                                    @foreach ($satuanobat as $satuan)
+                                                        <option value="{{ $satuan->id }}">{{ $satuan->satuan_obat }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                {!! validasi('Satuan Obat') !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Aturan Pakai <b
+                                                class="text-danger">*</b></label>
+                                        <input type="text" id="aturan_pakai" class="form-control">
+                                        {!! validasi('Aturan pakai') !!}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Keterangan<b
+                                                class="text-danger">*</b></label>
+                                        <textarea id="keterangan_resep" class="form-control"></textarea>
+                                        {!! validasi('Aturan pakai') !!}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col text-center">
+                                    <button type="button" class="btn btn-success" onclick="addResep()"><b>Tambah <i
+                                                class="bi bi-arrow-down-circle"></i></b></button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span id="resep_kosong" class="text-danger" style="display: none">Resep tidak boleh
+                                        kosong</span>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama Obat</th>
+                                                    <th>Obat</th>
+                                                    <th>Aturan Pakai</th>
+                                                    <th>Keterangan</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="body_resep">
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
+                                        class="bi bi-arrow-left-circle"></i>
+                                    <b>Sebelumnya</b></button>
+                                <button type="button" class="btn btn-primary rounded-pill" onclick="lanjut4()"><i
+                                        class="bi bi-save"></i> <b>Selanjutnya</b></button>
+                            </div>
+                        </div>
+                        <div id="test-nl-5" class="content">
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
@@ -423,7 +602,7 @@
             linear: true,
             animation: true
         })
-        stepper2.to(2);
+        // stepper2.to(3);
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -523,7 +702,7 @@
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['mulai_rawat', 'nama_penyakit_id'];
+            var inputs = ['mulai_rawat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name*="' + input + '"]').val();                    
                 var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
@@ -576,169 +755,150 @@
             $('#_body-penyakit').html(html);
         }
     </script>
-
     <script>
-        $(function() {
-
-            var native_width = 0;
-            var native_height = 0;
-            var mouse = {x: 0, y: 0};
-            var magnify;
-            var cur_img;
-
-            var ui = {
-            magniflier: $('.magniflier')
-            };
-
-            // Add the magnifying glass
-            if (ui.magniflier.length) {
-            var div = document.createElement('div');
-            div.setAttribute('class', 'glass');
-            ui.glass = $(div);
-
-            $('body').append(div);
+        function lanjut3() {
+            if (tindakan.length != 0) {
+                $('#tindakan_kosong').hide();
+                stepper2.next();
+            } else {
+                $('#tindakan_kosong').show();
             }
+        }
 
+        var alkes = @json($namaalkes);
+        var tindakan = [];
+        var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
 
-            // All the magnifying will happen on "mousemove"
-
-            var mouseMove = function(e) {
-            var $el = $(this);
-
-            // Container offset relative to document
-            var magnify_offset = cur_img.offset();
-
-            // Mouse position relative to container
-            // pageX/pageY - container's offsetLeft/offetTop
-            mouse.x = e.pageX - magnify_offset.left;
-            mouse.y = e.pageY - magnify_offset.top;
-            
-            // The Magnifying glass should only show up when the mouse is inside
-            // It is important to note that attaching mouseout and then hiding
-            // the glass wont work cuz mouse will never be out due to the glass
-            // being inside the parent and having a higher z-index (positioned above)
-            if (
-                mouse.x < cur_img.width() &&
-                mouse.y < cur_img.height() &&
-                mouse.x > 0 &&
-                mouse.y > 0
-                ) {
-
-                magnify(e);
-            }
-            else {
-                ui.glass.fadeOut(100);
-            }
-
-            return;
-            };
-
-            var magnify = function(e) {
-
-            // The background position of div.glass will be
-            // changed according to the position
-            // of the mouse over the img.magniflier
-            //
-            // So we will get the ratio of the pixel
-            // under the mouse with respect
-            // to the image and use that to position the
-            // large image inside the magnifying glass
-
-            var rx = Math.round(mouse.x/cur_img.width()*native_width - ui.glass.width()/2)*-1;
-            var ry = Math.round(mouse.y/cur_img.height()*native_height - ui.glass.height()/2)*-1;
-            var bg_pos = rx + "px " + ry + "px";
-            
-            // Calculate pos for magnifying glass
-            //
-            // Easy Logic: Deduct half of width/height
-            // from mouse pos.
-
-            // var glass_left = mouse.x - ui.glass.width() / 2;
-            // var glass_top  = mouse.y - ui.glass.height() / 2;
-            var glass_left = e.pageX - ui.glass.width() / 2;
-            var glass_top  = e.pageY - ui.glass.height() / 2;
-            //console.log(glass_left, glass_top, bg_pos)
-            // Now, if you hover on the image, you should
-            // see the magnifying glass in action
-            ui.glass.css({
-                left: glass_left,
-                top: glass_top,
-                backgroundPosition: bg_pos
-            });
-
-            return;
-            };
-
-            $('.magniflier').on('mousemove', function() {
-            ui.glass.fadeIn(200);
-            
-            cur_img = $(this);
-
-            var large_img_loaded = cur_img.data('large-img-loaded');
-            var src = cur_img.data('large') || cur_img.attr('src');
-
-            // Set large-img-loaded to true
-            // cur_img.data('large-img-loaded', true)
-
-            if (src) {
-                ui.glass.css({
-                'background-image': 'url(' + src + ')',
-                'background-repeat': 'no-repeat'
-                });
-            }
-
-            // When the user hovers on the image, the script will first calculate
-            // the native dimensions if they don't exist. Only after the native dimensions
-            // are available, the script will show the zoomed version.
-            //if(!native_width && !native_height) {
-
-                if (!cur_img.data('native_width')) {
-                // This will create a new image object with the same image as that in .small
-                // We cannot directly get the dimensions from .small because of the 
-                // width specified to 200px in the html. To get the actual dimensions we have
-                // created this image object.
-                var image_object = new Image();
-
-                image_object.onload = function() {
-                    // This code is wrapped in the .load function which is important.
-                    // width and height of the object would return 0 if accessed before 
-                    // the image gets loaded.
-                    native_width = image_object.width;
-                    native_height = image_object.height;
-
-                    cur_img.data('native_width', native_width);
-                    cur_img.data('native_height', native_height);
-
-                    //console.log(native_width, native_height);
-
-                    mouseMove.apply(this, arguments);
-
-                    ui.glass.on('mousemove', mouseMove);
-                };
-
-
-                image_object.src = src;
-                
-                return;
+        function addTindakan() {
+            var temp = {};
+            var validated = true;
+            id_tindakan.forEach(id => {
+                form = $('#' + id)
+                if (form.val() == null || form.val() == '') {
+                    form.addClass('is-invalid');
+                    form.removeClass('is-valid');
+                    validated = false;
                 } else {
-
-                native_width = cur_img.data('native_width');
-                native_height = cur_img.data('native_height');
+                    form.addClass('is-valid');
+                    form.removeClass('is-invalid');
+                    temp[id] = form.val();
                 }
-            //}
-            //console.log(native_width, native_height);
-
-            mouseMove.apply(this, arguments);
-
-            ui.glass.on('mousemove', mouseMove);
             });
+            if (validated == true) {
+                tindakan.push(temp)
+                drawformTindakan();
+            }
+        }
 
-            ui.glass.on('mouseout', function() {
-            ui.glass.off('mousemove', mouseMove);
+        function clearformTindakan() {
+            id_tindakan.forEach(id => {
+                form = $('#' + id);
+                if (id == 'alat_kesehatan') {
+
+                    form.val('').trigger('change');
+                }
+                form.removeClass('is-valid');
+                form.val('');
+            })
+        }
+
+        function drawformTindakan() {
+            html = ``;
+            tindakan.forEach((data, key) => {
+                var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+                html += `<tr> 
+                        <td>` + data.nama_tindakan + `</td>
+                        <td>` + namaalkes.nama_alkes + `</td>
+                        <td>` + data.jumlah_pengguna + `</td>
+                        <td>` + data.keterangan + `</td>
+                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        </tr>`;
+            })
+            clearformTindakan();
+            $('#tindakan').val(JSON.stringify(tindakan));
+            $('#body_tindakan').html(html);
+        }
+
+        function deleteTindakan(id) {
+            delete tindakan[id];
+            tindakan = tindakan.filter(function(x) {
+                return x !== null
             });
-
-        });
+            drawformTindakan();
+        }
     </script>
+    <script>
+        function lanjut4() {
+            if (resep.length != 0) {
+                $('#resep_kosong').hide();
+               stepper2.next();
+            } else {
+                $('#resep_kosong').show();
+            }
+        }
+
+        id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep'];
+        resep = [];
+        var satuanobat = @json($satuanobat);
+
+        function addResep() {
+            var temp = {};
+            var validated = true;
+            id_resep.forEach(id => {
+                form = $('#' + id)
+                if (form.val() == null || form.val() == '') {
+                    form.addClass('is-invalid');
+                    form.removeClass('is-valid');
+                    validated = false;
+                } else {
+                    form.addClass('is-valid');
+                    form.removeClass('is-invalid');
+                    temp[id] = form.val();
+                }
+            });
+            if (validated == true) {
+                resep.push(temp)
+                drawformResep();
+            }
+        }
+
+        function drawformResep() {
+            html = ``;
+            resep.forEach((data, key) => {
+                satuan = satuanobat.find(st => st.id == data.satuan_obat);
+                html += `<tr> 
+                            <td>` + data.nama_obat + `</td>
+                            <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
+                            <td>` + data.aturan_pakai + `</td>
+                            <td>` + data.keterangan_resep + `</td>
+                            <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        </tr>`;
+            })
+            clearformResep();
+            $('#resep_obat').val(JSON.stringify(resep));
+            $('#body_resep').html(html);
+        }
+
+        function clearformResep() {
+            id_resep.forEach(id => {
+                form = $('#' + id);
+                if (id == 'satuan_obat') {
+                    form.val('').trigger('change');
+                }
+                form.removeClass('is-valid');
+                form.val('');
+            })
+        }
+
+        function deleteResep(id) {
+            delete resep[id];
+            resep = resep.filter(function(x) {
+                return x !== null
+            });
+            drawformResep();
+        }
+    </script>
+    <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
 @stop
     
 @endsection
