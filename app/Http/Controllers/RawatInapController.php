@@ -12,6 +12,7 @@ use App\Models\Pasien;
 use App\Models\RawatInap;
 use App\Models\SatuanObat;
 use App\Models\SubKlasifikasi;
+use Illuminate\Support\Facades\File;
 
 class RawatInapController extends Controller
 {
@@ -61,8 +62,7 @@ class RawatInapController extends Controller
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move('petugas/pemeriksaan/rawatinap', $filename);
-            $data['dokumen'] = $filename;
+            $file->move('pemeriksaan/rawatinap', $filename);
         } else {
             $filename = '';
         }
@@ -74,7 +74,6 @@ class RawatInapController extends Controller
             return redirect("/view/rawat/inap/$save->id")->with('message', 'Berhasil Menambah Pasien Rawat Inap');
         }
 
-        return redirect('/daftar/rawat/inap')->with('success', 'Berhasil Menambahkan Data');
     }
 
     public function ubahrawatinap($id)
@@ -93,13 +92,22 @@ class RawatInapController extends Controller
 
     function changerawatinap(Request $request, $id) {
         
-        $rawat_inap = RawatInap::find($id);
-        $rawat_inap->mulai_rawat = $request->input('mulai_rawat');
-        $rawat_inap->berakhir_rawat = $request->input('berakhir_rawat');
-        $rawat_inap->nama_penyakit_id = $request->input('nama_penyakit_id');
-        $rawat_inap->update();
+        $data = $request->except(['_token','old_dokumen']);
+        $data['updated_by'] = auth()->user()->id;
 
-        return redirect('/daftar/rawat/inap')->with('message', 'Berhasil mengubah data rawat inap');
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/rawatinap', $filename);
+            if ($request->old_dokumen) {
+                $path = parse_url('pemeriksaan/rawatinap/'.$request->old_dokumen);
+                File::delete(public_path($path['path']));
+            }
+            $data['dokumen']=$filename;
+        }
+        if (RawatInap::where('id',$id)->update($data)) {
+            return redirect("/view/rawat/inap/" . $id)->with('message', 'Berhasil Merubah Data Pasien Rawat Inap!');
+        }
         
     }
 

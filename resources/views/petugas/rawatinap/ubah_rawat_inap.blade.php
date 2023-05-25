@@ -180,7 +180,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
-                                            <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat" value="{{$rawat_inap->berakhir_rawat}}">
+                                            <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat" min="{{date('Y-m-d')}}" value="{{$rawat_inap->berakhir_rawat}}">
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -189,7 +189,7 @@
                                         {!!validasi('Anamnesis')!!}
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label for="" class="form-label">Tinggi Badan <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control" value="{{$rawat_inap->tinggi_badan}}">
@@ -197,7 +197,7 @@
                                                 {!!validasi('Tinggi badan')!!}
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label for="" class="form-label">Berat Badan <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="berat_badan" id="berat_badan" class="form-control" value="{{$rawat_inap->berat_badan}}">
@@ -207,7 +207,7 @@
                                         </div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label for="" class="form-label">Suhu Tubuh <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control" value="{{$rawat_inap->suhu_tubuh}}">
@@ -215,7 +215,7 @@
                                                 {!!validasi('Suhu tubuh')!!}
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$rawat_inap->tekanan_darah}}">
@@ -225,10 +225,10 @@
                                         </div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-6">
+                                        <div class="col-4">
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control">
+                                                <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$rawat_inap->saturasi_oksigen}}">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Saturasi oksigen')!!}
                                             </div>
@@ -237,9 +237,9 @@
                                     <div class="mb-2">
                                         <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
                                         <div class="input-group">
-                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control">
+                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$rawat_inap->denyut_nadi}}">
                                             <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control">
+                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control" value="{{$rawat_inap->denyut_nadi_menit}}">
                                             <span class="input-group-text" id="basic-addon1">menit</span>
                                             {!!validasi('Denyut nadi')!!}
                                         </div>
@@ -247,42 +247,52 @@
                                     <div class="mb-2">
                                         <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
                                         <div class="input-group">
-                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control">
+                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$rawat_inap->laju_pernapasan}}">
                                             <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control">
+                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control" value="{{$rawat_inap->laju_pernapasan_menit}}">
                                             <span class="input-group-text" id="basic-addon1">menit</span>
                                         </div>
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Pemeriksaan Penunjang</label>
-                                        <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control">
+                                        <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control" value="{{$rawat_inap->pemeriksaan_penunjang}}">
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Obat yang sudah dikonsumsi sebelumnya</label>
-                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control"></textarea>
+                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control">{{$rawat_inap->obat_konsumsi}}</textarea>
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Dokumentasi Pendukung</label>
+                                        @if ($rawat_inap->dokumen)
+                                            <a href="{{asset('pemeriksaan/rawatinap/'.$rawat_inap->dokumen)}}" target="blank">{{$rawat_inap->dokumen}}</a>
+                                        @else
+                                            <small class="text-warning">Belum ada dokumen</small>
+                                        @endif
                                         <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                        <input type="hidden" name="old_dokumen" value="{{$rawat_inap->dokumen}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row mb-2">
-                                        <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
-                                        <div class="input-group">
-                                            <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
-                                            <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis"></textarea>
-                                            {!!validasi('Status lokalis')!!}
+                                        <div class="col">
+                                            <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier2"> 
+                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis">{{$rawat_inap->status_lokalis}}</textarea>
+                                                {!!validasi('Status lokalis')!!}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
-                                        <select class="form-select"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
-                                            @foreach ($nama_penyakit as $penyakit)
-                                                <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
-                                            @endforeach
-                                        </select>
-                                        {!!validasi('Nama penyakit')!!}
+                                        <div class="col">
+                                            <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
+                                            <select class="form-select"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
+                                                @foreach ($nama_penyakit as $penyakit)
+                                                    <option value="{{ $penyakit->id }}" {{(in_array($penyakit->id, json_decode($rawat_inap->nama_penyakit_id)))? 'selected':''}}>{{ $penyakit->primer }}</option>
+                                                @endforeach
+                                            </select>
+                                            {!!validasi('Nama penyakit')!!}
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <h6>Diaknosa Penyakit</h6>
@@ -329,7 +339,7 @@
                                         <select name="" id="alat_kesehatan" class="form-select">
                                             <option value="" selected disabled>Pilihi alat kesehatan </option>
                                             @foreach ($alatkesehatan as $alat)
-                                                <option value="{{ $alat->id }}">{{ $alat->nama_alkes->nama_alkes }}
+                                                <option value="{{ $alat->id }}"  >{{ $alat->nama_alkes->nama_alkes }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -385,7 +395,7 @@
                             </div>
                         </div>
                         <div id="test-nl-4" class="content">
-                            <input type="text" name="resep_obat" id="resep_obat" hidden>
+                            <input type="text" name="resep" id="resep" hidden>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-2">
@@ -591,7 +601,14 @@
             $('input[class="form-check-input"]').click(function() {
                 $(this).siblings('.invalid-feedback').hide()
             })
+
+            $('#mulai_rawat').change(function(){
+                $('#berakhir_rawat').attr('min',$(this).val())
+            })
+
             setPasien();
+            drawformTindakan();
+            drawformResep();
         });
 
 
@@ -704,7 +721,7 @@
         }
 
         var alkes = @json($namaalkes);
-        var tindakan = [];
+        var tindakan = {!!$rawat_inap->tindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
 
         function addTindakan() {
@@ -776,7 +793,7 @@
         }
 
         id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep'];
-        resep = [];
+        resep = {!!$rawat_inap->resep!!};
         var satuanobat = @json($satuanobat);
 
         function addResep() {
@@ -813,7 +830,7 @@
                         </tr>`;
             })
             clearformResep();
-            $('#resep_obat').val(JSON.stringify(resep));
+            $('#resep').val(JSON.stringify(resep));
             $('#body_resep').html(html);
         }
 
@@ -836,7 +853,6 @@
             drawformResep();
         }
     </script>
-    <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
 @stop
 
 @endsection

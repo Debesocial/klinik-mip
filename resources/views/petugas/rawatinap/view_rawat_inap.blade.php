@@ -24,7 +24,7 @@
         <div class="card-body pb-1  ">
             <div class="row">
                 <div class="col-11">
-                    <h5>Rawat Inap {{ $rawat_inap->id_rawat_inap }}</h5>
+                    <h5>Rawat Inap <b onclick="" style="cursor: pointer">{{ $rawat_inap->id_rawat_inap }} <i class="bi bi-box-arrow-up-right"></i></b></h5>
                 </div>
                 <div class="text-end col-1">
                     <a href="#" class="toogle-show" stat=1 onclick="showDetail()"><button
