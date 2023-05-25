@@ -425,7 +425,7 @@
                             </div>
                         </div>
                         <div id="test-nl-4" class="content">
-                            <input type="text" name="resep_obat" id="resep_obat" hidden>
+                            <input type="text" name="resep" id="resep" hidden>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-2">
