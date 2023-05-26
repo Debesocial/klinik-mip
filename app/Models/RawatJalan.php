@@ -10,15 +10,7 @@ class RawatJalan extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'id_rawat_inap',
-        'tanggal_berobat',
-        'nama_penyakit_id',
-        'tindakan_id',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded =['id'];
 
     public static function boot()
     {

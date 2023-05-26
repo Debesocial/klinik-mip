@@ -34,7 +34,7 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1" >
+                <table class="table table-hover" id="table1" width="auto">
                     <thead>
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}

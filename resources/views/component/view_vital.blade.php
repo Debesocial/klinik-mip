@@ -12,27 +12,27 @@
                     <tbody>
                         <tr>
                             <th>Skala Nyeri</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->skala_nyeri)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->skala_nyeri)->kode}})</b></td>
+                            <td>: {{$tandavital->skala_nyeri}} </td>
                         </tr>
                         <tr>
                             <th>HR</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->hr)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->hr)->kode}})</b></td>
+                            <td>: {{$tandavital->hr}} </td>
                         </tr>
                         <tr>
                             <th>BP</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->bp)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->bp)->kode}})</b></td>
+                            <td>: {{$tandavital->bp}} </td>
                         </tr>
                         <tr>
                             <th>Temp</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->temp)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->temp)->kode}})</b></td>
+                            <td>: {{$tandavital->temp}} </td>
                         </tr>
                         <tr>
                             <th>RR</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->rr)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->rr)->kode}})</b></td>
+                            <td>: {{$tandavital->rr}} </td>
                         </tr>
                         <tr>
                             <th>Saturasi Oksigen</th>
-                            <td>: {{ $hasilpemantauan->find($tandavital->saturasi_oksigen)->nama_pemantauan}} <b class="text-primary">({{$hasilpemantauan->find($tandavital->saturasi_oksigen)->kode}})</b></td>
+                            <td>: {{$tandavital->saturasi_oksigen}} </td>
                         </tr>
                     </tbody>
                 </table>

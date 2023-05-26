@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/add/rawat/inap', [RawatInapController::class, 'tambahrawatinap'])->name('rawatinap.tambahrawatinap');
     Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
+    Route::get('/detail/rawatinap/{id}', [RawatInapController::class, 'detail']);
 
     Route::get('/instruksi_dokter/form_tambah/{id}', [InstruksiDokterController::class, 'tampilFormTambah']);
     Route::get('/instruksi_dokter/form_edit/{id}', [InstruksiDokterController::class, 'tampilFormUbah']);
@@ -136,6 +137,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/tanda_vital/tambah', [TandaVitalController::class, 'simpan']);
     Route::get('/tanda_vital/form_edit/{id}', [TandaVitalController::class, 'tampilFormUbah']);
     Route::post('/tanda_vital/ubah/{id}', [TandaVitalController::class, 'ubah']);
+    Route::get('/tanda_vital/grafik/{id}', [TandaVitalController::class, 'grafik']);
 
 
     Route::get('/daftar/rawat/jalan', [RawatJalanController::class, 'daftarrawatjalan'])->name('rawatjalan.daftarrawatjalan');

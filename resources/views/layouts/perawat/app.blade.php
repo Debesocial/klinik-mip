@@ -57,8 +57,8 @@
 	</div>
 	</div>
 	<script src="{{ asset('assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
-	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-	<script src="{{ asset('assets/vendors/apexcharts/apexcharts.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script> --}}
+	{{-- <script src="{{ asset('assets/vendors/apexcharts/apexcharts.js') }}"></script> --}}
 	<script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
 	
 
@@ -70,12 +70,12 @@
 
 
 
-	<script src="{{ asset('assets/js/mazer.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/mazer.js') }}"></script> --}}
 	<script>
 		// Jquery Datatable
-		let jquery_datatable = $("#table1").DataTable()
+		// let jquery_datatable = $("#table1").DataTable()
 	</script>
-	 <script type="text/javascript">
+	 {{-- <script type="text/javascript">
 		function yesnoCheck_lainnya(that)
 		{
 			if (that.value == "lainnya")
@@ -87,7 +87,7 @@
 				document.getElementById("lain").style.display = "none";
 			}
 		}
-	</script>
+	</script> --}}
 	@yield('js')
 </body>
 

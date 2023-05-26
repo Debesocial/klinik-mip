@@ -13,6 +13,7 @@ class CreateRawatJalansTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('rawat_jalans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
@@ -29,16 +30,19 @@ class CreateRawatJalansTable extends Migration
             $table->float('laju_pernapasan_menit');
             $table->float('saturasi_oksigen');
             $table->text('status_lokalis');
-            $table->string('pemeriksaan_penunjang');
-            $table->text('obat_konsumsi');
-            $table->string('dokumen');
+            $table->string('pemeriksaan_penunjang')->nullable();
+            $table->text('obat_konsumsi')->nullable();
+            $table->string('dokumen')->nullable();
             $table->json('nama_penyakit_id');
+            $table->json('tindakan');
+            $table->json('resep');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

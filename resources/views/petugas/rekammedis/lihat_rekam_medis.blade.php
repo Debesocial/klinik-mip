@@ -6,6 +6,8 @@
 @section('judul', 'Lihat Rekam Medis')
 @section('container')
 
+
+
 <div hidden>{{ $pasien->perusahaan->nama_perusahaan_pasien }} {{ $pasien->jabatan->nama_jabatan }} {{ $pasien->divisi->nama_divisi }}{{ $pasien->keluarga->nama_keluarga }}</div>
 
 <div class="container">
@@ -41,7 +43,7 @@
                                 @foreach ($rawatinap as $rawatinap)
                                     <tr>
                                         <td>{{ $rawatinap->id_rawat_inap }}</td>
-                                        <td>{{ tanggal($rawatinap->mulai_rawat) }}</td>
+                                        <td>{{ tanggal($rawatinap->mulai_rawat, false) }}</td>
                                         <td>{!! ($rawatinap->berakhir_rawat)? tanggal($rawatinap->berakhir_rawat, false):'<span class="badge bg-primary">Masih dirawat</span>' !!}</td>
                                         <td>{{ $namapenyakit->find(json_decode($rawatinap->nama_penyakit_id)[0])->primer }}</td>
                                     </tr>
@@ -82,7 +84,7 @@
                                     <tr>
                                         <td>{{ $rawatjalan->id_rawat_jalan }}</td>
                                         <td>{{ $rawatjalan->tanggal_berobat }}</td>
-                                        <td>{{ $rawatjalan->namapenyakit->primer }}</td>
+                                        <td>{{ $namapenyakit->find(json_decode($rawatjalan->nama_penyakit_id)[0])->primer }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -122,8 +124,7 @@
                                 @foreach ($test as $test)
                                     <tr>
                                         <td>
-                                            <B>{{ Carbon\Carbon::parse($test->created_at)->isoFormat('D MMMM Y') }}</B>
-                                            <i>{{ Carbon\Carbon::parse($test->created_at)->format('H:i') }}</i>
+                                            {{tanggal($test->created_at, true)}}
                                         </td>
                                         <td class="text-center">
                                             @if ($test->amp == 0 && $test->met == 0 && $test->thc == 0 && $test->bzo == 0 && $test->mop == 0 && $test->coc == 0)
@@ -156,10 +157,16 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
-                            <a href="" class="btn btn-sm btn-success rounded-pill">
-                                <i class="bi bi-plus-circle"></i>
-                                <span>Tambah</span>
-                            </a> 
+                            <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>Tambah</span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="/add_mcu/awal">- MCU Awal</a></li>
+                                    <li><a class="dropdown-item" href="/add_mcu/lanjutan">- MCU Berkala, Khusus & Akhir</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -167,7 +174,7 @@
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
-                                    <th>Id Mcu</th>
+                                    <th>ID MCU</th>
                                     <th>Jenis MCU</th>
                                     <th>Hasil</th>
                                     <th>Aksi</th>
@@ -258,7 +265,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2,3], /* column index */
+                                'targets': [3], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,
@@ -271,7 +278,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2], /* column index */
+                                'targets': [1], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,

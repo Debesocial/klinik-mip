@@ -75,4 +75,11 @@ class TandaVitalController extends Controller
         
         return view('component/view_vital', $data);
     }
+
+    public function grafik($id)
+    {
+        $data['vital']= TandaVital::select('skala_nyeri', 'hr','bp','temp','rr','saturasi_oksigen', 'created_at')->where('id_rawat_inap',$id)->get();
+        return view('component/grafik_vital', $data);
+
+    }
 }

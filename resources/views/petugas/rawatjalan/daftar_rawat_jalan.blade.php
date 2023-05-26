@@ -34,24 +34,22 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width="auto">
                     <thead>
                         <tr>
                             <th>ID Rawat Jalan</th>
                             <th>Nama Pasien</th>
                             <th>Tanggal Berobat</th>
-                            <th>Nama Penyakit</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($rawat_jalan as $jalan)
+                        @foreach ($rawat_jalan->sortByDesc('tanggal_berobat') as $jalan)
                         <tr>
                             <td class="text-center">{{ $jalan->id_rawat_jalan }}</td>
                             <div hidden>{{ $jalan->pasien->perusahaan->nama_perusahaan_pasien . $jalan->pasien->divisi->nama_divisi_pasien . $jalan->pasien->jabatan->nama_jabatan . $jalan->pasien->keluarga}}</div>
                             <td><a href="#" onclick="tampilModalPasien({{ json_encode($jalan->pasien) }})">{{ $jalan->pasien->nama_pasien }}</a></td>
-                            <td class="text-center">{{ $jalan->tanggal_berobat }}</td>
-                            <td class="text-center">{{ $jalan->namapenyakit->primer }}</td>
+                            <td class="text-center">{{ tanggal($jalan->tanggal_berobat, false) }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                 <a href="/view/rawat/jalan/{{  $jalan->id  }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>

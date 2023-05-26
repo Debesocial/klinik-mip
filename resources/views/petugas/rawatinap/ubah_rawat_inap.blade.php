@@ -18,6 +18,24 @@
             white-space: nowrap;
             vertical-align: top;
         }
+
+        .glass {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            border-radius: 50%;
+            cursor: crosshair;
+            z-index: 99;
+            
+            /* Multiple box shadows to achieve the glass effect */
+            box-shadow:
+                0 0 0 7px rgba(255, 255, 255, 0.85),
+                0 0 7px 7px rgba(0, 0, 0, 0.25), 
+                inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+            
+            /* hide the glass by default */
+            display: none;
+        }
     </style>
 @stop
 <div hidden>{{ $rawat_inap->pasien->perusahaan->nama_perusahaan_pasien . $rawat_inap->pasien->divisi->nama_divisi_pasien . $rawat_inap->pasien->jabatan->nama_jabatan }}</div>
@@ -277,7 +295,7 @@
                                         <div class="col">
                                             <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier2"> 
+                                                <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
                                                 <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis">{{$rawat_inap->status_lokalis}}</textarea>
                                                 {!!validasi('Status lokalis')!!}
                                             </div>
@@ -853,6 +871,8 @@
             drawformResep();
         }
     </script>
+    <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
+
 @stop
 
 @endsection

@@ -16,6 +16,14 @@
             white-space: nowrap;
             vertical-align: top;
         }
+        .dataTables_scrollHeadInner{
+            width: 100% !important;
+        }
+        .dataTable.no-footer{
+            width: 100% !important;
+        }
+
+
     </style>
 @stop
 @section('container')
@@ -24,7 +32,7 @@
         <div class="card-body pb-1  ">
             <div class="row">
                 <div class="col-11">
-                    <h5>Rawat Inap <b onclick="" style="cursor: pointer">{{ $rawat_inap->id_rawat_inap }} <i class="bi bi-box-arrow-up-right"></i></b></h5>
+                    <h5>Rawat Inap {{ $rawat_inap->id_rawat_inap }}</h5>
                 </div>
                 <div class="text-end col-1">
                     <a href="#" class="toogle-show" stat=1 onclick="showDetail()"><button
@@ -59,9 +67,9 @@
                                         <td id="rekam_medis">: {{ $pasien->id_rekam_medis }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Tempat Tanggal Lahir</th>
+                                        <th>Data Pemeriksaan Awal</th>
                                         <td id="ttl">:
-                                            {{ $pasien->tempat_lahir . ', ' . tanggal($pasien->tanggal_lahir, false) . ' (' . $usia . ')' }}
+                                            <a href="javascript:void(0);" onclick="tampilModalRawatInap('/detail/rawatinap/{{$rawat_inap->id}}', 'Detail Rawat Inap {{ $rawat_inap->id_rawat_inap }}')" ><span>Lihat data <i class="bi bi-box-arrow-up-right"></i></span></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -308,7 +316,11 @@
                             <h6>Pemantauan Tanda Vital</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            <div class="buttons" width="100px">
+                            <div class="buttons">
+                                <button href="" class="btn btn-sm btn-info rounded-pill" onclick="tampilModalRawatInap('/tanda_vital/grafik/{{ $rawat_inap->id }}', 'Diagram Pemantauan Tanda Vital')">
+                                    <i class="bi bi-graph-up"></i>
+                                    <span>Chart</span>
+                                </button>
                                 <button href="" class="btn btn-sm btn-success rounded-pill" onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Fromulir Pemantauan Tanda Vital')">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span>
@@ -317,7 +329,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table" id="TABLE_4">
+                        <table class="table display" id="TABLE_4" width="auto">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
@@ -334,12 +346,12 @@
                                 @foreach ($rawat_inap->tandavital->sortByDesc('created_at') as $vital)
                                     <tr class="text-center">
                                         <td>{{tanggal($vital->created_at)}}</td>
-                                        <td>{{$pemantauan->find($vital->skala_nyeri)->kode}}</td>
-                                        <td>{{$pemantauan->find($vital->hr)->kode}}</td>
-                                        <td>{{$pemantauan->find($vital->bp)->kode}}</td>
-                                        <td>{{$pemantauan->find($vital->temp)->kode}}</td>
-                                        <td>{{$pemantauan->find($vital->rr)->kode}}</td>
-                                        <td>{{$pemantauan->find($vital->saturasi_oksigen)->kode}}</td>
+                                        <td>{{$vital->skala_nyeri}}</td>
+                                        <td>{{$vital->hr}}</td>
+                                        <td>{{$vital->bp}}</td>
+                                        <td>{{$vital->temp}}</td>
+                                        <td>{{$vital->rr}}</td>
+                                        <td>{{$vital->saturasi_oksigen}}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                 <a href="#"
@@ -407,12 +419,12 @@
             console.log("Unfortunately, your browser doesn't support this API");
         }
         $(document).ready(function() {
-            $("table[id^='TABLE']").dataTable({
+            $("table#TABLE_1").dataTable({
                 "language": {
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [{
-                    'targets': [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                    'targets': [1, 2, 3],
                     /* column index */
                     'orderable': false,
                     /* true or false */
@@ -421,6 +433,59 @@
                 paging: false,
                 info: false,
                 order: [0, 'desc'],
+                scrollY:300,
+                scrollX:true
+            });
+            $("table#TABLE_2").dataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [{
+                    'targets': [1, 2],
+                    /* column index */
+                    'orderable': false,
+                    /* true or false */
+                }],
+                searching: false,
+                paging: false,
+                info: false,
+                order: [0, 'desc'],
+                scrollY:300,
+                scrollX:true
+            });
+            $("table#TABLE_3").dataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [{
+                    'targets': [1, 2,3,4],
+                    /* column index */
+                    'orderable': false,
+                    /* true or false */
+                }],
+                searching: false,
+                paging: false,
+                info: false,
+                order: [0, 'desc'],
+                scrollY:300,
+                scrollX:true
+            });
+            $("table#TABLE_4").dataTable({
+                "language": {
+                    "zeroRecords": "Belumm ada pemeriksaan",
+                },
+                'columnDefs': [{
+                    'targets': [1, 2,3,4,5,6,7],
+                    /* column index */
+                    'orderable': false,
+                    /* true or false */
+                }],
+                searching: false,
+                paging: false,
+                info: false,
+                order: [0, 'desc'],
+                scrollX:true,
+                scrollY:300
             });
 
         });

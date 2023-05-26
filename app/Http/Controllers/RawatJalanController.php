@@ -2,51 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Divisi;
-use App\Models\Pasien;
-use App\Models\User;
-use App\Models\Jadwal;
-use App\Models\Keluarga;
-use App\Models\LokasiKejadian;
-use App\Models\BobotObat;
-use App\Models\GolonganObat;
-use App\Models\JenisObat;
-use App\Models\NamaObat;
-use App\Models\ObatAlkes;
-use App\Models\SatuanObat;
-use App\Models\HasilPemantauan;
-use App\Models\IzinBerobat;
-use App\Models\Jabatan;
-use App\Models\KategoriPasien;
-use App\Models\KeteranganBerobat;
-use App\Models\KeteranganSehat;
+use App\Models\Alkes;
 use App\Models\KlasifikasiPenyakit;
-use App\Models\Level;
+use App\Models\NamaAlkes;
+use App\Models\Pasien;
+
 use App\Models\NamaPenyakit;
-use App\Models\PemantauanCovid;
-use App\Models\PemeriksaanAntigen;
-use App\Models\PemeriksaanCovid;
-use App\Models\PersetujuanTindakan;
-use App\Models\Perusahaan;
-use App\Models\RawatInap;
+
 use App\Models\RawatJalan;
-use App\Models\RekamMedis;
-use App\Models\RumahSakitRujukan;
-use App\Models\SpesialisRujukan;
+use App\Models\SatuanObat;
 use App\Models\SubKlasifikasi;
-use App\Models\SuratRujukan;
-use App\Models\TestUrin;
 use App\Models\Tindakan;
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Illuminate\Support\Facades\File;
+
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Validator;
-use PDF;
-use Response;
-use Carbon\Carbon;
-use Carbon\CarbonImmutable;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
+
 
 class RawatJalanController extends Controller
 {
@@ -66,60 +37,80 @@ class RawatJalanController extends Controller
     {
         $pasien_id = Pasien::get();
         $nama_penyakit = NamaPenyakit::get();
-        $tindakan = Tindakan::get();
+        $klasifikasi = KlasifikasiPenyakit::get();
+        $subKlasifikasi = SubKlasifikasi::get();
+        $namaalkes = NamaAlkes::get();
+        $alatkesehatan = Alkes::get();
+        $satuanobat = SatuanObat::get();
 
-        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'nama_penyakit', 'tindakan'));
+        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
     }
 
     public function tambahrawatjalan(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'pasien_id' => 'required',
-            'tanggal_berobat' => 'required',
-            'nama_penyakit_id' => 'required',
-            'tindakan_id' => 'required',
-            
-        ]);
+        $data = $request->except('_token');
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
 
-        RawatJalan::create([
-            'pasien_id' => $request->pasien_id,
-            'tanggal_berobat' => $request->tanggal_berobat,
-            'nama_penyakit_id' => $request->nama_penyakit_id,
-            'tindakan_id' => $request->tindakan_id,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move('pemeriksaan/rawatjalan', $filename);
+        } else {
+            $filename = '';
+        }
 
-        return redirect('/daftar/rawat/jalan')->with('message', 'Berhasil Menambahkan Data Rawat Jalan');
+        $data['dokumen'] = $filename;
+        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
+        $save = RawatJalan::create($data);
+        if ($save) {
+            return redirect("/view/rawat/jalan/$save->id")->with('message', 'Berhasil Menambah Pasien Rawat Jalan');
+        }
+
     }
 
     public function viewrawatjalan($id)
     {
-        $pasien = Pasien::find($id);
-        $rawat_jalan = RawatJalan::find($id);
+        $data['jalan'] = RawatJalan::find($id);
+        $data['satuanobat'] = SatuanObat::all();
+        $data['alkes'] = Alkes::all();
+        $data['nama_penyakit'] = NamaPenyakit::all();
 
-        return view('petugas.rawatjalan.view_rawat_jalan', compact('pasien', 'rawat_jalan'));
+        return view('petugas.rawatjalan.view_rawat_jalan', $data);
     }
 
     public function ubahrawatjalan($id)
     {
         $rawat_jalan = RawatJalan::find($id);
-        $nama_penyakit = NamaPenyakit::all();
-        $tindakan = Tindakan::all();
+        $nama_penyakit = NamaPenyakit::get();
+        $klasifikasi = KlasifikasiPenyakit::get();
+        $subKlasifikasi = SubKlasifikasi::get();
+        $namaalkes = NamaAlkes::get();
+        $alatkesehatan = Alkes::get();
+        $satuanobat = SatuanObat::get();
 
-        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'nama_penyakit', 'tindakan'));
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
     }
 
     function changerawatjalan(Request $request, $id) {
         
-        $rawat_jalan = RawatJalan::find($id);
-        $rawat_jalan->tanggal_berobat = $request->input('tanggal_berobat');
-        $rawat_jalan->nama_penyakit_id = $request->input('nama_penyakit_id');
-        $rawat_jalan->tindakan_id = $request->input('tindakan_id');
-        $rawat_jalan->update();
+        $data = $request->except(['_token','old_dokumen']);
+        $data['updated_by'] = auth()->user()->id;
 
-        return redirect('/daftar/rawat/jalan')->with('message', 'Berhasil mengubah data rawat jalan');
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/rawatjalan', $filename);
+            if ($request->old_dokumen) {
+                $path = parse_url('pemeriksaan/rawatjalan/'.$request->old_dokumen);
+                File::delete(public_path($path['path']));
+            }
+            $data['dokumen']=$filename;
+        }
+        if (RawatJalan::where('id',$id)->update($data)) {
+            return redirect("/view/rawat/jalan/" . $id)->with('message', 'Berhasil Merubah Data Pasien Rawat Jalan!');
+        }
         
     }
 

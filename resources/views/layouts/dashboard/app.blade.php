@@ -23,7 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- sweet alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     {{-- <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
 
     {{-- Selec2 --}}
@@ -58,11 +57,11 @@
             vertical-align: top;
         }
         img#modal-img{
-        /* width: auto;
-        height: 50%; */
-        aspect-ratio: 1; 
-        object-fit: cover; /* use the one you need */
-    }
+            /* width: auto;
+            height: 50%; */
+            aspect-ratio: 1; 
+            object-fit: cover; /* use the one you need */
+        }
     </style>
     
 </head>
@@ -257,7 +256,10 @@
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
             },
             scrollY: 320,
-            responsive: true,
+            scrollX:true,
+            ordering:false,
+            'autoWidth': true,
+            'colReorder': true,
         })
         function cekImg(val) {
             var url = "{{ asset('pasien/foto/file') }}" + '/';
@@ -284,6 +286,7 @@
         }
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     @yield('js')
 </body>

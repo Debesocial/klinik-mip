@@ -34,7 +34,7 @@
                 </script>
             @endif
             <div class="table-responsive">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width="auto">
                     <thead>
                         <tr>
                             <th>ID Rawat Inap</th>

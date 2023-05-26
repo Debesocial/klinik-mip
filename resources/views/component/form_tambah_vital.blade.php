@@ -39,14 +39,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Skala Nyeri <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="skala_nyeri"
-                                        id="skala_nyeri">
-                                        <option disabled selected>Pilih Pemantauan </option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number"  name="skala_nyeri" id="skala_nyeri" min="0" max="10">
                                     <div class="invalid-feedback">
                                         Skala Nyeri harus diisi
                                     </div>
@@ -56,13 +49,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">HR <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="hr" id="hr">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="hr" id="hr" min="0" max="200">
                                     <div class="invalid-feedback">
                                         HR harus diisi
                                     </div>
@@ -72,13 +59,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">BP <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="bp" id="bp">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="bp" id="bp" min="0" max="250">
                                     <div class="invalid-feedback">
                                         BP harus diisi
                                     </div>
@@ -88,13 +69,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Temp <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="temp" id="temp">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="temp" id="temp" min="31" max="41">
                                     <div class="invalid-feedback">
                                         Temp harus diisi
                                     </div>
@@ -104,13 +79,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">RR <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="rr" id="rr">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="rr" id="rr" min="0" max="100">
                                     <div class="invalid-feedback">
                                         RR harus diisi
                                     </div>
@@ -120,14 +89,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Saturasi Oksigen <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="saturasi_oksigen"
-                                        id="saturasi_oksigen">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}">{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="saturasi_oksigen"
+                                        id="saturasi_oksigen" min="0" max="100">
                                     <div class="invalid-feedback">
                                         Staturasi Oksigen harus diisi
                                     </div>
@@ -266,9 +229,25 @@
             var form = $('#'+id);
             if(form.val()==null||form.val()==''){
                 form.addClass('is-invalid').removeClass('is-valid');
+                form.siblings('.invalid-feedback').text('Tidak boleh kosong');
                 validated = false;
             } else{
-                form.addClass('is-valid').removeClass('is-invalid');
+                min = form.attr('min');
+                max = form.attr('max');
+                if (min != undefined || max != undefined) {
+                    min = parseFloat(min);
+                    max = parseFloat(max);
+                    nilai = parseFloat(form.val())
+                    if ( (nilai<=max && nilai>=min) ) {
+                        form.addClass('is-valid').removeClass('is-invalid');
+                    }else{
+                        form.siblings('.invalid-feedback').text('Nilai harus diantara ' + min +' - '+max);
+                        form.addClass('is-invalid').removeClass('is-valid');
+                        validated = false;
+                    }
+                }else{
+                    form.addClass('is-valid').removeClass('is-invalid');
+                }
             }
         });
         if (validated === true) {
@@ -347,10 +326,10 @@
         drawformResep();
     }
     function tanggal(stringdate) {
-    let date = new Date(Date.parse(stringdate));
-    formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth())+'/'+date.getFullYear() + ' ' + cekSingle(date.getHours()) + ':' + cekSingle(date.getMinutes());
-    return formatDate;
-}
+        let date = new Date(Date.parse(stringdate));
+        formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth())+'/'+date.getFullYear() + ' ' + cekSingle(date.getHours()) + ':' + cekSingle(date.getMinutes());
+        return formatDate;
+    }
     $(document).ready(function(){
         $('input').keyup(function() {
             var id = $(this).val();
