@@ -16,14 +16,14 @@
             white-space: nowrap;
             vertical-align: top;
         }
-        .dataTables_scrollHeadInner{
-            width: 100% !important;
-        }
-        .dataTable.no-footer{
+
+        .dataTables_scrollHeadInner {
             width: 100% !important;
         }
 
-
+        .dataTable.no-footer {
+            width: 100% !important;
+        }
     </style>
 @stop
 @section('container')
@@ -69,7 +69,9 @@
                                     <tr>
                                         <th>Data Pemeriksaan Awal</th>
                                         <td id="ttl">:
-                                            <a href="javascript:void(0);" onclick="tampilModalRawatInap('/detail/rawatinap/{{$rawat_inap->id}}', 'Detail Rawat Inap {{ $rawat_inap->id_rawat_inap }}')" ><span>Lihat data <i class="bi bi-box-arrow-up-right"></i></span></a>
+                                            <a href="javascript:void(0);"
+                                                onclick="tampilModalRawatInap('/detail/rawatinap/{{ $rawat_inap->id }}', 'Detail Rawat Inap {{ $rawat_inap->id_rawat_inap }}')"><span>Lihat
+                                                    data <i class="bi bi-box-arrow-up-right"></i></span></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -284,10 +286,11 @@
                             <tbody>
                                 @foreach ($rawat_inap->permintaanmakanan->sortByDesc('tanggal_mulai') as $makanan)
                                     <tr>
-                                        <td class="text-center">{{tanggal($makanan->tanggal_mulai, false)}}</td>
-                                        <td class="text-center">{{tanggal($makanan->tanggal_selesai, false)}}</td>
-                                        <td class="text-center">{{diffDay($makanan->tanggal_mulai,$makanan->tanggal_selesai)}}</td>
-                                        <td>{{$makanan->permintaan_makanan}}</td>
+                                        <td class="text-center">{{ tanggal($makanan->tanggal_mulai, false) }}</td>
+                                        <td class="text-center">{{ tanggal($makanan->tanggal_selesai, false) }}</td>
+                                        <td class="text-center">
+                                            {{ diffDay($makanan->tanggal_mulai, $makanan->tanggal_selesai) }}</td>
+                                        <td>{{ $makanan->permintaan_makanan }}</td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                 <a href="#"
@@ -317,11 +320,13 @@
                         </div>
                         <div class="col-md-4 text-end">
                             <div class="buttons">
-                                <button href="" class="btn btn-sm btn-info rounded-pill" onclick="tampilModalRawatInap('/tanda_vital/grafik/{{ $rawat_inap->id }}', 'Diagram Pemantauan Tanda Vital')">
+                                <button href="" class="btn btn-sm btn-info rounded-pill"
+                                    onclick="tampilModalRawatInap('/tanda_vital/grafik/{{ $rawat_inap->id }}', 'Grafik Pemantauan Tanda Vital')">
                                     <i class="bi bi-graph-up"></i>
-                                    <span>Chart</span>
+                                    <span>Grafik</span>
                                 </button>
-                                <button href="" class="btn btn-sm btn-success rounded-pill" onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Fromulir Pemantauan Tanda Vital')">
+                                <button href="" class="btn btn-sm btn-success rounded-pill"
+                                    onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Fromulir Pemantauan Tanda Vital')">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span>
                                 </button>
@@ -345,13 +350,13 @@
                             <tbody>
                                 @foreach ($rawat_inap->tandavital->sortByDesc('created_at') as $vital)
                                     <tr class="text-center">
-                                        <td>{{tanggal($vital->created_at)}}</td>
-                                        <td>{{$vital->skala_nyeri}}</td>
-                                        <td>{{$vital->hr}}</td>
-                                        <td>{{$vital->bp}}</td>
-                                        <td>{{$vital->temp}}</td>
-                                        <td>{{$vital->rr}}</td>
-                                        <td>{{$vital->saturasi_oksigen}}</td>
+                                        <td>{{ tanggal($vital->created_at) }}</td>
+                                        <td>{{ $vital->skala_nyeri }}</td>
+                                        <td>{{ $vital->hr }}</td>
+                                        <td>{{ $vital->bp }}</td>
+                                        <td>{{ $vital->temp }}</td>
+                                        <td>{{ $vital->rr }}</td>
+                                        <td>{{ $vital->saturasi_oksigen }}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                 <a href="#"
@@ -433,8 +438,8 @@
                 paging: false,
                 info: false,
                 order: [0, 'desc'],
-                scrollY:300,
-                scrollX:true
+                scrollY: 300,
+                scrollX: true
             });
             $("table#TABLE_2").dataTable({
                 "language": {
@@ -450,15 +455,15 @@
                 paging: false,
                 info: false,
                 order: [0, 'desc'],
-                scrollY:300,
-                scrollX:true
+                scrollY: 300,
+                scrollX: true
             });
             $("table#TABLE_3").dataTable({
                 "language": {
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [{
-                    'targets': [1, 2,3,4],
+                    'targets': [1, 2, 3, 4],
                     /* column index */
                     'orderable': false,
                     /* true or false */
@@ -467,15 +472,15 @@
                 paging: false,
                 info: false,
                 order: [0, 'desc'],
-                scrollY:300,
-                scrollX:true
+                scrollY: 300,
+                scrollX: true
             });
             $("table#TABLE_4").dataTable({
                 "language": {
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [{
-                    'targets': [1, 2,3,4,5,6,7],
+                    'targets': [1, 2, 3, 4, 5, 6, 7],
                     /* column index */
                     'orderable': false,
                     /* true or false */
@@ -484,8 +489,8 @@
                 paging: false,
                 info: false,
                 order: [0, 'desc'],
-                scrollX:true,
-                scrollY:300
+                scrollX: true,
+                scrollY: 300
             });
 
         });
