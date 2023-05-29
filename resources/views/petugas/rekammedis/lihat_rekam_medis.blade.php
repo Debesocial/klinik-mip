@@ -33,18 +33,18 @@
                         <table class="table table-sm table-hover" id="tableInap">
                             <thead>
                                 <tr>
-                                    <th>ID Rawat Inap</th>
                                     <th>Tanggal Awal</th>
                                     <th>Tanggal Akhir</th>
+                                    <th>ID Rawat Inap</th>
                                     <th>Penyakit</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($rawatinap as $rawatinap)
                                     <tr>
-                                        <td>{{ $rawatinap->id_rawat_inap }}</td>
                                         <td>{{ tanggal($rawatinap->mulai_rawat, false) }}</td>
                                         <td>{!! ($rawatinap->berakhir_rawat)? tanggal($rawatinap->berakhir_rawat, false):'<span class="badge bg-primary">Masih dirawat</span>' !!}</td>
+                                        <td>{{ $rawatinap->id_rawat_inap }}</td>
                                         <td>{{ $namapenyakit->find(json_decode($rawatinap->nama_penyakit_id)[0])->primer }}</td>
                                     </tr>
                                 @endforeach
@@ -74,16 +74,16 @@
                         <table class="table table-sm table-hover" id="tableJalan">
                             <thead>
                                 <tr>
-                                    <th>ID Rawat Jalan</th>
                                     <th>Tanggal Berobat</th>
+                                    <th>ID Rawat Jalan</th>
                                     <th>Penyakit</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($rawatjalan as $rawatjalan)
                                     <tr>
+                                        <td>{{ tanggal($rawatjalan->tanggal_berobat, false) }}</td>
                                         <td>{{ $rawatjalan->id_rawat_jalan }}</td>
-                                        <td>{{ $rawatjalan->tanggal_berobat }}</td>
                                         <td>{{ $namapenyakit->find(json_decode($rawatjalan->nama_penyakit_id)[0])->primer }}</td>
                                     </tr>
                                 @endforeach
@@ -183,7 +183,7 @@
                             <tbody>
                                 @foreach ($mcu_awal as $awal)
                                     <tr>
-                                        <td data-sort="{{ $awal->created_at }}" class="text-center">{{ tanggal($awal->created_at, true) }}</td>
+                                        <td data-sort="{{ $awal->created_at }}" class="text-center">{{ tanggal($awal->created_at, false) }}</td>
                                         <td>{{ $awal->id_mcu_awal }}</td>
                                         <td>Awal</td>
                                         <td>{{ $awal->hasilpemantauan->nama_pemantauan }}</td>
@@ -249,7 +249,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2], /* column index */
+                                'targets': [1,2,3,4], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,
@@ -265,7 +265,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [3], /* column index */
+                                'targets': [1,2,3], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,
@@ -278,7 +278,7 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1], /* column index */
+                                'targets': [1,2], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,

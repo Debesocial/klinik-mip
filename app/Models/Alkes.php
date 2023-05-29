@@ -11,16 +11,7 @@ class Alkes extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'kod',
-        'golongan_alkes_id',
-        'nama_alkes_id',
-        'satuan_obat_id',
-        'bobot_obat_id',
-        'komposisis',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded = ['id'];
 
     public static function boot()
     {
@@ -41,9 +32,9 @@ class Alkes extends Model
     public function golongan_alkes() {
         return $this->belongsTo(GolonganAlkes::class);
     }
-    public function nama_alkes() {
-        return $this->belongsTo(NamaAlkes::class);
-    }
+    // public function nama_alkes() {
+    //     return $this->belongsTo(NamaAlkes::class);
+    // }
     public function satuan_obat() {
         return $this->belongsTo(SatuanObat::class);
     }

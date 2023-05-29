@@ -33,10 +33,10 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width="100%">
                     <thead>
                         <tr>
-                            <th>Tanggal dibuat</th>
+                            <th>Tanggal</th>
                             <th>ID Rekam Medis</th>
                             <th>Nama Pasien</th>
                             <th>Hasil</th>
@@ -46,9 +46,7 @@
                     <tbody>
                         @foreach ($narkoba as $narko)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($narko->created_at)->isoFormat('D MMMM Y') }}</B>
-                                <br>{{ Carbon\Carbon::parse($narko->created_at)->format('H:i:s') }}
-                            </td>
+                            <td class="text-center">{{tanggal($narko->created_at)}}</td>
                             <td >{{ $narko->pasien->id_rekam_medis }}</td>
                             <td>{{ $narko->pasien->nama_pasien }}</td>
                             <td class="text-center">

@@ -256,6 +256,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/add/obats', [ObatController::class, 'tambahobats'])->name('obat.tambahobats');
     Route::get('/ubah/obats/{id}', [ObatController::class, 'ubahobats'])->name('obat.ubahobats');
     Route::post('/ubah/obats/{id}', [ObatController::class, 'changeobats'])->name('obat.changeobats');
+    Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
 
     Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
     Route::get('/data/obat', [SuperAdminController::class, 'dataobat'])->name('superadmin.dataobat');

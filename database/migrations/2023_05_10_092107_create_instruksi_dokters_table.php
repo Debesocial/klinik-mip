@@ -13,7 +13,7 @@ class CreateInstruksiDoktersTable extends Migration
      */
     public function up()
     {
-        // Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
         // Schema::dropIfExists('instruksi_dokters');
         Schema::create('instruksi_dokters', function (Blueprint $table) {
             $table->id();

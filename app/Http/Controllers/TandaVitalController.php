@@ -32,7 +32,6 @@ class TandaVitalController extends Controller
         } else {
             $filename = '';
         }
-        
         if (TandaVital::create($data)) {
             return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Pemeriksaan Tanda Vital!');
         }

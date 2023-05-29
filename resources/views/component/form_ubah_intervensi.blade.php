@@ -279,7 +279,11 @@
         linear: true,
         animation: true
     })
-
+    select2_alat =$('select#alat_kesehatan').select2({
+        theme: "bootstrap-5",
+        selectionCssClass: 'select2--small',
+        dropdownCssClass: 'select2--small',
+    });
     $(document).ready(function() {
         $('select').select2({
             theme: "bootstrap-5",
@@ -406,7 +410,7 @@
                     <td>` + namaalkes.nama_alkes + `</td>
                     <td>` + data.jumlah_pengguna + `</td>
                     <td>` + data.keterangan + `</td>
-                    <td><b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                    <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
                     </tr>`;
         })
         clearformTindakan();
@@ -421,6 +425,20 @@
         });
         drawformTindakan();
     }
+    function editTindakan(id){
+        temp = tindakan[id];
+        deleteTindakan(id);
+        id_tindakan.forEach(idt => {
+            form = $('#'+idt);
+            if (idt!='alat_kesehatan') {
+                form.val(temp[idt]);
+            } else {
+                form.children().removeAttr('selected');
+                select2_alat.val(temp.alat_kesehatan).trigger('change');
+            }
+        });
+    }
+    
 
     function lanjut3() {
         input = $('#catatan');

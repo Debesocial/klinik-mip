@@ -19,6 +19,12 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <input class="choices form-control" name="nama_alkes" id="nama_alkes" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="">Golongan Alat/Bahan Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="golongan_alkes_id" id="golongan_alkes_id" required>
                                                 <option value="" disabled selected>Pilih golongan alat/bahan kesehatan</option>
@@ -29,17 +35,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="nama_alkes_id" id="nama_alkes_id" required>
-                                                <option value="" disabled selected>Pilih nama alat/bahan kesehatan</option>
-                                                @foreach ($nama as $nam)
-                                                <option value="{{ $nam->id }}">{{ $nam->nama_alkes }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="col-md-12">
                                         <div class="form-group">

@@ -16,8 +16,8 @@ class CreateObatsTable extends Migration
         Schema::create('obats', function (Blueprint $table) {
             $table->id();
             $table->string('kode');
+            $table->string('nama_obat');
             $table->foreignId('golongan_obat_id')->constrained();
-            $table->foreignId('nama_obat_id')->constrained();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();
             $table->text('komposisi_obat')->nullable();

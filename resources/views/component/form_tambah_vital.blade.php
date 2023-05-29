@@ -108,6 +108,21 @@
                                     <label class="form-label">Dokumen Pendukung</label>
                                     <input type="file" class="form-control" name="dokumen" id="dokumen">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Gejala</label>
+                                    <select name="gejala" id="gejala" class="form-select">
+                                        <option value="" disabled selected>Pilih Gejala</option>
+                                        @foreach ($hasilpemantauan as $gejala)
+                                            <option value="{{$gejala->id}}">{{$gejala->nama_pemantauan}} - {{$gejala->kode}}</option>
+                                        @endforeach
+                                    </select>
+                                    {!!validasi('Gejala')!!}
+                                </div>
+                                <div id="form_gejala_lain" class="mb-3" style="display: none">
+                                    <label class="form-label">Gejala Lain</label>
+                                    <textarea class="form-control" name="gejala_lain" id="gejala_lain"></textarea>
+                                    {!!validasi('Gejala Lain')!!}
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -221,9 +236,13 @@
         linear: true,
         animation: true
     })
-
+    select2_satuan =$('select#satuan_obat').select2({
+        theme: "bootstrap-5",
+        selectionCssClass: 'select2--small',
+        dropdownCssClass: 'select2--small',
+    });
     function lanjut1(){
-        var formidrequired = ['skala_nyeri','hr','bp','temp','rr','saturasi_oksigen']
+        var formidrequired = ['skala_nyeri','hr','bp','temp','rr','saturasi_oksigen', 'gejala']
         var validated = true;
         formidrequired.forEach(id => {
             var form = $('#'+id);
@@ -247,6 +266,15 @@
                     }
                 }else{
                     form.addClass('is-valid').removeClass('is-invalid');
+                }
+                if (id=='gejala' && form.val()== 6) {
+                    if ($('#gejala_lain').val()=='') {
+                        $('#gejala_lain').addClass('is-invalid').removeClass('is-valid');
+                        validated=false;
+                    }else{
+
+                        $('#gejala_lain').addClass('is-valid').removeClass('is-invalid');
+                    }
                 }
             }
         });
@@ -299,7 +327,7 @@
                         <td>` + data.aturan_pakai + `</td>
                         <td>` + data.keterangan_resep + `</td>
                         <td>` + tanggal(data.tgl_pemberian) + `</td>
-                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
                     </tr>`;
         })
         clearformResep();
@@ -330,6 +358,19 @@
         formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth())+'/'+date.getFullYear() + ' ' + cekSingle(date.getHours()) + ':' + cekSingle(date.getMinutes());
         return formatDate;
     }
+    function editResep(id){
+        temp = resep[id];
+        deleteResep(id);
+        id_resep.forEach(idt => {
+            form = $('#'+idt);
+            if (idt!='satuan_obat') {
+                form.val(temp[idt]);
+            } else {
+                form.children().removeAttr('selected');
+                select2_satuan.val(temp.satuan_obat).trigger('change');
+            }
+        });
+    }
     $(document).ready(function(){
         $('input').keyup(function() {
             var id = $(this).val();
@@ -341,6 +382,14 @@
             var id = $(this).val();
             if (id != null || id != '') {
                 $(this).removeClass('is-invalid');
+            }
+            if($(this).attr('id')=='gejala' ){
+                if($(this).val()==6){
+                    $('#form_gejala_lain').show();
+                }else{
+                    $('#form_gejala_lain').hide();
+                    $('#gejala_lain').val('');
+                }
             }
         })
         $('textarea').keyup(function() {

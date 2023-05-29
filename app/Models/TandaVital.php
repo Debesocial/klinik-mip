@@ -9,23 +9,10 @@ class TandaVital extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id_rawat_inap',
-        'skala_nyeri',
-        'hr',
-        'bp',
-        'temp',
-        'rr',
-        'saturasi_oksigen',
-        'keterangan',
-        'terapi',
-        'dokumen',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded=['id'];
 
     public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class);
+        return $this->belongsTo(NamaPenyakit::class,);
     }
 
     public function pasien() {
@@ -37,7 +24,7 @@ class TandaVital extends Model
     }
 
     public function hasilpemantauan() {
-        return $this->hasMany(HasilPemantauan::class);
+        return $this->belongsTo(HasilPemantauan::class, 'gejala', 'id');
     }
 
     public function rawatinap()

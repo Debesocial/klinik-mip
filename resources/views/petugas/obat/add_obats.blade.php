@@ -19,6 +19,12 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="nama_obat">Nama Obat <b class="color-red">*</b></label>
+                                            <input class="form-control" name="nama_obat" id="nama_obat" placeholder="Masukkan nama obat" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="golongan_obat_id">Golongan Obat <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="golongan_obat_id" id="golongan_obat_id" required>
                                                 <option value="">Pilih golongan obat</option>
@@ -27,20 +33,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="nama_obat_id">Nama Obat <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="nama_obat_id" id="nama_obat_id" required>
-                                                <option value="">Pilih nama obat</option>
-                                                @foreach ($namaobat as $namaobat)
-                                                <option value="{{ $namaobat->id }}">{{ $namaobat->nama_obat }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
+                                    </div>                                    
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="satuan_obat_id">Satuan Obat <b class="color-red">*</b></label>

@@ -11,16 +11,7 @@ class Obat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'kode',
-        'golongan_obat_id',
-        'nama_obat_id',
-        'satuan_obat_id',
-        'bobot_obat_id',
-        'komposisi_obat',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded=['id'];
 
     public static function boot()
     {
@@ -41,9 +32,9 @@ class Obat extends Model
     public function golongan_obat() {
         return $this->belongsTo(GolonganObat::class);
     }
-    public function nama_obat() {
-        return $this->belongsTo(NamaObat::class);
-    }
+    // public function nama_obat() {
+    //     return $this->belongsTo(NamaObat::class);
+    // }
     public function satuan_obat() {
         return $this->belongsTo(SatuanObat::class);
     }

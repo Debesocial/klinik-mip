@@ -74,24 +74,29 @@ class ObatController extends Controller
     public function tambahobats(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'golongan_obat_id' => 'required',
-            'nama_obat_id' => 'required',
-            'bobot_obat_id' => 'required',
-            'satuan_obat_id' => 'required',
-        ]);
+        // $validatedData = $request->validate([
+        //     'golongan_obat_id' => 'required',
+        //     'nama_obat_id' => 'required',
+        //     'bobot_obat_id' => 'required',
+        //     'satuan_obat_id' => 'required',
+        // ]);
 
-        Obat::create([
-            'golongan_obat_id' => $request->golongan_obat_id,
-            'nama_obat_id' => $request->nama_obat_id,
-            'bobot_obat_id' => $request->bobot_obat_id,
-            'satuan_obat_id' => $request->satuan_obat_id,
-            'komposisi_obat' => $request->komposisi_obat,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        // Obat::create([
+        //     'golongan_obat_id' => $request->golongan_obat_id,
+        //     'nama_obat_id' => $request->nama_obat_id,
+        //     'bobot_obat_id' => $request->bobot_obat_id,
+        //     'satuan_obat_id' => $request->satuan_obat_id,
+        //     'komposisi_obat' => $request->komposisi_obat,
+        //     'created_by' => auth()->user()->id,
+        //     'updated_by' => auth()->user()->id,
+        // ]);
+        $data = $request->except('_token');
+        $data['created_by']=auth()->user()->id;
+        $data['updated_by']=auth()->user()->id;
+        if (Obat::create($data)) {
+            return redirect('/data/obats')->with('message', 'Berhasil Menambahkan Data Obat');
+        }
 
-        return redirect('/data/obats')->with('message', 'Berhasil Menambahkan Data Obat');
     }
 
     public function ubahobats($id)
@@ -106,15 +111,20 @@ class ObatController extends Controller
     }
 
     function changeobats(Request $request, $id) {
-        $obat = Obat::find($id);
-        $obat->golongan_obat_id = $request->input('golongan_obat_id');
-        $obat->nama_obat_id = $request->input('nama_obat_id');
-        $obat->satuan_obat_id = $request->input('satuan_obat_id');
-        $obat->bobot_obat_id = $request->input('bobot_obat_id');
-        $obat->komposisi_obat = $request->input('komposisi_obat');
-        $obat->update();
+        $data = $request->except('_token');
+        $data['updated_by']=auth()->user()->id;
+        if (Obat::where('id',$id)->update($data)) {
+            return redirect('/data/obats')->with('message', 'Berhasil Mengubah Data Obat!');
+        }
 
-        return redirect('/data/obats')->with('message', 'Berhasil Mengubah Data Obat!');
+        
+    }
+
+    public function modalObat($id)
+    {
+        $data['obat'] = Obat::find($id);
+
+        return view('component/detail_obat', $data);
     }
 
    

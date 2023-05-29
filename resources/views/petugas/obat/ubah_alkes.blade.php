@@ -18,35 +18,31 @@
                             <div class="row">
                                 <div class="col-md-6">
                                    
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <input class="choices form-control" name="nama_alkes" id="nama_alkes" placeholder="Masukkan nama Alat Kesehatan" value="{{$alkes->nama_alkes}}">
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="golongan_obat_id">Golongan Alat/Bahan Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="golongan_alkes_id" id="golongan_alkes_id">
                                                 @foreach ($golongan as $gol)
-                                                <option value="{{ $gol->id }}">{{ $gol->golongan_alkes }}</option>
+                                                <option value="{{ $gol->id }}" {{($gol->id==$alkes->golongan_alkes_id)?'selected':''}}>{{ $gol->golongan_alkes }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Nama Alat/Bahan Kesehatan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="nama_alkes_id" id="nama_alkes_id">
-                                                @foreach ($nama as $nam)
-                                                <option value="{{ $nam->id }}">{{ $nam->nama_alkes }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="satuan_obat_id">Satuan Alat/Bahan Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="satuan_obat_id" id="satuan_obat_id">
                                                 @foreach ($satuanobat as $item)
-                                                <option value="{{ $item->id }}">{{ $item->satuan_obat }}</option>
+                                                <option value="{{ $item->id }}" {{($item->id==$alkes->satuan_obat_id)?'selected':''}}>{{ $item->satuan_obat }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -57,7 +53,7 @@
                                             <label for="bobot_obat_id">Bobot Alat/Bahan Kesehatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
                                                 @foreach ($bobotobat as $item)
-                                                <option value="{{ $item->id }}">{{ $item->bobot_obat }}</option>
+                                                <option value="{{ $item->id }}" {{($item->id==$alkes->bobot_obat_id)?'selected':''}}>{{ $item->bobot_obat }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

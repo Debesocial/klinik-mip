@@ -115,9 +115,9 @@
                             <li class="submenu-item @yield('alkes')">
                                 <a href="{{ route('obat.dataobats') }}"> Data Obat</a>
                             </li>
-                            <li class="submenu-item @yield('nama')">
+                            {{-- <li class="submenu-item @yield('nama')">
                                 <a href="{{ route('superadmin.namaobat') }}"><i class="bi bi-arrow-return-right"></i> Nama Obat</a>
-                            </li>
+                            </li> --}}
                             <li class="submenu-item @yield('golongan')">
                                 <a href="{{ route('superadmin.golonganobat') }}"><i class="bi bi-arrow-return-right"></i> Golongan Obat</a>
                             </li>
@@ -133,9 +133,9 @@
                             <li class="submenu-item @yield('al')">
                                 <a href="{{ route('obat.dataalkes') }}"> Data Alat/Bahan Kesehatan</a>
                             </li>
-                            <li class="submenu-item @yield('namkes')">
+                            {{-- <li class="submenu-item @yield('namkes')">
                                 <a href="{{ route('obat.namaalkes') }}"><i class="bi bi-arrow-return-right"></i> Nama Alat/Bahan Kesehatan</a>
-                            </li>
+                            </li> --}}
                             <li class="submenu-item @yield('golkes')">
                                 <a href="{{ route('obat.golonganalkes') }}"><i class="bi bi-arrow-return-right"></i> Golongan Alat/Bahan Kesehatan</a>
                             </li>

@@ -39,14 +39,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Skala Nyeri <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="skala_nyeri"
-                                        id="skala_nyeri">
-                                        <option disabled selected>Pilih Pemantauan </option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->skala_nyeri)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number"  name="skala_nyeri" id="skala_nyeri" min="0" max="10" value="{{$tandavital->skala_nyeri}}">
                                     <div class="invalid-feedback">
                                         Skala Nyeri harus diisi
                                     </div>
@@ -56,13 +49,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">HR <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="hr" id="hr">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->hr)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="hr" id="hr" min="0" max="200" value="{{$tandavital->hr}}">
                                     <div class="invalid-feedback">
                                         HR harus diisi
                                     </div>
@@ -72,13 +59,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">BP <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="bp" id="bp">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->bp)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="bp" id="bp" min="0" max="250" value="{{$tandavital->bp}}">
                                     <div class="invalid-feedback">
                                         BP harus diisi
                                     </div>
@@ -88,13 +69,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Temp <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="temp" id="temp">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->temp)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="temp" id="temp" min="31" max="41" value="{{$tandavital->temp}}">
                                     <div class="invalid-feedback">
                                         Temp harus diisi
                                     </div>
@@ -104,13 +79,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">RR <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="rr" id="rr">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->rr)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="rr" id="rr" min="0" max="100" value="{{$tandavital->rr}}">
                                     <div class="invalid-feedback">
                                         RR harus diisi
                                     </div>
@@ -120,14 +89,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label>Saturasi Oksigen <b class="color-red">*</b></label>
-                                    <select class="choices form-select" name="saturasi_oksigen"
-                                        id="saturasi_oksigen">
-                                        <option disabled selected>Pilih Pemantauan</option>
-                                        @foreach ($hasilpemantauan as $hasil)
-                                        <option value="{{ $hasil->id }}" {{($hasil->id==$tandavital->saturasi_oksigen)?'selected':''}}>{{
-                                            $hasil->nama_pemantauan }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input class="form-control" type="number" name="saturasi_oksigen"
+                                        id="saturasi_oksigen" min="0" max="100" value="{{$tandavital->saturasi_oksigen}}">
                                     <div class="invalid-feedback">
                                         Staturasi Oksigen harus diisi
                                     </div>
@@ -149,6 +112,22 @@
                                         <span class="text-warning"> Belum ada dokumen </span>
                                     @endif
                                     <input type="file" class="form-control" name="dokumen" id="dokumen">
+                                    <input type="hidden" class="form-control" name="old_dokumen" id="old_dokumen" value="{{$tandavital->dokumen}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Gejala</label>
+                                    <select name="gejala" id="gejala" class="form-select">
+                                        <option value="" disabled>Pilih Gejala</option>
+                                        @foreach ($hasilpemantauan as $gejala)
+                                            <option value="{{$gejala->id}}" {{($gejala->id == $tandavital->gejala)?'selected':''}}>{{$gejala->nama_pemantauan}} - {{$gejala->kode}}</option>
+                                        @endforeach
+                                    </select>
+                                    {!!validasi('Gejala')!!}
+                                </div>
+                                <div id="form_gejala_lain" class="mb-3" style="{{($tandavital->gejala==6)?'':'display: none'}}">
+                                    <label class="form-label">Gejala Lain</label>
+                                    <textarea class="form-control" name="gejala_lain" id="gejala_lain">{{$tandavital->gejala_lain}}</textarea>
+                                    {!!validasi('Gejala Lain')!!}
                                 </div>
                             </div>
                         </div>
@@ -263,17 +242,46 @@
         linear: true,
         animation: true
     })
-
+    select2_satuan =$('select#satuan_obat').select2({
+        theme: "bootstrap-5",
+        selectionCssClass: 'select2--small',
+        dropdownCssClass: 'select2--small',
+    });
     function lanjut1(){
-        var formidrequired = ['skala_nyeri','hr','bp','temp','rr','saturasi_oksigen']
+        var formidrequired = ['skala_nyeri','hr','bp','temp','rr','saturasi_oksigen', 'gejala']
         var validated = true;
         formidrequired.forEach(id => {
             var form = $('#'+id);
             if(form.val()==null||form.val()==''){
                 form.addClass('is-invalid').removeClass('is-valid');
+                form.siblings('.invalid-feedback').text('Tidak boleh kosong');
                 validated = false;
             } else{
-                form.addClass('is-valid').removeClass('is-invalid');
+                min = form.attr('min');
+                max = form.attr('max');
+                if (min != undefined || max != undefined) {
+                    min = parseFloat(min);
+                    max = parseFloat(max);
+                    nilai = parseFloat(form.val())
+                    if ( (nilai<=max && nilai>=min) ) {
+                        form.addClass('is-valid').removeClass('is-invalid');
+                    }else{
+                        form.siblings('.invalid-feedback').text('Nilai harus diantara ' + min +' - '+max);
+                        form.addClass('is-invalid').removeClass('is-valid');
+                        validated = false;
+                    }
+                }else{
+                    form.addClass('is-valid').removeClass('is-invalid');
+                }
+                if (id=='gejala' && form.val()== 6) {
+                    if ($('#gejala_lain').val()=='') {
+                        $('#gejala_lain').addClass('is-invalid').removeClass('is-valid');
+                        validated=false;
+                    }else{
+
+                        $('#gejala_lain').addClass('is-valid').removeClass('is-invalid');
+                    }
+                }
             }
         });
         if (validated === true) {
@@ -325,7 +333,7 @@
                         <td>` + data.aturan_pakai + `</td>
                         <td>` + data.keterangan_resep + `</td>
                         <td>` + tanggal(data.tgl_pemberian) + `</td>
-                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
                     </tr>`;
         })
         clearformResep();
@@ -351,6 +359,21 @@
         });
         drawformResep();
     }
+
+    function editResep(id){
+        temp = resep[id];
+        deleteResep(id);
+        id_resep.forEach(idt => {
+            form = $('#'+idt);
+            if (idt!='satuan_obat') {
+                form.val(temp[idt]);
+            } else {
+                form.children().removeAttr('selected');
+                select2_satuan.val(temp.satuan_obat).trigger('change');
+            }
+        });
+    }
+
     function tanggal(stringdate) {
     let date = new Date(Date.parse(stringdate));
     formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth())+'/'+date.getFullYear() + ' ' + cekSingle(date.getHours()) + ':' + cekSingle(date.getMinutes());
@@ -367,6 +390,14 @@
             var id = $(this).val();
             if (id != null || id != '') {
                 $(this).removeClass('is-invalid');
+            }
+            if($(this).attr('id')=='gejala' ){
+                if($(this).val()==6){
+                    $('#form_gejala_lain').show();
+                }else{
+                    $('#form_gejala_lain').hide();
+                    $('#gejala_lain').val('');
+                }
             }
         })
         $('textarea').keyup(function() {

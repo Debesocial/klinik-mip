@@ -43,12 +43,12 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
-                            <th>Golongan Obat</th>
                             <th>Nama Obat</th>
+                            <th>Golongan Obat</th>
                             <th>Satuan Obat</th>
                             <th>Bobot Obat</th>
                             <th>Komposisi obat</th>
@@ -61,8 +61,8 @@
                             {{-- <td><B>{{ Carbon\Carbon::parse($ob->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($ob->created_at)->format('H:i:s') }}
                             </td> --}}
+                            <td>{{ $ob->nama_obat}}</td>
                             <td>{{ $ob->golongan_obat->nama_golongan_obat }}</td>
-                            <td>{{ $ob->nama_obat->nama_obat }}</td>
                             <td>{{ $ob->satuan_obat->satuan_obat }}</td>
                             <td>{{ $ob->bobot_obat->bobot_obat }}</td>
                             <td>{{ $ob->komposisi_obat }}</td>

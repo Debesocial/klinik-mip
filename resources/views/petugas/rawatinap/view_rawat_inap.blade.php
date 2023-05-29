@@ -398,6 +398,25 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="modalRawatInap2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content bg-body">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalRawatInap2_body">
+                    ...
+                </div>
+                {{-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div> --}}
+            </div>
+        </div>
+    </div>
 
 
 @section('js')
@@ -492,7 +511,13 @@
                 scrollX: true,
                 scrollY: 300
             });
+            $('#modalRawatInap2').on('show.bs.modal', function () {
+                $('#modalRawatInap').css('z-index', 1039);
+            });
 
+            $('#modalRawatInap2').on('hidden.bs.modal', function () {
+                $('#modalRawatInap').css('z-index', 1041);
+            });
         });
 
         function showDetail(val) {
@@ -518,6 +543,20 @@
             });
             request.done(function(html) {
                 $('#modalRawatInap_body').html(html);
+            })
+
+            modal.modal('show');
+        }
+        function tampilModalRawatInap2(url, title) {
+            var modal = $('#modalRawatInap2');
+
+            $('#modalRawatInap2_title').text(title);
+            var request = $.ajax({
+                method: 'GET',
+                url: url,
+            });
+            request.done(function(html) {
+                $('#modalRawatInap2_body').html(html);
             })
 
             modal.modal('show');

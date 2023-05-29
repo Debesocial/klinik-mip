@@ -16,8 +16,8 @@ class CreateAlkesTable extends Migration
         Schema::create('alkes', function (Blueprint $table) {
             $table->id();
             $table->string('kod');
+            $table->string('nama_alkes');
             $table->foreignId('golongan_alkes_id')->constrained();
-            $table->foreignId('nama_alkes_id')->constrained();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();
             $table->text('komposisis')->nullable();

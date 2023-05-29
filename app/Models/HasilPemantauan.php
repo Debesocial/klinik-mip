@@ -22,11 +22,12 @@ class HasilPemantauan extends Model
     }
 
     public function tandavital() {
-        return $this->belongsTo(TandaVital::class);
+        return $this->belongsTo(TandaVital::class, 'gejala', 'id');
     }
 
     public function mcuawal() {
         return $this->hasOne(McuAwal::class, 'hasil_pemantauan_id', 'id');
     }
+
 
 }

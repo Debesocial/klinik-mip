@@ -590,6 +590,16 @@
         linear: true,
         animation: true
         })
+        select2_alat = $('select#alat_kesehatan').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        select2_satuan = $('select#satuan_obat').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -784,7 +794,7 @@
                         <td>` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
                         <td>` + data.keterangan + `</td>
-                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformTindakan();
@@ -798,6 +808,19 @@
                 return x !== null
             });
             drawformTindakan();
+        }
+        function editTindakan(id){
+            temp = tindakan[id];
+            deleteTindakan(id);
+            id_tindakan.forEach(idt => {
+                form = $('#'+idt);
+                if (idt!='alat_kesehatan') {
+                    form.val(temp[idt]);
+                } else {
+                    form.children().removeAttr('selected');
+                    select2_alat.val(temp.alat_kesehatan).trigger('change');
+                }
+            });
         }
     </script>
     <script>
@@ -844,7 +867,7 @@
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + data.aturan_pakai + `</td>
                             <td>` + data.keterangan_resep + `</td>
-                            <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformResep();
@@ -869,6 +892,19 @@
                 return x !== null
             });
             drawformResep();
+        }
+        function editResep(id){
+            temp = resep[id];
+            deleteResep(id);
+            id_resep.forEach(idt => {
+                form = $('#'+idt);
+                if (idt!='satuan_obat') {
+                    form.val(temp[idt]);
+                } else {
+                    form.children().removeAttr('selected');
+                    select2_satuan.val(temp.satuan_obat).trigger('change');
+                }
+            });
         }
     </script>
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>

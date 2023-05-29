@@ -16,24 +16,24 @@
             </div>
         </div>
         <div class="card-body">
-            <table class="table" id="table1">
+            <table class="table" id="table1" width="100%">
                 <thead>
                     <tr>
-                        <th>Jenis </th>
-                        <th>Golongan </th>
-                        <th>Nama </th>
-                        <th>Satuan </th>
-                        <th>Bobot </th>
-                        <th>Komposisi </th>
-                        <th>Aksi </th>
+                        <th>Nama</th>
+                        <th>Jenis</th>
+                        <th>Golongan</th>
+                        <th>Satuan</th>
+                        <th>Bobot</th>
+                        <th>Komposisi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($obatalkes as $obat)
                     <tr>
+                        <td>{{ $obat->nama_obat }}</td>
                         <td>{{ $obat->jenis_obat->nama_jenis_obat }}</td>
                         <td>{{ $obat->golongan_obat->nama_golongan_obat }}</td>
-                        <td>{{ $obat->nama_obat->nama_obat }}</td>
                         <td>{{ $obat->satuan_obat->satuan_obat }}</td>
                         <td>{{ $obat->bobot_obat->bobot_obat }}</td>
                         <td>{{ $obat->komposisi_obat }}</td>

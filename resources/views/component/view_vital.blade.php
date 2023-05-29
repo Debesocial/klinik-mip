@@ -54,6 +54,14 @@
                                 @endif
                             </td>
                         </tr>
+                        <tr>
+                            <th>Gejala</th>
+                            <td>: {{$tandavital->hasilpemantauan->nama_pemantauan}} - {{$tandavital->hasilpemantauan->kode}}</td>
+                        </tr>
+                        @if ($tandavital->hasilpemantauan->id==6)
+                            <th></th>
+                            <td>-{{$tandavital->gejala_lain}}</td>
+                        @endif
                     </tbody>
                 </table>
             </div>

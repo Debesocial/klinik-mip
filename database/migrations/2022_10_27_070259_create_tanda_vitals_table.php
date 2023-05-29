@@ -13,6 +13,7 @@ class CreateTandaVitalsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('tanda_vitals', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_rawat_inap');
@@ -26,12 +27,16 @@ class CreateTandaVitalsTable extends Migration
             $table->string('keterangan')->nullable();
             $table->text('dokumen')->nullable();
             $table->json('terapi');
+            $table->unsignedBigInteger('gejala');
+            $table->foreign('gejala')->references('id')->on('hasil_pemantauans');
+            $table->text('gejala_lain')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

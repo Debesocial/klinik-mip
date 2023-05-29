@@ -273,7 +273,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Obat yang sudah dikonsumsi sebelumnya</label>
-                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control">value="{{$rawat_jalan->obat_konsumsi}}"</textarea>
+                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control">{{$rawat_jalan->obat_konsumsi}}</textarea>
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Dokumentasi Pendukung</label>
@@ -292,7 +292,7 @@
                                             <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
-                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis">value="{{$rawat_jalan->status_lokalis}}"</textarea>
+                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis">{{$rawat_jalan->status_lokalis}}</textarea>
                                                 {!!validasi('Status lokalis')!!}
                                             </div>
                                         </div>
@@ -593,6 +593,16 @@
             animation: true
         })
         // stepper2.to(3);
+        select2_alat = $('select#alat_kesehatan').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        select2_satuan = $('select#satuan_obat').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -804,7 +814,7 @@
                         <td>` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
                         <td>` + data.keterangan + `</td>
-                        <td><b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformTindakan();
@@ -818,6 +828,20 @@
                 return x !== null
             });
             drawformTindakan();
+        }
+
+        function editTindakan(id){
+            temp = tindakan[id];
+            deleteTindakan(id);
+            id_tindakan.forEach(idt => {
+                form = $('#'+idt);
+                if (idt!='alat_kesehatan') {
+                    form.val(temp[idt]);
+                } else {
+                    form.children().removeAttr('selected');
+                    select2_alat.val(temp.alat_kesehatan).trigger('change');
+                }
+            });
         }
     </script>
     <script>
@@ -864,7 +888,7 @@
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + data.aturan_pakai + `</td>
                             <td>` + data.keterangan_resep + `</td>
-                            <td><b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformResep();
@@ -889,6 +913,19 @@
                 return x !== null
             });
             drawformResep();
+        }
+        function editResep(id){
+            temp = resep[id];
+            deleteResep(id);
+            id_resep.forEach(idt => {
+                form = $('#'+idt);
+                if (idt!='satuan_obat') {
+                    form.val(temp[idt]);
+                } else {
+                    form.children().removeAttr('selected');
+                    select2_satuan.val(temp.satuan_obat).trigger('change');
+                }
+            });
         }
     </script>
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>

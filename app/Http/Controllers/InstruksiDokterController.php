@@ -8,6 +8,7 @@ use App\Models\InstruksiDokter;
 
 use App\Models\NamaAlkes;
 use App\Models\NamaPenyakit;
+use App\Models\Obat;
 use App\Models\RawatInap;
 use App\Models\SatuanObat;
 
@@ -27,8 +28,8 @@ class InstruksiDokterController extends Controller
         $data['id_rawat_inap'] = $id;
         $data['namapenyakit'] = NamaPenyakit::all();
         $data['alatkesehatan'] = Alkes::all();
-        $data['namaalkes'] = NamaAlkes::all();
         $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::get();
         return view('/component/form_tambah_instruksi_dokter', $data);
     }
 
@@ -37,8 +38,9 @@ class InstruksiDokterController extends Controller
         $data['instruksidokter'] = InstruksiDokter::find($id);
         $data['namapenyakit'] = NamaPenyakit::all();
         $data['alatkesehatan'] = Alkes::all();
-        $data['namaalkes'] = NamaAlkes::all();
         $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::get();
+
         return  view('/component/form_ubah_instruksi_dokter', $data);
     }
 

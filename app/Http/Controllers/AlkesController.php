@@ -38,24 +38,12 @@ class AlkesController extends Controller
     public function tambahalkes(Request $request)
     {
 
-        $validatedData = $request->validate([
-            'golongan_alkes_id' => 'required',
-            'nama_alkes_id' => 'required',
-            'bobot_obat_id' => 'required',
-            'satuan_obat_id' => 'required',
-        ]);
-
-        Alkes::create([
-            'golongan_alkes_id' => $request->golongan_alkes_id,
-            'nama_alkes_id' => $request->nama_alkes_id,
-            'bobot_obat_id' => $request->bobot_obat_id,
-            'satuan_obat_id' => $request->satuan_obat_id,
-            'komposisis' => $request->komposisis,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
-
-        return redirect('/data/alkes')->with('message', 'Berhasil Menambahkan Alat/Bahan Kesehatan');
+        $data = $request->except('_token');
+        $data['created_by']=auth()->user()->id;
+        $data['updated_by']=auth()->user()->id;
+        if (Alkes::create($data)) {
+            return redirect('/data/alkes')->with('message', 'Berhasil Menambahkan Alat/Bahan Kesehatan');
+        }
     }
 
     public function ubahalkes($id)
@@ -70,15 +58,13 @@ class AlkesController extends Controller
     }
 
     function changealkes(Request $request, $id) {
-        $alkes = Alkes::find($id);
-        $alkes->golongan_alkes_id = $request->input('golongan_alkes_id');
-        $alkes->nama_alkes_id = $request->input('nama_alkes_id');
-        $alkes->satuan_obat_id = $request->input('satuan_obat_id');
-        $alkes->bobot_obat_id = $request->input('bobot_obat_id');
-        $alkes->komposisis = $request->input('komposisis');
-        $alkes->update();
+        $data = $request->except('_token');
+        $data['updated_by']=auth()->user()->id;
+        if (Alkes::where('id', $id)->update($data)) {
+            return redirect('/data/alkes')->with('message', 'Berhasil Mengubah Data Alat/Bahan Kesehatan!');
+        }
 
-        return redirect('/data/alkes')->with('message', 'Berhasil Mengubah Data Alat/Bahan Kesehatan!');
+        
     }
 
     /**

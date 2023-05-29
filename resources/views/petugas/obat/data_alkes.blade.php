@@ -44,12 +44,12 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
-                            <th>Golongan </th>
                             <th>Nama </th>
+                            <th>Golongan </th>
                             <th>Satuan </th>
                             <th>Bobot </th>
                             <th>Komposisi </th>
@@ -62,8 +62,8 @@
                             {{-- <td><B>{{ Carbon\Carbon::parse($al->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($al->created_at)->format('H:i:s') }}
                             </td> --}}
+                            <td>{{ $al->nama_alkes }}</td>
                             <td>{{ $al->golongan_alkes->golongan_alkes }}</td>
-                            <td>{{ $al->nama_alkes->nama_alkes }}</td>
                             <td>{{ $al->satuan_obat->satuan_obat }}</td>
                             <td>{{ $al->bobot_obat->bobot_obat }}</td>
                             <td>{{ $al->komposisis }}</td>
