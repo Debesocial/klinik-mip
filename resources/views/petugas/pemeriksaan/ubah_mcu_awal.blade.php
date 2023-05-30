@@ -145,9 +145,9 @@
                                             <label for="" class="form-label">Hasil Rekomendasi <b class="text-danger">*</b></label>
                                             <select class="choices form-select" name="hasil_pemantauan_id" id="hasil_pemantauan_id">
                                                 <option disabled>Pilih Pemantauan</option>
-                                                @foreach ($hasilpemantauan as $hasil)
-                                                <option value="{{ $hasil->id }}" {{ ($hasil->id==$mcuawal->hasil_pemantauan_id)? 'selected':'' }}>
-                                                    {{$hasil->nama_pemantauan }}
+                                                @foreach ($hasilrekomendasi as $hasil)
+                                                <option value="{{ $hasil->id }}" {{ ($hasil->id==$mcuawal->hasil_rekomendasi)? 'selected':'' }}>
+                                                    {{$hasil->nama }}
                                                 </option>
                                                 @endforeach
                                             </select>
