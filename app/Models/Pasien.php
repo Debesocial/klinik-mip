@@ -14,32 +14,7 @@ class Pasien extends Model
     protected $table = 'pasiens';
     protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'kategori_pasien_id',
-        'id_rekam_medis',
-        'NIK',
-        'penduduk',
-        'perusahaan_id',
-        'lain',
-        'divisi_id',
-        'jabatan_id',
-        'keluarga_id',
-        'nama_pasien',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'jenis_kelamin',
-        'alamat',
-        'alamat_mess',
-        'pekerjaan',
-        'telepon',
-        'email',
-        'alergi',
-        'alergi_obat',
-        'hamil_menyusui',
-        'upload',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded = ['id'];
 
     public static function boot()
     {

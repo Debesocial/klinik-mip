@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form class="form needs-validation" action="/ubah/pemeriksaan/narkoba/{{$narkoba->id}}" method="post"
+                    <form class="form needs-validation" id="form-narkoba" action="/ubah/pemeriksaan/narkoba/{{$narkoba->id}}" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
                         <input type="hidden" name="pasien_id" value="{{ $narkoba->pasien->id }}">
@@ -493,8 +493,8 @@
                                 <button type="button" class="btn btn-primary rounded-pill"
                                     onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
                                     <b>Sebelumnya</b></button>
-                                <button type="submit" class="btn btn-primary rounded-pill"
-                                    onclick="stepper2.next()"><b>Simpan</b> <i class="bi bi-save"></i></button>
+                                <button type="button" class="btn btn-primary rounded-pill"
+                                    onclick="submitform('form-narkoba')"><b>Simpan</b> <i class="bi bi-save"></i></button>
                             </div>
                         </div>
                     </form>

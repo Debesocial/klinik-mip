@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($narkoba as $narko)
+                        @foreach ($narkoba->sortByDesc('created_at') as $narko)
                         <tr>
                             <td class="text-center">{{tanggal($narko->created_at)}}</td>
                             <td >{{ $narko->pasien->id_rekam_medis }}</td>

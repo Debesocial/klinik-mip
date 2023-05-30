@@ -80,7 +80,7 @@
                                                     <div class="row">
                                                         <div class="col-md-3">
                                                             <div>{{ $usia->y .' Tahun' }}</div>
-                                                            <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><small style="display: inline-block;">NIK.{{ $pas->penduduk }}</small></a>
+                                                            <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><small style="display: inline-block;">Detail Pasien <i class="bi bi-box-arrow-up-right"></i></small></a>
                                                         </div>
                                                         <div class="col-md-5">
                                                             <div>Perusahaan: {{ $pas->perusahaan->nama_perusahaan_pasien }} - {{ $pas->jabatan->nama_jabatan }}</div>

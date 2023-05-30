@@ -11,7 +11,13 @@
 <div hidden>{{ $pasien->perusahaan->nama_perusahaan_pasien }} {{ $pasien->jabatan->nama_jabatan }} {{ $pasien->divisi->nama_divisi }}{{ $pasien->keluarga->nama_keluarga }}</div>
 
 <div class="container">
-    <h5 class="text-center">Rekam Medis <a href="#" onclick="tampilModalPasien({{ json_encode($pasien) }})">{{ $pasien->nama_pasien }} - <i>{{ $pasien->id_rekam_medis }}</i></a></h5>
+    <h5 class="text-center">Rekam Medis {{ $pasien->id_rekam_medis }}</h5>
+    <div class="row mb-3">
+        <div class="col">
+            Nama Pasien : <a href="#" onclick="tampilModalPasien({{ json_encode($pasien) }})">{{ $pasien->nama_pasien }} <i class="bi bi-box-arrow-up-right"></i></a> <br>
+            Tanggal daftar, <b> {{tanggal($pasien->created_at)}} </b>
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="card">
@@ -30,22 +36,39 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-hover" id="tableInap">
+                        <table class="table table-sm table-hover" id="tableInap" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Tanggal Awal</th>
-                                    <th>Tanggal Akhir</th>
+                                    <th>Tanggal</th>
                                     <th>ID Rawat Inap</th>
-                                    <th>Penyakit</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($rawatinap as $rawatinap)
                                     <tr>
-                                        <td>{{ tanggal($rawatinap->mulai_rawat, false) }}</td>
-                                        <td>{!! ($rawatinap->berakhir_rawat)? tanggal($rawatinap->berakhir_rawat, false):'<span class="badge bg-primary">Masih dirawat</span>' !!}</td>
-                                        <td>{{ $rawatinap->id_rawat_inap }}</td>
-                                        <td>{{ $namapenyakit->find(json_decode($rawatinap->nama_penyakit_id)[0])->primer }}</td>
+                                        <td data-order="{{strtotime($rawatinap->mulai_rawat)}}">
+                                            <b>{{ tanggal($rawatinap->mulai_rawat, false) }}</b>
+                                            <small>
+                                                <p class="m-0">
+                                                    {!! ($rawatinap->berakhir_rawat)? 'Akhir: '. tanggal($rawatinap->berakhir_rawat, false):'<span class="badge bg-primary">Masih dirawat</span>' !!}
+                                                </p>
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <b>{{ $rawatinap->id_rawat_inap }}</b>
+                                            <small>
+                                                <p class="m-0">
+                                                    Diagnosa: {{ $namapenyakit->find(json_decode($rawatinap->nama_penyakit_id)[0])->primer }}
+                                                </p>
+                                            </small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                                                <a href="/view/rawat/inap/{{$rawatinap->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="/ubah/rawat/inap/{{$rawatinap->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -71,20 +94,32 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-hover" id="tableJalan">
+                        <table class="table table-sm table-hover" id="tableJalan" width="100%">
                             <thead>
                                 <tr>
                                     <th>Tanggal Berobat</th>
                                     <th>ID Rawat Jalan</th>
-                                    <th>Penyakit</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($rawatjalan as $rawatjalan)
                                     <tr>
-                                        <td>{{ tanggal($rawatjalan->tanggal_berobat, false) }}</td>
-                                        <td>{{ $rawatjalan->id_rawat_jalan }}</td>
-                                        <td>{{ $namapenyakit->find(json_decode($rawatjalan->nama_penyakit_id)[0])->primer }}</td>
+                                        <td data-order="{{strtotime($rawatjalan->tanggal_berobat)}}">
+                                            <b>{{ tanggal($rawatjalan->tanggal_berobat, false) }}</b>
+                                        </td>
+                                        <td>
+                                            <b>{{ $rawatjalan->id_rawat_jalan }}</b>
+                                            <small>
+                                                <p class="m-0">Diagnosa :{{ $namapenyakit->find(json_decode($rawatjalan->nama_penyakit_id)[0])->primer }}</p>
+                                            </small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
+                                                <a href="/view/rawat/jalan/{{$rawatjalan->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                <a href="/ubah/rawat/jalan/{{$rawatjalan->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -112,7 +147,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-hover" id="tableNarkoba">
+                        <table class="table table-sm table-hover" id="tableNarkoba" width="100%">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
@@ -123,8 +158,10 @@
                             <tbody>
                                 @foreach ($test as $test)
                                     <tr>
-                                        <td>
-                                            {{tanggal($test->created_at, true)}}
+                                        <td class="text-center">
+                                            <b>
+                                                {{tanggal($test->created_at, false)}}
+                                            </b>
                                         </td>
                                         <td class="text-center">
                                             @if ($test->amp == 0 && $test->met == 0 && $test->thc == 0 && $test->bzo == 0 && $test->mop == 0 && $test->coc == 0)
@@ -170,12 +207,11 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-hover" id="tableMcu">
+                        <table class="table table-sm table-hover" id="tableMcu" width="100%">
                             <thead>
                                 <tr>
                                     <th>Tanggal</th>
                                     <th>ID MCU</th>
-                                    <th>Jenis MCU</th>
                                     <th>Hasil</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -183,9 +219,11 @@
                             <tbody>
                                 @foreach ($mcu_awal as $awal)
                                     <tr>
-                                        <td data-sort="{{ $awal->created_at }}" class="text-center">{{ tanggal($awal->created_at, false) }}</td>
-                                        <td>{{ $awal->id_mcu_awal }}</td>
-                                        <td>Awal</td>
+                                        <td data-sort="{{ $awal->created_at }}" class="text-center"><b>{{ tanggal($awal->created_at, false) }}</b></td>
+                                        <td>
+                                            <b>{{ $awal->id_mcu_awal }}</b>
+                                            <small><p class="m-0">MCU Awal</p></small>
+                                        </td>
                                         <td>{{ cekRekomendasi($awal->hasil_rekomendasi) }}</td>
                                         <td> 
                                              <div class="btn-group btn-group-sm" role="group"
@@ -201,9 +239,11 @@
                                 @endforeach
                                 @foreach ($mcu_lanjutan as $lanjut)
                                     <tr>
-                                        <td data-sort="{{ $lanjut->tanggal_pemeriksaan }}">{{ tanggal($lanjut->tanggal_pemeriksaan, false) }}</td>
-                                        <td>{{ $lanjut->id_mcu_lanjutan }}</td>
-                                        <td>{{ cekMcu($lanjut->jenis_mcu) }}</td>
+                                        <td data-sort="{{ $lanjut->tanggal_pemeriksaan }}" class="text-center"><b>{{ tanggal($lanjut->tanggal_pemeriksaan, false) }}</b></td>
+                                        <td>
+                                            <b>{{ $lanjut->id_mcu_lanjutan }}</b>
+                                            <small><p class="m-0">MCU {{ cekMcu($lanjut->jenis_mcu) }}</p></small>
+                                        </td>
                                         <td>{{ cekrekomendasi($lanjut->status) }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group"
@@ -240,19 +280,23 @@
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,
+                scrollX:true,
                 searching: false,
                 paging:false,
-                info:false
+                info:false,
+                order: [[0, 'desc']],
+
             })
             let jquery_datatable_mcu = $("#tableMcu").DataTable({
                 "language": {
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2,3,4], /* column index */
+                                'targets': [1,2,3], /* column index */
                                 'orderable': false, /* true or false */
                             }],
                 scrollY: 250,
+                scrollX:true,
                 searching: false,
                 paging:false,
                 info:false,
@@ -265,10 +309,12 @@
                     "zeroRecords": "Belumm ada pemeriksaan",
                 },
                 'columnDefs': [ {
-                                'targets': [1,2,3], /* column index */
+                                'targets': [1,2], /* column index */
                                 'orderable': false, /* true or false */
                             }],
+                order: [[0, 'desc']],
                 scrollY: 250,
+                scrollX:true,
                 searching: false,
                 paging:false,
                 info:false
@@ -281,7 +327,9 @@
                                 'targets': [1,2], /* column index */
                                 'orderable': false, /* true or false */
                             }],
+                order: [[0, 'desc']],
                 scrollY: 250,
+                scrollX:true,
                 searching: false,
                 paging:false,
                 info:false
