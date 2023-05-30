@@ -57,20 +57,20 @@
                     <table class="table table-borderless table-hover">
                         <tbody>
                             <tr>
-                                <th>Jenis MCU</th>
+                                <th>Jenis Pemeriksaan</th>
                                 <td id="_jenis_mcu">: {{ cekMcu($mculanjutan->jenis_mcu) }}</td>
                             </tr>
                             <tr>
                                 <th>Tanggal</th>
                                 <td id="_tanggal_pemeriksaan">: {{ tanggal($mculanjutan->tanggal_pemeriksaan, false) }}</td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <th>Jenis Pemeriksaan</th>
                                 <td id="_jenis_pemeriksaan">: {{ cekMcu($mculanjutan->jenis_pemeriksaan) }}</td>
-                            </tr>
+                            </tr> --}}
                             <tr>
                                 <th>Status</th>
-                                <td id="_status">: {{ $mculanjutan->status }}</td>
+                                <td id="_status">: {{ cekRekomendasi($mculanjutan->status) }}</td>
                             </tr>
                         </tbody>
                     </table>

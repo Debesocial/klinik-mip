@@ -82,9 +82,13 @@
                     </thead>
                     <tbody id="body_resep">
                         @foreach (json_decode($tandavital->terapi) as $terapi)
+                            @php
+                                $dataobat = $obat->find($terapi->nama_obat);
+                            @endphp
                             <tr>
-                                <td>{{$terapi->nama_obat}}</td>
-                                <td>{{$terapi->jumlah_obat .' '. $satuanobat->find($terapi->satuan_obat)->satuan_obat}}</td>
+                                <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$dataobat->id}}', 'Detail Alat Kesehatan' )">{{$dataobat->nama_obat}}</td>
+                                <td>{{$dataobat->nama_obat}}</td>
+                                <td>{{$terapi->jumlah_obat .' '. $dataobat->satuan_obat->satuan_obat}}</td>
                                 <td>{{$terapi->aturan_pakai}}</td>
                                 <td>{{$terapi->keterangan_resep}}</td>
                                 <td>{{tanggal($terapi->tgl_pemberian)}}</td>

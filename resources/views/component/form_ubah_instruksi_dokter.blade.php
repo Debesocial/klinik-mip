@@ -547,7 +547,7 @@
             var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
             html += `<tr> 
                     <td>` + data.nama_tindakan + `</td>
-                    <td>` + namaalkes.nama_alkes + `</td>
+                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                     <td>` + data.jumlah_pengguna + `</td>
                     <td>` + data.keterangan + `</td>
                     <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>

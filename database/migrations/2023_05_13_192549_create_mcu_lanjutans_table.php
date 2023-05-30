@@ -23,7 +23,7 @@ class CreateMcuLanjutansTable extends Migration
             $table->string('deskripsi_obat');
             $table->string('tanggal_pemeriksaan');
             $table->string('rekomendasi');
-            $table->string('jenis_pemeriksaan');
+            $table->string('jenis_pemeriksaan')->nullable();
             $table->string('status');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

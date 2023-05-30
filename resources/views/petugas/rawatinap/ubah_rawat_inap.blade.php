@@ -357,7 +357,7 @@
                                         <select name="" id="alat_kesehatan" class="form-select">
                                             <option value="" selected disabled>Pilihi alat kesehatan </option>
                                             @foreach ($alatkesehatan as $alat)
-                                                <option value="{{ $alat->id }}"  >{{ $alat->nama_alkes->nama_alkes }}
+                                                <option value="{{ $alat->id }}"  >{{ $alat->nama_alkes}}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -419,28 +419,26 @@
                                     <div class="mb-2">
                                         <label for="" class="form-label">Nama Obat <b
                                                 class="text-danger">*</b></label>
-                                        <input type="text" id="nama_obat" class="form-control">
+                                        <select id="nama_obat" class="form-select">
+                                            <option value="">Pilih Obat</option>
+                                            @foreach ($obat as $ob)
+                                                <option value="{{$ob->id}}">{{$ob->nama_obat}}</option>
+                                            @endforeach
+                                        </select>
                                         {!! validasi('Nama obat') !!}
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Jumlah Obat <b
                                                 class="text-danger">*</b></label>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="number" id="jumlah_obat" class="form-control">
-                                                {!! validasi('Jumlah obat') !!}
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        <input type="number" id="jumlah_obat" class="form-control">
+                                                        <span class="input-group-text" id="satuan_obat">Satuan</span>
+                                                        {!! validasi('Jumlah obat') !!}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <select id="satuan_obat" class="form-select">
-                                                    <option value="" selected disabled>Pilih satuan</option>
-                                                    @foreach ($satuanobat as $satuan)
-                                                        <option value="{{ $satuan->id }}">{{ $satuan->satuan_obat }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                {!! validasi('Satuan Obat') !!}
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Aturan Pakai <b
@@ -583,6 +581,24 @@
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false"
+aria-labelledby="modalRawatInap2Label" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalRawatInap2_body">
+            ...
+        </div>
+        
+    </div>
+</div>
+</div>
+
 @section('js')
 
     <script>
@@ -595,7 +611,7 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
-        select2_satuan = $('select#satuan_obat').select2({
+        select2_obat =$('select#nama_obat').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
@@ -621,7 +637,9 @@
             $('select').change(function() {
                 if ($(this).val() !== "") {
                     $(this).removeClass('is-invalid')
-
+                    if ($(this).attr('id')=='nama_obat') {
+                        setSatuan($(this).val());
+                    }
                 }
                 drawTableDiagnodsa();
             })
@@ -748,7 +766,7 @@
             }
         }
 
-        var alkes = @json($namaalkes);
+        var alkes = @json($alatkesehatan);
         var tindakan = {!!$rawat_inap->tindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
 
@@ -791,7 +809,7 @@
                 var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
                 html += `<tr> 
                         <td>` + data.nama_tindakan + `</td>
-                        <td>` + namaalkes.nama_alkes + `</td>
+                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
                         <td>` + data.keterangan + `</td>
                         <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
@@ -833,9 +851,10 @@
             }
         }
 
-        id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep'];
+        id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
         resep = {!!$rawat_inap->resep!!};
         var satuanobat = @json($satuanobat);
+        var obat = @json($obat);
 
         function addResep() {
             var temp = {};
@@ -861,9 +880,10 @@
         function drawformResep() {
             html = ``;
             resep.forEach((data, key) => {
-                satuan = satuanobat.find(st => st.id == data.satuan_obat);
+                namaobat = obat.find(ob => ob.id == data.nama_obat); 
+                satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
                 html += `<tr> 
-                            <td>` + data.nama_obat + `</td>
+                            <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + data.aturan_pakai + `</td>
                             <td>` + data.keterangan_resep + `</td>
@@ -878,8 +898,8 @@
         function clearformResep() {
             id_resep.forEach(id => {
                 form = $('#' + id);
-                if (id == 'satuan_obat') {
-                    form.val('').trigger('change');
+                if (id == 'nama_obat') {
+                    select2_obat.val(null).trigger('change');
                 }
                 form.removeClass('is-valid');
                 form.val('');
@@ -898,13 +918,41 @@
             deleteResep(id);
             id_resep.forEach(idt => {
                 form = $('#'+idt);
-                if (idt!='satuan_obat') {
+                if (idt!='nama_obat') {
                     form.val(temp[idt]);
                 } else {
                     form.children().removeAttr('selected');
-                    select2_satuan.val(temp.satuan_obat).trigger('change');
+                    select2_obat.val(temp.nama_obat).trigger('change');
                 }
             });
+        }
+        function setSatuan(i) {
+            if (i==null || i=='') {
+                $('#satuan_obat').text('Satuan');
+            }else{
+                namaobat = obat.find(ob => ob.id == i);
+                satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
+                $('#satuan_obat').text(satuan.satuan_obat);
+            }
+        }
+        function tampilModalRawatInap2(url, title) {
+            var modal = $('#modalRawatInap2');
+
+            $('#modalRawatInap2_title').text(title);
+            var request = $.ajax({
+                method: 'GET',
+                url: url,
+            });
+            request.done(function(html) {
+                $('#modalRawatInap2_body').html(html);
+            })
+
+            modal.modal('show');
+        }
+
+        function hideModal(id) {
+            var modal = $('#' + id);
+            modal.modal('hide');
         }
     </script>
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>

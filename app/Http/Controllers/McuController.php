@@ -22,13 +22,15 @@ class McuController extends Controller
     public function halamanTambahMcuAwal()
     {
         $data['pasien_id'] = Pasien::all();
-        $data['hasilpemantauan'] =  HasilPemantauan::all();
+       
+        $data['hasilrekomendasi'] = hasilRekomendasi();
         return view('petugas.pemeriksaan.add_mcu_awal', $data);
     }
 
     public function halamanUbahMcuAwal($id)
     {
-        $data['hasilpemantauan'] = HasilPemantauan::all();
+        $data['hasilrekomendasi'] = hasilRekomendasi();
+
         $data['mcuawal'] = McuAwal::find($id);
         return view('petugas.pemeriksaan.ubah_mcu_awal', $data);
     }

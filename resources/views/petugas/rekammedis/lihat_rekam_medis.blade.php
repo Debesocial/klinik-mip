@@ -133,7 +133,7 @@
                                                 <span class="badge bg-danger">Terindikasi</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/pemeriksaan/narkoba/{{$test->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                                 <a href="/ubah/pemeriksaan/narkoba/{{$test->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
@@ -186,7 +186,7 @@
                                         <td data-sort="{{ $awal->created_at }}" class="text-center">{{ tanggal($awal->created_at, false) }}</td>
                                         <td>{{ $awal->id_mcu_awal }}</td>
                                         <td>Awal</td>
-                                        <td>{{ $awal->hasilpemantauan->nama_pemantauan }}</td>
+                                        <td>{{ cekRekomendasi($awal->hasil_rekomendasi) }}</td>
                                         <td> 
                                              <div class="btn-group btn-group-sm" role="group"
                                                 aria-label="Basic outlined example">
@@ -204,7 +204,7 @@
                                         <td data-sort="{{ $lanjut->tanggal_pemeriksaan }}">{{ tanggal($lanjut->tanggal_pemeriksaan, false) }}</td>
                                         <td>{{ $lanjut->id_mcu_lanjutan }}</td>
                                         <td>{{ cekMcu($lanjut->jenis_mcu) }}</td>
-                                        <td>{{ $lanjut->deskripsi_hasil }}</td>
+                                        <td>{{ cekrekomendasi($lanjut->status) }}</td>
                                         <td>
                                             <div class="btn-group btn-group-sm" role="group"
                                                 aria-label="Basic outlined example">

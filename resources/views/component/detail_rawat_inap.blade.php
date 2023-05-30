@@ -93,7 +93,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$tindakan->nama_tindakan}}</td>
-                                    <td>{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes->nama_alkes}}</td>
+                                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
                                     <td>{{$tindakan->jumlah_pengguna}}</td>
                                     <td>{{$tindakan->keterangan}}</td>
                                 </tr>
@@ -119,10 +119,13 @@
                         </thead>
                         <tbody>
                             @foreach (json_decode($inap->resep) as $resep)
+                                @php
+                                    $dataobat = $obat->find($resep->nama_obat);
+                                @endphp
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$resep->nama_obat}}</td>
-                                    <td>{{$resep->jumlah_obat}} {{$satuanobat->find($resep->satuan_obat)->satuan_obat}}</td>
+                                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/{{$dataobat->id}}', 'Detail Obat')">{{$dataobat->nama_obat}}</a></td>
+                                    <td>{{$resep->jumlah_obat}} {{$dataobat->satuan_obat->satuan_obat}}</td>
                                     <td>{{$resep->aturan_pakai}}</td>
                                     <td>{{$resep->keterangan_resep}}</td>
                                 </tr>

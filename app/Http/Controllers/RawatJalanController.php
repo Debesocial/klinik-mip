@@ -8,7 +8,7 @@ use App\Models\NamaAlkes;
 use App\Models\Pasien;
 
 use App\Models\NamaPenyakit;
-
+use App\Models\Obat;
 use App\Models\RawatJalan;
 use App\Models\SatuanObat;
 use App\Models\SubKlasifikasi;
@@ -39,11 +39,11 @@ class RawatJalanController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $namaalkes = NamaAlkes::get();
         $alatkesehatan = Alkes::get();
         $satuanobat = SatuanObat::get();
+        $obat = Obat::get();
 
-        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
+        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     public function tambahrawatjalan(Request $request)
@@ -73,9 +73,9 @@ class RawatJalanController extends Controller
     public function viewrawatjalan($id)
     {
         $data['jalan'] = RawatJalan::find($id);
-        $data['satuanobat'] = SatuanObat::all();
         $data['alkes'] = Alkes::all();
         $data['nama_penyakit'] = NamaPenyakit::all();
+        $data['obat'] = Obat::get();
 
         return view('petugas.rawatjalan.view_rawat_jalan', $data);
     }
@@ -86,11 +86,11 @@ class RawatJalanController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $namaalkes = NamaAlkes::get();
         $alatkesehatan = Alkes::get();
         $satuanobat = SatuanObat::get();
+        $obat = Obat::get();
 
-        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('rawat_jalan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     function changerawatjalan(Request $request, $id) {

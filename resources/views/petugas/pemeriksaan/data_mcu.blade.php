@@ -40,7 +40,7 @@
                                             <th>Tanggal</th>
                                             <th>ID MCU Awal</th>
                                             <th>Nama</th>
-                                            <th>Hasil Pemantauan</th>
+                                            <th>Hasil Rekomendasi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -51,7 +51,7 @@
                                                     {{ tanggal($awal->created_at) }}</td>
                                                 <td class="text-center">{{ $awal->id_mcu_awal }}</td>
                                                 <td>{{ $awal->pasien->nama_pasien }}</td>
-                                                <td>{{ $awal->hasilpemantauan->nama_pemantauan }}</td>
+                                                <td>{{ cekRekomendasi($awal->hasil_rekomendasi) }}</td>
                                                 <td>
                                                     <div class="btn-group" role="group"
                                                         aria-label="Basic outlined example">
@@ -97,8 +97,8 @@
                                             <th>Tanggal</th>
                                             <th>ID MCU</th>
                                             <th>Nama</th>
-                                            <th>Jenis MCU</th>
                                             <th>Jenis Pemeriksaan</th>
+                                            {{-- <th>Jenis Pemeriksaan</th> --}}
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -112,8 +112,8 @@
                                                 <td class="text-center">{{ $lanjut->id_mcu_lanjutan }}</td>
                                                 <td>{{ $lanjut->pasien->nama_pasien }}</td>
                                                 <td class="text-center">{{ cekMcu($lanjut->jenis_mcu) }}</td>
-                                                <td class="text-center">{{ cekMcu($lanjut->jenis_pemeriksaan) }}</td>
-                                                <td class="text-center">{{ $lanjut->status }}</td>
+                                                {{-- <td class="text-center">{{ cekMcu($lanjut->jenis_pemeriksaan) }}</td> --}}
+                                                <td class="text-center">{{ cekRekomendasi($lanjut->status) }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group"
                                                         aria-label="Basic outlined example">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HasilPemantauan;
+use App\Models\Obat;
 use App\Models\SatuanObat;
 use App\Models\TandaVital;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ class TandaVitalController extends Controller
         $data['id_rawat_inap']=$id;
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::all();
         return view('component/form_tambah_vital', $data);
     }
 
@@ -42,7 +44,7 @@ class TandaVitalController extends Controller
         $data['tandavital'] = TandaVital::find($id);
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
-
+        $data['obat'] = Obat::all();
         return view('component/form_ubah_vital', $data);
     }
 
@@ -70,7 +72,7 @@ class TandaVitalController extends Controller
     {
         $data['tandavital']= TandaVital::find($id);
         $data['hasilpemantauan'] = HasilPemantauan::all();
-        $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::all();
         
         return view('component/view_vital', $data);
     }

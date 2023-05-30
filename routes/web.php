@@ -238,6 +238,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/add/alkes', [AlkesController::class, 'tambahalkes'])->name('obat.tambahalkes');
     Route::get('/ubah/alkes/{id}', [AlkesController::class, 'ubahalkes'])->name('obat.ubahalkes');
     Route::post('/ubah/alkes/{id}', [AlkesController::class, 'changealkes'])->name('obat.changealkes');
+    Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
 
     Route::get('/nama/alkes', [AlkesController::class, 'namaalkes'])->name('obat.namaalkes');
     Route::get('/add/nama/alkes', [AlkesController::class, 'addnamaalkes'])->name('obat.addnamaalkes');

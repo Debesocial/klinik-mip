@@ -13,11 +13,12 @@ class CreateMcuAwalsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('mcu_awals', function (Blueprint $table) {
             $table->id();
             $table->string('id_mcu_awal');
             $table->foreignId('pasien_id')->constrained();
-            $table->foreignId('hasil_pemantauan_id')->constrained();
+            $table->foreignId('hasil_rekomendasi');
             $table->text('anjuran');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -25,6 +26,7 @@ class CreateMcuAwalsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

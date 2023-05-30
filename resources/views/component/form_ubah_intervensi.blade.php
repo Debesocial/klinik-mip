@@ -196,7 +196,7 @@
                                 <select name="" id="alat_kesehatan" class="form-select">
                                     <option value="" selected disabled>Pilihi alat kesehatan </option>
                                     @foreach ($alatkesehatan as $alat)
-                                        <option value="{{ $alat->id }}">{{ $alat->nama_alkes->nama_alkes }}
+                                        <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -363,7 +363,7 @@
         }
     }
 
-    var alkes = @json($namaalkes);
+    var alkes = @json($alatkesehatan);
     var tindakan = {!! $intervensi->tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
@@ -407,7 +407,7 @@
             var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
             html += `<tr> 
                     <td>` + data.nama_tindakan + `</td>
-                    <td>` + namaalkes.nama_alkes + `</td>
+                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                     <td>` + data.jumlah_pengguna + `</td>
                     <td>` + data.keterangan + `</td>
                     <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>

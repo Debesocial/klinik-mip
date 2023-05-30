@@ -154,7 +154,7 @@
                                     <tr>
                                         <td class="text-center">{{$loop->iteration}}</td>
                                         <td>{{$tindakan->nama_tindakan}}</td>
-                                        <td class="text-center">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes->nama_alkes}}</td>
+                                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
                                         <td class="text-center">{{$tindakan->jumlah_pengguna}}</td>
                                         <td>{{$tindakan->keterangan}}</td>
                                     </tr>
@@ -179,10 +179,13 @@
                         </thead>
                         <tbody>
                             @foreach (json_decode($jalan->resep) as $resep)
+                                @php
+                                    $dataobat = $obat->find($resep->nama_obat)
+                                @endphp
                                 <tr>
                                     <td class="text-center">{{$loop->iteration}}</td>
-                                    <td class="text-center">{{$resep->nama_obat}}</td>
-                                    <td class="text-center">{{$resep->jumlah_obat}} {{$satuanobat->find($resep->satuan_obat)->satuan_obat}}</td>
+                                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/{{$dataobat->id}}', 'Detail Obat')">{{$dataobat->nama_obat}}</a></td>
+                                    <td class="text-center">{{$resep->jumlah_obat}} {{$dataobat->satuan_obat->satuan_obat}}</td>
                                     <td>{{$resep->aturan_pakai}}</td>
                                     <td>{{$resep->keterangan_resep}}</td>
                                 </tr>
@@ -194,6 +197,45 @@
         </ul>
     </div>
 </div>
-  
+<!-- Modal -->
+<div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false"
+aria-labelledby="modalRawatInap2Label" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modalRawatInap2_body">
+            ...
+        </div>
+        
+    </div>
+</div>
+</div>
+
+@section('js')
+    <script>
+        function tampilModalRawatInap2(url, title) {
+            var modal = $('#modalRawatInap2');
+
+            $('#modalRawatInap2_title').text(title);
+            var request = $.ajax({
+                method: 'GET',
+                url: url,
+            });
+            request.done(function(html) {
+                $('#modalRawatInap2_body').html(html);
+            })
+
+            modal.modal('show');
+        }
+
+        function hideModal(id) {
+            var modal = $('#' + id);
+            modal.modal('hide');
+        }
+    </script>
+@endsection
 
 @endsection

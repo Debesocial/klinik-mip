@@ -85,7 +85,8 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $tindakan->nama_tindakan }}</td>
-                                <td>{{ $alatkesehatan->find($tindakan->alat_kesehatan)->nama_alkes->nama_alkes }}</td>
+                                <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alatkesehatan->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
+                                {{-- <td>{{ $alatkesehatan->find($tindakan->alat_kesehatan)->nama_alkes }}</td> --}}
                                 <td>{{ $tindakan->jumlah_pengguna }}</td>
                                 <td>{{ $tindakan->keterangan }}</td>
                             </tr>

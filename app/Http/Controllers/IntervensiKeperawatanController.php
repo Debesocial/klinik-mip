@@ -13,7 +13,6 @@ class IntervensiKeperawatanController extends Controller
     {
         $data['id_rawat_inap'] = $id;
         $data['alatkesehatan'] = Alkes::all();
-        $data['namaalkes'] = NamaAlkes::all();
 
         return view('component/form_tambah_intervensi', $data);
     }
@@ -32,7 +31,7 @@ class IntervensiKeperawatanController extends Controller
     {
         $data['intervensi'] = IntervensiKeperawatan::find($id);
         $data['alatkesehatan'] = Alkes::all();
-        $data['namaalkes'] = NamaAlkes::all();
+        
 
         return view('component/form_ubah_intervensi', $data);
     }

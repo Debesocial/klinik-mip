@@ -593,13 +593,13 @@ class SuperAdminController extends Controller
         // dd($request);
         $validatedData = $request->validate([
             'pasien_id' => 'required',
-            'hasil_pemantauan_id' => 'required',
+            'hasil_rekomendasi' => 'required',
             'anjuran' => 'required',
         ]);
 
        $save =  McuAwal::create([
             'pasien_id' => $request->pasien_id,
-            'hasil_pemantauan_id' => $request->hasil_pemantauan_id,
+            'hasil_rekomendasi' => $request->hasil_rekomendasi,
             'anjuran' => $request->anjuran,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,

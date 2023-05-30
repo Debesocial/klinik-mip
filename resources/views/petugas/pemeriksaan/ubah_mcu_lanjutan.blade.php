@@ -148,7 +148,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Jenis MCU <b
+                                            <label for="" class="form-label">Jenis Pemeriksaan <b
                                                     class="text-danger">*</b></label>
                                             <select name="jenis_mcu" id="jenis_mcu">
                                                 @foreach ($jenismcu as $jenis)
@@ -162,7 +162,7 @@
                                                 Data sudah benar
                                             </div>
                                             <div class="invalid-feedback">
-                                                Jenis MCU harus diisi.
+                                                Jenis pemeriksaan harus diisi.
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -179,16 +179,9 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Jenis Pemeriksaan <b
-                                                    class="text-danger">*</b></label>
-                                            <select name="jenis_pemeriksaan" id="jenis_pemeriksaan">
-
-                                                @foreach ($jenismcu as $jenis)
-                                                    <option value="{{ $jenis->id }}"
-                                                        {{ $jenis->id == $mculanjutan->jenis_pemeriksaan ? 'selected' : '' }}>
-                                                        {{ $jenis->jenis }}</option>
-                                                @endforeach
-                                            </select>
+                                            {{-- <label for="" class="form-label">Jenis Pemeriksaan <b
+                                                    class="text-danger">*</b></label> --}}
+                                            <input type="hidden" name="jenis_pemeriksaan" id="jenis_pemeriksaan" value="{{$mculanjutan->jenis_pemeriksaan}}">
                                             <div class="valid-feedback">
                                                 Data sudah benar
                                             </div>
@@ -199,13 +192,9 @@
                                         <label for="" class="form-label">Status <b
                                                 class="text-danger">*</b></label>
                                         <select name="status" id="status">
-
-                                            <option value="aktif"
-                                                {{ 'aktif' == $mculanjutan->status ? 'selected' : '' }}>Aktif
-                                            </option>
-                                            <option value="Non Aktif"
-                                                {{ 'Non Aktif' == $mculanjutan->status ? 'selected' : '' }}>Non Aktif
-                                            </option>
+                                            @foreach (hasilRekomendasi() as $item)
+                                                <option value="{{$item->id}}" {{($item->id==$mculanjutan->status)?'selected':''}}>{{$item->nama}}</option>
+                                            @endforeach
                                         </select>
                                         <div class="valid-feedback">
                                             Data sudah benar
@@ -322,17 +311,17 @@
                                         <table class="table table-borderless table-hover">
                                             <tbody>
                                                 <tr>
-                                                    <th>Jenis MCU</th>
+                                                    <th>Jenis Pemeriksaan</th>
                                                     <td id="_jenis_mcu"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Tanggal</th>
                                                     <td id="_tanggal_pemeriksaan"></td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <th>Jenis Pemeriksaan</th>
                                                     <td id="_jenis_pemeriksaan"></td>
-                                                </tr>
+                                                </tr> --}}
                                                 <tr>
                                                     <th>Status</th>
                                                     <td id="_status"></td>

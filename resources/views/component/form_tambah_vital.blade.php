@@ -141,28 +141,26 @@
                                 <div class="mb-2">
                                     <label for="" class="form-label">Nama Obat <b
                                             class="text-danger">*</b></label>
-                                    <input type="text" id="nama_obat" class="form-control">
+                                    <select id="nama_obat" class="form-select">
+                                        <option value="">Pilih Obat</option>
+                                        @foreach ($obat as $ob)
+                                            <option value="{{$ob->id}}">{{$ob->nama_obat}}</option>
+                                        @endforeach
+                                    </select>
                                     {!! validasi('Nama obat') !!}
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="form-label">Jumlah Obat <b
                                             class="text-danger">*</b></label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="number" id="jumlah_obat" class="form-control">
-                                            {!! validasi('Jumlah obat') !!}
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="input-group">
+                                                    <input type="number" id="jumlah_obat" class="form-control">
+                                                    <span class="input-group-text" id="satuan_obat">Satuan</span>
+                                                    {!! validasi('Jumlah obat') !!}
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <select id="satuan_obat" class="form-select">
-                                                <option value="" selected disabled>Pilih satuan</option>
-                                                @foreach ($satuanobat as $satuan)
-                                                    <option value="{{ $satuan->id }}">{{ $satuan->satuan_obat }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            {!! validasi('Satuan Obat') !!}
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="form-label">Aturan Pakai <b
@@ -236,7 +234,7 @@
         linear: true,
         animation: true
     })
-    select2_satuan =$('select#satuan_obat').select2({
+    select2_obat =$('select#nama_obat').select2({
         theme: "bootstrap-5",
         selectionCssClass: 'select2--small',
         dropdownCssClass: 'select2--small',
@@ -294,9 +292,10 @@
         }
 
     }
-    id_resep = ['nama_obat', 'jumlah_obat', 'satuan_obat', 'aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
+    id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
     resep = [];
     var satuanobat = @json($satuanobat);
+    var obat = @json($obat);
     function addResep() {
         var temp = {};
         var validated = true;
@@ -320,9 +319,10 @@
     function drawformResep() {
         html = ``;
         resep.forEach((data, key) => {
-            satuan = satuanobat.find(st => st.id == data.satuan_obat);
+            namaobat = obat.find(ob => ob.id == data.nama_obat); 
+            satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
             html += `<tr> 
-                        <td>` + data.nama_obat + `</td>
+                    <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
                         <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                         <td>` + data.aturan_pakai + `</td>
                         <td>` + data.keterangan_resep + `</td>
@@ -338,8 +338,8 @@
     function clearformResep() {
         id_resep.forEach(id => {
             form = $('#' + id);
-            if (id == 'satuan_obat') {
-                form.val('').trigger('change');
+            if (id == 'nama_obat') {
+                select2_obat.val(null).trigger('change');
             }
             form.removeClass('is-valid');
             form.val('');
@@ -363,11 +363,11 @@
         deleteResep(id);
         id_resep.forEach(idt => {
             form = $('#'+idt);
-            if (idt!='satuan_obat') {
+            if (idt!='nama_obat') {
                 form.val(temp[idt]);
             } else {
                 form.children().removeAttr('selected');
-                select2_satuan.val(temp.satuan_obat).trigger('change');
+                select2_obat.val(temp.nama_obat).trigger('change');
             }
         });
     }
@@ -382,6 +382,9 @@
             var id = $(this).val();
             if (id != null || id != '') {
                 $(this).removeClass('is-invalid');
+                if ($(this).attr('id')=='nama_obat') {
+                    setSatuan($(this).val());
+                }
             }
             if($(this).attr('id')=='gejala' ){
                 if($(this).val()==6){
@@ -400,5 +403,14 @@
         })
 
     })
+    function setSatuan(i) {
+        if (i==null || i=='') {
+            $('#satuan_obat').text('Satuan');
+        }else{
+            namaobat = obat.find(ob => ob.id == i);
+            satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
+            $('#satuan_obat').text(satuan.satuan_obat);
+        }
+    }
     
 </script>

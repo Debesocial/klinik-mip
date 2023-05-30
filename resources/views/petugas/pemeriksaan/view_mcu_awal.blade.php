@@ -62,7 +62,7 @@
                         <tbody>
                             <tr>
                                 <th>Hasil Rekomendasi</th>
-                                <td id="_hasil_pemantauan_id">: {{ $mcuawal->hasilpemantauan->nama_pemantauan }}</td>
+                                <td id="_hasil_pemantauan_id">: {{ cekRekomendasi($mcuawal->hasil_rekomendasi) }}</td>
                             </tr>
                             <tr>
                                 <th>Anjuran</th>

@@ -10,14 +10,7 @@ class McuAwal extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'id_mcu_awal',
-        'anjuran',
-        'hasil_pemantauan_id',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded=['id'];
 
     public static function boot()
     {

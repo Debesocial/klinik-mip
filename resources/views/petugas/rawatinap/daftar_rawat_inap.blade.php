@@ -45,12 +45,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($rawat_inap as $inap)
+                        @foreach ($rawat_inap->sortByDesc('mulai_rawat') as $inap)
                         <tr class="">
                             <td class="text-center">{{ $inap->id_rawat_inap }}</td>
                             <div hidden>{{ $inap->pasien->perusahaan->nama_perusahaan_pasien . $inap->pasien->divisi->nama_divisi_pasien . $inap->pasien->jabatan->nama_jabatan . $inap->pasien->keluarga}}</div>
                             <td><a href="#" onclick="tampilModalPasien({{ json_encode($inap->pasien) }})">{{ $inap->pasien->nama_pasien }}</a></td>
-                            <td class="text-center">{{ tanggal($inap->mulai_rawat) }}</td>
+                            <td class="text-center">{{ tanggal($inap->mulai_rawat, false) }}</td>
                             <td class="text-center">{!! $inap->berakhir_rawat? tanggal($inap->berakhir_rawat, false): '<span class="badge bg-primary">Masih dirawat</span>' !!}</td>
                             <td class="text-center" class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">

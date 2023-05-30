@@ -158,6 +158,13 @@ class AlkesController extends Controller
         return redirect('/golongan/alkes')->with('message', 'Berhasil Menambahkan Golongan Alat Kesehatan!');
     }
 
+    public function modalDetail($id)
+    {
+        $data['alkes'] = Alkes::find($id);
+
+        return view('/component/detail_alkes', $data);
+    }
+
     /**
      * Display the specified resource.
      *

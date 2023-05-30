@@ -43,3 +43,28 @@ function diffDay($awal, $akhir){
 
     return $diff . ' hari';
 }
+
+
+function hasilRekomendasi(){
+    $data = [
+        (object)['id'=>1, 'nama'=>'Fit to Work'],
+        (object)['id'=>2, 'nama'=>'Fit with Note'],
+        (object)['id'=>3, 'nama'=>'Temporary Unfit'],
+        (object)['id'=>4, 'nama'=>'Unfit'],
+    ];
+
+    return (object) $data;
+}
+
+function cekRekomendasi($id)
+{
+    if ($id == 1) {
+        return 'Fit to Work';
+    } elseif ($id == 2) {
+        return 'Fit with Note';
+    } elseif ($id == 3) {
+        return 'Temporary Unfit';
+    }elseif ($id == 4) {
+        return 'Infit';
+    }
+}

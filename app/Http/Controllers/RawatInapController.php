@@ -7,6 +7,7 @@ use App\Models\HasilPemantauan;
 use App\Models\KlasifikasiPenyakit;
 use App\Models\NamaAlkes;
 use App\Models\NamaPenyakit;
+use App\Models\Obat;
 use Illuminate\Http\Request;
 use App\Models\Pasien;
 use App\Models\RawatInap;
@@ -45,11 +46,10 @@ class RawatInapController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $namaalkes = NamaAlkes::get();
         $alatkesehatan = Alkes::get();
         $satuanobat = SatuanObat::get();
-
-        return view('petugas.rawatinap.add_rawat_inap', compact('pasien_id', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
+        $obat = Obat::get();
+        return view('petugas.rawatinap.add_rawat_inap', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     public function tambahrawatinap(Request $request)
@@ -82,12 +82,12 @@ class RawatInapController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $namaalkes = NamaAlkes::get();
         $alatkesehatan = Alkes::get();
         $satuanobat = SatuanObat::get();
+        $obat = Obat::get();
 
         return view('petugas.rawatinap.ubah_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'subKlasifikasi',
-        'klasifikasi', 'namaalkes', 'alatkesehatan', 'satuanobat'));
+        'klasifikasi','alatkesehatan', 'satuanobat', 'obat'));
     }
 
     function changerawatinap(Request $request, $id) {
@@ -116,6 +116,7 @@ class RawatInapController extends Controller
         $data['inap'] = RawatInap::find($id);
         $data['alkes'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::all();
 
         return view('component/detail_rawat_inap',$data);
     }

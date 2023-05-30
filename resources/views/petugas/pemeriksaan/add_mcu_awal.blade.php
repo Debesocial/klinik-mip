@@ -165,11 +165,11 @@
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label for="" class="form-label">Hasil Rekomendasi <b class="text-danger">*</b></label>
-                                            <select class="choices form-select" name="hasil_pemantauan_id" id="hasil_pemantauan_id">
-                                                <option disabled selected>Pilih Pemantauan</option>
-                                                @foreach ($hasilpemantauan as $hasil)
+                                            <select class="choices form-select" name="hasil_rekomendasi" id="hasil_rekomendasi">
+                                                <option disabled selected>Pilih rekomendasi</option>
+                                                @foreach ($hasilrekomendasi as $hasil)
                                                 <option value="{{ $hasil->id }}">{{
-                                                    $hasil->nama_pemantauan }}</option>
+                                                    $hasil->nama }}</option>
                                                 @endforeach
                                             </select>
                                             <div class="valid-feedback">
@@ -247,7 +247,7 @@
                                             <tbody>
                                                 <tr>
                                                     <th>Hasil Rekomendasi</th>
-                                                    <td id="_hasil_pemantauan_id"></td>
+                                                    <td id="_hasil_rekomendasi"></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Anjuran</th>
@@ -346,7 +346,7 @@
 
             function lanjut2() {
                 var validated = true;
-                var inputs = ['hasil_pemantauan_id', 'anjuran'];
+                var inputs = ['hasil_rekomendasi', 'anjuran'];
                 inputs.forEach(input => {
                     var value_input = $('[name="' + input + '"]').val();
                     if (value_input == ""||value_input == ' '||value_input == null) {
@@ -367,8 +367,8 @@
 
             function setReview(id, val){
                 var td = $('#_'+id);
-                if (id=='hasil_pemantauan_id') {
-                    val = $('#select2-hasil_pemantauan_id-container').text();
+                if (id=='hasil_rekomendasi') {
+                    val = $('#select2-hasil_rekomendasi-container').text();
                 }
                 td.text(': '+val);
             }

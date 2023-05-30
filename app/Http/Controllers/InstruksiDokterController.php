@@ -48,7 +48,7 @@ class InstruksiDokterController extends Controller
     {
         $data['instruksidokter'] = InstruksiDokter::find($id);
         $data['alatkesehatan'] = Alkes::all();
-        $data['satuanobat'] = SatuanObat::all();
+        $data['obat'] = Obat::all();
 
         return view('/component/view_instruksi_dokter', $data);
     }
