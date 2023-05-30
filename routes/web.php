@@ -113,6 +113,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/rawat/inap/dokter', [SuperAdminController::class, 'rawatinapdokter'])->name('superadmin.rawatinapdokter');
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
     Route::get('/detail/rawatinap/{id}', [RawatInapController::class, 'detail']);
+    Route::get('/selesai-inap/{id}', [RawatInapController::class, 'selesaiInap']);
 
     Route::get('/instruksi_dokter/form_tambah/{id}', [InstruksiDokterController::class, 'tampilFormTambah']);
     Route::get('/instruksi_dokter/form_edit/{id}', [InstruksiDokterController::class, 'tampilFormUbah']);

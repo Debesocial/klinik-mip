@@ -120,4 +120,12 @@ class RawatInapController extends Controller
 
         return view('component/detail_rawat_inap',$data);
     }
+
+    public function selesaiInap($id)
+    {
+        $rawatInap = RawatInap::find($id);
+        $rawatInap->berakhir_rawat = date('Y-m-d');
+        $rawatInap->save();
+        return redirect("/view/rawat/inap/" . $id)->with('message', 'Berhasil Merubah Status Rawat Inap!');
+    }
 }

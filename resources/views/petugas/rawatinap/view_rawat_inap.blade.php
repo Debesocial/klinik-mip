@@ -86,7 +86,7 @@
                                         <td id="_berakhir_rawat">
                                             : {!! $rawat_inap->berakhir_rawat
                                                 ? tanggal($rawat_inap->berakhir_rawat, false)
-                                                : '<span class="badge bg-primary">Masih dirawat</span>' !!}
+                                                : '<a href="/selesai-inap/'.$rawat_inap->id.'" class="btn btn-primary btn-sm">Selesaikan Rawat Inap <i class="bi bi-check-square"></i></a>' !!}
                                         </td>
                                     </tr>
                                 </tbody>
