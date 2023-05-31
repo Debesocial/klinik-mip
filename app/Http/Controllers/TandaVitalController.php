@@ -72,7 +72,7 @@ class TandaVitalController extends Controller
     {
         $data['tandavital']= TandaVital::find($id);
         $data['hasilpemantauan'] = HasilPemantauan::all();
-        $data['obat'] = Obat::all();
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
         
         return view('component/view_vital', $data);
     }

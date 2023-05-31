@@ -47,7 +47,6 @@
                         @foreach ($rawat_jalan->sortByDesc('tanggal_berobat') as $jalan)
                         <tr>
                             <td class="text-center">{{ $jalan->id_rawat_jalan }}</td>
-                            <div hidden>{{ $jalan->pasien->perusahaan->nama_perusahaan_pasien . $jalan->pasien->divisi->nama_divisi_pasien . $jalan->pasien->jabatan->nama_jabatan . $jalan->pasien->keluarga}}</div>
                             <td><a href="#" onclick="tampilModalPasien({{ json_encode($jalan->pasien) }})">{{ $jalan->pasien->nama_pasien }}</a></td>
                             <td class="text-center">{{ tanggal($jalan->tanggal_berobat, false) }}</td>
                             <td class="text-center">

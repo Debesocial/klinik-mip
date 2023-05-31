@@ -143,6 +143,10 @@
                                 <table>
                                     <tbody>
                                         <tr>
+                                            <th>Kategori</th>
+                                            <td id="modal_kategori"></td>
+                                        </tr>
+                                        <tr>
                                             <th>Perusahaan</th>
                                             <td id="modal_perusahaan"></td>
                                         </tr>

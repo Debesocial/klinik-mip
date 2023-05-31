@@ -301,6 +301,7 @@
     id_resep = ['nama_obat', 'jumlah_obat','aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
     resep = {!! $tandavital->terapi !!};
     var satuanobat = @json($satuanobat);
+    var obat = @json($obat);
     function addResep() {
         var temp = {};
         var validated = true;

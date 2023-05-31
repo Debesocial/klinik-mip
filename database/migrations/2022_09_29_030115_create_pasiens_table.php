@@ -19,9 +19,9 @@ class CreatePasiensTable extends Migration
             $table->foreignId('kategori_pasien_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('NIK', 16)->nullable();
             $table->string('penduduk')->nullable();
-            $table->foreignId('perusahaan_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
-            $table->foreignId('divisi_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
-            $table->foreignId('jabatan_id')->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('perusahaan_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('divisi_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->foreignId('jabatan_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->foreignId('keluarga_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('lain')->nullable();
             $table->string('nama_pasien', 50);

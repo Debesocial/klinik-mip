@@ -98,16 +98,20 @@
                                                         <table>
                                                             <tbody>
                                                                 <tr>
+                                                                    <th>Kategori</th>
+                                                                    <td id="kategori">: </td>
+                                                                </tr>
+                                                                <tr>
                                                                     <th>Perusahaan</th>
-                                                                    <td id="perusahaan">: {{ $narkoba->pasien->perusahaan->nama_perusahaan_pasien }}</td>
+                                                                    <td id="perusahaan">: </td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Divisi</th>
-                                                                    <td id="divisi">: {{ $narkoba->pasien->divisi->nama_divisi_pasien }}</td>
+                                                                    <td id="divisi">:</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jabatan</th>
-                                                                    <td id="jabatan">: {{ $narkoba->pasien->jabatan->nama_jabatan }}</td>
+                                                                    <td id="jabatan">:</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th>Jenis Kelamin</th>
@@ -504,6 +508,7 @@
     </div>
 </section>
 @section('js')
+    <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
     <script>
         var value_obatobatan = $('[name="obat-obatan"]:checked').val();
         var dataAwal = @json($narkoba);
@@ -526,6 +531,7 @@
                     $('#pertanyaan-obatobatan').removeClass().addClass('col');
                 }
             })
+            setPasien(dataAwal.pasien);
         })
         function setObatObatan(value) {
             value_obatobatan = value;

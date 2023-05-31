@@ -169,7 +169,7 @@
                                     <select name="diagnosa" id="diagnosa" class="form-select">
                                         <option value="" selected disabled>Pilih Penyakit</option>
                                         @foreach ($namapenyakit as $penyakit)
-                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
+                                            {{-- <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div> --}}
                                             <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                         @endforeach
                                     </select>
@@ -189,7 +189,7 @@
                                     <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
                                         <option value="" selected disabled>Pilih Penyakit</option>
                                         @foreach ($namapenyakit as $penyakit)
-                                            <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div>
+                                            {{-- <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div> --}}
                                             <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                         @endforeach
                                     </select>

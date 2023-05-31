@@ -8,7 +8,6 @@
 
 
 
-<div hidden>{{ $pasien->perusahaan->nama_perusahaan_pasien }} {{ $pasien->jabatan->nama_jabatan }} {{ $pasien->divisi->nama_divisi }}{{ $pasien->keluarga->nama_keluarga }}</div>
 
 <div class="container">
     <h5 class="text-center">Rekam Medis {{ $pasien->id_rekam_medis }}</h5>

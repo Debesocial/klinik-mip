@@ -64,7 +64,7 @@ class SuperAdminController extends Controller
 
     public function periksanarkoba()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
         $test = TestUrin::all();
 
 
@@ -1169,7 +1169,7 @@ class SuperAdminController extends Controller
         $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
         $end_week = $now->endOfWeek()->format('m-d');
 
-        $pasien =  Pasien::all();
+        $pasien =  Pasien::with(['kategori'])->get();
 
         return view('petugas.superadmin.data_pasien')->with('pasiens', $pasien);
     }
@@ -1207,25 +1207,6 @@ class SuperAdminController extends Controller
     }
     public function tambahpasien(Request $request)
     {
-
-
-        $validatedData = $request->validate([
-            'kategori_pasien_id' => 'required',
-            'NIK' => 'required',
-            'perusahaan_id' => 'required',
-            'divisi_id' => 'required',
-            'jabatan_id' => 'required',
-            'nama_pasien' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'alamat' => 'required',
-            'pekerjaan' => 'required',
-            'telepon' => 'required',
-            'alergi_obat' => 'required',
-            'hamil_menyusui' => 'required'
-        ]);
-
         // $id_rekam_medis = IdGenerator::generate(['table' => 'pasiens', 'field' => 'id_rekam_medis', 'length' => 10, 'prefix' =>'RM-']);
 
         $keluarga = Keluarga::create([
@@ -1265,6 +1246,7 @@ class SuperAdminController extends Controller
             'pekerjaan' => $request->pekerjaan,
             'telepon' => $request->telepon,
             'email' => $request->email,
+            'lain' =>$request->lain,
             'alergi' => $request->alergi,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
@@ -1301,6 +1283,7 @@ class SuperAdminController extends Controller
         $pasien->NIK = $request->input('NIK');
         $pasien->penduduk = $request->input('penduduk');
         $pasien->perusahaan_id = $request->input('perusahaan_id');
+        $pasien->lain = $request->input('lain');
         $pasien->divisi_id = $request->input('divisi_id');
         $pasien->jabatan_id = $request->input('jabatan_id');
         $pasien->nama_pasien = $request->input('nama_pasien');

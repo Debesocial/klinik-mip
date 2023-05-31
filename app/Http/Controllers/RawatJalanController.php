@@ -29,13 +29,15 @@ class RawatJalanController extends Controller
     public function daftarrawatjalan()
     {
         $rawat_jalan = RawatJalan::get();
+        $rawat_jalan->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori']);
+
 
         return view('petugas.rawatjalan.daftar_rawat_jalan', compact('rawat_jalan'));
     }
 
     public function addrawatjalan()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
@@ -72,10 +74,10 @@ class RawatJalanController extends Controller
 
     public function viewrawatjalan($id)
     {
-        $data['jalan'] = RawatJalan::find($id);
+        $data['jalan'] = RawatJalan::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori'])->find($id);
         $data['alkes'] = Alkes::all();
-        $data['nama_penyakit'] = NamaPenyakit::all();
-        $data['obat'] = Obat::get();
+        $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
 
         return view('petugas.rawatjalan.view_rawat_jalan', $data);
     }
@@ -83,6 +85,7 @@ class RawatJalanController extends Controller
     public function ubahrawatjalan($id)
     {
         $rawat_jalan = RawatJalan::find($id);
+        $rawat_jalan->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori']);
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();

@@ -7,9 +7,9 @@ function tampilModalPasien(data) {
     $('#modal_ttl').text(': ' + data.tempat_lahir + ', ' + tanggal(data.tanggal_lahir, false));
     $('#modal_alamat').text(': ' + data.alamat);
     $('#modal_pekerjaan').text(': ' + data.pekerjaan);
-    $('#modal_perusahaan').text(': ' + data.perusahaan.nama_perusahaan_pasien);
-    $('#modal_divisi').text(': ' + data.divisi.nama_divisi_pasien);
-    $('#modal_jabatan').text(': ' + data.jabatan.nama_jabatan);
+    $('#modal_perusahaan').text(': ' +cekNull(data.perusahaan?.nama_perusahaan_pasien));
+    $('#modal_divisi').text(': ' + cekNull(data.divisi?.nama_divisi_pasien));
+    $('#modal_jabatan').text(': ' + cekNull(data.jabatan?.nama_jabatan));
     $('#modal_jenis_kelamin').text(': ' + data.jenis_kelamin);
     $('#modal_telepon').text(': ' + data.telepon);
     $('#modal_email').text(': ' + data.email);
@@ -21,6 +21,10 @@ function tampilModalPasien(data) {
     $('#modal_pekerjaan_keluarga').html(': ' + cekAlergi(data.keluarga.pekerjaan));
     $('#modal_telepon_keluarga').html(': ' + cekAlergi(data.keluarga.telepon));
     $('#modal_email_keluarga').html(': ' + cekAlergi(data.keluarga.email));
+    $('#modal_kategori').html(': ' + cekAlergi(data.kategori.nama_kategori));
+    if(data.perusahaan_id==9){
+        $('td#modal_perusahaan').append(' - <b class="m-0">'+data.lain+'</b>');
+    }
     $('#pp').html('<img id="modal-img" class="img-fluid rounded-circle" src="' + cekImg(data.upload) + '">')
     modalPasien.modal('show')
 }
@@ -45,4 +49,11 @@ function cekTrueFalse(val) {
     } else {
         return '<i class="fas fa-times text-danger"></i>';
     }
+}
+
+function cekNull(val) {
+    if (val==null||val==''||val==undefined){
+        return '-';
+    }
+    return val;
 }

@@ -41,8 +41,7 @@
                             <th>Nama</th>
                             <th>Umur</th>
                             <th>Jenis Kelamin</th>
-                            <th>Perusahaan</th>
-                            <th>Jabatan</th>
+                            <th>Kategori</th>
                             <th>Alergi</th>
                             <th>Hamil/Menyusui</th>
                             <th>Aksi</th>
@@ -64,8 +63,7 @@
                                 echo " Tahun ";
                                 ?></td>
                             <td>{{ $patient['jenis_kelamin'] }}</td>
-                            <td>{{ $patient->perusahaan->nama_perusahaan_pasien }}</td>
-                            <td>{{ $patient->jabatan->nama_jabatan }}</td>
+                            <td>{{$patient->kategori->nama_kategori}}</td>
                             <td class="text-center">
                                 <i class="{{ $patient->alergi_obat == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i>
                                 </td>

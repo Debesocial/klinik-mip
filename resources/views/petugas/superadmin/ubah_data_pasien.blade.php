@@ -23,61 +23,59 @@
                                 <div class="col-md-6 col-12">
                                     <h5 class="mb-4">Data Pasien</h5>
                                     <div class="form-group">
-                                        <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
-                                            <option value="{{   $pasien->kategori_pasien_id  }}">{{ $pasien->kategori->nama_kategori }}</option>
-                                            @foreach ($kategori as $kate)
-                                            <option value="{{ $kate->id }}" {{ $kate->id == $pasien->kategori->id ? 'selected' : '' }}>{{ $kate->nama_kategori }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
                                         <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
                                         <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                     </div>
                                     <div class="form-group">
-                                        <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
-                                        <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="NIK" value="{{ $pasien['NIK'] }}" maxlength="16" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
-                                    </div>
-
-                                    <div class="form-group">
                                         <label for="NIK">Nomor Induk Kependudukan</label>
                                         <input type="text" id="penduduk" class="form-control" placeholder="Masukkan Nomor Induk Kependudukan" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="penduduk" value="{{ $pasien['penduduk'] }}" maxlength="16">
                                     </div>
-
                                     <div class="form-group">
-                                        <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" onchange="yesnoCheck_lainnya(this);">
-                                            
-                                            <option value="9">other</option>
-                                            @foreach ($perusahaan as $peru)
-                                            <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan->id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
+                                        <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
+                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
+                                            <option value="{{ $pasien->kategori_pasien_id  }}">{{ $pasien->kategori->nama_kategori }}</option>
+                                            @foreach ($kategori as $kate)
+                                            <option value="{{ $kate->id }}" {{ $kate->id == $pasien->kategori_pasien_id ? 'selected' : '' }}>{{ $kate->nama_kategori }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="form-group" id="lain" style="display: none;">
-                                        <label for="lain">Lain-lain</label>
-                                        <input type="text" id="lain" class="form-control" placeholder="Masukkan nama perusahaan" name="lain" value="{{ $pasien['lain'] }}" placeholder="lainnya">
+                                    <div id="data-karyawan" class="p-3 border bg-body" style="{{($pasien->kategori_pasien_id==4)?'display:none':''}}">
+                                        <div class="form-group">
+                                            <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
+                                            <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="NIK" value="{{ ($pasien->NIK)??'' }}" maxlength="16" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" >
+                                                <option value="">Pilih perusahaan</option>
+                                                @foreach ($perusahaan as $peru)
+                                                    <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="_lain" style="{{($pasien->perusahaan_id!=9)?'display: none;':''}}">
+                                            <label for="lain">Lain-lain</label>
+                                            <input type="text" id="lain" class="form-control" placeholder="Masukkan nama perusahaan" name="lain" value="{{ ($pasien->lain)??'' }}" placeholder="lainnya">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="divisi_id">Divisi <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="divisi_id" id="divisi_id">
+                                                <option value="">Pilih divisi</option>
+                                                @foreach ($divisi as $div)
+                                                <option value="{{ $div->id }}" {{ $div->id == $pasien->divisi_id ? 'selected' : '' }}>{{ $div->nama_divisi_pasien }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="jabatan_id" id="jabatan_id">
+                                                <option value="">Pilih jabatan</option>
+                                                @foreach ($jabatan as $jabat)
+                                                <option value="{{ $jabat->id }}" {{ $jabat->id == $pasien->jabatan_id ? 'selected' : '' }}>{{ $jabat->nama_jabatan }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="divisi_id">Divisi <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="divisi_id" id="divisi_id">
-                                            
-                                            @foreach ($divisi as $div)
-                                            <option value="{{ $div->id }}" {{ $div->id == $pasien->divisi->id ? 'selected' : '' }}>{{ $div->nama_divisi_pasien }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="jabatan_id" id="jabatan_id">
-                                            
-                                            @foreach ($jabatan as $jabat)
-                                            <option value="{{ $jabat->id }}" {{ $jabat->id == $pasien->jabatan->id ? 'selected' : '' }}>{{ $jabat->nama_jabatan }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    
                                     <div class="form-group">
                                         <label for="tempat_lahir">Tempat Lahir <b class="color-red">*</b></label>
                                         <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" value="{{ $pasien['tempat_lahir'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
@@ -215,6 +213,36 @@
                 $('#alergi').removeClass('is-invalid')
             })
 
+            input_karyawan = ['NIK','perusahaan_id', 'divisi_id', 'jabatan_id'];
+            $('#kategori_pasien_id').change(function(){
+                id = $(this).val();
+                if (id==4) {
+                    $('#data-karyawan').hide()
+                    input_karyawan.forEach(input => {
+                        form = $('#'+input);
+                        form.val('');
+                        form.removeAttr('required');
+                    });
+                }else{
+                    $('#data-karyawan').show();
+                    input_karyawan.forEach(input => {
+                        form = $('#'+input);
+                        form.attr('required', 'required');
+                    });
+                }
+            })
+            $('#perusahaan_id').change(function(){
+                id = $(this).val();
+                inputLain = $('#lain');
+                if (id==9) {
+                    $('#_lain').show();
+                    inputLain.attr('required', 'required')
+                } else {
+                    $('#_lain').hide();
+                    inputLain.removeAttr('required')
+                    inputLain.val('')
+                }
+            })
         })
 
         function cekAlergiObat(status) {
@@ -247,13 +275,3 @@
 
 
 @endsection
-
-<script type="text/javascript">
-    function yesnoCheck_lainnya(that) {
-        if (that.value == "9") {
-            document.getElementById("lain").style.display = "block";
-        } else {
-            document.getElementById("lain").style.display = "none";
-        }
-    }
-</script>

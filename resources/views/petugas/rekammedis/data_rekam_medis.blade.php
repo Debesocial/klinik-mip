@@ -74,7 +74,7 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div >
-                                                        <div hidden>{{ $pas->perusahaan->nama_perusahaan_pasien }} {{ $pas->jabatan->nama_jabatan }} {{ $pas->divisi->nama_divisi }}{{ $pas->keluarga->nama_keluarga }}</div>
+                                                        {{-- <div hidden>{{ $pas->perusahaan->nama_perusahaan_pasien }} {{ $pas->jabatan->nama_jabatan }} {{ $pas->divisi->nama_divisi }}{{ $pas->keluarga->nama_keluarga }}</div> --}}
                                                        <a href="/lihat/rekam/medis/{{ $pas->id }}" ><h6 class="mb-0" style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
                                                     </div>
                                                     <div class="row">
@@ -83,7 +83,7 @@
                                                             <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><small style="display: inline-block;">Detail Pasien <i class="bi bi-box-arrow-up-right"></i></small></a>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <div>Perusahaan: {{ $pas->perusahaan->nama_perusahaan_pasien }} - {{ $pas->jabatan->nama_jabatan }}</div>
+                                                            <div>{{$pas->kategori->nama_kategori}}</div>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <div><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>

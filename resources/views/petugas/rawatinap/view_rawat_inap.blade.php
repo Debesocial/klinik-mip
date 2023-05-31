@@ -45,26 +45,22 @@
                     <div class="row mb-2">
                         <div class="table-responsive">
                             @php
-                                $pasien = $rawat_inap->pasien;
-                                $tanggal_lahir = $pasien->tanggal_lahir;
+                                $tanggal_lahir = $rawat_inap->pasien->tanggal_lahir;
                                 $lahir = new DateTime($tanggal_lahir);
                                 $today = new DateTime('today');
                                 $usia = $today->diff($lahir)->y . ' Tahun';
                             @endphp
-                            <div hidden>
-                                {{ $rawat_inap->pasien->perusahaan->nama_perusahaan_pasien . $rawat_inap->pasien->divisi->nama_divisi_pasien . $rawat_inap->pasien->jabatan->nama_jabatan . $rawat_inap->pasien->keluarga }}
-                            </div>
                             <table class="table table-borderless">
                                 <tbody>
                                     <tr>
                                         <th>Nama Pasien</th>
                                         <td id="nama">: <a href="#"
-                                                onclick="tampilModalPasien({{ json_encode($pasien) }})">{{ $pasien->nama_pasien }}</a>
+                                                onclick="tampilModalPasien({{ json_encode($rawat_inap->pasien) }})">{{ $rawat_inap->pasien->nama_pasien }}</a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>ID Rekam Medis</th>
-                                        <td id="rekam_medis">: {{ $pasien->id_rekam_medis }}</td>
+                                        <td id="rekam_medis">: {{ $rawat_inap->pasien->id_rekam_medis }}</td>
                                     </tr>
                                     <tr>
                                         <th>Data Pemeriksaan Awal</th>

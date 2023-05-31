@@ -26,7 +26,7 @@ class InstruksiDokterController extends Controller
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap'] = $id;
-        $data['namapenyakit'] = NamaPenyakit::all();
+        $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
         $data['alatkesehatan'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::get();
@@ -36,7 +36,7 @@ class InstruksiDokterController extends Controller
     public function tampilFormUbah($id)
     {
         $data['instruksidokter'] = InstruksiDokter::find($id);
-        $data['namapenyakit'] = NamaPenyakit::all();
+        $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
         $data['alatkesehatan'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::get();
@@ -47,8 +47,8 @@ class InstruksiDokterController extends Controller
     public function tampil($id)
     {
         $data['instruksidokter'] = InstruksiDokter::find($id);
-        $data['alatkesehatan'] = Alkes::all();
-        $data['obat'] = Obat::all();
+        $data['alatkesehatan'] = Alkes::get();
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
 
         return view('/component/view_instruksi_dokter', $data);
     }

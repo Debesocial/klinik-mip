@@ -26,7 +26,9 @@ class RawatInapController extends Controller
     {
         // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
-        $nama_penyakit = NamaPenyakit::all();
+        $rawat_inap->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'instruksidokter', 'instruksidokter.namapenyakit','instruksidokter.namapenyakitsekunder']);
+        $nama_penyakit = NamaPenyakit::get();
+        $nama_penyakit->load(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit']);
         $pemantauan = HasilPemantauan::all();
 
 
@@ -35,14 +37,14 @@ class RawatInapController extends Controller
 
     public function daftarrawatinap()
     {
-        $rawat_inap = RawatInap::get();
+        $rawat_inap = RawatInap::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori'])->get();
 
         return view('petugas.rawatinap.daftar_rawat_inap', compact('rawat_inap'));
     }
 
     public function addrawatinap()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();

@@ -101,6 +101,10 @@
                                                         <table class="table table-borderless">
                                                             <tbody>
                                                                 <tr>
+                                                                    <th>Kategori</th>
+                                                                    <td id="kategori"></td>
+                                                                </tr>
+                                                                <tr>
                                                                     <th>Perusahaan</th>
                                                                     <td id="perusahaan"></td>
                                                                 </tr>
@@ -371,10 +375,8 @@
 
         </div>
     </div>
-    <div hidden>
-        {{ $mculanjutan->pasien->perusahaan->id . $mculanjutan->pasien->divisi->id . $mculanjutan->pasien->jabatan->id }}
-    </div>
     @section('js')
+        <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
         <script>
             var stepper2 = new Stepper(document.querySelector('#stepper2'), {
                 linear: true,
@@ -404,29 +406,8 @@
 
                     }
                 })
-                pilihPasien();
+                setPasien(@json($mculanjutan->pasien));
             });
-
-
-            function pilihPasien(data) {
-                var pasien = @json($mculanjutan->pasien);
-                $('[name=pasien_id]').val(pasien.id)
-                $('td#nama').text(": " + pasien.nama_pasien);
-                $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                $('td#alamat').text(": " + pasien.alamat)
-                $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                $('td#telepon').text(": " + pasien.telepon)
-                var email = pasien.email ?? '-'
-                $('td#email').text(": " + email);
-                $('.invalid-feedback').removeClass('d-block')
-                $('#detail_pasien').fadeIn('slow')
-            }
 
 
             function lanjut1() {

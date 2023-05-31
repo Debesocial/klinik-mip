@@ -105,14 +105,10 @@
                                     <div class="col-md-6">
                                         <label class="form-label">Silahkan pilih Pasien berdasarkan <b>ID rekam
                                                 medis</b><b class="color-red"> *</b></label>
-                                        <select id="select_pasien_id" class="form-select" onchange="pilihPasien(this)"
-                                            required>
+                                        <select id="select_pasien_id" class="form-select" required>
                                             <option value="" selected>Pasien</option>
                                             @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}"
-                                                    perusahaan="{{ $pas->perusahaan->nama_perusahaan_pasien }}"
-                                                    divisi={{ $pas->divisi->nama_divisi_pasien }}
-                                                    jabatan={{ $pas->jabatan->nama_jabatan }}>
+                                                <option value="{{ $key }}">
                                                     {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                             @endforeach
                                         </select>
@@ -166,6 +162,10 @@
                                                     <div class="col-md-6">
                                                         <table class="table table-borderless">
                                                             <tbody>
+                                                                <tr>
+                                                                    <th>Kategori</th>
+                                                                    <td id="kategori"></td>
+                                                                </tr>
                                                                 <tr>
                                                                     <th>Perusahaan</th>
                                                                     <td id="perusahaan"></td>
@@ -617,6 +617,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 </div>
 
 @section('js')
+<script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
     <script>
         var stepper2 = new Stepper(document.querySelector('#stepper2'), {
             linear: true,
@@ -664,6 +665,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     $(this).removeClass('is-invalid')
                 }
             })
+            var pasien = @json($pasien_id);
             $('select').change(function() {
                 var id = $(this).val();
                 if (id != null || id != '') {
@@ -671,6 +673,11 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     if ($(this).attr('id')=='nama_obat') {
                         setSatuan($(this).val());
                     }
+                    if ($(this).attr('id')=='select_pasien_id') {
+                        index = $(this).val();
+                        pilihPasien(pasien[index])
+                    }
+
                 }
                 drawTableDiagnodsa();
             })
@@ -683,47 +690,6 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 $('#berakhir_rawat').attr('min',$(this).val())
             })
         });
-
-        
-        function pilihPasien(data) {
-            var pasien_index = $('#select_pasien_id').val();
-            if (pasien_index === '') {
-                $('#detail_pasien').fadeOut('slow')
-                $('#select_pasien_id').removeClass('is-valid')
-                $('#select_pasien_id').addClass('is-invalid')
-                $('.invalid-feedback').addClass('d-block')
-            } else {
-                var pasien = @json($pasien_id)[pasien_index];
-                $('[name=pasien_id]').val(pasien.id)
-                $('td#nama').text(": " + pasien.nama_pasien);
-                $('td#umur').text(": " + getAge(pasien.tanggal_lahir));
-                $('td#rekam_medis').text(": " + pasien.id_rekam_medis);
-                $('td#nomor_induk_karyawan').text(": " + pasien.NIK)
-                $('td#ttl').text(": " + pasien.tempat_lahir + ', ' + pasien.tanggal_lahir)
-                $('td#alamat').text(": " + pasien.alamat)
-                $('td#pekerjaan').text(": " + pasien.pekerjaan)
-                $('td#perusahaan').text(": " + pasien.perusahaan.nama_perusahaan_pasien)
-                $('td#divisi').text(": " + pasien.divisi.nama_divisi_pasien)
-                $('td#jabatan').text(": " + pasien.jabatan.nama_jabatan)
-                $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
-                $('td#telepon').text(": " + pasien.telepon)
-                var email = pasien.email ?? '-'
-                $('td#email').text(": " + email);
-                $('.invalid-feedback').removeClass('d-block')
-                $('#detail_pasien').fadeIn('slow')
-
-            }
-        }
-        function getAge(dateString) {
-            var today = new Date();
-            var birthDate = new Date(dateString);
-            var age = today.getFullYear() - birthDate.getFullYear();
-            var m = today.getMonth() - birthDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                age--;
-            }
-            return age;
-        }
 
         function lanjut1() {
             var pasien_index = $('#select_pasien_id').val();

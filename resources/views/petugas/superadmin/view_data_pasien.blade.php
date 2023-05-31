@@ -33,15 +33,15 @@
                                             </tr>
                                             <tr>
                                                 <th>Perusahaan</th>
-                                                <td>: {{ $pasien->perusahaan->nama_perusahaan_pasien }}</td>
+                                                <td>: {{ $pasien->perusahaan->nama_perusahaan_pasien??'-' }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Divisi</th>
-                                                <td>: {{ $pasien->divisi->nama_divisi_pasien }}</td>
+                                                <td>: {{ ($pasien->divisi->nama_divisi_pasien)??'-' }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Jabatan</th>
-                                                <td>: {{ $pasien->jabatan->nama_jabatan }}</td>
+                                                <td>: {{ $pasien->jabatan->nama_jabatan??'-' }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Tempat/Tanggal Lahir</th>

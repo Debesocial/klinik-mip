@@ -21,7 +21,6 @@
         <h5>Rawat Jalan {{$jalan->id_rawat_jalan}}</h5>
         <div class="row mb-3">
             <div class="col-md-6">
-                <div hidden>{{ $jalan->pasien->perusahaan->nama_perusahaan_pasien . $jalan->pasien->divisi->nama_divisi_pasien . $jalan->pasien->jabatan->nama_jabatan . $jalan->pasien->keluarga}}</div>
                 <div >Nama Pasien : <a href="#" onclick="tampilModalPasien({{ json_encode($jalan->pasien) }})">{{ $jalan->pasien->nama_pasien }} <i class="bi bi-box-arrow-up-right"></i></a></div>
             </div>
             <div class="col-md-6 text-end">

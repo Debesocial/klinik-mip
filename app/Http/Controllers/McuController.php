@@ -21,8 +21,7 @@ class McuController extends Controller
 
     public function halamanTambahMcuAwal()
     {
-        $data['pasien_id'] = Pasien::all();
-       
+        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
         $data['hasilrekomendasi'] = hasilRekomendasi();
         return view('petugas.pemeriksaan.add_mcu_awal', $data);
     }
@@ -31,7 +30,7 @@ class McuController extends Controller
     {
         $data['hasilrekomendasi'] = hasilRekomendasi();
 
-        $data['mcuawal'] = McuAwal::find($id);
+        $data['mcuawal'] = McuAwal::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori'])->find($id);
         return view('petugas.pemeriksaan.ubah_mcu_awal', $data);
     }
 
@@ -56,7 +55,7 @@ class McuController extends Controller
     /**Mcu Lanjutan */
     public function halamanTambahMcuLanjutan()
     {
-        $data['pasien_id'] = Pasien::all();
+        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
         $jenismcu = [(object)['id' => 1, 'jenis' => 'Akhir'], (object)['id' => 2, 'jenis' => 'Berkala'], (object)['id' => 3, 'jenis' => 'Khusus']];
         $data['jenismcu'] = $jenismcu;
         return view('petugas.pemeriksaan.add_mcu_lanjutan', $data);
@@ -81,7 +80,7 @@ class McuController extends Controller
 
     public function halamanUbahMcuLanjutan($id)
     {
-        $data['mculanjutan'] = McuLanjutan::find($id);
+        $data['mculanjutan'] = McuLanjutan::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori'])->find($id);
         $jenismcu = [(object)['id' => 1, 'jenis' => 'Akhir'], (object)['id' => 2, 'jenis' => 'Berkala'], (object)['id' => 3, 'jenis' => 'Khusus']];
         $data['jenismcu'] = $jenismcu;
         return view('petugas.pemeriksaan.ubah_mcu_lanjutan', $data);
