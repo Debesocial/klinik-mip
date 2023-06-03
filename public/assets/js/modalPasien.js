@@ -57,3 +57,29 @@ function cekNull(val) {
     }
     return val;
 }
+
+function tampilModalSurat(url, title) {
+    var modal = $('#modalSurat');
+
+    $('#modalSurat_title').text(title);
+    var request = $.ajax({
+        method: 'GET',
+        url: url,
+    });
+    request.done(function(html) {
+        $('#modalSurat_body').html(html);
+    })
+
+    modal.modal('show');
+}
+
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}

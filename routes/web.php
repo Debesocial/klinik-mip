@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstruksiDokterController;
 use App\Http\Controllers\McuController;
 use App\Http\Controllers\IntervensiKeperawatanController;
+use App\Http\Controllers\SuratController;
 use App\Http\Controllers\TandaVitalController;
 use App\Models\PermintaanMakanan;
 
@@ -394,6 +395,11 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/mcu/lanjutan/{id}', [McuController::class, 'detailMcuLanjutan']);
     Route::get('/ubah_mcu/lanjutan/{id}', [McuController::class, 'halamanUbahMcuLanjutan']);
     Route::post('/ubah_mcu/lanjutan/{id}', [McuController::class, 'ubahMcuLanjutan']);
+
+    //surat
+    Route::get('/print/keterangan-berobat/{id}', [SuratController::class, 'modalKeteranganBerobat']);
+    Route::get('/modal/mcu-awal/{id}', [SuratController::class, 'modalMcuAwal']);
+    Route::get('/print/mcu-awal/{id}', [SuratController::class, 'printMcuAwal']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

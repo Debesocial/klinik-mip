@@ -27,7 +27,8 @@
 
     {{-- Selec2 --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
 
 
     @yield('css')
@@ -52,24 +53,33 @@
         .form-select {
             font-size: .85rem;
         }
-        th{
+
+        th {
             white-space: nowrap;
             vertical-align: top;
         }
-        img#modal-img{
+
+        img#modal-img {
             /* width: auto;
             height: 50%; */
-            aspect-ratio: 1; 
-            object-fit: cover; /* use the one you need */
+            aspect-ratio: 1;
+            object-fit: cover;
+            /* use the one you need */
+        }
+
+        @media print {
+            .noPrint {
+                display: none;
+            }
         }
     </style>
-    
+
 </head>
 
 <body style="font-size: 0.8rem ;">
     @include('layouts.dashboard.sidebar')
     <div id="main" class="mt-4">
-        
+
         <header class="">
             <a href="#" class="burger-btn d-block d-xl-none">
                 <i class="bi bi-justify fs-3"></i>
@@ -95,9 +105,10 @@
                 @yield('container')
             </section>
         </div>
-        
-        {{-- Modal Pasien--}}
-        <div class="modal fade" id="modalPasien" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalPasienLabel" aria-hidden="true">
+
+        {{-- Modal Pasien --}}
+        <div class="modal fade" id="modalPasien" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="modalPasienLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
                 <div class="modal-content rounded-3">
                     <div class="modal-header">
@@ -217,7 +228,25 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn rounded-pill btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn rounded-pill btn-secondary"
+                            data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Surat -->
+        <div class="modal fade" id="modalSurat" data-bs-backdrop="static" data-bs-keyboard="false"
+            aria-labelledby="modalSurat_Label" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalSurat_title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalSurat_body">
+                        ...
                     </div>
                 </div>
             </div>
@@ -260,11 +289,12 @@
                 "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
             },
             scrollY: 320,
-            scrollX:true,
-            ordering:false,
+            scrollX: true,
+            ordering: false,
             'autoWidth': true,
             'colReorder': true,
         })
+
         function cekImg(val) {
             var url = "{{ asset('pasien/foto/file') }}" + '/';
             if (val == null || val == '' || val == ' ') {
@@ -275,18 +305,21 @@
         }
     </script>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             hideLoader();
         })
+
         function showLoader() {
             $('.preloader').show();
         }
+
         function hideLoader(params) {
             $('.preloader').fadeOut('slow');
         }
+
         function submitform(id) {
             $('.preloader').show();
-            $('#'+id).submit();
+            $('#' + id).submit();
         }
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
