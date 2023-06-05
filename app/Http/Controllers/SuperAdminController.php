@@ -661,7 +661,7 @@ class SuperAdminController extends Controller
 
     public function keteranganberobat()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['kategori'])->get();
         $keterangan = KeteranganBerobat::all();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
@@ -716,7 +716,7 @@ class SuperAdminController extends Controller
     public function ubahketberobat($id)
     {
         $keterangan = KeteranganBerobat::find($id);
-        $pasien = Pasien::all();
+        $pasien = Pasien::with(['kategori'])->get();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
 
@@ -768,7 +768,7 @@ class SuperAdminController extends Controller
 
     public function izinberobat()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['kategori'])->get();
         $izin = IzinBerobat::all();
 
         return view('petugas.superadmin.izin_berobat', compact('pasien_id', 'izin'));

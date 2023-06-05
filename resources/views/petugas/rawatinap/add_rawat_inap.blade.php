@@ -221,6 +221,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
                                             <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat" min="{{date('Y-m-d')}}">
+                                            {!!validasi('Tanggal berakhir Dirawat', 'Harus sebelum atau sama dengan tanggal mulai rawat')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -623,6 +624,8 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             linear: true,
             animation: true
         })
+
+        let validasiPemeriksaan = true;
         // stepper2.to(3);
         select2_alat = $('select#alat_kesehatan').select2({
             theme: "bootstrap-5",
@@ -689,6 +692,24 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             $('#mulai_rawat').change(function(){
                 $('#berakhir_rawat').attr('min',$(this).val())
             })
+
+            $('#berakhir_rawat').keyup(function(){
+                let tgl = $(this).val();
+                let min = $(this).attr('min')
+                if(tgl!=''){
+                    selisih = getDateDiff(tgl, min, false);
+                    if (selisih < 0) {
+                        $(this).addClass('is-invalid')
+                        $(this).removeClass('is-valid')
+                        validasiPemeriksaan = false;
+                    }else{
+                        $(this).addClass('is-valid')
+                        $(this).removeClass('is-invalid');
+                        validasiPemeriksaan = true;
+
+                    }
+                }
+            })
         });
 
         function lanjut1() {
@@ -704,7 +725,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         }
 
         function lanjut2() {
-            var validated = true;
+            
             // console.log($('#nama_penyakit_id').val());
             var inputs = ['mulai_rawat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
             inputs.forEach(input => {
@@ -712,7 +733,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
 
                 if (value_input == ""||value_input == ' ') {
-                    validated = false
+                    validasiPemeriksaan = false
                     $('[name*="' + input + '"]').removeClass('is-valid')
                     $('[name*="' + input + '"]').addClass('is-invalid')
                 } else {
@@ -722,7 +743,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 }
             });
             
-            if (validated === true) {
+            if (validasiPemeriksaan === true) {
                 stepper2.next()
             }
         }

@@ -59,11 +59,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($keterangan as $ket)
+                            @foreach ($keterangan->sortByDesc('created_at') as $ket)
                                 <tr>
-                                    <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
-                                        <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
-                                    </td>
+                                    <td>{{tanggal($ket->created_at)}}</td>
                                     <td style="width: 110px">{{ $ket->pasien->nama_pasien }}</td>
                                     <td>{{ $ket->rumahsakitrujukan->nama_RS_rujukan }}</td>
 
@@ -79,7 +77,7 @@
                                                 class="btn btn-outline-secondary" title="Edit"><i
                                                     class="bi bi-pencil-square"></i></a>
                                             <a href="/print/keterangan-berobat/{{ $ket->id }}" title="print Data"
-                                                href="#" class="btn btn-outline-secondary"><i
+                                                href="#" target="_blank" class="btn btn-outline-secondary"><i
                                                     class="bi bi-printer-fill"></i></a>
                                         </div>
                                     </td>

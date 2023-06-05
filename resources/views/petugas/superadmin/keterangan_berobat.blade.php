@@ -10,14 +10,14 @@
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal" action="/keterangan/berobat" method="post">
+                <form class="form form-horizontal" id="berobat" action="/keterangan/berobat" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col">
                                     <label class="form-label">Pasien <b class="color-red">*</b></label>
-                                    <select name="pasien_id" id="pasien_id" class="form-select" required>
+                                    <select name="pasien_id" id="pasien_id" class="form-select" onchange="setPasien(this)" required>
                                         <option value="" disabled selected>Pilih ID Rekam Medis Pasien
                                         </option>
                                         @foreach ($pasien_id as $pas)
@@ -100,12 +100,37 @@
                     </div>
                     <div class="row">
                         <div class="col text-end">
-                            <button type="submit" class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
+                            <button type="button" onclick="submitform('berobat')" class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    @section('js')
+        <script>
+            $('select').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            
+            let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];
+            let pasien = @json($pasien_id);
+            function setPasien(select){
+                id = $(select).val()
+                let pas = pasien.find(data => data.id == id);
+
+                colId.forEach(col => {
+                    if (col==='kategori_pasien_id') {
+                        $('#'+col).text(pas.kategori.nama_kategori);
+                    }else{
+                        $('#'+col).text(pas[col]);
+                    }
+                });
+            }
+        </script>
+    @stop
 
 @endsection

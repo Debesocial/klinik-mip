@@ -20,9 +20,10 @@
                     <p>Tanggal Pemeriksaan <b> {{ date('d-m-Y H:i', strtotime($mcuawal->created_at)) }} </b></p>
                 </div>
                 <div class="col-2 text-end">
-                    <button class="btn btn-primary"
-                        onclick="tampilModalSurat('/print/mcu-awal/{{ $mcuawal->id }}','Preview Surat MCU Awal')"> Print
-                        <i class="bi bi-printer"></i></button>
+                    <a class="btn btn-primary"
+                        href="/print/mcu-awal/{{ $mcuawal->id }}"> Print
+                        <i class="bi bi-printer"></i>
+                    </a>
                 </div>
             </div>
             <div class="row">

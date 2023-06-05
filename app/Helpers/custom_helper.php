@@ -32,11 +32,11 @@ function umur($date)
 }
 
 /** Untuk validation bootstrap */
-function validasi($field_error = 'field')
+function validasi($field_error = 'field', $pesan ='harus diisi')
 {
     $html = '<div class="invalid-feedback">
-        ' . $field_error . ' harus diisi.
-    </div> 
+        ' . $field_error .' '.$pesan.
+    '</div> 
     <div class="valid-feedback">
         Data sudah benar.
     </div>';

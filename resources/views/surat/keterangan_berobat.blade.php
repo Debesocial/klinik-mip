@@ -1,4 +1,6 @@
 @extends('surat.surat')
+@section('no_surat','No: MIP/FRM/KLN/014');
+@section('no_revisi','00');
 
 @section('body-surat')
     <div class="row">
@@ -25,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>Perusahaan</td>
-                    <td>: {{ $keteranganberobat->pasien->perusahaan->nama_perusahaan_pasien }}</td>
+                    <td>: {{ ($keteranganberobat->pasien->perusahaan->nama_perusahaan_pasien)??'-' }}</td>
                 </tr>
             </table>
         </div>
@@ -38,7 +40,7 @@
     </p>
     <p>Saran untuk pasien: {{ $keteranganberobat->saran }}.</p>
     @if ($keteranganberobat->kontrol == 1)
-        <p>Pasien <b>harus</b> kontrol kembali pada {{ $keteranganberobat->tanggalkembali }}.</p>
+        <p>Pasien <b>harus</b> kontrol kembali pada <b>{{ tanggal($keteranganberobat->tanggal_kembali, false) }}</b>.</p>
     @else
         <p>Pasien <b><u>tidak harus</u></b> kontrol kembali.</p>
     @endif
@@ -69,12 +71,5 @@
         </div>
     </div>
 
-    <div class="row">
-        <table class="w100">
-            <tr>
-                <td>(No: MIP/FRM/KLN/014)</td>
-                <td class="text-end">No. Revisi: 00</td>
-            </tr>
-        </table>
-    </div>
+    
 @endsection

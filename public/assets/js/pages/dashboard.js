@@ -188,7 +188,7 @@ let optionsIndonesia = {
     }
 }(jQuery));
 
-function getDateDiff(time1, time2) {
+function getDateDiff(time1, time2, abs=true) {
     // console.log(time1);
     var str1= time1.split('-');
     var str2= time2.split('-');
@@ -211,7 +211,11 @@ function getDateDiff(time1, time2) {
     var diffD = diffH / 24;
     // console.log(diffD + ' days');
     // alert(diffD);
-    return Math.abs(diffD);
+    if (abs==true) {
+        return Math.abs(diffD);
+    }else{
+        return diffD;
+    }
   }
 
   function cekSingle(m) {

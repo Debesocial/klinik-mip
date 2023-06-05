@@ -14,11 +14,9 @@ class SuratController extends Controller
     {
         $keteranganberobat = KeteranganBerobat::with(['pasien'])->find($id);
         $data['keteranganberobat'] = $keteranganberobat;
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('surat/keterangan_berobat', $data));
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
-        return $dompdf->stream('keterangan-berobat' . str_replace(' ', '-', $keteranganberobat->pasien->nama_pasien) . '.pdf');
+        $view = view('surat/keterangan_berobat', $data);
+        $savename = 'keterangan-berobat' . str_replace(' ', '-', $keteranganberobat->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
     }
     public function modalMcuAwal($id)
     {
@@ -29,11 +27,20 @@ class SuratController extends Controller
 
     public function printMcuAwal($id)
     {
-        $data['mcuawal'] = McuAwal::find($id);
+        $mcuawal = McuAwal::find($id);
+        $data['mcuawal'] = $mcuawal;
+        $view = view('surat/mcu_awal', $data);
+        $savename = 'mcu-awal' . str_replace(' ', '-', $mcuawal->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+        
+    }
+
+    public function renderSurat($view, $savename)
+    {
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('surat/mcu_awal', $data));
+        $dompdf->loadHtml($view);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
-        return $dompdf->stream('mcu_awal.pdf');
+        $dompdf->stream($savename, array("Attachment" => false));
     }
 }

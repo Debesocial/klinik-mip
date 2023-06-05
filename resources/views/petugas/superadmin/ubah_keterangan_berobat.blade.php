@@ -6,134 +6,134 @@
 @section('judul', 'Ubah Keterangan Berobat')
 @section('container')
 
-<section id="multiple-column-form">
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form" action="/ubah/ket/berobat/{{$keterangan->id }}" method="post">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5>Keterangan Berobat</h5><br>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Nama Pasien</label> </label>
-                                            <input type="text" id="name" class="form-control" name="name" placeholder="Nama Petugas" value="{{ $keterangan->pasien->nama_pasien }}" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Pekerjaan</label> 
-                                            <input type="text"  class="form-control" value="{{ $keterangan->pasien->pekerjaan }}" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Perusahaan</label> </label>
-                                            <input type="text"  class="form-control" value="{{ $keterangan->pasien->perusahaan->nama_perusahaan_pasien }}"  disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="level_id">Divisi</label> </label>
-                                            <input type="text"  class="form-control" value="{{ $keterangan->pasien->divisi->nama_divisi_pasien }}" disabled>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Jabatan</label> </label>
-                                            <input type="text"  class="form-control" value="{{ $keterangan->pasien->jabatan->nama_jabatan }}" disabled>
-                                        </div>
-                                    </div>
-
-                                    
+<div class="card">
+    <div class="card-content">
+        <div class="card-body">
+            <form class="form form-horizontal" action="/ubah/ket/berobat/{{$keterangan->id}}" method="post">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label">Pasien <b class="color-red">*</b></label>
+                                <select name="pasien_id" id="pasien_id" class="form-select" onchange="setPasien(this)" required>
+                                    <option value="" disabled selected>Pilih ID Rekam Medis Pasien
+                                    </option>
+                                    @foreach ($pasien as $pas)
+                                        <option value="{{ $pas->id }}" {{($pas->id == $keterangan->pasien_id)?'selected':''}} >{{ $pas->id_rekam_medis }} -
+                                            {{ $pas->nama_pasien }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"> 
+                                {!! detailPasienSurat([
+                                    'Nama Pasien' => 'nama_pasien',
+                                    'Kategori' => 'kategori_pasien_id',
+                                    'Pekerjaan' => 'pekerjaan',
+                                ]) !!}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label class="form-label">Nama Klinik Praktek/Rumah Sakit <b
+                                            class="color-red">*</b></label>
+                                    <select name="rumah_sakit_rujukans_id" id="rumah_sakit_rujukans_id"
+                                        class="form-select" required>
+                                        <option value="" disabled selected>Pilih Rumah Sakit Rujukan</option>
+                                        @foreach ($rsrujukan as $rs)
+                                            <option value="{{ $rs->id }}" {{($rs->id==$keterangan->rumah_sakit_rujukans_id?'selected':'')}}>{{ $rs->nama_RS_rujukan }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                    <div class="col-md-6">
-                                        <h5></h5><br><br>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Klinik Rujukan <b class="color-red">*</b></label>
-                                                <select class="choices form-select" name="rumah_sakit_rujukans_id" id="rumah_sakit_rujukans_id">
-                                                    @foreach ($rsrujukan as $rujukan)
-                                                    <option value="{{ $rujukan->id }}" {{ $rujukan->id == $keterangan->rumahsakitrujukan->id ? 'selected' : '' }}>{{ $rujukan->nama_RS_rujukan }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Diagnosa <b class="color-red">*</b></label> 
-                                                <select class="choices form-select" name="nama_penyakit_id" id="nama_penyakit_id">
-                                                    @foreach ($namapenyakit as $nama)
-                                                    <option value="{{ $nama->id }}" {{ $nama->id == $keterangan->namapenyakit->id ? 'selected' : '' }}>{{ $nama->primer }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Pasien diresepkan obat <b class="color-red">*</b></label> </label>
-                                                <input type="text" id="resep" name="resep" class="form-control" value="{{ $keterangan->resep}}"  >
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Saran untuk pasien <b class="color-red">*</b></label> </label>
-                                                <input type="text" id="saran" name="saran" class="form-control" value="{{ $keterangan->saran }}"  >
-                                            </div>
-                                        </div>
-    
-                                        
-                                        <div class="col-md-12">
-                                            <div class="col-md-4">
-                                                <label>Pasien harus kontrol Kembali <b class="color-red">*</b></label>
-                                            </div>
-                                            <div class="col-md-4 form-group">
-                                                <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="0" {{ !$keterangan->kontrol ? "checked" : "" }}> Tidak
-                                        <input class="form-check-input" type="radio" name="kontrol" id="kontrol" value="1" {{ $keterangan->kontrol ? "checked" : "" }}> Ya
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="">Tanggal Pengembalian Surat <b class="color-red">*</b></label> </label>
-                                                <input type="date" id="tanggal_kembali" name="tanggal_kembali" class="form-control" value="{{ $keterangan->tanggal_kembali }}" >
-                                            </div>
-                                        </div>
-    
-                                        <div class="col-md-12">
-                                            <div class="row justify-content-end">
-                                                <div class="col-4">
-                                                    <button type="reset" class="form-control btn btn-outline-secondary me-1 mb-1"> <i class="bi bi-arrow-repeat"></i> Reset</button>
-                                                </div>
-                                                <div class="col-4">
-                                                    <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <br>
-                                        
+                                <div class="mb-2">
+                                    <label class="form-label">Diagnosa <b class="color-red">*</b></label>
+                                    <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select" required>
+                                        <option value="" disabled selected>Pilih Nama Penyakit</option>
+                                        @foreach ($namapenyakit as $nama)
+                                            <option value="{{ $nama->id }}" {{($nama->id==$keterangan->nama_penyakit_id?'selected':'')}}>{{ $nama->primer }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Diagnosa Sekunder <b class="color-red">*</b></label>
+                                    <textarea type="text" id="sekunder" class="form-control" name="sekunder" required>{{$keterangan->sekunder}}</textarea>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-2">
+                            <label class="form-label">Pasien diresepkan obat <b class="color-red">*</b></label>
+                            <textarea type="text" id="resep" class="form-control" name="resep" required>{{$keterangan->resep}}</textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label>Saran untuk Pasien <b class="color-red">*</b></label>
+                            <textarea type="text" id="saran" class="form-control" name="saran" required>{{$keterangan->saran}}</textarea>
+                        </div>
+                        <div class="mb-2">
+                            <label>Pasien Harus Kontrol Kembali <b class="color-red">*</b></label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kontrol" id="kontrol"
+                                    value="0" {{(0==$keterangan->kontrol?'checked':'')}}>
+                                <label class="form-check-label" for="kontrol">
+                                    Tidak
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kontrol" id="kontrol"
+                                    value="1" {{(1==$keterangan->kontrol?'checked':'')}}>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Ya
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label>Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
+                            <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali" value="{{$keterangan->tanggal_kembali}}"
+                                required>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="col text-end">
+                        <button type="reset" class="btn btn-outline-secondary"> <i class="bi bi-arrow-repeat"></i> Reset</button>
+                        <button type="submit" class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</section>
+</div>
+
+@section('js')
+    <script>
+        $('select').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
+        $(document).ready(function(){
+            setPasien($('select#pasien_id'));
+        })
+        
+        let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];
+        let pasien = @json($pasien);
+        function setPasien(select){
+            id = $(select).val()
+            let pas = pasien.find(data => data.id == id);
+
+            colId.forEach(col => {
+                if (col==='kategori_pasien_id') {
+                    $('#'+col).text(pas.kategori.nama_kategori);
+                }else{
+                    $('#'+col).text(pas[col]);
+                }
+            });
+        }
+    </script>
+@endsection
 
 @endsection
