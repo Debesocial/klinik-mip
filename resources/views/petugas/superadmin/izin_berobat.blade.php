@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form class="form form-horizontal" action="/izin/berobat" method="post" enctype='multipart/form-data'>
+        <form class="form form-horizontal" id="izin-berobat" action="/izin/berobat" method="post" enctype='multipart/form-data'>
             @csrf
             <div class="form-body">
                 <div class="row">
@@ -43,8 +43,8 @@
                             <input class="form-control" type="file" id="ttd" name="ttd">
                         </div>
                         <div class="mb-3 text-end">
-                            <button type="submit"
-                                class="btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                            <button type="button" onclick="submitform('izin-berobat')"
+                                class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                         </div>
                     </div>
                 </div>

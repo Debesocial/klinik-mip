@@ -400,6 +400,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/print/keterangan-berobat/{id}', [SuratController::class, 'modalKeteranganBerobat']);
     Route::get('/modal/mcu-awal/{id}', [SuratController::class, 'modalMcuAwal']);
     Route::get('/print/mcu-awal/{id}', [SuratController::class, 'printMcuAwal']);
+    Route::get('/print/izin-berobat/{id}', [SuratController::class, 'printizinBerobat']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

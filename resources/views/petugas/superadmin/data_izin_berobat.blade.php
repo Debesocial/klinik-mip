@@ -44,15 +44,13 @@
                     <tbody>
                         @foreach ($izin as $berobat)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($berobat->created_at)->isoFormat('D MMMM Y') }}</B>
-                                <br>{{ Carbon\Carbon::parse($berobat->created_at)->format('H:i:s') }}
-                            </td>
+                            <td>{{tanggal($berobat->created_at)}}</td>
                             <td>{{ $berobat->pasien->nama_pasien }}</td>
                                 <td>{{ $berobat->tempat }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                                         <a href="/ubah/izin/berobat/{{$berobat->id }}" class="btn btn-outline-secondary" title="View"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="/print/izin/berobat/{{ $berobat->id }}" title="print Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
+                                        <a href="/print/izin-berobat/{{ $berobat->id }}" title="print Data" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>
                         </tr>

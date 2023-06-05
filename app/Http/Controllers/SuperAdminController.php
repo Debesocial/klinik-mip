@@ -808,7 +808,7 @@ class SuperAdminController extends Controller
     public function ubahizinberobat($id)
     {
         $izin = IzinBerobat::find($id);
-        $pasien = Pasien::all();
+        $pasien = Pasien::with(['kategori'])->get();
 
         return view('petugas.superadmin.ubah_izin_berobat', compact('izin', 'pasien'));
     }

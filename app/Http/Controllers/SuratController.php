@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\IzinBerobat;
 use App\Models\KeteranganBerobat;
 use App\Models\McuAwal;
 use Illuminate\Http\Request;
@@ -33,6 +34,17 @@ class SuratController extends Controller
         $savename = 'mcu-awal' . str_replace(' ', '-', $mcuawal->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);
         
+    }
+
+    public function printIzinBerobat($id)
+    {
+        $izinberobat = IzinBerobat::find($id);
+        $data['izinberobat'] = $izinberobat;
+        $view = view('surat/izin_berobat', $data);
+        $savename = 'izin-berobat' . str_replace(' ', '-', $izinberobat->pasien->nama_pasien) . '.pdf';
+        // return $view;
+        
+        $this->renderSurat($view, $savename);
     }
 
     public function renderSurat($view, $savename)
