@@ -63,7 +63,7 @@
             <table >
                 <tbody>
                     <tr class="border_bottom" >
-                        <td style="padding-left:20px;"><img src="{{ imgUri(base_path('public\logo\2.png')) }}"
+                        <td style="padding-left:20px;"><img src="{{ imgUri(base_path('public/logo/2.png')) }}"
                                 alt="">
                         </td>
                         <td style="padding-left: 20px;">
