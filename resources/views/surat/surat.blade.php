@@ -52,10 +52,11 @@
              
             body {
                 font-family: 'sans-serif';
+                
             }
             header { position: fixed; top: 0; left: 0px; right: 0px; border-bottom: 1px solid black;}
             footer { position: fixed; bottom: 0; left: 0px; right: 0px; }
-            main { position: fixed; top:100px ; font-size: 14px; line-height: 1.5; padding-top: 10px}
+            main { position: fixed; top:100px ; font-size: 14px; line-height: 1.5; padding-top: 10px; width: 100%;}
         </style>
     </head>
     <body>

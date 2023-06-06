@@ -38,4 +38,7 @@ class Tindakan extends Model
     public function rawatjalan() {
         return $this->hasMany(RawatJalan::class);
     }
+    public function pasien() {
+        return $this->belongsTo(Pasien::class);
+    }
 }

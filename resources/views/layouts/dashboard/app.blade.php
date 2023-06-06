@@ -318,9 +318,11 @@
         }
 
         function submitform(id) {
-            $('.preloader').show();
             $('#' + id).submit();
+            $('.preloader').show();
         }
+
+        
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

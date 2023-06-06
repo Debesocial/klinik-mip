@@ -11,6 +11,7 @@ class KeteranganSehat extends Model
 
     protected $fillable = [
         'pasien_id',
+        'tujuan',
         'tinggi_badan',
         'berat_badan',
         'suhu_tubuh',

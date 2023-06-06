@@ -32,7 +32,7 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
                             <th>Tanggal Pemeriksaan</th>
@@ -46,17 +46,15 @@
                     <tbody>
                         @foreach ($sehat as $ket)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($ket->created_at)->isoFormat('D MMMM Y') }}</B>
-                                <br>{{ Carbon\Carbon::parse($ket->created_at)->format('H:i:s') }}
-                            </td>
-                            <td style="width: 80px;">{{ $ket->pasien->id_rekam_medis }}</td>
-                            <td style="width: 80px;">{{ $ket->pasien->nama_pasien }}</td>
+                            <td class="text-center">{{tanggal($ket->created_at, false)}}</td>
+                            <td class="text-center">{{ $ket->pasien->id_rekam_medis }}</td>
+                            <td >{{ $ket->pasien->nama_pasien }}</td>
                             <td>{{ $ket->pasien->alamat }}</td>
-                            <td class="text-center"><i class="{{ $ket->hasil == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
+                            <td class="text-center">{!! $ket->hasil == 1 ? '<span class="badge bg-primary">Sehat</span>' : '<span class="badge bg-danger">Sakit</span>' !!}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/ubah/keterangan/sehat/{{$ket->id}}" class="btn btn-outline-secondary" title="Ubah data pasien"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="" title="Print Data " class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
+                                    <a href="/print/sehat/{{$ket->id}}" target="_blank" title="Print Data " class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                 </div>
                             </td>
                         </tr>

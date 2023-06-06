@@ -846,7 +846,7 @@ class SuperAdminController extends Controller
 
     public function suratrujukan()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['kategori'])->get();
         $suratrujukan = SuratRujukan::all();
         $spesialisrujukan = SpesialisRujukan::all();
         $rsrujukan = RumahSakitRujukan::all();
@@ -912,10 +912,9 @@ class SuperAdminController extends Controller
     public function ubahsuratrujukan($id)
     {
         $surat = SuratRujukan::find($id);
-        $pasien = Pasien::all();
         $spesialisrujukan = SpesialisRujukan::all();
         $rsrujukan = RumahSakitRujukan::all();;
-        return view('petugas.superadmin.ubah_surat_rujukan', compact('surat', 'pasien', 'spesialisrujukan', 'rsrujukan'));
+        return view('petugas.superadmin.ubah_surat_rujukan', compact('surat',  'spesialisrujukan', 'rsrujukan'));
     }
 
 
@@ -944,7 +943,7 @@ class SuperAdminController extends Controller
 
     public function keterangansehat()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'kategori'])->get();
 
         return view('petugas.superadmin.keterangan_sehat', compact('pasien_id'));
     }
@@ -967,6 +966,7 @@ class SuperAdminController extends Controller
 
         KeteranganSehat::create([
             'pasien_id' => $request->pasien_id,
+            'tujuan' => $request->tujuan,
             'tinggi_badan' => $request->tinggi_badan,
             'berat_badan' => $request->berat_badan,
             'suhu_tubuh' => $request->suhu_tubuh,
@@ -985,7 +985,7 @@ class SuperAdminController extends Controller
     public function ubahketerangansehat($id)
     {
         $keterangan = KeteranganSehat::find($id);
-
+        $keterangan->load('pasien.kategori', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan');
         return view('petugas.superadmin.ubah_keterangan_sehat', compact('keterangan'));
     }
 
@@ -1029,7 +1029,7 @@ class SuperAdminController extends Controller
 
     public function persetujuantindakanmedis()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan','kategori'])->get();
 
         return view('petugas.superadmin.persetujuan_tindakan_medis', compact('pasien_id'));
     }
@@ -1060,9 +1060,9 @@ class SuperAdminController extends Controller
     public function ubahpersetujuantindakanmedis($id)
     {
         $tindakan = PersetujuanTindakan::find($id);
-        $pasien = Pasien::all();
+        $tindakan->load('pasien.kategori', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan');
 
-        return view('petugas.superadmin.ubah_persetujuan_tindakan', compact('tindakan', 'pasien'));
+        return view('petugas.superadmin.ubah_persetujuan_tindakan', compact('tindakan'));
     }
 
     function changepersetujuantindakanmedis(Request $request, $id)

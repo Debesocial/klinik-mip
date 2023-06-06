@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\IzinBerobat;
 use App\Models\KeteranganBerobat;
+use App\Models\KeteranganSehat;
 use App\Models\McuAwal;
+use App\Models\PersetujuanTindakan;
+use App\Models\SuratRujukan;
+use App\Models\Tindakan;
 use Illuminate\Http\Request;
 
 use Dompdf\Dompdf;
@@ -44,6 +48,33 @@ class SuratController extends Controller
         $savename = 'izin-berobat' . str_replace(' ', '-', $izinberobat->pasien->nama_pasien) . '.pdf';
         // return $view;
         
+        $this->renderSurat($view, $savename);
+    }
+
+    public function printRujukan($id)
+    {
+        $rujukan = SuratRujukan::find($id);
+        $data['rujukan'] = $rujukan;
+        $view = view('surat/rujukan', $data);
+        $savename = 'rujukan' . str_replace(' ', '-', $rujukan->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+    }
+    public function printSehat($id)
+    {
+        $sehat = KeteranganSehat::find($id);
+        $data['sehat'] = $sehat;
+        $view = view('surat/sehat', $data);
+        // return $view;
+        $savename = 'keterangan-sehat' . str_replace(' ', '-', $sehat->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+    }
+    public function printTindakan($id)
+    {
+        $tindakan = PersetujuanTindakan::find($id);
+        $data['tindakan'] = $tindakan;
+        $view = view('surat/tindakan', $data);
+        // return $view;
+        $savename = 'persetujuan-tindakan' . str_replace(' ', '-', $tindakan->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);
     }
 

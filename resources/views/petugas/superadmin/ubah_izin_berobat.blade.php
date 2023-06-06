@@ -8,7 +8,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form class="form form-horizontal" id="izin-berobat" action="/ubah/izin/berobat/{{$izin->id }}" method="post" enctype='multipart/form-data'>
+        <form class="form form-horizontal" id="izin-berobat" action="/ubah/izin/berobat/{{$izin->id }}" onsubmit="showLoader()" method="post" enctype='multipart/form-data'>
             @csrf
             <div class="form-body">
                 <div class="row">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="mb-3 text-end">  
                                 <button type="reset" class="btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i> Reset</button>
-                                <button type="button" onclick="submitform('izin-berobat')" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                         </div>
                     </div>
                 </div>

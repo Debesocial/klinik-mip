@@ -58,7 +58,7 @@
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
                                         <a href="/ubah/surat/rujukan/{{ $surat->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="/print/surat/rujukan/{{ $surat->id }}" title="print Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
+                                        <a href="/print/rujukan/{{ $surat->id }}" title="print Data" target='_blank' class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>
                         </tr>

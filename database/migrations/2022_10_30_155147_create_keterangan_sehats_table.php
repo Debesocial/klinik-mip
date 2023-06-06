@@ -13,9 +13,11 @@ class CreateKeteranganSehatsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('keterangan_sehats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
+            $table->string('tujuan');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
             $table->string('suhu_tubuh');
@@ -31,6 +33,7 @@ class CreateKeteranganSehatsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

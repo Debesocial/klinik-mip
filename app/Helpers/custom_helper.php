@@ -14,14 +14,22 @@ function cekMcu($data)
 
 /** Untuk menyamakan format tanggal
  */
-function tanggal($tanggal, $jam = true)
+function tanggal($tanggal, $jam = true, $monthText = false)
 {
-    $format = 'd/m/Y H:i';
-    if ($jam == false) {
-        $format = 'd/m/Y';
+    if ($monthText) {
+        $format = 'd F Y';
+        $date = \Carbon\Carbon::parse($tanggal)->locale('id');
+        $date->settings(['formatFunction' => 'translatedFormat']);
+        return $date->format($format);
+    }else{
+        $format = 'd/m/Y H:i';
+        if ($jam == false) {
+            $format = 'd/m/Y';
+        }
+        return date($format, strtotime($tanggal));
     }
-    return date($format, strtotime($tanggal));
 }
+
 
 function umur($date)
 {

@@ -10,7 +10,7 @@
     <div class="card">
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-horizontal" id="berobat" action="/keterangan/berobat" method="post">
+                <form class="form form-horizontal" id="berobat" action="/keterangan/berobat" onsubmit="showLoader()" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="row">
                         <div class="col text-end">
-                            <button type="button" onclick="submitform('berobat')" class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
+                            <button type="submit"  class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
                         </div>
                     </div>
                 </form>

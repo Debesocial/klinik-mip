@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form class="form form-horizontal" id="izin-berobat" action="/izin/berobat" method="post" enctype='multipart/form-data'>
+        <form class="form form-horizontal" id="izin-berobat" action="/izin/berobat" method="post" onsubmit="showLoader()" enctype='multipart/form-data'>
             @csrf
             <div class="form-body">
                 <div class="row">
@@ -39,11 +39,11 @@
                             <input type="date" id="tanggal_keluar" class="form-control" name="tanggal_keluar" placeholder="tanggal keluar" required >
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">File Pendukung</label>
+                            <label class="form-label">Tandatangan</label>
                             <input class="form-control" type="file" id="ttd" name="ttd">
                         </div>
                         <div class="mb-3 text-end">
-                            <button type="button" onclick="submitform('izin-berobat')"
+                            <button type="submit" 
                                 class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                         </div>
                     </div>

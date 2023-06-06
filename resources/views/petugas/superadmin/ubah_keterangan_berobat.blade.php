@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-content">
         <div class="card-body">
-            <form class="form form-horizontal" action="/ubah/ket/berobat/{{$keterangan->id}}" method="post">
+            <form class="form form-horizontal" action="/ubah/ket/berobat/{{$keterangan->id}}" onsubmit="showLoader()" method="post">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
