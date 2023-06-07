@@ -6,7 +6,7 @@ function tampilModalPasien(data) {
     $('#modal_nomor_induk_karyawan').text(': ' + data.NIK);
     $('#modal_ttl').text(': ' + data.tempat_lahir + ', ' + tanggal(data.tanggal_lahir, false));
     $('#modal_alamat').text(': ' + data.alamat);
-    $('#modal_pekerjaan').text(': ' + data.pekerjaan);
+    $('#modal_pekerjaan').text(': ' + firstCapital(data.pekerjaan));
     $('#modal_perusahaan').text(': ' +cekNull(data.perusahaan?.nama_perusahaan_pasien));
     $('#modal_divisi').text(': ' + cekNull(data.divisi?.nama_divisi_pasien));
     $('#modal_jabatan').text(': ' + cekNull(data.jabatan?.nama_jabatan));
@@ -33,7 +33,7 @@ function cekAlergi(val) {
     if (val == null) {
         return '<b class="text-primary">-</b>';
     } else {
-        return val;
+        return firstCapital(val);
     }
 }
 
@@ -82,4 +82,8 @@ function printDiv(divName) {
     window.print();
 
     document.body.innerHTML = originalContents;
+}
+
+function firstCapital(word){
+    return word.charAt(0).toUpperCase()+ word.slice(1)
 }

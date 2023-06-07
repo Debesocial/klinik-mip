@@ -296,6 +296,7 @@
     resep = [];
     var satuanobat = @json($satuanobat);
     var obat = @json($obat);
+    var resepSelected = {};
     function addResep() {
         var temp = {};
         var validated = true;
@@ -314,6 +315,7 @@
         if (validated == true) {
             resep.push(temp)
             drawformResep();
+            resepSelected = {};
         }
     }
     function drawformResep() {
@@ -361,6 +363,11 @@
     function editResep(id){
         temp = resep[id];
         deleteResep(id);
+        if(Object.keys(resepSelected).length !== 0){
+            resep.push(resepSelected);
+            drawformResep();
+        }
+        resepSelected = temp;
         id_resep.forEach(idt => {
             form = $('#'+idt);
             if (idt!='nama_obat') {

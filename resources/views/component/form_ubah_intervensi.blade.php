@@ -367,7 +367,7 @@
     var tindakan = {!! $intervensi->tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
-
+    var tindakanSelected = {};
     function addTindakan() {
         var temp = {};
         var validated = true;
@@ -386,6 +386,7 @@
         if (validated == true) {
             tindakan.push(temp)
             drawformTindakan();
+            tindakanSelected ={};
         }
     }
 
@@ -428,6 +429,11 @@
     function editTindakan(id){
         temp = tindakan[id];
         deleteTindakan(id);
+        if(Object.keys(tindakanSelected).length !== 0){
+            tindakan.push(tindakanSelected);
+            drawformTindakan();
+        }
+        tindakanSelected = temp;
         id_tindakan.forEach(idt => {
             form = $('#'+idt);
             if (idt!='alat_kesehatan') {

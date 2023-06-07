@@ -507,7 +507,7 @@
     var tindakan = {!! $instruksidokter->tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
-
+    var tindakanSelected = {};
     function addTindakan() {
         var temp = {};
         var validated = true;
@@ -526,6 +526,7 @@
         if (validated == true) {
             tindakan.push(temp)
             drawformTindakan();
+            tindakanSelected = {};
         }
     }
 
@@ -569,6 +570,11 @@
     function editTindakan(id){
         temp = tindakan[id];
         deleteTindakan(id);
+        if(Object.keys(tindakanSelected).length !== 0){
+            tindakan.push(tindakanSelected);
+            drawformTindakan();
+        }
+        tindakanSelected = temp;
         id_tindakan.forEach(idt => {
             form = $('#'+idt);
             if (idt!='alat_kesehatan') {
@@ -595,7 +601,7 @@
     var obat = @json($obat);
     resep = {!! $instruksidokter->resep_obat !!};
     drawformResep()
-
+    var resepSelected = {};
     function addResep() {
         var temp = {};
         var validated = true;
@@ -614,6 +620,7 @@
         if (validated == true) {
             resep.push(temp)
             drawformResep();
+            resepSelected={};
         }
     }
 
@@ -656,6 +663,11 @@
     function editResep(id){
         temp = resep[id];
         deleteResep(id);
+            if(Object.keys(resepSelected).length !== 0){
+                resep.push(resepSelected);
+                drawformResep();
+            }
+            resepSelected = temp;
         id_resep.forEach(idt => {
             form = $('#'+idt);
             if (idt!='nama_obat') {

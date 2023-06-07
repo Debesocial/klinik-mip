@@ -23,7 +23,7 @@ class IntervensiKeperawatanController extends Controller
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
         if (IntervensiKeperawatan::create($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Intervensi Keperawatan!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/2")->with('message', 'Berhasil Menambahkan Intervensi Keperawatan!');
         }
     }
 
@@ -42,7 +42,7 @@ class IntervensiKeperawatanController extends Controller
         $data['updated_by'] = auth()->user()->id;
 
         if (IntervensiKeperawatan::where('id', $id)->update($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Mengubah Intervensi Keperawatan!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/2")->with('message', 'Berhasil Mengubah Intervensi Keperawatan!');
         }
     }
 

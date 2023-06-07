@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::post('/ubah/pemantauan/tandavital/{id}', [SuperAdminController::class, 'changepemantauantandavital'])->name('superadmin.changepemantauantandavital');
 
     Route::get('/daftar/rawat/inap', [RawatInapController::class, 'daftarrawatinap'])->name('superadmin.daftarrawatinap');
+    Route::get('/view/rawat/inap/{id}/{pos}', [RawatInapController::class, 'viewrawatinap'])->name('rawatinap.viewrawatinap');
     Route::get('/view/rawat/inap/{id}', [RawatInapController::class, 'viewrawatinap'])->name('rawatinap.viewrawatinap');
     Route::get('/ubah/rawat/inap/{id}', [RawatInapController::class, 'ubahrawatinap'])->name('rawatinap.ubahrawatinap');
     Route::post('/ubah/rawat/inap/{id}', [RawatInapController::class, 'changerawatinap'])->name('rawatinap.changerawatinap');

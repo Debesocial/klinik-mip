@@ -21,6 +21,8 @@ function pilihPasien(pasien) {
         $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
         $('td#telepon').text(": " + pasien.telepon)
         $('td#kategori').text(": " + pasien.kategori.nama_kategori )
+        $('#alergi').html(': ' + cekAlergi(pasien.alergi));
+        $('#menyusui').html(': ' + cekTrueFalse(pasien.hamil_menyusui));
         if(pasien.perusahaan_id==9){
             $('td#perusahaan').append(' - <b class="m-0">'+pasien.lain+'</b>');
         }
@@ -50,6 +52,10 @@ function cekNull(val) {
     return val;
 }
 
+// function firstCapital(word){
+//     return word.charAt(0).toUpperCase()+ word.slice(1)
+// }
+
 function setPasien(pasien) {
     $('[name=pasien_id]').val(pasien.id)
     $('td#nama').text(": " + pasien.nama_pasien);
@@ -68,7 +74,9 @@ function setPasien(pasien) {
     var email = pasien.email ?? '-'
     $('td#email').text(": " + email);
     $('.invalid-feedback').removeClass('d-block')
-    $('#detail_pasien').fadeIn('slow')
+    $('#detail_pasien').fadeIn('slow');
+    $('#alergi').html(': ' + cekAlergi(pasien.alergi));
+    $('#menyusui').html(': ' + cekTrueFalse(pasien.hamil_menyusui));
     if(pasien.perusahaan_id==9){
         $('td#perusahaan').append(' - <b class="m-0">'+pasien.lain+'</b>');
     }

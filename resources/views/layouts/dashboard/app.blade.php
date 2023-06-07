@@ -72,6 +72,9 @@
                 display: none;
             }
         }
+        td::first-letter {
+            text-transform: uppercase;
+        }
     </style>
 
 </head>

@@ -24,7 +24,7 @@ class PermintaanMakananController extends Controller
         $data['updated_by'] = auth()->user()->id;
 
         if (PermintaanMakanan::create($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Permintaan Makanan!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/3")->with('message', 'Berhasil Menambahkan Permintaan Makanan!');
         }
     }
 
@@ -42,7 +42,7 @@ class PermintaanMakananController extends Controller
         $data['updated_by'] = auth()->user()->id;
 
         if (PermintaanMakanan::where('id', $id)->update($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Merubah Permintaan Makanan!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/3")->with('message', 'Berhasil Merubah Permintaan Makanan!');
         }
     }
 

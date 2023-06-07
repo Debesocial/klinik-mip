@@ -85,77 +85,7 @@
                                 </div>
                                 <div class="row mt-3" id="detail_pasien" style="display: none">
                                     <div class="col">
-                                        <div class="card bg-light">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Alamat</th>
-                                                                    <td id="alamat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <table>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Kategori</th>
-                                                                    <td id="kategori"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Divisi</th>
-                                                                    <td id="divisi"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Telepon</th>
-                                                                    <td id="telepon"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Email</th>
-                                                                    <td id="email"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        {!! detailPasienPemeriksaan() !!}
                                     </div>
                                 </div>
 

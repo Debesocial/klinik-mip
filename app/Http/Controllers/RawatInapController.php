@@ -22,7 +22,7 @@ class RawatInapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewrawatinap($id)
+    public function viewrawatinap($id, $pos=1)
     {
         // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
@@ -32,7 +32,7 @@ class RawatInapController extends Controller
         $pemantauan = HasilPemantauan::all();
 
 
-        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'pemantauan'));
+        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'pemantauan','pos'));
     }
 
     public function daftarrawatinap()

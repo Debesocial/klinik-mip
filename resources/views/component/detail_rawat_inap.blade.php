@@ -48,7 +48,7 @@
                                 <td>: {{$inap->laju_pernapasan}} / {{$inap->laju_pernapasan_menit}} menit</td>
                             </tr>
                             <tr>
-                                <th>pemeriksaan_penunjang</th>
+                                <th>Pemeriksaan Penunjang</th>
                                 <td>: {{$inap->pemeriksaan_penunjang}}</td>
                             </tr>
                             <tr>

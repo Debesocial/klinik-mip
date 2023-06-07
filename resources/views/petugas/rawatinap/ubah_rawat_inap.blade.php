@@ -106,81 +106,7 @@
                             <div class="container">
                                 <div class="row mt-3" id="detail_pasien">
                                     <div class="col">
-                                        <div class="card bg-light">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <table class="table table-borderless">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Umur</th>
-                                                                    <td id="umur"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Alamat</th>
-                                                                    <td id="alamat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <table class="table table-borderless">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Kategori</th>
-                                                                    <td id="kategori"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Divisi</th>
-                                                                    <td id="divisi"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Telepon</th>
-                                                                    <td id="telepon"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Email</th>
-                                                                    <td id="email"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        {!! detailPasienPemeriksaan() !!}
                                     </div>
                                 </div>
 
@@ -205,6 +131,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
                                             <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat" min="{{date('Y-m-d')}}" value="{{$rawat_inap->berakhir_rawat}}">
+                                            {!!validasi('Tanggal berakhir dirawat', 'harus sebelum atau sama dengan tanggal mulai rawat')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -319,7 +246,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <h6>Diaknosa Penyakit</h6>
+                                        <h6>Diagnosa Penyakit</h6>
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-hover">
                                                 <thead>
@@ -612,6 +539,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         linear: true,
         animation: true
         })
+        
         select2_alat = $('select#alat_kesehatan').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
@@ -622,6 +550,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+        let validasiPemeriksaan = true;
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -658,6 +587,24 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 $('#berakhir_rawat').attr('min',$(this).val())
             })
 
+            $('#berakhir_rawat').keyup(function(){
+                let tgl = $(this).val();
+                let min = $(this).attr('min')
+                if(tgl!=''){
+                    selisih = getDateDiff(tgl, min, false);
+                    if (selisih < 0) {
+                        $(this).addClass('is-invalid')
+                        $(this).removeClass('is-valid')
+                        validasiPemeriksaan = false;
+                    }else{
+                        $(this).addClass('is-valid')
+                        $(this).removeClass('is-invalid');
+                        validasiPemeriksaan = true;
+
+                    }
+                }
+            })
+
             setPasien(@json($rawat_inap->pasien));
             drawformTindakan();
             drawformResep();
@@ -676,14 +623,14 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         }
 
         function lanjut2() {
-            var validated = true;
+            // var validated = true;
             var inputs = ['mulai_rawat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name="' + input + '"]').val();                    
                 var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
 
                 if (value_input == ""||value_input == ' ') {
-                    validated = false
+                    validasiPemeriksaan = false
                     $('[name="' + input + '"]').removeClass('is-valid')
                     $('[name="' + input + '"]').addClass('is-invalid')
                 } else {
@@ -693,16 +640,16 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 }
             });
             
-            if (validated === true) {
+            if (validasiPemeriksaan === true) {
                 stepper2.next()
             }
         }
 
         function setResult(id, value) {
             if(id=='mulai_rawat' || id == 'berakhir_rawat'){
-                value = $('[name="' + id + '"]').val(); 
+                value = tanggal($('[name="' + id + '"]').val()); 
             }
-            $('#_berakhir_rawat').text(': '+$('#berakhir_rawat').val());
+            $('#_berakhir_rawat').text(': '+tanggal($('#berakhir_rawat').val()));
             $('#_'+id).text(': '+value);
         }
 
@@ -762,6 +709,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             if (validated == true) {
                 tindakan.push(temp)
                 drawformTindakan();
+                tindakanSelected = {};
             }
         }
 
@@ -801,9 +749,15 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             });
             drawformTindakan();
         }
+        tindakanSelected={}
         function editTindakan(id){
             temp = tindakan[id];
             deleteTindakan(id);
+            if(Object.keys(tindakanSelected).length !== 0){
+                tindakan.push(tindakanSelected);
+                drawformTindakan();
+            }
+            tindakanSelected = temp;
             id_tindakan.forEach(idt => {
                 form = $('#'+idt);
                 if (idt!='alat_kesehatan') {
@@ -829,7 +783,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         resep = {!!$rawat_inap->resep!!};
         var satuanobat = @json($satuanobat);
         var obat = @json($obat);
-
+        resepSelected = {};
         function addResep() {
             var temp = {};
             var validated = true;
@@ -848,6 +802,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             if (validated == true) {
                 resep.push(temp)
                 drawformResep();
+                resepSelected = {};
             }
         }
 
@@ -890,6 +845,11 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function editResep(id){
             temp = resep[id];
             deleteResep(id);
+            if(Object.keys(resepSelected).length !== 0){
+                resep.push(resepSelected);
+                drawformResep();
+            }
+            resepSelected = temp;
             id_resep.forEach(idt => {
                 form = $('#'+idt);
                 if (idt!='nama_obat') {

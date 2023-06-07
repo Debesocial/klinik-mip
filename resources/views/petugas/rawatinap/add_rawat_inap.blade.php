@@ -122,81 +122,7 @@
                                 </div>
                                 <div class="row mt-3" id="detail_pasien" style="display: none">
                                     <div class="col">
-                                        <div class="card bg-light">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <table class="table table-borderless">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Nama Pasien</th>
-                                                                    <td id="nama"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Umur</th>
-                                                                    <td id="umur"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>ID Rekam Medis</th>
-                                                                    <td id="rekam_medis"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Nomor Induk Karyawan</th>
-                                                                    <td id="nomor_induk_karyawan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Tempat Tanggal Lahir</th>
-                                                                    <td id="ttl"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Alamat</th>
-                                                                    <td id="alamat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Pekerjaan</th>
-                                                                    <td id="pekerjaan"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <table class="table table-borderless">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <th>Kategori</th>
-                                                                    <td id="kategori"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Perusahaan</th>
-                                                                    <td id="perusahaan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Divisi</th>
-                                                                    <td id="divisi"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jabatan</th>
-                                                                    <td id="jabatan"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Jenis Kelamin</th>
-                                                                    <td id="jenis_kelamin"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Telepon</th>
-                                                                    <td id="telepon"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th>Email</th>
-                                                                    <td id="email"></td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        {!! detailPasienPemeriksaan() !!}
                                     </div>
                                 </div>
 
@@ -221,7 +147,7 @@
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
                                             <input type="date" class="form-control" name="berakhir_rawat" id="berakhir_rawat" min="{{date('Y-m-d')}}">
-                                            {!!validasi('Tanggal berakhir Dirawat', 'Harus sebelum atau sama dengan tanggal mulai rawat')!!}
+                                            {!!validasi('Tanggal berakhir dirawat', 'harus sebelum atau sama dengan tanggal mulai rawat')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -331,7 +257,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <h6>Diaknosa Penyakit</h6>
+                                        <h6>Diagnosa Penyakit</h6>
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-hover">
                                                 <thead>
@@ -564,7 +490,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6>Diaknosa Penyakit</h6>
+                                        <h6>Diagnosa Penyakit</h6>
                                         <div class="table-responsive">
                                             <table class="table table-borderless table-hover">
                                                 <thead>
@@ -750,9 +676,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 
         function setResult(id, value) {
             if(id=='mulai_rawat'){
-                value = $('[name*="' + id + '"]').val(); 
+                value = tanggal($('[name*="' + id + '"]').val()); 
             }
-            $('#_berakhir_rawat').text(': '+$('#berakhir_rawat').val())
+            $('#_berakhir_rawat').text(': '+tanggal($('#berakhir_rawat').val()))
             $('#_'+id).text(': '+value);
         }
 
@@ -812,7 +738,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             if (validated == true) {
                 tindakan.push(temp)
                 drawformTindakan();
+                tindakanSelected = {};
             }
+            return validated;
         }
 
         function clearformTindakan() {
@@ -852,9 +780,15 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             drawformTindakan();
         }
 
+        tindakanSelected={}
         function editTindakan(id){
             temp = tindakan[id];
             deleteTindakan(id);
+            if(Object.keys(tindakanSelected).length !== 0){
+                tindakan.push(tindakanSelected);
+                drawformTindakan();
+            }
+            tindakanSelected = temp;
             id_tindakan.forEach(idt => {
                 form = $('#'+idt);
                 if (idt!='alat_kesehatan') {
@@ -865,6 +799,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 }
             });
         }
+
     </script>
     <script>
         function lanjut4() {
@@ -880,7 +815,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         resep = [];
         var satuanobat = @json($satuanobat);
         var obat = @json($obat);
-
+        let resepSelected = {};
         function addResep() {
             var temp = {};
             var validated = true;
@@ -899,6 +834,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             if (validated == true) {
                 resep.push(temp)
                 drawformResep();
+                resepSelected = {};
             }
         }
 
@@ -942,6 +878,11 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function editResep(id){
             temp = resep[id];
             deleteResep(id);
+            if(Object.keys(resepSelected).length !== 0){
+                resep.push(resepSelected);
+                drawformResep();
+            }
+            resepSelected = temp;
             id_resep.forEach(idt => {
                 form = $('#'+idt);
                 if (idt!='nama_obat') {

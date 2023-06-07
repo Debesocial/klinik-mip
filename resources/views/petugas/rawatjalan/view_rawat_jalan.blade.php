@@ -24,7 +24,7 @@
                 <div >Nama Pasien : <a href="#" onclick="tampilModalPasien({{ json_encode($jalan->pasien) }})">{{ $jalan->pasien->nama_pasien }} <i class="bi bi-box-arrow-up-right"></i></a></div>
             </div>
             <div class="col-md-6 text-end">
-                <div >Tanggal Berobat <b>{{ $jalan->tanggal_berobat }}</b></div>
+                <div >Tanggal Berobat <b>{{ tanggal($jalan->tanggal_berobat, false) }}</b></div>
             </div>
         </div>
 

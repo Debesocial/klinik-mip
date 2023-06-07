@@ -35,7 +35,7 @@ class TandaVitalController extends Controller
             $filename = '';
         }
         if (TandaVital::create($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Pemeriksaan Tanda Vital!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/4")->with('message', 'Berhasil Menambahkan Pemeriksaan Tanda Vital!');
         }
     }
 
@@ -64,7 +64,7 @@ class TandaVitalController extends Controller
             $data['dokumen']=$filename;
         }
         if (TandaVital::where('id',$id)->update($data)) {
-            return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Menambahkan Pemeriksaan Tanda Vital!');
+            return redirect("/view/rawat/inap/" . $data['id_rawat_inap']."/4")->with('message', 'Berhasil Menambahkan Pemeriksaan Tanda Vital!');
         }
     }
 

@@ -130,15 +130,15 @@
 
     <div class="mb-1">
         <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
-            <a class="list-group-item list-group-item-action rounded-end rounded-pill active" id="list-dokter-list"
+            <a class="list-group-item list-group-item-action rounded-end rounded-pill {{$pos==1?'active':''}}" id="list-dokter-list"
                 data-bs-toggle="list" href="#list-dokter" role="tab">Pemeriksaan Instruksi Dokter</a>
-            <a class="list-group-item list-group-item-action" id="list-perawat-list" data-bs-toggle="list"
+            <a class="list-group-item list-group-item-action {{$pos==2?'active':''}}"  id="list-perawat-list" data-bs-toggle="list"
                 href="#list-perawat" role="tab">Pemeriksaan
                 Intervensi Keperawatan</a>
-            <a class="list-group-item list-group-item-action" id="list-makanan-list" data-bs-toggle="list"
+            <a class="list-group-item list-group-item-action {{$pos==3?'active':''}}" id="list-makanan-list" data-bs-toggle="list"
                 href="#list-makanan" role="tab">Permintaan
                 Makanan</a>
-            <a class="list-group-item list-group-item-action rounded-start rounded-pill" id="list-tandavital-list"
+            <a class="list-group-item list-group-item-action rounded-start rounded-pill {{$pos==4?'active':''}}" id="list-tandavital-list"
                 data-bs-toggle="list" href="#list-tandavital" role="tab">Pemantauan
                 Tanda Vital</a>
         </div>
@@ -146,7 +146,7 @@
 
 
     <div class="tab-content text-justify">
-        <div class="tab-pane fade show active" id="list-dokter" role="tabpanel" aria-labelledby="list-dokter-list">
+        <div class="tab-pane fade {{$pos==1?'show active':''}}" id="list-dokter" role="tabpanel" aria-labelledby="list-dokter-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -200,7 +200,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-perawat" role="tabpanel" aria-labelledby="list-perawat-list">
+        <div class="tab-pane fade {{$pos==2?'show active':''}}" id="list-perawat" role="tabpanel" aria-labelledby="list-perawat-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -252,7 +252,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-makanan" role="tabpanel" aria-labelledby="list-makanan-list">
+        <div class="tab-pane fade {{$pos==3?'show active':''}}" id="list-makanan" role="tabpanel" aria-labelledby="list-makanan-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -307,7 +307,7 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="list-tandavital" role="tabpanel" aria-labelledby="list-tandavital-list">
+        <div class="tab-pane fade {{$pos==4?'show active':''}}" id="list-tandavital" role="tabpanel" aria-labelledby="list-tandavital-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">

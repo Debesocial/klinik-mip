@@ -13,6 +13,15 @@
   white-space: normal;
     }
 </style> --}}
+
+@section('css')
+    <style>
+        .break-word {
+            overflow-wrap: break-word;
+            word-break: break-word;
+        }
+    </style>
+@stop
 @section('container')
 
 <section class="section">
@@ -41,33 +50,30 @@
                 </script>
             @endif
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1" width="100%">
+                <table class="table table-hover" id="table1" style="width: 100%">
                     <thead>
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
-                            <th>Nama </th>
-                            <th>Satuan </th>
-                            <th>Bobot </th>
-                            <th>Komposisi </th>
-                            <th>Aksi</th>
+                            <th style="width:20%">Nama </th>
+                            <th style="width:10%">Satuan </th>
+                            <th style="width:15%">Bobot </th>
+                            <th style="width:50%">Komposisi </th>
+                            <th style="width:5%">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($produk as $pro)
-                        <tr>
-                            {{-- <td><B>{{ Carbon\Carbon::parse($pro->created_at)->isoFormat('D MMMM Y') }}</B>
-                                <br>{{ Carbon\Carbon::parse($pro->created_at)->format('H:i:s') }}
-                            </td> --}}
-                            <td>{{ $pro->nama_produk }}</td>
-                            <td>{{ $pro->satuan_obat->satuan_obat }}</td>
-                            <td>{{ $pro->bobot_obat->bobot_obat }}</td>
-                            <td class="line" style="white-space: normal !important;">{{ $pro->komposisi }}</td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <a href="/ubah/produk/{{ $pro->id }}" class="btn btn-outline-secondary" title="Ubah data produk kesehatan"><i class="bi bi-pencil-square"></i></a>
-                                </div>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $pro->nama_produk }}</td>
+                                <td>{{ $pro->satuan_obat->satuan_obat }}</td>
+                                <td>{{ $pro->bobot_obat->bobot_obat }}</td>
+                                <td class="break-word">{{ $pro->komposisi }}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        <a href="/ubah/produk/{{ $pro->id }}" class="btn btn-outline-secondary" title="Ubah data produk kesehatan"><i class="bi bi-pencil-square"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -75,6 +81,5 @@
         </div>
     </div>
 </section>
-
 @include('sweetalert::alert')
 @endsection

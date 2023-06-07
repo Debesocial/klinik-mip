@@ -117,3 +117,93 @@ function detailPasienSurat($items)
 
     return $html;
 }
+
+/**Untuk pilih pasien di stepper semua pemeriksaan */
+function detailPasienPemeriksaan()
+{
+    $html = '
+    <div class="card bg-light">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>Nama Pasien</th>
+                                <td id="nama"></td>
+                            </tr>
+                            <tr>
+                                <th>Umur</th>
+                                <td id="umur"></td>
+                            </tr>
+                            <tr>
+                                <th>ID Rekam Medis</th>
+                                <td id="rekam_medis"></td>
+                            </tr>
+                            <tr>
+                                <th>Nomor Induk Karyawan</th>
+                                <td id="nomor_induk_karyawan"></td>
+                            </tr>
+                            <tr>
+                                <th>Tempat Tanggal Lahir</th>
+                                <td id="ttl"></td>
+                            </tr>
+                            <tr>
+                                <th>Alamat</th>
+                                <td id="alamat"></td>
+                            </tr>
+                            <tr>
+                                <th>Pekerjaan</th>
+                                <td id="pekerjaan"></td>
+                            </tr>
+                            <tr>
+                                <th>Alergi</th>
+                                <td id="alergi"></td>
+                            </tr>
+                            <tr>
+                                <th>Menyusui</th>
+                                <td id="menyusui"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th>Kategori</th>
+                                <td id="kategori"></td>
+                            </tr>
+                            <tr>
+                                <th>Perusahaan</th>
+                                <td id="perusahaan"></td>
+                            </tr>
+                            <tr>
+                                <th>Divisi</th>
+                                <td id="divisi"></td>
+                            </tr>
+                            <tr>
+                                <th>Jabatan</th>
+                                <td id="jabatan"></td>
+                            </tr>
+                            <tr>
+                                <th>Jenis Kelamin</th>
+                                <td id="jenis_kelamin"></td>
+                            </tr>
+                            <tr>
+                                <th>Telepon</th>
+                                <td id="telepon"></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td id="email"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>';
+    return $html;
+}
