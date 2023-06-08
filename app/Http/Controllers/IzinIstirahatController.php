@@ -2,43 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alkes;
 use Illuminate\Http\Request;
-use App\Models\Divisi;
-use App\Models\Pasien;
-use App\Models\User;
-use App\Models\Jadwal;
-use App\Models\Keluarga;
-use App\Models\LokasiKejadian;
-use App\Models\BobotObat;
-use App\Models\GolonganObat;
-use App\Models\JenisObat;
-use App\Models\NamaObat;
-use App\Models\ObatAlkes;
-use App\Models\SatuanObat;
-use App\Models\HasilPemantauan;
-use App\Models\IzinBerobat;
+
 use App\Models\IzinIstirahat;
-use App\Models\Jabatan;
-use App\Models\KategoriPasien;
-use App\Models\KeteranganBerobat;
-use App\Models\Level;
 use App\Models\NamaPenyakit;
-use App\Models\PemeriksaanAntigen;
-use App\Models\PemeriksaanCovid;
-use App\Models\Perusahaan;
-use App\Models\RekamMedis;
+use App\Models\Obat;
+use App\Models\Pasien;
 use App\Models\RumahSakitRujukan;
+use App\Models\SatuanObat;
 use App\Models\SpesialisRujukan;
-use App\Models\SuratRujukan;
-use App\Models\TestUrin;
-use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Validator;
-use PDF;
-use Response;
-use Carbon\Carbon;
-use Carbon\CarbonImmutable;
 
 class IzinIstirahatController extends Controller
 {
@@ -62,7 +35,15 @@ class IzinIstirahatController extends Controller
      */
     public function create()
     {
-        //
+        $data['pasien_id'] = Pasien::with('kategori', 'perusahaan', 'divisi', 'jabatan')->get();
+        $data['rsrujukan'] = RumahSakitRujukan::all();
+        $data['spesialisrujukan'] = SpesialisRujukan::all();
+        $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['alatkesehatan'] = Alkes::get();
+        $data['obat'] = Obat::get();
+        $data['satuanobat'] = SatuanObat::get();
+
+        return view('petugas.superadmin.rev.new_izin_istirahat', $data);
     }
 
     /**
@@ -73,7 +54,13 @@ class IzinIstirahatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+        if (IzinIstirahat::create($data)) {
+            return redirect("/data/izin/istirahat")->with('message', 'Berhasil Menambahkan Izin Istirahat!');
+        }
     }
 
     /**
@@ -95,7 +82,16 @@ class IzinIstirahatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['istirahat'] = IzinIstirahat::with(['pasien.kategori', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan'])->find($id);
+        $data['rsrujukan'] = RumahSakitRujukan::all();
+        $data['spesialisrujukan'] = SpesialisRujukan::all();
+        $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['alatkesehatan'] = Alkes::get();
+        $data['obat'] = Obat::get();
+        $data['satuanobat'] = SatuanObat::get();
+
+        return view('petugas.superadmin.rev.new_ubah_izin_istirahat', $data);
+
     }
 
     /**
@@ -107,7 +103,12 @@ class IzinIstirahatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $data = $request->except('_token');
+        $data['updated_by'] = auth()->user()->id;
+        if (IzinIstirahat::where('id', $id)->update($data)) {
+            return redirect("/data/izin/istirahat")->with('message', 'Berhasil Mengubah Izin Istirahat!');
+        }
     }
 
     /**

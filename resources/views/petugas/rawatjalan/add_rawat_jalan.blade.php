@@ -514,20 +514,19 @@
 </section>
 
 <!-- Modal -->
-<div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false"
-aria-labelledby="modalRawatInap2Label" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered ">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modalRawatInap2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalRawatInap2_body">
+                ...
+            </div>
+            
         </div>
-        <div class="modal-body" id="modalRawatInap2_body">
-            ...
-        </div>
-        
     </div>
-</div>
 </div>
 
 @section('js')

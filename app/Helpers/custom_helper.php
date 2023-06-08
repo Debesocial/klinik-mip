@@ -207,3 +207,16 @@ function detailPasienPemeriksaan()
     </div>';
     return $html;
 }
+
+
+function getRekomendasiDokter($id){
+    if ($id==1) {
+        return "Dapat Bekerja Seperti Biasa";
+    }else if ($id==2) {
+        return "Dapat Bekerja dengan Catatan";
+    }else if ($id==3) {
+        return "Istirahat di MESS Karyawan ";
+    }else if ($id==4) {
+        return "Rujukan ke Tarakan";
+    }
+}

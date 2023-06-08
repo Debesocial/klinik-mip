@@ -37,6 +37,7 @@ use App\Http\Controllers\McuController;
 use App\Http\Controllers\IntervensiKeperawatanController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\TandaVitalController;
+use App\Models\IzinIstirahat;
 use App\Models\PermintaanMakanan;
 
 /*
@@ -179,6 +180,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
 
     Route::get('/data/izin/istirahat', [IzinIstirahatController::class, 'dataizinistirahat'])->name('istirahat.dataizinistirahat');
     Route::get('/izin/istirahat', [SuperAdminController::class, 'izinistirahat'])->name('superadmin.izinistirahat');
+    Route::get('/izin_istirahat', [IzinIstirahatController::class, 'create']);
+    Route::get('/ubah/izin_istirahat/{id}', [IzinIstirahatController::class, 'edit']);
+    Route::post('/izin_istirahat', [IzinIstirahatController::class, 'store']);
+    Route::post('/ubah/izin_istirahat/{id}', [IzinIstirahatController::class, 'update']);
 
     Route::get('/data/surat/rujukan', [SuperAdminController::class, 'datasuratrujukan'])->name('superadmin.datasuratrujukan');
     Route::get('/surat/rujukan', [SuperAdminController::class, 'suratrujukan'])->name('superadmin.suratrujukan');

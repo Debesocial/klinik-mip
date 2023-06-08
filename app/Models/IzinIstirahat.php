@@ -9,35 +9,7 @@ class IzinIstirahat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'kejadian',
-        'kontrol_kembali',
-        'pengantar',
-        'anamnesis',
-        'tinggi_badan',
-        'berat_badan',
-        'suhu_badan',
-        'tekanan_darah',
-        'denyut_nadi',
-        'laju_pernapasan',
-        'saturasi',
-        'status',
-        'nama_penyakit_id',
-        'sekunder',
-        'terapi',
-        'tindakan_id',
-        'alkes',
-        'pengguna',
-        'keterangan',
-        'nama_obat',
-        'jumlah_obat',
-        'aturan',
-        'keterangan_obat',
-        'catatan',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded = ['id'];
 
     public function rumahsakitrujukan() {
         return $this->belongsTo(RumahSakitRujukan::class);
@@ -59,8 +31,13 @@ class IzinIstirahat extends Model
         return $this->belongsTo(NamaObat::class);
     }
 
-    public function namapenyakit() {
-        return $this->belongsTo(NamaPenyakit::class);
+    function namapenyakit()
+    {
+        return $this->belongsTo(NamaPenyakit::class, 'diagnosa', 'id');
+    }
+    function namapenyakitsekunder()
+    {
+        return $this->belongsTo(NamaPenyakit::class, 'diagnosa_sekunder', 'id');
     }
 
     public function pasien() {
