@@ -24,223 +24,73 @@
 </div>
 
 <h4 class="card-title">Selamat Datang, {{ Auth::user()->name }}</h4>
-<br><br>
 <div class="page-content">
-    <section class="row">
-        <div class="col-12">
-            <div class="row">
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="iconly-boldUser1"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Jumlah Petugas</h6>
-                                    <h6 class="font-extrabold mb-0">{{$user}}</h6>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Total Pasien <b>{{$total_pasien}}</b></div>
+                </div>
+                <div class="card-body">
+                    <div class="chart" >
+                        <div class="chart-body" >
+                            <canvas id="pasienChart" height="300"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold"> Daftar Pasien</h6>
-                                    <h6 class="font-extrabold mb-0">{{$pasien}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon green">
-                                        <i class="iconly-boldUser"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Karyawan MIP</h6>
-                                    <h6 class="font-extrabold mb-0">{{$kategori}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon red">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Pasien Mitra Kerja</h6>
-                                    <h6 class="font-extrabold mb-0">{{$mitra}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Data Pemeriksaan Narkoba</h6>
-                                    <h6 class="font-extrabold mb-0">{{$narkoba}}</h6><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Data Pemeriksaan Covid</h6>
-                                    <h6 class="font-extrabold mb-0">{{$periksacovid}}</h6><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon green">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Pemantauan Covid-19</h6>
-                                    <h6 class="font-extrabold mb-0">{{$pantaucovid}}</h6><br><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon red">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Data Pemantauan Tanda Vital</h6>
-                                    <h6 class="font-extrabold mb-0">{{$tanda}}</h6><br><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon purple">
-                                        <i class="iconly-boldShow"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Jumlah Petugas</h6>
-                                    <h6 class="font-extrabold mb-0">{{$user}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon blue">
-                                        <i class="iconly-boldProfile"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold"> Daftar Pasien</h6>
-                                    <h6 class="font-extrabold mb-0">{{$pasien}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon green">
-                                        <i class="iconly-boldAdd-User"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Karyawan MIP</h6>
-                                    <h6 class="font-extrabold mb-0">{{$kategori}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body px-3 py-4-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="stats-icon red">
-                                        <i class="iconly-boldBookmark"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Pasien Mitra Kerja</h6>
-                                    <h6 class="font-extrabold mb-0">{{$mitra}}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-
-
             </div>
-
-
-
         </div>
-    </section>
+    </div>
 </div>
+
+@section('js')
+    
+    <script>
+        let ctx = document.getElementById('pasienChart').getContext('2d');
+        Chart.register(ChartDataLabels);
+        let options = {
+            scales: {
+                y: {
+                    beginAtZero: true
+                },
+            },
+            plugins:{
+                legend:false,
+                datalabels: {
+                    anchor: 'end', // remove this line to get label in middle of the bar
+                    align: 'end',
+                    formatter: (val) => (`${val.total}`),
+                    labels: {
+                        value: {
+                            color: 'blue'
+                        }
+                    }
+
+                }
+            },
+            
+            
+        }
+        let pasien = @json($pasien_per_bulan);
+        let datasets = [
+            {
+                label: 'Total',
+                data: pasien,
+                parsing: {
+                    yAxisKey: 'total',
+                    xAxisKey: 'tanggal',
+                },
+                tension: 0.3
+            }
+        ]
+        let cfg = {
+                type: 'line',
+                options: options,
+                data: {
+                    datasets: datasets
+                },
+            }
+        new Chart(ctx, cfg);
+    </script>
+@stop
 @endsection

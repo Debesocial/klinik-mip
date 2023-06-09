@@ -20,21 +20,10 @@ class DashboardController extends Controller
 {
     public function index() {
 
-        $user = User::count();
-        $jadwal = Jadwal::all();
-        $level = Level::all();
-        $pasien= Pasien::count();
-        $kategori = Pasien::where("kategori_pasien_id", "1")->count();
-        $mitra = Pasien::where("kategori_pasien_id", "2")->orWhere("kategori_pasien_id", "3")->count();
-        $narkoba = TestUrin::count();
-        $periksacovid = PemeriksaanCovid::count();
-        $pantaucovid = PemantauanCovid::count();
-        $tanda = TandaVital::count();
-        $jalan = RawatJalan::count();
-        $inap = RawatInap::count();
-        $izinberobat = IzinBerobat::count();
         
-        return view('index', compact('user', 'jadwal', 'level', 'pasien', 'kategori', 'mitra', 'narkoba', 'periksacovid', 'pantaucovid', 'tanda', 'jalan'));
+        $data['total_pasien']= Pasien::count();
+        $data['pasien_per_bulan']= Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
+        return view('index', $data);
     }
 
 }
