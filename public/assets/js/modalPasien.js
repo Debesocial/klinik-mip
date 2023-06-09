@@ -3,7 +3,7 @@ function tampilModalPasien(data) {
     $('.modal-title').text('Data ' + data.nama_pasien);
     $('#modal_nama').text(': ' + data.nama_pasien);
     $('#modal_rekam_medis').text(': ' + data.id_rekam_medis);
-    $('#modal_nomor_induk_karyawan').text(': ' + data.NIK);
+    $('#modal_nomor_induk_karyawan').text(': ' + cekNull(data.NIK));
     $('#modal_ttl').text(': ' + data.tempat_lahir + ', ' + tanggal(data.tanggal_lahir, false));
     $('#modal_alamat').text(': ' + data.alamat);
     $('#modal_pekerjaan').text(': ' + firstCapital(data.pekerjaan));

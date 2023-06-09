@@ -50,22 +50,16 @@
                     <tbody>
                         @foreach ($pasiens as $patient)
                         <tr>
-                            <td style="white-space: nowrap;"><B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
+                            <td style="white-space: nowrap;">
+                                <B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($patient->created_at)->format('H:i:s') }}
                             </td>
                             <td>{{ $patient['nama_pasien'] }}</td>
-                            <td><?php
-                                $tanggal_lahir = $patient->tanggal_lahir;
-                                $lahir    = new DateTime($tanggal_lahir);
-                                $today        = new DateTime('today');
-                                $usia = $today->diff($lahir);
-                                echo $usia->y;
-                                echo " Tahun ";
-                                ?></td>
+                            <td>{{ umur($patient->tanggal_lahir)}}</td>
                             <td>{{ $patient['jenis_kelamin'] }}</td>
                             <td>{{$patient->kategori->nama_kategori}}</td>
                             <td class="text-center">
-                                <i class="{{ $patient->alergi_obat == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i>  {{ucfirst($patient->alergi??'')}}
+                                {!! $patient->alergi_obat == 1 ? '<i class="fas fa-check text-primary"></i> </br>'.ucfirst($patient->alergi??'') : '<i class="fas fa-times text-danger"></i>' !!}
                                 </td>
                             <td class="text-center"><i class="{{ $patient->hamil_menyusui == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
                             <td class="text-center">

@@ -19,12 +19,6 @@
                 <div class="col-10">
                     <p>Tanggal Pemeriksaan <b> {{ date('d-m-Y H:i', strtotime($mcuawal->created_at)) }} </b></p>
                 </div>
-                <div class="col-2 text-end">
-                    <a class="btn btn-primary"
-                        href="/print/mcu-awal/{{ $mcuawal->id }}"> Print
-                        <i class="bi bi-printer"></i>
-                    </a>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">

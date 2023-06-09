@@ -65,10 +65,6 @@
                                                 <div class="col-md-1">
                                                     @php
                                                         $img = ($pas->upload!=''||$pas->upload!=null)?$pas->upload:'default.jpg';
-                                                        $tanggal_lahir = $pas->tanggal_lahir;
-                                                        $lahir    = new DateTime($tanggal_lahir);
-                                                        $today        = new DateTime('today');
-                                                        $usia = $today->diff($lahir);
                                                     @endphp
                                                     <img  src="{{ asset('pasien/foto/file/'.$img) }}" class="img-fluid rounded-circle" style="width: auto" alt="">
                                                 </div>
@@ -79,7 +75,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <div>{{ $usia->y .' Tahun' }}</div>
+                                                            <div>{{ umur($pas->tanggal_lahir) }}</div>
                                                             <a href="#" onclick="tampilModalPasien({{ json_encode($pas) }})"><small style="display: inline-block;">Detail Pasien <i class="bi bi-box-arrow-up-right"></i></small></a>
                                                         </div>
                                                         <div class="col-md-5">
@@ -145,14 +141,11 @@
 
         function clearTable(param) {
             
-            if (param.length<2) {
-                $('#tbody1').show();
-                $('#tbody').hide(); 
-            }else{
+            
                 table1.search(param).draw();
                 $('#tbody1').hide();    
                 $('#tbody').show();
-            }
+            
         }
 
         

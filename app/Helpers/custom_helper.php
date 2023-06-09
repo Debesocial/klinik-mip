@@ -38,10 +38,9 @@ function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false)
 
 function umur($date)
 {
-    $date = new DateTime($date);
-    $now = new DateTime();
-    $interval = $now->diff($date);
-    return $interval->y . ' Tahun';
+    $tanggalSekarang = date("Y-m-d");
+    $umur = date_diff(date_create($date), date_create($tanggalSekarang));
+    return $umur->y . ' Tahun, '. $umur->m .' Bulan, '. $umur->d . ' Hari';
 }
 
 /** Untuk validation bootstrap */

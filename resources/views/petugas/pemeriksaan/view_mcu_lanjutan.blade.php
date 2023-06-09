@@ -15,11 +15,6 @@
                     <h5>Hasil MCU - <b>{{ $mculanjutan->id_mcu_lanjutan }}</b></h5>
                 </div>
             </div>
-            <div class="row">
-                <div class="col text-end">
-                    <button class="btn btn-primary">Print <i class="bi bi-printer"></i></button>
-                </div>
-            </div>
             <div class="row mb-3">
                 <div class="col-md-7">
                     <div class="row mb-2">
