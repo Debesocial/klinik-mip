@@ -9,15 +9,7 @@ class PersetujuanTindakan extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'riwayat',
-        'hasil',
-        'ttd',
-        'catatan',
-        'created_by',
-        'updated_by'
-    ];
+    protected $guarded = ['id'];
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);

@@ -18,6 +18,7 @@ class CreatePersetujuanTindakansTable extends Migration
             $table->foreignId('pasien_id')->constrained();
             $table->string('riwayat');
             $table->boolean('hasil');;
+            $table->text('tindakan');
             $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

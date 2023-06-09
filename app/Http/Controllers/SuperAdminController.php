@@ -1049,6 +1049,7 @@ class SuperAdminController extends Controller
             'pasien_id' => $request->pasien_id,
             'riwayat' => $request->riwayat,
             'hasil' => $request->hasil,
+            'tindakan' => $request->tindakan,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
@@ -1071,6 +1072,7 @@ class SuperAdminController extends Controller
         $tindakan = PersetujuanTindakan::find($id);
         $tindakan->riwayat = $request->input('riwayat');
         $tindakan->hasil = $request->input('hasil');
+        $tindakan->tindakan = $request->input('tindakan');
         $tindakan->update();
 
         return redirect('/data/tindakan/medis')->with('message', 'Berhasil mengubah surat persetujuan tindakan medis!');

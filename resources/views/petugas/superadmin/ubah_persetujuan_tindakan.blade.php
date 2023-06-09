@@ -29,6 +29,10 @@
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
+                            <label>Tindakan <b class="color-red">*</b></label>
+                            <textarea type="text" id="tindakan" class="form-control" name="tindakan" required>{{$tindakan->tindakan}}</textarea>
+                        </div>
+                        <div class="mb-3">
                             <label>Riwayat Perjalanan Penyakit <b class="color-red">*</b></label>
                             <textarea type="text" id="riwayat" class="form-control" name="riwayat" required>{{$tindakan->riwayat}}</textarea>
                         </div>

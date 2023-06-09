@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <p>Dengan in menyatakan <b>{{$tindakan->hasil==1?'SETUJU':'TIDAK SETUJU'}}</b> untuk dilakukan tindakan medis berupa </p>
+    <p>Dengan in menyatakan <b>{{$tindakan->hasil==1?'SETUJU':'TIDAK SETUJU'}}</b> untuk dilakukan tindakan medis berupa <b>{{$tindakan->tindakan}}</b></p>
 
     <p>
         Pernyataan ini saya buat dengan sesungguhnya bahwa : 
