@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\IzinBerobat;
+use App\Models\IzinIstirahat;
 use App\Models\KeteranganBerobat;
 use App\Models\KeteranganSehat;
 use App\Models\McuAwal;
+use App\Models\Obat;
 use App\Models\PersetujuanTindakan;
 use App\Models\SuratRujukan;
 use App\Models\Tindakan;
@@ -75,6 +77,16 @@ class SuratController extends Controller
         $view = view('surat/tindakan', $data);
         // return $view;
         $savename = 'persetujuan-tindakan' . str_replace(' ', '-', $tindakan->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+    }
+    public function printIstirahat($id)
+    {
+        $istirahat = IzinIstirahat::find($id);
+        $data['istirahat'] = $istirahat;
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
+        $view = view('surat/istirahat', $data);
+        // return $view;
+        $savename = 'izin-istirahat' . str_replace(' ', '-', $istirahat->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);
     }
 

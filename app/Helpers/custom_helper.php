@@ -14,9 +14,14 @@ function cekMcu($data)
 
 /** Untuk menyamakan format tanggal
  */
-function tanggal($tanggal, $jam = true, $monthText = false)
+function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false)
 {
-    if ($monthText) {
+    if ($namaHari) {
+        $format = 'l d F Y';
+        $date = \Carbon\Carbon::parse($tanggal)->locale('id');
+        $date->settings(['formatFunction' => 'translatedFormat']);
+        return $date->format($format);
+    }else if ($monthText) {
         $format = 'd F Y';
         $date = \Carbon\Carbon::parse($tanggal)->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);

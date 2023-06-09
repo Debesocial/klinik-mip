@@ -76,8 +76,7 @@
                         </div>
                     </div>
                     <div class="bs-stepper-content">
-                        <form id="form-istirahat" class="form needs-validation" action="/ubah/izin_istirahat/{{$istirahat->id}}" method="post"
-                            enctype="multipart/form-data" novalidate>
+                        <form id="form-istirahat" class="form needs-validation" action="/ubah/izin_istirahat/{{$istirahat->id}}" method="post" enctype="multipart/form-data" novalidate>
                             @csrf
                             <input type="hidden" name="pasien_id">
                             <div id="test-nl-1" class="content">
@@ -458,6 +457,10 @@
                         if (input == 'dapat_bekerja_catatan') {
                             $('#'+input).text('');
                         }
+                        if (input == 'spesialis_rujukan_id'||input == 'rumah_sakit_rujukan_id') {
+                            $('#'+input).val('').trigger('change');;
+                        }
+
                      });
                     if(val==2) {
                         $('#_'+val).show();
@@ -472,17 +475,6 @@
             cekRekomendasi();
             function cekRekomendasi(){
                 val = $('#rekomendasi:checked').val();
-                    //  for (let i = 2; i <= 4; i++) {
-                    //     $('#_'+i).hide();
-                    //  }
-                    //  cek = ['dapat_bekerja_catatan', 'dari','sampai','spesialis_rujukan_id','rumah_sakit_rujukan_id'];
-                     
-                    //  cek.forEach(input => {
-                    //     $('#'+input).val('');
-                    //     if (input == 'dapat_bekerja_catatan') {
-                    //         $('#'+input).text('');
-                    //     }
-                    //  });
                     if(val==2) {
                         $('#_'+val).show();
                     }else if(val==3){

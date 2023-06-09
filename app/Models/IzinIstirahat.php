@@ -12,11 +12,11 @@ class IzinIstirahat extends Model
     protected $guarded = ['id'];
 
     public function rumahsakitrujukan() {
-        return $this->belongsTo(RumahSakitRujukan::class);
+        return $this->belongsTo(RumahSakitRujukan::class, 'rumah_sakit_rujukan_id', 'id');
     }
 
     public function spesialisrujukan() {
-        return $this->belongsTo(SpesialisRujukan::class);
+        return $this->belongsTo(SpesialisRujukan::class, 'spesialis_rujukan_id', 'id');
     }
     
     public function tindakan() {
@@ -29,6 +29,9 @@ class IzinIstirahat extends Model
 
     public function namaobat() {
         return $this->belongsTo(NamaObat::class);
+    }
+    public function alkes() {
+        return $this->belongsTo(Alkes::class);
     }
 
     function namapenyakit()
