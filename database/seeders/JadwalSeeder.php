@@ -14,6 +14,14 @@ class JadwalSeeder extends Seeder
      */
     public function run()
     {
-        
+        Jadwal::insert([
+            'senin'=>'-',
+            'selasa'=>'-',
+            'rabu'=>'-',
+            'kamis'=>'-',
+            'jumat'=>'-',
+            'sabtu'=>'-',
+            'minggu'=>'-'
+        ]);
     }
 }

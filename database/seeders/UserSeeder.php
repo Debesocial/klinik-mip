@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('123123'),
                 'telp' => '085896224113',
                 'level_id' => 1,
+                'jadwal_id'=>1,
                 'status' => 'Aktif',
             ]
         ]);

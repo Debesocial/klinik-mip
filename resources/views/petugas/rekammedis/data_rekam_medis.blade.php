@@ -129,13 +129,7 @@
             $('#cari_pasien').keyup(function(){
                 clearTable($(this).val())
             })
-            // $('input[type="search"]').click(function(){
-            //     clearTable($(this).val())
-            // })
-            // $('#table2_filter').parent().removeClass('col-md-6')
-            // $('#table2_filter').css('text-align', 'center')
-            //  $('input[type="search"]').attr('placeholder', 'Masukkan kata kunci').removeClass('form-control-sm').addClass('form-control-lg').css('margin-left',0);
-            // $('#table2_filter').parent().siblings().remove()
+            
             $('#table2_wrapper').children().first().remove()
         })
 
