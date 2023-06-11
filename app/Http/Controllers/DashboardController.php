@@ -18,12 +18,12 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index() {
+    public function index()
+    {
 
-        
-        $data['total_pasien']= Pasien::count();
-        $data['pasien_per_bulan']= Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
+
+        $data['total_pasien'] = Pasien::count();
+        $data['pasien_per_bulan'] = Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
         return view('index', $data);
     }
-
 }

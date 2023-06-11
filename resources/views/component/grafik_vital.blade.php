@@ -12,6 +12,8 @@
 
 <script>
     data = @json($vital);
+    Chart.register(ChartDataLabels);
+
     data.forEach(v => {
         tgl = tanggalFormat(v.created_at);
         v.x = tgl.split(" ").join("\n");
@@ -143,6 +145,14 @@
             },
             tension: 0.1,
             yAxisID: 'skala_nyeri',
+            datalabels: {
+                color: 'blue',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.skala_nyeri;
+                }
+            },
         },
         {
             label: 'HR',
@@ -152,6 +162,14 @@
             },
             tension: 0.1,
             yAxisID: 'hr',
+            datalabels: {
+                color: 'darkred',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.hr;
+                }
+            },
             hidden: true
 
         },
@@ -163,6 +181,14 @@
             },
             tension: 0.1,
             yAxisID: 'bp',
+            datalabels: {
+                color: 'orange',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.bp;
+                }
+            },
             hidden: true
 
         },
@@ -174,6 +200,14 @@
             },
             tension: 0.1,
             yAxisID: 'temp',
+            datalabels: {
+                color: 'goldenrod',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.temp;
+                }
+            },
             hidden: true
 
         },
@@ -185,6 +219,14 @@
             },
             tension: 0.1,
             yAxisID: 'rr',
+            datalabels: {
+                color: 'green',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.rr;
+                }
+            },
             hidden: true
         },
         {
@@ -195,6 +237,14 @@
             },
             tension: 0.1,
             yAxisID: 'saturasi_oksigen',
+            datalabels: {
+                color: 'purple',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.saturasi_oksigen;
+                }
+            },
             hidden: true
 
         }
