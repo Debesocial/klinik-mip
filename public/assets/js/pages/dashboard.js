@@ -221,3 +221,4 @@ function getDateDiff(time1, time2, abs=true) {
   function cekSingle(m) {
     return m < 10 ? '0'+m: m;
   }
+  

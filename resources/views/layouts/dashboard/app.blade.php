@@ -76,6 +76,7 @@
         td::first-letter {
             text-transform: uppercase;
         }
+       
     </style>
 
 </head>
@@ -281,6 +282,7 @@
 
     <script src="{{ asset('assets/js/mazer.js') }}"></script>
     <script>
+        
         // Jquery Datatable
         let jquery_datatable = $("table[id*='table1']").DataTable({
             "language": {
@@ -329,9 +331,8 @@
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     @yield('js')
 </body>
 
