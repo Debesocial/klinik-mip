@@ -307,8 +307,8 @@
 
     <script>
         let jalan = @json($rawat_jalan_per_bulan);
-        let bulanMinJalan = new Date();
-        let bulanMaxJalan = new Date(jalan[jalan.length-1].bulan);
+        let bulanMinJalan = new Date(jalan[0].bulan);
+        let bulanMaxJalan = new Date();
         let ctx2 = document.getElementById('jalanChart').getContext('2d');
         // Chart.register(ChartDataLabels);
         let options2 = {
