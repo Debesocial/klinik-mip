@@ -33,11 +33,10 @@
                 </script>
             @endif
             <div class="table-responsive">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
                             <th>Nama Penyakit</th>
-                            <th>Penyakit Sekunder</th>
                             <th>Sub Klasifikasi</th>
                             <th>Aksi</th>
                         </tr>
@@ -46,7 +45,6 @@
                         @foreach ($namapenyakit as $nama)
                         <tr>
                             <td class="text-center">{{ $nama->primer }}</td>
-                            <td>{{ $nama->sekunder }}</td>
                             <td>{{ $nama->sub_klasifikasi->nama_penyakit }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
