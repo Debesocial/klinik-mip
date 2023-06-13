@@ -25,12 +25,16 @@ class DashboardController extends Controller
 
         $data['total_pasien'] = Pasien::count();
         // $data['pasien_per_bulan'] = Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
-        
-        $data['pasien_per_bulan'] = DB::select('SELECT count(p1.id), DATE_FORMAT(p1.created_at, "%Y-%m") as tanggal, 
-        (select count(p2.id) from pasiens p2 where DATE_FORMAT(p2.created_at, "%Y-%m") <= DATE_FORMAT(p1.created_at, "%Y-%m")) as total 
-        FROM pasiens p1 
-        GROUP BY DATE_FORMAT(p1.created_at, "%Y-%m") 
-        ORDER BY DATE_FORMAT(p1.created_at, "%Y-%m")');
+        $data['pasien_per_bulan'] = DB::table('pasiens as p1')
+        ->selectRaw('COUNT(p1.id) as count, DATE_FORMAT(p1.created_at, "%Y-%m") as tanggal')
+        ->selectSub(function ($query) {
+            $query->from('pasiens as p2')
+                ->selectRaw('COUNT(p2.id)')
+                ->whereRaw('DATE_FORMAT(p2.created_at, "%Y-%m") <= DATE_FORMAT(p1.created_at, "%Y-%m")');
+        }, 'total')
+        ->groupBy(DB::raw('DATE_FORMAT(p1.created_at, "%Y-%m")'))
+        ->orderBy(DB::raw('DATE_FORMAT(p1.created_at, "%Y-%m")'))
+        ->get();
         $data['pasien_masih_rawat_inap'] = RawatInap::where('berakhir_rawat',null)->with(['pasien'])->get();
         $data['tanda_vital_hari_ini'] = TandaVital::whereDate('created_at', Carbon::today())->with(['rawatinap','rawatinap.pasien'])->get();
         $data['total_rawat_jalan']= RawatJalan::count();
