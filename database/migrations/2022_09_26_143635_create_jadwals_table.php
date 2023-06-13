@@ -22,6 +22,8 @@ class CreateJadwalsTable extends Migration
             $table->string('jumat')->nullable();
             $table->string('sabtu')->nullable();
             $table->string('minggu')->nullable();
+            $table->boolean('active')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

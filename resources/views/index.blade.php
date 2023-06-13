@@ -110,7 +110,7 @@
                                         <th class="bg-white">BP</th>
                                         <th class="bg-white">Temp</th>
                                         <th class="bg-white">RR</th>
-                                        <th class="bg-white">Saturasi Oksigen</th>
+                                        <th class="bg-white">SPO2</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -154,7 +154,79 @@
             </div>
         </div>
         <div class="row">
-
+            <div class="col-md-5 d-flex align-items-stretch">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-title">Total Kunjungan <b>{{$total_kunjungan}}</b></div>
+                    </div>
+                    <div class="card-body">
+                        <i><b class="text-primary">**</b> Total kunjungan adalah jumlah pasien pada rawat inap, rawat jalan, MCU, dan pemeriksaan narkotika.</i>
+                        <div class="chart">
+                            <div class="chart-body">
+                                <canvas id="kunjunganChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-title">Jadwal Petugas</div>
+                        @php
+                            $hari = ['senin','selasa','rabu','kamis','jumat','sabtu','minggu']
+                        @endphp
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive tableFixHead">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr >
+                                        <th class="bg-white"></th>
+                                        <th class="bg-white" id="_1">Senin</th>
+                                        <th class="bg-white" id="_2">Selasa</th>
+                                        <th class="bg-white" id="_3">Rabu</th>
+                                        <th class="bg-white" id="_4">Kamis</th>
+                                        <th class="bg-white" id="_5">Jumat</th>
+                                        <th class="bg-white" id="_6">Sabtu</th>
+                                        <th class="bg-white" id="_7">Minggu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="badge bg-success">Shift 1</span><b>06:30 - 18-30</b><br></td>
+                                        @foreach ($hari as $h)
+                                            <td id="_{{$loop->iteration}}">
+                                                <ol>
+                                                    @foreach ($jadwal as $j)
+                                                        @if (str_contains($j[$h],'Shift 1'))
+                                                            <li>{{$j->user->name}}</li>
+                                                        @endif
+                                                    @endforeach
+                                                </ol>
+                                            </td>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td><span class="badge bg-primary">Shift 2</span><b>18:30 - 06:30</b><br></td>
+                                        @foreach ($hari as $h)
+                                        <td id="_{{$loop->iteration}}">
+                                            <ol>
+                                                @foreach ($jadwal as $j)
+                                                    @if (str_contains($j[$h],'Shift 2'))
+                                                        <li>{{$j->user->name}}</li>
+                                                    @endif
+                                                @endforeach
+                                            </ol>
+                                        </td>
+                                    @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -279,17 +351,19 @@
         }
         const chartPasien =  new Chart(ctx, cfg);
 
-        function scroller(scroll, chart) { 
+        function scroller(scroll, chart, mindif=3) { 
             mintemp = new Date(chart.config.options.scales.x.min);
             maxtemp = new Date(chart.config.options.scales.x.max)
-            
+            minDev = new Date();
+            minDev.setMonth(minDev.getMonth()-mindif);
             if (scroll.deltaY > 0){
                 if(chart.config.options.scales.x.max<tanggalMax.getFullYear()+'-'+ cekSingle(tanggalMax.getMonth()+1)){
                     chart.config.options.scales.x.max = maxtemp.setMonth(maxtemp.getMonth()+1);
                     chart.config.options.scales.x.min = mintemp.setMonth(mintemp.getMonth()+1);
                 }else{
+                    
                     chart.config.options.scales.x.max = tanggalMax.getFullYear()+'-'+ cekSingle(tanggalMax.getMonth()+1);
-                    chart.config.options.scales.x.min = tanggalMax.getFullYear()+'-'+ cekSingle(tanggalMax.getMonth()-3);
+                    chart.config.options.scales.x.min = minDev.getFullYear()+'-'+ cekSingle(minDev.getMonth());
                 }
             }else if (scroll.deltaY < 0){
                 chart.config.options.scales.x.min = mintemp.setMonth(mintemp.getMonth()-1);
@@ -302,8 +376,6 @@
             scroller(e, chartPasien);
         });
     </script>
-
-    
 
     <script>
         let jalan = @json($rawat_jalan_per_bulan);
@@ -403,6 +475,110 @@
         })
 
 
+    </script>
+
+    <script>
+        let kunjungan = @json($kunjungan_perbulan);
+        let bulanMaxKunjungan = new Date();
+        let bulanMinKunjungan = new Date();
+        bulanMinKunjungan.setMonth(bulanMinKunjungan.getMonth()-3);
+        let ctx3 = document.getElementById('kunjunganChart').getContext('2d');
+        let options3 = {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Kunjungan'
+                    },
+                    ticks: {
+                        stepSize: 10
+                    }
+                },
+                x: {
+                    beginAtZero: true,
+                    type: 'time',
+                    time: {
+                        unit: 'month',
+                        tooltipFormat:'MMM yyyy'
+                    },
+                    grid: {
+                        display: false
+                    },
+                    min: bulanMinKunjungan.getFullYear()+'-'+ cekSingle(bulanMinKunjungan.getMonth()),
+                    max: bulanMaxKunjungan.getFullYear()+'-'+ cekSingle(bulanMaxKunjungan.getMonth()+1),
+                }
+            },
+            layout: {
+                padding: {
+                    top: 30
+                }
+            },
+            plugins: {
+                legend: false,
+                datalabels: {
+                    anchor: 'end', // remove this line to get label in middle of the bar
+                    align: 'end',
+                    formatter: (val) => (`${val.total}`),
+                    labels: {
+                        value: {
+                            color: 'black'
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index',
+            },
+        }
+        for (let date = bulanMinKunjungan; date <= bulanMaxKunjungan; date.setMonth(date.getMonth() + 1)){
+            const formattedMonthKunjungan = date.getFullYear()+'-'+ cekSingle(date.getMonth()+1);
+            cekTemp = kunjungan.find(e => e.bulan === formattedMonthKunjungan);
+            if (cekTemp==undefined){
+                temp = {
+                    total:0,
+                    bulan: formattedMonthKunjungan
+                }
+                kunjungan.push(temp);
+            }
+        }
+        kunjungan.sort((a, b) => {
+            if (a.bulan < b.bulan) {
+                return -1;
+            }
+        });
+        let datasets3 = [{
+            label: 'Total Kunjungan',
+            data: kunjungan,
+            parsing: {
+                yAxisKey: 'total',
+                xAxisKey: 'bulan',
+            },
+            spanGaps: true,
+            fill:true,
+            backgroundColor: 'greenyellow',
+            
+        }]
+        let cfg3 = {
+            type: 'bar',
+            options: options3,
+            data: {
+                datasets: datasets3
+            },
+        }
+        const chartKunjungan =  new Chart(ctx3, cfg3);
+        chartKunjungan.canvas.addEventListener('wheel', (e)=>{
+            scroller(e, chartKunjungan, 3);
+        })
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            tgl = new Date();
+            $('[id*="_'+tgl.getDay()+'"]').css('background-color','rgba(30, 81, 123,0.1)').removeClass('bg-white');
+        })
     </script>
 
     <script>

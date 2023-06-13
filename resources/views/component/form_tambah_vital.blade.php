@@ -59,12 +59,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">BP <b class="color-red">*</b></label>
-                                    <input class="form-control" type="number" name="bp" id="bp" min="0" max="250">
-                                    <div class="invalid-feedback">
-                                        BP harus diisi
-                                    </div>
-                                    <div class="valid-feedback">
-                                        Data sudah benar
+                                    <div class="input-group">
+                                        <input class="form-control" type="number" name="bp" id="bp" min="0" max="250">
+                                        <span class="input-group-text">/</span>
+                                        <input class="form-control" type="number" name="bp_menit" id="bp_menit" min="0" max="250">
+                                        {!!validasi('BP')!!}
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -111,12 +110,11 @@
                                 <div class="mb-3">
                                     <label for="" class="form-label">Gejala</label>
                                     <select name="gejala" id="gejala" class="form-select">
-                                        <option value="" disabled selected>Pilih Gejala</option>
+                                        <option value="" selected>Pilih Gejala</option>
                                         @foreach ($hasilpemantauan as $gejala)
                                             <option value="{{$gejala->id}}">{{$gejala->nama_pemantauan}} - {{$gejala->kode}}</option>
                                         @endforeach
                                     </select>
-                                    {!!validasi('Gejala')!!}
                                 </div>
                                 <div id="form_gejala_lain" class="mb-3" style="display: none">
                                     <label class="form-label">Gejala Lain</label>
@@ -240,7 +238,7 @@
         dropdownCssClass: 'select2--small',
     });
     function lanjut1(){
-        var formidrequired = ['skala_nyeri','hr','bp','temp','rr','saturasi_oksigen', 'gejala']
+        var formidrequired = ['skala_nyeri','hr','bp', 'bp_menit','temp','rr','saturasi_oksigen']
         var validated = true;
         formidrequired.forEach(id => {
             var form = $('#'+id);
@@ -265,7 +263,7 @@
                 }else{
                     form.addClass('is-valid').removeClass('is-invalid');
                 }
-                if (id=='gejala' && form.val()== 6) {
+                if ($('#gejala').val()== 6) {
                     if ($('#gejala_lain').val()=='') {
                         $('#gejala_lain').addClass('is-invalid').removeClass('is-valid');
                         validated=false;
@@ -282,15 +280,9 @@
     }
 
     function simpan() {
-        
-        if (resep.length != 0) {
-            $('.preloader').show();
-            hideModal('modalRawatInap');
-            $('#form-tambah-tandavital').submit();
-        }else {
-            $('#resep_kosong').show();
-        }
-
+        $('.preloader').show();
+        hideModal('modalRawatInap');
+        $('#form-tambah-tandavital').submit();
     }
     id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
     resep = [];

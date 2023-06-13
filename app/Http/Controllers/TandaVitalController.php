@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HasilPemantauan;
 use App\Models\Obat;
+use App\Models\RawatInap;
 use App\Models\SatuanObat;
 use App\Models\TandaVital;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ class TandaVitalController extends Controller
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap']=$id;
+        $rawatinap = RawatInap::find($id);
+        if ($rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
@@ -42,6 +47,9 @@ class TandaVitalController extends Controller
     public function tampilFormUbah($id)
     {
         $data['tandavital'] = TandaVital::find($id);
+        if ($data['tandavital']->rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
@@ -79,7 +87,7 @@ class TandaVitalController extends Controller
 
     public function grafik($id)
     {
-        $data['vital']= TandaVital::select('skala_nyeri', 'hr','bp','temp','rr','saturasi_oksigen', 'created_at')->where('id_rawat_inap',$id)->get();
+        $data['vital']= TandaVital::select('skala_nyeri', 'hr','bp','bp_menit','temp','rr','saturasi_oksigen', 'created_at')->where('id_rawat_inap',$id)->get();
         return view('component/grafik_vital', $data);
 
     }

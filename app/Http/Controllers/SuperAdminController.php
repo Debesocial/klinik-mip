@@ -1478,15 +1478,15 @@ class SuperAdminController extends Controller
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
 
-    public function ubahuser($id, $jadwal_id)
+    public function ubahuser($id)
     {
         $user = User::find($id);
-        $jadwal = Jadwal::find($jadwal_id);
+        $jadwal = Jadwal::find($user->jadwal_id);
         $level = Level::where("id", "1")->orWhere("id", "2")->orWhere("id", "3")->orWhere("id", "4")->orWhere("id", "5")->get();
         return view('petugas.superadmin.ubah_data_user', compact('user', 'jadwal', 'level'));
     }
 
-    function changeuser(Request $request, $id, $jadwal_id)
+    function changeuser(Request $request, $id)
     {
         // dd($request->input('senin'));
         $user = User::find($id);
@@ -1499,19 +1499,19 @@ class SuperAdminController extends Controller
         $user->telp = $request->input('telp');
         $user->level_id = $request->input('level_id');
         $user->update();
-        $jadwal = Jadwal::find($jadwal_id);
-        $jadwal->senin = $request->input('senin');
-        $jadwal->selasa = $request->input('selasa');
-        $jadwal->rabu = $request->input('rabu');
-        $jadwal->kamis = $request->input('kamis');
-        $jadwal->jumat = $request->input('jumat');
-        $jadwal->sabtu = $request->input('senin');
-        $jadwal->minggu = $request->input('minggu');
+        // $jadwal = Jadwal::find($jadwal_id);
+        // $jadwal->senin = $request->input('senin');
+        // $jadwal->selasa = $request->input('selasa');
+        // $jadwal->rabu = $request->input('rabu');
+        // $jadwal->kamis = $request->input('kamis');
+        // $jadwal->jumat = $request->input('jumat');
+        // $jadwal->sabtu = $request->input('senin');
+        // $jadwal->minggu = $request->input('minggu');
 
-        $jadwal->update();
+        // $jadwal->update();
 
 
-        return redirect('/data/user')->with('message', 'Berhasil Mengubah Data Petugas!');
+        return redirect("/ubah/data/user/$id")->with('message', 'Berhasil Mengubah Data Petugas!');
     }
 
     public function jadwal()

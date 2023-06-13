@@ -349,7 +349,7 @@
                                         <td>{{ tanggal($vital->created_at) }}</td>
                                         <td>{{ $vital->skala_nyeri }}</td>
                                         <td>{{ $vital->hr }}</td>
-                                        <td>{{ $vital->bp }}</td>
+                                        <td>{{ $vital->bp }} / {{ $vital->bp_menit }}</td>
                                         <td>{{ $vital->temp }}</td>
                                         <td>{{ $vital->rr }}</td>
                                         <td>{{ $vital->saturasi_oksigen }}</td>
@@ -417,6 +417,28 @@
 
 @section('js')
     <script type="text/javascript" defer="defer">
+        let legendClick = function (e, legendItem, legend) {
+            let index = legendItem.datasetIndex;
+            let ci = legend.chart;
+            let yId = ci.data.datasets[index].yAxisID;
+            if (ci.isDatasetVisible(index)) {
+                ci.hide(index);
+                if (index===2) {
+                    ci.hide(index+1);
+                }
+                vitalChart.options.scales[yId].display = false;
+                legendItem.hidden = true;
+            } else {
+                ci.show(index);
+                if (index===2) {
+                    ci.show(index+1);
+                }
+                vitalChart.options.scales[yId].display = true;
+                legendItem.hidden = false;
+            }
+            vitalChart.update();
+        }
+
         if (window.performance) {
             var navEntries = window.performance.getEntriesByType('navigation');
             if (navEntries.length > 0 && navEntries[0].type === 'back_forward') {

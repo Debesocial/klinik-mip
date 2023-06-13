@@ -21,13 +21,14 @@ class CreateTandaVitalsTable extends Migration
             $table->string('skala_nyeri');
             $table->string('hr');
             $table->string('bp');
+            $table->string('bp_menit')->default(0);
             $table->string('temp');
             $table->string('rr');
             $table->string('saturasi_oksigen');
             $table->string('keterangan')->nullable();
             $table->text('dokumen')->nullable();
-            $table->json('terapi');
-            $table->unsignedBigInteger('gejala');
+            $table->json('terapi')->nullable();
+            $table->unsignedBigInteger('gejala')->nullable();
             $table->foreign('gejala')->references('id')->on('hasil_pemantauans');
             $table->text('gejala_lain')->nullable();
             $table->unsignedBigInteger('created_by');

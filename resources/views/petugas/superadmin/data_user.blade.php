@@ -47,7 +47,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($users->sortByDesc('created_at') as $user)
                         <tr>
                             {{-- <td><B>{{ Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($user->created_at)->format('H:i:s') }}
@@ -66,7 +66,7 @@
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/view/user/{{ $user->id }}" class="btn btn-outline-secondary" title="Lihat detail data petugas"><i class="bi  bi-eye-fill"></i></a>
-                                    <a href="/ubah/data/user/{{ $user->id }}/{{ $user->jadwal_id }}" class="btn btn-outline-secondary " title="Ubah data petugas"><i class="bi  bi-pencil-square"></i></a>
+                                    <a href="/ubah/data/user/{{ $user->id }}" class="btn btn-outline-secondary " title="Ubah data petugas"><i class="bi  bi-pencil-square"></i></a>
                                 </div>
                             </td>
                         </tr>

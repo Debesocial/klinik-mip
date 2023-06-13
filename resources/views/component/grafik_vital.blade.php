@@ -11,6 +11,7 @@
 
 
 <script>
+    vitalChart = null;
     data = @json($vital);
     Chart.register(ChartDataLabels);
 
@@ -30,43 +31,45 @@
                     }
                 },
             },
-            skala_nyeri: {
-                display: false,
+
+            rr: {
+                display:false,
                 type: 'linear',
-                display: true,
-                position: 'left',
-                max: 10,
-                min: 0,
-                title: {
-                    display: true, // Menampilkan label skala pada sumbu y
-                    text: 'skala nyeri' // Isi teks label skala pada sumbu y
-                },
-                ticks: {
-                    stepSize: 1
-                }
-            },
-            hr: {
-                display: false,
-                type: 'linear',
-                display: true,
                 position: 'left',
                 grid: {
                     drawOnChartArea: false,
                 },
-                max: 200,
+                max: 100,
                 min: 0,
                 title: {
                     display: true, // Menampilkan label skala pada sumbu y
-                    text: 'hr' // Isi teks label skala pada sumbu y
+                    text: 'rr' // Isi teks label skala pada sumbu y
                 },
                 ticks: {
-                    stepSize: 10
+                    stepSize: 10,
+                    display: true
+                }
+            },
+            temp: {
+                display:false,
+                type: 'linear',
+                position: 'left',
+                grid: {
+                    drawOnChartArea: false,
+                },
+                max: 41,
+                min: 31,
+                title: {
+                    display: true, // Menampilkan label skala pada sumbu y
+                    text: 'temp' // Isi teks label skala pada sumbu y
+                },
+                ticks: {
+                    stepSize: 1,
                 }
             },
             bp: {
-                display: false,
+                display:false,
                 type: 'linear',
-                display: true,
                 position: 'left',
                 grid: {
                     drawOnChartArea: false,
@@ -81,60 +84,71 @@
                     stepSize: 25
                 }
             },
-            temp: {
-                display: false,
+            hr: {
+                display:false,
                 type: 'linear',
-                display: true,
                 position: 'left',
                 grid: {
                     drawOnChartArea: false,
                 },
-                max: 41,
-                min: 31,
+                max: 200,
+                min: 0,
                 title: {
                     display: true, // Menampilkan label skala pada sumbu y
-                    text: 'temp' // Isi teks label skala pada sumbu y
+                    text: 'hr' // Isi teks label skala pada sumbu y
+                },
+                ticks: {
+                    stepSize: 10
+                }
+            },
+            skala_nyeri: {
+                type: 'linear',
+                position: 'left',
+                grid: {
+                    drawOnChartArea: false,
+                },
+                max: 10,
+                min: 0,
+                title: {
+                    display: true, // Menampilkan label skala pada sumbu y
+                    text: 'skala nyeri' // Isi teks label skala pada sumbu y
                 },
                 ticks: {
                     stepSize: 1
                 }
             },
-            rr: {
-                display: false,
-                type: 'linear',
+            // saturasi_oksigen: {
+            //     type: 'linear',
+            //     position: 'left',
+            //     grid: {
+            //         drawOnChartArea: false,
+            //     },
+            //     max: 100,
+            //     min: 0,
+            //     title: {
+            //         display: true, // Menampilkan label skala pada sumbu y
+            //         text: 'SaO2' // Isi teks label skala pada sumbu y
+            //     },
+            //     ticks: {
+            //         stepSize: 10
+            //     }
+            // },
+        },
+        plugins: {
+            legend: {
                 display: true,
-                position: 'left',
-                grid: {
-                    drawOnChartArea: false,
+                labels: {
+                    filter: function(legendItem, chartData) {
+                        // Hide legend item for label with index 1
+                        return legendItem.datasetIndex !== 3;
+                    }
                 },
-                max: 100,
-                min: 0,
-                title: {
-                    display: true, // Menampilkan label skala pada sumbu y
-                    text: 'rr' // Isi teks label skala pada sumbu y
-                },
-                ticks: {
-                    stepSize: 10
-                }
-            },
-            saturasi_oksigen: {
-                display: false,
-                type: 'linear',
-                display: true,
-                position: 'left',
-                grid: {
-                    drawOnChartArea: false,
-                },
-                max: 100,
-                min: 0,
-                title: {
-                    display: true, // Menampilkan label skala pada sumbu y
-                    text: 'saturasi oksigen' // Isi teks label skala pada sumbu y
-                },
-                ticks: {
-                    stepSize: 10
-                }
+                onClick: legendClick
             }
+        },
+        interaction: {
+            intersect: false,
+            mode: 'index',
         },
     }
     datasets = [{
@@ -145,8 +159,10 @@
             },
             tension: 0.1,
             yAxisID: 'skala_nyeri',
+            backgroundColor: 'rgba(218, 165, 32, 0.4)',
+            borderColor:'goldenrod',
             datalabels: {
-                color: 'blue',
+                color: 'goldenrod',
                 anchor: 'end', // remove this line to get label in middle of the bar
                 align: 'end',
                 formatter: function(value, context) {
@@ -162,8 +178,10 @@
             },
             tension: 0.1,
             yAxisID: 'hr',
+            backgroundColor: 'rgba(220, 20, 60,0.4)',
+            borderColor:'crimson',
             datalabels: {
-                color: 'darkred',
+                color: 'crimson',
                 anchor: 'end', // remove this line to get label in middle of the bar
                 align: 'end',
                 formatter: function(value, context) {
@@ -181,16 +199,39 @@
             },
             tension: 0.1,
             yAxisID: 'bp',
+            backgroundColor: 'rgba(169,169,169, 0.4)',
+            borderColor:'darkgrey',
             datalabels: {
-                color: 'orange',
+                color: 'darkgrey',
                 anchor: 'end', // remove this line to get label in middle of the bar
                 align: 'end',
                 formatter: function(value, context) {
                     return value.bp;
                 }
             },
-            hidden: true
+            hidden: true,
 
+        },
+        {
+            label: 'Batas BP',
+            data: data,
+            parsing: {
+                yAxisKey: 'bp_menit'
+            },
+            tension: 0.1,
+            yAxisID: 'bp',
+            backgroundColor: 'rgba(169,169,169, 0.4)',
+            borderColor:'darkgrey',
+            datalabels: {
+                color: 'darkgrey',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.bp_menit;
+                }
+            },
+            hidden: true,
+            fill:'-1'
         },
         {
             label: 'Temp',
@@ -200,8 +241,10 @@
             },
             tension: 0.1,
             yAxisID: 'temp',
+            backgroundColor: 'rgba(0,139,139,0.4)',
+            borderColor:'darkcyan',
             datalabels: {
-                color: 'goldenrod',
+                color: 'darkcyan',
                 anchor: 'end', // remove this line to get label in middle of the bar
                 align: 'end',
                 formatter: function(value, context) {
@@ -219,8 +262,10 @@
             },
             tension: 0.1,
             yAxisID: 'rr',
+            backgroundColor: 'rgba(50,205,50,0.4)',
+            borderColor:'limegreen',
             datalabels: {
-                color: 'green',
+                color: 'limegreen',
                 anchor: 'end', // remove this line to get label in middle of the bar
                 align: 'end',
                 formatter: function(value, context) {
@@ -229,25 +274,27 @@
             },
             hidden: true
         },
-        {
-            label: 'Saturasi Oksigen',
-            data: data,
-            parsing: {
-                yAxisKey: 'saturasi_oksigen'
-            },
-            tension: 0.1,
-            yAxisID: 'saturasi_oksigen',
-            datalabels: {
-                color: 'purple',
-                anchor: 'end', // remove this line to get label in middle of the bar
-                align: 'end',
-                formatter: function(value, context) {
-                    return value.saturasi_oksigen;
-                }
-            },
-            hidden: true
+        // {
+        //     label: 'SaO2',
+        //     data: data,
+        //     parsing: {
+        //         yAxisKey: 'saturasi_oksigen'
+        //     },
+        //     tension: 0.1,
+        //     yAxisID: 'saturasi_oksigen',
+        //     backgroundColor: 'lightslategray',
+        //     borderColor:'lightslategray',
+        //     datalabels: {
+        //         color: 'lightslategray',
+        //         anchor: 'end', // remove this line to get label in middle of the bar
+        //         align: 'end',
+        //         formatter: function(value, context) {
+        //             return value.saturasi_oksigen;
+        //         }
+        //     },
+        //     hidden: true
 
-        }
+        // }
     ];
     cfg = {
         type: 'line',
@@ -259,12 +306,13 @@
 
 
 
-    new Chart(ctx, cfg);
-
+    vitalChart =  new Chart(ctx, cfg);
     function tanggalFormat(stringdate) {
         let date = new Date(Date.parse(stringdate));
         formatDate = cekSingle(date.getDate()) + '/' + cekSingle(date.getMonth()) + '/' + date.getFullYear() + ' ' +
             cekSingle(date.getHours()) + ':' + cekSingle(date.getMinutes());
         return formatDate;
     }
+
+    
 </script>

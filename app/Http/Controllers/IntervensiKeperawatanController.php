@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\Alkes;
 use App\Models\NamaAlkes;
 use App\Models\IntervensiKeperawatan;
+use App\Models\RawatInap;
 
 class IntervensiKeperawatanController extends Controller
 {
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap'] = $id;
+        $rawatinap = RawatInap::find($id);
+        if ($rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['alatkesehatan'] = Alkes::all();
 
         return view('component/form_tambah_intervensi', $data);
@@ -30,6 +35,9 @@ class IntervensiKeperawatanController extends Controller
     public function tampilFormUbah($id)
     {
         $data['intervensi'] = IntervensiKeperawatan::find($id);
+        if ($data['intervensi']->rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['alatkesehatan'] = Alkes::all();
         
 

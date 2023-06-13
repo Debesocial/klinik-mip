@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\NamaPenyakit;
 use App\Models\PermintaanMakanan;
+use App\Models\RawatInap;
 use Illuminate\Http\Request;
 
 
@@ -12,6 +13,7 @@ class PermintaanMakananController extends Controller
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap'] = $id;
+        $rawatinap = RawatInap::find($id);
         $data['penyakit'] = NamaPenyakit::all();
 
         return view('/component/form_tambah_permintaan_makanan', $data);
@@ -31,6 +33,9 @@ class PermintaanMakananController extends Controller
     public function tampilFormUbah($id)
     {
         $data['permintaanmakanan'] = PermintaanMakanan::find($id);
+        if ($data['permintaanmakanan']->rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['penyakit'] = NamaPenyakit::all();
         return view('/component/form_ubah_permintaan_makanan', $data);
 

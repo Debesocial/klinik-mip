@@ -26,6 +26,10 @@ class InstruksiDokterController extends Controller
     public function tampilFormTambah($id)
     {
         $data['id_rawat_inap'] = $id;
+        $rawatinap = RawatInap::find($id);
+        if ($rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
         $data['alatkesehatan'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();
@@ -36,6 +40,9 @@ class InstruksiDokterController extends Controller
     public function tampilFormUbah($id)
     {
         $data['instruksidokter'] = InstruksiDokter::find($id);
+        if ($data['instruksidokter']->rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
         $data['alatkesehatan'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();

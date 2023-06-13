@@ -6,6 +6,8 @@ use App\Models\IzinBerobat;
 use App\Models\User;
 use App\Models\Jadwal;
 use App\Models\Level;
+use App\Models\McuAwal;
+use App\Models\McuLanjutan;
 use App\Models\Pasien;
 use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanCovid;
@@ -38,7 +40,35 @@ class DashboardController extends Controller
         $data['pasien_masih_rawat_inap'] = RawatInap::where('berakhir_rawat',null)->with(['pasien'])->get();
         $data['tanda_vital_hari_ini'] = TandaVital::whereDate('created_at', Carbon::today())->with(['rawatinap','rawatinap.pasien'])->get();
         $data['total_rawat_jalan']= RawatJalan::count();
-        $data['rawat_jalan_per_bulan'] = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->orderByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->get();
+        $rawat_jalan_per_bulan = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->orderByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->get();
+        $rawat_inap_per_bulan = RawatInap::selectRaw('count(id) as total, DATE_FORMAT(mulai_rawat, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")->orderByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")->get();
+        $mcu_awal_per_bulan = McuAwal::selectRaw('count(id) as total, DATE_FORMAT(created_at, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
+        $mcu_lanjut_per_bulan = McuLanjutan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_pemeriksaan, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(tanggal_pemeriksaan, '%Y-%m')")->orderByRaw("DATE_FORMAT(tanggal_pemeriksaan, '%Y-%m')")->get();
+        $narkoba_per_bulan = TestUrin::selectRaw('count(id) as total, DATE_FORMAT(created_at, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
+        $data['rawat_jalan_per_bulan'] = $rawat_jalan_per_bulan;
+        $kunjungan = $this->totalKunjungan([$rawat_inap_per_bulan, $rawat_jalan_per_bulan, $mcu_awal_per_bulan, $mcu_lanjut_per_bulan,$narkoba_per_bulan]);
+        $data['total_kunjungan'] = $kunjungan[1];
+        $data['kunjungan_perbulan'] = $kunjungan[0];
+        $data['jadwal'] = Jadwal::with(['user'])->get();
         return view('index', $data);
+    }
+
+
+    public function totalKunjungan($data)
+    {
+        $kunjungan = [];
+        $total = 0;
+        foreach ($data as $datas ) {
+            foreach($datas as $d){
+                if (array_key_exists($d->bulan, $kunjungan)) {
+                    $kunjungan[$d->bulan]->total = $kunjungan[$d->bulan]->total + $d->total;
+                }else{
+                    $kunjungan[$d->bulan] = $d;
+                }
+                $total = $total + $d->total;
+            }
+        }
+        return([array_values($kunjungan), $total]);
+        
     }
 }
