@@ -9,17 +9,8 @@ class KeteranganBerobat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'rumah_sakit_rujukans_id',
-        'nama_penyakit_id',
-        'sekunder',
-        'resep',
-        'saran',
-        'kontrol',
-        'tanggal_kembali',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function namapenyakit() {

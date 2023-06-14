@@ -19,6 +19,7 @@ class CreateIzinBerobatsTable extends Migration
             $table->string('tempat');
             $table->date('tanggal_keluar');
             $table->text('ttd')->nullable();
+            $table->text('kepada');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

@@ -10,13 +10,8 @@ class IzinBerobat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'tempat',
-        'tanggal_keluar',
-        'ttd',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     // public function getCreatedAtAttribute() {

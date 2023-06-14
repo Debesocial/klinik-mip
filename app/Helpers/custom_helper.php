@@ -27,9 +27,9 @@ function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false)
         $date->settings(['formatFunction' => 'translatedFormat']);
         return $date->format($format);
     }else{
-        $format = 'd/m/Y H:i';
+        $format = 'd-m-Y H:i';
         if ($jam == false) {
-            $format = 'd/m/Y';
+            $format = 'd-m-Y';
         }
         return date($format, strtotime($tanggal));
     }
@@ -40,7 +40,7 @@ function umur($date)
 {
     $tanggalSekarang = date("Y-m-d");
     $umur = date_diff(date_create($date), date_create($tanggalSekarang));
-    return $umur->y . ' Tahun, '. $umur->m .' Bulan, '. $umur->d . ' Hari';
+    return $umur->y . ' Tahun '. $umur->m .' Bulan '. $umur->d . ' Hari';
 }
 
 /** Untuk validation bootstrap */
@@ -107,7 +107,7 @@ function imgUri($img)
 function detailPasienSurat($items)
 {
     $html = '<div class="table-responsive">
-        <table class="table table-borderless">
+        <table class="table mb-0 table-borderless">
             <tbody>';
     foreach ($items as $key => $value) {
         $html .= ' <tr>

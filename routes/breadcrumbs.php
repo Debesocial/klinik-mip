@@ -572,6 +572,19 @@ Breadcrumbs::for('ubah_tindakan_medis', function (BreadcrumbTrail $trail) {
      $trail->parent('tindakan_medis');
      $trail->push('Ubah Persetujuan Tindikan Medis');
 });
+/** Kecelakaan Kerja */
+Breadcrumbs::for('kecelakaan', function (BreadcrumbTrail $trail) {
+     $trail->push('Surat Keterangan', route('superadmin.datakecelakaankerja'));
+     $trail->push('Data Kecelakaan Kerja', route('superadmin.datakecelakaankerja'));
+});
+Breadcrumbs::for('tambah_kecelakaan', function (BreadcrumbTrail $trail) {
+     $trail->parent('kecelakaan');
+     $trail->push('Tambah Kecelakaan Kerja',);
+});
+Breadcrumbs::for('ubah_kecelakaan', function (BreadcrumbTrail $trail) {
+     $trail->parent('kecelakaan');
+     $trail->push('Ubah Kecelakaan Kerja');
+});
 
 Breadcrumbs::for('ubah_password', function (BreadcrumbTrail $trail) {
      $trail->push('Akun');

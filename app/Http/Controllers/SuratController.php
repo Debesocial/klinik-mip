@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alkes;
 use App\Models\IzinBerobat;
 use App\Models\IzinIstirahat;
+use App\Models\KecelakaanKerja;
 use App\Models\KeteranganBerobat;
 use App\Models\KeteranganSehat;
 use App\Models\McuAwal;
+use App\Models\NamaPenyakit;
 use App\Models\Obat;
 use App\Models\PersetujuanTindakan;
 use App\Models\SuratRujukan;
@@ -84,9 +87,22 @@ class SuratController extends Controller
         $istirahat = IzinIstirahat::find($id);
         $data['istirahat'] = $istirahat;
         $data['obat'] = Obat::with(['satuan_obat'])->get();
+        $data['alkes'] = Alkes::with(['satuan_obat'])->get();
         $view = view('surat/istirahat', $data);
         // return $view;
         $savename = 'izin-istirahat' . str_replace(' ', '-', $istirahat->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+    }
+
+    public function printKecelakaan($id)
+    {
+        $kecelakaan = KecelakaanKerja::find($id);
+        $data['kecelakaan'] = $kecelakaan;
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
+        $data['alkes'] = Alkes::with(['satuan_obat'])->get();
+        $data['penyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $view = view('surat/kecelakaan', $data);
+        $savename = 'kecelakaan-kerja' . str_replace(' ', '-', $kecelakaan->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);
     }
 

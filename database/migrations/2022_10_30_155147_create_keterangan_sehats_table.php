@@ -22,6 +22,7 @@ class CreateKeteranganSehatsTable extends Migration
             $table->string('berat_badan');
             $table->string('suhu_tubuh');
             $table->string('tekanan_darah');
+            $table->string('tekanan_darah_per');
             $table->string('denyut_nadi');
             $table->string('laju_pernapasan');
             $table->string('saturasi');

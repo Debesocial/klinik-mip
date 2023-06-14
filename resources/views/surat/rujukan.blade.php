@@ -6,7 +6,7 @@
 @section('body-surat')
     <div class="row">
         <div class="col text-end">
-            <p>Site Krassi, {{ tanggal($rujukan->created_at, false, true) }}</p>
+            <p>{{$rujukan->tempat}}, {{ tanggal($rujukan->tanggal, false, true) }}</p>
         </div>
     </div>
 

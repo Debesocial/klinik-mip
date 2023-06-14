@@ -47,6 +47,7 @@
                                             <option value="{{ $rs->id }}" {{($rs->id==$keterangan->rumah_sakit_rujukans_id?'selected':'')}}>{{ $rs->nama_RS_rujukan }}</option>
                                         @endforeach
                                     </select>
+                                    <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">Diagnosa <b class="color-red">*</b></label>
@@ -58,8 +59,8 @@
                                     </select>
                                 </div>
                                 <div class="mb-2">
-                                    <label class="form-label">Diagnosa Sekunder <b class="color-red">*</b></label>
-                                    <textarea type="text" id="sekunder" class="form-control" name="sekunder" required>{{$keterangan->sekunder}}</textarea>
+                                    <label class="form-label">Diagnosa Sekunder</label>
+                                    <textarea type="text" id="sekunder" class="form-control" name="sekunder">{{$keterangan->sekunder}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +92,7 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            <label>Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
+                            <label id="label-kontrol">Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
                             <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali" value="{{$keterangan->tanggal_kembali}}"
                                 required>
                         </div>
@@ -117,6 +118,14 @@
         });
         $(document).ready(function(){
             setPasien($('select#pasien_id'));
+            setRs();
+            setKontrol();
+            $('#rumah_sakit_rujukans_id').change(function () { 
+                setRs();
+            });
+            $('[id="kontrol"]').click(function () { 
+                setKontrol()
+            });
         })
         
         let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];
@@ -132,6 +141,33 @@
                     $('#'+col).text(pas[col]);
                 }
             });
+        }
+
+        function setRs(){
+            value = $('#rumah_sakit_rujukans_id').val();
+            rs_lain = "{{$keterangan->rs_lain}}";
+            if (value==10) {
+                $('#rs_lain').attr('required', 'required');
+                $('#rs_lain').removeAttr('hidden');
+                $('#rs_lain').val(rs_lain)
+            }else{
+                $('#rs_lain').removeAttr('required');
+                $('#rs_lain').attr('hidden', 'hidden');
+                $('#rs_lain').val('');
+            }
+        }
+        function setKontrol() {
+            val_kontrol = $('[id="kontrol"]:checked').val();
+            if (val_kontrol==1) {
+                $('#tanggal_kembali').attr('required','required');
+                $('#tanggal_kembali').removeAttr('hidden');
+                $('#label-kontrol').show();
+            }else{
+                $('#tanggal_kembali').attr('hidden','hidden');
+                $('#tanggal_kembali').removeAttr('required');
+                $('#tanggal_kembali').val('');
+                $('#label-kontrol').hide();
+            }
         }
     </script>
 @endsection

@@ -9,26 +9,8 @@ class KecelakaanKerja extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'kejadian',
-        'kontrol_kembali',
-        'pengantar',
-        'rekam_medis_id',
-        'anamnesis',
-        'tinggi_badan',
-        'berat_badan',
-        'suhu_badan',
-        'tekanan_darah',
-        'denyut_nadi',
-        'laju_pernapasan',
-        'saturasi',
-        'status',
-        'nama_penyakit_id',
-        'sekunder',
-        'terapi',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function namapenyakit() {
@@ -45,6 +27,11 @@ class KecelakaanKerja extends Model
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);
+    }
+
+    public function lokasi_kejadian()
+    {
+        return $this->belongsTo(LokasiKejadian::class, 'lokasi','id');
     }
 
     public function user() {

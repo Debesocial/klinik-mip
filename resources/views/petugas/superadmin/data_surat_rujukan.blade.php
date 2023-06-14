@@ -45,11 +45,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($suratrujukan as $surat)
+                        @foreach ($suratrujukan->sortByDesc('created_at') as $surat)
                         <tr>
-                            <td><B>{{ Carbon\Carbon::parse($surat->created_at)->isoFormat('D MMMM Y') }}</B>
-                                <br>{{ Carbon\Carbon::parse($surat->created_at)->format('H:i:s') }}
-                            </td>
+                            <td>{{tanggal($surat->tanggal, false)}}</td>
                             <td>{{ $surat->pasien->nama_pasien }}</td>
                                 <td>{{ $surat->tempat }}</td>
                                 <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $surat->riwayat }}</td>

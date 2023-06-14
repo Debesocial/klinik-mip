@@ -44,7 +44,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sehat as $ket)
+                        @foreach ($sehat->sortByDesc('created_at') as $ket)
                         <tr>
                             <td class="text-center">{{tanggal($ket->created_at, false)}}</td>
                             <td class="text-center">{{ $ket->pasien->id_rekam_medis }}</td>

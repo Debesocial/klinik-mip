@@ -13,7 +13,7 @@
             <div class="form-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="mb-3">
+                        <div class="">
                             <label class="form-label">Pasien <b class="color-red">*</b></label>
                             <select name="pasien_id" id="pasien_id" class="form-select" onchange="setPasien(this)" required>
                                 <option value="" disabled selected>Pilih ID Rekam Medis Pasien
@@ -28,6 +28,10 @@
                                 'Kategori' => 'kategori_pasien_id',
                                 'Pekerjaan' => 'pekerjaan',])
                             !!}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Kepada <b class="color-red">*</b></label>
+                            <input type="text" id="kepada" name="kepada" class="form-control" placeholder="Kepada" value="{{$izin->kepada}}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Tempat Pemeriksaan <b class="color-red">*</b></label>

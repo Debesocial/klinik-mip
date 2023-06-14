@@ -156,6 +156,10 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/permintaan/makanan', [SuperAdminController::class, 'permintaanmakanan'])->name('superadmin.permintaanmakanan');
 
     Route::get('/kecelakaan/kerja', [SuperAdminController::class, 'kecelakaankerja'])->name('superadmin.kecelakaankerja');
+    Route::post('/kecelakaan/kerja', [SuperAdminController::class, 'createKecelakaanKerja']);
+    Route::get('/data-kecelakaan-kerja', [SuperAdminController::class, 'dataKecelakaanKerja'])->name('superadmin.datakecelakaankerja');
+    Route::get('/ubah/kecelakan/{id}', [SuperAdminController::class, 'ubahKecelakaanKerja']);
+    Route::post('/kecelakaan/kerja/ubah/{id}', [SuperAdminController::class, 'changeKecelakaanKerja']);
 
     Route::get('/pengesahan/hasil', [SuperAdminController::class, 'pengesahanhasil'])->name('superadmin.pengesahanhasil');
     Route::post('/pengesahan/hasil', [SuperAdminController::class, 'addpengesahanhasil'])->name('superadmin.addpengesahanhasil');
@@ -413,6 +417,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/print/sehat/{id}', [SuratController::class, 'printSehat']);
     Route::get('/print/tindakan/{id}', [SuratController::class, 'printTindakan']);
     Route::get('/print/istirahat/{id}', [SuratController::class, 'printIstirahat']);
+    Route::get('/print/kecelakaan/{id}', [SuratController::class, 'printKecelakaan']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

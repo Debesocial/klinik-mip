@@ -9,20 +9,8 @@ class KeteranganSehat extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'tujuan',
-        'tinggi_badan',
-        'berat_badan',
-        'suhu_tubuh',
-        'tekanan_darah',
-        'denyut_nadi',
-        'laju_pernapasan',
-        'saturasi',
-        'hasil',
-        'ttd',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function pasien() {

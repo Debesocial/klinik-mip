@@ -63,11 +63,11 @@
                     </tr>
                     <tr>
                         <td>Tekanan Darah</td>
-                        <td>: {{$sehat->tekanan_darah}} mmHg</td>
+                        <td>: {{$sehat->tekanan_darah}} / {{$sehat->tekanan_darah_per}} mmHg</td>
                     </tr>
                     <tr>
                         <td>Nadi</td>
-                        <td>: {{$sehat->denyut_nadi}}/menit</td>
+                        <td>: {{$sehat->denyut_nadi}}x /menit</td>
                     </tr>
                     <tr>
                         <td>Temperatur</td>
@@ -75,7 +75,7 @@
                     </tr>
                     <tr>
                         <td>Laju Pernapasan</td>
-                        <td>: {{$sehat->laju_pernapasan}}/menit</td>
+                        <td>: {{$sehat->laju_pernapasan}}x /menit</td>
                     </tr>
                     <tr>
                         <td>Pemeriksaan Fisik</td>

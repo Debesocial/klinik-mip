@@ -5,11 +5,11 @@
 @section('body-surat')
     <div class="row">
         <div class="col text-end">
-            <p style="margin-bottom: 0">Site Krassi, {{ tanggal($izinberobat->created_at, false) }}</p>
+            <p style="margin-bottom: 0">Site Krasi, {{ tanggal($izinberobat->created_at, false) }}</p>
         </div>
     </div>
     <p style="margin-top: 0">Kepada Yth. <br>
-        <u>Lorem ipsum dolor sit</u> <br>
+        <u>{{$izinberobat->kepada}}</u> <br>
         di &mdash;  Tempat
     </p>
 
@@ -36,7 +36,7 @@
         </div>
     </div>
     <p>
-        Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan dapat diberikan ijin untuk berobat ke <b><i>{{$izinberobat->tempat}}</i></b>
+        Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan dapat diberikan ijin untuk berobat ke <b><i>{{$izinberobat->tempat}}</i></b> pada <b>{{tanggal($izinberobat->tanggal_keluar,null,null,true)}}</b>.
     </p>
     <p>Demikian surat ini saya buat, atas perhatian dan kerja samanya saya ucapkan terima kasih.</p>
 

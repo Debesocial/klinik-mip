@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Alkes;
 use App\Models\Divisi;
 use App\Models\Pasien;
 use App\Models\User;
@@ -19,6 +19,7 @@ use App\Models\HasilPemantauan;
 use App\Models\IzinBerobat;
 use App\Models\Jabatan;
 use App\Models\KategoriPasien;
+use App\Models\KecelakaanKerja;
 use App\Models\KeteranganBerobat;
 use App\Models\KeteranganSehat;
 use App\Models\KlasifikasiPenyakit;
@@ -39,6 +40,7 @@ use App\Models\McuAkhir;
 use App\Models\McuAwal;
 use App\Models\McuBerkala;
 use App\Models\McuKhusus;
+use App\Models\Obat;
 use App\Models\TandaVital;
 use App\Models\Tindakan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -642,11 +644,58 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.permintaan_makanan', compact('pasien_id', 'namapenyakit'));
     }
 
+    public function dataKecelakaanKerja()
+    {
+        $data['kecelakaan'] = KecelakaanKerja::get();
+
+        return view('petugas.superadmin.data_kecelakaan_kerja',$data);
+    }
+
     public function kecelakaankerja()
     {
-        $pasien_id = Pasien::all();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
+        $nama_penyakit = NamaPenyakit::get();
+        $klasifikasi = KlasifikasiPenyakit::get();
+        $subKlasifikasi = SubKlasifikasi::get();
+        $alatkesehatan = Alkes::get();
+        $satuanobat = SatuanObat::get();
+        $obat = Obat::get();
+        $lokasi = LokasiKejadian::get();
 
-        return view('petugas.superadmin.kecelakaan_kerja', compact('pasien_id'));
+        return view('petugas.superadmin.kecelakaan_kerja', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+    }
+
+    public function createKecelakaanKerja(Request $request)
+    {
+        $data = $request->except('_token');
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id); 
+        KecelakaanKerja::create($data);
+        return redirect('/data-kecelakaan-kerja')->with('message', 'Berhasil menambah surat kecelakaan kerja!');
+    }
+
+    public function ubahKecelakaanKerja($id)
+    {
+        $kecelakaan =  KecelakaanKerja::with(['pasien.perusahaan','pasien.divisi', 'pasien.keluarga', 'pasien.jabatan', 'pasien.kategori'])->find($id);
+        $nama_penyakit = NamaPenyakit::get();
+        $klasifikasi = KlasifikasiPenyakit::get();
+        $subKlasifikasi = SubKlasifikasi::get();
+        $alatkesehatan = Alkes::get();
+        $satuanobat = SatuanObat::get();
+        $obat = Obat::get();
+        $lokasi = LokasiKejadian::get();
+
+        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('kecelakaan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+    }
+
+    public function changeKecelakaanKerja(Request $request, $id)
+    {
+        $data = $request->except('_token');
+        $data['updated_by'] = auth()->user()->id;
+        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id); 
+        KecelakaanKerja::where('id',$id)->update($data);
+        return redirect('/data-kecelakaan-kerja')->with('message', 'Berhasil merubah surat kecelakaan kerja!');
     }
 
     public function dataketeranganberobat()
@@ -677,25 +726,16 @@ class SuperAdminController extends Controller
             'pasien_id' => 'required',
             'rumah_sakit_rujukans_id' => 'required',
             'nama_penyakit_id' => 'required',
-            'sekunder' => 'required',
             'resep' => 'required',
             'saran' => 'required',
             'kontrol' => 'required',
-            'tanggal_kembali' => 'required',
         ]);
 
-        KeteranganBerobat::create([
-            'pasien_id' => $request->pasien_id,
-            'rumah_sakit_rujukans_id' => $request->rumah_sakit_rujukans_id,
-            'nama_penyakit_id' => $request->nama_penyakit_id,
-            'sekunder' => $request->sekunder,
-            'resep' => $request->resep,
-            'saran' => $request->saran,
-            'kontrol' => $request->kontrol,
-            'tanggal_kembali' => $request->tanggal_kembali,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        $data = $request->except(['_token']);
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+
+        KeteranganBerobat::create($data);
 
         return redirect('/data/keterangan/berobat')->with('message', 'Berhasil menambah surat keterangan berobat!');
     }
@@ -729,6 +769,7 @@ class SuperAdminController extends Controller
         $keterangan = KeteranganBerobat::find($id);
         $keterangan->rumah_sakit_rujukans_id = $request->input('rumah_sakit_rujukans_id');
         $keterangan->nama_penyakit_id = $request->input('nama_penyakit_id');
+        $keterangan->rs_lain = $request->input('rs_lain');
         $keterangan->sekunder = $request->input('sekunder');
         $keterangan->resep = $request->input('resep');
         $keterangan->saran = $request->input('saran');
@@ -795,6 +836,7 @@ class SuperAdminController extends Controller
         IzinBerobat::create([
             'pasien_id' => $request->pasien_id,
             'tanggal_keluar' => $request->tanggal_keluar,
+            'kepada' => $request->kepada,
             'tempat' => $request->tempat,
             'ttd' => $filename,
             'created_by' => auth()->user()->id,
@@ -819,6 +861,7 @@ class SuperAdminController extends Controller
         $izin = IzinBerobat::find($id);
         $izin->tanggal_keluar = $request->input('tanggal_keluar');
         $izin->tempat = $request->input('tempat');
+        $izin->kepada = $request->input('kepada');
         $izin->update();
 
         return redirect('/data/izin/berobat')->with('message', 'Berhasil mengubah surat izin berobat');
@@ -869,16 +912,9 @@ class SuperAdminController extends Controller
     {
         // dd($request);
 
-        $validatedData = $request->validate([
-            'pasien_id' => 'required',
-            'tempat' => 'required',
-            'tanggal' => 'required',
-            'riwayat' => 'required',
-            'obat_diberikan' => 'required',
-            'hasil_pengobatan' => 'required',
-            'spesialis_rujukan_id' => 'required',
-            'rumah_sakit_rujukan_id' => 'required',
-        ]);
+        $data=$request->except(['_token']);
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
 
         if ($request->hasFile('ttd')) {
             $file = $request->file('ttd');
@@ -888,20 +924,8 @@ class SuperAdminController extends Controller
         } else {
             $filename = '';
         }
-
-        $surat = SuratRujukan::create([
-            'pasien_id' => $request->pasien_id,
-            'tempat' => $request->tempat,
-            'tanggal' => $request->tanggal,
-            'riwayat' => $request->riwayat,
-            'obat_diberikan' => $request->obat_diberikan,
-            'hasil_pengobatan' => $request->hasil_pengobatan,
-            'spesialis_rujukan_id' => $request->spesialis_rujukan_id,
-            'rumah_sakit_rujukan_id' => $request->rumah_sakit_rujukan_id,
-            'ttd' => $filename,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        $data['ttd'] = $filename;
+        $surat = SuratRujukan::create($data);
 
         if ($surat) {
             return redirect('/data/surat/rujukan')->with('message', 'Berhasil menambah surat rujukan!');
@@ -952,32 +976,11 @@ class SuperAdminController extends Controller
     {
 
         // dd($request);
-        $validatedData = $request->validate([
-            'pasien_id' => 'required',
-            'tinggi_badan' => 'required',
-            'berat_badan' => 'required',
-            'suhu_tubuh' => 'required',
-            'tekanan_darah' => 'required',
-            'denyut_nadi' => 'required',
-            'laju_pernapasan' => 'required',
-            'saturasi' => 'required',
-            'hasil' => 'required',
-        ]);
+        $data = $request->except(['_token']);
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
 
-        KeteranganSehat::create([
-            'pasien_id' => $request->pasien_id,
-            'tujuan' => $request->tujuan,
-            'tinggi_badan' => $request->tinggi_badan,
-            'berat_badan' => $request->berat_badan,
-            'suhu_tubuh' => $request->suhu_tubuh,
-            'tekanan_darah' => $request->tekanan_darah,
-            'denyut_nadi' => $request->denyut_nadi,
-            'laju_pernapasan' => $request->laju_pernapasan,
-            'saturasi' => $request->saturasi,
-            'hasil' => $request->hasil,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        KeteranganSehat::create($data);
 
         return redirect('/data/keterangan/sehat')->with('message', 'Berhasil!');
     }
@@ -997,6 +1000,7 @@ class SuperAdminController extends Controller
         $keterangan->berat_badan = $request->input('berat_badan');
         $keterangan->suhu_tubuh = $request->input('suhu_tubuh');
         $keterangan->tekanan_darah = $request->input('tekanan_darah');
+        $keterangan->tekanan_darah_per = $request->input('tekanan_darah_per');
         $keterangan->denyut_nadi = $request->input('denyut_nadi');
         $keterangan->laju_pernapasan = $request->input('laju_pernapasan');
         $keterangan->saturasi = $request->input('saturasi');

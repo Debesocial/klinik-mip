@@ -42,11 +42,24 @@
                 </tr>
                 <tr>
                     <td>Diagnosa Dokter/Medice (Sekunder)</td>
-                    <td>: {{$istirahat->namapenyakitsekunder->primer}}</td>
+                    <td>: {{$istirahat->namapenyakitsekunder->primer??'-'}}</td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top;">Penanganan/Tindakan Dokter</td>
-                    <td>: Dilakukan tindakan <b>{{$istirahat->tindakan}}</b> menggunakan <b>{{$istirahat->alkes->nama_alkes}}</b> sebanyak <b>{{$istirahat->jumlah_pengguna}} {{$istirahat->alkes->satuan_obat->satuan_obat}}</b>. <br> <i>ket. {{$istirahat->keterangan}}</i>
+                    <td>
+                        <ol style="margin:0; padding-left: 20px;">
+                            @foreach (json_decode($istirahat->tindakan) as $tindakan)
+                                @php
+                                    $dataAlkes = $alkes->find($tindakan->alat_kesehatan);   
+                                @endphp
+                                <li>
+                                    <b>{{$tindakan->nama_tindakan}}</b><br>
+                                    Alat : <b>{{$dataAlkes->nama_alkes}} ({{$tindakan->jumlah_pengguna}} {{$dataAlkes->satuan_obat->satuan_obat}})</b><br>
+                                    <i>Ket. {{$tindakan->keterangan}}</i>
+                                </li>
+                            @endforeach
+                        </ol>
+                    </td>
                 </tr>
                 <tr>
                     <td style="vertical-align: top;">Obat Yang Dikonsumsi</td>

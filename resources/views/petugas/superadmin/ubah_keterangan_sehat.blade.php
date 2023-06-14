@@ -59,9 +59,9 @@
                         <label>Tekanan Darah <b class="color-red">*</b></label>
                         <div class="input-group mb-3">
                             <input type="number" class="form-control" name="tekanan_darah" id="tekanan_darah" value="{{$keterangan->tekanan_darah}}" required>
-                            <div class="input-group-append">
-                                <span class="input-group-text" id="basic-addon2">mmHg</span>
-                            </div>
+                            <span class="input-group-text" id="basic-addon2">/</span>
+                            <input type="number" class="form-control" name="tekanan_darah_per" id="tekanan_darah_per" value="{{$keterangan->tekanan_darah_per}}" required>
+                            <span class="input-group-text" id="basic-addon2">mmHg</span>
                         </div>
                     </div>
                     <div class="mb-3">

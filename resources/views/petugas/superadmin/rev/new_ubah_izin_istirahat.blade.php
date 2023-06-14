@@ -127,7 +127,7 @@
                                                     class="text-danger">*</b></label>
                                             <div class="col">
                                                 <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
-                                                    <option value="" disabled>Pilih Penyakit</option>
+                                                    <option value="">Pilih Penyakit</option>
                                                     @foreach ($nama_penyakit as $penyakit)
                                                         {{-- <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div> --}}
                                                         <option value="{{ $penyakit->id }}" {{($penyakit->id==$istirahat->diagnosa_sekunder)?'selected':''}}>{{ $penyakit->primer }}</option>
@@ -136,8 +136,8 @@
                                                 {!! validasi('Diagnosa sekunder') !!}
                                                 <div id="diagnosa_sekunder_klasifikasi" class="mt-1">
                                                     <ul class="m-0">
-                                                        <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->nama_penyakit}}</span></li>
-                                                        <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</span></li>
+                                                        <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->nama_penyakit??'-'}}</span></li>
+                                                        <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit??'-'}}</span></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -154,20 +154,22 @@
                                 </div>
                             </div>
                             <div id="test-nl-3" class="content">
+                                <input type="text" name="tindakan" id="tindakan" hidden>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-2">
                                             <label for="" class="form-label">Nama Tindakan <b
                                                     class="text-danger">*</b></label>
-                                            <input type="text" name="tindakan" id="tindakan" class="form-control" value="{{$istirahat->tindakan}}">
+                                            <input type="text" name="" id="nama_tindakan" class="form-control">
                                             {!! validasi('Nama') !!}
                                         </div>
                                         <div class="mb-2">
-                                            <label for="" class="form-label">Nama Alat Kesehatan <b class="text-danger">*</b></label>
-                                            <select name="alkes_id" id="alkes_id" class="form-select">
+                                            <label for="" class="form-label">Nama Alat Kesehatan <b
+                                                    class="text-danger">*</b></label>
+                                            <select name="" id="alat_kesehatan" class="form-select">
                                                 <option value="" selected disabled>Pilihi alat kesehatan </option>
                                                 @foreach ($alatkesehatan as $alat)
-                                                    <option value="{{ $alat->id }}" {{($alat->id==$istirahat->alkes_id)?'selected':''}}>{{ $alat->nama_alkes }}
+                                                    <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -176,7 +178,7 @@
                                         <div class="mb-2">
                                             <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
                                                     class="text-danger">*</b></label>
-                                            <input type="number" name="jumlah_pengguna" id="jumlah_pengguna" class="form-control" value="{{$istirahat->jumlah_pengguna}}">
+                                            <input type="number" name="" id="jumlah_pengguna" class="form-control">
                                             {!! validasi('Jumlah Pengguna') !!}
                                         </div>
                                     </div>
@@ -184,10 +186,34 @@
                                         <div class="mb-2">
                                             <label for="" class="form-label">Keterangan <b
                                                     class="text-danger">*</b></label>
-                                            <textarea name="keterangan" id="keterangan" rows="3" class="form-control">{{$istirahat->keterangan}}</textarea>
+                                            <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
                                             {!! validasi('Keterangan') !!}
                                         </div>
 
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 text-center">
+                                            <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i
+                                                        class="bi bi-arrow-down-circle"></i></b></button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
+                                                boleh kosong</span>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tindakan</th>
+                                                        <th>Alat Kesehatan</th>
+                                                        <th>Jumlah Pengguna</th>
+                                                        <th>Keterangan</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="body_tindakan"></tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between">
@@ -438,11 +464,14 @@
                 })
                 $('#diagnosa_sekunder').change(function() {
                     var id = $(this).val();
-                    var penyakit = namapenyakit.find(data => data.id == id);
-                    $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
-                    $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit
-                        .klasifikasi_penyakit);
-                    $('#diagnosa_sekunder_klasifikasi').show();
+                    if (id==''||id==null) {
+                        $('#diagnosa_sekunder_klasifikasi').hide();
+                    }else{
+                        var penyakit = namapenyakit.find(data => data.id == id);
+                        $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
+                        $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
+                        $('#diagnosa_sekunder_klasifikasi').show();
+                    }
                 })
 
                 $('[id*="rekomendasi"]').change(function(){
@@ -499,7 +528,7 @@
             function lanjut2() {
                 var validated = true;
                 // console.log($('#nama_penyakit_id').val());
-                var inputs = ['diagnosa_sekunder', 'diagnosa','keluhan'];
+                var inputs = ['diagnosa','keluhan'];
                 inputs.forEach(input => {
                     var value_input = $('[name*="' + input + '"]').val();                    
                     var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
@@ -528,9 +557,26 @@
             }
         </script>
         <script>
-            var id_tindakan = ['tindakan', 'alkes_id', 'jumlah_pengguna', 'keterangan'];
+            
             function lanjut3() {
                 let validated = true;
+                let tindakanval = $('#tindakan').val();
+                if (tindakanval==null||tindakanval=='') {
+                    $('#tindakan_kosong').show()
+                    validated = false;
+                }
+                if (validated==true) {
+                    stepper2.next();
+                }
+            }
+
+            var alkes = @json($alatkesehatan);
+            var tindakan = {!! $istirahat->tindakan !!};
+            var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+            drawformTindakan();
+            function addTindakan() {
+                var temp = {};
+                var validated = true;
                 id_tindakan.forEach(id => {
                     form = $('#' + id)
                     if (form.val() == null || form.val() == '') {
@@ -540,11 +586,72 @@
                     } else {
                         form.addClass('is-valid');
                         form.removeClass('is-invalid');
+                        temp[id] = form.val();
                     }
                 });
-                if (validated==true) {
-                    stepper2.next();
+                if (validated == true) {
+                    tindakan.push(temp)
+                    drawformTindakan();
+                    tindakanSelected = {};
                 }
+                return validated;
+            }
+
+            function clearformTindakan() {
+                id_tindakan.forEach(id => {
+                    form = $('#' + id);
+                    if (id == 'alat_kesehatan') {
+
+                        form.val('').trigger('change');
+                    }
+                    form.removeClass('is-valid');
+                    form.val('');
+                })
+            }
+
+            function drawformTindakan() {
+                html = ``;
+                tindakan.forEach((data, key) => {
+                    var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+                    html += `<tr> 
+                            <td>` + data.nama_tindakan + `</td>
+                            <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
+                            <td>` + data.jumlah_pengguna + `</td>
+                            <td>` + data.keterangan + `</td>
+                            <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            </tr>`;
+                })
+                clearformTindakan();
+                $('#tindakan').val(JSON.stringify(tindakan));
+                $('#body_tindakan').html(html);
+            }
+
+            function deleteTindakan(id) {
+                delete tindakan[id];
+                tindakan = tindakan.filter(function(x) {
+                    return x !== null
+                });
+                drawformTindakan();
+            }
+
+            tindakanSelected={}
+            function editTindakan(id){
+                temp = tindakan[id];
+                deleteTindakan(id);
+                if(Object.keys(tindakanSelected).length !== 0){
+                    tindakan.push(tindakanSelected);
+                    drawformTindakan();
+                }
+                tindakanSelected = temp;
+                id_tindakan.forEach(idt => {
+                    form = $('#'+idt);
+                    if (idt!='alat_kesehatan') {
+                        form.val(temp[idt]);
+                    } else {
+                        form.children().removeAttr('selected');
+                        select2_alat.val(temp.alat_kesehatan).trigger('change');
+                    }
+                });
             }
         </script>
         <script>

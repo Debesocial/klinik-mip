@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 
-@section('title', 'Kecelakan Kerja')
+@section('title', 'Ubah Kecelakan Kerja')
 @section('kecelakaan', 'active')
-@section('breadcrumb', 'tambah_kecelakaan')
-@section('judul', 'Kecelakaan Kerja')
+@section('breadcrumb', 'ubah_kecelakaan')
+@section('judul', 'Ubah Kecelakaan Kerja')
 @section('container')
 
 @section('css')
@@ -93,34 +93,17 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form id="form-add-jalan" class="form needs-validation" action="/kecelakaan/kerja" method="post"
+                    <form id="form-add-jalan" class="form needs-validation" action="/kecelakaan/kerja/ubah/{{$kecelakaan->id}}" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
-                        <input type="hidden" name="pasien_id">
+                        <input type="hidden" name="pasien_id" value="{{$kecelakaan->pasien_id}}">
                         <div id="test-nl-1" class="content">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="">Silahkan pilih Pasien berdasarkan <b>ID rekam
-                                                    medis</b><b class="color-red"> *</b></label>
-                                            <select id="select_pasien_id" class="form-select" required>
-                                                <option value="" selected>Pasien</option>
-                                                @foreach ($pasien_id as $key => $pas)
-                                                    <option value="{{ $key }}">
-                                                        {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
-                                                @endforeach
-                                            </select>
-                                            <div class="valid-feedback">
-                                                Data sudah benar
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                Silahkan pilih salah satu pasien.
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
                                             <label for="">Tanggal Kejadian <b class="color-red"> *</b></label>
-                                            <input type="date" class="form-control" name="tanggal_kejadian" id="tanggal_kejadian">
+                                            <input type="date" class="form-control" name="tanggal_kejadian" id="tanggal_kejadian" value="{{$kecelakaan->tanggal_kejadian}}">
                                             {!!validasi('Tanggal Kejadian')!!}
                                         </div>
                                     </div>
@@ -130,7 +113,7 @@
                                             <select name="lokasi" id="lokasi" class="form-select">
                                                 <option value="" disabled selected>Pilih lokasi</option>
                                                 @foreach ($lokasi as $loc)
-                                                    <option value="{{$loc->id}}">{{$loc->nama_lokasi}}</option>
+                                                    <option value="{{$loc->id}}" {{($loc->id==$kecelakaan->lokasi?'selected':'')}} >{{$loc->nama_lokasi}}</option>
                                                 @endforeach
                                             </select>
                                             {!!validasi('Lokasi Kejadian')!!}
@@ -138,13 +121,13 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Nama Pengantar<b class="color-red"> *</b></label>
-                                            <input type="text" class="form-control" name="pengantar" id="pengantar">
+                                            <input type="text" class="form-control" name="pengantar" id="pengantar" value="{{$kecelakaan->pengantar}}">
                                             {!!validasi('Nama Pengantar')!!}
 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row mt-3" id="detail_pasien" style="display: none">
+                                <div class="row mt-3" id="detail_pasien" >
                                     <div class="col">
                                         {!! detailPasienPemeriksaan() !!}
                                     </div>
@@ -164,14 +147,14 @@
                                 <div class="col-md-6">
                                     <div class="mb-2">
                                         <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
-                                        <input type="text" name="anamnesis" id="anamnesis" class="form-control">
+                                        <input type="text" name="anamnesis" id="anamnesis" class="form-control" value="{{$kecelakaan->anamnesis}}">
                                         {!!validasi('Anamnesis')!!}
                                     </div>
                                     <div class="row mb-2">
                                         <div class="col-4">
                                             <label for="" class="form-label">Tinggi Badan <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control">
+                                                <input type="number" name="tinggi_badan" id="tinggi_badan" class="form-control" value="{{$kecelakaan->tinggi_badan}}">
                                                 <span class="input-group-text" id="basic-addon1">Cm</span>
                                                 {!!validasi('Tinggi badan')!!}
                                             </div>
@@ -179,7 +162,7 @@
                                         <div class="col-4">
                                             <label for="" class="form-label">Berat Badan <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="berat_badan" id="berat_badan" class="form-control">
+                                                <input type="number" name="berat_badan" id="berat_badan" class="form-control" value="{{$kecelakaan->berat_badan}}">
                                                 <span class="input-group-text" id="basic-addon1">Kg</span>
                                                 {!!validasi('Berat badan')!!}
                                             </div>
@@ -189,7 +172,7 @@
                                         <div class="col-4">
                                             <label for="" class="form-label">Suhu Tubuh <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control">
+                                                <input type="number" name="suhu_tubuh" id="suhu_tubuh" class="form-control" value="{{$kecelakaan->suhu_tubuh}}">
                                                 <span class="input-group-text" id="basic-addon1">&deg;C</span>
                                                 {!!validasi('Suhu tubuh')!!}
                                             </div>
@@ -197,7 +180,7 @@
                                         <div class="col-4">
                                             <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control">
+                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$kecelakaan->tekanan_darah}}">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Tekanan darah')!!}
                                             </div>
@@ -207,7 +190,7 @@
                                         <div class="col-4">
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
-                                                <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control">
+                                                <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$kecelakaan->saturasi_oksigen}}">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Saturasi oksigen')!!}
                                             </div>
@@ -216,9 +199,9 @@
                                     <div class="mb-2">
                                         <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
                                         <div class="input-group">
-                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control">
+                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$kecelakaan->denyut_nadi}}">
                                             <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control">
+                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control" value="{{$kecelakaan->denyut_nadi_menit}}">
                                             <span class="input-group-text" id="basic-addon1">menit</span>
                                             {!!validasi('Denyut nadi')!!}
                                         </div>
@@ -226,19 +209,19 @@
                                     <div class="mb-2">
                                         <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
                                         <div class="input-group">
-                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control">
+                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$kecelakaan->laju_pernapasan}}">
                                             <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control">
+                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control" value="{{$kecelakaan->laju_pernapasan_menit}}">
                                             <span class="input-group-text" id="basic-addon1">menit</span>
                                         </div>
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Pemeriksaan Penunjang</label>
-                                        <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control">
+                                        <input type="text" name="pemeriksaan_penunjang" id="pemeriksaan_penunjang" class="form-control" value="{{$kecelakaan->pemeriksaan_penunjang??''}}">
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Obat yang sudah dikonsumsi sebelumnya</label>
-                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control"></textarea>
+                                        <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control">{{$kecelakaan->obat_konsumsi??''}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -247,7 +230,7 @@
                                             <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
-                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis"></textarea>
+                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control" placeholder="Masukkan status lokalis">{{$kecelakaan->status_lokalis}}</textarea>
                                                 {!!validasi('Status lokalis')!!}
                                             </div>
                                         </div>
@@ -258,7 +241,7 @@
                                             <select class="js-states form-control"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
                                                 <option value=""></option>
                                                 @foreach ($nama_penyakit as $penyakit)
-                                                    <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                                    <option value="{{ $penyakit->id }}" {{(in_array($penyakit->id, json_decode($kecelakaan->nama_penyakit_id)))? 'selected':''}}>{{ $penyakit->primer }}</option>
                                                 @endforeach
                                             </select>
                                             {!!validasi('Nama penyakit')!!}
@@ -592,10 +575,6 @@
                     if ($(this).attr('id')=='nama_obat') {
                         setSatuan($(this).val());
                     }
-                    if ($(this).attr('id')=='select_pasien_id') {
-                        index = $(this).val();
-                        pilihPasien(@json($pasien_id)[index])
-                    }
                 }
                 drawTableDiagnodsa();
             })
@@ -603,11 +582,15 @@
             $('input[class="form-check-input"]').click(function() {
                 $(this).siblings('.invalid-feedback').hide()
             })
+            setPasien(@json($kecelakaan->pasien));
+            drawTableDiagnodsa();
+            drawformTindakan();
+            drawformResep();
         });
 
         function lanjut1() {
             let validated = true;
-            let id = ['select_pasien_id','tanggal_kejadian','lokasi','pengantar'];
+            let id = ['tanggal_kejadian','lokasi','pengantar'];
 
             id.forEach(i => {
 
@@ -691,7 +674,7 @@
         }
 
         var alkes = @json($alatkesehatan);
-        var tindakan = [];
+        var tindakan = {!!$kecelakaan->tindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
         var tindakanSelected = {};
         function addTindakan() {
@@ -783,7 +766,7 @@
         }
 
         id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
-        resep = [];
+        resep = {!!$kecelakaan->resep!!};
         var satuanobat = @json($satuanobat);
         var obat = @json($obat);
         var resepSelected = {};

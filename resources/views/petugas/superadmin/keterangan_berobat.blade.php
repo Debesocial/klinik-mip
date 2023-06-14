@@ -48,6 +48,7 @@
                                                 <option value="{{ $rs->id }}">{{ $rs->nama_RS_rujukan }}</option>
                                             @endforeach
                                         </select>
+                                        <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                                     </div>
                                     <div class="mb-2">
                                         <label class="form-label">Diagnosa <b class="color-red">*</b></label>
@@ -59,8 +60,8 @@
                                         </select>
                                     </div>
                                     <div class="mb-2">
-                                        <label class="form-label">Diagnosa Sekunder <b class="color-red">*</b></label>
-                                        <textarea type="text" id="sekunder" class="form-control" name="sekunder" required></textarea>
+                                        <label class="form-label">Diagnosa Sekunder </label>
+                                        <textarea type="text" id="sekunder" class="form-control" name="sekunder"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -75,24 +76,25 @@
                                 <textarea type="text" id="saran" class="form-control" name="saran" required></textarea>
                             </div>
                             <div class="mb-2">
-                                <label>Pasien Harus Kontrol Kembali <b class="color-red">*</b></label>
+                                <label >Pasien Harus Kontrol Kembali <b class="color-red">*</b></label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="kontrol" id="kontrol"
-                                        value="0" checked>
-                                    <label class="form-check-label" for="kontrol">
-                                        Tidak
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="kontrol" id="kontrol"
-                                        value="1">
+                                        value="1" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Ya
                                     </label>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="kontrol" id="kontrol"
+                                        value="0" >
+                                    <label class="form-check-label" for="kontrol">
+                                        Tidak
+                                    </label>
+                                </div>
+                               
                             </div>
                             <div class="mb-2">
-                                <label>Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
+                                <label id="label-kontrol">Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
                                 <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali"
                                     required>
                             </div>
@@ -116,6 +118,34 @@
                 dropdownCssClass: 'select2--small',
             });
             
+            $(document).ready(function () {
+                $('#rumah_sakit_rujukans_id').change(function () { 
+                    value = $(this).val();
+                    if (value==10) {
+                        $('#rs_lain').attr('required', 'required');
+                        $('#rs_lain').removeAttr('hidden');
+                    }else{
+                        $('#rs_lain').removeAttr('required');
+                        $('#rs_lain').attr('hidden', 'hidden');
+                        $('#rs_lain').val('');
+                    }
+                    
+                });
+                $('[id="kontrol"]').click(function () { 
+                    id = $(this).val();
+                    if (id==1) {
+                        $('#tanggal_kembali').attr('required','required');
+                        $('#tanggal_kembali').removeAttr('hidden');
+                        $('#label-kontrol').show();
+                    }else{
+                        $('#tanggal_kembali').attr('hidden','hidden');
+                        $('#tanggal_kembali').removeAttr('required');
+                        $('#tanggal_kembali').val('');
+                        $('#label-kontrol').hide();
+                    }
+                });
+            });
+
             let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];
             let pasien = @json($pasien_id);
             function setPasien(select){

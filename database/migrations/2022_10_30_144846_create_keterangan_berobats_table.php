@@ -17,12 +17,13 @@ class CreateKeteranganBerobatsTable extends Migration
             $table->id();
             $table->foreignId('pasien_id')->constrained();
             $table->foreignId('rumah_sakit_rujukans_id')->constrained();
+            $table->string('rs_lain')->nullable();
             $table->foreignId('nama_penyakit_id')->constrained();
             $table->string('sekunder')->nullable();
             $table->text('resep');
             $table->text('saran');
             $table->boolean('kontrol');
-            $table->date('tanggal_kembali');;
+            $table->date('tanggal_kembali')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
