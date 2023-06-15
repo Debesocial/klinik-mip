@@ -418,6 +418,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/print/tindakan/{id}', [SuratController::class, 'printTindakan']);
     Route::get('/print/istirahat/{id}', [SuratController::class, 'printIstirahat']);
     Route::get('/print/kecelakaan/{id}', [SuratController::class, 'printKecelakaan']);
+    Route::get('/print/narkoba/{id}', [SuratController::class, 'printNarkoba']);
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

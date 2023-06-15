@@ -16,6 +16,8 @@ class CreateTestUrinsTable extends Migration
         Schema::create('test_urins', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
+            $table->string('no_surat');
+            $table->string('tujuan_surat');
             $table->string('penggunaan_obat')->nullable();
             $table->string('jenis_obat')->nullable();
             $table->string('asal_obat')->nullable();

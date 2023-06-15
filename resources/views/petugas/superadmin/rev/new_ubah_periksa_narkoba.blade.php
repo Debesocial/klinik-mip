@@ -296,6 +296,10 @@
                                             </table>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <label for="" class="form-label">Tujuan pembuatan surat</label>
+                                        <input class="form-control" type="text" name="tujuan_surat" id="tujuan_surat" value="{{$narkoba->tujuan_surat??''}}">
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">

@@ -1,6 +1,6 @@
 @extends('surat.surat')
 
-@section('no_surat','No: MIP/FRM/KLN/013');
+@section('no_surat','No: MIP/FRM/KLN/018');
 @section('no_revisi','00');
 
 @section('body-surat')
@@ -8,7 +8,7 @@
         <div class="col text-center">
             <p>
                 <b><u>SURAT KETERANGAN DOKTER</u></b> <br>
-                Nomor : ... /MIP-SITE/KLN/... /...
+                Nomor : {{$sehat->no_surat}}
             </p>
         </div>
     </div>

@@ -37,6 +37,7 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
+                            <th>No. Surat</th>
                             <th>ID Rekam Medis</th>
                             <th>Nama Pasien</th>
                             <th>Hasil</th>
@@ -47,6 +48,7 @@
                         @foreach ($narkoba->sortByDesc('created_at') as $narko)
                         <tr>
                             <td class="text-center">{{tanggal($narko->created_at)}}</td>
+                            <td class="text-center">{{$narko->no_surat}}</td>
                             <td >{{ $narko->pasien->id_rekam_medis }}</td>
                             <td>{{ $narko->pasien->nama_pasien }}</td>
                             <td class="text-center">
@@ -60,9 +62,9 @@
                             <td>{{ $narko->terakhir_digunakan }}</td> --}}
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    <a href="/view/pemeriksaan/narkoba/{{$narko->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="/view/pemeriksaan/narkoba/{{$narko->id }}" title="Lihat Data"  class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                     <a href="/ubah/pemeriksaan/narkoba/{{$narko->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                                    <a href="/print/pemeriksaan/narkoba/{{ $narko->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
+                                    <a href="/print/narkoba/{{ $narko->id }}" title="Lihat Data" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                 </div>
                             </td>
                         </tr>

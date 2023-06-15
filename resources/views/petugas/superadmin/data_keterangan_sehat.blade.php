@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th>Tanggal Pemeriksaan</th>
+                            <th>No. Surat</th>
                             <th>ID Rekam Medis</th>
                             <th>Nama Pasien</th>
                             <th>Alamat</th>
@@ -47,6 +48,7 @@
                         @foreach ($sehat->sortByDesc('created_at') as $ket)
                         <tr>
                             <td class="text-center">{{tanggal($ket->created_at, false)}}</td>
+                            <td class="text-center">{{$ket->no_surat}}</td>
                             <td class="text-center">{{ $ket->pasien->id_rekam_medis }}</td>
                             <td >{{ $ket->pasien->nama_pasien }}</td>
                             <td>{{ $ket->pasien->alamat }}</td>

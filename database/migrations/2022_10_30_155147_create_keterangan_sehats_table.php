@@ -17,6 +17,7 @@ class CreateKeteranganSehatsTable extends Migration
         Schema::create('keterangan_sehats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
+            $table->string('no_surat');
             $table->string('tujuan');
             $table->string('tinggi_badan');
             $table->string('berat_badan');

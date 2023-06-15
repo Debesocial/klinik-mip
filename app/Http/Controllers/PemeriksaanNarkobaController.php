@@ -84,6 +84,7 @@ class PemeriksaanNarkobaController extends Controller
         // dd($request->input('senin'));
         $narkoba = TestUrin::find($id);
         $narkoba->penggunaan_obat = $request->input('penggunaan_obat');
+        $narkoba->tujuan_surat = $request->input('tujuan_surat');
         $narkoba->jenis_obat = $request->input('jenis_obat');
         $narkoba->asal_obat = $request->input('asal_obat');
         $narkoba->terakhir_digunakan = $request->input('terakhir_digunakan');
@@ -116,7 +117,6 @@ class PemeriksaanNarkobaController extends Controller
 
     public function addpemeriksaannarkotika(Request $request)
     {
-
         $validatedData = $request->validate([
             'penggunaan_obat' => 'required',
             'jenis_obat' => 'required',
@@ -142,6 +142,7 @@ class PemeriksaanNarkobaController extends Controller
         TestUrin::create([
             'pasien_id' => $request->pasien_id,
             'penggunaan_obat' => $request->penggunaan_obat,
+            'tujuan_surat' => $request->tujuan_surat,
             'jenis_obat' => $request->jenis_obat,
             'asal_obat' => $request->asal_obat,
             'terakhir_digunakan' => $request->terakhir_digunakan,

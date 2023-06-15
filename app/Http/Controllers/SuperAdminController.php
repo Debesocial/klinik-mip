@@ -102,6 +102,7 @@ class SuperAdminController extends Controller
         TestUrin::create([
             'pasien_id' => $request->pasien_id,
             'penggunaan_obat' => $request->penggunaan_obat,
+            'tujuan_surat' => $request->tujuan_surat,
             'jenis_obat' => $request->jenis_obat,
             'asal_obat' => $request->asal_obat,
             'terakhir_digunakan' => $request->terakhir_digunakan,

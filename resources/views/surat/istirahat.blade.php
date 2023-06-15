@@ -1,5 +1,5 @@
 @extends('surat.surat')
-@section('no_surat','No: MIP/FRM/KLN/015');
+@section('no_surat','No: MIP/FRM/KLN/017');
 @section('no_revisi','00');
 
 @section('body-surat')

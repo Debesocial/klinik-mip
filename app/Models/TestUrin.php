@@ -9,22 +9,19 @@ class TestUrin extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'penggunaan_obat',
-        'jenis_obat',
-        'pasien_id',
-        'asal_obat',
-        'terakhir_digunakan',
-        'dokumen',
-        'amp',
-        'met',
-        'thc',
-        'bzo',
-        'mop',
-        'coc',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
+
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $total_last_year = $model->whereRaw('DATE_FORMAT(created_at, "%Y") = '.date('Y'))->count();
+            $no_surat =  sprintf("%03d", $total_last_year+1).'/MIP-SITE/KLN/'.romawi(date('m')).' /'.date('Y');
+            $model->no_surat = $no_surat;
+        });
+    } 
 
     public function pasien() {
         return $this->belongsTo(Pasien::class);

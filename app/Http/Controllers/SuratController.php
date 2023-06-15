@@ -13,6 +13,7 @@ use App\Models\NamaPenyakit;
 use App\Models\Obat;
 use App\Models\PersetujuanTindakan;
 use App\Models\SuratRujukan;
+use App\Models\TestUrin;
 use App\Models\Tindakan;
 use Illuminate\Http\Request;
 
@@ -103,6 +104,16 @@ class SuratController extends Controller
         $data['penyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
         $view = view('surat/kecelakaan', $data);
         $savename = 'kecelakaan-kerja' . str_replace(' ', '-', $kecelakaan->pasien->nama_pasien) . '.pdf';
+        $this->renderSurat($view, $savename);
+    }
+
+    public function printNarkoba($id)
+    {
+        $narko = TestUrin::find($id);
+        $data['narko'] = $narko;
+        $view = view('surat/narkoba', $data);
+        // return $view;
+        $savename = 'pemeriksaan-narkoba' . str_replace(' ', '-', $narko->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);
     }
 
