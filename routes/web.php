@@ -40,6 +40,8 @@ use App\Http\Controllers\SuratController;
 use App\Http\Controllers\TandaVitalController;
 use App\Models\IzinIstirahat;
 use App\Models\PermintaanMakanan;
+use App\Models\RawatInap;
+use App\Models\RawatJalan;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +120,15 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/rawat/inap/perawat', [SuperAdminController::class, 'rawatinapperawat'])->name('superadmin.rawatinapperawat');
     Route::get('/detail/rawatinap/{id}', [RawatInapController::class, 'detail']);
     Route::get('/selesai-inap/{id}', [RawatInapController::class, 'selesaiInap']);
+    Route::get('/rawatinap-by-pasien/{id}', function ($id) {
+        $inap = RawatInap::select('id','id_rawat_inap as text')->where('pasien_id',$id)->get();
+        $jalan = RawatJalan::select('id','id_rawat_jalan as text')->where('pasien_id',$id)->get();
+        $result = [['text'=>'Rawat Inap', 'children'=>$inap], ['text'=>'Rawat Jalan','children'=>$jalan]];
+        return $result;
+    });
+    Route::get('/get-one-rawat-inap/{id}', function($id){
+        return RawatInap::find($id);
+    });
 
     Route::get('/instruksi_dokter/form_tambah/{id}', [InstruksiDokterController::class, 'tampilFormTambah']);
     Route::get('/instruksi_dokter/form_edit/{id}', [InstruksiDokterController::class, 'tampilFormUbah']);
@@ -151,6 +162,9 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/view/rawat/jalan/{id}', [RawatJalanController::class, 'viewrawatjalan'])->name('rawatjalan.viewrawatjalan');
     Route::get('/ubah/rawat/jalan/{id}', [RawatJalanController::class, 'ubahrawatjalan'])->name('rawatjalan.ubahrawatjalan');
     Route::post('/ubah/rawat/jalan/{id}', [RawatJalanController::class, 'changerawatjalan'])->name('rawatjalan.changerawatjalan');
+    Route::get('/get-one-rawat-jalan/{id}', function($id){
+        return RawatJalan::find($id);
+    });
 
     Route::get('/data/permintaan/makanan', [PermintaanMakananController::class, 'datapermintaanmakanan'])->name('makanan.datapermintaanmakanan');
     Route::get('/permintaan/makanan', [SuperAdminController::class, 'permintaanmakanan'])->name('superadmin.permintaanmakanan');

@@ -19,6 +19,8 @@ class CreateKecelakaanKerjasTable extends Migration
             // $table->string('id_rawat_jalan');
             $table->date('tanggal_kejadian');
             $table->foreignId('lokasi')->constrained('lokasi_kejadians');
+            $table->integer('id_rekam_medis')->nullable();
+            $table->string('rekam_medis')->nullable();
             $table->string('pengantar');
             $table->string('anamnesis');
             $table->float('tinggi_badan');

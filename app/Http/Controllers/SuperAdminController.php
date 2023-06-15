@@ -41,6 +41,8 @@ use App\Models\McuAwal;
 use App\Models\McuBerkala;
 use App\Models\McuKhusus;
 use App\Models\Obat;
+use App\Models\RawatInap;
+use App\Models\RawatJalan;
 use App\Models\TandaVital;
 use App\Models\Tindakan;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;

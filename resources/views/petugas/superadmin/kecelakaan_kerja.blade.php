@@ -163,6 +163,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-2">
+                                        <label for="" class="form-label">Pilih dari rekam medis <b class="text-danger">*</b></label>
+                                        <select name="id_rekam_medis" id="id_rekam_medis">
+                                            <option value="">Pilih pemeriksaan</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-2">
                                         <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
                                         <input type="text" name="anamnesis" id="anamnesis" class="form-control">
                                         {!!validasi('Anamnesis')!!}
@@ -555,59 +561,112 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
-        $(document).ready(function() {
-            $('select').select2({
-                theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
-                tags: true,
-            });
-            $("select").on("select2:select", function (evt) {
-                var element = evt.params.data.element;
-                var $element = $(element);
+        select2_rekam_medis =$('select#id_rekam_medis');
+            $(document).ready(function() {
+                $('select').select2({
+                    theme: "bootstrap-5",
+                    selectionCssClass: 'select2--small',
+                    dropdownCssClass: 'select2--small',
+                    tags: true,
+                });
+                $("select").on("select2:select", function (evt) {
+                    var element = evt.params.data.element;
+                    var $element = $(element);
+                    
+                    $element.detach();
+                    $(this).append($element);
+                    $(this).trigger("change");
+                });
+                $('#nama_penyakit_id').select2({
+                    theme: "bootstrap-5",
+                    selectionCssClass: 'select2--small',
+                    dropdownCssClass: 'select2--small',
+                })
+
+                $('input').keyup(function(event) {
+                    if ($(this).hasClass('is-invalid')) {
+                        $(this).removeClass('is-invalid')
+                    }
+                })
+                $('input').change(function(event) {
+                    if ($(this).hasClass('is-invalid')) {
+                        $(this).removeClass('is-invalid')
+                    }
+                })
+                $('select').change(function() {
+                    if ($(this).val() !== "") {
+                        $(this).removeClass('is-invalid');
+                        if ($(this).attr('id')=='nama_obat') {
+                            setSatuan($(this).val());
+                        }
+                        if ($(this).attr('id')=='select_pasien_id') {
+                            index = $(this).val();
+                            pilihPasien(@json($pasien_id)[index]);
+                        }
+                    }
+                    drawTableDiagnodsa();
+                })
+                $(select2_rekam_medis).change(function(){
+                    let val = $(this).val();
+                    let id_rekam  = $(this).children('option:selected').text().substring(0,2);
+                    if (id_rekam == 'RI') {
+                        setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
+                    }else if(id_rekam == 'RJ'){
+                        setAllFormWithRekamMedis('{{url("/get-one-rawat-jalan")}}/'+val);
+                    }
+
+                })
                 
-                $element.detach();
-                $(this).append($element);
-                $(this).trigger("change");
+
+                $('input[class="form-check-input"]').click(function() {
+                    $(this).siblings('.invalid-feedback').hide()
+                })
             });
-            $('#nama_penyakit_id').select2({
-                theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
-            })
 
-            $('input').keyup(function(event) {
-                if ($(this).hasClass('is-invalid')) {
-                    $(this).removeClass('is-invalid')
-                }
-            })
-            $('input').change(function(event) {
-                if ($(this).hasClass('is-invalid')) {
-                    $(this).removeClass('is-invalid')
-                }
-            })
-            $('select').change(function() {
-                if ($(this).val() !== "") {
-                    $(this).removeClass('is-invalid');
-                    if ($(this).attr('id')=='nama_obat') {
-                        setSatuan($(this).val());
-                    }
-                    if ($(this).attr('id')=='select_pasien_id') {
-                        index = $(this).val();
-                        pilihPasien(@json($pasien_id)[index])
-                    }
-                }
-                drawTableDiagnodsa();
-            })
+        function setSelectRekamMedis(id_pasien) {
+            url = '{{url("/rawatinap-by-pasien/")}}/'+id_pasien;
+            select2_rekam_medis.empty();
+            $.ajax({
+                type:'GET',
+                url:url,
+                success: function (data) {
+                    select2_rekam_medis.append(new Option('Pilih rekam medis','',false,false))
 
-            $('input[class="form-check-input"]').click(function() {
-                $(this).siblings('.invalid-feedback').hide()
+                    $.each(data, function (index, group) {
+                        var $optgroup = $('<optgroup label="' + group.text + '">');
+                    
+                        $.each(group.children, function (index, option) {
+                            var newOption = new Option(option.text, option.id, false, false);
+                            $optgroup.append(newOption);
+                        });
+
+                        select2_rekam_medis.append($optgroup);
+                    });
+                    select2_rekam_medis.trigger('change');
+                }
             })
-        });
+        }
+
+        function setAllFormWithRekamMedis(url){
+            $.ajax({
+                type:'GET',
+                url:url,
+                success: function (data) {
+                    // console.log(data);
+                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+                    inputs.forEach(input => {
+                        $('#'+input).val(data[input])
+                        $('#'+input).attr('disabled','disabled')
+                    });
+                }
+            })
+        }
 
         function lanjut1() {
             let validated = true;
             let id = ['select_pasien_id','tanggal_kejadian','lokasi','pengantar'];
+            index = $('#select_pasien_id').val();
+            setSelectRekamMedis(@json($pasien_id)[index].id);
 
             id.forEach(i => {
 
