@@ -36,14 +36,11 @@ class ProdukController extends Controller
             'nama_produk' => 'required',
         ]);
 
-        Produk::create([
-            'nama_produk' => $request->nama_produk,
-            'bobot_obat_id' => $request->bobot_obat_id,
-            'satuan_obat_id' => $request->satuan_obat_id,
-            'komposisi' => $request->komposisi,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        $data = $request->except('_token');
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+
+        Produk::create($data);
 
         return redirect('/data/produk')->with('message', 'Berhasil Menambahkan Data Produk Kesehatan');
     }
@@ -58,12 +55,10 @@ class ProdukController extends Controller
     }
 
     function changeproduk(Request $request, $id) {
-        $produk = Produk::find($id);
-        $produk->nama_produk = $request->input('nama_produk');
-        $produk->satuan_obat_id = $request->input('satuan_obat_id');
-        $produk->bobot_obat_id = $request->input('bobot_obat_id');
-        $produk->komposisi = $request->input('komposisi');
-        $produk->update();
+       $data = $request->except(['id','_token']);
+       $data['updated_by'] = auth()->user()->id;
+       Produk::where('id',$id)->update($data);
+        
 
         return redirect('/data/produk')->with('message', 'Berhasil Mengubah Data Produk Kesehatan!');
     }

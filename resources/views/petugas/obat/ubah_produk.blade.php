@@ -45,6 +45,13 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="komposisi_obat">Harga</label>
+                                            <input type="number" class="form-control" name="harga" id="harga" value="{{$produk->harga}}">
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">

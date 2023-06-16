@@ -17,6 +17,7 @@ class CreateAlkesTable extends Migration
             $table->id();
             $table->string('kod');
             $table->string('nama_alkes');
+            $table->string('harga')->nullable();
             $table->foreignId('golongan_alkes_id')->constrained();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();

@@ -2,7 +2,7 @@
 @section('title', 'Ubah Alat Kesehatan')
 @section('obalkes', 'active')
 @section('obat', 'active')
-@section('alkes', 'active')
+@section('al', 'active')
 @section('judul', 'Ubah Alat Kesehatan')
 @section('breadcrumb', 'ubah_alat_kesehatan')
 @section('container')
@@ -56,6 +56,14 @@
                                                 <option value="{{ $item->id }}" {{($item->id==$alkes->bobot_obat_id)?'selected':''}}>{{ $item->bobot_obat }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Harga</label>
+                                            <input type="number" class="form-control" name="harga" id="harga" value="{{$alkes->harga}}" >
+                                            
                                         </div>
                                     </div>
 

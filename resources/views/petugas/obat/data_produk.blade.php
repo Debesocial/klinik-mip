@@ -57,7 +57,8 @@
                             <th style="width:20%">Nama </th>
                             <th style="width:10%">Satuan </th>
                             <th style="width:15%">Bobot </th>
-                            <th style="width:50%">Komposisi </th>
+                            <th style="width:10%">Harga </th>
+                            <th style="width:40%">Komposisi </th>
                             <th style="width:5%">Aksi</th>
                         </tr>
                     </thead>
@@ -65,8 +66,9 @@
                         @foreach ($produk as $pro)
                             <tr>
                                 <td>{{ $pro->nama_produk }}</td>
-                                <td>{{ $pro->satuan_obat->satuan_obat }}</td>
-                                <td>{{ $pro->bobot_obat->bobot_obat }}</td>
+                                <td class="text-center">{{ $pro->satuan_obat->satuan_obat }}</td>
+                                <td class="text-center">{{ $pro->bobot_obat->bobot_obat }}</td>
+                                <td class="text-center">Rp. {{ $pro->harga??'-' }}</td>
                                 <td class="break-word">{{ $pro->komposisi }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">

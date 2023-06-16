@@ -17,6 +17,7 @@ class CreateObatsTable extends Migration
             $table->id();
             $table->string('kode');
             $table->string('nama_obat');
+            $table->string('harga')->nullable();
             $table->foreignId('golongan_obat_id')->constrained();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();

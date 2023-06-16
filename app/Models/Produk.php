@@ -11,14 +11,8 @@ class Produk extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'code',
-        'nama_produk',
-        'satuan_obat_id',
-        'bobot_obat_id',
-        'komposisi',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public static function boot()

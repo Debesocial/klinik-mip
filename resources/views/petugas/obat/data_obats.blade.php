@@ -47,11 +47,12 @@
                     <thead>
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
-                            <th>Nama Obat</th>
-                            <th>Golongan Obat</th>
-                            <th>Satuan Obat</th>
-                            <th>Bobot Obat</th>
-                            <th>Komposisi obat</th>
+                            <th>Nama</th>
+                            <th>Golongan</th>
+                            <th>Satuan</th>
+                            <th>Bobot</th>
+                            <th>Harga</th>
+                            <th>Komposisi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -62,9 +63,10 @@
                                 <br>{{ Carbon\Carbon::parse($ob->created_at)->format('H:i:s') }}
                             </td> --}}
                             <td>{{ $ob->nama_obat}}</td>
-                            <td>{{ $ob->golongan_obat->nama_golongan_obat }}</td>
-                            <td>{{ $ob->satuan_obat->satuan_obat }}</td>
-                            <td>{{ $ob->bobot_obat->bobot_obat }}</td>
+                            <td class="text-center">{{ $ob->golongan_obat->nama_golongan_obat }}</td>
+                            <td class="text-center">{{ $ob->satuan_obat->satuan_obat }}</td>
+                            <td class="text-center">{{ $ob->bobot_obat->bobot_obat }}</td>
+                            <td class="text-center">Rp. {{ $ob->harga??'-' }}</td>
                             <td>{{ $ob->komposisi_obat }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">

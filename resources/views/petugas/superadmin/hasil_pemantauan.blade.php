@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Hasil Pemantauan')
+@section('title', 'Kode Pemantauan')
 @section('md', 'active')
 @section('periksa', 'active')
 @section('cov', 'active')
@@ -11,7 +11,7 @@
     <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
-                    <h3>Data Kode Hasil Pemantauan Covid</h3>
+                    <h3>Kode Pemantauan</h3>
                     {{ Breadcrumbs::render('kode_covid') }}
             </div>
         </div>

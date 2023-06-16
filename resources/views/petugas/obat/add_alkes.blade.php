@@ -2,7 +2,7 @@
 @section('title', 'Add  Alat Kesehatan')
 @section('obalkes', 'active')
 @section('obat', 'active')
-@section('alkes', 'active')
+@section('al', 'active')
 @section('judul', 'Tambah Alat Kesehatan/Bahan Kesehatan')
 @section('breadcrumb', 'tambah_alat_kesehatan')
 @section('container')
@@ -61,6 +61,13 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Harga</label>
+                                            <input type="number" class="form-control" name="harga" id="harga" >
+                                            
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Komposisi Alat/Bahan Kesehatan</label>

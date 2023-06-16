@@ -256,18 +256,18 @@ Breadcrumbs::for('ubah_pemeriksaan_antigen', function (BreadcrumbTrail $trail) {
      $trail->parent('pemeriksaan_antigen');
      $trail->push('Ubah Pemeriksaan Antigen');
 });
-/** Kode hasil pemantauan Covid */
+/** Kode pemantauan */
 Breadcrumbs::for('kode_covid', function (BreadcrumbTrail $trail) {
      $trail->push('Master Data', route('superadmin.hasilpemantauan'));
-     $trail->push('Kode Pemantauan Covid', route('superadmin.hasilpemantauan'));
+     $trail->push('Kode Pemantauan', route('superadmin.hasilpemantauan'));
 });
 Breadcrumbs::for('tambah_kode_covid', function (BreadcrumbTrail $trail) {
      $trail->parent('kode_covid');
-     $trail->push('Tambah kode pemantauan covid',);
+     $trail->push('Tambah kode pemantauan',);
 });
 Breadcrumbs::for('ubah_kode_covid', function (BreadcrumbTrail $trail) {
      $trail->parent('kode_covid');
-     $trail->push('Ubah kode pemantauan covid');
+     $trail->push('Ubah kode pemantauan');
 });
 /** Klasifikasi penyakit */
 Breadcrumbs::for('klasifikasi_penyakit', function (BreadcrumbTrail $trail) {

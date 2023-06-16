@@ -60,17 +60,21 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="nama_obat_id">Harga</label>
+                                            <input type="number" name="harga" id="harga" class="form-control" >
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="nama_obat_id">Komposisi Obat</label>
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5"></textarea>
                                         </div>
                                     </div>
+                                    
 
-                                    <div class="col-12"><br>
-                                        <div class="row justify-content-end">
-                                            <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
-                                            </div>
-                                        </div>
+                                    <div class="col-12 text-end"><br>
+                                        <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                                     </div>
                                 </div>
                             </div>

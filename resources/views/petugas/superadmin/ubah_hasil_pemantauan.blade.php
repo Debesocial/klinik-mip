@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Ubah Hasil Pemantauan')
-@section('judul', 'Ubah Hasil Pemantauan Covid')
+@section('title', 'Ubah Kode Pemantauan')
+@section('judul', 'Ubah Kode Pemantauan')
 @section('breadcrumb', 'ubah_kode_covid')
 @section('container')
 

@@ -56,7 +56,7 @@ class ObatController extends Controller
      */
     public function dataobats()
     {
-        $obat = Obat::all();
+        $obat = Obat::with('golongan_obat','satuan_obat','bobot_obat')->get();
 
         return view('petugas.obat.data_obats', compact('obat'));
     }

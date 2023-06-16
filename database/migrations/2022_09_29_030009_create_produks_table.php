@@ -17,6 +17,7 @@ class CreateProduksTable extends Migration
             $table->id();
             $table->string('code');
             $table->string('nama_produk');
+            $table->string('harga')->nullable();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();
             $table->text('komposisi')->nullable();

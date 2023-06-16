@@ -25,6 +25,7 @@
                         <th>Satuan</th>
                         <th>Bobot</th>
                         <th>Komposisi</th>
+                        <th>Harga</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                         <td>{{ $obat->satuan_obat->satuan_obat }}</td>
                         <td>{{ $obat->bobot_obat->bobot_obat }}</td>
                         <td>{{ $obat->komposisi_obat }}</td>
+                        <td>{{ $obat->harga }}</td>
                             <td><div class="buttons">
                                 <a href="/ubah/data/obat/{{ $obat->id }}" class="btn btn-success rounded-pill" title="Ubah data obat"><i class="fa fa-edit"></i></a>
                             </div>

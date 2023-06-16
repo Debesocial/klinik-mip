@@ -48,11 +48,18 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Harga</label>
+                                            <input type="number" class="form-control" name="harga" id="harga" >
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Komposisi Produk Kesehatan</label>
                                             <textarea class="form-control" name="komposisi" id="komposisi" cols="50" rows="5"></textarea>
-                                            
                                         </div>
                                     </div>
 

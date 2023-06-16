@@ -57,23 +57,23 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="harga">Harga</label>
+                                            <input type="number" class="form-control" name="harga" id="harga" value="{{ $obat['harga'] }}">
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="komposisi_obat">Komposisi Obat</label>
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5">{{ $obat['komposisi_obat'] }}</textarea>
                                         </div>
                                     </div>
+                                    
 
-                                    <div class="col-12"><br>
-                                        <div class="row justify-content-end">
-                                            <div class="col-4">
-                                                <button type="reset" class="form-control btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
-                                            </div>
-                                            <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
-                                            </div>
-                                        </div>
+                                    <div class="col-12 text-end"><br>
+                                        <button type="reset" class=" btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                                        <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                                     </div>
 
                                 </div>
