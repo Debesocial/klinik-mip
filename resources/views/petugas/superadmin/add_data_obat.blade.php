@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" action="/add/data/obat" method="post">
+                        <form class="form"  onsubmit="showLoader()" action="/add/data/obat" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

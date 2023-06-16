@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" action="/add/divisi" method="post">
+                        <form class="form" action="/add/divisi"  onsubmit="showLoader()" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

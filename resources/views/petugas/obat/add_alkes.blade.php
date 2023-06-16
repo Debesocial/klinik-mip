@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" action="/add/alkes" method="post">
+                        <form class="form" action="/add/alkes"  onsubmit="showLoader()" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

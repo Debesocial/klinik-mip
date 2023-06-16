@@ -17,7 +17,7 @@
                         @error('message')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <form class="form" action="/add/mitra/kerja" method="post">
+                        <form class="form" action="/add/mitra/kerja" onsubmit="showLoader()" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">

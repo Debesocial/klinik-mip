@@ -158,7 +158,7 @@
                             </li>
                             @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                             <li class="submenu-item @yield('cov')">
-                                <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Hasil Pemantauan Covid</a>
+                                <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Pemantauan</a>
                             </li>
                             @endif
                             <li class="submenu-item @yield('klas')">

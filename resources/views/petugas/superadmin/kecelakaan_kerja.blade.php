@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="bs-stepper-content">
-                    <form id="form-add-jalan" class="form needs-validation" action="/kecelakaan/kerja" method="post"
+                    <form id="form-add-jalan" class="form needs-validation" action="/kecelakaan/kerja"  onsubmit="showLoader()" method="post"
                         enctype="multipart/form-data" novalidate>
                         @csrf
                         <input type="hidden" name="pasien_id">

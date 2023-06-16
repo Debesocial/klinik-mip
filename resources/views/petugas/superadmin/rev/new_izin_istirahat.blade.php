@@ -76,7 +76,7 @@
                         </div>
                     </div>
                     <div class="bs-stepper-content">
-                        <form id="form-istirahat" class="form needs-validation" action="/izin_istirahat" method="post"
+                        <form id="form-istirahat" class="form needs-validation" action="/izin_istirahat"  onsubmit="showLoader()" method="post"
                             enctype="multipart/form-data" novalidate>
                             @csrf
                             <input type="hidden" name="pasien_id">

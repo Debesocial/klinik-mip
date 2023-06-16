@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" action="/add/data/user" method="post">
+                        <form class="form" action="/add/data/user" onsubmit="showLoader()" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-6">

@@ -17,7 +17,7 @@
                         @error('message')
                         <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <form class="form" id="form_pasien" action="{{ route('add.pasien') }}" method="post" enctype="multipart/form-data">
+                        <form class="form" id="form_pasien" action="{{ route('add.pasien') }}" method="post"  onsubmit="showLoader()" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 col-12">
