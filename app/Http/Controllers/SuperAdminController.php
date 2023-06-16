@@ -55,6 +55,7 @@ use Response;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Masterminds\HTML5\Parser\InputStream;
 
 class SuperAdminController extends Controller
 {
@@ -673,7 +674,7 @@ class SuperAdminController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
-        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id); 
+        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
         KecelakaanKerja::create($data);
         return redirect('/data-kecelakaan-kerja')->with('message', 'Berhasil menambah surat kecelakaan kerja!');
     }
@@ -681,6 +682,19 @@ class SuperAdminController extends Controller
     public function ubahKecelakaanKerja($id)
     {
         $kecelakaan =  KecelakaanKerja::with(['pasien.perusahaan','pasien.divisi', 'pasien.keluarga', 'pasien.jabatan', 'pasien.kategori'])->find($id);
+        if ($kecelakaan->id_rekam_medis!=null) {
+            if ($kecelakaan->rekam_medis=='RI') {
+                $rekam_medis = RawatInap::find($kecelakaan->id_rekam_medis);
+                $rekam_medis['gen_id'] = $rekam_medis->id_rawat_inap;
+            }elseif ($kecelakaan->rekam_medis=='RJ') {
+                $rekam_medis = RawatJalan::find($kecelakaan->id_rekam_medis);
+                $rekam_medis['gen_id'] = $rekam_medis->id_rawat_jalan;
+            }
+            $inputs = ['gen_id','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis','tindakan','resep'];
+            foreach ($inputs as $input) {
+                $kecelakaan[$input] = $rekam_medis[$input];
+            }
+        }
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();

@@ -12,6 +12,8 @@ use App\Models\McuAwal;
 use App\Models\NamaPenyakit;
 use App\Models\Obat;
 use App\Models\PersetujuanTindakan;
+use App\Models\RawatInap;
+use App\Models\RawatJalan;
 use App\Models\SuratRujukan;
 use App\Models\TestUrin;
 use App\Models\Tindakan;
@@ -98,6 +100,19 @@ class SuratController extends Controller
     public function printKecelakaan($id)
     {
         $kecelakaan = KecelakaanKerja::find($id);
+        if ($kecelakaan->id_rekam_medis!=null) {
+            if ($kecelakaan->rekam_medis=='RI') {
+                $rekam_medis = RawatInap::find($kecelakaan->id_rekam_medis);
+                $rekam_medis['gen_id'] = $rekam_medis->id_rawat_inap;
+            }elseif ($kecelakaan->rekam_medis=='RJ') {
+                $rekam_medis = RawatJalan::find($kecelakaan->id_rekam_medis);
+                $rekam_medis['gen_id'] = $rekam_medis->id_rawat_jalan;
+            }
+            $inputs = ['gen_id','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis','tindakan','resep'];
+            foreach ($inputs as $input) {
+                $kecelakaan[$input] = $rekam_medis[$input];
+            }
+        }
         $data['kecelakaan'] = $kecelakaan;
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['alkes'] = Alkes::with(['satuan_obat'])->get();

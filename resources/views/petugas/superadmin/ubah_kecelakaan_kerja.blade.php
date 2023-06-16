@@ -145,6 +145,11 @@
                         <div id="test-nl-2" class="content">
                             <div class="row">
                                 <div class="col-md-6">
+                                    @if ($kecelakaan->id_rekam_medis)
+                                    <div class="mb-2">
+                                        Data diambil dari Rekam medis <b>{{$kecelakaan->gen_id}}</b> {{$kecelakaan->rekam_medis=='RI'?'( Rawat Inap )':'( Rawat Jalan )'}}
+                                    </div>
+                                    @endif
                                     <div class="mb-2">
                                         <label for="" class="form-label">Anamnesis <b class="text-danger">*</b></label>
                                         <input type="text" name="anamnesis" id="anamnesis" class="form-control" value="{{$kecelakaan->anamnesis}}">
@@ -586,7 +591,19 @@
             drawTableDiagnodsa();
             drawformTindakan();
             drawformResep();
+            disabelAllInput();
         });
+
+        function disabelAllInput() {
+           id_rekam_medis = '{{$kecelakaan->id_rekam_medis}}'
+           console.log(id_rekam_medis);
+           if (id_rekam_medis) {
+               var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                inputs.forEach(input => {
+                    $('#'+input).attr('disabled', 'disabled')
+                });
+           }
+        }
 
         function lanjut1() {
             let validated = true;

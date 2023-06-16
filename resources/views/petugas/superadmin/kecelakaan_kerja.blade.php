@@ -163,6 +163,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-2">
+                                        <input type="hidden" name="rekam_medis" id="rekam_medis">
                                         <label for="" class="form-label">Pilih dari rekam medis <b class="text-danger">*</b></label>
                                         <select name="id_rekam_medis" id="id_rekam_medis">
                                             <option value="">Pilih pemeriksaan</option>
@@ -608,11 +609,32 @@
                 })
                 $(select2_rekam_medis).change(function(){
                     let val = $(this).val();
-                    let id_rekam  = $(this).children('option:selected').text().substring(0,2);
-                    if (id_rekam == 'RI') {
-                        setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
-                    }else if(id_rekam == 'RJ'){
-                        setAllFormWithRekamMedis('{{url("/get-one-rawat-jalan")}}/'+val);
+                    if(val == ''){
+                        var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                        inputs.forEach(input => {
+                            form = $('#'+input);
+                            if (input == 'nama_penyakit_id') {
+                                form.val([]).trigger('change')
+                            }else{
+                                form.val('');
+                            }
+                            form.removeAttr('disabled');
+                            tindakan = [];
+                            drawformTindakan();
+                            resep = [];
+                            drawformResep();
+                        });
+                        $('input#rekam_medis').val('');
+                    }else{
+                        let id_rekam  = $(this).children('option:selected').text().substring(0,2);
+                        $('input#rekam_medis').val(id_rekam);
+                        console.log();
+                        if (id_rekam == 'RI') {
+                            setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
+                        }else if(id_rekam == 'RJ'){
+                            setAllFormWithRekamMedis('{{url("/get-one-rawat-jalan")}}/'+val);
+                        }
+                        
                     }
 
                 })
@@ -653,10 +675,19 @@
                 url:url,
                 success: function (data) {
                     // console.log(data);
-                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                     inputs.forEach(input => {
-                        $('#'+input).val(data[input])
-                        $('#'+input).attr('disabled','disabled')
+                        if (input=='nama_penyakit_id') {
+                            penyakitId=JSON.parse(data[input]);
+                            $('#'+input).val(penyakitId).trigger('change');
+                        }else{
+                            $('#'+input).val(data[input])
+                        }
+                        $('#'+input).attr('disabled','disabled');
+                        tindakan = JSON.parse(data.tindakan);
+                        resep = JSON.parse(data.resep);
+                        drawformTindakan();
+                        drawformResep();
                     });
                 }
             })
@@ -690,18 +721,17 @@
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', ];
             inputs.forEach(input => {
-                var value_input = $('[name*="' + input + '"]').val();                    
-                var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
-
-                if (value_input == ""||value_input == ' ') {
+                var value_input = $('#'+input).val();                    
+                var text_input = $('#'+input).children('option:selected').text();                    
+                if (value_input == ""||value_input == ' '||value_input==null) {
                     validated = false
-                    $('[name*="' + input + '"]').removeClass('is-valid')
-                    $('[name*="' + input + '"]').addClass('is-invalid')
+                    $('#'+input).removeClass('is-valid')
+                    $('#'+input).addClass('is-invalid')
                 } else {
-                    $('[name*="' + input + '"]').removeClass('is-invalid')
-                    $('[name*="' + input + '"]').addClass('is-valid')
+                    $('#'+input).removeClass('is-invalid')
+                    $('#'+input).addClass('is-valid')
                     setResult(input, text_input);
                 }
             });

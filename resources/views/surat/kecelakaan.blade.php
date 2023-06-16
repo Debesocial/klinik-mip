@@ -21,7 +21,7 @@
                         <table>
                             <tr>
                                 <td>No. RM</td>
-                                <td>: {{ $kecelakaan->pasien->id_rekam_medis}} </td>
+                                <td>: {{ $kecelakaan->gen_id??'-'}} <small>({{$kecelakaan->rekam_medis?($kecelakaan->rekam_medis=='RI'?'Rawat Inap':'Rawat Jalan'):''}})</small></td>
                             </tr>
                             <tr>
                                 <td>Nama</td>
