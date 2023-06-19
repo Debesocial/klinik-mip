@@ -231,7 +231,7 @@
                                         <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control"></textarea>
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Dokumentasi Pendukung</label>
+                                        <label for="" class="form-label">Dokumentasi Pendukung <b><small class="text-warning">**Ukuran file maksimal 20MB</small></b></label>
                                         <input type="file" name="dokumen" id="dokumen" class="form-control">
                                         {!!validasi('Ukuran file','terlalu besar')!!}
                                     </div>
