@@ -301,7 +301,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="" class="form-label">Tujuan pembuatan surat</label>
+                                        <label for="" class="form-label">Tujuan pembuatan surat <b class="text-danger">*</b></label>
                                         <input class="form-control" type="text" name="tujuan_surat" id="tujuan_surat" value="{{$narkoba->tujuan_surat??''}}">
                                     </div>
                                 </div>
@@ -511,7 +511,7 @@
             }
         }
         function lanjut3() {
-            var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc'];
+            var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc', 'tujuan_surat'];
             var validation_hasil = true;
             tests.forEach(test => {
                 var value_test = $('[name="' + test + '"]:checked').val()

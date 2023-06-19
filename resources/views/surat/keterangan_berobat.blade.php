@@ -35,8 +35,8 @@
 
     <p>Yang bersangkutan adalah benar telah berobat di
         <b><u>{{ ($keteranganberobat->rumah_sakit_rujukans_id==10)? $keteranganberobat->rs_lain :$keteranganberobat->rumahsakitrujukan->nama_RS_rujukan }}</u></b>.
-        Pada hasil pemeriksaan didapatkan diagnosa penyakit <b><u>{{ $keteranganberobat->namapenyakit->primer }}</u></b>
-        dan pada pasien diresepkan obat <i>{{ $keteranganberobat->resep }}</i>.
+        Pada hasil pemeriksaan didapatkan diagnosa penyakit <b><u>{{ $keteranganberobat->namapenyakit->primer }}</u></b> dengan diagnosa sekunder <b><u>{{$keteranganberobat->sekunder}}</u></b>
+        dan pada pasien diresepkan obat <b><i>{{ $keteranganberobat->resep }}</i></b>.
     </p>
     <p>Saran untuk pasien: {{ $keteranganberobat->saran }}.</p>
     @if ($keteranganberobat->kontrol == 1)

@@ -13,6 +13,7 @@ class CreateIzinIstirahatsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('izin_istirahats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
@@ -27,6 +28,7 @@ class CreateIzinIstirahatsTable extends Migration
             $table->date('sampai')->nullable();
             $table->foreignId('spesialis_rujukan_id')->nullable()->constrained();
             $table->foreignId('rumah_sakit_rujukan_id')->nullable()->constrained();
+            $table->string('other_rs')->nullable();
             $table->boolean('ttd');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -34,6 +36,8 @@ class CreateIzinIstirahatsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
+        
     }
 
     /**

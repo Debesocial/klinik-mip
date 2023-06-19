@@ -376,6 +376,10 @@
                                                             <option value="{{ $rs['id'] }}">{{ $rs['nama_RS_rujukan'] }}</option>
                                                         @endforeach
                                                     </select>
+                                                    <div class="mb-3" id="_other_rs" style="display:none">
+                                                        <label for="">Nama Rumah Sakit <b class="text-red">*</b></label>
+                                                        <textarea name="other_rs" id="other_rs" class="form-control" placeholder="Masukkan nama rumah sakit rujukan"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -428,7 +432,7 @@
                 linear: true,
                 animation: true
             })
-            // stepper2.to(3);
+            stepper2.to(5);
             select2_alat = $('select#alat_kesehatan').select2({
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
@@ -527,6 +531,13 @@
                         $('#_'+val).show();
                     }else if(val==4){
                         $('#_'+val).show();
+                    }
+                })
+
+                $('#other_rs').change(function(){
+                    let value = $(this).val();
+                    if (value=='10') {
+                        $('#_other_rs')
                     }
                 })
             });
