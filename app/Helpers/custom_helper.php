@@ -14,7 +14,7 @@ function cekMcu($data)
 
 /** Untuk menyamakan format tanggal
  */
-function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false)
+function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false, $namaHariJam=false)
 {
     if ($namaHari) {
         $format = 'l d F Y';
@@ -23,6 +23,11 @@ function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false)
         return $date->format($format);
     }else if ($monthText) {
         $format = 'd F Y';
+        $date = \Carbon\Carbon::parse($tanggal)->locale('id');
+        $date->settings(['formatFunction' => 'translatedFormat']);
+        return $date->format($format);
+    }else if($namaHariJam){
+        $format = 'l d F Y H:i';
         $date = \Carbon\Carbon::parse($tanggal)->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);
         return $date->format($format);
@@ -62,7 +67,10 @@ function diffDay($awal, $akhir)
     $date1 = strtotime($awal);
     $date2 = strtotime($akhir);
     $diff = abs(($date1 - $date2) / (60 * 60 * 24));
-
+    if ($diff<1) {
+        $diffHour = round(abs(($date1 - $date2) / (60 * 60)));
+        return $diffHour .' jam';
+    }
     return $diff . ' hari';
 }
 

@@ -90,12 +90,12 @@
                         @if ($istirahat->rekomendasi==3)
                             <b>Istirahat di MESS Karyawan selama {{diffDay($istirahat->dari, $istirahat->sampai)}}</b> <br>
                             <div style="padding-left:7px;">
-                                dari {{tanggal($istirahat->dari,null,null,true)}} <br>
-                                sampai {{tanggal($istirahat->sampai,null,null,true)}}
+                                dari {{tanggal($istirahat->dari,true,null,null, true)}} <br>
+                                sampai {{tanggal($istirahat->sampai,true,null,null,true)}}
                             </div>
                         @endif
                         @if ($istirahat->rekomendasi==4)
-                            <b>Rujukan ke {{$istirahat->rumahsakitrujukan->nama_RS_rujukan}}, {{$istirahat->spesialisrujukan->nama_spesialis_rujukan}}</b>
+                            <b>Rujukan ke {{$istirahat->rumahsakitrujukan->nama_RS_rujukan}} - {!!($istirahat->rumah_sakit_rujukan_id=='10')?'<i>'.$istirahat->other_rs.'</i>':''!!}, {{$istirahat->spesialisrujukan->nama_spesialis_rujukan}}</b>
                         @endif
                     </td>
                 </tr>

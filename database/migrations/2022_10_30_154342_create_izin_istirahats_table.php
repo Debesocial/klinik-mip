@@ -24,8 +24,8 @@ class CreateIzinIstirahatsTable extends Migration
             $table->json('terapi');
             $table->integer('rekomendasi');
             $table->text('dapat_bekerja_catatan')->nullable();
-            $table->date('dari')->nullable();
-            $table->date('sampai')->nullable();
+            $table->dateTime('dari')->nullable();
+            $table->dateTime('sampai')->nullable();
             $table->foreignId('spesialis_rujukan_id')->nullable()->constrained();
             $table->foreignId('rumah_sakit_rujukan_id')->nullable()->constrained();
             $table->string('other_rs')->nullable();

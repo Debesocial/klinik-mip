@@ -326,10 +326,10 @@
                                             </div>
                                             <div class="mb-2 ps-4" id="_3" style="display:none">
                                                 <label for="">Dari Tanggal</label>
-                                                <input type="date" id="dari" class="form-control" name="dari" id="dari" value="{{$istirahat->dari??''}}">
+                                                <input type="datetime-local" id="dari" class="form-control" name="dari" id="dari" value="{{$istirahat->dari??''}}">
                                                 {!!validasi('Tanggal')!!}
                                                 <label for="">Sampai tanggal</label>
-                                                <input type="date" id="sampai" class="form-control" name="sampai" id="sampai" value="{{$istirahat->sampai??''}}">
+                                                <input type="datetime-local" id="sampai" class="form-control" name="sampai" id="sampai" value="{{$istirahat->sampai??''}}">
                                                 {!!validasi('Tanggal')!!}
 
                                             </div>
@@ -355,6 +355,10 @@
                                                             <option value="{{ $rs['id'] }}" {{$rs->id==$istirahat->rumah_sakit_rujukan_id?'selected':''}}>{{ $rs['nama_RS_rujukan'] }}</option>
                                                         @endforeach
                                                     </select>
+                                                    <div class="mb-3" id="_other_rs" style="display:none">
+                                                        <label for="">Nama Rumah Sakit <b class="text-danger">*</b></label>
+                                                        <textarea name="other_rs" id="other_rs" class="form-control" placeholder="Masukkan nama rumah sakit rujukan">{{$istirahat->other_rs??''}}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -498,6 +502,18 @@
                     }else if(val==4){
                         $('#_'+val).show();
                     }
+                    $('#other_rs').val('');
+
+                })
+
+                $('#rumah_sakit_rujukan_id').change(function(){
+                    let value = $(this).val();
+                    if (value=='10') {
+                        $('#_other_rs').show();
+                    }else{
+                        $('#_other_rs').hide();
+                        $('#other_rs').val('');
+                    }
                 })
             });
             
@@ -510,6 +526,9 @@
                         $('#_'+val).show();
                     }else if(val==4){
                         $('#_'+val).show();
+                        if ($('#rumah_sakit_rujukan_id'=='10')) {
+                            $('#_other_rs').show();
+                        }
                     }
             }
 
@@ -788,6 +807,9 @@
                     lanjut5Input = ['dari', 'sampai'];
                 }else if(val == 4){
                     lanjut5Input = ['spesialis_rujukan_id','rumah_sakit_rujukan_id'];
+                    if ($('#rumah_sakit_rujukan_id').val()) {
+                        lanjut5Input = ['spesialis_rujukan_id','rumah_sakit_rujukan_id','other_rs'];
+                    }
                 }
                 if (lanjut5Input.length!=0) {
                     lanjut5Input.forEach(input => {

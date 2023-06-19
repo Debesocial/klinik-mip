@@ -347,10 +347,10 @@
                                             </div>
                                             <div class="mb-2 ps-4" id="_3" style="display:none">
                                                 <label for="">Dari Tanggal</label>
-                                                <input type="date" id="dari" class="form-control" name="dari" id="dari">
+                                                <input type="datetime-local" id="dari" class="form-control" name="dari" id="dari">
                                                 {!!validasi('Tanggal')!!}
                                                 <label for="">Sampai tanggal</label>
-                                                <input type="date" id="sampai" class="form-control" name="sampai" id="sampai">
+                                                <input type="datetime-local" id="sampai" class="form-control" name="sampai" id="sampai">
                                                 {!!validasi('Tanggal')!!}
 
                                             </div>
@@ -371,13 +371,13 @@
                                                 <div class="">
                                                     <label for="">Rumah Sakit Rujukan</label>
                                                     <select name="rumah_sakit_rujukan_id" id="rumah_sakit_rujukan_id" class="choices form-select" required>
-                                                        <option disabled selected>Pilih Rumah Sakit</option>
+                                                        <option selected value="">Pilih Rumah Sakit</option>
                                                         @foreach ($rsrujukan as $rs)
                                                             <option value="{{ $rs['id'] }}">{{ $rs['nama_RS_rujukan'] }}</option>
                                                         @endforeach
                                                     </select>
                                                     <div class="mb-3" id="_other_rs" style="display:none">
-                                                        <label for="">Nama Rumah Sakit <b class="text-red">*</b></label>
+                                                        <label for="">Nama Rumah Sakit <b class="text-danger">*</b></label>
                                                         <textarea name="other_rs" id="other_rs" class="form-control" placeholder="Masukkan nama rumah sakit rujukan"></textarea>
                                                     </div>
                                                 </div>
@@ -432,7 +432,7 @@
                 linear: true,
                 animation: true
             })
-            stepper2.to(5);
+            // stepper2.to(5);
             select2_alat = $('select#alat_kesehatan').select2({
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
@@ -532,12 +532,16 @@
                     }else if(val==4){
                         $('#_'+val).show();
                     }
+                    $('#other_rs').val('');
                 })
 
-                $('#other_rs').change(function(){
+                $('#rumah_sakit_rujukan_id').change(function(){
                     let value = $(this).val();
                     if (value=='10') {
-                        $('#_other_rs')
+                        $('#_other_rs').show();
+                    }else{
+                        $('#_other_rs').hide();
+                        $('#other_rs').val('');
                     }
                 })
             });
@@ -815,6 +819,9 @@
                     lanjut5Input = ['dari', 'sampai'];
                 }else if(val == 4){
                     lanjut5Input = ['spesialis_rujukan_id','rumah_sakit_rujukan_id'];
+                    if ($('#rumah_sakit_rujukan_id').val()) {
+                        lanjut5Input = ['spesialis_rujukan_id','rumah_sakit_rujukan_id','other_rs'];
+                    }
                 }
                 if (lanjut5Input.length!=0) {
                     lanjut5Input.forEach(input => {
