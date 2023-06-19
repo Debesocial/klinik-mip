@@ -324,6 +324,8 @@
                                     <div class="col-md-4">
                                         <label for="" class="form-label">Tujuan pembuatan surat <b class="text-danger">*</b></label>
                                         <input class="form-control" type="text" name="tujuan_surat" id="tujuan_surat">
+                                        {!!validasi('Tujuan pembuatan surat')!!}
+
                                     </div>
                                 </div>
                             </div>
@@ -567,12 +569,24 @@
                 var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc', 'tujuan_surat'];
                 var validation_hasil = true;
                 tests.forEach(test => {
-                    var value_test = $('[name="' + test + '"]:checked').val()
-                    if (value_test === undefined) {
-                        $('#invalid-' + test).show();
-                        validation_hasil = false;
+                    if (test=='tujuan_surat') {
+                        form = $('#'+test);
+                        if (form.val()==null||form.val()=='') {
+                            form.addClass('is-invalid');
+                            form.removeClass('is-valid');
+                            validation_hasil = false;
+                        }else{
+                            form.addClass('is-valid');
+                            form.removeClass('is-invalid');
+                        }
+                    }else{
+                        var value_test = $('[name="' + test + '"]:checked').val()
+                        if (value_test === undefined) {
+                            $('#invalid-' + test).show();
+                            validation_hasil = false;
+                        }
+                        setReviewHasilNarkoba(test, value_test);
                     }
-                    setReviewHasilNarkoba(test, value_test);
                 });
                 setReviewObat();
 
