@@ -95,7 +95,7 @@
                             </div>
                         @endif
                         @if ($istirahat->rekomendasi==4)
-                            <b>Rujukan ke {{$istirahat->rumahsakitrujukan->nama_RS_rujukan}} - {!!($istirahat->rumah_sakit_rujukan_id=='10')?'<i>'.$istirahat->other_rs.'</i>':''!!}, {{$istirahat->spesialisrujukan->nama_spesialis_rujukan}}</b>
+                            <b>Rujukan ke {!!($istirahat->rumah_sakit_rujukan_id=='10')?'<i>'.$istirahat->other_rs.'</i>':$istirahat->rumahsakitrujukan->nama_RS_rujukan!!}, {{$istirahat->spesialisrujukan->nama_spesialis_rujukan}}</b>
                         @endif
                     </td>
                 </tr>
