@@ -171,14 +171,15 @@
                                                         Data sudah benar
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">File Pendukung</label>
-                                                    <input class="form-control" type="file" id="dokumen"
-                                                        name="dokumen" multiple>
-                                                </div>
-
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">File Pendukung <b><small class="text-warning">**Ukuran file maksimal 20MB</small></b></label>
+                                        <input class="form-control" type="file" id="dokumen" name="dokumen" multiple>
+                                        {!!validasi('Ukuran file', 'terlalu besar')!!}
                                     </div>
                                 </div>
                             </div>
@@ -557,7 +558,7 @@
                         }
                     });
                 }
-                if (validated === true) {
+                if (validated === true && validasiFile(20000,'dokumen')) {
                     stepper2.next()
                 }
             }

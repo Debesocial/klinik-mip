@@ -183,21 +183,23 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
-                                            <div class="input-group">
-                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$kecelakaan->tekanan_darah}}">
-                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
-                                                {!!validasi('Tekanan darah')!!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-4">
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$kecelakaan->saturasi_oksigen}}">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Saturasi oksigen')!!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$kecelakaan->tekanan_darah}}">
+                                                <span class="input-group-text" id="basic-addon1">/</span>
+                                                <input type="number" name="tekanan_darah_per" id="tekanan_darah_per" class="form-control" value="{{$kecelakaan->tekanan_darah_per}}">
+                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                {!!validasi('Tekanan darah')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +499,7 @@
                                 <button type="button" class="btn btn-primary rounded-pill"
                                     onclick="stepper2.previous()"><i class="bi bi-arrow-left-circle"></i>
                                     <b>Sebelumnya</b></button>
-                                <button type="submit" class="btn btn-primary rounded-pill"
+                                <button type="submit" id="submitKecelakaan" class="btn btn-primary rounded-pill"
                                     onclick="submitform('form-add-jalan')"><b>Simpan</b> <i class="bi bi-save"></i></button>
                             </div>
                         </div>
@@ -596,9 +598,8 @@
 
         function disabelAllInput() {
            id_rekam_medis = '{{$kecelakaan->id_rekam_medis}}'
-           console.log(id_rekam_medis);
            if (id_rekam_medis) {
-               var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+               var inputs = ['submitKecelakaan','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                 inputs.forEach(input => {
                     $('#'+input).attr('disabled', 'disabled')
                 });
@@ -631,7 +632,7 @@
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah','tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name*="' + input + '"]').val();                    
                 var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    

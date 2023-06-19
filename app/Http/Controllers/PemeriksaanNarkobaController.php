@@ -38,6 +38,7 @@ use Response;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 
 class PemeriksaanNarkobaController extends Controller
@@ -82,6 +83,9 @@ class PemeriksaanNarkobaController extends Controller
 
     function changepemeriksaannarkoba(Request $request, $id) {
         // dd($request->input('senin'));
+
+        
+
         $narkoba = TestUrin::find($id);
         $narkoba->penggunaan_obat = $request->input('penggunaan_obat');
         $narkoba->tujuan_surat = $request->input('tujuan_surat');
@@ -94,6 +98,16 @@ class PemeriksaanNarkobaController extends Controller
         $narkoba->bzo = $request->input('bzo');
         $narkoba->mop = $request->input('mop');
         $narkoba->coc = $request->input('coc');
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/narkoba/file', $filename);
+            if ($request->old_dokumen) {
+                $path = parse_url('pemeriksaan/narkoba/file/'.$request->old_dokumen);
+                File::delete(public_path($path['path']));
+            }
+            $narkoba->dokumen=$filename;
+        }
         $narkoba->update();
 
 

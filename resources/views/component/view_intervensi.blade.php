@@ -25,7 +25,7 @@
                             </tr>
                             <tr>
                                 <th>Tekanan Darah</th>
-                                <td>: {{ $intervensi->tekanan_darah }} mmHg</td>
+                                <td>: {{ $intervensi->tekanan_darah }} / {{ $intervensi->tekanan_darah_per }} mmHg</td>
                             </tr>
                             <tr>
                                 <th>Saturasi Oksigen</th>

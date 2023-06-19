@@ -27,6 +27,7 @@ class CreateKecelakaanKerjasTable extends Migration
             $table->float('berat_badan');
             $table->float('suhu_tubuh');
             $table->float('tekanan_darah');
+            $table->float('tekanan_darah_per');
             $table->float('denyut_nadi');
             $table->float('denyut_nadi_menit');
             $table->float('laju_pernapasan');

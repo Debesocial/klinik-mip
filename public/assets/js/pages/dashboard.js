@@ -221,4 +221,35 @@ function getDateDiff(time1, time2, abs=true) {
   function cekSingle(m) {
     return m < 10 ? '0'+m: m;
   }
+
+  function validasiFile(max,id){
+    let fi = $('#'+id)[0].files;
+    // Check if any file is selected.
+    validate = true;
+    if (fi.length == 1) {
+        let fsize = fi[0].size;
+        let file = Math.round((fsize / 1024));
+        // The size of the file.
+        console.log(file);
+        if (file > max) {
+            $('#'+id).addClass('is-invalid');
+            $('#'+id).removeClass('is-valid');
+            validate = false;
+        } 
+        // else if (file < 2048) {
+        //     alert(
+        //       "File too small, please select a file greater than 2mb");
+        // }
+         else {
+            $('#'+id).addClass('is-valid');
+            $('#'+id).removeClass('is-invalid');
+            validate = true;
+        }
+       
+        
+    }
+
+    return validate;
+
+}
   

@@ -147,16 +147,20 @@
                                                         Data sudah benar
                                                     </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label class="form-label">File Pendukung :</label>
-                                                    <a href="{{ $narkoba->file_pendukung ?? '#' }}">{{ $narkoba->file_pendukung ?? "-" }}</a>
-                                                    <input class="form-control" type="file" id="dokumen"
-                                                        name="dokumen" multiple>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">File Pendukung <b><small class="text-warning">**Ukuran file maksimal 20MB</small></b></label><br>
+                                    @if ($narkoba->dokumen)
+                                        <a href="{{asset('pemeriksaan/narkoba/file/'.$narkoba->dokumen)}}" target="blank">{{$narkoba->dokumen}}</a>
+                                    @else
+                                        <small class="text-warning">Belum ada dokumen</small>
+                                    @endif
+                                    <input class="form-control" type="file" id="dokumen" name="dokumen" multiple>
+                                    {!!validasi('Ukuran file', 'terlalu besar')!!}
+                                    <input type="hidden" name="old_dokumen" value="{{$narkoba->dokumen}}">
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between">
@@ -502,7 +506,7 @@
                     }
                 });
             }
-            if (validated === true) {
+            if (validated === true && validasiFile(20000,'dokumen')) {
                 stepper2.next()
             }
         }

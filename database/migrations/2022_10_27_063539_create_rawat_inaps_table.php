@@ -13,6 +13,7 @@ class CreateRawatInapsTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('rawat_inaps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pasien_id')->constrained();
@@ -24,6 +25,7 @@ class CreateRawatInapsTable extends Migration
             $table->float('berat_badan');
             $table->float('suhu_tubuh');
             $table->float('tekanan_darah');
+            $table->float('tekanan_darah_per');
             $table->float('denyut_nadi');
             $table->float('denyut_nadi_menit');
             $table->float('laju_pernapasan');
@@ -33,6 +35,7 @@ class CreateRawatInapsTable extends Migration
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->text('obat_konsumsi')->nullable();
             $table->string('dokumen')->nullable();
+            $table->string('persetujuan_tindakan')->nullable();
             $table->json('nama_penyakit_id');
             $table->json('tindakan');
             $table->json('resep');
@@ -42,6 +45,7 @@ class CreateRawatInapsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

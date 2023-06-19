@@ -69,6 +69,16 @@
                                 <th>Status Lokalis</th>
                                 <td>: {{$inap->status_lokalis}}</td>
                             </tr>
+                            <tr>
+                                <th>Persetujuan Tindakan Medis</th>
+                                <td>
+                                    @if ($inap->persetujuan_tindakan)
+                                        <a href="{{asset('pemeriksaan/persetujuan_tindakan/'.$inap->persetujuan_tindakan)}}" target="_blank" rel="noopener noreferrer">: {{$inap->persetujuan_tindakan}}</a>
+                                    @else
+                                        : <small class="text-warning"> Belum ada persetujuan tindakan medis</small>
+                                    @endif 
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

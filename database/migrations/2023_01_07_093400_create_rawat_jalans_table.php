@@ -24,6 +24,7 @@ class CreateRawatJalansTable extends Migration
             $table->float('berat_badan');
             $table->float('suhu_tubuh');
             $table->float('tekanan_darah');
+            $table->float('tekanan_darah_per');
             $table->float('denyut_nadi');
             $table->float('denyut_nadi_menit');
             $table->float('laju_pernapasan');
@@ -33,6 +34,7 @@ class CreateRawatJalansTable extends Migration
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->text('obat_konsumsi')->nullable();
             $table->string('dokumen')->nullable();
+            $table->string('persetujuan_tindakan')->nullable();
             $table->json('nama_penyakit_id');
             $table->json('tindakan');
             $table->json('resep');

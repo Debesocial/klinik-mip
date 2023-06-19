@@ -25,7 +25,7 @@
                             </tr>
                             <tr>
                                 <th>Tekanan Darah</th>
-                                <td>: {{ $instruksidokter->tekanan_darah }} mmHg</td>
+                                <td>: {{ $instruksidokter->tekanan_darah }} / {{ $instruksidokter->tekanan_darah_per }} mmHg</td>
                             </tr>
                             <tr>
                                 <th>Saturasi Oksigen</th>

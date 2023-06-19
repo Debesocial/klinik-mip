@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <th>Tekanan Darah</th>
-                                    <td>: {{$jalan->tekanan_darah}} mmHg</td>
+                                    <td>: {{$jalan->tekanan_darah}} / {{$jalan->tekanan_darah_per}} mmHg</td>
                                 </tr>
                                 <tr>
                                     <th>Saturasi Oksigen</th>
@@ -97,6 +97,16 @@
                                 <tr>
                                     <th>Status Lokalis</th>
                                     <td>: {{$jalan->status_lokalis}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Persetujuan tindakan medis</th>
+                                    <td>
+                                        @if ($jalan->persetujuan_tindakan)
+                                            <a href="{{asset('pemeriksaan/persetujuan_tindakan/'.$jalan->persetujuan_tindakan)}}" target="_blank" rel="noopener noreferrer">: {{$jalan->persetujuan_tindakan}}</a>
+                                        @else
+                                            : <small class="text-warning"> Belum ada persetujuan tindakan medis</small>
+                                        @endif 
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

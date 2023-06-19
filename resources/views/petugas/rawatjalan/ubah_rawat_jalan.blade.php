@@ -160,21 +160,23 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
-                                            <div class="input-group">
-                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$rawat_jalan->tekanan_darah}}">
-                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
-                                                {!!validasi('Tekanan darah')!!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-4">
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$rawat_jalan->saturasi_oksigen}}">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Saturasi oksigen')!!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control" value="{{$rawat_jalan->tekanan_darah}}">
+                                                <span class="input-group-text" id="basic-addon1">/</span>
+                                                <input type="number" name="tekanan_darah_per" id="tekanan_darah_per" class="form-control" value="{{$rawat_jalan->tekanan_darah_per}}">
+                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                {!!validasi('Tekanan darah')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -206,13 +208,14 @@
                                         <textarea name="obat_konsumsi" id="obat_konsumsi"  rows="3" class="form-control">{{$rawat_jalan->obat_konsumsi}}</textarea>
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Dokumentasi Pendukung</label>
+                                        <label for="" class="form-label">Dokumentasi Pendukung</label> <b><small class="text-warning">**File maksimal berukuran 20MB</small></b><br>
                                         @if ($rawat_jalan->dokumen)
                                             <a href="{{asset('pemeriksaan/rawatjalan/'.$rawat_jalan->dokumen)}}" target="blank">{{$rawat_jalan->dokumen}}</a>
                                         @else
                                             <small class="text-warning">Belum ada dokumen</small>
                                         @endif
                                         <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                        {!!validasi('Ukuran file', 'terlalu besar')!!}
                                         <input type="hidden" name="old_dokumen" value="{{$rawat_jalan->dokumen}}">
                                     </div>
                                 </div>
@@ -270,66 +273,82 @@
                         </div>
                         <div id="test-nl-3" class="content">
                             <input type="text" name="tindakan" id="tindakan" hidden>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Nama Tindakan <b
-                                                class="text-danger">*</b></label>
-                                        <input type="text" name="" id="nama_tindakan" class="form-control">
-                                        {!! validasi('Nama') !!}
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Nama Alat Kesehatan <b
-                                                class="text-danger">*</b></label>
-                                        <select name="" id="alat_kesehatan" class="form-select">
-                                            <option value="" selected disabled>Pilihi alat kesehatan </option>
-                                            @foreach ($alatkesehatan as $alat)
-                                                <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        {!! validasi('Alat Kesehatan') !!}
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
-                                                class="text-danger">*</b></label>
-                                        <input type="number" name="" id="jumlah_pengguna" class="form-control">
-                                        {!! validasi('Jumlah Pengguna') !!}
-                                    </div>
+                                    <label class="form-label" for="">Surat Persetujuan Tindakan Medis <small class="text-warning"><b>**File maksimal berukuran 2MB</b></small></label> 
+                                    <input type="file" name="persetujuan_tindakan" id="persetujuan_tindakan" class="form-control">
+                                    {!! validasi('Ukuran file','terlalu besar')!!}
+                                    <input type="hidden" name="old_persetujuan_tindakan" value="{{$rawat_jalan->persetujuan_tindakan}}">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Keterangan <b
-                                                class="text-danger">*</b></label>
-                                        <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
-                                        {!! validasi('Keterangan') !!}
-                                    </div>
-
+                                <div class="col-md-6 p-auto">
+                                    @if ($rawat_jalan->persetujuan_tindakan)
+                                        <a href="{{asset('pemeriksaan/persetujuan_tindakan/'.$rawat_jalan->persetujuan_tindakan)}}" target="blank">Lihat surat persetujuan tindakan <i class="bi bi-box-arrow-up-right"></i></a>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3 text-center">
-                                        <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i
-                                                    class="bi bi-arrow-down-circle"></i></b></button>
+                            <div class="p-2 border mb-3">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">Nama Tindakan <b
+                                                    class="text-danger">*</b></label>
+                                            <input type="text" name="" id="nama_tindakan" class="form-control">
+                                            {!! validasi('Nama') !!}
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">Nama Alat Kesehatan <b
+                                                    class="text-danger">*</b></label>
+                                            <select name="" id="alat_kesehatan" class="form-select">
+                                                <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                                @foreach ($alatkesehatan as $alat)
+                                                    <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            {!! validasi('Alat Kesehatan') !!}
+                                        </div>
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
+                                                    class="text-danger">*</b></label>
+                                            <input type="number" name="" id="jumlah_pengguna" class="form-control">
+                                            {!! validasi('Jumlah Pengguna') !!}
+                                        </div>
                                     </div>
-                                    <div class="table-responsive">
-                                        <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
-                                            boleh kosong</span>
-                                        <table class="table table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>Tindakan</th>
-                                                    <th>Alat Kesehatan</th>
-                                                    <th>Jumlah Pengguna</th>
-                                                    <th>Keterangan</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="body_tindakan"></tbody>
-                                        </table>
+                                    <div class="col-md-6">
+                                        <div class="mb-2">
+                                            <label for="" class="form-label">Keterangan <b
+                                                    class="text-danger">*</b></label>
+                                            <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
+                                            {!! validasi('Keterangan') !!}
+                                        </div>
+    
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3 text-center">
+                                            <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i
+                                                        class="bi bi-arrow-down-circle"></i></b></button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
+                                                boleh kosong</span>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tindakan</th>
+                                                        <th>Alat Kesehatan</th>
+                                                        <th>Jumlah Pengguna</th>
+                                                        <th>Keterangan</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="body_tindakan"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="d-flex justify-content-between">
                                 <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
@@ -615,7 +634,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     setResult(input, text_input);
                 }
             });
-            
+            validated = validasiFile(20000,'dokumen');
             if (validated === true) {
                 stepper2.next()
             }

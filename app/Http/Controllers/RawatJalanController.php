@@ -62,8 +62,16 @@ class RawatJalanController extends Controller
         } else {
             $filename = '';
         }
+        if ($request->hasFile('persetujuan_tindakan')) {
+            $file = $request->file('persetujuan_tindakan');
+            $persetujuan = time() . '_' . $file->getClientOriginalName();
+            $file->move('pemeriksaan/persetujuan_tindakan', $persetujuan);
+        } else {
+            $persetujuan = '';
+        }
 
         $data['dokumen'] = $filename;
+        $data['persetujuan_tindakan'] = $persetujuan;
         $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
         $save = RawatJalan::create($data);
         if ($save) {
@@ -98,7 +106,7 @@ class RawatJalanController extends Controller
 
     function changerawatjalan(Request $request, $id) {
         
-        $data = $request->except(['_token','old_dokumen']);
+        $data = $request->except(['_token','old_dokumen', 'old_persetujuan_tindakan']);
         $data['updated_by'] = auth()->user()->id;
 
         if ($request->hasFile('dokumen')) {
@@ -110,6 +118,16 @@ class RawatJalanController extends Controller
                 File::delete(public_path($path['path']));
             }
             $data['dokumen']=$filename;
+        }
+        if ($request->hasFile('persetujuan_tindakan')) {
+            $file = $request->file('persetujuan_tindakan');
+            $persetujuan = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/persetujuan_tindakan', $persetujuan);
+            if ($request->old_persetujuan_tindakan) {
+                $path = parse_url('pemeriksaan/persetujuan_tindakan/'.$request->old_persetujuan_tindakan);
+                File::delete(public_path($path['path']));
+            }
+            $data['persetujuan_tindakan']=$persetujuan;
         }
         if (RawatJalan::where('id',$id)->update($data)) {
             return redirect("/view/rawat/jalan/" . $id)->with('message', 'Berhasil Merubah Data Pasien Rawat Jalan!');

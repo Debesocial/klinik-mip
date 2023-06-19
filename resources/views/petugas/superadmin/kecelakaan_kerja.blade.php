@@ -202,21 +202,23 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
-                                            <div class="input-group">
-                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control">
-                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
-                                                {!!validasi('Tekanan darah')!!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-4">
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control">
                                                 <span class="input-group-text" id="basic-addon1">mmHg</span>
                                                 {!!validasi('Saturasi oksigen')!!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="" class="form-label">Tekanan Darah <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="tekanan_darah" id="tekanan_darah" class="form-control">
+                                                <span class="input-group-text" id="basic-addon1">/</span>
+                                                <input type="number" name="tekanan_darah_per" id="tekanan_darah_per" class="form-control">
+                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                {!!validasi('Tekanan darah')!!}
                                             </div>
                                         </div>
                                     </div>
@@ -610,7 +612,7 @@
                 $(select2_rekam_medis).change(function(){
                     let val = $(this).val();
                     if(val == ''){
-                        var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                        var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                         inputs.forEach(input => {
                             form = $('#'+input);
                             if (input == 'nama_penyakit_id') {
@@ -675,7 +677,7 @@
                 url:url,
                 success: function (data) {
                     // console.log(data);
-                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                     inputs.forEach(input => {
                         if (input=='nama_penyakit_id') {
                             penyakitId=JSON.parse(data[input]);
@@ -697,10 +699,11 @@
             let validated = true;
             let id = ['select_pasien_id','tanggal_kejadian','lokasi','pengantar'];
             index = $('#select_pasien_id').val();
-            setSelectRekamMedis(@json($pasien_id)[index].id);
+            if (index) {
+                setSelectRekamMedis(@json($pasien_id)[index].id);
+            }
 
             id.forEach(i => {
-
                 var value = $('#'+i).val();
                 if (value == ""|| value==null) {
                     $('#'+i).removeClass('is-valid')
@@ -710,18 +713,17 @@
                     $('#'+i).removeClass('is-invalid')
                     $('#'+i).addClass('is-valid')
                 }
-
-                if (validated==true) {
-                    stepper2.next()
-                }
                 
             });
+            if (validated==true) {
+                stepper2.next()
+            }
         }
 
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', ];
+            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', ];
             inputs.forEach(input => {
                 var value_input = $('#'+input).val();                    
                 var text_input = $('#'+input).children('option:selected').text();                    

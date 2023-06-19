@@ -96,12 +96,18 @@
                             <div class="mb-2 row">
                                 <label for="" class="form-label">Tekanan Darah <b
                                         class="text-danger">*</b></label>
-                                <div class="col-8">
+                                <div class="col-4">
                                     <input type="number" name="tekanan_darah" id="tekanan_darah"
                                         class="form-control form-control-sm">
                                     {!! validasi('Tekanan darah') !!}
                                 </div>
-                                <div class="col-2 p-0 my-auto fs-6">mmHg</div>
+                                <div class="col-1 p-0 my-auto fs-5 text-center">/</div>
+                                <div class="col-4">
+                                    <input type="number" name="tekanan_darah_per" id="tekanan_darah_per"
+                                        class="form-control form-control-sm">
+                                    {!! validasi('Tekanan darah') !!}
+                                </div>
+                                <div class="col-1 p-0 my-auto fs-6">mmHg</div>
                             </div>
                             <div class="mb-2 row">
                                 <label for="" class="form-label">Saturasi Oksigen <b
@@ -328,7 +334,7 @@
     }
 
     function lanjut1() {
-        var required = ['anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen',
+        var required = ['anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen',
             'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'pemeriksaan_penunjang',
             'diagnosa', 'diagnosa_sekunder', 'catatan_pemeriksaan'
         ];
