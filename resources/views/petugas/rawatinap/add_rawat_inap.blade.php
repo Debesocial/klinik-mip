@@ -664,6 +664,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                         validasiPemeriksaan = true;
 
                     }
+                }else{
+                    $(this).removeClass('is-invalid');
+                    validasiPemeriksaan = true;
                 }
             })
         });

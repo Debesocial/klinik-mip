@@ -223,6 +223,7 @@
                                             <small class="text-warning">Belum ada dokumen</small>
                                         @endif
                                         <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                        {!!validasi('Ukuran file','terlalu besar')!!}
                                         <input type="hidden" name="old_dokumen" value="{{$rawat_inap->dokumen}}">
                                     </div>
                                 </div>
@@ -638,6 +639,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                         validasiPemeriksaan = true;
 
                     }
+                }else{
+                    $(this).removeClass('is-invalid');
+                    validasiPemeriksaan = true;
                 }
             })
 
