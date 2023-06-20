@@ -137,19 +137,26 @@
                                                 Jenis pemeriksaan harus diisi.
                                             </div>
                                         </div>
-                                        <label for="" class="form-label">Status <b
-                                                class="text-danger">*</b></label>
-                                        <select name="status" id="status">
-                                            <option disabled selected>Pilih Status</option>
-                                            @foreach (hasilRekomendasi() as $item)
-                                                <option value="{{$item->id}}">{{$item->nama}}</option>
-                                            @endforeach
-                                        </select>
-                                        <div class="valid-feedback">
-                                            Data sudah benar
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Status <b
+                                                    class="text-danger">*</b></label>
+                                            <select name="status" id="status">
+                                                <option disabled selected>Pilih Status</option>
+                                                @foreach (hasilRekomendasi() as $item)
+                                                    <option value="{{$item->id}}">{{$item->nama}}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="valid-feedback">
+                                                Data sudah benar
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                Status harus diisi.
+                                            </div>
                                         </div>
-                                        <div class="invalid-feedback">
-                                            Status harus diisi.
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label>
+                                            <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                            {!!validasi('Ukuran file', 'terlalu besar')!!}
                                         </div>
                                     </div>
                                 </div>
@@ -390,7 +397,7 @@
                         }
                     }
                 });
-                if (validated == true) {
+                if (validated == true && validasiFile(20000,'dokumen')) {
                     stepper2.next();
                 }
             }

@@ -7,6 +7,8 @@ use App\Models\Pasien;
 use App\Models\HasilPemantauan;
 use App\Models\McuAwal;
 use App\Models\McuLanjutan;
+use Illuminate\Support\Facades\File;
+
 
 class McuController extends Controller
 {
@@ -36,9 +38,18 @@ class McuController extends Controller
 
     public function ubahMcuAwal(Request $request, $id)
     {
-        $data = $request->except(['_token', 'pasien_id']);
+        $data = $request->except(['_token', 'pasien_id','old_dokumen']);
         $data['updated_by'] = auth()->user()->id;
-
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/mcuAwal', $filename);
+            if ($request->old_dokumen) {
+                $path = parse_url('pemeriksaan/mcuAwal/'.$request->old_dokumen);
+                File::delete(public_path($path['path']));
+            }
+            $data['dokumen']=$filename;
+        }
         if (McuAwal::where('id', $id)->update($data)) {
             return redirect("mcu/$id")->with('message', 'Berhasil Mengubah MCU Awal');
         };
@@ -72,6 +83,14 @@ class McuController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move('pemeriksaan/mcuLanjut', $filename);
+        } else {
+            $filename = '';
+        }
+        $data['dokumen']=$filename;
         $save = McuLanjutan::create($data);
         if ($save) {
             return redirect("/mcu/lanjutan/$save->id")->with('message', 'Berhasil Menambah MCU ' . cekMcu($data['jenis_mcu']));
@@ -88,8 +107,18 @@ class McuController extends Controller
 
     public function ubahMcuLanjutan(Request $request, $id)
     {
-        $data = $request->except('_token');
+        $data = $request->except(['_token','old_dokumen']);
         $data['updated_by'] = auth()->user()->id;
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();  
+            $file->move('pemeriksaan/mcuLanjut', $filename);
+            if ($request->old_dokumen) {
+                $path = parse_url('pemeriksaan/mcuLanjut/'.$request->old_dokumen);
+                File::delete(public_path($path['path']));
+            }
+            $data['dokumen']=$filename;
+        }
 
         if (McuLanjutan::where('id', $id)->update($data)) {
             return redirect("mcu/lanjutan/$id")->with('message', 'Berhasil Mengubah MCU ' . cekMcu($data['jenis_mcu']));

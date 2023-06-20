@@ -18,7 +18,7 @@ class KeteranganSehat extends Model
         parent::boot();
         self::creating(function ($model) {
             $total_last_year = $model->whereRaw('DATE_FORMAT(created_at, "%Y") = '.date('Y'))->count();
-            $no_surat =  sprintf("%03d", $total_last_year+1).'/MIP-SITE/KLN/'.romawi(date('m')).' /'.date('Y');
+            $no_surat =  sprintf("%03d", $total_last_year+1).'/MIP-SITE/KLN/'.romawi(date('m')).'/'.date('Y');
             $model->no_surat = $no_surat;
         });
     } 
@@ -26,7 +26,7 @@ class KeteranganSehat extends Model
     public function generateNoSurat()
     {
         $total_last_year = $this->whereRaw('DATE_FORMAT(cretaed_at, "%Y")', '=',date('Y'))->count();
-        return sprintf("%03d", $total_last_year).'/MIP-SITE/KLN/'.date('m').' /'.date('Y');
+        return sprintf("%03d", $total_last_year).'/MIP-SITE/KLN/'.date('m').'/'.date('Y');
     }
 
     public function pasien() {

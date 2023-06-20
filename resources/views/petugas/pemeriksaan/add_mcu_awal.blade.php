@@ -119,6 +119,11 @@
                                                 Anjuran harus diisi
                                             </div>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label>
+                                            <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                            {!!validasi('Ukuran file', 'terlalu besar')!!}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +270,7 @@
                     }
                 });
                 
-                if (validated === true) {
+                if (validated === true && validasiFile(20000,'dokumen')) {
                     stepper2.next()
                 }
             }

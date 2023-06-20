@@ -67,6 +67,16 @@
                                 <th>Status</th>
                                 <td id="_status">: {{ cekRekomendasi($mculanjutan->status) }}</td>
                             </tr>
+                            <tr>
+                                <th>File Pendukung</th>
+                                <td>
+                                    @if ($mculanjutan->dokumen)
+                                         <a href="{{asset('pemeriksaan/mcuLanjut/'.$mculanjutan->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$mculanjutan->dokumen}}</a>
+                                    @else
+                                        : <small class="text-warning"> Belum ada dokumen</small>
+                                    @endif 
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

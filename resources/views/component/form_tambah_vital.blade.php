@@ -104,8 +104,9 @@
                                     <textarea name="keterangan" id="keterangan" class="form-control" cols="10"  rows="5"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Dokumen Pendukung</label>
+                                    <label class="form-label">Dokumen Pendukung</label><small><b class="text-warning">**File maksimal berukuran 20MB</b></small>
                                     <input type="file" class="form-control" name="dokumen" id="dokumen">
+                                    {!!validasi('Ukuran file', 'terlalu besar')!!}
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Gejala</label>
@@ -274,7 +275,7 @@
                 }
             }
         });
-        if (validated === true) {
+        if (validated === true && validasiFile(20000,'dokumen')) {
            stepper2.next();
         }
     }

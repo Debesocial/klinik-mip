@@ -110,13 +110,14 @@
                                     <textarea name="keterangan" id="keterangan" class="form-control" cols="10"  rows="5">{{$tandavital->keterangan}}</textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Dokumen Pendukung</label>
+                                    <label class="form-label">Dokumen Pendukung</label><b class="text-warning">**File maksimal berukuran 20MB</b></small><br>
                                     @if ($tandavital->dokumen)
                                         <a href="{{asset('petugas/pemantauan_tandavital/file/'.$tandavital->dokumen)}}" target=”_blank”>{{$tandavital->dokumen}} <i class="bi bi-box-arrow-up-right"></i></a>
                                     @else
                                         <span class="text-warning"> Belum ada dokumen </span>
                                     @endif
                                     <input type="file" class="form-control" name="dokumen" id="dokumen">
+                                    {!!validasi('Ukuran file', 'terlalu besar')!!}
                                     <input type="hidden" class="form-control" name="old_dokumen" id="old_dokumen" value="{{$tandavital->dokumen}}">
                                 </div>
                                 <div class="mb-3">
@@ -286,7 +287,7 @@
                 }
             }
         });
-        if (validated === true) {
+        if (validated === true && validasiFile(20000,'dokumen')) {
            stepper2.next();
         }
     }

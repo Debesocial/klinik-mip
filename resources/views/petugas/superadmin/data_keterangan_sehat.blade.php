@@ -52,7 +52,7 @@
                             <td class="text-center">{{ $ket->pasien->id_rekam_medis }}</td>
                             <td >{{ $ket->pasien->nama_pasien }}</td>
                             <td>{{ $ket->pasien->alamat }}</td>
-                            <td class="text-center">{!! $ket->hasil == 1 ? '<span class="badge bg-primary">Sehat</span>' : '<span class="badge bg-danger">Sakit</span>' !!}</td>
+                            <td class="text-center">{!! $ket->hasil == 1 ? '<span class="badge bg-primary">Sehat</span>' : '<span class="badge bg-danger">Tidak Sehat</span>' !!}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/ubah/keterangan/sehat/{{$ket->id}}" class="btn btn-outline-secondary" title="Ubah data pasien"><i class="bi bi-pencil-square"></i></a>

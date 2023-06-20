@@ -101,6 +101,17 @@
                                                 Anjuran harus diisi
                                             </div>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label><br>
+                                            @if ($mcuawal->dokumen)
+                                                <a href="{{asset('pemeriksaan/mcuAwal/'.$mcuawal->dokumen)}}" target="blank">{{$mcuawal->dokumen}}</a>
+                                            @else
+                                                <small class="text-warning">Belum ada dokumen</small>
+                                            @endif
+                                            <input type="file" name="dokumen" id="dokumen" class="form-control">
+                                            {!!validasi('Ukuran file', 'terlalu besar')!!}
+                                            <input type="hidden" name="old_dokumen" value="{{$mcuawal->dokumen}}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +246,7 @@
                     }
                 });
                 
-                if (validated === true) {
+                if (validated === true && validasiFile(20000,'dokumen')) {
                     stepper2.next()
                 }
             }

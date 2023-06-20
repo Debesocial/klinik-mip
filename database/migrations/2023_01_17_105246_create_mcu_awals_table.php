@@ -20,6 +20,7 @@ class CreateMcuAwalsTable extends Migration
             $table->foreignId('pasien_id')->constrained();
             $table->foreignId('hasil_rekomendasi');
             $table->text('anjuran');
+            $table->string('dokumen')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

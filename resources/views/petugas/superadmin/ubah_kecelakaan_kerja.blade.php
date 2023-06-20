@@ -117,7 +117,7 @@
                                                 @endforeach
                                             </select>
                                             {!!validasi('Lokasi Kejadian')!!}
-
+                                            <textarea name="lokasi_lain" id="lokasi_lain" class="form-control mt-2" placeholder="Masukkan lokasi kejadian" hidden>{{$kecelakaan->lokasi_lain}}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Nama Pengantar<b class="color-red"> *</b></label>
@@ -582,6 +582,9 @@
                     if ($(this).attr('id')=='nama_obat') {
                         setSatuan($(this).val());
                     }
+                    if ($(this).attr('id')=='lokasi') {
+                        cekLokasi();
+                    }
                 }
                 drawTableDiagnodsa();
             })
@@ -594,22 +597,38 @@
             drawformTindakan();
             drawformResep();
             disabelAllInput();
+            cekLokasi();
         });
+
+        function cekLokasi(){
+            value = $('#lokasi').val();
+            if (value == 2) {
+                $('#lokasi_lain').removeAttr('hidden');
+            }else{
+                $('#lokasi_lain').attr('hidden','hidden');
+                $('#lokasi_lain').val('');
+            }
+        }
 
         function disabelAllInput() {
            id_rekam_medis = '{{$kecelakaan->id_rekam_medis}}'
            if (id_rekam_medis) {
-               var inputs = ['submitKecelakaan','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+               var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                 inputs.forEach(input => {
                     $('#'+input).attr('disabled', 'disabled')
                 });
+
+                $('#aksi-tindakan').html('');
+                $('#aksi-resep').html('');
            }
         }
 
         function lanjut1() {
             let validated = true;
             let id = ['tanggal_kejadian','lokasi','pengantar'];
-
+            if ($('#lokasi').val()==2) {
+                id = ['tanggal_kejadian','lokasi','pengantar','lokasi_lain'];
+            }
             id.forEach(i => {
 
                 var value = $('#'+i).val();
@@ -738,7 +757,7 @@
                         <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
                         <td>` + data.keterangan + `</td>
-                        <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                        <td id="aksi-tindakan" ><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformTindakan();
@@ -820,7 +839,7 @@
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + data.aturan_pakai + `</td>
                             <td>` + data.keterangan_resep + `</td>
-                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            <td id="aksi-resep"><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
             })
             clearformResep();

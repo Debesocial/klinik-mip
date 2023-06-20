@@ -134,7 +134,7 @@
                                                 @endforeach
                                             </select>
                                             {!!validasi('Lokasi Kejadian')!!}
-
+                                            <textarea name="lokasi_lain" id="lokasi_lain" class="form-control mt-2" placeholder="Masukkan lokasi kejadian" hidden></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Nama Pengantar<b class="color-red"> *</b></label>
@@ -565,87 +565,100 @@
             dropdownCssClass: 'select2--small',
         });
         select2_rekam_medis =$('select#id_rekam_medis');
-            $(document).ready(function() {
-                $('select').select2({
-                    theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
-                    tags: true,
-                });
-                $("select").on("select2:select", function (evt) {
-                    var element = evt.params.data.element;
-                    var $element = $(element);
-                    
-                    $element.detach();
-                    $(this).append($element);
-                    $(this).trigger("change");
-                });
-                $('#nama_penyakit_id').select2({
-                    theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
-                })
-
-                $('input').keyup(function(event) {
-                    if ($(this).hasClass('is-invalid')) {
-                        $(this).removeClass('is-invalid')
-                    }
-                })
-                $('input').change(function(event) {
-                    if ($(this).hasClass('is-invalid')) {
-                        $(this).removeClass('is-invalid')
-                    }
-                })
-                $('select').change(function() {
-                    if ($(this).val() !== "") {
-                        $(this).removeClass('is-invalid');
-                        if ($(this).attr('id')=='nama_obat') {
-                            setSatuan($(this).val());
-                        }
-                        if ($(this).attr('id')=='select_pasien_id') {
-                            index = $(this).val();
-                            pilihPasien(@json($pasien_id)[index]);
-                        }
-                    }
-                    drawTableDiagnodsa();
-                })
-                $(select2_rekam_medis).change(function(){
-                    let val = $(this).val();
-                    if(val == ''){
-                        var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
-                        inputs.forEach(input => {
-                            form = $('#'+input);
-                            if (input == 'nama_penyakit_id') {
-                                form.val([]).trigger('change')
-                            }else{
-                                form.val('');
-                            }
-                            form.removeAttr('disabled');
-                            tindakan = [];
-                            drawformTindakan();
-                            resep = [];
-                            drawformResep();
-                        });
-                        $('input#rekam_medis').val('');
-                    }else{
-                        let id_rekam  = $(this).children('option:selected').text().substring(0,2);
-                        $('input#rekam_medis').val(id_rekam);
-                        console.log();
-                        if (id_rekam == 'RI') {
-                            setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
-                        }else if(id_rekam == 'RJ'){
-                            setAllFormWithRekamMedis('{{url("/get-one-rawat-jalan")}}/'+val);
-                        }
-                        
-                    }
-
-                })
-                
-
-                $('input[class="form-check-input"]').click(function() {
-                    $(this).siblings('.invalid-feedback').hide()
-                })
+        $(document).ready(function() {
+            $('select').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                tags: true,
             });
+            $("select").on("select2:select", function (evt) {
+                var element = evt.params.data.element;
+                var $element = $(element);
+                
+                $element.detach();
+                $(this).append($element);
+                $(this).trigger("change");
+            });
+            $('#nama_penyakit_id').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            })
+
+            $('input').keyup(function(event) {
+                if ($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+            $('input').change(function(event) {
+                if ($(this).hasClass('is-invalid')) {
+                    $(this).removeClass('is-invalid')
+                }
+            })
+            $('select').change(function() {
+                if ($(this).val() !== "") {
+                    $(this).removeClass('is-invalid');
+                    if ($(this).attr('id')=='nama_obat') {
+                        setSatuan($(this).val());
+                    }
+                    if ($(this).attr('id')=='select_pasien_id') {
+                        index = $(this).val();
+                        pilihPasien(@json($pasien_id)[index]);
+                    }
+                    if ($(this).attr('id')=='lokasi') {
+                        cekLokasi();
+                    }
+                }
+                drawTableDiagnodsa();
+            })
+            $(select2_rekam_medis).change(function(){
+                let val = $(this).val();
+                if(val == ''){
+                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                    inputs.forEach(input => {
+                        form = $('#'+input);
+                        if (input == 'nama_penyakit_id') {
+                            form.val([]).trigger('change')
+                        }else{
+                            form.val('');
+                        }
+                        form.removeAttr('disabled');
+                        tindakan = [];
+                        drawformTindakan();
+                        resep = [];
+                        drawformResep();
+                    });
+                    $('input#rekam_medis').val('');
+                }else{
+                    let id_rekam  = $(this).children('option:selected').text().substring(0,2);
+                    $('input#rekam_medis').val(id_rekam);
+                    console.log();
+                    if (id_rekam == 'RI') {
+                        setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
+                    }else if(id_rekam == 'RJ'){
+                        setAllFormWithRekamMedis('{{url("/get-one-rawat-jalan")}}/'+val);
+                    }
+                    
+                }
+
+            })
+            
+
+            $('input[class="form-check-input"]').click(function() {
+                $(this).siblings('.invalid-feedback').hide()
+            })
+        });
+
+        function cekLokasi(){
+            value = $('#lokasi').val();
+            if (value == 2) {
+                $('#lokasi_lain').removeAttr('hidden');
+            }else{
+                $('#lokasi_lain').attr('hidden','hidden');
+                $('#lokasi_lain').val('');
+            }
+        }
 
         function setSelectRekamMedis(id_pasien) {
             url = '{{url("/rawatinap-by-pasien/")}}/'+id_pasien;
@@ -688,8 +701,8 @@
                         $('#'+input).attr('disabled','disabled');
                         tindakan = JSON.parse(data.tindakan);
                         resep = JSON.parse(data.resep);
-                        drawformTindakan();
-                        drawformResep();
+                        drawformTindakan(true);
+                        drawformResep(true);
                     });
                 }
             })
@@ -698,6 +711,9 @@
         function lanjut1() {
             let validated = true;
             let id = ['select_pasien_id','tanggal_kejadian','lokasi','pengantar'];
+            if ($('#lokasi').val()==2) {
+                id = ['select_pasien_id','tanggal_kejadian','lokasi','pengantar','lokasi_lain'];
+            }
             index = $('#select_pasien_id').val();
             if (index) {
                 setSelectRekamMedis(@json($pasien_id)[index].id);
@@ -819,17 +835,21 @@
             })
         }
 
-        function drawformTindakan() {
+        function drawformTindakan(aksi=false) {
             html = ``;
             tindakan.forEach((data, key) => {
+                colAksi = `<td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>`;
+                if (aksi==true) {
+                    colAksi = '<td></td>';
+                }
                 var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
                 html += `<tr> 
                         <td>` + data.nama_tindakan + `</td>
                         <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
-                        <td>` + data.keterangan + `</td>
-                        <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
+                        <td>` + data.keterangan + `</td>`
+                        +colAksi+
+                        `</tr>`;
             })
             clearformTindakan();
             $('#tindakan').val(JSON.stringify(tindakan));
@@ -900,18 +920,23 @@
             }
         }
 
-        function drawformResep() {
+        function drawformResep(aksi=false) {
             html = ``;
+            
             resep.forEach((data, key) => {
+                aksiResep = `<td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>`;
+                if (aksi==true) {
+                    aksiResep = `<td></td>`;
+                }
                 namaobat = obat.find(ob => ob.id == data.nama_obat); 
                 satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
                 html += `<tr> 
                             <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + data.aturan_pakai + `</td>
-                            <td>` + data.keterangan_resep + `</td>
-                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
+                            <td>` + data.keterangan_resep + `</td>`
+                            +aksiResep+
+                        `</tr>`;
             })
             clearformResep();
             $('#resep').val(JSON.stringify(resep));

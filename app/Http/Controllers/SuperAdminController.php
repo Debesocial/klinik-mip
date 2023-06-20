@@ -602,11 +602,19 @@ class SuperAdminController extends Controller
             'hasil_rekomendasi' => 'required',
             'anjuran' => 'required',
         ]);
+        if ($request->hasFile('dokumen')) {
+            $file = $request->file('dokumen');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move('pemeriksaan/mcuAwal', $filename);
+        } else {
+            $filename = '';
+        }
 
        $save =  McuAwal::create([
             'pasien_id' => $request->pasien_id,
             'hasil_rekomendasi' => $request->hasil_rekomendasi,
             'anjuran' => $request->anjuran,
+            'dokumen'=>$filename,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);

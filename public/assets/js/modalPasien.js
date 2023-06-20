@@ -39,7 +39,7 @@ function cekAlergi(val) {
 
 function tanggal(stringdate) {
     let date = new Date(Date.parse(stringdate));
-    formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth())+'/'+cekSingle(date.getFullYear());
+    formatDate = cekSingle(date.getDate())+'/'+cekSingle(date.getMonth()+1)+'/'+cekSingle(date.getFullYear());
     return formatDate;
 }
 

@@ -65,6 +65,16 @@
                                 <th>Anjuran</th>
                                 <td id="_anjuran">: {{ $mcuawal->anjuran }}</td>
                             </tr>
+                            <tr>
+                                <th>File Pendukung</th>
+                                <td>
+                                    @if ($mcuawal->dokumen)
+                                         <a href="{{asset('pemeriksaan/mcuAwal/'.$mcuawal->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$mcuawal->dokumen}}</a>
+                                    @else
+                                        : <small class="text-warning"> Belum ada dokumen</small>
+                                    @endif 
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

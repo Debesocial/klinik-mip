@@ -56,7 +56,7 @@ class PerusahaanSeeder extends Seeder
                 'updated_by' => 1
             ],
             [
-                'nama_perusahaan_pasien' => 'others',
+                'nama_perusahaan_pasien' => 'Lainnya',
                 'created_by' => 1,
                 'updated_by' => 1
             ],

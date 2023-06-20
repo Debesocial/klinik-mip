@@ -711,7 +711,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             if(id=='mulai_rawat'){
                 value = tanggal($('[name*="' + id + '"]').val()); 
             }
-            $('#_berakhir_rawat').text(': '+tanggal($('#berakhir_rawat').val()))
+            $('#_berakhir_rawat').text(': '+($('#berakhir_rawat').val()?tanggal($('#berakhir_rawat').val()):''))
             $('#_'+id).text(': '+value);
         }
 

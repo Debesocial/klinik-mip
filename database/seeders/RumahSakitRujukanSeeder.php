@@ -61,7 +61,7 @@ class RumahSakitRujukanSeeder extends Seeder
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'Other',
+                'nama_RS_rujukan' => 'Lainnya',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
