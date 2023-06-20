@@ -23,6 +23,7 @@ class CreateSuratRujukansTable extends Migration
             $table->string('hasil_pengobatan');
             $table->foreignId('spesialis_rujukan_id')->constrained();
             $table->foreignId('rumah_sakit_rujukan_id')->constrained();
+            $table->string('rs_lain')->nullable();
             $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

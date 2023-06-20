@@ -61,7 +61,12 @@
                                     </div>
                                     <div class="mb-2">
                                         <label class="form-label">Diagnosa Sekunder </label>
-                                        <textarea type="text" id="sekunder" class="form-control" name="sekunder"></textarea>
+                                        <select name="sekunder" id="sekunder" class="form-select">
+                                            <option value="" selected>Pilih Nama Penyakit</option>
+                                            @foreach ($namapenyakit as $nama)
+                                                <option value="{{ $nama->id }}">{{ $nama->primer }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

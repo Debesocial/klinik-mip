@@ -9,18 +9,8 @@ class SuratRujukan extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'pasien_id',
-        'tempat',
-        'tanggal',
-        'riwayat',
-        'obat_diberikan',
-        'hasil_pengobatan',
-        'spesialis_rujukan_id',
-        'rumah_sakit_rujukan_id',
-        'ttd',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function pasien() {

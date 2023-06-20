@@ -16,6 +16,9 @@ class KeteranganBerobat extends Model
     public function namapenyakit() {
         return $this->belongsTo(NamaPenyakit::class, 'nama_penyakit_id', 'id');
     }
+    public function sekunders() {
+        return $this->belongsTo(NamaPenyakit::class, 'sekunder', 'id');
+    }
 
     public function rumahsakitrujukan() {
         return $this->belongsTo(RumahSakitRujukan::class, 'rumah_sakit_rujukans_id', 'id');

@@ -47,8 +47,7 @@
                 </div>
                 <div class="row">
                     <div class="col text-end">
-                        <button type="reset" class="btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
-                        <button type="submit" class="btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                        <button type="submit" class="btn btn-primary "><i class="bi bi-save"></i> Simpan</button>
                     </div>
                 </div>
             </form>

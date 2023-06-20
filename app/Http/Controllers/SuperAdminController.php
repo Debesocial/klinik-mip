@@ -1494,7 +1494,7 @@ class SuperAdminController extends Controller
         ]);
 
         if ($user) {
-            return redirect('/data/user')->with('message', 'Berhasil Menambahkan Data Petugas!');
+            return redirect("/view/user/$user->id")->with('message', 'Berhasil Menambahkan Data Petugas!');
         }
         return redirect()->back()->with('fail', 'Fail Create Data!');
     }
@@ -1532,7 +1532,7 @@ class SuperAdminController extends Controller
         // $jadwal->update();
 
 
-        return redirect("/ubah/data/user/$id")->with('message', 'Berhasil Mengubah Data Petugas!');
+        return redirect("/view/user/$id")->with('message', 'Berhasil Mengubah Data Petugas!');
     }
 
     public function jadwal()
@@ -1586,8 +1586,8 @@ class SuperAdminController extends Controller
         $jadwal->dari = $request->input('dari');
         $jadwal->sampai = $request->input('sampai');
         $jadwal->update();
-
-        return redirect('/jadwal')->with('success', 'Berhasil Mengubah Jadwal');
+        return redirect("/view/user/$jadwal->user->id")->with('message', 'Berhasil Mengubah Data Petugas!');
+        // return redirect('/jadwal')->with('success', 'Berhasil Mengubah Jadwal');
     }
 
     public function lokasikejadian()

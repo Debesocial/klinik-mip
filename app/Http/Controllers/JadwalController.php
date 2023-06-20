@@ -21,7 +21,8 @@ class JadwalController extends Controller
             $user->jadwal_id = $save->id;
             $user->update();
             Jadwal::where('id','=',$tempJadwal)->delete();
-            return redirect("/ubah/data/user/$id")->with('message', 'Berhasil Mengubah Jadwal Petugas!');
+
+            return redirect("/view/user/$id")->with('message', 'Berhasil Mengubah Jadwal Petugas!');
         }
     }
 }

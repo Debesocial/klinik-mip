@@ -26,10 +26,10 @@
                         <label for="tanggal">Tanggal Pemeriksaan <b class="color-red">*</b></label>
                         <input type="date" id="tanggal" class="form-control" placeholder="Tanggal Pemeriksaan" name="tanggal" value="{{$surat->tanggal}}" required>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="">File Pendukung </label>
                         <input class="form-control" type="file" id="ttd" name="ttd" multiple>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -53,6 +53,7 @@
                                 <option value="{{ $rs['id'] }}" {{($rs->id==$surat->rumah_sakit_rujukan_id)?'selected':''}}>{{ $rs['nama_RS_rujukan'] }}</option>
                             @endforeach
                         </select>
+                        <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="riwayat">Riwayat Perjalanan Penyakit <b class="color-red">*</b></label>
@@ -66,7 +67,6 @@
             </div>
             <div class="row">
                 <div class="col text-end">
-                    <button type="reset" class="btn btn-outline-secondary me-1 mb-1 btn-form"><i class="bi bi-arrow-repeat"></i> Reset</button>
                     <button type="submit" class="btn btn-primary btn-form">Simpan <i class="bi bi-save"></i></button>
                 </div>
             </div>
@@ -97,7 +97,28 @@
                 }
             });
         }
-        setPasien();
+        function setRs(){
+            value = $('#rumah_sakit_rujukan_id').val();
+            rs_lain = "{{$surat->rs_lain}}";
+            if (value==10) {
+                $('#rs_lain').attr('required', 'required');
+                $('#rs_lain').removeAttr('hidden');
+                $('#rs_lain').val(rs_lain)
+            }else{
+                $('#rs_lain').removeAttr('required');
+                $('#rs_lain').attr('hidden', 'hidden');
+                $('#rs_lain').val('');
+            }
+        }
+
+        $(document).ready(function(){
+            setRs();
+            setPasien();
+            $('#rumah_sakit_rujukan_id').change(function () { 
+                setRs();
+            });
+        })
+
     </script>
 @stop
         

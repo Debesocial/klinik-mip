@@ -34,10 +34,10 @@
                         <label for="tanggal">Tanggal Pemeriksaan <b class="color-red">*</b></label>
                         <input type="date" id="tanggal" class="form-control" placeholder="Tanggal Pemeriksaan" name="tanggal" required>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="">File Pendukung </label>
                         <input class="form-control" type="file" id="ttd" name="ttd" multiple >
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-md-6">
                     <div class="mb-3">
@@ -61,6 +61,7 @@
                                 <option value="{{ $rs['id'] }}">{{ $rs['nama_RS_rujukan'] }}</option>
                             @endforeach
                         </select>
+                        <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="riwayat">Riwayat Perjalanan Penyakit <b class="color-red">*</b></label>
@@ -87,6 +88,21 @@
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
+        });
+
+        $(document).ready(function () {
+            $('#rumah_sakit_rujukan_id').change(function () { 
+                    value = $(this).val();
+                    if (value==10) {
+                        $('#rs_lain').attr('required', 'required');
+                        $('#rs_lain').removeAttr('hidden');
+                    }else{
+                        $('#rs_lain').removeAttr('required');
+                        $('#rs_lain').attr('hidden', 'hidden');
+                        $('#rs_lain').val('');
+                    }
+                    
+                });
         });
         
         let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];

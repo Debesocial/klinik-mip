@@ -2,6 +2,9 @@
 @section('title', 'Ubah Bobot Obat')
 @section('judul', 'Ubah Bobot Obat')
 @section('breadcrumb', 'ubah_bobot_obat')
+@section('obalkes', 'active')
+@section('obat', 'active')
+@section('bobot', 'active')
 @section('container')
 
 <section id="multiple-column-form">
@@ -21,12 +24,9 @@
                                         </div>
                                     </div>
                                     <div class="col-12"><br>
-                                        <div class="row justify-content-end">
-                                            <div class="col-4">
-                                                <button type="reset" class="form-control btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
-                                            </div>
-                                            <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1"><i class="bi bi-save"></i> Simpan</button>
+                                        <div class="row ">
+                                            <div class="col text-end">
+                                                <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                                             </div>
                                         </div>
                                     </div>

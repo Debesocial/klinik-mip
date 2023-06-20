@@ -72,7 +72,6 @@
                                     
 
                                     <div class="col-12 text-end"><br>
-                                        <button type="reset" class=" btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i> Reset</button>
                                         <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                                     </div>
 

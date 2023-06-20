@@ -41,12 +41,11 @@
                             <label class="form-label">Tanggal keluar <b class="color-red">*</b></label>
                             <input type="date" id="tanggal_keluar" class="form-control" name="tanggal_keluar" placeholder="tanggal keluar" required value="{{$izin->tanggal_keluar}}">
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label">File Pendukung</label>
                             <input class="form-control" type="file" id="ttd" name="ttd" value="{{$izin->ttd}}">
-                        </div>
+                        </div> --}}
                         <div class="mb-3 text-end">  
-                                <button type="reset" class="btn btn-outline-secondary"><i class="bi bi-arrow-repeat"></i> Reset</button>
                                 <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                         </div>
                     </div>

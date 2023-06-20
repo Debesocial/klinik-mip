@@ -95,8 +95,7 @@
             </div>
             <div class="row">
                 <div class="col text-end">
-                    <button type="submit"  class="btn btn-primary">Simpan</button>
-                    <button type="reset" class="btn btn-light-secondary">Reset</button>
+                    <button type="submit"  class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                 </div>
             </div>
         </form>

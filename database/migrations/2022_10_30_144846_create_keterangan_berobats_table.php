@@ -19,7 +19,7 @@ class CreateKeteranganBerobatsTable extends Migration
             $table->foreignId('rumah_sakit_rujukans_id')->constrained();
             $table->string('rs_lain')->nullable();
             $table->foreignId('nama_penyakit_id')->constrained();
-            $table->string('sekunder')->nullable();
+            $table->foreignId('sekunder')->nullable()->constrained('nama_penyakits');
             $table->text('resep');
             $table->text('saran');
             $table->boolean('kontrol');

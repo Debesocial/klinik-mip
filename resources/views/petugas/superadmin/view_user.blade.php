@@ -7,6 +7,13 @@
 
 @section('judul', 'Lihat Data Petugas')
 @section('container')
+@if (Session('message'))
+            <script>Swal.fire({ 
+                icon: "success", 
+                text: "{{Session('message')}}" }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "/view/user/{{$user->id}}" }})
+                </script>
+            @endif
 
     <section id="multiple-column-form">
         <div class="card">

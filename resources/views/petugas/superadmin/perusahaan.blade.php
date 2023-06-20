@@ -33,7 +33,7 @@
         @endif
         <div class="card-body">
             <div class="table-responsive pt-2 pe-2">
-                <table class="table table-hover" id="table1">
+                <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
                             <th width=70%>Perusahaan</th>

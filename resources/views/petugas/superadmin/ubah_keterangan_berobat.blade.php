@@ -60,7 +60,12 @@
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">Diagnosa Sekunder</label>
-                                    <textarea type="text" id="sekunder" class="form-control" name="sekunder">{{$keterangan->sekunder}}</textarea>
+                                    <select name="sekunder" id="sekunder" class="form-select">
+                                        <option value="">Pilih Nama Penyakit</option>
+                                        @foreach ($namapenyakit as $nama)
+                                            <option value="{{ $nama->id }}" {{($nama->id == $keterangan->sekunder?'selected':'')}}>{{ $nama->primer }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +105,6 @@
                 </div>
                 <div class="row">
                     <div class="col text-end">
-                        <button type="reset" class="btn btn-outline-secondary"> <i class="bi bi-arrow-repeat"></i> Reset</button>
                         <button type="submit" class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
                     </div>
                 </div>

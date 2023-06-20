@@ -42,10 +42,10 @@
                             <label class="form-label">Tanggal keluar <b class="color-red">*</b></label>
                             <input type="date" id="tanggal_keluar" class="form-control" name="tanggal_keluar" placeholder="tanggal keluar" required >
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label">Tandatangan</label>
                             <input class="form-control" type="file" id="ttd" name="ttd">
-                        </div>
+                        </div> --}}
                         <div class="mb-3 text-end">
                             <button type="submit" 
                                 class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>

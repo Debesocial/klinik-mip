@@ -25,15 +25,8 @@
                                             <input type="text" class="form-control" name="nama_level" value="{{ $level['nama_level'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/> 
                                         </div>
                                     </div>
-                                    <div class="col-md-12"><br>
-                                        <div class="row justify-content-end">
-                                            <div class="col-4">
-                                                <button type="reset" class="form-control btn btn-outline-secondary me-1 mb-1"><i class="bi bi-arrow-repeat"></i> Reset</button>
-                                            </div>
-                                            <div class="col-4">
-                                                <button type="submit" class="form-control btn btn-primary me-1 mb-1">Simpan</button>
-                                            </div>
-                                        </div>
+                                    <div class="col text-end"><br>
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
                                     </div>
                                 </div>
                             </div>
