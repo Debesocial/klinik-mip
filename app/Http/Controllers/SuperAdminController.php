@@ -1818,8 +1818,6 @@ class SuperAdminController extends Controller
         //
     }
 
-
-
     public function datapasienById(Request $request)
     {
         if ($request->pasien) {
@@ -1830,4 +1828,6 @@ class SuperAdminController extends Controller
             return response()->json($pasien, 200);
         }
     }
+
+   
 }

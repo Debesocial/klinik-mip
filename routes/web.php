@@ -36,6 +36,7 @@ use App\Http\Controllers\InstruksiDokterController;
 use App\Http\Controllers\McuController;
 use App\Http\Controllers\IntervensiKeperawatanController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\TandaVitalController;
 use App\Models\IzinIstirahat;
@@ -422,6 +423,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/ubah_mcu/lanjutan/{id}', [McuController::class, 'halamanUbahMcuLanjutan']);
     Route::post('/ubah_mcu/lanjutan/{id}', [McuController::class, 'ubahMcuLanjutan']);
 
+
     //surat
     Route::get('/print/keterangan-berobat/{id}', [SuratController::class, 'modalKeteranganBerobat']);
     Route::get('/modal/mcu-awal/{id}', [SuratController::class, 'modalMcuAwal']);
@@ -433,6 +435,13 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,apoteker,dokter,per
     Route::get('/print/istirahat/{id}', [SuratController::class, 'printIstirahat']);
     Route::get('/print/kecelakaan/{id}', [SuratController::class, 'printKecelakaan']);
     Route::get('/print/narkoba/{id}', [SuratController::class, 'printNarkoba']);
+
+    //laporan
+    Route::get('/laporan', [LaporanController::class, 'laporan']);
+    Route::get('/laporan/pekerja-sakit', [LaporanController::class, 'pekerjaSakit']);
+    Route::get('/laporan/absen-sakit', [LaporanController::class, 'absenSakit']);
+    Route::get('/laporan/pak', [LaporanController::class, 'pak']);
+
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {

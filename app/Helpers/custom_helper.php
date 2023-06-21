@@ -252,3 +252,22 @@ function romawi($number) {
     }
     return $returnValue;
 }
+
+
+function cardLaporan(array $data){    
+    $htmls = '';
+    $htmls ='<div id="card-laporan" onclick="showModal(`'.$data['id'].'`,`'.$data["color"].'`)" class="card h-100 border ">
+        <div class="card-body p-0">
+            <div class="row g-0 h-100">
+                <div class="col-2 rounded-start" style="background-color:'.$data["color"].';background-position: center;
+                background-size: cover;">                         
+                </div>
+                <div class="col-10 p-3">
+                    <h5 class="card-title">'.$data["title"].'</h5>
+                    <p class="card-text m-0">'.$data["sub_title"].'</p>
+                </div>
+            </div>
+        </div>
+    </div>';
+    return $htmls;
+}
