@@ -33,7 +33,7 @@
 <div class="container mt-4">
     <div class="border p-3">
         <h5>Statistik</h5>
-        <div class="row row-cols-md-4 mb-2">
+        <div class="row g-0 row-cols-md-6 mb-2">
             <div class="col">
                 <label for="" class="form-label">Jenis Laporan: </label>
                 <div class="form-check">
@@ -46,7 +46,8 @@
                   </div>
             </div>
             <div class="col" id="tahun">
-                <input type="text" readonly class="btn btn-outline-success" name="statistik_tahun" id="statistik_tahun" style="cursor: pointer">
+                <label for="" class="form-label">Tahun</label>
+                <input type="text" readonly class="form-control bg-white" name="statistik_tahun" id="statistik_tahun" style="cursor: pointer">
             </div>
             <div class="col" id="dari-sampai" style="display:none;">
                 <label for="" class="">Dari</label>
@@ -157,7 +158,9 @@
                 data: {
                     color:color,
                     jenis:jenisLaporanStatistik,
-                    year : selected_year
+                    year : selected_year,
+                    start: $('#statistik_dari').val(),
+                    end : $('#statistik_sampai').val()
                 },
                 success: function (response) {
                     $('.modal-body').html(response);

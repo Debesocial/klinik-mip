@@ -40,12 +40,61 @@
     kunjungan = @json($total[0]);
     
     color = "{{$color}}";
-    set_year = "{{$set_year}}";
-    if (set_year) {
+    jenis = "{{$jenis}}";
+    if (jenis=='bulanan') {
+        set_year = "{{$set_year}}";
         date = new Date()
         year = set_year;
         awal = new Date(year,0);
         akhir = new Date(year,11);
+        for (let date = awal; date <= akhir; date.setMonth(date.getMonth() + 1)){
+            const formattedMonthKunjungan = date.getFullYear()+'-'+ cekSingle(date.getMonth()+1);
+            cekTemp = kunjungan.find(e => e.bulan === formattedMonthKunjungan);
+            if (cekTemp==undefined){
+                temp = {
+                    total:0,
+                    bulan: formattedMonthKunjungan
+                }
+                kunjungan.push(temp);
+            }
+        }
+
+        kunjungan.sort((a, b) => {
+            if (a.bulan < b.bulan) {
+                return -1;
+            }
+        });
+        newKunjungan = kunjungan.filter(function(data){
+            newDate = new Date(data.bulan);
+            if (newDate.getFullYear()==set_year) {
+                return data;
+            }
+        })
+    }else if(jenis=='harian'){
+        start = "{{$start}}";
+        end = "{{$end}}";
+        start = new Date(start);
+        end = new Date(end);
+        newKunjungan = [];
+        for (let date = start; date <= end; date.setDate(date.getDate() + 1)){
+            const formattedMonthKunjungan = date.getFullYear() +'-'+cekSingle(date.getMonth()+1) +'-'+ cekSingle(date.getDate())  ;
+            cekTemp = kunjungan.find(e => e.bulan === formattedMonthKunjungan);
+            if (cekTemp==undefined){
+                temp = {
+                    total:0,
+                    bulan: formattedMonthKunjungan
+                }
+            }else{
+                temp = cekTemp;
+            }
+            newKunjungan.push(temp);
+        }
+
+        newKunjungan.sort((a, b) => {
+            if (a.bulan < b.bulan) {
+                return -1;
+            }
+        });
     }
     
     ctx3 = document.getElementById('myChart').getContext('2d');
@@ -67,15 +116,9 @@
             x: {
                 beginAtZero: true,
                 type: 'time',
-                time: {
-                    unit: 'month',
-                    tooltipFormat:'MMM yyyy'
-                },
                 grid: {
                     display: false
-                },
-                min: year+'-'+ cekSingle(awal.getMonth()),
-                max: year+'-'+ cekSingle(akhir.getMonth()+1),
+                }
             }
         },
         layout: {
@@ -101,29 +144,7 @@
             mode: 'index',
         },
     }
-    for (let date = awal; date <= akhir; date.setMonth(date.getMonth() + 1)){
-        const formattedMonthKunjungan = date.getFullYear()+'-'+ cekSingle(date.getMonth()+1);
-        cekTemp = kunjungan.find(e => e.bulan === formattedMonthKunjungan);
-        if (cekTemp==undefined){
-            temp = {
-                total:0,
-                bulan: formattedMonthKunjungan
-            }
-            kunjungan.push(temp);
-        }
-    }
-
-    kunjungan.sort((a, b) => {
-        if (a.bulan < b.bulan) {
-            return -1;
-        }
-    });
-    newKunjungan = kunjungan.filter(function(data){
-        newDate = new Date(data.bulan);
-        if (newDate.getFullYear()==set_year) {
-            return data;
-        }
-    })
+    
     datasets3 = [{
         label: 'Pekerja Sakit',
         data: newKunjungan,
@@ -144,6 +165,24 @@
         },
     }
     chartKunjungan =  new Chart(ctx3, cfg3);
+    if (jenis=='harian') {
+        // kunjunganForHarian = newKunjungan.map(data => data.bulan = new Date(data.bulan) )
+        chartKunjungan.options.scales.x.time.tooltipFormat = 'dd MMM yyyy';
+        chartKunjungan.options.scales.x.time.unit = 'day';
+        chartKunjungan.options.scales.x.time.displayFormats.day = 'dd MMM yyyy';
+        chartKunjungan.options.scales.x.min = cekSingle(start.getDate()) +'-'+cekSingle(start.getMonth()) + '-'+start.getFullYear();
+        chartKunjungan.options.scales.x.max = cekSingle(end.getDate()) +'-'+cekSingle(end.getMonth()) + '-'+end.getFullYear();
+        if (newKunjungan.length > 20) {
+            chartKunjungan.options.plugins.datalabels = null;
+        }
+        chartKunjungan.update()
+    }else{
+        chartKunjungan.options.scales.x.time.tooltipFormat = 'MMM yyyy';
+        chartKunjungan.options.scales.x.time.unit = 'month';
+        chartKunjungan.options.scales.x.min = year+'-'+ cekSingle(awal.getMonth());
+        chartKunjungan.options.scales.x.max = year+'-'+ cekSingle(akhir.getMonth()+1);
+        chartKunjungan.update()
+    }
 </script>
 
 <script>
@@ -152,11 +191,21 @@
     $('#table-1').DataTable({
         data:newKunjungan,
         columns:[
-            {   title:'Bulan',
+            {   title: function(){
+                if(jenis=='harian'){
+                    return 'Tanggal';
+                }else{
+                    return 'Bulan';
+                }
+                },
                 data:'bulan',
                 render: {
                     _:function(data, type, row){
                         newDate = new Date(data);
+                        if (jenis=='harian') {
+                            return cekSingle(newDate.getDate()) +'-'+cekSingle(newDate.getMonth()) + '-'+newDate.getFullYear();
+                            
+                        }
                         return listBulan[newDate.getMonth()];
                     },
                     sort:function(data, type, row){
@@ -172,10 +221,6 @@
                 className:'text-start'
             }
         ],
-        columnDefs: [ {
-            targets: 0,
-            render: DataTable.render.moment( 'YYYY/MM/DD', 'Do MMM YY', 'fr' )
-        }],
         searching: false,
         paging: false,
         info: false,
