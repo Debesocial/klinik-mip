@@ -112,14 +112,21 @@
             kunjungan.push(temp);
         }
     }
+
     kunjungan.sort((a, b) => {
         if (a.bulan < b.bulan) {
             return -1;
         }
     });
+    newKunjungan = kunjungan.filter(function(data){
+        newDate = new Date(data.bulan);
+        if (newDate.getFullYear()==set_year) {
+            return data;
+        }
+    })
     datasets3 = [{
         label: 'Pekerja Sakit',
-        data: kunjungan,
+        data: newKunjungan,
         parsing: {
             yAxisKey: 'total',
             xAxisKey: 'bulan',
@@ -141,12 +148,7 @@
 
 <script>
     listBulan = ['Januari', 'Feberuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
-    newKunjungan = kunjungan.filter(function(data){
-        newDate = new Date(data.bulan);
-        if (newDate.getFullYear()==set_year) {
-            return data;
-        }
-    })
+    
     $('#table-1').DataTable({
         data:newKunjungan,
         columns:[
