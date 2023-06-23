@@ -683,6 +683,15 @@ class SuperAdminController extends Controller
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
         $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
+        if ($request->rekam_medis=='RI') {
+            $rawatinap = RawatInap::find($request->id_rekam_medis);
+            $rawatinap->is_kecelakaan = 1;
+            $rawatinap->save();
+        }elseif ($request->rekam_medis == 'RJ') {
+            $rawatjalan = RawatJalan::find($request->id_rekam_medis);
+            $rawatjalan->is_kecelakaan = 1;
+            $rawatjalan->save();
+        }
         KecelakaanKerja::create($data);
         return redirect('/data-kecelakaan-kerja')->with('message', 'Berhasil menambah surat kecelakaan kerja!');
     }

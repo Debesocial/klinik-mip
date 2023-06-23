@@ -17,19 +17,39 @@ class LaporanController extends Controller
 
     public function pekerjaSakit(Request $request){
         $color = $request->color;
-        $rawat_jalan_per_bulan = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%Y-%m") as bulan')->groupByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->orderByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")->get();
-        $rawat_inap_kecelakaan_per_bulan = RawatInap::selectRaw('count(DISTINCT rawat_inaps.id) as total, DATE_FORMAT(mulai_rawat, "%Y-%m") as bulan')
-        ->join('kecelakaan_kerjas','kecelakaan_kerjas.id_rekam_medis', '=', 'rawat_inaps.id')
-        ->groupByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
-        ->groupBy('rawat_inaps.id')
-        ->orderByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
-        ->where('kecelakaan_kerjas.rekam_medis','RI')
-        ->get();
-        $rawat_inap_per_bulan = RawatInap::selectRaw('count(id) as total, DATE_FORMAT(mulai_rawat, "%Y-%m") as bulan')
-        ->groupByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
-        ->orderByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
-        ->get();
-        return $rawat_inap_kecelakaan_per_bulan;
+        if ($request->jenis=='bulanan') {
+            $rawat_jalan_per_bulan = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%Y-%m") as bulan')
+            ->groupByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")
+            ->orderByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m')")
+            ->where('is_kecelakaan', 0)
+            ->get();
+            $rawat_inap_per_bulan = RawatInap::selectRaw('count(id) as total, DATE_FORMAT(mulai_rawat, "%Y-%m") as bulan')
+            ->groupByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
+            ->orderByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m')")
+            ->where('is_kecelakaan', 0)
+            ->get();
+            $total_pekerja_sakit = $this->totalPerbulan([$rawat_inap_per_bulan, $rawat_jalan_per_bulan]);
+            $data['set_year'] = $request->year;
+            $data['total'] = $total_pekerja_sakit;
+        }else if($request->jenis=='harian'){
+            $rawat_jalan_per_hari = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%d") as hari')
+            ->groupByRaw("DATE_FORMAT(tanggal_berobat, '%d')")
+            ->orderByRaw("DATE_FORMAT(tanggal_berobat, '%d')")
+            ->where('is_kecelakaan', 0)
+            ->get();
+            $rawat_inap_per_hari = RawatInap::selectRaw('count(id) as total, DATE_FORMAT(mulai_rawat, "%d") as hari')
+            ->groupByRaw("DATE_FORMAT(mulai_rawat, '%d')")
+            ->orderByRaw("DATE_FORMAT(mulai_rawat, '%d')")
+            ->where('is_kecelakaan', 0)
+            ->get();
+            $total_pekerja_sakit = $this->totalPerbulan([$rawat_inap_per_hari, $rawat_jalan_per_hari]);
+            $data['start'] = $request->start;
+            $data['end'] = $request->end;
+            $data['total'] = $total_pekerja_sakit;
+        }
+        $data['color'] = $color;
+
+        return view('component/laporan_pekerja_sakit', $data);
     }
     public function absenSakit(Request $request){
         $color = $request->color;
