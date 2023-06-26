@@ -30,10 +30,19 @@ class LaporanController extends Controller
         if ($request->jenis == 'bulanan') {
             $format = '%Y-%m';
             $data['set_year'] = $request->year;
+            $data_inap = RawatInap::select('rawat_inaps.*', 'pasiens.kategori_pasien_id')
+            ->join('pasiens', 'pasiens.id','=','rawat_inaps.pasien_id')
+            ->whereYear('mulai_rawat',$request->year)
+            ->where('pasiens.kategori_pasien_id', 1)
+            ->get();
         } elseif ($request->jenis == 'harian') {
             $format = '%Y-%m-%d';
             $data['start'] = $request->start;
             $data['end'] = $request->end;
+            $data_inap = RawatInap::select('*, pasiens.kategori_pasien_id')
+            ->join('pasiens', 'pasiens.id','=','rawat_inaps.pasien_id')
+            ->where('pasiens.kategori_pasien_id', 1)
+            ->get();
         }
         $total_pekerja_sakit = $this->getDataPekerjaSakit([
             'format' => $format,
@@ -55,6 +64,7 @@ class LaporanController extends Controller
         if ($request->jenis == 'bulanan') {
             $format = '%Y-%m';
             $data['set_year'] = $request->year;
+            
         } elseif ($request->jenis == 'harian') {
             $format = '%Y-%m-%d';
             $data['start'] = $request->start;
@@ -65,6 +75,7 @@ class LaporanController extends Controller
             'perusahaan' => $request->perusahaan
         ]);
         $data['namaperusahaan'] = $request->perusahaan ? Perusahaan::find($request->perusahaan)->nama_perusahaan_pasien : 'Semua Perusahaan';
+        
 
         return view('component/laporan_pekerja_absen', $data);
 

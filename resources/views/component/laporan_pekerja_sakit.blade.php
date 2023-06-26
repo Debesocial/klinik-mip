@@ -50,7 +50,7 @@
                 <div class="tab-pane fade " id="mcu-lanjut" role="tabpanel" aria-labelledby="tabel">
                     <div class="table-responsive">
                         <table id="table-1" class="table table-hover  w-100">
-
+                            
                         </table>
                     </div>
                 </div>

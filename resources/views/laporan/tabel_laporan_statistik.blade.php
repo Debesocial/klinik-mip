@@ -175,7 +175,7 @@
         buttons: [{
             extend: 'excelHtml5',
             text: 'Export Excel',
-            title: title
+            title: title,
         }]
     });
     
