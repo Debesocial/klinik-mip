@@ -34,7 +34,7 @@
     <div class="container mt-4">
         <div class="border p-3">
             <h5>Statistik</h5>
-            <div class="row g-1 row-cols-md-6 mb-2">
+            <div class="row g-1 row-cols-md-6 mb-2 justify-content-between">
                 <div class="col">
                     <label for="" class="form-label">Jenis Laporan: </label>
                     <div class="form-check">
@@ -70,9 +70,9 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col">
+                <div class="col my-auto">
                     <button onclick="printStatistik()" id="print-statistik" class="btn btn-success"><i
-                            class="bi bi-file-earmark-excel-fill"></i> Print
+                            class="bi bi-file-earmark-excel-fill"></i> Export
                         Laporan
                     </button>
                 </div>
@@ -134,6 +134,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+
+    
     <script>
         $('#perusahaan').select2({
             theme: 'bootstrap-5',
@@ -184,6 +186,11 @@
 
             if (id == 'pekerja-sakit') {
                 $('.modal-title').text('Laporan Jumlah Pekerja Sakit Akibat Penyakit');
+            }else if(id == 'absen-sakit'){
+                $('.modal-title').text('Laporan Jumlah Pekerja Absen Akibat Penyakit');
+            }else if(id == 'pak'){
+                $('.modal-title').text('Laporan Jumlah Kasus PAK');
+
             }
 
             $.ajax({
