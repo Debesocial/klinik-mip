@@ -23,12 +23,16 @@
                             <h6>MCU Awal</h6>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+
                             <div class="buttons" width="100px">
                                 <a href="/add_mcu/awal" class="btn m-0 btn-sm btn-success rounded-pill">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span>
                                 </a>
                             </div>
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -57,9 +61,12 @@
                                                         aria-label="Basic outlined example">
                                                         <a href="/mcu/{{ $awal->id }}" class="btn btn-outline-secondary"
                                                             title="Ubah data alkes"><i class="bi bi-eye-fill"></i></a>
-                                                        <a href="/ubah_mcu/awal/{{ $awal->id }}"
-                                                            class="btn btn-outline-secondary" title="Ubah data alkes"><i
-                                                                class="bi bi-pencil-square"></i></a>
+                                                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                            <a href="/ubah_mcu/awal/{{ $awal->id }}"
+                                                                class="btn btn-outline-secondary" title="Ubah data alkes"><i
+                                                                    class="bi bi-pencil-square"></i></a>
+                                                                
+                                                            @endif
                                                     </div>
                                                 </td>
                                             </tr>
@@ -80,12 +87,15 @@
                             <h6>MCU Berkala, Khusus & Akhir</h6>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <div class="buttons" width="100px">
                                 <a href="/add_mcu/lanjutan" class="btn m-0 btn-sm btn-success rounded-pill">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span>
                                 </a>
                             </div>
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -120,9 +130,12 @@
                                                         <a href="/mcu/lanjutan/{{ $lanjut->id }}"
                                                             class="btn btn-outline-secondary" title="Ubah data alkes"><i
                                                                 class="bi bi-eye-fill"></i></a>
+                                                        @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                                         <a href="/ubah_mcu/lanjutan/{{ $lanjut->id }}"
                                                             class="btn btn-outline-secondary" title="Ubah data alkes"><i
                                                                 class="bi bi-pencil-square"></i></a>
+                                                            
+                                                        @endif        
                                                     </div>
                                                 </td>
                                             </tr>

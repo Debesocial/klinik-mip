@@ -16,9 +16,12 @@
         </div>
         <div class="col">
             <div class="buttons text-end">
+                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                 <a href="{{ route('superadmin.persetujuantindakanmedis') }}" class="btn btn-success rounded-pill">
                     <i class="bi bi-plus-circle"></i>
                     <span>Tambah</span></a>
+                    
+                @endif
             </div>
         </div>
     </div>
@@ -54,7 +57,10 @@
                                     </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                         <a href="/ubah/persetujuan/tindakan/medis/{{ $tin->id }}" class="btn btn-outline-secondary" title="Ubah"><i class="bi bi-pencil-square"></i></a>
+                                            
+                                        @endif
                                         <a href="/print/tindakan/{{ $tin->id }}" title="print Data" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>

@@ -28,10 +28,13 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <a href="{{ route('rawatinap.addrawatinap') }}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -65,7 +68,10 @@
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/rawat/inap/{{$rawatinap->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                                 <a href="/ubah/rawat/inap/{{$rawatinap->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                    
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -86,10 +92,13 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <a href="{{ route('rawatjalan.tambahrawatjalan') }}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -116,7 +125,10 @@
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/rawat/jalan/{{$rawatjalan->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                                 <a href="/ubah/rawat/jalan/{{$rawatjalan->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                    
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -139,10 +151,13 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -172,7 +187,10 @@
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/pemeriksaan/narkoba/{{$test->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                                @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                                 <a href="/ubah/pemeriksaan/narkoba/{{$test->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                    
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -193,6 +211,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                             <div class="dropdown">
                                 <button class="btn btn-success dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-plus-circle"></i>
@@ -203,6 +222,8 @@
                                     <li><a class="dropdown-item" href="/add_mcu/lanjutan">- MCU Berkala, Khusus & Akhir</a></li>
                                 </ul>
                             </div>
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -229,9 +250,11 @@
                                                 aria-label="Basic outlined example">
                                                 <a href="/mcu/{{ $awal->id }}" class="btn btn-outline-secondary"
                                                     title="Ubah data alkes"><i class="bi bi-eye-fill"></i></a>
-                                                <a href="/ubah_mcu/awal/{{ $awal->id }}"
-                                                    class="btn btn-outline-secondary" title="Ubah data alkes"><i
-                                                        class="bi bi-pencil-square"></i></a>
+                                                    @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                    <a href="/ubah_mcu/awal/{{ $awal->id }}"
+                                                        class="btn btn-outline-secondary" title="Ubah data alkes"><i
+                                                            class="bi bi-pencil-square"></i></a>
+                                                    @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -250,9 +273,12 @@
                                                 <a href="/mcu/lanjutan/{{ $lanjut->id }}"
                                                     class="btn btn-outline-secondary" title="Ubah data alkes"><i
                                                         class="bi bi-eye-fill"></i></a>
+                                                @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                                 <a href="/ubah_mcu/lanjutan/{{ $lanjut->id }}"
                                                     class="btn btn-outline-secondary" title="Ubah data alkes"><i
                                                         class="bi bi-pencil-square"></i></a>
+                                                    
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>

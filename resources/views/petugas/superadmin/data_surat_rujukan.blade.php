@@ -15,11 +15,14 @@
             </div>
         </div>  
         <div class="col">
+            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
             <div class="buttons text-end">
                 <a href="{{ route('superadmin.suratrujukan') }}" class="btn btn-success rounded-pill">
                     <i class="bi bi-plus-circle"></i>
                     <span>Tambah</span></a>
             </div>
+                
+            @endif
         </div>
     </div>
     <div class="card shadow">
@@ -55,7 +58,10 @@
                                 <td style="width: auto; min-width: 0; max-width: 200px; text-overflow: ellipsis; white-space: normal;">{{ $surat->hasil_pengobatan }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                         <a href="/ubah/surat/rujukan/{{ $surat->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                            
+                                        @endif
                                         <a href="/print/rujukan/{{ $surat->id }}" title="print Data" target='_blank' class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                     </div>
                                 </td>

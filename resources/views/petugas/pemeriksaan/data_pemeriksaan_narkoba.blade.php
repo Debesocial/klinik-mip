@@ -16,11 +16,14 @@
             </div>
         </div>
         <div class="col">
+            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
             <div class="buttons text-end">
                 <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-success rounded-pill">
                     <i class="bi bi-plus-circle"></i>
                     <span>Tambah</span></a>
             </div>
+                
+            @endif
         </div>
     </div>
     <div class="card shadow">
@@ -63,8 +66,11 @@
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/view/pemeriksaan/narkoba/{{$narko->id }}" title="Lihat Data"  class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
+                                    @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                     <a href="/ubah/pemeriksaan/narkoba/{{$narko->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                     <a href="/print/narkoba/{{ $narko->id }}" title="Lihat Data" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
+                                        
+                                    @endif
                                 </div>
                             </td>
                         </tr>

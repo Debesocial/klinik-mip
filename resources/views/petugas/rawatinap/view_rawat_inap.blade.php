@@ -80,9 +80,18 @@
                                         <th>Berakhir Dirawat
                                         </th>
                                         <td id="_berakhir_rawat">
-                                            : {!! $rawat_inap->berakhir_rawat
+                                            : 
+                                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                            {!! $rawat_inap->berakhir_rawat
                                                 ? tanggal($rawat_inap->berakhir_rawat, false)
                                                 : '<a href="/selesai-inap/'.$rawat_inap->id.'" class="btn btn-primary btn-sm">Selesaikan Rawat Inap <i class="bi bi-check-square"></i></a>' !!}
+
+                                            @else
+                                            {!! $rawat_inap->berakhir_rawat
+                                                ? tanggal($rawat_inap->berakhir_rawat, false)
+                                                : '-' !!}
+
+                                            @endif
                                         </td>
                                     </tr>
                                 </tbody>
@@ -155,11 +164,13 @@
                         </div>
                         <div class="col-md-4 text-end">
                             <div class="buttons" width="100px">
+                                @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
                                 <button
                                     onclick="tampilModalRawatInap('/instruksi_dokter/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Instruksi Dokter')"
                                     class="btn m-0 btn-sm btn-success rounded-pill">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span></button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -186,10 +197,12 @@
                                                     onclick="tampilModalRawatInap('/instruksi_dokter/{{ $instruksi->id }}','Pemeriksaan Instruksi Dokter')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
+                                                @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
                                                 <a href="#"
                                                     onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-pencil-square"></i></a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -208,14 +221,17 @@
                             <h6>Pemeriksaan Intervensi Keperawatan</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            <div class="buttons" width="100px">
-                                <button
-                                    onclick="tampilModalRawatInap('/intervensi/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Intervensi Keperawatan')"
-                                    class="btn btn-sm btn-success rounded-pill">
-                                    <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span>
-                                </button>
-                            </div>
+                            @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
+                                <div class="buttons" width="100px">
+                                    <button
+                                        onclick="tampilModalRawatInap('/intervensi/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Intervensi Keperawatan')"
+                                        class="btn btn-sm btn-success rounded-pill">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Tambah</span>
+                                    </button>
+                                </div>
+                                
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -238,10 +254,11 @@
                                                     onclick="tampilModalRawatInap('/intervensi/{{ $inter->id }}','Intervensi Keperawatan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                <a href="#"
-                                                    onclick="tampilModalRawatInap('/intervensi/form_edit/{{ $inter->id }}','Formulir Ubah Intervensi Keperawatan')"
-                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
-                                                        class="bi bi-pencil-square"></i></a>
+                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
+                                                <a href="#" onclick="tampilModalRawatInap('/intervensi/form_edit/{{ $inter->id }}','Formulir Ubah Intervensi Keperawatan')" class="btn btn-sm btn-outline-secondary" title="Ubah Data">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </a>
+                                                @endif        
                                             </div>
                                         </td>
                                     </tr>
@@ -260,12 +277,14 @@
                             <h6>Permintaan Makanan</h6>
                         </div>
                         <div class="col-md-4 text-end">
+                            @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
                             <button
                                 onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Fromulir Permintaan Makanan')"
                                 class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </button>
+                            @endif
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -293,10 +312,12 @@
                                                     onclick="tampilModalRawatInap('/permintaan_makanan/{{ $makanan->id }}','Permintaan Makanan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
+                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
                                                 <a href="#"
                                                     onclick="tampilModalRawatInap('/permintaan_makanan/form_edit/{{ $makanan->id }}','Formulir Ubah Permintaan Makanan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-pencil-square"></i></a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -311,6 +332,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
+                        @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                         <div class="col-md-8">
                             <h6>Pemantauan Tanda Vital</h6>
                         </div>
@@ -328,6 +350,7 @@
                                 </button>
                             </div>
                         </div>
+                        @endif
                     </div>
                     <div class="table-responsive">
                         <table class="table display" id="TABLE_4" width="auto">
@@ -359,10 +382,13 @@
                                                     onclick="tampilModalRawatInap('/tanda_vital/{{ $vital->id }}','Pemeriksaan Tanda Vital')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                <a href="#"
-                                                    onclick="tampilModalRawatInap('/tanda_vital/form_edit/{{ $vital->id }}','Formulir Ubah Pemeriksaan Tanda Vital')"
-                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
-                                                        class="bi bi-pencil-square"></i></a>
+                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                    <a href="#"
+                                                        onclick="tampilModalRawatInap('/tanda_vital/form_edit/{{ $vital->id }}','Formulir Ubah Pemeriksaan Tanda Vital')"
+                                                        class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                            class="bi bi-pencil-square"></i></a>
+
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>

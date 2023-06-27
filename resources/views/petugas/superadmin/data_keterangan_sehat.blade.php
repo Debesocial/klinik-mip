@@ -15,11 +15,14 @@
             </div>
         </div>
         <div class="col">
+            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
             <div class="buttons text-end">
                 <a href="{{ route('superadmin.keterangansehat') }}" class="btn btn-success rounded-pill">
                     <i class="bi bi-plus-circle"></i>
                     <span>Tambah</span></a>
             </div>
+                
+            @endif
         </div>
     </div>
     <div class="card shadow">
@@ -55,7 +58,10 @@
                             <td class="text-center">{!! $ket->hasil == 1 ? '<span class="badge bg-primary">Sehat</span>' : '<span class="badge bg-danger">Tidak Sehat</span>' !!}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                     <a href="/ubah/keterangan/sehat/{{$ket->id}}" class="btn btn-outline-secondary" title="Ubah data pasien"><i class="bi bi-pencil-square"></i></a>
+                                    
+                                    @endif
                                     <a href="/print/sehat/{{$ket->id}}" target="_blank" title="Print Data " class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                 </div>
                             </td>

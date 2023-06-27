@@ -15,9 +15,12 @@
             </div>
             <div class="col">
                 <div class="buttons text-end">
+                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                     <a href="/kecelakaan/kerja" class="btn btn-success rounded-pill">
                         <i class="bi bi-plus-circle"></i>
                         <span>Tambah</span></a>
+                        
+                    @endif
                 </div>
             </div>
         </div>
@@ -51,7 +54,10 @@
                                     <td style="width: 110px">{{ $ket->pasien->nama_pasien }}</td>
                                     <td class="text-center">
                                         <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                             <a href="/ubah/kecelakan/{{ $ket->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                
+                                            @endif
                                             <a href="/print/kecelakaan/{{ $ket->id }}" title="print Data" href="#" target="_blank" class="btn btn-outline-secondary"><i class="bi bi-printer-fill"></i></a>
                                         </div>
                                     </td>

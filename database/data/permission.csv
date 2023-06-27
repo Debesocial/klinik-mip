@@ -1,0 +1,10 @@
+﻿code;description;parent
+R-PTGS;melihat lihat data petugas;MD Petugas
+C-PTGS;menambah data petugas;MD Petugas
+U-PTGS;mengubah data petugas;MD Petugas
+R-LVPTGS;melihat liha level petugas;MD Petugas
+C-LVPTGS;menambah level petugas;MD Petugas
+U-LVPTGS;mengubah level petugas;MD Petugas
+R-MK;melihat mitra kerja;MD Petugas
+C-MK;menambah mitra kerja;MD Petugas
+U-MK;mengubah mitra kerja;MD Petugas

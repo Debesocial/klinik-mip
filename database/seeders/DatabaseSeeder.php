@@ -41,7 +41,10 @@ class DatabaseSeeder extends Seeder
             NamaPenyakitSeeder::class,
             PemeriksaanAntigenSeeder::class,
             NamaAlkesSeeder::class,
-            GolonganAlkesSeeder::class
+            GolonganAlkesSeeder::class,
+            PermissionSeeder::class,
+            LevelPermissionSeeder::class,
+            SpecialPermissionSeeder::class,
         ]);
     }
 }
