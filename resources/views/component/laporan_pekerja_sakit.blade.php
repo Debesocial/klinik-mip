@@ -50,7 +50,7 @@
                 <div class="tab-pane fade " id="mcu-lanjut" role="tabpanel" aria-labelledby="tabel">
                     <div class="table-responsive">
                         <table id="table-1" class="table table-hover  w-100">
-                            
+
                         </table>
                     </div>
                 </div>
@@ -240,7 +240,8 @@
                     _: function(data, type, row) {
                         newDate = new Date(data);
                         if (jenis == 'harian') {
-                            return cekSingle(newDate.getDate()) + '-' + cekSingle(newDate.getMonth()) +
+                            return cekSingle(newDate.getDate()) + '-' + cekSingle(newDate.getMonth() +
+                                    1) +
                                 '-' + newDate.getFullYear();
 
                         }

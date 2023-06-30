@@ -20,6 +20,7 @@
         }
     </style>
     <link rel="stylesheet" href="{{ asset('assets/css/yearpicker.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
 @stop
 
 @section('container')
@@ -32,7 +33,7 @@
     </div>
 
     <div class="container mt-4">
-        <div class="border p-3">
+        <div class="border p-3 mb-3">
             <h5>Statistik</h5>
             <div class="row g-1 row-cols-md-6 mb-2 justify-content-between">
                 <div class="col">
@@ -83,7 +84,7 @@
                         'title' => 'Jumlah Pekerja Sakit',
                         'sub_title' => 'Pekerja yang sakit karena penyakit, bukan karena kecelakaan kerja.',
                         'color' => 'crimson',
-                        'id' => 'pekerja-sakit',
+                        'onclick' => 'showModal("pekerja-sakit","crimson")',
                     ]) !!}
                 </div>
                 <div class="col mb-3">
@@ -91,7 +92,7 @@
                         'title' => 'Jumlah Absen Karena Sakit',
                         'sub_title' => 'Total absen karyawan karena sakit, bukan karena kecelakaan kerja.',
                         'color' => 'darkcyan',
-                        'id' => 'absen-sakit',
+                        'onclick' => 'showModal("absen-sakit","darkcyan")',
                     ]) !!}
                 </div>
                 <div class="col mb-3">
@@ -99,7 +100,83 @@
                         'title' => 'Jumlah Kasus PAK',
                         'sub_title' => 'Total diagnosa sekunder akibat kerja.',
                         'color' => 'orange',
-                        'id' => 'pak',
+                        'onclick' => 'showModal("pak","orange")',
+                    ]) !!}
+                </div>
+
+            </div>
+
+        </div>
+        <div class="border p-3">
+            <h5>Laporan</h5>
+            <div class="row g-2 row-cols-md-6 mb-2">
+                <div class="col">
+                    <label for="" class="form-label">Berdasarkan: </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jenis_laporan_1" id="jenis_laporan_1"
+                            value="bulanan" checked>
+                        <label class="form-check-label" for="jenis_laporan_1">Tahun</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jenis_laporan_1" id="jenis_laporan_1-2"
+                            value="harian">
+                        <label class="form-check-label" for="jenis_laporan_1-2">Tanggal</label>
+                    </div>
+                </div>
+                <div class="col" id="tahun_laporan">
+                    <label for="" class="form-label">Tahun</label>
+                    <input type="text" readonly class="form-control bg-white" name="laporan_tahun" id="laporan_tahun"
+                        style="cursor: pointer">
+                </div>
+                <div class="col" id="dari-sampai-1" style="display:none;">
+                    <label for="" class="form-label">Dari</label>
+                    <input type="date" class="form-control" name="laporan_dari" id="laporan_dari">
+                </div>
+                <div class="col" id="dari-sampai-1" style="display:none;">
+                    <label for="" class="form-label">Sampai</label>
+                    <input type="date" class="form-control" name="laporan_sampai" id="laporan_sampai">
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 justify-content-evenly">
+                <div class="col mb-3">
+                    {!! cardLaporan([
+                        'title' => 'Jumlah Penyakit Berdasarkan Klasifikasi',
+                        'sub_title' => 'Jumlah penyakit berdasarkan klasifikasi yang didapat dari Rawat Inap dan Rawat Jalan.',
+                        'color' => 'navy',
+                        'onclick' => 'showModalLaporan("jumlah-klasifikasi","navy")',
+                    ]) !!}
+                </div>
+                <div class="col mb-3">
+                    {!! cardLaporan([
+                        'title' => 'Total Penggunaan Obat',
+                        'sub_title' => 'Total penggunaan obat yang didapatkan dari setiap resep obat.',
+                        'color' => 'OliveDrab',
+                        'onclick' => 'showModalLaporan("penggunaan-obat","OliveDrab")',
+                    ]) !!}
+                </div>
+                <div class="col mb-3">
+                    {!! cardLaporan([
+                        'title' => 'Total Penggunaan Alat Kesehatan',
+                        'sub_title' => 'Total penggunaan alat kesehatan yang didapatkan dari setiap tindakan.',
+                        'color' => 'orchid',
+                        'onclick' => 'showModalLaporan("penggunaan-alkes","orchid")',
+                    ]) !!}
+                </div>
+                <div class="col mb-3">
+                    {!! cardLaporan([
+                        'title' => 'Durasi Istirahat',
+                        'sub_title' => 'Jumlah durasi istirahat yang diambil dari surat izin istirahat.',
+                        'color' => 'peru',
+                        'onclick' => 'showModalLaporan("durasi-istirahat","peru")',
+                    ]) !!}
+                </div>
+                <div class="col mb-3">
+                    {!! cardLaporan([
+                        'title' => 'Total Kunjungan',
+                        'sub_title' =>
+                            'Total Kunjungan pasien yang diambil dari jumlah pasien pada rawat inap, rawat jalan, MCU, dan pemeriksaan narkotika.',
+                        'color' => 'tomato',
+                        'onclick' => 'showModalLaporan("total-kunjungan","tomato")',
                     ]) !!}
                 </div>
 
@@ -135,7 +212,7 @@
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
 
-    
+
     <script>
         $('#perusahaan').select2({
             theme: 'bootstrap-5',
@@ -153,6 +230,9 @@
             $("#statistik_tahun").change(function() {
                 selected_year = $(this).val();
             });
+            $("#laporan_tahun").change(function() {
+                selected_year_laporan = $(this).val();
+            });
             $('input[name="jenis_laporan"]').click(function() {
                 jenisLaporanStatistik = $(this).val();
                 if (jenisLaporanStatistik == 'bulanan') {
@@ -164,9 +244,22 @@
 
                 }
             })
+            $('input[name="jenis_laporan_1"]').click(function() {
+                jenisLaporan = $(this).val();
+                if (jenisLaporan == 'bulanan') {
+                    $('#tahun_laporan').show();
+                    $('[id="dari-sampai-1"]').hide()
+                } else if (jenisLaporan == 'harian') {
+                    $('#tahun_laporan').hide();
+                    $('[id="dari-sampai-1"]').show()
+
+                }
+            })
             $('#statistik_sampai').val(today.toDateInputValue())
+            $('#laporan_sampai').val(today.toDateInputValue())
             seminggusebelum = new Date(today.setDate(today.getDate() - 7));
             $('#statistik_dari').val(seminggusebelum.toDateInputValue())
+            $('#laporan_dari').val(seminggusebelum.toDateInputValue())
         });
     </script>
     <script>
@@ -174,10 +267,15 @@
             $("#statistik_tahun").yearpicker({
                 year: selected_year
             });
+            $("#laporan_tahun").yearpicker({
+                year: selected_year_laporan
+            });
         });
-        today = new Date();
-        jenisLaporanStatistik = $('input[name = jenis_laporan]:checked').val();
-        selected_year = today.getFullYear();
+        let today = new Date();
+        let jenisLaporanStatistik = $('input[name = jenis_laporan]:checked').val();
+        let jenisLaporan = $('input[name = jenis_laporan_1]:checked').val();
+        let selected_year = today.getFullYear();
+        let selected_year_laporan = today.getFullYear();
 
         function showModal(id, color) {
             // showLoader();
@@ -186,11 +284,12 @@
 
             if (id == 'pekerja-sakit') {
                 $('.modal-title').text('Laporan Jumlah Pekerja Sakit Akibat Penyakit');
-            }else if(id == 'absen-sakit'){
+            } else if (id == 'absen-sakit') {
                 $('.modal-title').text('Laporan Jumlah Pekerja Absen Akibat Penyakit');
-            }else if(id == 'pak'){
+            } else if (id == 'pak') {
                 $('.modal-title').text('Laporan Jumlah Kasus PAK');
-
+            } else if (id == 'jumlah-klasifikasi') {
+                $('.modal-title').text('Laporan Jumlah Penyakit Berdasarkan Klasifikasi');
             }
 
             $.ajax({
@@ -203,6 +302,42 @@
                     start: $('#statistik_dari').val(),
                     end: $('#statistik_sampai').val(),
                     perusahaan: $('#perusahaan').val(),
+                },
+                success: function(response) {
+                    $('.modal-body').html(response);
+                    $('#laporanModal').modal('show');
+                    hideLoader();
+                }
+            });
+        }
+
+        function showModalLaporan(id, color) {
+            // showLoader();
+            url = "{{ url('/laporan') }}/" + id;
+
+
+            if (id == 'jumlah-klasifikasi') {
+                $('.modal-title').text('Laporan Jumlah Penyakit Berdasarkan Klasifikasi');
+            } else if (id == 'penggunaan-obat') {
+                $('.modal-title').text('Laporan Jumlah Penggunaan Obat');
+            } else if (id == 'penggunaan-alkes') {
+                $('.modal-title').text('Laporan Jumlah Penggunaan Alat Kesehatan');
+            } else if (id == 'durasi-istirahat') {
+                $('.modal-title').text('Laporan Jumlah Durasi Istirahat');
+            } else if (id == 'total-kunjungan') {
+                $('.modal-title').text('Laporan Total Kunjungan');
+            }
+
+            $.ajax({
+                type: "get",
+                url: url,
+                data: {
+                    color: color,
+                    jenis: jenisLaporan,
+                    year: selected_year_laporan,
+                    start: $('#laporan_dari').val(),
+                    end: $('#laporan_sampai').val(),
+
                 },
                 success: function(response) {
                     $('.modal-body').html(response);

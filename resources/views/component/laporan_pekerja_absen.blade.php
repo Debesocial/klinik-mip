@@ -240,7 +240,8 @@
                     _: function(data, type, row) {
                         newDate = new Date(data);
                         if (jenis == 'harian') {
-                            return cekSingle(newDate.getDate()) + '-' + cekSingle(newDate.getMonth()) +
+                            return cekSingle(newDate.getDate()) + '-' + cekSingle(newDate.getMonth() +
+                                    1) +
                                 '-' + newDate.getFullYear();
 
                         }

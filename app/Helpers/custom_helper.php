@@ -14,24 +14,24 @@ function cekMcu($data)
 
 /** Untuk menyamakan format tanggal
  */
-function tanggal($tanggal, $jam = true, $monthText = false, $namaHari=false, $namaHariJam=false)
+function tanggal($tanggal, $jam = true, $monthText = false, $namaHari = false, $namaHariJam = false)
 {
     if ($namaHari) {
         $format = 'l d F Y';
         $date = \Carbon\Carbon::parse($tanggal)->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);
         return $date->format($format);
-    }else if ($monthText) {
+    } else if ($monthText) {
         $format = 'd F Y';
         $date = \Carbon\Carbon::parse($tanggal)->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);
         return $date->format($format);
-    }else if($namaHariJam){
+    } else if ($namaHariJam) {
         $format = 'l d F Y H:i';
         $date = \Carbon\Carbon::parse($tanggal)->locale('id');
         $date->settings(['formatFunction' => 'translatedFormat']);
         return $date->format($format);
-    }else{
+    } else {
         $format = 'd-m-Y H:i';
         if ($jam == false) {
             $format = 'd-m-Y';
@@ -45,15 +45,15 @@ function umur($date)
 {
     $tanggalSekarang = date("Y-m-d");
     $umur = date_diff(date_create($date), date_create($tanggalSekarang));
-    return $umur->y . ' Tahun '. $umur->m .' Bulan '. $umur->d . ' Hari';
+    return $umur->y . ' Tahun ' . $umur->m . ' Bulan ' . $umur->d . ' Hari';
 }
 
 /** Untuk validation bootstrap */
-function validasi($field_error = 'field', $pesan ='harus diisi')
+function validasi($field_error = 'field', $pesan = 'harus diisi')
 {
     $html = '<div class="invalid-feedback">
-        ' . $field_error .' '.$pesan.
-    '</div> 
+        ' . $field_error . ' ' . $pesan .
+        '</div> 
     <div class="valid-feedback">
         Data sudah benar.
     </div>';
@@ -67,9 +67,9 @@ function diffDay($awal, $akhir)
     $date1 = strtotime($awal);
     $date2 = strtotime($akhir);
     $diff = abs(($date1 - $date2) / (60 * 60 * 24));
-    if ($diff<1) {
+    if ($diff < 1) {
         $diffHour = round(abs(($date1 - $date2) / (60 * 60)));
-        return $diffHour .' jam';
+        return $diffHour . ' jam';
     }
     return $diff . ' hari';
 }
@@ -221,14 +221,15 @@ function detailPasienPemeriksaan()
 }
 
 
-function getRekomendasiDokter($id){
-    if ($id==1) {
+function getRekomendasiDokter($id)
+{
+    if ($id == 1) {
         return "Dapat Bekerja Seperti Biasa";
-    }else if ($id==2) {
+    } else if ($id == 2) {
         return "Dapat Bekerja dengan Catatan";
-    }else if ($id==3) {
+    } else if ($id == 3) {
         return "Istirahat di MESS Karyawan ";
-    }else if ($id==4) {
+    } else if ($id == 4) {
         return "Rujukan ke Tarakan";
     }
 }
@@ -238,12 +239,13 @@ function getRekomendasiDokter($id){
  * @param int $number
  * @return string
  */
-function romawi($number) {
+function romawi($number)
+{
     $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
     $returnValue = '';
     while ($number > 0) {
         foreach ($map as $roman => $int) {
-            if($number >= $int) {
+            if ($number >= $int) {
                 $number -= $int;
                 $returnValue .= $roman;
                 break;
@@ -254,17 +256,18 @@ function romawi($number) {
 }
 
 
-function cardLaporan(array $data){    
+function cardLaporan(array $data)
+{
     $htmls = '';
-    $htmls ='<div id="card-laporan" onclick="showModal(`'.$data['id'].'`,`'.$data["color"].'`)" class="card h-100 border ">
+    $htmls = '<div id="card-laporan" onclick=' . $data['onclick'] . ' class="card h-100 border ">
         <div class="card-body p-0">
             <div class="row g-0 h-100">
-                <div class="col-2 rounded-start" style="background-color:'.$data["color"].';background-position: center;
+                <div class="col-2 rounded-start" style="background-color:' . $data["color"] . ';background-position: center;
                 background-size: cover;">                         
                 </div>
                 <div class="col-10 p-3">
-                    <h5 class="card-title">'.$data["title"].'</h5>
-                    <p class="card-text m-0">'.$data["sub_title"].'</p>
+                    <h5 class="card-title">' . $data["title"] . '</h5>
+                    <p class="card-text m-0">' . $data["sub_title"] . '</p>
                 </div>
             </div>
         </div>

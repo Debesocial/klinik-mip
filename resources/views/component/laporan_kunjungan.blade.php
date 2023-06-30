@@ -21,10 +21,7 @@
                             @endif
                         </td>
                     </tr>
-                    <tr>
-                        <td>Perusahaan</td>
-                        <td>: {{ $namaperusahaan }}</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
@@ -74,6 +71,8 @@
         year = set_year;
         awal = new Date(year, 0);
         akhir = new Date(year, 11);
+        title = "LAPORAN KUNJUNGAN PASIEN TAHUN " + set_year +
+            " PT MANDIRI INTI PERKASA";
         newKunjungan = [];
         for (let date = awal; date <= akhir; date.setMonth(date.getMonth() + 1)) {
             const formattedMonthKunjungan = date.getFullYear() + '-' + cekSingle(date.getMonth() + 1);
@@ -107,6 +106,8 @@
         end = "{{ $end }}";
         start = new Date(start);
         end = new Date(end);
+        title = "LAPORAN KUNJUNGAN PASIEN " + "{{ tanggal($start, null, true) }}" + " - " +
+            "{{ tanggal($end, null, true) }}" + " PT MANDIRI INTI PERKASA";
         newKunjungan = [];
         for (let date = start; date <= end; date.setDate(date.getDate() + 1)) {
             const formattedMonthKunjungan = date.getFullYear() + '-' + cekSingle(date.getMonth() + 1) + '-' + cekSingle(
@@ -140,7 +141,7 @@
                 beginAtZero: true,
                 title: {
                     display: true,
-                    text: 'Jumlah PAK'
+                    text: 'Total Kunjungan'
                 },
                 ticks: {
                     stepSize: 10
@@ -179,7 +180,7 @@
     }
 
     datasets3 = [{
-        label: 'Jumlah PAK',
+        label: 'Total Kunjungan',
         data: newKunjungan,
         parsing: {
             yAxisKey: 'total',
@@ -255,14 +256,16 @@
 
             },
             {
-                title: 'Total',
+                title: 'Total Kunjungan',
                 data: 'total',
                 className: 'text-start'
             }
         ],
-        searching: false,
-        paging: false,
-        info: false,
-        ordering: false,
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'excelHtml5',
+            text: 'Export Excel',
+            title: title,
+        }],
     })
 </script>

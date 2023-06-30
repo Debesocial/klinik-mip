@@ -240,7 +240,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/pemeriksaan/antigen', [PemeriksaanAntigenController::class, 'tambahpemeriksaanantigen'])->name('superadmin.tambahpemeriksaanantigen');
         Route::get('/ubah/pemeriksaan/antigen/{id}', [PemeriksaanAntigenController::class, 'ubahpemeriksaanantigen'])->name('superadmin.ubahpemeriksaanantigen');
         Route::post('/ubah/pemeriksaan/antigen/{id}', [PemeriksaanAntigenController::class, 'changepemeriksaanantigen'])->name('superadmin.changepemeriksaanantigen');
-    
+
 
         Route::get('/mcu', [McuController::class, 'index']);
         Route::get('/mcu/{id}', [McuController::class, 'detailMcuAwal']);
@@ -265,12 +265,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/print/istirahat/{id}', [SuratController::class, 'printIstirahat']);
         Route::get('/print/kecelakaan/{id}', [SuratController::class, 'printKecelakaan']);
         Route::get('/print/narkoba/{id}', [SuratController::class, 'printNarkoba']);
-    
     });
 
     /** Master Data */
     Route::group(['middleware' => ['checkRole:superadmin']], function () {
-        
+
 
         Route::get('/mitra/kerja', [SuperAdminController::class, 'mitrakerja'])->name('superadmin.mitrakerja');
         Route::get('/add/mitra/kerja', [SuperAdminController::class, 'addmitrakerja'])->name('superadmin.addmitrakerja');
@@ -367,7 +366,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/ubah/level/{id}', [LevelController::class, 'ubahlevel'])->name('superadmin.ubahlevel');
         Route::post('/ubah/level/{id}', [LevelController::class, 'changelevel'])->name('superadmin.changelevel');
 
-        
+
 
         Route::get('/jabatan', [JabatanController::class, 'jabatan'])->name('superadmin.jabatan');
         Route::get('/add/jabatan', [JabatanController::class, 'addjabatan'])->name('superadmin.addjabatan');
@@ -456,8 +455,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/laporan/absen-sakit', [LaporanController::class, 'absenSakit']);
         Route::get('/laporan/pak', [LaporanController::class, 'pak']);
         Route::get('/laporan/print', [LaporanController::class, 'printLaporan']);
+        Route::get('/laporan/jumlah-klasifikasi', [LaporanController::class, 'jumlahKlasifikasi']);
+        Route::get('/laporan/penggunaan-obat', [LaporanController::class, 'penggunaanObat']);
+        Route::get('/laporan/penggunaan-alkes', [LaporanController::class, 'penggunaanAlkes']);
+        Route::get('/laporan/durasi-istirahat', [LaporanController::class, 'durasiIstirahat']);
+        Route::get('/laporan/total-kunjungan', [LaporanController::class, 'totalKunjungan']);
     });
-
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
