@@ -314,10 +314,13 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{ route('logout') }}" class='sidebar-link'>
+                        <a href="#" onclick="logoutConfirm()" class='sidebar-link'>
                             <i class="bi bi-box-arrow-left"></i>
                             <span>Keluar</span>
                         </a>
+                        <script>
+                            
+                        </script>
                     </li>
                 </ul>
             </div>

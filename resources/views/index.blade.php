@@ -35,7 +35,7 @@
                         Profil</a>
                     <a class="dropdown-item" href="/ubah/password/{{ Auth::user()->id }}"><i class="bi bi-key me-50"></i>
                         Ubah Kata Sandi</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"><i class="bi bi-box-arrow-right"></i> Keluar</a>
+                    <a class="dropdown-item" href="#" onclick="logoutConfirm()"><i class="bi bi-box-arrow-right"></i> Keluar</a>
                 </div>
             </div>
         </div>

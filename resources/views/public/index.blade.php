@@ -75,7 +75,7 @@
 
     <section class="hero-area">
         <div class="hero-slider">
-            <div class="hero-inner overlay" style="background-image: url('');">
+            <div class="hero-inner overlay" style="background-image: url('public_assets/1.webp');">
                 <div class="container">
                     <div class="row ">
                         <div class="col-lg-8">
@@ -149,55 +149,36 @@
             <div class="client-logo-wrapper">
                 <div class="client-logo-carousel d-flex align-items-center justify-content-between">
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client1.svg" alt="">
+                        <img src="logo/ABP.jpg" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client2.svg" alt="">
+                        <img src="logo/MHA.png" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client3.svg" alt="">
+                        <img src="logo/MKP.png" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client4.svg" alt="">
+                        <img src="logo/MIP.png" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client5.svg" alt="">
+                        <img src="logo/MPM.png" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client2.svg" alt="">
+                        <img src="logo/RML.jpg" alt="">
                     </div>
                     <div class="client-logo">
-                        <img src="public_assets/images/clients/client3.svg" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="public_assets/images/clients/client4.svg" alt="">
-                    </div>
-                    <div class="client-logo">
-                        <img src="public_assets/images/clients/client5.svg" alt="">
+                        <img src="logo/SUCOFINDO.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-middle">
-            <div class="container">
-                <div class="row">
-                    <div class="col" style="text-align: left;">
-                        <i>copyright <a href="mandiricoal.co.id">mandiricoal.co.id</a> 2022</i>
-                    </div>
-                    <div class="col" style="text-align: right;">
-                        <i>Fueling the Bright Future</i>
-                    </div>
-                </div>
-            </div>
+    <footer class="footer p-3 text-center">
+        <i>&copy; {{date('Y')}} <a href="mandiricoal.co.id">mandiricoal.co.id</a> </i>
+        <i>Fueling the Bright Future</i>
+       
     </footer>
-
-
-    <a href="#" class="scroll-top btn-hover">
-        <i class="lni lni-chevron-up"></i>
-    </a>
 
     <script src="public_assets/js/bootstrap.min.js"></script>
     <script src="public_assets/js/count-up.min.js"></script>
@@ -206,92 +187,14 @@
     <script src="public_assets/js/glightbox.min.js"></script>
     <script src="public_assets/js/main.js"></script>
     <script type="text/javascript">
-        //========= Hero Slider 
-        tns({
-            container: '.hero-slider',
-            items: 1,
-            slideBy: 'page',
-            autoplay: false,
-            mouseDrag: true,
-            gutter: 0,
-            nav: true,
-            controls: false,
-            controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
-        });
-        //========= testimonial 
-        tns({
-            container: '.testimonial-slider',
-            items: 3,
-            slideBy: 'page',
-            autoplay: false,
-            mouseDrag: true,
-            gutter: 0,
-            nav: true,
-            controls: false,
-            controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                540: {
-                    items: 1,
-                },
-                768: {
-                    items: 2,
-                },
-                992: {
-                    items: 2,
-                },
-                1170: {
-                    items: 3,
-                }
-            }
-        });
-        //====== Clients Logo Slider
-        tns({
-            container: '.client-logo-carousel',
-            slideBy: 'page',
-            autoplay: true,
-            autoplayButtonOutput: false,
-            mouseDrag: true,
-            gutter: 15,
-            nav: false,
-            controls: false,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                540: {
-                    items: 3,
-                },
-                768: {
-                    items: 4,
-                },
-                992: {
-                    items: 4,
-                },
-                1170: {
-                    items: 6,
-                }
-            }
-        });
-        //========= glightbox
-        GLightbox({
-            'href': 'https://www.youtube.com/watch?v=r44RKWyfcFw&fbclid=IwAR21beSJORalzmzokxDRcGfkZA1AtRTE__l5N4r09HcGS5Y6vOluyouM9EM',
-            'type': 'video',
-            'source': 'youtube', //vimeo, youtube or local
-            'width': 900,
-            'autoplayVideos': true,
-        });
-
         function myFunction() {
-  var x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 </body>
 

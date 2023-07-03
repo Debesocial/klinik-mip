@@ -327,6 +327,19 @@
             $('#' + id).submit();
             $('.preloader').show();
         }
+        function logoutConfirm() {
+            Swal.fire({ 
+                icon: "warning", 
+                text: "Apakah anda yakin ingin keluar ?",
+                showCancelButton: true,
+                cancelButtonColor: '#3085d6',
+                cancelButtonText: 'Tidak',
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Ya, keluar!'
+            }).then((result) => {
+                    if (result.isConfirmed) { window.location.href = "{{ route('logout') }}" }
+                })
+        }
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script> --}}
