@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\BobotObat;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class BobotObatSeeder extends Seeder
 {
@@ -14,67 +15,20 @@ class BobotObatSeeder extends Seeder
      */
     public function run()
     {
-        BobotObat::insert([
-            [
-                'bobot_obat' => '1 box @50 Pcs',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @25 Pcs',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 pcs @ 60 ml',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @50 Tab',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 pcs @ 100 ml',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 pcs @ 1000 ml',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @100 Pcs',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @100 Tab',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @100 Caps',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 box @30 Pcs',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 pack @12 Pcs',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'bobot_obat' => '1 pcs @60 ml',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        BobotObat::truncate();
+        $csvFile = fopen(base_path("database/data/bobot_obat.csv"), "r");
+        $firstline = false;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                BobotObat::create([
+                    "id" => $data['0'],
+                    "bobot_obat" => $data['1'],
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
 }

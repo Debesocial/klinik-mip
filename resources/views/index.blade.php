@@ -244,8 +244,10 @@
                 zero: "rgba(67,94,190, 0)"
             },
             indigo: {
-                default: "rgba(80, 102, 120, 1)",
-                quarter: "rgba(80, 102, 120, 0.25)"
+                default: "rgba(255,167,182, 1)",
+                half: "rgba(255,167,182, 0.5)",
+                quarter: "rgba(255,167,182, 0.25)",
+                zero: "rgba(255,167,182, 0)"
             }
         };
 
@@ -254,6 +256,10 @@
         gradient.addColorStop(0, colors.purple.half);
         gradient.addColorStop(0.35, colors.purple.quarter);
         gradient.addColorStop(1, colors.purple.zero);
+        gradient1 = ctx.createLinearGradient(0, 25, 0, 300);
+        gradient1.addColorStop(0, colors.indigo.half);
+        gradient1.addColorStop(0.35, colors.indigo.quarter);
+        gradient1.addColorStop(1, colors.indigo.zero);
         Chart.register(ChartDataLabels); 
         let options = {
             responsive: true,
@@ -288,7 +294,7 @@
                 }
             },
             plugins: {
-                legend: false,
+                legend: true,
                 datalabels: {
                     anchor: 'end', // remove this line to get label in middle of the bar
                     align: 'end',
@@ -314,7 +320,7 @@
             cekTemp = pasien.find(e => e.tanggal === formattedMonth);
             if (cekTemp==undefined){
                 temp = {
-                    total_bulan:valTemp[0],
+                    count:0,
                     total:valTemp[1],
                     tanggal: formattedMonth
                 }
@@ -341,7 +347,29 @@
             tension: 0.3,
             backgroundColor: gradient,
             
-        }]
+        },{
+            label: 'Penambahan Pasien',
+            data: pasien,
+            parsing: {
+                yAxisKey: 'count',
+                xAxisKey: 'tanggal',
+            },
+            spanGaps: true,
+            fill:true,
+            tension: 0.3,
+            backgroundColor: gradient1,
+            datalabels: {
+                color: 'crimson',
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: function(value, context) {
+                    return value.count;
+                },
+            },
+            hidden: true
+            
+        }
+    ]
         let cfg = {
             type: 'line',
             options: options,

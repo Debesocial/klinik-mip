@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\SatuanObat;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class SatuanObatSeeder extends Seeder
 {
@@ -14,67 +15,20 @@ class SatuanObatSeeder extends Seeder
      */
     public function run()
     {
-        SatuanObat::insert([
-            [
-                'satuan_obat' => 'Pieces',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Salep',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Sirup',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Tablet',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Capsul',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Injeksi',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Botol',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Cream',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Jelly',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Serbuk',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Suspensi',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'satuan_obat' => 'Gel',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        SatuanObat::truncate();
+        $csvFile = fopen(base_path("database/data/satuan_obat.csv"), "r");
+        $firstline = false;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                SatuanObat::create([
+                    "id" => $data['0'],
+                    "satuan_obat" => $data['1'],
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
 }
