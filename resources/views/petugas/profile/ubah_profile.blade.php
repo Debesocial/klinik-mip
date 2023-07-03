@@ -50,7 +50,7 @@
                                             <input type="number" id="telp" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telp" value="{{ $user['telp'] }}" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
                                         </div>
                                     </div>
-
+                                    @if (Auth::user()->level->nama_level == "superadmin")
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="level_id">Level Petugas</label> <b class="color-red">*</b></label>
@@ -61,7 +61,6 @@
                                             </select>
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="status">Status</label> <b class="color-red">*</b></label>
@@ -72,9 +71,9 @@
                                                 <option value="NonAktif">NonAktif</option>
                                             </select>
                                         </div>
-                                    </div>
+                                    </div>     
+                                    @endif
 
-                                
                                     <div class="col-12"><br>
                                         <div class="row justify-content-end">
                                             <div class="col-4">

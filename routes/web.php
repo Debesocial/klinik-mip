@@ -278,74 +278,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'ubahmitrakerja'])->name('superadmin.ubahmitrakerja');
         Route::post('/ubah/mitra/kerja/{id}', [SuperAdminController::class, 'changemitrakerja'])->name('superadmin.changemitrakerja');
 
-        Route::get('/data/produk', [ProdukController::class, 'dataproduk'])->name('obat.dataproduk');
-        Route::get('/add/produk', [ProdukController::class, 'addproduk'])->name('obat.addproduk');
-        Route::post('/add/produk', [ProdukController::class, 'tambahproduk'])->name('obat.tambahproduk');
-        Route::get('/ubah/produk/{id}', [ProdukController::class, 'ubahproduk'])->name('obat.ubahproduk');
-        Route::post('/ubah/produk/{id}', [ProdukController::class, 'changeproduk'])->name('obat.changeproduk');
-
-        Route::get('/data/alkes', [AlkesController::class, 'dataalkes'])->name('obat.dataalkes');
-        Route::get('/add/alkes', [AlkesController::class, 'addalkes'])->name('obat.addalkes');
-        Route::post('/add/alkes', [AlkesController::class, 'tambahalkes'])->name('obat.tambahalkes');
-        Route::get('/ubah/alkes/{id}', [AlkesController::class, 'ubahalkes'])->name('obat.ubahalkes');
-        Route::post('/ubah/alkes/{id}', [AlkesController::class, 'changealkes'])->name('obat.changealkes');
-        Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
-
-        Route::get('/nama/alkes', [AlkesController::class, 'namaalkes'])->name('obat.namaalkes');
-        Route::get('/add/nama/alkes', [AlkesController::class, 'addnamaalkes'])->name('obat.addnamaalkes');
-        Route::post('/add/nama/alkes', [AlkesController::class, 'tambahnamaalkes'])->name('obat.tambahnamaalkes');
-        Route::get('/ubah/nama/alkes/{id}', [AlkesController::class, 'ubahnamaalkes'])->name('obat.ubahnamaalkes');
-        Route::post('/ubah/nama/alkes/{id}', [AlkesController::class, 'changenamaalkes'])->name('obat.changenamaalkes');
-
-        Route::get('/golongan/alkes', [AlkesController::class, 'golonganalkes'])->name('obat.golonganalkes');
-        Route::get('/add/golongan/alkes', [AlkesController::class, 'addgolonganalkes'])->name('obat.addgolonganalkes');
-        Route::post('/add/golongan/alkes', [AlkesController::class, 'tambahgolonganalkes'])->name('obat.tambahgolonganalkes');
-        Route::get('/ubah/golongan/alkes/{id}', [AlkesController::class, 'ubahgolonganalkes'])->name('obat.ubahgolonganalkes');
-        Route::post('/ubah/golongan/alkes/{id}', [AlkesController::class, 'changegolonganalkes'])->name('obat.changegolonganalkes');
-
-        Route::get('/data/obats', [ObatController::class, 'dataobats'])->name('obat.dataobats');
-        Route::get('/add/obats', [ObatController::class, 'addobats'])->name('obat.addobats');
-        Route::post('/add/obats', [ObatController::class, 'tambahobats'])->name('obat.tambahobats');
-        Route::get('/ubah/obats/{id}', [ObatController::class, 'ubahobats'])->name('obat.ubahobats');
-        Route::post('/ubah/obats/{id}', [ObatController::class, 'changeobats'])->name('obat.changeobats');
-        Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
-
-        Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
-        Route::get('/data/obat', [SuperAdminController::class, 'dataobat'])->name('superadmin.dataobat');
-        Route::post('/add/data/obat', [SuperAdminController::class, 'tambahobat'])->name('superadmin.tambahdataobat');
-        Route::get('/ubah/data/obat/{id}', [SuperAdminController::class, 'ubahobat'])->name('superadmin.ubahdataobat');
-        Route::post('/ubah/data/obat/{id}', [SuperAdminController::class, 'changeobat'])->name('superadmin.changedataobat');
-
-        Route::get('/jenis/obat', [JenisObatController::class, 'jenisobat'])->name('superadmin.jenisobat');
-        Route::get('/add/jenis/obat', [JenisObatController::class, 'addjenisobat'])->name('superadmin.addjenisobat');
-        Route::post('/add/jenis/obat', [JenisObatController::class, 'tambahjenisobat'])->name('superadmin.tambahjenisobat');
-        Route::get('/ubah/jenis/obat/{id}', [JenisObatController::class, 'ubahjenisobat'])->name('superadmin.ubahjenisobat');
-        Route::post('/ubah/jenis/obat/{id}', [JenisObatController::class, 'changejenisobat'])->name('superadmin.changejenisobat');
-
-        Route::get('/nama/obat', [NamaObatController::class, 'namaobat'])->name('superadmin.namaobat');
-        Route::get('/add/nama/obat', [NamaObatController::class, 'addnamaobat'])->name('superadmin.addnamaobat');
-        Route::post('/add/nama/obat', [NamaObatController::class, 'tambahnamaobat'])->name('superadmin.tambahnamaobat');
-        Route::get('/ubah/nama/obat/{id}', [NamaObatController::class, 'ubahnamaobat'])->name('superadmin.ubahnamaobat');
-        Route::post('/ubah/nama/obat/{id}', [NamaObatController::class, 'changenamaobat'])->name('superadmin.changenamaobat');
-
-        Route::get('/golongan/obat', [GolonganObatController::class, 'golonganobat'])->name('superadmin.golonganobat');
-        Route::get('/add/golongan/obat', [GolonganObatController::class, 'addgolonganobat'])->name('superadmin.addgolonganobat');
-        Route::post('/add/golongan/obat', [GolonganObatController::class, 'tambahgolonganobat'])->name('superadmin.tambahgolonganobat');
-        Route::get('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'ubahgolonganobat'])->name('superadmin.ubahgolonganobat');
-        Route::post('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'changegolonganobat'])->name('superadmin.changegolonganobat');
-
-        Route::get('/satuan/obat', [SatuanObatController::class, 'satuanobat'])->name('superadmin.satuanobat');
-        Route::get('/add/satuan/obat', [SatuanObatController::class, 'addsatuanobat'])->name('superadmin.addsatuanobat');
-        Route::post('/add/satuan/obat', [SatuanObatController::class, 'tambahsatuanobat'])->name('superadmin.tambahsatuanobat');
-        Route::get('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'ubahsatuanobat'])->name('superadmin.ubahsatuanobat');
-        Route::post('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'changesatuanobat'])->name('superadmin.changesatuanobat');
-
-        Route::get('/bobot/obat', [BobotObatController::class, 'bobotobat'])->name('superadmin.bobotobat');
-        Route::get('/add/bobot/obat', [BobotObatController::class, 'addbobotobat'])->name('superadmin.addbobotobat');
-        Route::post('/add/bobot/obat', [BobotObatController::class, 'tambahbobotobat'])->name('superadmin.tambahbobotobat');
-        Route::get('/ubah/bobot/obat/{id}', [BobotObatController::class, 'ubahbobotobat'])->name('superadmin.ubahbobotobat');
-        Route::post('/ubah/bobot/obat/{id}', [BobotObatController::class, 'changebobotobat'])->name('superadmin.changebobotobat');
-
+       
         Route::get('/view/user/{id}', [SuperAdminController::class, 'viewuser'])->name('superadmin.viewuser');
         Route::get('/data/user', [SuperAdminController::class, 'datauser'])->name('superadmin.datauser');
         Route::get('/add/data/user', [SuperAdminController::class, 'adduser'])->name('superadmin.adddatauser');
@@ -448,6 +381,78 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'ubahkategoripasien'])->name('superadmin.ubahkategoripasien');
         Route::post('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'changekategoripasien'])->name('superadmin.changekategoripasien');
     });
+
+    /** Obat */
+    Route::group(['middleware'=>['checkRole:superadmin,apoteker']], function (){
+        Route::get('/data/obats', [ObatController::class, 'dataobats'])->name('obat.dataobats');
+        Route::get('/add/obats', [ObatController::class, 'addobats'])->name('obat.addobats');
+        Route::post('/add/obats', [ObatController::class, 'tambahobats'])->name('obat.tambahobats');
+        Route::get('/ubah/obats/{id}', [ObatController::class, 'ubahobats'])->name('obat.ubahobats');
+        Route::post('/ubah/obats/{id}', [ObatController::class, 'changeobats'])->name('obat.changeobats');
+        Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
+
+        Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
+        Route::get('/data/obat', [SuperAdminController::class, 'dataobat'])->name('superadmin.dataobat');
+        Route::post('/add/data/obat', [SuperAdminController::class, 'tambahobat'])->name('superadmin.tambahdataobat');
+        Route::get('/ubah/data/obat/{id}', [SuperAdminController::class, 'ubahobat'])->name('superadmin.ubahdataobat');
+        Route::post('/ubah/data/obat/{id}', [SuperAdminController::class, 'changeobat'])->name('superadmin.changedataobat');
+
+        Route::get('/jenis/obat', [JenisObatController::class, 'jenisobat'])->name('superadmin.jenisobat');
+        Route::get('/add/jenis/obat', [JenisObatController::class, 'addjenisobat'])->name('superadmin.addjenisobat');
+        Route::post('/add/jenis/obat', [JenisObatController::class, 'tambahjenisobat'])->name('superadmin.tambahjenisobat');
+        Route::get('/ubah/jenis/obat/{id}', [JenisObatController::class, 'ubahjenisobat'])->name('superadmin.ubahjenisobat');
+        Route::post('/ubah/jenis/obat/{id}', [JenisObatController::class, 'changejenisobat'])->name('superadmin.changejenisobat');
+
+        Route::get('/nama/obat', [NamaObatController::class, 'namaobat'])->name('superadmin.namaobat');
+        Route::get('/add/nama/obat', [NamaObatController::class, 'addnamaobat'])->name('superadmin.addnamaobat');
+        Route::post('/add/nama/obat', [NamaObatController::class, 'tambahnamaobat'])->name('superadmin.tambahnamaobat');
+        Route::get('/ubah/nama/obat/{id}', [NamaObatController::class, 'ubahnamaobat'])->name('superadmin.ubahnamaobat');
+        Route::post('/ubah/nama/obat/{id}', [NamaObatController::class, 'changenamaobat'])->name('superadmin.changenamaobat');
+
+        Route::get('/golongan/obat', [GolonganObatController::class, 'golonganobat'])->name('superadmin.golonganobat');
+        Route::get('/add/golongan/obat', [GolonganObatController::class, 'addgolonganobat'])->name('superadmin.addgolonganobat');
+        Route::post('/add/golongan/obat', [GolonganObatController::class, 'tambahgolonganobat'])->name('superadmin.tambahgolonganobat');
+        Route::get('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'ubahgolonganobat'])->name('superadmin.ubahgolonganobat');
+        Route::post('/ubah/golongan/obat/{id}', [GolonganObatController::class, 'changegolonganobat'])->name('superadmin.changegolonganobat');
+
+        Route::get('/satuan/obat', [SatuanObatController::class, 'satuanobat'])->name('superadmin.satuanobat');
+        Route::get('/add/satuan/obat', [SatuanObatController::class, 'addsatuanobat'])->name('superadmin.addsatuanobat');
+        Route::post('/add/satuan/obat', [SatuanObatController::class, 'tambahsatuanobat'])->name('superadmin.tambahsatuanobat');
+        Route::get('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'ubahsatuanobat'])->name('superadmin.ubahsatuanobat');
+        Route::post('/ubah/satuan/obat/{id}', [SatuanObatController::class, 'changesatuanobat'])->name('superadmin.changesatuanobat');
+
+        Route::get('/bobot/obat', [BobotObatController::class, 'bobotobat'])->name('superadmin.bobotobat');
+        Route::get('/add/bobot/obat', [BobotObatController::class, 'addbobotobat'])->name('superadmin.addbobotobat');
+        Route::post('/add/bobot/obat', [BobotObatController::class, 'tambahbobotobat'])->name('superadmin.tambahbobotobat');
+        Route::get('/ubah/bobot/obat/{id}', [BobotObatController::class, 'ubahbobotobat'])->name('superadmin.ubahbobotobat');
+        Route::post('/ubah/bobot/obat/{id}', [BobotObatController::class, 'changebobotobat'])->name('superadmin.changebobotobat');
+
+        Route::get('/data/produk', [ProdukController::class, 'dataproduk'])->name('obat.dataproduk');
+        Route::get('/add/produk', [ProdukController::class, 'addproduk'])->name('obat.addproduk');
+        Route::post('/add/produk', [ProdukController::class, 'tambahproduk'])->name('obat.tambahproduk');
+        Route::get('/ubah/produk/{id}', [ProdukController::class, 'ubahproduk'])->name('obat.ubahproduk');
+        Route::post('/ubah/produk/{id}', [ProdukController::class, 'changeproduk'])->name('obat.changeproduk');
+
+        Route::get('/data/alkes', [AlkesController::class, 'dataalkes'])->name('obat.dataalkes');
+        Route::get('/add/alkes', [AlkesController::class, 'addalkes'])->name('obat.addalkes');
+        Route::post('/add/alkes', [AlkesController::class, 'tambahalkes'])->name('obat.tambahalkes');
+        Route::get('/ubah/alkes/{id}', [AlkesController::class, 'ubahalkes'])->name('obat.ubahalkes');
+        Route::post('/ubah/alkes/{id}', [AlkesController::class, 'changealkes'])->name('obat.changealkes');
+        Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
+
+        Route::get('/nama/alkes', [AlkesController::class, 'namaalkes'])->name('obat.namaalkes');
+        Route::get('/add/nama/alkes', [AlkesController::class, 'addnamaalkes'])->name('obat.addnamaalkes');
+        Route::post('/add/nama/alkes', [AlkesController::class, 'tambahnamaalkes'])->name('obat.tambahnamaalkes');
+        Route::get('/ubah/nama/alkes/{id}', [AlkesController::class, 'ubahnamaalkes'])->name('obat.ubahnamaalkes');
+        Route::post('/ubah/nama/alkes/{id}', [AlkesController::class, 'changenamaalkes'])->name('obat.changenamaalkes');
+
+        Route::get('/golongan/alkes', [AlkesController::class, 'golonganalkes'])->name('obat.golonganalkes');
+        Route::get('/add/golongan/alkes', [AlkesController::class, 'addgolonganalkes'])->name('obat.addgolonganalkes');
+        Route::post('/add/golongan/alkes', [AlkesController::class, 'tambahgolonganalkes'])->name('obat.tambahgolonganalkes');
+        Route::get('/ubah/golongan/alkes/{id}', [AlkesController::class, 'ubahgolonganalkes'])->name('obat.ubahgolonganalkes');
+        Route::post('/ubah/golongan/alkes/{id}', [AlkesController::class, 'changegolonganalkes'])->name('obat.changegolonganalkes');
+    });
+    
     /** Laporan */
     Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja']], function () {
         Route::get('/laporan', [LaporanController::class, 'laporan']);

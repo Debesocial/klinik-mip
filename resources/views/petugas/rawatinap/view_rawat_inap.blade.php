@@ -482,6 +482,14 @@
                     })
                     {{ session()->forget('message') }}
                 @endif
+                @if (session()->exists('warning'))
+                    Swal.fire({
+                        icon: "warning",
+                        title: "{{ session()->get('warning') }}",
+                        text: "Rawat inap yang sudah selesai tidak dapat diubah."
+                    })
+                    {{ session()->forget('warning') }}
+                @endif
             }
         } else {
             console.log("Unfortunately, your browser doesn't support this API");

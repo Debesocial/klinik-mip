@@ -14,6 +14,9 @@ class PermintaanMakananController extends Controller
     {
         $data['id_rawat_inap'] = $id;
         $rawatinap = RawatInap::find($id);
+        if ($rawatinap->berakhir_rawat!=null) {
+            return "Rawat Inap Sudah Selesai";
+        }
         $data['penyakit'] = NamaPenyakit::all();
 
         return view('/component/form_tambah_permintaan_makanan', $data);

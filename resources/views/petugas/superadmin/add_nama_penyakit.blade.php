@@ -57,4 +57,14 @@
     </div>
 </section>
 
+@section('js')
+<script>
+    $('#sub_klasifikasi_id').select2({
+        theme: 'bootstrap-5',
+        selectionCssClass: "select2--small",
+        dropdownCssClass: "select2--small",
+    });
+</script>
+@stop
+
 @endsection

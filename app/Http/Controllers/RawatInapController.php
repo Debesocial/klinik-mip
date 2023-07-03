@@ -89,7 +89,7 @@ class RawatInapController extends Controller
     {
         $rawat_inap = RawatInap::find($id);
         if ($rawat_inap->berakhir_rawat!=null) {
-            return redirect("/view/rawat/inap/" . $id)->with('message', 'Rawat inap telah diselesaikan!');
+            return redirect("/view/rawat/inap/" . $id)->with('warning', 'Rawat inap telah diselesaikan!');
         }
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();

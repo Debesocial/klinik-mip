@@ -263,7 +263,7 @@ function cardLaporan(array $data)
         <div class="card-body p-0">
             <div class="row g-0 h-100">
                 <div class="col-2 rounded-start" style="background-color:' . $data["color"] . ';background-position: center;
-                background-size: cover;">                         
+                background-size: cover;">                    
                 </div>
                 <div class="col-10 p-3">
                     <h5 class="card-title">' . $data["title"] . '</h5>

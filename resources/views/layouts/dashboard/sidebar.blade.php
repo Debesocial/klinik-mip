@@ -44,7 +44,7 @@
                         </a>
                     </li>
 
-                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "perawat")
+                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "apoteker")
                         <li class="sidebar-title"><strong>MASTER DATA</strong></li>
                         @if(Auth::user()->level->nama_level == "superadmin" )
                             <li class="sidebar-item  @yield('side') has-sub">
@@ -71,6 +71,7 @@
                             </li>
                         @endif
 
+                        @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "perawat")
                         <li class="sidebar-item @yield('kate')  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
@@ -85,6 +86,8 @@
                                 </li>
                             </ul>
                         </li>
+                            
+                        @endif
 
                         @if(Auth::user()->level->nama_level == "superadmin" )
                             <li class="sidebar-item @yield('organisasi') has-sub">
@@ -107,7 +110,7 @@
                         @endif
 
 
-                        @if(Auth::user()->level->nama_level == "superadmin")
+                        @if(Auth::user()->level->nama_level == "superadmin"||Auth::user()->level->nama_level == "apoteker")
                             <li class="sidebar-item @yield('obalkes') has-sub">
                                 <a href="#" class='sidebar-link'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
