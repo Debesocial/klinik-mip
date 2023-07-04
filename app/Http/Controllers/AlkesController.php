@@ -20,7 +20,7 @@ class AlkesController extends Controller
      */
     public function dataalkes()
     {
-        $alkes = Alkes::all();
+        $alkes = Alkes::with(['golongan_alkes','satuan_obat','bobot_obat'])->get();
 
         return view('petugas.obat.data_alkes', compact('alkes'));
     }

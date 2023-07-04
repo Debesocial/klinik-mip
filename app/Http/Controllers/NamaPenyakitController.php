@@ -15,7 +15,7 @@ class NamaPenyakitController extends Controller
      */
     public function namapenyakit()
     {
-        $namapenyakit = NamaPenyakit::all();
+        $namapenyakit = NamaPenyakit::with(['sub_klasifikasi'])->get();
         
         
         return view('petugas.superadmin.nama_penyakit')->with('namapenyakit', $namapenyakit);

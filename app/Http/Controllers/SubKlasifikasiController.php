@@ -15,7 +15,7 @@ class SubKlasifikasiController extends Controller
      */
     public function subklasifikasi()
     {
-        $subklasifikasi = SubKlasifikasi::all();
+        $subklasifikasi = SubKlasifikasi::with(['klasifikasi_penyakit'])->get();
         
         
         return view('petugas.superadmin.sub_klasifikasi')->with('subklasifikasi', $subklasifikasi);

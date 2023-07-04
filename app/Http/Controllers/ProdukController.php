@@ -16,7 +16,7 @@ class ProdukController extends Controller
      */
     public function dataproduk()
     {
-        $produk = Produk::all();
+        $produk = Produk::with(['satuan_obat','bobot_obat'])->get();
 
         return view('petugas.obat.data_produk', compact('produk'));
     }

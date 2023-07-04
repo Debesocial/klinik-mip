@@ -26,7 +26,7 @@ class ProdukSeeder extends Seeder
                     "satuan_obat_id" => $data['2'],
                     "bobot_obat_id" => $data['4'],
                     "komposisi" => $data['5'],
-                    "komposisi" => $data['6'],
+                    "harga" => $data['6'],
                 ]);    
             }
             $firstline = false;

@@ -1352,7 +1352,7 @@ class SuperAdminController extends Controller
 
     public function mitrakerja(Request $request)
     {
-        $users = User::where("level_id", "6")->get();
+        $users = User::where("level_id", "6")->with(['divisi','perusahaan'])->get();
         // dd($pasien);
 
         return view('petugas.superadmin.mitra_kerja', compact('users'));
@@ -1453,7 +1453,7 @@ class SuperAdminController extends Controller
      */
     public function datauser()
     {
-        $users = User::where("level_id", "1")->orWhere("level_id", "2")->orWhere("level_id", "3")->orWhere("level_id", "4")->orWhere("level_id", "5")->get();
+        $users = User::where("level_id", "1")->orWhere("level_id", "2")->orWhere("level_id", "3")->orWhere("level_id", "4")->orWhere("level_id", "5")->with('level')->get();
 
 
         return view('petugas.superadmin.data_user')->with('users', $users);
