@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\SpesialisRujukan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class SpesialisRujukanSeeder extends Seeder
 {
@@ -14,57 +15,20 @@ class SpesialisRujukanSeeder extends Seeder
      */
     public function run()
     {
-        SpesialisRujukan::insert([
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam (Internal Medicine)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Gastroenterologi Hepatologi (Gastroenterohepatology)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Ginjal dan Hipertensi (Nephrology)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Hematologi Onkologi Medik (Medical Hematology Oncology)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Rheumatologi (Rheumatology)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Penyakit Tropik Infeksi (Tropical Infectious Disease)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Geriatri',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Penyakit Dalam - Konsultan Endokrin Metabolik Diabetes',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Bedah Umum (General Surgery)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_spesialis_rujukan' => 'Spesialis Bedah - Konsultan Bedah Anak (Pediatric Surgery)',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        SpesialisRujukan::truncate();
+        $csvFile = fopen(base_path("database/data/dokter_spesialis.csv"), "r");
+        $firstline = false;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                SpesialisRujukan::create([
+                    "id" => $data['0'],
+                    "nama_spesialis_rujukan" => $data['1'],
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
 }

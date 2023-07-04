@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Permissions;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class PermissionSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         Permissions::truncate();
         $csvFile = fopen(base_path("database/data/permission.csv"), "r");
         $firstline = true;
@@ -27,7 +29,7 @@ class PermissionSeeder extends Seeder
             }
             $firstline = false;
         }
-   
+        Schema::enableForeignKeyConstraints();
         fclose($csvFile);
     }
 }

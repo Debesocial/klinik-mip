@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\GolonganAlkes;
+use Illuminate\Support\Facades\Schema;
 
 class GolonganAlkesSeeder extends Seeder
 {
@@ -14,18 +15,21 @@ class GolonganAlkesSeeder extends Seeder
      */
     public function run()
     {
-        GolonganAlkes::insert([
-            [
-                'golongan_alkes' => 'Disposable',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'golongan_alkes' => 'Reusable',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        GolonganAlkes::truncate();
+        $csvFile = fopen(base_path("database/data/golongan_alkes.csv"), "r");
+        $firstline = false;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                GolonganAlkes::create([
+                    "id" => $data['0'],
+                    "golongan_alkes" => $data['1'],
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
     
 }

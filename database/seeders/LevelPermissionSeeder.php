@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\LevelPermission;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class LevelPermissionSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class LevelPermissionSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         LevelPermission::truncate();
         $csvFile = fopen(base_path("database/data/level_permission.csv"), "r");
         $firstline = true;
@@ -26,7 +28,7 @@ class LevelPermissionSeeder extends Seeder
             }
             $firstline = false;
         }
-   
+        Schema::enableForeignKeyConstraints();
         fclose($csvFile);
     }
 }

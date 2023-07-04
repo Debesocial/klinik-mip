@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\SubKlasifikasi;
+use App\Models\Produk;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class SubKlasifikasiSeeder extends Seeder
+class ProdukSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,15 +16,17 @@ class SubKlasifikasiSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        SubKlasifikasi::truncate();
-        $csvFile = fopen(base_path("database/data/sub_klasifikasi.csv"), "r");
-        $firstline = false;
+        Produk::truncate();
+        $csvFile = fopen(base_path("database/data/produk.csv"), "r");
+        $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
             if (!$firstline) {
-                SubKlasifikasi::create([
-                    "id" => $data['1'],
-                    "nama_penyakit" => $data['0'],
-                    "klasifikasi_penyakit_id" => $data['3'],
+                Produk::create([
+                    "nama_produk" => $data['0'],
+                    "satuan_obat_id" => $data['2'],
+                    "bobot_obat_id" => $data['4'],
+                    "komposisi" => $data['5'],
+                    "komposisi" => $data['6'],
                 ]);    
             }
             $firstline = false;
