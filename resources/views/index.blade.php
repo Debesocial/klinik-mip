@@ -22,7 +22,6 @@
 @stop
 
 @section('container')
-
     <div class="col-12">
         <div class="btn-group mb-1" style=" float: right;">
             <div class="dropdown">
@@ -43,6 +42,100 @@
 
     <h4 class="card-title">Selamat Datang, {{ Auth::user()->name }}</h4>
     <div class="page-content">
+        @if (Auth::user()->level->nama_level=='superadmin'||Auth::user()->level->nama_level=='apoteker')
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-title">Antrian Resep Obat</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive ">
+                            <table class="table table-hover" id="resep" width=100%>
+                                <thead>
+                                    <th class="text-start">ID</th>
+                                    <th class="text-start">Nama Pasien</th>
+                                    <th class="text-start">Waktu</th>
+                                    <th class=""></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($resep['resep_inap'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
+                                            <td>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_jalan'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
+                                            <td>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_instruksi'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small></td>
+                                            <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->resep_obat!!} , "instruksi")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_vital'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b >Rawat Inap</b> <small class="text-secondary">Pem. Tanda Vital</small></td>
+                                            <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->terapi!!}, "vital")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        @section('js')
+                            <script>
+                                function modalResep(id,nama_pasien,data,jenis) {
+                                   var field_id = $('#_id_pemeriksaan');
+                                   var field_nama = $('#_nama_pasien');
+                                   var modal = $('#modalResep');
+                                   field_id.text(id);
+                                   field_nama.text(nama_pasien);
+                                    modal.modal('show');
+                                }  
+                            </script>
+                        @stop
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        @endif
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
@@ -229,6 +322,34 @@
             </div>
         </div>
     </div>
+    <!-- Modal Resep -->
+    <div class="modal fade" id="modalResep" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-labelledby="modalResep_Label" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalResep_title">Resep Obat</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalResep_body">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Nama Pasien</th>
+                            <td id="_nama_pasien"></td>
+                        </tr>
+                        <tr>
+                            <th>ID Pemeriksaan</th>
+                            <td id="_id_pemeriksaan"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>
 
 @section('js')
 
@@ -606,6 +727,28 @@
         $(document).ready(function(){
             tgl = new Date();
             $('[id*="_'+tgl.getDay()+'"]').css('background-color','rgba(30, 81, 123,0.1)').removeClass('bg-white');
+        })
+    </script>
+
+    <script>
+        $('#resep').DataTable({
+            "language": {
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ data",
+                "emptyTable": "Tidak ada data yang tersedia pada tabel ini",
+                "info": "Menampilkan _START_ sampai _END_, dari _TOTAL_ data",
+                "infoEmpty": "Menampikan 0 sampai 0, dari 0 data",
+                "zeroRecords": "Tidak ditemukan data yang cocok",
+                "infoFiltered": "(Didapatkan dari _MAX_ total seluruh data)",
+            },
+            scrollY: 200,
+            scrollX: true,
+            searching: false,
+            paging:false,
+            info:false,
+            order: [[2, 'desc']],
+            'autoWidth': true,
+            'colReorder': true,
         })
     </script>
 

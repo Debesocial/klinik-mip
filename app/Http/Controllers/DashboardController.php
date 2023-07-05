@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InstruksiDokter;
 use App\Models\IzinBerobat;
 use App\Models\User;
 use App\Models\Jadwal;
@@ -23,8 +24,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-
-
         $data['total_pasien'] = Pasien::count();
         // $data['pasien_per_bulan'] = Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
         $data['pasien_per_bulan'] = DB::table('pasiens as p1')
@@ -50,6 +49,7 @@ class DashboardController extends Controller
         $data['total_kunjungan'] = $kunjungan[1];
         $data['kunjungan_perbulan'] = $kunjungan[0];
         $data['jadwal'] = Jadwal::with(['user'])->get();
+        $data['resep'] = $this->antrianResep();
         return view('index', $data);
     }
 
@@ -70,5 +70,14 @@ class DashboardController extends Controller
         }
         return([array_values($kunjungan), $total]);
         
+    }
+
+    function antrianResep(){
+        $rawat_inap = RawatInap::with(['pasien'])->where('is_delivered',0)->get();
+        $rawat_jalan = RawatJalan::with(['pasien'])->where('is_delivered',0)->get();
+        $instruksi = InstruksiDokter::with(['rawatinap', 'rawatinap.pasien'])->where('is_delivered',0)->get();
+        $vital = TandaVital::with(['rawatinap','rawatinap.pasien'])->where('is_delivered',0)->get();
+
+        return ['resep_inap'=>$rawat_inap,'resep_jalan'=>$rawat_jalan, 'resep_instruksi'=>$instruksi,'resep_vital'=>$vital];
     }
 }
