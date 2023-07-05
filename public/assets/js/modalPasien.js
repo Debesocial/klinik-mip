@@ -12,7 +12,7 @@ function tampilModalPasien(data) {
     $('#modal_jabatan').text(': ' + cekNull(data.jabatan?.nama_jabatan));
     $('#modal_jenis_kelamin').text(': ' + data.jenis_kelamin);
     $('#modal_telepon').text(': ' + data.telepon);
-    $('#modal_email').text(': ' + data.email);
+    $('#modal_email').text(': ' + cekNull(data.email));
     $('#modal_alergi').html(': ' + cekAlergi(data.alergi));
     $('#modal_menyusui').html(': ' + cekTrueFalse(data.hamil_menyusui));
     $('#modal_nama_keluarga').html(': ' + cekAlergi(data.keluarga.nama));
