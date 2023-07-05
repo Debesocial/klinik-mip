@@ -67,13 +67,13 @@ class SuperAdminController extends Controller
 
 
 
-    public function periksanarkoba()
+    public function periksanarkoba(Request $request)
     {
         $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
         $test = TestUrin::all();
+        $selected_pasien = $request->user;
 
-
-        return view('petugas.superadmin.rev.new_periksa_narkoba', compact('pasien_id', 'test'));
+        return view('petugas.superadmin.rev.new_periksa_narkoba', compact('selected_pasien','pasien_id', 'test'));
     }
 
     public function addperiksanarkoba(Request $request)

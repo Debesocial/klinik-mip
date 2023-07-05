@@ -106,9 +106,9 @@
                                         <label class="form-label">Silahkan pilih Pasien berdasarkan <b>ID rekam
                                                 medis</b><b class="color-red"> *</b></label>
                                         <select id="select_pasien_id" class="form-select" required>
-                                            <option value="" selected>Pasien</option>
+                                            <option value="">Pasien</option>
                                             @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}">
+                                                <option value="{{ $key }}" {{$pas->id == $selected_pasien?'selected':''}}>
                                                     {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                             @endforeach
                                         </select>
@@ -563,7 +563,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             linear: true,
             animation: true
         })
-
+        var selectedPasien = "{{$selected_pasien}}";
         let validasiPemeriksaan = true;
         // stepper2.to(3);
         select2_alat = $('select#alat_kesehatan').select2({
@@ -618,11 +618,18 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     if ($(this).attr('id')=='select_pasien_id') {
                         index = $(this).val();
                         pilihPasien(pasien[index])
+                        
                     }
 
                 }
                 drawTableDiagnodsa();
             })
+            if (selectedPasien) {
+                pas = pasien.filter(val => val.id==parseInt(selectedPasien));
+                setPasien(pas[0]);
+                drawTableDiagnodsa();
+                $('#select_pasien_id').attr('disabled','disabled');
+            }
 
             $('input[class="form-check-input"]').click(function() {
                 $(this).siblings('.invalid-feedback').hide()

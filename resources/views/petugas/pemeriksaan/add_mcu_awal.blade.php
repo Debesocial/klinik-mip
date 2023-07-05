@@ -61,7 +61,7 @@
                                         <select id="select_pasien_id" class="form-select" required>
                                             <option value="" selected>Pasien</option>
                                             @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}">
+                                                <option value="{{ $key }}" {{$pas->id == $selected_pasien?'selected':''}}>
                                                     {{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                             @endforeach
                                         </select>
@@ -216,6 +216,7 @@
                 linear: true,
                 animation: true
             })
+            var selectedPasien = "{{$selected_pasien}}";
             $(document).ready(function() {
                 $('select').select2({
                     theme: "bootstrap-5",
@@ -233,12 +234,17 @@
                         $(this).removeClass('is-invalid')
                         if ($(this).attr('id')=='select_pasien_id') {
                             index = $(this).val();
-                            
                             pilihPasien(@json($pasien_id)[index])
                         }
 
                     }
                 })
+
+                if (selectedPasien) {
+                    pas = @json($pasien_id).filter(val => val.id==parseInt(selectedPasien));
+                    setPasien(pas[0]);
+                    $('#select_pasien_id').attr('disabled','disabled');
+                }
 
             });
 

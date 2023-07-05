@@ -35,7 +35,7 @@ class RawatJalanController extends Controller
         return view('petugas.rawatjalan.daftar_rawat_jalan', compact('rawat_jalan'));
     }
 
-    public function addrawatjalan()
+    public function addrawatjalan(Request $request)
     {
         $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
         $nama_penyakit = NamaPenyakit::get();
@@ -44,8 +44,8 @@ class RawatJalanController extends Controller
         $alatkesehatan = Alkes::get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
-
-        return view('petugas.rawatjalan.add_rawat_jalan', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
+        $selected_pasien = $request->user;
+        return view('petugas.rawatjalan.add_rawat_jalan', compact('selected_pasien','pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     public function tambahrawatjalan(Request $request)

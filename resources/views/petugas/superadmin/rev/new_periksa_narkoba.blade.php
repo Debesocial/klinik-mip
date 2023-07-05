@@ -72,7 +72,7 @@
                                         <select id="select_pasien_id" class="form-select" required>
                                             <option value="" selected>Pasien</option>
                                             @foreach ($pasien_id as $key => $pas)
-                                                <option value="{{ $key }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
+                                                <option value="{{ $key }}" {{$pas->id == $selected_pasien?'selected':''}}>{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                                             @endforeach
                                         </select>
                                         <div class="valid-feedback">
@@ -477,6 +477,7 @@
                 linear: true,
                 animation: true
             })
+            var selectedPasien = "{{$selected_pasien}}";
             $(document).ready(function() {
                 $('#select_pasien_id').select2({
                     theme: "bootstrap-5",
@@ -511,6 +512,13 @@
                         pilihPasien(@json($pasien_id)[$(this).val()]);
                     }
                 })
+
+                if (selectedPasien) {
+                    pas = @json($pasien_id).filter(val => val.id==parseInt(selectedPasien));
+                    setPasien(pas[0]);
+                    // drawTableDiagnodsa();
+                    $('#select_pasien_id').attr('disabled','disabled');
+                }
 
                 $('input[class="form-check-input"]').click(function() {
                     $(this).siblings('.invalid-feedback').hide()

@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-md-4 text-end">
                             @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                            <a href="{{ route('rawatinap.addrawatinap') }}" class="btn btn-sm btn-success rounded-pill">
+                            <a href="/add/rawat/inap?user={{$pasien->id}}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-md-4 text-end">
                             @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                            <a href="{{ route('rawatjalan.tambahrawatjalan') }}" class="btn btn-sm btn-success rounded-pill">
+                            <a href="/add/rawat/jalan?user={{$pasien->id}}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
@@ -152,7 +152,7 @@
                         </div>
                         <div class="col-md-4 text-end">
                             @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                            <a href="{{ route('superadmin.periksanarkoba') }}" class="btn btn-sm btn-success rounded-pill">
+                            <a href="/periksa/narkoba?user={{$pasien->id}}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
                             </a> 
@@ -218,8 +218,8 @@
                                     <span>Tambah</span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <li><a class="dropdown-item" href="/add_mcu/awal">- MCU Awal</a></li>
-                                    <li><a class="dropdown-item" href="/add_mcu/lanjutan">- MCU Berkala, Khusus & Akhir</a></li>
+                                    <li><a class="dropdown-item" href="/add_mcu/awal?user={{$pasien->id}}">- MCU Awal</a></li>
+                                    <li><a class="dropdown-item" href="/add_mcu/lanjutan?user={{$pasien->id}}">- MCU Berkala, Khusus & Akhir</a></li>
                                 </ul>
                             </div>
                                 
