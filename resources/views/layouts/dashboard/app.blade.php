@@ -337,8 +337,8 @@
                 confirmButtonColor: '#d33',
                 confirmButtonText: 'Ya, keluar!'
             }).then((result) => {
-                    if (result.isConfirmed) { window.location.href = "{{ route('logout') }}" }
-                })
+                if (result.isConfirmed) { window.location.href = "{{ route('logout') }}" }
+            })
         }
     </script>
     <script src="{{ asset('assets/js/modalPasien.js') }}"></script>

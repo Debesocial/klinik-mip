@@ -45,7 +45,7 @@
         @if (Auth::user()->level->nama_level=='superadmin'||Auth::user()->level->nama_level=='apoteker')
         <div class="row">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card">  
                     <div class="card-header pb-0">
                         <div class="card-title">Antrian Resep Obat</div>
                     </div>
@@ -79,7 +79,7 @@
                                             <td>{{$res->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
                                                         <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
                                                     </svg>
@@ -118,18 +118,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        @section('js')
-                            <script>
-                                function modalResep(id,nama_pasien,data,jenis) {
-                                   var field_id = $('#_id_pemeriksaan');
-                                   var field_nama = $('#_nama_pasien');
-                                   var modal = $('#modalResep');
-                                   field_id.text(id);
-                                   field_nama.text(nama_pasien);
-                                    modal.modal('show');
-                                }  
-                            </script>
-                        @stop
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -323,20 +313,18 @@
         </div>
     </div>
     <!-- Modal Resep -->
-    <div class="modal fade" id="modalResep" data-bs-backdrop="static" data-bs-keyboard="false"
-    aria-labelledby="modalResep_Label" aria-hidden="true">
+    <div class="modal fade" id="modalResep" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modalResep_Label" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalResep_title">Resep Obat</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                    aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="modalResep_body">
                 <table>
                     <tbody>
                         <tr>
-                            <th>Nama Pasien</th>
+                            <th style="white-space: nowrap; width:0">Nama Pasien</th>
                             <td id="_nama_pasien"></td>
                         </tr>
                         <tr>
@@ -345,7 +333,23 @@
                         </tr>
                     </tbody>
                 </table>
-                
+                <div class="row mt-3 mx-3">
+                    <div class="col-md-6 border pt-2">
+                        <h6>Daftar Obat</h6>
+                        <div id="list-resep"></div>
+                    </div>
+                    <div class="col-md-6 py-3 border">
+                        <form action="" id="form-serahkan" action="POST">
+                            <input type="hidden" name="is_delivered" value="1">
+                            <div class="mb-3">
+                                <textarea name="catatan_resep" id="catatan_resep" class="form-control" placeholder="Masukkan catatan penyerahan obat"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-success btn-sm" onclick="confirmSerahkan()">Serahkan Obat</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -355,6 +359,7 @@
 
     <script>
         let pasien = @json($pasien_per_bulan);
+        console.log(pasien);
         let tanggalMax = new Date();
         let tanggalMin = new Date(pasien[0].tanggal);
         const colors = {
@@ -731,7 +736,31 @@
     </script>
 
     <script>
-        $('#resep').DataTable({
+        function modalResep(id,nama_pasien,data,jenis) {
+        var field_id = $('#_id_pemeriksaan');
+        var field_nama = $('#_nama_pasien');
+        var modal = $('#modalResep');
+        var form = $('#form-serahkan');
+        drawTabelResep(data);
+        field_id.text(': '+id);
+        field_nama.text(': '+nama_pasien);
+            modal.modal('show');
+        }
+        const obat = @json($obat);
+        function drawTabelResep(resep){
+            var html = `<ol>`;
+            resep.forEach(res => {
+                var ob = obat.find(ob => ob.id == res.nama_obat);
+                // console.log(ob);
+                html += `<li><b>`+ob.nama_obat+`</b> `+res.jumlah_obat+` `+ob.satuan_obat.satuan_obat+`</li>`
+            });
+            html+=`</ol>`;
+            $('#list-resep').html(html);
+        }
+    </script>
+
+    <script>
+       table= $('#resep').DataTable({
             "language": {
                 "search": "Cari:",
                 "lengthMenu": "Tampilkan _MENU_ data",
@@ -753,6 +782,22 @@
     </script>
 
     <script>
+        function confirmSerahkan() {
+            Swal.fire({ 
+                icon: "warning", 
+                text: "Apakah anda yakin menyerahkan obat ?",
+                showCancelButton: true,
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Tidak',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Serahkan'
+            }).then((result) => {
+                if (result.isConfirmed) { window.location.href = "{{ route('logout') }}" }
+            })
+        }
+    </script>
+
+    <script>
         $(document).ready(function(){
             $('canvas').hover(function () {
                     $('body').css('overflow','hidden')
@@ -762,5 +807,5 @@
             );
         })
     </script>
-@stop
+@endsection
 @endsection

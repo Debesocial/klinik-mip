@@ -9,6 +9,7 @@ use App\Models\Jadwal;
 use App\Models\Level;
 use App\Models\McuAwal;
 use App\Models\McuLanjutan;
+use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\PemantauanCovid;
 use App\Models\PemeriksaanCovid;
@@ -50,6 +51,7 @@ class DashboardController extends Controller
         $data['kunjungan_perbulan'] = $kunjungan[0];
         $data['jadwal'] = Jadwal::with(['user'])->get();
         $data['resep'] = $this->antrianResep();
+        $data['obat'] = Obat::with(['satuan_obat'])->get();
         return view('index', $data);
     }
 
