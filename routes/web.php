@@ -74,7 +74,8 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
 });
 
 Route::group(['middleware' => ['auth']], function () {
-
+    Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
+    Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
     /** Pemeriksaan */
     Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja']], function () {
 
@@ -381,7 +382,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'ubahkategoripasien'])->name('superadmin.ubahkategoripasien');
         Route::post('/ubah/kategori/pasien/{id}', [KategoriPasienController::class, 'changekategoripasien'])->name('superadmin.changekategoripasien');
     });
-
+    
     /** Obat */
     Route::group(['middleware'=>['checkRole:superadmin,apoteker']], function (){
         Route::get('/data/obats', [ObatController::class, 'dataobats'])->name('obat.dataobats');
@@ -389,7 +390,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/obats', [ObatController::class, 'tambahobats'])->name('obat.tambahobats');
         Route::get('/ubah/obats/{id}', [ObatController::class, 'ubahobats'])->name('obat.ubahobats');
         Route::post('/ubah/obats/{id}', [ObatController::class, 'changeobats'])->name('obat.changeobats');
-        Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
+        
 
         Route::get('/add/data/obat', [SuperAdminController::class, 'addobat'])->name('superadmin.adddataobat');
         Route::get('/data/obat', [SuperAdminController::class, 'dataobat'])->name('superadmin.dataobat');
@@ -438,7 +439,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/alkes', [AlkesController::class, 'tambahalkes'])->name('obat.tambahalkes');
         Route::get('/ubah/alkes/{id}', [AlkesController::class, 'ubahalkes'])->name('obat.ubahalkes');
         Route::post('/ubah/alkes/{id}', [AlkesController::class, 'changealkes'])->name('obat.changealkes');
-        Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
+        
 
         Route::get('/nama/alkes', [AlkesController::class, 'namaalkes'])->name('obat.namaalkes');
         Route::get('/add/nama/alkes', [AlkesController::class, 'addnamaalkes'])->name('obat.addnamaalkes');
