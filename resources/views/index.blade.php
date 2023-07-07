@@ -123,6 +123,85 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">  
+                    <div class="card-header pb-0">
+                        <div class="card-title">Resep Diserahkan Hari Ini</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive ">
+                            <table class="table table-hover" id="resep" width=100%>
+                                <thead>
+                                    <th class="text-start">ID</th>
+                                    <th class="text-start">Nama Pasien</th>
+                                    <th class="text-start">Waktu</th>
+                                    <th class=""></th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($resep['resep_inap'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
+                                            <td>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_jalan'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
+                                            <td>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_instruksi'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small></td>
+                                            <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->resep_obat!!} , "instruksi")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($resep['resep_vital'] as $res)
+                                        <tr>
+                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b >Rawat Inap</b> <small class="text-secondary">Pem. Tanda Vital</small></td>
+                                            <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->terapi!!}, "vital")'>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+            </div>
         </div>
             
         @endif

@@ -919,7 +919,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             $('#resep').val(JSON.stringify(resep));
             $('#body_resep').html(html);
         }
-stepper2.to(3);
+
         function clearformResep() {
             id_resep.forEach(id => {
                 form = $('#' + id);
