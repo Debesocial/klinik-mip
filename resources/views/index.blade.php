@@ -799,6 +799,8 @@
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Serahkan'
             }).then((result) => {
+                $('#modalResep').hide();
+                showLoader();
                 if (result.isConfirmed) { window.location.href = url }
             })
         }
