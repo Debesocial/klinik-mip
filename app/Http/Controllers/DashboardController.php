@@ -95,7 +95,7 @@ class DashboardController extends Controller
             $query = TandaVital::where('id',$id);
         }
 
-        $query = $query->update(['is_delivered'=>1,'catatan_resep'=>$request->catatan_resep]);
+        $query = $query->update(['is_delivered'=>1,'catatan_resep'=>$request->catatan_resep, 'delivered_at'=>date('Y-m-d H:i:s')]);
         return redirect('/');
     }
 }
