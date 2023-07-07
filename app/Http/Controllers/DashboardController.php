@@ -82,4 +82,20 @@ class DashboardController extends Controller
 
         return ['resep_inap'=>$rawat_inap,'resep_jalan'=>$rawat_jalan, 'resep_instruksi'=>$instruksi,'resep_vital'=>$vital];
     }
+
+    function serahkanobat(Request $request,$jenis,$id) {
+    
+        if ($jenis=='inap') {
+            $query = RawatInap::where('id',$id);
+        }elseif ($jenis =='jalan') {
+            $query = RawatJalan::where('id',$id);
+        }elseif ($jenis == 'instruksi') {
+           $query = InstruksiDokter::where('id',$id);
+        }elseif ($jenis =='vital') {
+            $query = TandaVital::where('id',$id);
+        }
+
+        $query = $query->update(['is_delivered'=>1,'catatan_resep'=>$request->catatan_resep]);
+        return redirect('/');
+    }
 }

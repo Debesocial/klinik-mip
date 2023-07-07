@@ -76,6 +76,7 @@ Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,ten
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
     Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
+    Route::get('/serahkan-obat/{jenis}/{id}',[DashboardController::class, 'serahkanobat']);
     /** Pemeriksaan */
     Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja']], function () {
 
