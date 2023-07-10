@@ -51,6 +51,7 @@ class DashboardController extends Controller
         $data['kunjungan_perbulan'] = $kunjungan[0];
         $data['jadwal'] = Jadwal::with(['user'])->get();
         $data['resep'] = $this->antrianResep();
+        $data['delivered_resep'] = $this->deliveredResep();
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         return view('index', $data);
     }
@@ -82,6 +83,14 @@ class DashboardController extends Controller
 
         return ['resep_inap'=>$rawat_inap,'resep_jalan'=>$rawat_jalan, 'resep_instruksi'=>$instruksi,'resep_vital'=>$vital];
     }
+    function deliveredResep(){
+        $rawat_inap = RawatInap::with(['pasien'])->where('is_delivered',1)->whereDate('delivered_at', date('Y-m-d'))->get();
+        $rawat_jalan = RawatJalan::with(['pasien'])->where('is_delivered',1)->whereDate('delivered_at', date('Y-m-d'))->get();
+        $instruksi = InstruksiDokter::with(['rawatinap', 'rawatinap.pasien'])->where('is_delivered',1)->whereDate('delivered_at', date('Y-m-d'))->get();
+        $vital = TandaVital::with(['rawatinap','rawatinap.pasien'])->where('is_delivered',1)->whereDate('delivered_at', date('Y-m-d'))->get();
+
+        return ['resep_inap'=>$rawat_inap,'resep_jalan'=>$rawat_jalan, 'resep_instruksi'=>$instruksi,'resep_vital'=>$vital];
+    }
 
     function serahkanobat(Request $request,$jenis,$id) {
     
@@ -95,7 +104,11 @@ class DashboardController extends Controller
             $query = TandaVital::where('id',$id);
         }
 
-        $query = $query->update(['is_delivered'=>1,'catatan_resep'=>$request->catatan_resep, 'delivered_at'=>date('Y-m-d H:i:s')]);
+        $query = $query->update([
+            'is_delivered'=>1,'catatan_resep'=>$request->catatan_resep, 
+            'delivered_at'=>date('Y-m-d H:i:s'),
+            'need_approve_resep'=>$request->need_approve_resep
+        ]);
         return redirect('/');
     }
 }

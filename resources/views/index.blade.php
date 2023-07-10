@@ -44,7 +44,7 @@
     <div class="page-content">
         @if (Auth::user()->level->nama_level=='superadmin'||Auth::user()->level->nama_level=='apoteker')
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <div class="card">  
                     <div class="card-header pb-0">
                         <div class="card-title">Antrian Resep Obat</div>
@@ -61,7 +61,7 @@
                                 <tbody>
                                     @foreach ($resep['resep_inap'] as $res)
                                         <tr>
-                                            <td class="text-primary">{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
+                                            <td >{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
                                             <td>{{$res->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
@@ -75,7 +75,7 @@
                                     @endforeach
                                     @foreach ($resep['resep_jalan'] as $res)
                                         <tr>
-                                            <td class="text-primary">{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
+                                            <td >{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
                                             <td>{{$res->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
@@ -89,7 +89,7 @@
                                     @endforeach
                                     @foreach ($resep['resep_instruksi'] as $res)
                                         <tr>
-                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small></td>
+                                            <td >{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small></td>
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
@@ -103,7 +103,7 @@
                                     @endforeach
                                     @foreach ($resep['resep_vital'] as $res)
                                         <tr>
-                                            <td class="text-primary">{{$res->rawatinap->id_rawat_inap}} <br> <b >Rawat Inap</b> <small class="text-secondary">Pem. Tanda Vital</small></td>
+                                            <td >{{$res->rawatinap->id_rawat_inap}} <br> <b >Rawat Inap</b> <small class="text-secondary">Pem. Tanda Vital</small></td>
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
@@ -123,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="card">  
                     <div class="card-header pb-0">
                         <div class="card-title">Resep Diserahkan Hari Ini</div>
@@ -133,16 +133,60 @@
                             <table class="table table-hover" id="resep_delivered" width=100%>
                                 <thead>
                                     <th class="text-start">Penyerahan Resep</th>
-                                    <th class="text-start">Catatan</th>
+                                    <th class="text-start">Waktu Pemberian</th>
                                     <th class=""></th>
                                 </thead>
                                 <tbody>
-                                    
+                                    @foreach ($delivered_resep['resep_inap'] as $res)
+                                        <tr>
+                                            <td >{{$res->id_rawat_inap}} <br><b>Rawat Inap</b><br>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->delivered_at }}">{{tanggal($res->delivered_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-secondary border-0 btn-sm" onclick='modalResepDelivered("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap", "{{$res->catatan_resep}}", "{{$res->need_approve_resep}}")'>
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($delivered_resep['resep_jalan'] as $res)
+                                        <tr>
+                                            <td >{{$res->id_rawat_jalan}} <br><b>Rawat Jalan</b><br>{{$res->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->delivered_at }}">{{tanggal($res->delivered_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-secondary border-0 btn-sm" onclick='modalResepDelivered("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan", "{{$res->catatan_resep}}", "{{$res->need_approve_resep}}")'>
+                                                   <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($delivered_resep['resep_instruksi'] as $res)
+                                        <tr>
+                                            <td >{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small><br>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->delivered_at }}">{{tanggal($res->delivered_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-secondary border-0 btn-sm" onclick='modalResepDelivered("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->resep_obat!!} , "instruksi", "{{$res->catatan_resep}}", "{{$res->need_approve_resep}}")'>
+                                                   <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach ($delivered_resep['resep_vital'] as $res)
+                                        <tr>
+                                            <td>
+                                                {{$res->rawatinap->id_rawat_inap}} <br> 
+                                                <b >Rawat Inap</b> 
+                                                <small class="text-secondary">Pem. Tanda Vital</small><br>{{$res->rawatinap->pasien->nama_pasien}}</td>
+                                            <td data-sort="{{ $res->delivered_at }}">{{tanggal($res->delivered_at,null,null,null,true)}}</td>
+                                            <td class="text-center">
+                                                <button class="btn btn-outline-secondary border-0 btn-sm" onclick='modalResepDelivered("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->terapi!!}, "vital", "{{$res->catatan_resep}}", "{{$res->need_approve_resep}}")'>
+                                                   <i class="bi bi-eye-fill"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                        
-                        
                     </div>
                 </div>
             </div>
@@ -337,52 +381,104 @@
     </div>
     <!-- Modal Resep -->
     <div class="modal fade" id="modalResep" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modalResep_Label" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalResep_title">Resep Obat</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modalResep_body">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th style="white-space: nowrap; width:0">Nama Pasien</th>
-                            <td id="_nama_pasien"></td>
-                        </tr>
-                        <tr>
-                            <th>ID Pemeriksaan</th>
-                            <td id="_id_pemeriksaan"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="row mt-3 mx-3">
-                    <div class="col-md-6 border pt-2">
-                        <h6>Daftar Obat</h6>
-                        <div id="list-resep"></div>
-                    </div>
-                    <div class="col-md-6 py-3 border">
-                        <form action="" id="form-serahkan" action="POST">
-                            <input type="hidden" name="is_delivered" value="1">
-                            <div class="mb-3">
-                                <textarea name="catatan_resep" id="catatan_resep" class="form-control" placeholder="Masukkan catatan penyerahan obat"></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button type="button" class="btn btn-success btn-sm" id="button-serahkan" onclick="confirmSerahkan()">Serahkan Obat</button>
-                            </div>
-                        </form>
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalResep_title">Resep Obat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalResep_body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th style="white-space: nowrap; width:0">Nama Pasien</th>
+                                <td id="_nama_pasien"></td>
+                            </tr>
+                            <tr>
+                                <th>ID Pemeriksaan</th>
+                                <td id="_id_pemeriksaan"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row mt-3 mx-3">
+                        <div class="col-md-6 border pt-2">
+                            <h6>Daftar Obat</h6>
+                            <div id="list-resep"></div>
+                        </div>
+                        <div class="col-md-6 py-3 border">
+                            <form action="" id="form-serahkan" action="POST">
+                                <input type="hidden" name="is_delivered" value="1">
+                                <div class="mb-3">
+                                    <textarea name="catatan_resep" id="catatan_resep" class="form-control" placeholder="Masukkan catatan penyerahan obat"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" name="need_approve_resep" id="need_approve_resep">
+                                        <label class="form-check-label" for="need_approve_resep">
+                                        Beritahu Dokter
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-success btn-sm" id="button-serahkan" onclick="confirmSerahkan()">Serahkan Obat</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Modal Resep Delivered -->
+    <div class="modal fade" id="_modalResep" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="_modalResep_Label" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="_modalResep_title">Resep Obat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="_modalResep_body">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th style="white-space: nowrap; width:0">Nama Pasien</th>
+                                <td id="_nama_pasien_delivered"></td>
+                            </tr>
+                            <tr>
+                                <th>ID Pemeriksaan</th>
+                                <td id="_id_pemeriksaan_delivered"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="row mt-3 mx-3">
+                        <div class="col-md-6 border pt-2">
+                            <h6>Daftar Obat</h6>
+                            <div id="list-resep-delivered"></div>
+                        </div>
+                        <div class="col-md-6 py-3 border">
+                            <form action="" id="form-serahkan" action="POST">
+                                <input type="hidden" name="is_delivered" value="1">
+                                <div class="mb-3">
+                                    <textarea name="_catatan_resep" id="_catatan_resep" class="form-control" placeholder="Tidak Ada Catatan" disabled></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" name="_need_approve_resep" id="_need_approve_resep" disabled>
+                                        <label class="form-check-label" for="_need_approve_resep">Beritahu Dokter</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @section('js')
 
     <script>
         let pasien = @json($pasien_per_bulan);
-        console.log(pasien);
         let tanggalMax = new Date();
         let tanggalMin = new Date(pasien[0].tanggal);
         const colors = {
@@ -774,6 +870,22 @@
 
             modal.modal('show');
         }
+        function modalResepDelivered(id,id_per,nama_pasien,data,jenis, catatan, approve) {
+            var field_id = $('#_id_pemeriksaan_delivered');
+            var field_nama = $('#_nama_pasien_delivered');
+            var modal = $('#_modalResep');
+            
+            drawTabelResep(data);
+            field_id.text(': '+id_per);
+            field_nama.text(': '+nama_pasien);
+            $('#_catatan_resep').val(catatan);
+            if (approve == 1) {
+                $('#_need_approve_resep').prop('checked',true);
+            }else{
+                $('#_need_approve_resep').prop('checked',false);
+            }
+            modal.modal('show');
+        }
         const obat = @json($obat);
         function drawTabelResep(resep){
             var html = `<ol>`;
@@ -784,6 +896,8 @@
             });
             html+=`</ol>`;
             $('#list-resep').html(html);
+            $('#list-resep-delivered').html(html);
+            
         }
     </script>
 
@@ -822,7 +936,7 @@
             searching: false,
             paging:false,
             info:false,
-            order: [[2, 'desc']],
+            order: [[1, 'desc']],
             'autoWidth': true,
             'colReorder': true,
         })
@@ -830,8 +944,12 @@
 
     <script>
         function confirmSerahkan() {
-            catatan  = $('#catatan_resep').val();
-            url = url+"?catatan_resep="+catatan;
+            var catatan  = $('#catatan_resep').val();
+            var need_approve = 0;
+            if($('#need_approve_resep:checked').val()==1){
+                need_approve = 1;
+            }
+            url = url+"?catatan_resep="+catatan+"&need_approve_resep="+need_approve;
             Swal.fire({ 
                 icon: "warning", 
                 text: "Apakah anda yakin menyerahkan obat ?",
