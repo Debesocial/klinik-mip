@@ -75,6 +75,18 @@
                                     @endif 
                                 </td>
                             </tr>
+                            <tr>
+                                @php
+                                    $vendor = [1=>'Rumah Sakit',2=>'Laboratorium',3=>'Perusahaan Jasa K3', 4=>'Lain'];
+                                    $id = $mcuawal->id_jenis_vendor_mcu;
+                                @endphp
+                                <th>Penyedia/Vendor</th>
+                                <td>: {{($id!=4?$vendor[$id]:$mcuawal->others_jenis_vendor_mcu)}}</td>
+                            </tr>
+                            <tr>
+                                <th>Nama Vendor</th>
+                                <td>: {{$mcuawal->nama_vendor_mcu}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

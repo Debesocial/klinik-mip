@@ -610,14 +610,11 @@ class SuperAdminController extends Controller
             $filename = '';
         }
 
-       $save =  McuAwal::create([
-            'pasien_id' => $request->pasien_id,
-            'hasil_rekomendasi' => $request->hasil_rekomendasi,
-            'anjuran' => $request->anjuran,
-            'dokumen'=>$filename,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        $data = $request->except('_token');
+        $data['dokumen'] = $filename;
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+        $save =  McuAwal::create($data);
 
         if($save){
             return redirect("mcu/$save->id")->with('message', 'Berhasil menambahkan MCU Awal');

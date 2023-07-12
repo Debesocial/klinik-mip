@@ -61,39 +61,43 @@
     </ol>
 
     <b>B. Hasil Tes Urin</b><br>
-    Pemeriksaan urin dengan metode <b>Rapid Diagnostic Test (6 Parameter)</b>
+    Pemeriksaan urin dengan metode <b>Rapid Diagnostic Test (7 Parameter)</b>
     <table style="padding-left:0.5cm">
         <tbody>
             <tr>
                 <td><b>1. Amphetamine (AMP)</b></td>
-                <td class={{($narko->amp==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->amp==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->amp==0)?'':'bg-red'}}>: <b>{{($narko->amp==0)?'Negatif':'Positif'}}</b></td>
             </tr>
             <tr>
                 <td><b>2. Methamphetamine (MET) <i></td>
-                <td class={{($narko->met==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->met==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->met==0)?'':'bg-red'}}>: <b>{{($narko->met==0)?'Negatif':'Positif'}}</b></td>
             </tr>
             <tr>
                 <td><b>3. TetraHydroCannibinol (THC)</b></td>
-                <td class={{($narko->thc==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->thc==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->thc==0)?'':'bg-red'}}>: <b>{{($narko->thc==0)?'Negatif':'Positif'}}</b></td>
             </tr>
             <tr>
                 <td><b>4. Benzodiazepine (BZO)</b></td>
-                <td class={{($narko->bzo==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->bzo==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->bzo==0)?'':'bg-red'}}>: <b>{{($narko->bzo==0)?'Negatif':'Positif'}}</b></td>
             </tr>
             <tr>
                 <td><b>5. Morphine (MOP)</b></td>
-                <td class={{($narko->mop==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->mop==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->mop==0)?'':'bg-red'}}>: <b>{{($narko->mop==0)?'Negatif':'Positif'}}</b></td>
             </tr>
             <tr>
                 <td><b>6. Cocaine (COC) <i></td>
-                <td class={{($narko->coc==0)?'bg-blue':'bg-red'}}>: <b>{{($narko->coc==0)?'Negatif':'Positif'}}</b></td>
+                <td class={{($narko->coc==0)?'':'bg-red'}}>: <b>{{($narko->coc==0)?'Negatif':'Positif'}}</b></td>
+            </tr>
+            <tr>
+                <td><b>6. Carisoprodol (SOMA) <i></td>
+                <td class={{($narko->soma==0)?'':'bg-red'}}>: <b>{{($narko->soma==0)?'Negatif':'Positif'}}</b></td>
             </tr>
         </tbody>
     </table>
 
     <p>Dapat disimpulkan bahwa dari hasil pemeriksaan, nama yang bersangkutan dinyatakan <br> 
         @if ($narko->amp == 0 && $narko->met == 0 && $narko->thc == 0 && $narko->bzo == 0 && $narko->mop == 0 && $narko->coc == 0)
-        <span class="bg-blue"><b>Tidak Terindikasi</b></span>
+        <span class=""><b>Tidak Terindikasi</b></span>
         @else
             <span class="bg-red"><b>Terindikasi</b></span>
         @endif 

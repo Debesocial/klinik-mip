@@ -13,6 +13,7 @@ class CreateMcuLanjutansTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('mcu_lanjutans');
         Schema::create('mcu_lanjutans', function (Blueprint $table) {
             $table->id();
@@ -25,6 +26,9 @@ class CreateMcuLanjutansTable extends Migration
             $table->string('rekomendasi');
             $table->string('jenis_pemeriksaan')->nullable();
             $table->string('status');
+            $table->integer('id_jenis_vendor_mcu');
+            $table->string('others_jenis_vendor_mcu');
+            $table->string('nama_vendor_mcu');
             $table->string('dokumen')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
@@ -32,6 +36,7 @@ class CreateMcuLanjutansTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

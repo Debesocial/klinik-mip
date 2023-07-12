@@ -55,7 +55,7 @@
                             <td >{{ $narko->pasien->id_rekam_medis }}</td>
                             <td>{{ $narko->pasien->nama_pasien }}</td>
                             <td class="text-center">
-                                @if ($narko->amp == 0 && $narko->met == 0 && $narko->thc == 0 && $narko->bzo == 0 && $narko->mop == 0 && $narko->coc == 0)
+                                @if ($narko->amp == 0 && $narko->met == 0 && $narko->thc == 0 && $narko->bzo == 0 && $narko->mop == 0 && $narko->coc == 0 && $narko->soma == 0)
                                     <span class="badge bg-primary">Tidak Terindikasi</span>
                                 @else
                                     <span class="badge bg-danger">Terindikasi</span>

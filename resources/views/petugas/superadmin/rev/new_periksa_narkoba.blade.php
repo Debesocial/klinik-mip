@@ -317,6 +317,26 @@
                                                             </div>
                                                         </td>
                                                     </tr>
+                                                    <tr>
+                                                        <th>Carisoprodol(SOMA) <b class="color-red">*</b></th>
+                                                        <td>
+                                                            <input class="form-check-input" type="radio"
+                                                                name="soma" id="soma" value="0">
+                                                            <label class="form-check-label" for="no">
+
+                                                                Negatif
+                                                            </label>&emsp;
+                                                            <input class="form-check-input" type="radio"
+                                                                name="soma" id="soma" value="1">
+                                                            <label class="form-check-label" for="yes">
+
+                                                                Positif
+                                                            </label>
+                                                            <div class="invalid-feedback" id="invalid-soma">
+                                                                Hasil periksa SOMA harus diisi
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -448,6 +468,11 @@
 
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <th>Carisoprodol (SOMA)</th>
+                                                    <td id="review-soma">
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -574,7 +599,7 @@
             }
 
             function lanjut3() {
-                var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc', 'tujuan_surat'];
+                var tests = ['amp', 'met', 'thc', 'bzo', 'mop', 'coc','soma', 'tujuan_surat'];
                 var validation_hasil = true;
                 tests.forEach(test => {
                     if (test=='tujuan_surat') {

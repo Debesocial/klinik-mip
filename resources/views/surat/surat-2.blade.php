@@ -66,7 +66,7 @@
                         </td>
                         <td style="padding-left: 20px;">
                             <div >
-                                <h3 >PT. Mandiri Inti Perkasa</h3>
+                                <h3 >PT MANDIRI INTIPERKASA</h3>
                                 <p class="m-0" style="font-size:14px">Site Lagub, Kecamatan Sembakung, Kab. Nunukan Provinsi Kalimantan Utara</p>
                                 <small style="font-size:12px">
                                     email: mip-site@mandirigroup.net

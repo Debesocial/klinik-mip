@@ -122,6 +122,12 @@
                                     <span class="badge bg-{{ ($narkoba->coc==0)? 'primary':'danger' }}">{{ ($narkoba->coc==0) ? 'Negatif':'Positif' }}</span>
                                 </td>
                             </tr>
+                            <tr>
+                                <th>Carisoprodol(SOMA)</th>
+                                <td id="review-coc">
+                                    <span class="badge bg-{{ ($narkoba->soma==0)? 'primary':'danger' }}">{{ ($narkoba->soma==0) ? 'Negatif':'Positif' }}</span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -29,6 +29,7 @@ class CreateTestUrinsTable extends Migration
             $table->boolean('bzo');
             $table->boolean('mop');
             $table->boolean('coc');
+            $table->boolean('soma');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

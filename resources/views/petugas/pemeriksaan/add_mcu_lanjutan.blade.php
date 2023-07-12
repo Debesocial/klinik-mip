@@ -154,6 +154,24 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
+                                            <label for="" class="form-label">Penyedia/Vendor<b class="text-danger">*</b></label>
+                                            <select name="id_jenis_vendor_mcu" id="id_jenis_vendor_mcu" class="form-select">
+                                                <option value="">Pilih Vendor</option>
+                                                <option value="1">Rumah Sakit</option>
+                                                <option value="2">Laboratorium</option>
+                                                <option value="3">Perusahaan Jasa K3</option>
+                                                <option value="4">Lain-lain</option>
+                                            </select>
+                                            <div class="mt-2" id="form-other" style="display:none">
+                                                <textarea type="text" class="form-control" name="others_jenis_vendor_mcu" id="others_jenis_vendor_mcu" placeholder="Masukkan penyedia/vendor lainnya"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Nama Vendor<b class="text-danger">*</b></label>
+                                            <input type="text" name="nama_vendor_mcu" id="nama_vendor_mcu" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label>
                                             <input type="file" name="dokumen" id="dokumen" class="form-control">
                                             {!!validasi('Ukuran file', 'terlalu besar')!!}
@@ -279,6 +297,14 @@
                                                     <td id="_jenis_pemeriksaan"></td>
                                                 </tr> --}}
                                                 <tr>
+                                                    <th>Vendor/Penyedia</th>
+                                                    <td id="_id_jenis_vendor_mcu"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Nama Vendor</th>
+                                                    <td id="_nama_vendor_mcu"></td>
+                                                </tr>
+                                                <tr>
                                                     <th>Status</th>
                                                     <td id="_status"></td>
                                                 </tr>
@@ -306,6 +332,7 @@
                                                         <th>Rekomendasi Untuk Pasien</th>
                                                         <td id="_rekomendasi"></td>
                                                     </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
@@ -355,6 +382,14 @@
                             index = $(this).val();
                             pilihPasien(@json($pasien_id)[index])
                         }
+                        if ($(this).attr('id')=='id_jenis_vendor_mcu') {
+                            if ($(this).val()==4) {
+                                $('#form-other').show()
+                            }else{
+                                $('#form-other').hide()
+                                $('#others_jenis_vendor_mcu').val('');
+                            }
+                        }
                     }
                 })
                 if (selectedPasien) {
@@ -385,7 +420,10 @@
 
             function lanjut2() {
                 var validated = true;
-                var idinput = ['jenis_mcu', 'tanggal_pemeriksaan', 'jenis_pemeriksaan', 'status'];
+                var idinput = ['jenis_mcu', 'tanggal_pemeriksaan', 'jenis_pemeriksaan', 'status','id_jenis_vendor_mcu', 'nama_vendor_mcu'];
+                if ($('#id_jenis_vendor_mcu').val()==4) {
+                    idinput = ['jenis_mcu', 'tanggal_pemeriksaan', 'jenis_pemeriksaan', 'status','id_jenis_vendor_mcu', 'nama_vendor_mcu','others_jenis_vendor_mcu'];
+                }
                 idinput.forEach(id => {
                     var input = $('#' + id);
                     if (input.val() == null || input.val() == '') {
@@ -396,10 +434,16 @@
                         input.addClass('is-valid');
                         input.removeClass('is-invalid');
                         var review = $('#_' + id);
-                        if (id == 'tanggal_pemeriksaan') {
+                        if (id == 'tanggal_pemeriksaan' || id == 'nama_vendor_mcu') {
                             review.text(': ' + input.val());
                         } else {
                             review.text(': ' + input.children('option:selected').text());
+                            if (id =='id_jenis_vendor_mcu') {
+                                if ($('#'+id).children('option:selected').val()==4) {
+                                    val = $('#others_jenis_vendor_mcu').val();
+                                    review.text(': ' + val);
+                                }
+                            }
                         }
                     }
                 });
@@ -431,6 +475,12 @@
 
             function setReview(id, val) {
                 var td = $('#_' + id);
+                if (id =='id_jenis_vendor_mcu') {
+                    val = $('#'+id).children('option:selected').text();
+                    if ($('#'+id).children('option:selected').val()==4) {
+                        val = $('#others_jenis_vendor_mcu').val();
+                    }
+                }
                 td.text(': ' + val);
             }
         </script>

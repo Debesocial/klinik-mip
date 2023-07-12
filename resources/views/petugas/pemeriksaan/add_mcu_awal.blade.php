@@ -120,6 +120,24 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
+                                            <label for="" class="form-label">Penyedia/Vendor<b class="text-danger">*</b></label>
+                                            <select name="id_jenis_vendor_mcu" id="id_jenis_vendor_mcu" class="form-select">
+                                                <option value="">Pilih Vendor</option>
+                                                <option value="1">Rumah Sakit</option>
+                                                <option value="2">Laboratorium</option>
+                                                <option value="3">Perusahaan Jasa K3</option>
+                                                <option value="4">Lain-lain</option>
+                                            </select>
+                                            <div class="mt-2" id="form-other" style="display:none">
+                                                <textarea type="text" class="form-control" name="others_jenis_vendor_mcu" id="others_jenis_vendor_mcu" placeholder="Masukkan penyedia/vendor lainnya"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Nama Vendor<b class="text-danger">*</b></label>
+                                            <input type="text" name="nama_vendor_mcu" id="nama_vendor_mcu" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label>
                                             <input type="file" name="dokumen" id="dokumen" class="form-control">
                                             {!!validasi('Ukuran file', 'terlalu besar')!!}
@@ -188,6 +206,14 @@
                                                     <th>Anjuran</th>
                                                     <td id="_anjuran"></td>
                                                 </tr>
+                                                <tr>
+                                                    <th>Vendor/Penyedia</th>
+                                                    <td id="_id_jenis_vendor_mcu"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Nama Vendor</th>
+                                                    <td id="_nama_vendor_mcu"></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -236,7 +262,14 @@
                             index = $(this).val();
                             pilihPasien(@json($pasien_id)[index])
                         }
-
+                        if ($(this).attr('id')=='id_jenis_vendor_mcu') {
+                            if ($(this).val()==4) {
+                                $('#form-other').show()
+                            }else{
+                                $('#form-other').hide()
+                                $('#others_jenis_vendor_mcu').val('');
+                            }
+                        }
                     }
                 })
 
@@ -262,7 +295,10 @@
 
             function lanjut2() {
                 var validated = true;
-                var inputs = ['hasil_rekomendasi', 'anjuran'];
+                var inputs = ['hasil_rekomendasi', 'anjuran', 'id_jenis_vendor_mcu', 'nama_vendor_mcu'];
+                if ($('#id_jenis_vendor_mcu').val()==4) {
+                    inputs = ['hasil_rekomendasi', 'anjuran', 'id_jenis_vendor_mcu', 'nama_vendor_mcu','others_jenis_vendor_mcu'];
+                }
                 inputs.forEach(input => {
                     var value_input = $('[name="' + input + '"]').val();
                     if (value_input == ""||value_input == ' '||value_input == null) {
@@ -285,6 +321,12 @@
                 var td = $('#_'+id);
                 if (id=='hasil_rekomendasi') {
                     val = $('#select2-hasil_rekomendasi-container').text();
+                }
+                if (id =='id_jenis_vendor_mcu') {
+                    val = $('#'+id).children('option:selected').text();
+                    if ($('#'+id).children('option:selected').val()==4) {
+                        val = $('#others_jenis_vendor_mcu').val();
+                    }
                 }
                 td.text(': '+val);
             }

@@ -98,6 +98,7 @@ class PemeriksaanNarkobaController extends Controller
         $narkoba->bzo = $request->input('bzo');
         $narkoba->mop = $request->input('mop');
         $narkoba->coc = $request->input('coc');
+        $narkoba->soma = $request->input('soma');
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
             $filename = time() . '_' . $file->getClientOriginalName();  
@@ -167,6 +168,7 @@ class PemeriksaanNarkobaController extends Controller
             'bzo' => $request->bzo,
             'mop' => $request->mop,
             'coc' => $request->coc,
+            'soma' => $request->soma,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);

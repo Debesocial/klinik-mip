@@ -64,6 +64,19 @@
                                 <td id="_jenis_pemeriksaan">: {{ cekMcu($mculanjutan->jenis_pemeriksaan) }}</td>
                             </tr> --}}
                             <tr>
+                                
+                                 @php
+                                    $vendor = [1=>'Rumah Sakit',2=>'Laboratorium',3=>'Perusahaan Jasa K3', 4=>'Lain'];
+                                    $id = $mculanjutan->id_jenis_vendor_mcu;
+                                @endphp
+                                <th>Penyedia/Vendor</th>
+                                <td>: {{($id!=4?$vendor[$id]:$mculanjutan->others_jenis_vendor_mcu)}}</td></td>
+                            </tr>
+                            <tr>
+                                <th>Nama Vendor</th>
+                                <td>: {{$mculanjutan->nama_vendor_mcu}}</td>
+                            </tr>
+                            <tr>
                                 <th>Status</th>
                                 <td id="_status">: {{ cekRekomendasi($mculanjutan->status) }}</td>
                             </tr>
