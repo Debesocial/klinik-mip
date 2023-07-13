@@ -123,8 +123,8 @@
                                     <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label class="form-label">Tanggal Berobat <b class="text-danger">*</b></label>
-                                            <input type="date" class="form-control" name="tanggal_berobat" id="tanggal_berobat" value="{{$rawat_jalan->tanggal_berobat}}">
-                                            {!!validasi('Tanggal Berobat')!!}
+                                            <input type="date" class="form-control" name="tanggal_berobat" id="tanggal_berobat" max="{{date('Y-m-d')}}" value="{{$rawat_jalan->tanggal_berobat}}">
+                                            {!!validasi('Tanggal Berobat', 'harus diisi dan tidak boleh future date')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -554,6 +554,31 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+        select2_penyakit =$('select#nama_penyakit_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            tags : true,
+        });
+        let penyakitSelected = {!! $rawat_jalan->nama_penyakit_id !!};
+        // Rearrange the selected options based on penyakitSelected array
+        let selectedOptions = [];
+        penyakitSelected.forEach((value) => {
+            let option = select2_penyakit.find(`option[value="${value}"]`);
+            if (option.length > 0) {
+                selectedOptions.push(option);
+            }
+        });
+
+        // Clear the current selected options
+        select2_penyakit.val(null);
+
+        // Append the selected options in the desired order
+        selectedOptions.forEach((option) => {
+            select2_penyakit.append(option);
+        });
+        select2_penyakit.val(penyakitSelected).trigger('change');
+
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -631,11 +656,17 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 } else {
                     $('[name*="' + input + '"]').removeClass('is-invalid')
                     $('[name*="' + input + '"]').addClass('is-valid')
+                    if (input == 'tanggal_berobat') {
+                        if (validateFutureDate(value_input)==false) {
+                            validated = false;
+                            $('[name*="' + input + '"]').removeClass('is-valid')
+                            $('[name*="' + input + '"]').addClass('is-invalid')
+                        }
+                    }
                     setResult(input, text_input);
                 }
-            });
-            validated = validasiFile(20000,'dokumen');
-            if (validated === true) {
+            }); 
+            if (validated === true && validasiFile(20000,'dokumen') == true) {
                 stepper2.next()
             }
         }

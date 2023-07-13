@@ -296,9 +296,9 @@
             },
             scrollY: 320,
             scrollX: true,
-            ordering: false,
+           
             'autoWidth': true,
-            'colReorder': true,
+            
         })
 
         function cekImg(val) {

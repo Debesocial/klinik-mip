@@ -117,17 +117,16 @@
                                         <div class="mb-3">
                                             <label for="" class="form-label">Tanggal Pemeriksaan <b
                                                     class="text-danger">*</b></label>
-                                            <input type="date" class="form-control" name="tanggal_pemeriksaan"
-                                                id="tanggal_pemeriksaan">
+                                            <input type="date" class="form-control" name="tanggal_pemeriksaan" id="tanggal_pemeriksaan" max="{{date('Y-m-d')}}">
                                             <div class="valid-feedback">
                                                 Data sudah benar
                                             </div>
                                             <div class="invalid-feedback">
-                                                Tanggal harus diisi.
+                                                Tanggal harus diisi dan tidak boleh future date.
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            {{-- <label for="" class="form-label">Jenis Pemeriksaan <b
+                                            {{-- <label for="" class="form-label">Jenis Pemeriksaan <b  
                                                     class="text-danger">*</b></label> --}}
                                             <input type="hidden" name="jenis_pemeriksaan" id="jenis_pemeriksaan" value="1" >
                                             <div class="valid-feedback">
@@ -443,6 +442,13 @@
                                     val = $('#others_jenis_vendor_mcu').val();
                                     review.text(': ' + val);
                                 }
+                            }
+                        }
+                        if (id == 'tanggal_pemeriksaan') {
+                            if (validateFutureDate(input.val())==false) {
+                                input.addClass('is-invalid');
+                                input.removeClass('is-valid');
+                                validated = false;
                             }
                         }
                     }

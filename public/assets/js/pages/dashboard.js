@@ -252,4 +252,14 @@ function getDateDiff(time1, time2, abs=true) {
     return validate;
 
 }
+
+function validateFutureDate(date){
+    let currDate = new Date();
+    let givDate = new Date(date);
+    let validated = true;
+    if (givDate > currDate) {
+        validated = false;
+    }
+    return validated;
+}
   

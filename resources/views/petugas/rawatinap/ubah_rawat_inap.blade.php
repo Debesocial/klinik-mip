@@ -125,8 +125,8 @@
                                     <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label class="form-label">Mulai Dirawat <b class="text-danger">*</b></label>
-                                            <input type="date" class="form-control" name="mulai_rawat" id="mulai_rawat" value="{{$rawat_inap->mulai_rawat}}">
-                                            {!!validasi('Mulai dirawat')!!}
+                                            <input type="date" class="form-control" name="mulai_rawat" id="mulai_rawat" max="{{date('Y-m-d')}}" value="{{$rawat_inap->mulai_rawat}}">
+                                            {!!validasi('Mulai dirawat', 'harus diisi dan tidak boleh future date')!!}
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
@@ -242,8 +242,11 @@
                                         <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
                                             <select class="form-select"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
-                                                @foreach ($nama_penyakit as $penyakit)
+                                                {{-- @foreach ($nama_penyakit as $penyakit)
                                                     <option value="{{ $penyakit->id }}" {{(in_array($penyakit->id, json_decode($rawat_inap->nama_penyakit_id)))? 'selected':''}}>{{ $penyakit->primer }}</option>
+                                                @endforeach --}}
+                                                @foreach ($nama_penyakit as $penyakit)
+                                                    <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                                 @endforeach
                                             </select>
                                             {!!validasi('Nama penyakit')!!}
@@ -570,14 +573,42 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+        select2_penyakit =$('select#nama_penyakit_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            tags : true,
+        });
+        let penyakitSelected = {!! $rawat_inap->nama_penyakit_id !!};
+        // Rearrange the selected options based on penyakitSelected array
+        let selectedOptions = [];
+        penyakitSelected.forEach((value) => {
+            let option = select2_penyakit.find(`option[value="${value}"]`);
+            if (option.length > 0) {
+                selectedOptions.push(option);
+            }
+        });
+
+        // Clear the current selected options
+        select2_penyakit.val(null);
+
+        // Append the selected options in the desired order
+        selectedOptions.forEach((option) => {
+            select2_penyakit.append(option);
+        });
+        select2_penyakit.val(penyakitSelected).trigger('change');
+        
         let validasiPemeriksaan = true;
+       
         $(document).ready(function() {
-            $('select').select2({
+            $('select#select_pasien_id').select2({
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
+                tags: true,
             });
-
+            
+             
             $('input').keyup(function(event) {
                 if ($(this).hasClass('is-invalid')) {
                     $(this).removeClass('is-invalid')
@@ -676,6 +707,13 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 } else {
                     $('[name="' + input + '"]').removeClass('is-invalid')
                     $('[name="' + input + '"]').addClass('is-valid')
+                    if (input == 'mulai_rawat') {
+                        if (validateFutureDate(value_input)==false) {
+                            validated = false;
+                            $('[name*="' + input + '"]').removeClass('is-valid')
+                            $('[name*="' + input + '"]').addClass('is-invalid')
+                        }
+                    }
                     setResult(input, text_input);
                 }
             });

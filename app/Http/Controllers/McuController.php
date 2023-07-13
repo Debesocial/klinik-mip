@@ -93,8 +93,20 @@ class McuController extends Controller
             $filename = '';
         }
         $data['dokumen']=$filename;
+
+        
+
         $save = McuLanjutan::create($data);
         if ($save) {
+            if ($request->status == 2 || $request->status == 3) {
+                $all_hasil = json_decode(json_encode(hasilRekomendasi()),true);
+                $id_hasil = $request->status;
+                // dd($id_hasil);
+                $hasil = array_values(array_filter($all_hasil, function ($arr) use ($id_hasil){
+                    return $arr['id'] == $id_hasil;
+                }))[0];
+                return redirect("mcu/lanjutan/$save->id")->with('rujuk', ['Berhasil menambahkan MCU '. cekMcu($data['jenis_mcu']), 'Hasil rekomendasi adalah <b>'.$hasil['nama'].'</b> <br> Apakah anda ingin membuat <b>surat rujukan</b> ?'] );
+            }
             return redirect("/mcu/lanjutan/$save->id")->with('message', 'Berhasil Menambah MCU ' . cekMcu($data['jenis_mcu']));
         }
     }

@@ -77,7 +77,7 @@
                                     <td>: {{$jalan->laju_pernapasan}} / {{$jalan->laju_pernapasan_menit}} menit</td>
                                 </tr>
                                 <tr>
-                                    <th>pemeriksaan_penunjang</th>
+                                    <th>Pemeriksaan Penunjang</th>
                                     <td>: {{$jalan->pemeriksaan_penunjang}}</td>
                                 </tr>
                                 <tr>

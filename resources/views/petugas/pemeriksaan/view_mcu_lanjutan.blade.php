@@ -78,7 +78,20 @@
                             </tr>
                             <tr>
                                 <th>Status</th>
-                                <td id="_status">: {{ cekRekomendasi($mculanjutan->status) }}</td>
+                                <td id="_status">: 
+                                    {{ cekRekomendasi($mculanjutan->status) }} <br>
+                                    @if ($mculanjutan->status == 2 || $mculanjutan->status == 3)
+                                    <a href="/surat/rujukan?id_pasien={{$mculanjutan->pasien->id}}" >
+                                        <small>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
+                                                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
+                                                <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-12Z"/>
+                                                <path d="M9.979 5.356a.5.5 0 0 0-.968.04L7.92 10.49l-.94-3.135a.5.5 0 0 0-.926-.08L4.69 10H4.5a.5.5 0 0 0 0 1H5a.5.5 0 0 0 .447-.276l.936-1.873 1.138 3.793a.5.5 0 0 0 .968-.04L9.58 7.51l.94 3.135A.5.5 0 0 0 11 11h.5a.5.5 0 0 0 0-1h-.128L9.979 5.356Z"/>
+                                            </svg>
+                                            Buat surat rujukan
+                                        </small></a>
+                                @endif
+                                </td>
                             </tr>
                             <tr>
                                 <th>File Pendukung</th>
@@ -140,6 +153,23 @@
                         text: "{{ session()->get('message') }}"
                     })
                     {{ session()->forget('message') }}
+                @endif
+                @if (session()->exists('rujuk'))
+                    Swal.fire({
+                        icon: "success",
+                        title: "{{ session()->get('rujuk')[0] }}",
+                        html: "{!! session()->get('rujuk')[1] !!}",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText : 'Tidak'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "/surat/rujukan?id_pasien={{$mculanjutan->pasien->id}}";
+                        }
+                    })
+                    {{ session()->forget('rujuk') }}
                 @endif
             }
         } else {

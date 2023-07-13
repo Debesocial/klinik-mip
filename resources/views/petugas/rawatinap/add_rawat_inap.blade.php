@@ -141,8 +141,8 @@
                                     <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label class="form-label">Mulai Dirawat <b class="text-danger">*</b></label>
-                                            <input type="date" class="form-control" name="mulai_rawat" id="mulai_rawat">
-                                            {!!validasi('Mulai dirawat')!!}
+                                            <input type="date" class="form-control" name="mulai_rawat" id="mulai_rawat" max="{{date('Y-m-d')}}">
+                                            {!!validasi('Mulai dirawat','harus diisi dan tidak boleh future date')!!}
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Berakhir Dirawat</label>
@@ -613,6 +613,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
+                
             })
 
             $('input').keyup(function(event) {
@@ -723,6 +724,13 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                 } else {
                     $('[name*="' + input + '"]').removeClass('is-invalid')
                     $('[name*="' + input + '"]').addClass('is-valid')
+                    if (input == 'mulai_rawat') {
+                        if (validateFutureDate(value_input)==false) {
+                            validated = false;
+                            $('[name*="' + input + '"]').removeClass('is-valid')
+                            $('[name*="' + input + '"]').addClass('is-invalid')
+                        }
+                    }
                     setResult(input, text_input);
                     // validasiPemeriksaan = true;
                 }

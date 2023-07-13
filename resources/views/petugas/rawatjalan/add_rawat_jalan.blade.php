@@ -141,8 +141,8 @@
                                     <div class="row mb-2">
                                         <div class="col-md-6">
                                             <label class="form-label">Tanggal Berobat <b class="text-danger">*</b></label>
-                                            <input type="date" class="form-control" name="tanggal_berobat" id="tanggal_berobat">
-                                            {!!validasi('Tanggal Berobat')!!}
+                                            <input type="date" class="form-control" name="tanggal_berobat" id="tanggal_berobat" max="{{date('Y-m-d')}}">
+                                            {!!validasi('Tanggal Berobat', 'harus diisi dan tidak boleh future date')!!}
                                         </div>
                                     </div>
                                     <div class="mb-2">
@@ -643,8 +643,16 @@
                     $('[name*="' + input + '"]').removeClass('is-valid')
                     $('[name*="' + input + '"]').addClass('is-invalid')
                 } else {
+                    
                     $('[name*="' + input + '"]').removeClass('is-invalid')
                     $('[name*="' + input + '"]').addClass('is-valid')
+                    if (input == 'tanggal_berobat') {
+                        if (validateFutureDate(value_input)==false) {
+                            validated = false;
+                            $('[name*="' + input + '"]').removeClass('is-valid')
+                            $('[name*="' + input + '"]').addClass('is-invalid')
+                        }
+                    }
                     setResult(input, text_input);
                 }
             });

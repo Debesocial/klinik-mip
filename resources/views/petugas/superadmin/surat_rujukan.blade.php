@@ -14,10 +14,10 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label for="last-name-column">Pasien <b class="color-red">*</b></label>
-                        <select name="pasien_id" id="pasien_id" class="form-select" onchange="setPasien(this)" required>
-                            <option value="" disabled selected>Pilih ID Rekam Medis Pasien</option>
+                        <select name="pasien_id" id="pasien_id" class="form-select" onchange="setPasien(this)" {{($id_pasien)?'readonly':''}} required>
+                            <option value="" disabled>Pilih ID Rekam Medis Pasien</option>
                             @foreach ($pasien_id as $pas)
-                                <option value="{{ $pas['id'] }}">{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
+                                <option value="{{ $pas['id'] }}" {{$id_pasien == $pas['id']?'selected':''}} >{{ $pas['id_rekam_medis'] }} - {{ $pas['nama_pasien'] }} </option>
                             @endforeach
                         </select>
                         {!! detailPasienSurat([
@@ -89,6 +89,7 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+        const selectedPasien = "{{$id_pasien}}";
 
         $(document).ready(function () {
             $('#rumah_sakit_rujukan_id').change(function () { 
@@ -103,6 +104,10 @@
                     }
                     
                 });
+                if (selectedPasien!=''||selectedPasien!=null) {
+                    $('#pasien_id').val(selectedPasien).trigger('change');
+                    setPasien($('#pasien_id'));
+                }
         });
         
         let colId = ['pekerjaan','kategori_pasien_id','nama_pasien'];

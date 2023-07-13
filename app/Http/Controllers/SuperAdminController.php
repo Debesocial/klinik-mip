@@ -614,9 +614,21 @@ class SuperAdminController extends Controller
         $data['dokumen'] = $filename;
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
+
+
+        $all_hasil = json_decode(json_encode(hasilRekomendasi()),true);
+        $id_hasil = $request->hasil_rekomendasi;
+        $hasil = array_values(array_filter($all_hasil, function ($arr) use ($id_hasil){
+            return $arr['id'] == $id_hasil;
+        }))[0];
+        
+
         $save =  McuAwal::create($data);
 
         if($save){
+            if ($request->hasil_rekomendasi == 2 || $request->hasil_rekomendasi == 3) {
+                return redirect("mcu/$save->id")->with('rujuk', ['Berhasil menambahkan MCU Awal.', 'Hasil rekomendasi adalah <b>'.$hasil['nama'].'</b> <br> Apakah anda ingin membuat <b>surat rujukan</b> ?'] );
+            }
             return redirect("mcu/$save->id")->with('message', 'Berhasil menambahkan MCU Awal');
         }
 
@@ -918,14 +930,17 @@ class SuperAdminController extends Controller
         return view('petugas.superadmin.data_surat_rujukan', compact('suratrujukan', 'pasien', 'rsrujukan', 'spesialisrujukan'));
     }
 
-    public function suratrujukan()
+    public function suratrujukan(Request $request)
     {
         $pasien_id = Pasien::with(['kategori'])->get();
         $suratrujukan = SuratRujukan::all();
         $spesialisrujukan = SpesialisRujukan::all();
         $rsrujukan = RumahSakitRujukan::all();
-
-        return view('petugas.superadmin.surat_rujukan', compact('pasien_id', 'suratrujukan', 'spesialisrujukan', 'rsrujukan'));
+        $id_pasien = null;
+        if ($request->id_pasien) {
+            $id_pasien = $request->id_pasien;
+        }
+        return view('petugas.superadmin.surat_rujukan', compact('pasien_id', 'suratrujukan', 'spesialisrujukan', 'rsrujukan','id_pasien'));
     }
 
     public function printsuratrujukan($id)
@@ -941,7 +956,6 @@ class SuperAdminController extends Controller
 
     public function addsuratrujukan(Request $request)
     {
-        // dd($request);
 
         $data=$request->except(['_token']);
         $data['created_by'] = auth()->user()->id;
