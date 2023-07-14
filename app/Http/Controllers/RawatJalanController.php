@@ -54,14 +54,15 @@ class RawatJalanController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
-
+        $dokumen = [];
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move('pemeriksaan/rawatjalan', $filename);
-        } else {
-            $filename = '';
-        }
+            foreach ($file as $val) {
+                $filename = time() . '_' . $val->getClientOriginalName();
+                $dokumen[] = $filename;
+                $val->move('pemeriksaan/rawatjalan', $filename); 
+            }
+        } 
         if ($request->hasFile('persetujuan_tindakan')) {
             $file = $request->file('persetujuan_tindakan');
             $persetujuan = time() . '_' . $file->getClientOriginalName();
@@ -70,7 +71,7 @@ class RawatJalanController extends Controller
             $persetujuan = '';
         }
 
-        $data['dokumen'] = $filename;
+        $data['dokumen'] = json_encode($dokumen);
         $data['persetujuan_tindakan'] = $persetujuan;
         $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
         $save = RawatJalan::create($data);
@@ -109,16 +110,28 @@ class RawatJalanController extends Controller
         $data = $request->except(['_token','old_dokumen', 'old_persetujuan_tindakan']);
         $data['updated_by'] = auth()->user()->id;
 
+        // hapus dokumen ada yang berubah
+        $currDok = RawatJalan::select('dokumen')->where('id',$id)->get()[0]->dokumen;
+        $currDok = json_decode($currDok);
+        if ($currDok) {
+            foreach ($currDok as $key) {
+                //hapus yang tidak ada
+                if (!in_array($key,json_decode($request->old_dokumen))) {
+                    $path = parse_url('pemeriksaan/rawatjalan/'.$key);
+                    File::delete(public_path($path['path']));
+                }
+            }
+        }
+        $dokumen = json_decode($request->old_dokumen);
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
-            $filename = time() . '_' . $file->getClientOriginalName();  
-            $file->move('pemeriksaan/rawatjalan', $filename);
-            if ($request->old_dokumen) {
-                $path = parse_url('pemeriksaan/rawatjalan/'.$request->old_dokumen);
-                File::delete(public_path($path['path']));
+            foreach ($file as $val) {
+                $filename = time() . '_' . $val->getClientOriginalName();
+                $dokumen[] = $filename;
+                $val->move('pemeriksaan/rawatjalan', $filename); 
             }
-            $data['dokumen']=$filename;
         }
+        $data['dokumen']=json_encode($dokumen);
         if ($request->hasFile('persetujuan_tindakan')) {
             $file = $request->file('persetujuan_tindakan');
             $persetujuan = time() . '_' . $file->getClientOriginalName();  

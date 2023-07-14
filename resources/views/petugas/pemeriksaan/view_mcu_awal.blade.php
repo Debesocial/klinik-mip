@@ -60,7 +60,7 @@
                             <tr>
                                 <th>Hasil Rekomendasi</th>
                                 <td id="_hasil_pemantauan_id">: {{ cekRekomendasi($mcuawal->hasil_rekomendasi) }} 
-                                     @if ($mcuawal->hasil_rekomendasi == 2 || $mcuawal->hasil_rekomendasi == 3)
+                                    @if ($mcuawal->hasil_rekomendasi == 2 || $mcuawal->hasil_rekomendasi == 3)
                                         <a href="/surat/rujukan?id_pasien={{$mcuawal->pasien->id}}" ><br>
                                             <small>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-pulse" viewBox="0 0 16 16">
@@ -82,10 +82,15 @@
                             <tr>
                                 <th>File Pendukung</th>
                                 <td>
-                                    @if ($mcuawal->dokumen)
-                                         <a href="{{asset('pemeriksaan/mcuAwal/'.$mcuawal->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$mcuawal->dokumen}}</a>
+                                    @if (count(json_decode($mcuawal->dokumen))!=0)
+                                    <ol>
+                                        @foreach (json_decode($mcuawal->dokumen) as $dokumen)
+                                            <li> <a href="{{asset('pemeriksaan/mcuAwal/'.$dokumen)}}" target="blank">{{$dokumen}}</a></li>
+                                        @endforeach
+
+                                    </ol>
                                     @else
-                                        : <small class="text-warning"> Belum ada dokumen</small>
+                                        <small class="text-warning"> Belum ada dokumen</small>
                                     @endif 
                                 </td>
                             </tr>

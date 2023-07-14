@@ -22,7 +22,7 @@ class CreateTestUrinsTable extends Migration
             $table->string('jenis_obat')->nullable();
             $table->string('asal_obat')->nullable();
             $table->string('terakhir_digunakan')->nullable();
-            $table->text('dokumen')->nullable();
+            $table->json('dokumen')->nullable();
             $table->boolean('amp');
             $table->boolean('met');
             $table->boolean('thc');

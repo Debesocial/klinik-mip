@@ -87,8 +87,13 @@
                                 <tr>
                                     <th>Dokumentasi Pendukung</th>
                                     <td>
-                                        @if ($jalan->dokumen)
-                                            <a href="{{asset('pemeriksaan/rawatjalan/'.$jalan->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$jalan->dokumen}}</a>
+                                        @if (count(json_decode($jalan->dokumen))!=0)
+                                        <ol>
+                                            @foreach (json_decode($jalan->dokumen) as $dokumen)
+                                                <li> <a href="{{asset('pemeriksaan/rawatjalan/'.$dokumen)}}" target="blank">{{$dokumen}}</a></li>
+                                            @endforeach
+    
+                                        </ol>
                                         @else
                                             : <small class="text-warning"> Belum ada dokumen</small>
                                         @endif 

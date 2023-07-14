@@ -217,14 +217,37 @@
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Dokumentasi Pendukung <b><small class="text-warning">**Ukuran file maksimal 20MB</small></b></label> <br>
-                                        @if ($rawat_inap->dokumen)
-                                            <a href="{{asset('pemeriksaan/rawatinap/'.$rawat_inap->dokumen)}}" target="blank">{{$rawat_inap->dokumen}}</a>
+                                        @if (count(json_decode($rawat_inap->dokumen))!=0)
+                                            <ol>
+                                                @foreach (json_decode($rawat_inap->dokumen) as $dokumen)
+                                                    <li> <a href="{{asset('pemeriksaan/rawatinap/'.$dokumen)}}" target="blank">{{$dokumen}}</a> <button onclick="removeItem(this)" type="button" class="btn btn-sm btn-outline-danger border-0"><i class="bi bi-trash"></i></button></li>
+                                                @endforeach
+
+                                            </ol>
                                         @else
                                             <small class="text-warning">Belum ada dokumen</small>
                                         @endif
-                                        <input type="file" name="dokumen" id="dokumen" class="form-control">
-                                        {!!validasi('Ukuran file','terlalu besar')!!}
-                                        <input type="hidden" name="old_dokumen" value="{{$rawat_inap->dokumen}}">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <div id="dokumen-input">
+                                                    <div class="mb-3" id="dok">
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <input type="file" name="dokumen[]" id="dokumen" class="form-control">
+                                                                {!!validasi('Ukuran file','terlalu besar')!!}
+                                                            </div>
+                                                            <div class="col-2">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-end">
+                                                <button type="button" class="btn btn-outline-success btn-sm" onclick="tambahDokumen()"><i class="bi bi-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="old_dokumen" id="old_dokumen" value="{{$rawat_inap->dokumen}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -558,6 +581,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 @section('js')
     <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
     <script>
+        let oldDokumenPendukung = {!!$rawat_inap->dokumen!!};
         var stepper2 = new Stepper(document.querySelector('#stepper2'), {
         linear: true,
         animation: true
@@ -717,8 +741,8 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     setResult(input, text_input);
                 }
             });
-            
-            if (validasiPemeriksaan && validated && validasiFile(20000,'dokumen')) {
+            var files = document.getElementsByName("dokumen[]");
+            if (validasiPemeriksaan && validated && validasiManyFile(20000,files)) {
                 stepper2.next()
             }
         }
@@ -971,6 +995,24 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function hideModal(id) {
             var modal = $('#' + id);
             modal.modal('hide');
+        }
+        function tambahDokumen() {
+            let inputDokumen = $('#dok');
+            let newInput = inputDokumen.clone();
+            html = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteField(this)"><i class="bi bi-trash"></i></button>`;
+            newInput.children('div').children('div.col-2').html(html);
+            newInput.children('div').children('div').children('input').val('').removeClass(['is-valid','is-invalid']);
+            newInput.appendTo('#dokumen-input');
+        }
+
+        function deleteField(params) {
+            $(params).parentsUntil('#dok').remove();
+        }
+        function removeItem(item) {
+            $(item).parent().remove();
+            var namaDokumen = $(item).siblings('a').text();
+            oldDokumenPendukung=oldDokumenPendukung.filter(function(e){return e != namaDokumen});
+            $('#old_dokumen').val(JSON.stringify(oldDokumenPendukung));
         }
     </script>
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>

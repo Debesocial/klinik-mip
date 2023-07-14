@@ -57,18 +57,27 @@
                             </tr>
                             <tr>
                                 <th>Dokumentasi Pendukung</th>
-                                <td>
-                                    @if ($inap->dokumen)
-                                        <a href="{{asset('pemeriksaan/rawatinap/'.$inap->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$inap->dokumen}}</a>
+                                <td>:</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    @if (count(json_decode($inap->dokumen))!=0)
+                                    <ol>
+                                        @foreach (json_decode($inap->dokumen) as $dokumen)
+                                            <li> <a href="{{asset('pemeriksaan/rawatinap/'.$dokumen)}}" target="blank">{{$dokumen}}</a></li>
+                                        @endforeach
+
+                                    </ol>
                                     @else
-                                        : <small class="text-warning"> Belum ada dokumen</small>
+                                        <small class="text-warning"> Belum ada dokumen</small>
                                     @endif 
-                                </td>
+                                </td> 
                             </tr>
                             <tr>
                                 <th>Status Lokalis</th>
                                 <td>: {{$inap->status_lokalis}}</td>
                             </tr>
+                            
                             <tr>
                                 <th>Persetujuan Tindakan Medis</th>
                                 <td>

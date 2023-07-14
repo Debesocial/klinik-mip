@@ -21,7 +21,7 @@ class CreateMcuAwalsTable extends Migration
             $table->foreignId('pasien_id')->constrained();
             $table->foreignId('hasil_rekomendasi');
             $table->text('anjuran');
-            $table->string('dokumen')->nullable();
+            $table->json('dokumen')->nullable();
             $table->integer('id_jenis_vendor_mcu');
             $table->string('others_jenis_vendor_mcu')->nullable();
             $table->string('nama_vendor_mcu');

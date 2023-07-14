@@ -172,8 +172,26 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label>
-                                            <input type="file" name="dokumen" id="dokumen" class="form-control">
-                                            {!!validasi('Ukuran file', 'terlalu besar')!!}
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div id="dokumen-input">
+                                                        <div class="mb-3" id="dok">
+                                                            <div class="row">
+                                                                <div class="col-10">
+                                                                    <input type="file" name="dokumen[]" id="dokumen" class="form-control">
+                                                                    {!!validasi('Ukuran file','terlalu besar')!!}
+                                                                </div>
+                                                                <div class="col-2">
+    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 text-end">
+                                                    <button type="button" class="btn btn-outline-success btn-sm" onclick="tambahDokumen()"><i class="bi bi-plus"></i></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -453,7 +471,8 @@
                         }
                     }
                 });
-                if (validated == true && validasiFile(20000,'dokumen')) {
+                var files = document.getElementsByName("dokumen[]");
+                if (validated == true && validasiManyFile(20000,files)) {
                     stepper2.next();
                 }
             }
@@ -488,6 +507,18 @@
                     }
                 }
                 td.text(': ' + val);
+            }
+            function tambahDokumen() {
+                let inputDokumen = $('#dok');
+                let newInput = inputDokumen.clone();
+                html = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteField(this)"><i class="bi bi-trash"></i></button>`;
+                newInput.children('div').children('div.col-2').html(html);
+                newInput.children('div').children('div').children('input').val('').removeClass(['is-valid','is-invalid']);
+                newInput.appendTo('#dokumen-input');
+            }
+
+            function deleteField(params) {
+                $(params).parentsUntil('#dok').remove();
             }
         </script>
     @stop

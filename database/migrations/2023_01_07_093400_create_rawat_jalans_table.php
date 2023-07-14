@@ -33,7 +33,7 @@ class CreateRawatJalansTable extends Migration
             $table->text('status_lokalis');
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->text('obat_konsumsi')->nullable();
-            $table->string('dokumen')->nullable();
+            $table->json('dokumen')->nullable();
             $table->string('persetujuan_tindakan')->nullable();
             $table->json('nama_penyakit_id');
             $table->json('tindakan');

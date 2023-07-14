@@ -96,10 +96,15 @@
                             <tr>
                                 <th>File Pendukung</th>
                                 <td>
-                                    @if ($mculanjutan->dokumen)
-                                         <a href="{{asset('pemeriksaan/mcuLanjut/'.$mculanjutan->dokumen)}}" target="_blank" rel="noopener noreferrer">: {{$mculanjutan->dokumen}}</a>
+                                    @if (count(json_decode($mculanjutan->dokumen))!=0)
+                                    <ol>
+                                        @foreach (json_decode($mculanjutan->dokumen) as $dokumen)
+                                            <li> <a href="{{asset('pemeriksaan/mcuLanjut/'.$dokumen)}}" target="blank">{{$dokumen}}</a></li>
+                                        @endforeach
+
+                                    </ol>
                                     @else
-                                        : <small class="text-warning"> Belum ada dokumen</small>
+                                        <small class="text-warning"> Belum ada dokumen</small>
                                     @endif 
                                 </td>
                             </tr>

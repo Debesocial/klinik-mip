@@ -230,7 +230,7 @@ function getDateDiff(time1, time2, abs=true) {
         let fsize = fi[0].size;
         let file = Math.round((fsize / 1024));
         // The size of the file.
-        console.log(file);
+        
         if (file > max) {
             $('#'+id).addClass('is-invalid');
             $('#'+id).removeClass('is-valid');
@@ -253,6 +253,27 @@ function getDateDiff(time1, time2, abs=true) {
 
 }
 
+function validasiManyFile(max, input) {
+    validate = true;
+    input.forEach(val => {
+        file = val.files;
+        if (file.length >0) {
+            let fsize = file[0].size;
+            let size = Math.round((fsize / 1024));
+            
+            if (size > max) {
+                $(val).addClass('is-invalid');
+                $(val).removeClass('is-valid');
+                validate = false;
+            }else{
+                $(val).addClass('is-valid');
+                $(val).removeClass('is-invalid');
+            } 
+        }
+    });
+    return validate;
+}
+
 function validateFutureDate(date){
     let currDate = new Date();
     let givDate = new Date(date);
@@ -262,4 +283,6 @@ function validateFutureDate(date){
     }
     return validated;
 }
+
+
   

@@ -248,7 +248,7 @@
                                             <select class="js-states form-control"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
                                                 <option value=""></option>
                                                 @foreach ($nama_penyakit as $penyakit)
-                                                    <option value="{{ $penyakit->id }}" {{(in_array($penyakit->id, json_decode($kecelakaan->nama_penyakit_id)))? 'selected':''}}>{{ $penyakit->primer }}</option>
+                                                    <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                                 @endforeach
                                             </select>
                                             {!!validasi('Nama penyakit')!!}
@@ -545,6 +545,32 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+
+        select2_penyakit =$('select#nama_penyakit_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            tags : true,
+        });
+        let penyakitSelected = {!! $kecelakaan->nama_penyakit_id !!};
+        // Rearrange the selected options based on penyakitSelected array
+        let selectedOptions = [];
+        penyakitSelected.forEach((value) => {
+            let option = select2_penyakit.find(`option[value="${value}"]`);
+            if (option.length > 0) {
+                selectedOptions.push(option);
+            }
+        });
+
+        // Clear the current selected options
+        select2_penyakit.val(null);
+
+        // Append the selected options in the desired order
+        selectedOptions.forEach((option) => {
+            select2_penyakit.append(option);
+        });
+        select2_penyakit.val(penyakitSelected).trigger('change');
+
         $(document).ready(function() {
             $('select').select2({
                 theme: "bootstrap-5",
@@ -560,11 +586,6 @@
                 $(this).append($element);
                 $(this).trigger("change");
             });
-            $('#nama_penyakit_id').select2({
-                theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
-            })
 
             $('input').keyup(function(event) {
                 if ($(this).hasClass('is-invalid')) {

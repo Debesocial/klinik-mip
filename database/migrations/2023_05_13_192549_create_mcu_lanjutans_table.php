@@ -29,7 +29,7 @@ class CreateMcuLanjutansTable extends Migration
             $table->integer('id_jenis_vendor_mcu');
             $table->string('others_jenis_vendor_mcu')->nullable();
             $table->string('nama_vendor_mcu');
-            $table->string('dokumen')->nullable();
+            $table->json('dokumen')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

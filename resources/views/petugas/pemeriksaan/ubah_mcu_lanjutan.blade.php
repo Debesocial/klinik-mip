@@ -158,14 +158,37 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="" class="form-label">File Pendukung <small class="text-warning">**File maksimal berukuran 20MB </small></label><br>
-                                            @if ($mculanjutan->dokumen)
-                                                <a href="{{asset('pemeriksaan/mcuLanjut/'.$mculanjutan->dokumen)}}" target="blank">{{$mculanjutan->dokumen}}</a>
-                                            @else
-                                                <small class="text-warning">Belum ada dokumen</small>
-                                            @endif
-                                            <input type="file" name="dokumen" id="dokumen" class="form-control">
-                                            {!!validasi('Ukuran file', 'terlalu besar')!!}
-                                            <input type="hidden" name="old_dokumen" value="{{$mculanjutan->dokumen}}">
+                                            @if (count(json_decode($mculanjutan->dokumen))!=0)
+                                            <ol>
+                                                @foreach (json_decode($mculanjutan->dokumen) as $dokumen)
+                                                    <li> <a href="{{asset('pemeriksaan/mcuLanjut/'.$dokumen)}}" target="blank">{{$dokumen}}</a> <button onclick="removeItem(this)" type="button" class="btn btn-sm btn-outline-danger border-0"><i class="bi bi-trash"></i></button></li>
+                                                @endforeach
+
+                                            </ol>
+                                        @else
+                                            <small class="text-warning">Belum ada dokumen</small>
+                                        @endif
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <div id="dokumen-input">
+                                                    <div class="mb-3" id="dok">
+                                                        <div class="row">
+                                                            <div class="col-10">
+                                                                <input type="file" name="dokumen[]" id="dokumen" class="form-control">
+                                                                {!!validasi('Ukuran file','terlalu besar')!!}
+                                                            </div>
+                                                            <div class="col-2">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2 text-end">
+                                                <button type="button" class="btn btn-outline-success btn-sm" onclick="tambahDokumen()"><i class="bi bi-plus"></i></button>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="old_dokumen" id="old_dokumen" value="{{$mculanjutan->dokumen}}">
                                         </div>
                                     </div>
                                 </div>
@@ -347,6 +370,7 @@
     @section('js')
         <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
         <script>
+            let oldDokumenPendukung = {!!$mculanjutan->dokumen!!};
             var stepper2 = new Stepper(document.querySelector('#stepper2'), {
                 linear: true,
                 animation: true
@@ -427,7 +451,8 @@
                         }
                     }
                 });
-                if (validated == true && validasiFile(20000,'dokumen')) {
+                var files = document.getElementsByName("dokumen[]");
+                if (validated == true && validasiManyFile(20000,files)) {
                     stepper2.next();
                 }
             }
@@ -456,6 +481,24 @@
             function setReview(id, val) {
                 var td = $('#_' + id);
                 td.text(': ' + val);
+            }
+            function tambahDokumen() {
+                let inputDokumen = $('#dok');
+                let newInput = inputDokumen.clone();
+                html = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteField(this)"><i class="bi bi-trash"></i></button>`;
+                newInput.children('div').children('div.col-2').html(html);
+                newInput.children('div').children('div').children('input').val('').removeClass(['is-valid','is-invalid']);
+                newInput.appendTo('#dokumen-input');
+            }
+
+            function deleteField(params) {
+                $(params).parentsUntil('#dok').remove();
+            }
+            function removeItem(item) {
+                $(item).parent().remove();
+                var namaDokumen = $(item).siblings('a').text();
+                oldDokumenPendukung=oldDokumenPendukung.filter(function(e){return e != namaDokumen});
+                $('#old_dokumen').val(JSON.stringify(oldDokumenPendukung));
             }
         </script>
     @stop

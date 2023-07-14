@@ -92,15 +92,15 @@ class SuperAdminController extends Controller
             'mop' => 'required',
             'coc' => 'required',
         ]);
-
+        $dokumen = [];
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
-
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move('pemeriksaan/narkoba/file', $filename);
-        } else {
-            $filename = '';
-        }
+            foreach ($file as $val) {
+                $filename = time() . '_' . $val->getClientOriginalName();
+                $dokumen[] = $filename;
+                $val->move('pemeriksaan/narkoba/file', $filename); 
+            }
+        } 
 
         TestUrin::create([
             'pasien_id' => $request->pasien_id,
@@ -109,7 +109,7 @@ class SuperAdminController extends Controller
             'jenis_obat' => $request->jenis_obat,
             'asal_obat' => $request->asal_obat,
             'terakhir_digunakan' => $request->terakhir_digunakan,
-            'dokumen' => $filename,
+            'dokumen' => json_encode($dokumen),
             'amp' => $request->amp,
             'met' => $request->met,
             'thc' => $request->thc,
@@ -602,16 +602,18 @@ class SuperAdminController extends Controller
             'hasil_rekomendasi' => 'required',
             'anjuran' => 'required',
         ]);
+        $dokumen = [];
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move('pemeriksaan/mcuAwal', $filename);
-        } else {
-            $filename = '';
+            foreach ($file as $val) {
+                $filename = time() . '_' . $val->getClientOriginalName();
+                $dokumen[] = $filename;
+                $val->move('pemeriksaan/mcuAwal', $filename); 
+            }
         }
 
         $data = $request->except('_token');
-        $data['dokumen'] = $filename;
+        $data['dokumen'] = json_encode($dokumen);
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
 

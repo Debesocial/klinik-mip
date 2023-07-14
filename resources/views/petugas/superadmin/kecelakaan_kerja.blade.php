@@ -694,6 +694,23 @@
                     inputs.forEach(input => {
                         if (input=='nama_penyakit_id') {
                             penyakitId=JSON.parse(data[input]);
+
+                            let selectedOptions = [];
+                            penyakitId.forEach((value) => {
+                                let option = $('#'+input).find(`option[value="${value}"]`);
+                                if (option.length > 0) {
+                                    selectedOptions.push(option);
+                                }
+                            });
+
+                            // Clear the current selected options
+                            $('#'+input).val(null);
+
+                            // Append the selected options in the desired order
+                            selectedOptions.forEach((option) => {
+                                $('#'+input).append(option);
+                            });
+
                             $('#'+input).val(penyakitId).trigger('change');
                         }else{
                             $('#'+input).val(data[input])

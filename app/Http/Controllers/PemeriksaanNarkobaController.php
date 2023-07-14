@@ -99,16 +99,29 @@ class PemeriksaanNarkobaController extends Controller
         $narkoba->mop = $request->input('mop');
         $narkoba->coc = $request->input('coc');
         $narkoba->soma = $request->input('soma');
+
+        // hapus dokumen ada yang berubah
+        $currDok = TestUrin::select('dokumen')->where('id',$id)->get()[0]->dokumen;
+        $currDok = json_decode($currDok);
+        if ($currDok) {
+            foreach ($currDok as $key) {
+                //hapus yang tidak ada
+                if (!in_array($key,json_decode($request->old_dokumen))) {
+                    $path = parse_url('pemeriksaan/narkoba/file/'.$key);
+                    File::delete(public_path($path['path']));
+                }
+            }
+        }
+        $dokumen = json_decode($request->old_dokumen);
         if ($request->hasFile('dokumen')) {
             $file = $request->file('dokumen');
-            $filename = time() . '_' . $file->getClientOriginalName();  
-            $file->move('pemeriksaan/narkoba/file', $filename);
-            if ($request->old_dokumen) {
-                $path = parse_url('pemeriksaan/narkoba/file/'.$request->old_dokumen);
-                File::delete(public_path($path['path']));
-            }
-            $narkoba->dokumen=$filename;
+            foreach ($file as $val) {
+                $filename = time() . '_' . $val->getClientOriginalName();
+                $dokumen[] = $filename;
+                $val->move('pemeriksaan/narkoba/file', $filename); 
+            } 
         }
+        $narkoba->dokumen=json_encode($dokumen);
         $narkoba->update();
 
 
