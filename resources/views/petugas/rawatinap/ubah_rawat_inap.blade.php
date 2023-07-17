@@ -264,6 +264,7 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
+                                            <small class="text-warning"><b>**Penyakit primer adalah penyakit yang dipilih pertama</b></small>
                                             <select class="form-select"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
                                                 {{-- @foreach ($nama_penyakit as $penyakit)
                                                     <option value="{{ $penyakit->id }}" {{(in_array($penyakit->id, json_decode($rawat_inap->nama_penyakit_id)))? 'selected':''}}>{{ $penyakit->primer }}</option>
@@ -762,14 +763,18 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             var value = $('#nama_penyakit_id').val();
             var html = ``;
             var n=1;
-            value.forEach(val => {
+            value.forEach((val,index) => {
                 penyakit = semuaPenyakit.find(data => data.id == val);
                 sub = subKlasifikasi.find(data => data.id == penyakit.sub_klasifikasi_id);
                 klas = klasifikasi.find(data => data.id == sub.klasifikasi_penyakit_id);
                 // console.log(penyakit);
                 html += `<tr>
                     <td>`+n+`</td>
-                    <td>`+penyakit.primer+`</td>
+                    <td>`+penyakit.primer;
+                if (index == 0) {
+                    html += ` <span class="badge bg-success">Primer</span>`;
+                }  
+                html +=`</td>
                     <td>`+ sub.nama_penyakit +`</td>
                     <td>`+ klas.klasifikasi_penyakit +`</td>
                     </tr>`;
