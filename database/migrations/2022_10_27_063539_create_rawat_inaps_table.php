@@ -27,9 +27,7 @@ class CreateRawatInapsTable extends Migration
             $table->float('tekanan_darah');
             $table->float('tekanan_darah_per');
             $table->float('denyut_nadi');
-            $table->float('denyut_nadi_menit');
             $table->float('laju_pernapasan');
-            $table->float('laju_pernapasan_menit');
             $table->float('saturasi_oksigen');
             $table->text('status_lokalis');
             $table->string('pemeriksaan_penunjang')->nullable();
@@ -37,8 +35,8 @@ class CreateRawatInapsTable extends Migration
             $table->json('dokumen')->nullable();
             $table->string('persetujuan_tindakan')->nullable();
             $table->json('nama_penyakit_id');
-            $table->json('tindakan');
-            $table->json('resep');
+            $table->json('tindakan')->nullable();
+            $table->json('resep')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

@@ -22,6 +22,7 @@ class CreatePermintaanMakanansTable extends Migration
             $table->string('catatan');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
+            $table->integer('jumlah_pemberian')->nullable();
             $table->boolean('ttd');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

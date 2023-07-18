@@ -24,13 +24,11 @@ class CreateIntervensiKeperawatansTable extends Migration
             $table->float('tekanan_darah');
             $table->float('tekanan_darah_per');
             $table->float('denyut_nadi');
-            $table->float('denyut_nadi_menit');
             $table->float('laju_pernapasan');
-            $table->float('laju_pernapasan_menit');
             $table->float('saturasi_oksigen');
             $table->text('pemeriksaan_penunjang');
             $table->text('catatan_pemeriksaan');
-            $table->json('tindakan');
+            $table->json('tindakan')->nullable();
             $table->text('catatan');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
