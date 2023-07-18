@@ -29,7 +29,7 @@
                             </tr>
                             <tr>
                                 <th>Saturasi Oksigen</th>
-                                <td>: {{ $intervensi->saturasi_oksigen }} mmHg</td>
+                                <td>: {{ $intervensi->saturasi_oksigen }} %</td>
                             </tr>
 
                         </tbody>
@@ -42,15 +42,13 @@
                         <tbody>
                             <tr>
                                 <th>Denyut Nadi</th>
-                                <td>: {{ $intervensi->denyut_nadi }}/{{ $intervensi->denyut_nadi_menit }}
-                                    menit
+                                <td>: {{ $intervensi->denyut_nadi }}x /menit
                                 </td>
                             </tr>
                             <tr>
                                 <th>Laju Pernapasan</th>
                                 <td>:
-                                    {{ $intervensi->laju_pernapasan }}/{{ $intervensi->laju_pernapasan_menit }}
-                                    menit</td>
+                                    {{ $intervensi->laju_pernapasan }}x /menit</td>
                             </tr>
                             <tr>
                                 <th>Pemeriksaan Penunjang</th>
@@ -76,11 +74,12 @@
                             <th>#</th>
                             <th>Tindakan</th>
                             <th>Alat Kesehatan</th>
-                            <th>Jumlah Pengguna</th>
+                            <th>Jumlah Penggunaan</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @if (is_array(json_decode($intervensi->tindakan)))
                         @foreach (json_decode($intervensi->tindakan) as $tindakan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -91,6 +90,8 @@
                                 <td>{{ $tindakan->keterangan }}</td>
                             </tr>
                         @endforeach
+                            
+                        @endif
                     </tbody>
                 </table>
             </div>

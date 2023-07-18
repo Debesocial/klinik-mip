@@ -29,19 +29,17 @@
                             </tr>
                             <tr>
                                 <th>Saturasi Oksigen</th>
-                                <td>: {{ $instruksidokter->saturasi_oksigen }} mmHg</td>
+                                <td>: {{ $instruksidokter->saturasi_oksigen }} %</td>
                             </tr>
                             <tr>
                                 <th>Denyut Nadi</th>
-                                <td>: {{ $instruksidokter->denyut_nadi }}/{{ $instruksidokter->denyut_nadi_menit }}
-                                    menit
+                                <td>: {{ $instruksidokter->denyut_nadi }}x /menit
                                 </td>
                             </tr>
                             <tr>
                                 <th>Laju Pernapasan</th>
                                 <td>:
-                                    {{ $instruksidokter->laju_pernapasan }}/{{ $instruksidokter->laju_pernapasan_menit }}
-                                    menit</td>
+                                    {{ $instruksidokter->laju_pernapasan }}x /menit</td>
                             </tr>
                             <tr>
                                 <th>Pemeriksaan Penunjang</th>
@@ -114,6 +112,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if (is_array(json_decode($instruksidokter->tindakan)))
                         @foreach (json_decode($instruksidokter->tindakan) as $tindakan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -124,6 +123,8 @@
 
                             </tr>
                         @endforeach
+                            
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -145,6 +146,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if (is_array(json_decode($instruksidokter->resep_obat)))
                             @foreach (json_decode($instruksidokter->resep_obat) as $resep)
                                 @php
                                     $data_obat = $obat->find($resep->nama_obat); 
@@ -159,6 +161,8 @@
                                     <td>{{ $resep->keterangan_resep }}</td>
                                 </tr>
                             @endforeach
+                                
+                            @endif
                         </tbody>
                     </table>
                 </div>

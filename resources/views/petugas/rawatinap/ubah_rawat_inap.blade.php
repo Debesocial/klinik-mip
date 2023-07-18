@@ -170,7 +170,7 @@
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$rawat_inap->saturasi_oksigen}}">
-                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                <span class="input-group-text" id="basic-addon1">%</span>
                                                 {!!validasi('Saturasi oksigen')!!}
                                             </div>
                                         </div>
@@ -188,24 +188,23 @@
                                             
                                         </div>
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
-                                        <div class="input-group">
-                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$rawat_inap->denyut_nadi}}">
-                                            <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control" value="{{$rawat_inap->denyut_nadi_menit}}">
-                                            <span class="input-group-text" id="basic-addon1">menit</span>
-                                            {!!validasi('Denyut nadi')!!}
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$rawat_inap->denyut_nadi}}">
+                                                <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                                {!!validasi('Denyut nadi')!!}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
-                                        <div class="input-group">
-                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$rawat_inap->laju_pernapasan}}">
-                                            <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control" value="{{$rawat_inap->laju_pernapasan_menit}}">
-                                            <span class="input-group-text" id="basic-addon1">menit</span>
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$rawat_inap->laju_pernapasan}}">
+                                                <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Pemeriksaan Penunjang</label>
@@ -579,6 +578,11 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 </div>
 </div>
 
+@php
+    $tindakan = $rawat_inap->tindakan??json_encode([]);
+    $resep = $rawat_inap->resep??json_encode([]);
+@endphp
+
 @section('js')
     <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
     <script>
@@ -720,7 +724,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 
         function lanjut2() {
             var validated = true;
-            var inputs = ['mulai_rawat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah','tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+            var inputs = ['mulai_rawat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah','tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'laju_pernapasan', 'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name="' + input + '"]').val();                    
                 var text_input = $('[name="' + input + '"]').children('option:selected').text();                    
@@ -786,22 +790,25 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
     </script>
     <script>
         function lanjut3() {
-            validated3 = true;
-            if (tindakan.length != 0) {
-                $('#tindakan_kosong').hide();
+            // validated3 = true;
+            // if (tindakan.length != 0) {
+            //     $('#tindakan_kosong').hide();
                 
-            } else {
-                $('#tindakan_kosong').show();
-                validated3 = false;
-            }
+            // } else {
+            //     $('#tindakan_kosong').show();
+            //     validated3 = false;
+            // }
 
-            if (validated3 && validasiFile(2048,'persetujuan_tindakan')) {
+            // if (validated3 && validasiFile(2048,'persetujuan_tindakan')) {
+            //     stepper2.next();
+            // }
+            if (validasiFile(2048,'persetujuan_tindakan')) {
                 stepper2.next();
             }
         }
 
         var alkes = @json($alatkesehatan);
-        var tindakan = {!!$rawat_inap->tindakan!!};
+        var tindakan = {!!$tindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
 
         function addTindakan() {
@@ -884,16 +891,17 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
     </script>
     <script>
         function lanjut4() {
-            if (resep.length != 0) {
-                $('#resep_kosong').hide();
-               stepper2.next();
-            } else {
-                $('#resep_kosong').show();
-            }
+            stepper2.next();
+            // if (resep.length != 0) {
+            //     $('#resep_kosong').hide();
+            //    stepper2.next();
+            // } else {
+            //     $('#resep_kosong').show();
+            // }
         }
 
         id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
-        resep = {!!$rawat_inap->resep!!};
+        resep = {!!$resep!!};
         var satuanobat = @json($satuanobat);
         var obat = @json($obat);
         resepSelected = {};

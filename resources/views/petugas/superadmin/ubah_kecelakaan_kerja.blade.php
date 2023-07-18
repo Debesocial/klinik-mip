@@ -186,7 +186,7 @@
                                             <label for="" class="form-label">Saturasi Oksigen <b class="text-danger">*</b></label>
                                             <div class="input-group">
                                                 <input type="number" name="saturasi_oksigen" id="saturasi_oksigen" class="form-control" value="{{$kecelakaan->saturasi_oksigen}}">
-                                                <span class="input-group-text" id="basic-addon1">mmHg</span>
+                                                <span class="input-group-text" id="basic-addon1">%</span>
                                                 {!!validasi('Saturasi oksigen')!!}
                                             </div>
                                         </div>
@@ -203,24 +203,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
-                                        <div class="input-group">
-                                            <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$kecelakaan->denyut_nadi}}">
-                                            <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit" class="form-control" value="{{$kecelakaan->denyut_nadi_menit}}">
-                                            <span class="input-group-text" id="basic-addon1">menit</span>
-                                            {!!validasi('Denyut nadi')!!}
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$kecelakaan->denyut_nadi}}">
+                                                <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                                {!!validasi('Denyut nadi')!!}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-2">
-                                        <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
-                                        <div class="input-group">
-                                            <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$kecelakaan->laju_pernapasan}}">
-                                            <span class="input-group-text" id="basic-addon1">/</span>
-                                            <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit" class="form-control" value="{{$kecelakaan->laju_pernapasan_menit}}">
-                                            <span class="input-group-text" id="basic-addon1">menit</span>
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
+                                            <div class="input-group">
+                                                <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$kecelakaan->laju_pernapasan}}">
+                                                <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                            </div>
                                         </div>
+                                        
                                     </div>
                                     <div class="mb-2">
                                         <label for="" class="form-label">Pemeriksaan Penunjang</label>
@@ -528,6 +527,11 @@
     </div>
 </div>
 
+@php
+    $tindakan = $kecelakaan->tindakan??json_encode([]);
+    $resep = $kecelakaan->resep??json_encode([]);
+@endphp
+
 @section('js')
     <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
     <script>
@@ -635,7 +639,7 @@
         function disabelAllInput() {
            id_rekam_medis = '{{$kecelakaan->id_rekam_medis}}'
            if (id_rekam_medis) {
-               var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+               var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi',  'laju_pernapasan', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
                 inputs.forEach(input => {
                     $('#'+input).attr('disabled', 'disabled')
                 });
@@ -673,7 +677,7 @@
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah','tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis'];
+            var inputs = ['nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah','tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi',  'laju_pernapasan',  'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name*="' + input + '"]').val();                    
                 var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
@@ -728,16 +732,17 @@
     </script>
     <script>
         function lanjut3() {
-            if (tindakan.length != 0) {
-                $('#tindakan_kosong').hide();
-                stepper2.next();
-            } else {
-                $('#tindakan_kosong').show();
-            }
+            stepper2.next();
+            // if (tindakan.length != 0) {
+            //     $('#tindakan_kosong').hide();
+            //     stepper2.next();
+            // } else {
+            //     $('#tindakan_kosong').show();
+            // }
         }
 
         var alkes = @json($alatkesehatan);
-        var tindakan = {!!$kecelakaan->tindakan!!};
+        var tindakan = {!!$tindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
         var tindakanSelected = {};
         function addTindakan() {
@@ -776,16 +781,19 @@
 
         function drawformTindakan() {
             html = ``;
-            tindakan.forEach((data, key) => {
-                var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
-                html += `<tr> 
-                        <td>` + data.nama_tindakan + `</td>
-                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
-                        <td>` + data.jumlah_pengguna + `</td>
-                        <td>` + data.keterangan + `</td>
-                        <td id="aksi-tindakan" ><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
-            })
+            if (Array.isArray(tindakan)) {
+                tindakan.forEach((data, key) => {
+                    var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+                    html += `<tr> 
+                            <td>` + data.nama_tindakan + `</td>
+                            <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
+                            <td>` + data.jumlah_pengguna + `</td>
+                            <td>` + data.keterangan + `</td>
+                            <td id="aksi-tindakan" ><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            </tr>`;
+                })
+                
+            }
             clearformTindakan();
             $('#tindakan').val(JSON.stringify(tindakan));
             $('#body_tindakan').html(html);
@@ -820,16 +828,17 @@
     </script>
     <script>
         function lanjut4() {
-            if (resep.length != 0) {
-                $('#resep_kosong').hide();
-               stepper2.next();
-            } else {
-                $('#resep_kosong').show();
-            }
+            stepper2.next();
+            // if (resep.length != 0) {
+            //     $('#resep_kosong').hide();
+            //    stepper2.next();
+            // } else {
+            //     $('#resep_kosong').show();
+            // }
         }
 
         id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
-        resep = {!!$kecelakaan->resep!!};
+        resep = {!!$resep!!};
         var satuanobat = @json($satuanobat);
         var obat = @json($obat);
         var resepSelected = {};
@@ -857,17 +866,20 @@
 
         function drawformResep() {
             html = ``;
-            resep.forEach((data, key) => {
-                namaobat = obat.find(ob => ob.id == data.nama_obat); 
-                satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
-                html += `<tr> 
-                            <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
-                            <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
-                            <td>` + data.aturan_pakai + `</td>
-                            <td>` + data.keterangan_resep + `</td>
-                            <td id="aksi-resep"><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
-            })
+            if (Array.isArray(resep)) {
+                resep.forEach((data, key) => {
+                    namaobat = obat.find(ob => ob.id == data.nama_obat); 
+                    satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
+                    html += `<tr> 
+                                <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
+                                <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
+                                <td>` + data.aturan_pakai + `</td>
+                                <td>` + data.keterangan_resep + `</td>
+                                <td id="aksi-resep"><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
+                            </tr>`;
+                })
+                
+            }
             clearformResep();
             $('#resep').val(JSON.stringify(resep));
             $('#body_resep').html(html);

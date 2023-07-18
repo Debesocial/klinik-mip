@@ -47,6 +47,11 @@
 
                 </div>
                 <div class="mb-3">
+                    <label for="" class="form-label">Jumlah Pemberian <b class="text-danger">*</b></label>
+                    <input type="number" class="form-control" name="jumlah_pemberian" id="jumlah_pemberian">
+                    {!! validasi('Jumlah Pemberian') !!}
+                </div>
+                <div class="mb-3">
                     <label for="" class="form-label">Dokter Yang Memeriksa <b class="text-danger">*</b></label>
                     <div class="form-check ms-3">
                         <input class="form-check-input" type="radio" name="ttd" id="ttd1" value="1">
@@ -93,7 +98,7 @@
         });
     })
 
-    var id = ['nama_penyakit_id', 'catatan', 'permintaan_makanan', 'tanggal_mulai', 'tanggal_selesai', 'ttd'];
+    var id = ['nama_penyakit_id', 'catatan', 'permintaan_makanan', 'tanggal_mulai', 'tanggal_selesai', 'ttd', 'jumlah_pemberian'];
 
     function cekValidasi() {
         validated = true;

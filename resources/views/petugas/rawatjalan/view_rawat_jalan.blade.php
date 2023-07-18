@@ -57,7 +57,7 @@
                                 </tr>
                                 <tr>
                                     <th>Saturasi Oksigen</th>
-                                    <td>: {{$jalan->saturasi_oksigen}} mmHg</td>
+                                    <td>: {{$jalan->saturasi_oksigen}} %</td>
                                 </tr>
                                 
                             </tbody>
@@ -70,24 +70,24 @@
                             <tbody>
                                 <tr>
                                     <th>Denyut Nadi</th>
-                                    <td>: {{$jalan->denyut_nadi}} / {{$jalan->denyut_nadi_menit}} menit</td>
+                                    <td>: {{$jalan->denyut_nadi}}x /menit</td>
                                 </tr>
                                 <tr>
                                     <th>Laju Pernapasan</th>
-                                    <td>: {{$jalan->laju_pernapasan}} / {{$jalan->laju_pernapasan_menit}} menit</td>
+                                    <td>: {{$jalan->laju_pernapasan}}x /menit</td>
                                 </tr>
                                 <tr>
                                     <th>Pemeriksaan Penunjang</th>
-                                    <td>: {{$jalan->pemeriksaan_penunjang}}</td>
+                                    <td>: {{$jalan->pemeriksaan_penunjang??'-'}}</td>
                                 </tr>
                                 <tr>
                                     <th>Obat yang dikonsumsi sebelumnya</th>
-                                    <td>: {{$jalan->obat_konsumsi}}</td>
+                                    <td>: {{$jalan->obat_konsumsi??'-'}}</td>
                                 </tr>
                                 <tr>
                                     <th>Dokumentasi Pendukung</th>
                                     <td>
-                                        @if (count(json_decode($jalan->dokumen))!=0)
+                                        @if (is_array(json_decode($jalan->dokumen))&& count(json_decode($jalan->dokumen)))
                                         <ol>
                                             @foreach (json_decode($jalan->dokumen) as $dokumen)
                                                 <li> <a href="{{asset('pemeriksaan/rawatjalan/'.$dokumen)}}" target="blank">{{$dokumen}}</a></li>
@@ -164,6 +164,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (is_array(json_decode($jalan->tindakan)))
                                 @foreach (json_decode($jalan->tindakan) as $tindakan)
                                     <tr>
                                         <td class="text-center">{{$loop->iteration}}</td>
@@ -173,6 +174,8 @@
                                         <td>{{$tindakan->keterangan}}</td>
                                     </tr>
                                 @endforeach
+                                    
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -192,6 +195,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if (is_array(json_decode($jalan->resep)))
                             @foreach (json_decode($jalan->resep) as $resep)
                                 @php
                                     $dataobat = $obat->find($resep->nama_obat)
@@ -204,6 +208,8 @@
                                     <td>{{$resep->keterangan_resep}}</td>
                                 </tr>
                             @endforeach
+                                
+                            @endif
                         </tbody>
                     </table>
                 </div>

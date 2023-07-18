@@ -48,6 +48,7 @@
                     <td style="vertical-align: top;">Penanganan/Tindakan Dokter</td>
                     <td>
                         <ol style="margin:0; padding-left: 20px;">
+                            @if (is_array(json_decode($istirahat->tindakan)))
                             @foreach (json_decode($istirahat->tindakan) as $tindakan)
                                 @php
                                     $dataAlkes = $alkes->find($tindakan->alat_kesehatan);   
@@ -58,6 +59,10 @@
                                     <i>Ket. {{$tindakan->keterangan}}</i>
                                 </li>
                             @endforeach
+                                
+                            @else
+                            -
+                            @endif
                         </ol>
                     </td>
                 </tr>
@@ -65,6 +70,7 @@
                     <td style="vertical-align: top;">Obat Yang Dikonsumsi</td>
                     <td style="vertical-align: top;">
                         <ol style="margin:0; padding-left: 20px;" >
+                            @if (is_array(json_decode($istirahat->terapi)))
                             @foreach (json_decode($istirahat->terapi) as $terapi)
                                 @php
                                     $dataObat = $obat->find($terapi->nama_obat);
@@ -75,6 +81,10 @@
                                    <i>ket.{{$terapi->keterangan_resep}}</i> 
                                 </li>
                             @endforeach
+                                
+                            @else
+                            -
+                            @endif
                         </ol>
                     </td>
                 </tr>

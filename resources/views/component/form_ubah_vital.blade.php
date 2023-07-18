@@ -238,7 +238,9 @@
         </div>
     </div>
 </div>
-
+@php
+    $terapi = $tandavital->terapi??json_encode([]);
+@endphp
 
 <script>
      var stepper2 = new Stepper(document.querySelector('#stepper2'), {
@@ -298,7 +300,7 @@
         $('#form-tambah-tandavital').submit();        
     }
     id_resep = ['nama_obat', 'jumlah_obat','aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
-    resep = {!! $tandavital->terapi ?? '{}' !!};
+    resep = {!! $terapi!!};
     var satuanobat = @json($satuanobat);
     var obat = @json($obat);
     var resepSelected = {};

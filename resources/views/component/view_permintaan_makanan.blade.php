@@ -34,6 +34,10 @@
                         <td>: {{diffDay($permintaanmakanan->tanggal_mulai,$permintaanmakanan->tanggal_selesai)}}<td>
                     </tr>
                     <tr>
+                        <th>Jumlah Pemberian</th>
+                        <td>: {{$permintaanmakanan->jumlah_pemberian}}<td>
+                    </tr>
+                    <tr>
                         <th>Dokter yang Memeriksa</th>
                         @if ($permintaanmakanan->ttd == 1)
                             <td>: Tanda Tangan</td>

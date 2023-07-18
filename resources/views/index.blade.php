@@ -60,34 +60,48 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($resep['resep_inap'] as $res)
-                                        <tr>
-                                            <td >{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
-                                            <td>{{$res->pasien->nama_pasien}}</td>
-                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap")'>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
-                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    {{$res->resep}}
+                                    @if (is_array(json_decode($res->resep)))
+                                    @if (count(json_decode($res->resep))>0)
+                                    <tr>
+                                        <td >{{$res->id_rawat_inap}} <br><b>Rawat Inap</b></td>
+                                        <td>{{$res->pasien->nama_pasien}}</td>
+                                        <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap")'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                    <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                        
+                                    @endif
+                                        
+                                    @endif
                                     @endforeach
                                     @foreach ($resep['resep_jalan'] as $res)
-                                        <tr>
-                                            <td >{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
-                                            <td>{{$res->pasien->nama_pasien}}</td>
-                                            <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
-                                            <td class="text-center">
-                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
-                                                        <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    @if (is_array(json_decode($res->resep)))
+                                    @if (count(json_decode($res->resep))>0)
+                                    <tr>
+                                        <td >{{$res->id_rawat_jalan}} <br> <b>Rawat Jalan</b></td>
+                                        <td>{{$res->pasien->nama_pasien}}</td>
+                                        <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
+                                        <td class="text-center">
+                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
+                                                    <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                        
+                                    @endif
+                                    @endif
                                     @endforeach
                                     @foreach ($resep['resep_instruksi'] as $res)
+                                    @if (is_array(json_decode($res->resep)))
+                                    @if (count(json_decode($res->resep))>0)
                                         <tr>
                                             <td >{{$res->rawatinap->id_rawat_inap}} <br> <b>Rawat Inap</b> <small class="text-secondary">Instruksi Dokter</small></td>
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
@@ -100,8 +114,12 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                        @endif
+                                        @endif
                                     @endforeach
                                     @foreach ($resep['resep_vital'] as $res)
+                                    @if (is_array(json_decode($res->resep)))
+                                    @if (count(json_decode($res->resep))>0)
                                         <tr>
                                             <td >{{$res->rawatinap->id_rawat_inap}} <br> <b >Rawat Inap</b> <small class="text-secondary">Pem. Tanda Vital</small></td>
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
@@ -114,6 +132,8 @@
                                                 </button>
                                             </td>
                                         </tr>
+                                    @endif
+                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

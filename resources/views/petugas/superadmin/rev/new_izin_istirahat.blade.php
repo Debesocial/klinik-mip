@@ -154,7 +154,7 @@
                                                         <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
                                                     @endforeach
                                                 </select>
-                                                {!! validasi('Diagnosa sekunder') !!}
+                                                {!! validasi('Diagnosa sekunder', 'tidak boleh sama dengan diagnosa primer') !!}
                                                 <div id="diagnosa_sekunder_klasifikasi" class="mt-1" style="display: none">
                                                     <ul class="m-0">
                                                         <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla"></span></li>
@@ -509,6 +509,12 @@
                         $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
                         $('#diagnosa_sekunder_klasifikasi').show();
                     }
+                    if (id == $('#diagnosa').val()) {
+                        $(this).addClass('is-invalid');
+                        $(this).removeClass('is-valid');
+                    }else{
+                        $(this).removeClass('is-invalid');
+                    }
                     
                 })
 
@@ -576,6 +582,14 @@
                         setResult(input, text_input);
                     }
                 });
+
+                if ($('#diagnosa_sekunder').val() == $('#diagnosa').val()) {
+                    $('#diagnosa_sekunder').addClass('is-invalid');
+                    $('#diagnosa_sekunder').removeClass('is-valid');
+                    validated  =false;
+                }else{
+                    $('#diagnosa_sekunder').removeClass('is-invalid');
+                }
                 
                 if (validated === true) {
                     stepper2.next()
@@ -591,15 +605,16 @@
         </script>
         <script>
             function lanjut3() {
-                let validated = true;
-                let tindakanval = $('#tindakan').val();
-                if (tindakanval==null||tindakanval=='') {
-                    $('#tindakan_kosong').show()
-                    validated = false;
-                }
-                if (validated==true) {
-                    stepper2.next();
-                }
+                // let validated = true;
+                // let tindakanval = $('#tindakan').val();
+                // if (tindakanval==null||tindakanval=='') {
+                //     $('#tindakan_kosong').show()
+                //     validated = false;
+                // }
+                // if (validated==true) {
+                //     stepper2.next();
+                // }
+                stepper2.next();
             }
 
             var alkes = @json($alatkesehatan);
@@ -688,12 +703,12 @@
         </script>
         <script>
             function lanjut4() {
-                if (resep.length != 0) {
-                    $('#resep_kosong').hide();
                 stepper2.next();
-                } else {
-                    $('#resep_kosong').show();
-                }
+                // if (resep.length != 0) {
+                //     $('#resep_kosong').hide();
+                // } else {
+                //     $('#resep_kosong').show();
+                // }
             }
 
             id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];

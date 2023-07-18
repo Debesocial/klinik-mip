@@ -118,44 +118,27 @@
                                         value="{{ $intervensi->saturasi_oksigen }}">
                                     {!! validasi('Saturasi Oksigen') !!}
                                 </div>
-                                <div class="col-2 p-0 my-auto fs-6">mmHg</div>
+                                <div class="col-2 p-0 my-auto fs-6">%</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row mb-2">
-                                <label for="" class="form-label">Denyut Nadi <b
-                                        class="text-danger">*</b></label>
-                                <div class="col-4">
-                                    <input type="number" name="denyut_nadi" id="denyut_nadi"
-                                        class="form-control form-control-sm" value="{{ $intervensi->denyut_nadi }}">
-                                    {!! validasi('Denyut nadi') !!}
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
+                                    <div class="input-group">
+                                        <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$intervensi->denyut_nadi}}">
+                                        <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                        {!!validasi('Denyut nadi')!!}
+                                    </div>
                                 </div>
-                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                                <div class="col-4">
-                                    <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit"
-                                        class="form-control form-control-sm"
-                                        value="{{ $intervensi->denyut_nadi_menit }}">
-                                    {!! validasi('Denyut nadi') !!}
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
+                                    <div class="input-group">
+                                        <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$intervensi->laju_pernapasan}}">
+                                        <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                    </div>
                                 </div>
-                                <div class="col-1 p-0 my-auto fs-6">menit</div>
-                            </div>
-                            <div class="row mb-2">
-                                <label for="" class="form-label">Laju Pernapasan <b
-                                        class="text-danger">*</b></label>
-                                <div class="col-4">
-                                    <input type="number" name="laju_pernapasan" id="laju_pernapasan"
-                                        class="form-control form-control-sm"
-                                        value="{{ $intervensi->laju_pernapasan }}">
-                                    {!! validasi('Laju pernapasan') !!}
-                                </div>
-                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                                <div class="col-4">
-                                    <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit"
-                                        class="form-control form-control-sm"
-                                        value="{{ $intervensi->laju_pernapasan_menit }}">
-                                    {!! validasi('Laju pernapasan') !!}
-                                </div>
-                                <div class="col-1 p-0 my-auto fs-6">menit</div>
+                                
                             </div>
                             <div class="row mb-2">
                                 <label for="" class="form-label">Pemeriksaan Penunjang<b
@@ -209,7 +192,7 @@
                                 {!! validasi('Alat Kesehatan') !!}
                             </div>
                             <div class="mb-2">
-                                <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
+                                <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
                                         class="text-danger">*</b></label>
                                 <input type="number" name="" id="jumlah_pengguna" class="form-control">
                                 {!! validasi('Jumlah Pengguna') !!}
@@ -280,6 +263,11 @@
     </div>
 </div>
 
+@php
+    $tindakan = $intervensi->tindakan??json_encode([]);
+    
+@endphp
+
 <script>
     var stepper2 = new Stepper(document.querySelector('#stepper2'), {
         linear: true,
@@ -339,7 +327,7 @@
 
     function lanjut1() {
         var required = ['anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen',
-            'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'pemeriksaan_penunjang',
+            'denyut_nadi', 'laju_pernapasan', 'pemeriksaan_penunjang',
             'diagnosa', 'diagnosa_sekunder', 'catatan_pemeriksaan'
         ];
         var validated = true;
@@ -361,16 +349,17 @@
     }
 
     function lanjut2() {
-        if (tindakan.length != 0) {
-            $('#tindakan_kosong').hide();
-            stepper2.next();
-        } else {
-            $('#tindakan_kosong').show();
-        }
+        stepper2.next();
+        // if (tindakan.length != 0) {
+        //     $('#tindakan_kosong').hide();
+        //     stepper2.next();
+        // } else {
+        //     $('#tindakan_kosong').show();
+        // }
     }
 
     var alkes = @json($alatkesehatan);
-    var tindakan = {!! $intervensi->tindakan !!};
+    var tindakan = {!! $tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
     var tindakanSelected = {};

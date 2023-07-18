@@ -133,7 +133,7 @@
                                                         <option value="{{ $penyakit->id }}" {{($penyakit->id==$istirahat->diagnosa_sekunder)?'selected':''}}>{{ $penyakit->primer }}</option>
                                                     @endforeach
                                                 </select>
-                                                {!! validasi('Diagnosa sekunder') !!}
+                                                {!! validasi('Diagnosa sekunder', 'tidak boleh sama dengan diagnosa primer') !!}
                                                 <div id="diagnosa_sekunder_klasifikasi" class="mt-1">
                                                     <ul class="m-0">
                                                         <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->nama_penyakit??'-'}}</span></li>
@@ -404,6 +404,11 @@
         </div>
     </div>
 
+    @php
+        $tindakan = $istirahat->tindakan??json_encode([]);
+        $terapi = $istirahat->terapi??json_encode([]);
+    @endphp
+
     @section('js')
         <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
         <script>
@@ -475,6 +480,13 @@
                         $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
                         $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
                         $('#diagnosa_sekunder_klasifikasi').show();
+                    }
+
+                    if (id == $('#diagnosa').val()) {
+                        $(this).addClass('is-invalid');
+                        $(this).removeClass('is-valid');
+                    }else{
+                        $(this).removeClass('is-invalid');
                     }
                 })
 
@@ -562,6 +574,13 @@
                         setResult(input, text_input);
                     }
                 });
+                if ($('#diagnosa_sekunder').val() == $('#diagnosa').val()) {
+                    $('#diagnosa_sekunder').addClass('is-invalid');
+                    $('#diagnosa_sekunder').removeClass('is-valid');
+                    validated  =false;
+                }else{
+                    $('#diagnosa_sekunder').removeClass('is-invalid');
+                }
                 
                 if (validated === true) {
                     stepper2.next()
@@ -578,19 +597,20 @@
         <script>
             
             function lanjut3() {
-                let validated = true;
-                let tindakanval = $('#tindakan').val();
-                if (tindakanval==null||tindakanval=='') {
-                    $('#tindakan_kosong').show()
-                    validated = false;
-                }
-                if (validated==true) {
-                    stepper2.next();
-                }
+                // let validated = true;
+                // let tindakanval = $('#tindakan').val();
+                // if (tindakanval==null||tindakanval=='') {
+                //     $('#tindakan_kosong').show()
+                //     validated = false;
+                // }
+                // if (validated==true) {
+                //     stepper2.next();
+                // }
+                stepper2.next();
             }
 
             var alkes = @json($alatkesehatan);
-            var tindakan = {!! $istirahat->tindakan !!};
+            var tindakan = {!! $tindakan !!};
             var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
             drawformTindakan();
             function addTindakan() {
@@ -675,16 +695,17 @@
         </script>
         <script>
             function lanjut4() {
-                if (resep.length != 0) {
-                    $('#resep_kosong').hide();
                 stepper2.next();
-                } else {
-                    $('#resep_kosong').show();
-                }
+                // if (resep.length != 0) {
+                //     $('#resep_kosong').hide();
+                // stepper2.next();
+                // } else {
+                //     $('#resep_kosong').show();
+                // }
             }
 
             id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
-            resep = {!!$istirahat->terapi!!}
+            resep = {!!$terapi!!}
             var satuanobat = @json($satuanobat);
             var obat = @json($obat);
             var resepSelected = {};

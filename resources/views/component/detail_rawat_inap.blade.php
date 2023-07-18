@@ -28,7 +28,7 @@
                             </tr>
                             <tr>
                                 <th>Saturasi Oksigen</th>
-                                <td>: {{$inap->saturasi_oksigen}} mmHg</td>
+                                <td>: {{$inap->saturasi_oksigen}} %</td>
                             </tr>
                             
                         </tbody>
@@ -41,11 +41,11 @@
                         <tbody>
                             <tr>
                                 <th>Denyut Nadi</th>
-                                <td>: {{$inap->denyut_nadi}} / {{$inap->denyut_nadi_menit}} menit</td>
+                                <td>: {{$inap->denyut_nadi}}x /menit</td>
                             </tr>
                             <tr>
                                 <th>Laju Pernapasan</th>
-                                <td>: {{$inap->laju_pernapasan}} / {{$inap->laju_pernapasan_menit}} menit</td>
+                                <td>: {{$inap->laju_pernapasan}}x /menit</td>
                             </tr>
                             <tr>
                                 <th>Pemeriksaan Penunjang</th>
@@ -108,15 +108,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (json_decode($inap->tindakan) as $tindakan)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$tindakan->nama_tindakan}}</td>
-                                    <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
-                                    <td>{{$tindakan->jumlah_pengguna}}</td>
-                                    <td>{{$tindakan->keterangan}}</td>
-                                </tr>
-                            @endforeach
+                            @if (is_array(json_decode($inap->tindakan)))
+                                @foreach (json_decode($inap->tindakan) as $tindakan)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$tindakan->nama_tindakan}}</td>
+                                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
+                                        <td>{{$tindakan->jumlah_pengguna}}</td>
+                                        <td>{{$tindakan->keterangan}}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -137,6 +139,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if (is_array(json_decode($inap->resep)))
                             @foreach (json_decode($inap->resep) as $resep)
                                 @php
                                     $dataobat = $obat->find($resep->nama_obat);
@@ -149,6 +152,8 @@
                                     <td>{{$resep->keterangan_resep}}</td>
                                 </tr>
                             @endforeach
+                                
+                            @endif
                         </tbody>
                     </table>
                 </div>

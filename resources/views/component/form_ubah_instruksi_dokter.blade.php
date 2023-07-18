@@ -126,45 +126,27 @@
                                         value="{{ $instruksidokter->saturasi_oksigen }}">
                                     {!! validasi('Saturasi Oksigen') !!}
                                 </div>
-                                <div class="col-2 p-0 my-auto fs-6">mmHg</div>
+                                <div class="col-2 p-0 my-auto fs-6">%</div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row mb-2">
-                                <label for="" class="form-label">Denyut Nadi <b
-                                        class="text-danger">*</b></label>
-                                <div class="col-4">
-                                    <input type="number" name="denyut_nadi" id="denyut_nadi"
-                                        class="form-control form-control-sm"
-                                        value="{{ $instruksidokter->denyut_nadi }}">
-                                    {!! validasi('Denyut nadi') !!}
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Denyut Nadi <b class="text-danger">*</b></label>
+                                    <div class="input-group">
+                                        <input type="number" name="denyut_nadi" id="denyut_nadi" class="form-control" value="{{$instruksidokter->denyut_nadi}}">
+                                        <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                        {!!validasi('Denyut nadi')!!}
+                                    </div>
                                 </div>
-                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                                <div class="col-4">
-                                    <input type="number" name="denyut_nadi_menit" id="denyut_nadi_menit"
-                                        class="form-control form-control-sm"
-                                        value="{{ $instruksidokter->denyut_nadi_menit }}">
-                                    {!! validasi('Denyut nadi') !!}
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Laju Pernapasan <b class="text-danger">*</b></label>
+                                    <div class="input-group">
+                                        <input type="number" name="laju_pernapasan" id="laju_pernapasan" class="form-control" value="{{$instruksidokter->laju_pernapasan}}">
+                                        <span class="input-group-text" id="basic-addon1">x /menit</span>
+                                    </div>
                                 </div>
-                                <div class="col-1 p-0 my-auto fs-6">menit</div>
-                            </div>
-                            <div class="row mb-2">
-                                <label for="" class="form-label">Laju Pernapasan <b
-                                        class="text-danger">*</b></label>
-                                <div class="col-4">
-                                    <input type="number" name="laju_pernapasan" id="laju_pernapasan"
-                                        class="form-control form-control-sm"
-                                        value="{{ $instruksidokter->laju_pernapasan }}">
-                                    {!! validasi('Laju pernapasan') !!}
-                                </div>
-                                <div class="col-1 p-0 my-auto text-center fs-5">/</div>
-                                <div class="col-4">
-                                    <input type="number" name="laju_pernapasan_menit" id="laju_pernapasan_menit"
-                                        class="form-control form-control-sm"
-                                        value="{{ $instruksidokter->laju_pernapasan_menit }}">
-                                    {!! validasi('Laju pernapasan') !!}
-                                </div>
-                                <div class="col-1 p-0 my-auto fs-6">menit</div>
+                                
                             </div>
                             <div class="row mb-2">
                                 <label for="" class="form-label">Pemeriksaan Penunjang<b
@@ -219,7 +201,7 @@
                                                 {{ $penyakit->primer }}</option>
                                         @endforeach
                                     </select>
-                                    {!! validasi('Diagnosa sekunder') !!}
+                                    {!! validasi('Diagnosa sekunder', 'harus diisi dan tidak boleh sama dengan diagnosa primer') !!}
                                     <div id="diagnosa_sekunder_klasifikasi" class="mt-1">
                                         <ul class="m-0">
                                             <li><b>Subklasifikasi</b> <span
@@ -263,7 +245,7 @@
                                 {!! validasi('Alat Kesehatan') !!}
                             </div>
                             <div class="mb-2">
-                                <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
+                                <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
                                         class="text-danger">*</b></label>
                                 <input type="number" name="" id="jumlah_pengguna" class="form-control">
                                 {!! validasi('Jumlah Pengguna') !!}
@@ -293,7 +275,7 @@
                                         <tr>
                                             <th>Tindakan</th>
                                             <th>Alat Kesehatan</th>
-                                            <th>Jumlah Pengguna</th>
+                                            <th>Jumlah Penggunaan</th>
                                             <th>Keterangan</th>
                                             <th></th>
                                         </tr>
@@ -396,6 +378,11 @@
     </div>
 </div>
 
+@php
+    $tindakan = $instruksidokter->tindakan??json_encode([]);
+    $resep = $instruksidokter->resep??json_encode([]);
+@endphp
+
 <script>
     var stepper2 = new Stepper(document.querySelector('#stepper2'), {
         linear: true,
@@ -433,6 +420,13 @@
             $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit
                 .klasifikasi_penyakit);
             $('#diagnosa_sekunder_klasifikasi').show();
+
+            if (id == $('#diagnosa').val()) {
+                $(this).addClass('is-invalid');
+                $(this).removeClass('is-valid');
+            }else{
+                $(this).removeClass('is-invalid');
+            }
         })
         $('input').keyup(function() {
             var id = $(this).val();
@@ -448,6 +442,8 @@
                     setSatuan($(this).val());
                 }
             }
+
+
         })
         $('textarea').keyup(function() {
             var id = $(this).val();
@@ -472,6 +468,7 @@
                 form.removeClass('is-invalid');
             }
         });
+
         if (validated == true) {
             $('#formInstruksi').submit();
         }
@@ -495,22 +492,31 @@
             }
 
         });
+
+        if ($('#diagnosa_sekunder').val() == $('#diagnosa').val()) {
+            $('#diagnosa_sekunder').addClass('is-invalid');
+            $('#diagnosa_sekunder').removeClass('is-valid');
+            validated  =false;
+        }else{
+            $('#diagnosa_sekunder').removeClass('is-invalid');
+        }
         if (validated == true) {
             stepper2.next();
         }
     }
 
     function lanjut2() {
-        if (tindakan.length != 0) {
-            $('#tindakan_kosong').hide();
-            stepper2.next();
-        } else {
-            $('#tindakan_kosong').show();
-        }
+        stepper2.next();
+        // if (tindakan.length != 0) {
+        //     $('#tindakan_kosong').hide();
+        //     stepper2.next();
+        // } else {
+        //     $('#tindakan_kosong').show();
+        // }
     }
 
     var alkes = @json($alatkesehatan);
-    var tindakan = {!! $instruksidokter->tindakan !!};
+    var tindakan = {!! $tindakan !!};
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
     var tindakanSelected = {};
@@ -593,19 +599,21 @@
     }
 
     function lanjut3() {
-        if (resep.length != 0) {
-            $('#resep_kosong').hide();
-            hideModal('modalRawatInap');
-            submitform('formInstruksi')
-        } else {
-            $('#resep_kosong').show();
-        }
+        hideModal('modalRawatInap');
+        submitform('formInstruksi')
+        // if (resep.length != 0) {
+        //     $('#resep_kosong').hide();
+        //     hideModal('modalRawatInap');
+        //     submitform('formInstruksi')
+        // } else {
+        //     $('#resep_kosong').show();
+        // }
     }
 
     id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
     var satuanobat = @json($satuanobat);
     var obat = @json($obat);
-    resep = {!! $instruksidokter->resep_obat !!};
+    resep = {!! $resep !!};
     drawformResep()
     var resepSelected = {};
     function addResep() {
