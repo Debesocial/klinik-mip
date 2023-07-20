@@ -43,6 +43,7 @@ use App\Models\IzinIstirahat;
 use App\Models\PermintaanMakanan;
 use App\Models\RawatInap;
 use App\Models\RawatJalan;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +78,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
     Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
     Route::get('/serahkan-obat/{jenis}/{id}',[DashboardController::class, 'serahkanobat']);
+    Route::get('/migrate-refresh', function(){
+        $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations'));
+        return $migrate;
+    });
+    Route::get('/migrate-refresh', function(){
+        $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
+        return $migrate;
+    });
+    Route::get('/migrate', function(){
+        $migrate =  Artisan::call('migrate', array('--path' => 'database/migrations'));
+        return $migrate;
+    });
     /** Pemeriksaan */
     Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja']], function () {
 
