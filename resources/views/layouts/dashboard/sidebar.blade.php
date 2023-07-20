@@ -160,9 +160,6 @@
                                     <span>MD Pemeriksaan</span>
                                 </a>
                                 <ul class="submenu @yield('periksa')">
-                                    <li class="submenu-item @yield('anti')">
-                                        <a href="{{ route('superadmin.pemeriksaanantigen') }}"> Kebutuhan Pemeriksaan Antigen</a>
-                                    </li>
                                     @if(Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                                     <li class="submenu-item @yield('cov')">
                                         <a href="{{ route('superadmin.hasilpemantauan') }}"> Kode Pemantauan</a>
