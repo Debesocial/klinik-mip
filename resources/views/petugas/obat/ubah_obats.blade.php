@@ -34,8 +34,6 @@
                                         </div>
                                     </div>
 
-                                    
-
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="satuan_obat_id">Satuan Obat <b class="color-red">*</b></label>
@@ -60,7 +58,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="harga">Harga</label>
-                                            <input type="number" class="form-control" name="harga" id="harga" value="{{ $obat['harga'] }}">
+                                            <input type="text" class="form-control" name="harga" id="harga" value="{{ $obat['harga'] }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -69,7 +67,19 @@
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5">{{ $obat['komposisi_obat'] }}</textarea>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_antibiotik" name="is_antibiotik" {{$obat->is_antibiotik==1?'checked':''}}>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Antibiotik
+                                        </label>
+                                      </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_antivirus" name="is_antivirus" {{$obat->is_antivirus==1?'checked':''}}>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Antivirus
+                                        </label>
+                                      </div>
+
 
                                     <div class="col-12 text-end"><br>
                                         <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
@@ -84,5 +94,19 @@
         </div>
     </div>
 </section>
+
+@section('js')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new AutoNumeric('#harga', {
+        digitGroupSeparator: '.',
+        decimalCharacter: ',',
+        decimalPlaces: 0,
+        minimumValue: '0',
+      });
+    });
+  </script>
+    
+@endsection
 
 @endsection

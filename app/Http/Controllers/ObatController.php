@@ -91,6 +91,9 @@ class ObatController extends Controller
         //     'updated_by' => auth()->user()->id,
         // ]);
         $data = $request->except('_token');
+        $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
         $data['created_by']=auth()->user()->id;
         $data['updated_by']=auth()->user()->id;
         if (Obat::create($data)) {
@@ -113,6 +116,11 @@ class ObatController extends Controller
     function changeobats(Request $request, $id) {
         $data = $request->except('_token');
         $data['updated_by']=auth()->user()->id;
+        $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
+        $data['is_antibiotik'] = $request->is_antibiotik??0;
+        $data['is_antivirus'] = $request->is_antivirus??0;
         if (Obat::where('id',$id)->update($data)) {
             return redirect('/data/obats')->with('message', 'Berhasil Mengubah Data Obat!');
         }

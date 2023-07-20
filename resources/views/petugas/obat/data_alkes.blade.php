@@ -67,7 +67,7 @@
                             <td class="text-center">{{ $al->golongan_alkes->golongan_alkes }}</td>
                             <td class="text-center">{{ $al->satuan_obat->satuan_obat }}</td>
                             <td class="text-center">{{ $al->bobot_obat->bobot_obat }}</td>
-                            <td class="text-center">Rp. {{ $al->harga??'-' }}</td>
+                            <td class="text-center">Rp. {{ uang($al->harga)??'-' }}</td>
                             <td>{{ $al->komposisis }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">

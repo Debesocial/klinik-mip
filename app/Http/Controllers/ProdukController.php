@@ -37,6 +37,9 @@ class ProdukController extends Controller
         ]);
 
         $data = $request->except('_token');
+        $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
 
@@ -56,6 +59,9 @@ class ProdukController extends Controller
 
     function changeproduk(Request $request, $id) {
        $data = $request->except(['id','_token']);
+       $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
        $data['updated_by'] = auth()->user()->id;
        Produk::where('id',$id)->update($data);
         

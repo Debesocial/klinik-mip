@@ -66,7 +66,7 @@
                             <td class="text-center">{{ $ob->golongan_obat->nama_golongan_obat }}</td>
                             <td class="text-center">{{ $ob->satuan_obat->satuan_obat }}</td>
                             <td class="text-center">{{ $ob->bobot_obat->bobot_obat }}</td>
-                            <td class="text-center">Rp. {{ $ob->harga??'-' }}</td>
+                            <td class="text-center">Rp. {{ uang($ob->harga)??'-' }}</td>
                             <td>{{ $ob->komposisi_obat }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">

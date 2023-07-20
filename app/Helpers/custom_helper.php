@@ -1,5 +1,7 @@
 <?php
 
+use PhpParser\Node\Expr\Cast\String_;
+
 /** untuk cek jenis MCU Lanjutan */
 function cekMcu($data)
 {
@@ -273,4 +275,8 @@ function cardLaporan(array $data)
         </div>
     </div>';
     return $htmls;
+}
+
+function uang($number) {
+    return number_format((float)$number,0,',','.');
 }

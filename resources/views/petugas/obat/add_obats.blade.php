@@ -61,7 +61,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="nama_obat_id">Harga</label>
-                                            <input type="number" name="harga" id="harga" class="form-control" >
+                                            <input type="text" name="harga" id="harga" class="form-control">
                                         </div>
                                     </div>
 
@@ -71,7 +71,18 @@
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5"></textarea>
                                         </div>
                                     </div>
-                                    
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_antibiotik" name="is_antibiotik">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Antibiotik
+                                        </label>
+                                      </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_antivirus" name="is_antivirus">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                          Antivirus
+                                        </label>
+                                      </div>
 
                                     <div class="col-12 text-end"><br>
                                         <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>
@@ -85,5 +96,19 @@
         </div>
     </div>
 </section>
+
+@section('js')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new AutoNumeric('#harga', {
+        digitGroupSeparator: '.',
+        decimalCharacter: ',',
+        decimalPlaces: 0,
+        minimumValue: '0',
+      });
+    });
+  </script>
+    
+@endsection
 
 @endsection

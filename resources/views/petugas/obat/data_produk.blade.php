@@ -68,7 +68,7 @@
                                 <td>{{ $pro->nama_produk }}</td>
                                 <td class="text-center">{{ $pro->satuan_obat->satuan_obat }}</td>
                                 <td class="text-center">{{ $pro->bobot_obat->bobot_obat }}</td>
-                                <td class="text-center">Rp. {{ $pro->harga??'-' }}</td>
+                                <td class="text-center">Rp. {{ uang($pro->harga)??'-' }}</td>
                                 <td class="break-word">{{ $pro->komposisi }}</td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Basic outlined example">

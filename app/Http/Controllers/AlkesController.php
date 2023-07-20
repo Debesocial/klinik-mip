@@ -39,6 +39,9 @@ class AlkesController extends Controller
     {
 
         $data = $request->except('_token');
+        $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
         $data['created_by']=auth()->user()->id;
         $data['updated_by']=auth()->user()->id;
         if (Alkes::create($data)) {
@@ -59,6 +62,9 @@ class AlkesController extends Controller
 
     function changealkes(Request $request, $id) {
         $data = $request->except('_token');
+        $harga = str_replace('.','',$request->harga);
+        $harga = str_replace(',','.',$harga);
+        $data['harga'] = (float)$harga;
         $data['updated_by']=auth()->user()->id;
         if (Alkes::where('id', $id)->update($data)) {
             return redirect('/data/alkes')->with('message', 'Berhasil Mengubah Data Alat/Bahan Kesehatan!');

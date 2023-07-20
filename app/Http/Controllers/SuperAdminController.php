@@ -1171,16 +1171,11 @@ class SuperAdminController extends Controller
             'komposisi_obat' => 'required'
         ]);
 
-        ObatAlkes::create([
-            'jenis_obat_id' => $request->jenis_obat_id,
-            'golongan_obat_id' => $request->golongan_obat_id,
-            'nama_obat_id' => $request->nama_obat_id,
-            'bobot_obat_id' => $request->bobot_obat_id,
-            'satuan_obat_id' => $request->satuan_obat_id,
-            'komposisi_obat' => $request->komposisi_obat,
-            'created_by' => auth()->user()->id,
-            'updated_by' => auth()->user()->id,
-        ]);
+        $data = $request->except('_token');
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+
+        ObatAlkes::create($data);
 
         return redirect('/data/obat')->with('success', 'Berhasil Menambahkan Data Obat!');
     }
@@ -1200,12 +1195,15 @@ class SuperAdminController extends Controller
     function changeobat(Request $request, $id)
     {
         $obatalkes = ObatAlkes::find($id);
+
         $obatalkes->jenis_obat_id = $request->input('jenis_obat_id');
         $obatalkes->golongan_obat_id = $request->input('golongan_obat_id');
         $obatalkes->nama_obat_id = $request->input('nama_obat_id');
         $obatalkes->satuan_obat_id = $request->input('satuan_obat_id');
         $obatalkes->bobot_obat_id = $request->input('bobot_obat_id');
         $obatalkes->komposisi_obat = $request->input('komposisi_obat');
+        $obatalkes->is_antibiotik = $request->is_antibiotik??0;
+        $obatalkes->is_antivirus = $request->is_antivirus??0;
         $obatalkes->update();
 
         return redirect('/data/obat')->with('success', 'Berhasil Mengubah Data Obat!');

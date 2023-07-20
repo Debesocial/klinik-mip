@@ -284,5 +284,27 @@ function validateFutureDate(date){
     return validated;
 }
 
+// function thousands_separators(num)
+//   {
+//     var val = num;
+//     val = val.replace(/[^0-9\,]/g,'');
+    
+//     if(val != "") {
+//         valArr = val.split(',');
+//         valArr[0] = (parseInt(valArr[0],10)).toLocaleString('id-ID');
+//         val = valArr.join(',');
+//     }
+//   console.log(val);
+//     return val;
+//   }
+
+//   $('[id*=harga]').keyup(function (e) { 
+//     let num = $(this).val();
+//     $(this).val(String(thousands_separators(num)));
+// });
+
+
+
+
 
   

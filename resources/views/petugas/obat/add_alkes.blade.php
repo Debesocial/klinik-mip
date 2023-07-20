@@ -64,7 +64,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Harga</label>
-                                            <input type="number" class="form-control" name="harga" id="harga" >
+                                            <input type="text" class="form-control" name="harga" id="harga" >
                                             
                                         </div>
                                     </div>
@@ -92,5 +92,18 @@
         </div>
     </div>
 </section>
+@section('js')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new AutoNumeric('#harga', {
+        digitGroupSeparator: '.',
+        decimalCharacter: ',',
+        decimalPlaces: 0,
+        minimumValue: '0',
+      });
+    });
+  </script>
+    
+@endsection
 
 @endsection
