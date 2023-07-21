@@ -325,7 +325,7 @@
     function lanjut1() {
         var required = ['anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen',
             'denyut_nadi', 'laju_pernapasan', 'pemeriksaan_penunjang',
-            'diagnosa', 'diagnosa_sekunder', 'catatan_pemeriksaan'
+            'catatan_pemeriksaan'
         ];
         var validated = true;
         required.forEach(req => {
@@ -338,11 +338,11 @@
                 input.addClass('is-valid');
                 input.removeClass('is-invalid');
             }
-
-            if (validated == true) {
-                stepper2.next();
-            }
+            console.log(req+'->'+validated);
         });
+        if (validated == true) {
+            stepper2.next();
+        }
     }
 
     function lanjut2() {

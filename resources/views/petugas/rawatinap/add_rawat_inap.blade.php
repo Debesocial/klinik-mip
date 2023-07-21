@@ -324,7 +324,12 @@
                                                 <div class="mb-2">
                                                     <label for="" class="form-label">Nama Tindakan <b
                                                             class="text-danger">*</b></label>
-                                                    <input type="text" name="" id="nama_tindakan" class="form-control">
+                                                    <select name="" id="nama_tindakan" class="form-select">
+                                                        <option value="">Pilih Tindakan</option>
+                                                        @foreach ($tindakan as $tin)
+                                                            <option value="{{$tin->id}}">{{$tin->nama_tindakan}}</option>
+                                                        @endforeach
+                                                    </select>
                                                     {!! validasi('Nama') !!}
                                                 </div>
                                                 <div class="mb-2">
@@ -340,10 +345,10 @@
                                                     {!! validasi('Alat Kesehatan') !!}
                                                 </div>
                                                 <div class="mb-2">
-                                                    <label for="" class="form-label">Jumlah Pengguna Alat Kesehatan <b
+                                                    <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
                                                             class="text-danger">*</b></label>
                                                     <input type="number" name="" id="jumlah_pengguna" class="form-control">
-                                                    {!! validasi('Jumlah Pengguna') !!}
+                                                    {!! validasi('Jumlah Penggunaan') !!}
                                                 </div>
                                                 <div class="mb-2">
                                                     <label for="" class="form-label">Keterangan <b
@@ -373,7 +378,7 @@
                                                             <tr>
                                                                 <th>Tindakan</th>
                                                                 <th>Alat Kesehatan</th>
-                                                                <th>Jumlah Pengguna</th>
+                                                                <th>Jumlah Penggunaan</th>
                                                                 <th>Keterangan</th>
                                                                 <th></th>
                                                             </tr>
@@ -813,9 +818,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         }
 
         var alkes = @json($alatkesehatan);
+        var allTindakan = @json($tindakan);
         var tindakan = [];
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
-
         function addTindakan() {
             var temp = {};
             var validated = true;
@@ -829,6 +834,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
                     form.addClass('is-valid');
                     form.removeClass('is-invalid');
                     temp[id] = form.val();
+                        
                 }
             });
             if (validated == true) {
@@ -842,7 +848,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function clearformTindakan() {
             id_tindakan.forEach(id => {
                 form = $('#' + id);
-                if (id == 'alat_kesehatan') {
+                if (id == 'alat_kesehatan'|| id == 'tindakan') {
 
                     form.val('').trigger('change');
                 }
@@ -855,8 +861,9 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             html = ``;
             tindakan.forEach((data, key) => {
                 var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+                var tin = allTindakan.find(d => d.id == data.nama_tindakan);
                 html += `<tr> 
-                        <td>` + data.nama_tindakan + `</td>
+                        <td>` + tin.nama_tindakan + `</td>
                         <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                         <td>` + data.jumlah_pengguna + `</td>
                         <td>` + data.keterangan + `</td>

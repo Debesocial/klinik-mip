@@ -13,6 +13,7 @@ use App\Models\Pasien;
 use App\Models\RawatInap;
 use App\Models\SatuanObat;
 use App\Models\SubKlasifikasi;
+use App\Models\Tindakan;
 use Illuminate\Support\Facades\File;
 
 class RawatInapController extends Controller
@@ -26,7 +27,7 @@ class RawatInapController extends Controller
     {
         // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
-        $rawat_inap->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'instruksidokter', 'instruksidokter.namapenyakit','instruksidokter.namapenyakitsekunder']);
+        $rawat_inap->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'instruksidokter', 'instruksidokter.namapenyakit','instruksidokter.namapenyakitsekunder', 'pasien.obatAlergi']);
         $nama_penyakit = NamaPenyakit::get();
         $nama_penyakit->load(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit']);
         $pemantauan = HasilPemantauan::all();
@@ -37,22 +38,23 @@ class RawatInapController extends Controller
 
     public function daftarrawatinap()
     {
-        $rawat_inap = RawatInap::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori'])->get();
+        $rawat_inap = RawatInap::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'pasien.obatAlergi'])->get();
 
         return view('petugas.rawatinap.daftar_rawat_inap', compact('rawat_inap'));
     }
 
     public function addrawatinap(Request $request)
     {
-        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->get();
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
+        $tindakan = Tindakan::get();
         $selected_pasien = $request->user;
-        return view('petugas.rawatinap.add_rawat_inap', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','selected_pasien'));
+        return view('petugas.rawatinap.add_rawat_inap', compact('tindakan','pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','selected_pasien'));
     }
 
     public function tambahrawatinap(Request $request)
@@ -96,11 +98,12 @@ class RawatInapController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
+        $tindakan = Tindakan::get();
 
-        return view('petugas.rawatinap.ubah_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'subKlasifikasi',
+        return view('petugas.rawatinap.ubah_rawat_inap', compact('tindakan','rawat_inap', 'nama_penyakit', 'subKlasifikasi',
         'klasifikasi','alatkesehatan', 'satuanobat', 'obat'));
     }
 
@@ -154,6 +157,7 @@ class RawatInapController extends Controller
         $data['alkes'] = Alkes::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
+        $data['tindakan'] = Tindakan::get();
 
         return view('component/detail_rawat_inap',$data);
     }

@@ -32,6 +32,10 @@ class Pasien extends Model
         });
     }
 
+    function obatAlergi() {
+        return $this->belongsTo(Obat::class, 'alergi','id');
+    }
+
     public function getCreatedAtAttribute($value) {
         return Carbon::parse($value)->format('D, Y-m-d H:i:s');
     }

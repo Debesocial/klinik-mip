@@ -680,12 +680,14 @@ class SuperAdminController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $lokasi = LokasiKejadian::get();
+        $tindakan = Tindakan::get();
 
-        return view('petugas.superadmin.kecelakaan_kerja', compact('pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+
+        return view('petugas.superadmin.kecelakaan_kerja', compact('tindakan','pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
     }
 
     public function createKecelakaanKerja(Request $request)
@@ -726,12 +728,13 @@ class SuperAdminController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $lokasi = LokasiKejadian::get();
+        $tindakan = Tindakan::get();
 
-        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('kecelakaan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('tindakan','kecelakaan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
     }
 
     public function changeKecelakaanKerja(Request $request, $id)
@@ -749,8 +752,9 @@ class SuperAdminController extends Controller
         $pasien = Pasien::all();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
+        $tindakan = Tindakan::get();
 
-        return view('petugas.superadmin.data_keterangan_berobat', compact('keterangan', 'pasien', 'keterangan', 'rsrujukan'));
+        return view('petugas.superadmin.data_keterangan_berobat', compact('tindakan','keterangan', 'pasien', 'keterangan', 'rsrujukan'));
     }
 
     public function keteranganberobat()
@@ -1232,7 +1236,7 @@ class SuperAdminController extends Controller
         $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
         $end_week = $now->endOfWeek()->format('m-d');
 
-        $pasien = Pasien::find($id);
+        $pasien = Pasien::with('obatAlergi')->find($id);
         $kategori = KategoriPasien::all();
         $perusahaan = Perusahaan::all();
         $divisi = Divisi::all();
@@ -1251,10 +1255,11 @@ class SuperAdminController extends Controller
         $divisi = Divisi::all();
         $jabatan = Jabatan::all();
         $namapenyakit = NamaPenyakit::all();
+        $obat = Obat::all();
 
         $now = CarbonImmutable::now()->locale('id_ID');
 
-        return view('petugas.superadmin.add_data_pasien', compact('kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien', 'namapenyakit'));
+        return view('petugas.superadmin.add_data_pasien', compact('obat','kategori', 'perusahaan', 'divisi', 'jabatan',  'pasien', 'namapenyakit'));
     }
     public function tambahpasien(Request $request)
     {
@@ -1298,6 +1303,7 @@ class SuperAdminController extends Controller
             'telepon' => $request->telepon,
             'email' => $request->email,
             'lain' =>$request->lain,
+            'riwayat_pengobatan' => $request->riwayat_pengobatan,
             'alergi' => $request->alergi,
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
@@ -1323,8 +1329,9 @@ class SuperAdminController extends Controller
         $jabatan = Jabatan::all();
         $keluarga = Keluarga::all();
         $namapenyakit = NamaPenyakit::all();
+        $obat = Obat::all();
 
-        return view('petugas.superadmin.ubah_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
+        return view('petugas.superadmin.ubah_data_pasien', compact('obat','pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
     }
 
     function changepasien(Request $request, $id)
@@ -1348,6 +1355,7 @@ class SuperAdminController extends Controller
         $pasien->alergi = $request->input('alergi');
         $pasien->alergi_obat = $request->input('alergi_obat');
         $pasien->hamil_menyusui = $request->input('hamil_menyusui');
+        $pasien->riwayat_pengobatan = $request->input('riwayat_pengobatan');
         $pasien->update();
         $keluarga = Keluarga::find($id);
         $keluarga->nama = $request->input('nama_keluarga');
@@ -1846,6 +1854,44 @@ class SuperAdminController extends Controller
             $pasien->nama_divisi = $pasien->divisi->nama_divisi_pasien;
             $pasien->nama_jabatan = $pasien->jabatan->nama_jabatan;
             return response()->json($pasien, 200);
+        }
+    }
+
+
+    function tindakan() {
+        $data['tindakan'] = Tindakan::get();
+        return view('petugas.superadmin.data_tindakan', $data);
+    }
+
+    function addTindakan() {
+        return view('petugas.superadmin.add_tindakan');
+    }
+
+    function tambahTindakan(Request $request) {
+        $data = $request->except('_token');
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+        $tindakan = new Tindakan();
+
+        if ($tindakan->create($data)) {
+            return redirect('/tindakan')->with('message', 'Berhasil menambah tindakan');
+        }
+    }
+
+    function ubahTindakan($id) {
+        $model = new Tindakan();
+        $data['tindakan'] = $model->find($id);
+        return view('petugas.superadmin.ubah_tindakan', $data);
+
+    }
+
+    function changeTindakan(Request $request,$id) {
+        $model = new Tindakan();
+        $data = $request->except('_token');
+        $data['updated_by'] = auth()->user()->id;
+
+        if ($model->where('id', $id)->update($data)) {
+            return redirect('/tindakan')->with('message', 'Berhasil merubah tindakan');
         }
     }
 

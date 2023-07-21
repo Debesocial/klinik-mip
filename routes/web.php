@@ -61,7 +61,14 @@ Route::get('/', [AuthController::class, 'home'])->name('public.index');
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
-
+Route::get('/migrate-refresh', function(){
+    $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
+    return $migrate;
+});
+Route::get('/seed', function(){
+    $migrate =  Artisan::call('db:seed');
+    return $migrate;
+});
 /** Profile & Password */
 Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,tenaga teknis kefarmasian,perawat,mitrakerja']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -78,18 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/modal/obat/{id}', [ObatController::class, 'modalObat']);
     Route::get('/modal/alkes/{id}', [AlkesController::class, 'modalDetail']);
     Route::get('/serahkan-obat/{jenis}/{id}',[DashboardController::class, 'serahkanobat']);
-    Route::get('/migrate-refresh', function(){
-        $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations'));
-        return $migrate;
-    });
-    Route::get('/migrate-refresh', function(){
-        $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
-        return $migrate;
-    });
-    Route::get('/migrate', function(){
-        $migrate =  Artisan::call('migrate', array('--path' => 'database/migrations'));
-        return $migrate;
-    });
+   
     /** Pemeriksaan */
     Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja']], function () {
 
@@ -285,6 +281,14 @@ Route::group(['middleware' => ['auth']], function () {
     /** Master Data */
     Route::group(['middleware' => ['checkRole:superadmin']], function () {
 
+        // Route::get('/migrate-refresh', function(){
+        //     $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
+        //     return $migrate;
+        // });
+        Route::get('/migrate', function(){
+            $migrate =  Artisan::call('migrate', array('--path' => 'database/migrations'));
+            return $migrate;
+        });
 
         Route::get('/mitra/kerja', [SuperAdminController::class, 'mitrakerja'])->name('superadmin.mitrakerja');
         Route::get('/add/mitra/kerja', [SuperAdminController::class, 'addmitrakerja'])->name('superadmin.addmitrakerja');
@@ -363,6 +367,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/rs/rujukan', [SuperAdminController::class, 'tambahrsrujukan'])->name('superadmin.tambahrsrujukan');
         Route::get('/ubah/rs/rujukan/{id}', [SuperAdminController::class, 'ubahrsrujukan'])->name('superadmin.ubahrsrujukan');
         Route::post('/ubah/rs/rujukan/{id}', [SuperAdminController::class, 'changersrujukan'])->name('superadmin.changersrujukan');
+        
+        Route::get('/tindakan', [SuperAdminController::class, 'tindakan'])->name('superadmin.tindakan');
+        Route::get('/add/tindakan', [SuperAdminController::class, 'addtindakan'])->name('superadmin.addtindakan');
+        Route::post('/add/tindakan', [SuperAdminController::class, 'tambahtindakan'])->name('superadmin.tambahtindakan');
+        Route::get('/ubah/tindakan/{id}', [SuperAdminController::class, 'ubahtindakan'])->name('superadmin.ubahtindakan');
+        Route::post('/ubah/tindakan/{id}', [SuperAdminController::class, 'changetindakan'])->name('superadmin.changetindakan');
 
         Route::get('/spesialis/rujukan', [SuperAdminController::class, 'spesialisrujukan'])->name('superadmin.spesialisrujukan');
         Route::get('/add/spesialis/rujukan', [SuperAdminController::class, 'addspesialisrujukan'])->name('superadmin.addspesialisrujukan');

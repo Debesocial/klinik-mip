@@ -12,6 +12,7 @@ use App\Models\Pasien;
 use App\Models\RumahSakitRujukan;
 use App\Models\SatuanObat;
 use App\Models\SpesialisRujukan;
+use App\Models\Tindakan;
 
 class IzinIstirahatController extends Controller
 {
@@ -39,9 +40,10 @@ class IzinIstirahatController extends Controller
         $data['rsrujukan'] = RumahSakitRujukan::all();
         $data['spesialisrujukan'] = SpesialisRujukan::all();
         $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
         $data['obat'] = Obat::get();
         $data['satuanobat'] = SatuanObat::get();
+        $data['tindakan'] = Tindakan::get();
 
         return view('petugas.superadmin.rev.new_izin_istirahat', $data);
     }
@@ -86,9 +88,10 @@ class IzinIstirahatController extends Controller
         $data['rsrujukan'] = RumahSakitRujukan::all();
         $data['spesialisrujukan'] = SpesialisRujukan::all();
         $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
         $data['obat'] = Obat::get();
         $data['satuanobat'] = SatuanObat::get();
+        $data['tindakan'] = Tindakan::get();
 
         return view('petugas.superadmin.rev.new_ubah_izin_istirahat', $data);
 

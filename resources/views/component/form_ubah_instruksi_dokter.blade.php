@@ -476,7 +476,7 @@
 
     function lanjut1() {
         var required = ['anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen',
-            'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'pemeriksaan_penunjang',
+            'denyut_nadi', 'laju_pernapasan', 'pemeriksaan_penunjang',
             'diagnosa', 'diagnosa_sekunder'
         ];
         var validated = true;
@@ -490,7 +490,6 @@
                 input.addClass('is-valid');
                 input.removeClass('is-invalid');
             }
-
         });
 
         if ($('#diagnosa_sekunder').val() == $('#diagnosa').val()) {

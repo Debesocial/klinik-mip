@@ -58,7 +58,7 @@ class RekamMedisController extends Controller
         $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
         $end_week = $now->endOfWeek()->format('m-d');
 
-        $pasien = Pasien::with(['perusahaan','divisi', 'jabatan', 'keluarga', 'kategori'])->get();
+        $pasien = Pasien::with(['perusahaan','divisi', 'jabatan', 'keluarga', 'kategori','obatAlergi'])->get();
 
         return view('petugas.rekammedis.data_rekam_medis', compact('pasien'));
     }

@@ -91,6 +91,7 @@ class SuratController extends Controller
         $data['istirahat'] = $istirahat;
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['alkes'] = Alkes::with(['satuan_obat'])->get();
+        $data['tindakan'] = Tindakan::get();
         $view = view('surat/istirahat', $data);
         // return $view;
         $savename = 'izin-istirahat' . str_replace(' ', '-', $istirahat->pasien->nama_pasien) . '.pdf';
@@ -117,6 +118,7 @@ class SuratController extends Controller
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['alkes'] = Alkes::with(['satuan_obat'])->get();
         $data['penyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['tindakan'] = Tindakan::get();
         $view = view('surat/kecelakaan', $data);
         $savename = 'kecelakaan-kerja' . str_replace(' ', '-', $kecelakaan->pasien->nama_pasien) . '.pdf';
         $this->renderSurat($view, $savename);

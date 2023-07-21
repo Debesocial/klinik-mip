@@ -334,6 +334,19 @@ Breadcrumbs::for('ubah_rs_rujukan', function (BreadcrumbTrail $trail) {
      $trail->parent('rs_rujukan');
      $trail->push('Ubah Rumah Sakit Rujukan');
 });
+/** Tindakan */
+Breadcrumbs::for('tindakan', function (BreadcrumbTrail $trail) {
+     $trail->push('Master Data', route('superadmin.tindakan'));
+     $trail->push('Tindakan', route('superadmin.tindakan'));
+});
+Breadcrumbs::for('tambah_tindakan', function (BreadcrumbTrail $trail) {
+     $trail->parent('tindakan');
+     $trail->push('Tambah Tindakan',);
+});
+Breadcrumbs::for('ubah_tindakan', function (BreadcrumbTrail $trail) {
+     $trail->parent('tindakan');
+     $trail->push('Ubah Tindakan');
+});
 /** Dokter Spesialis */
 Breadcrumbs::for('spesialis_rujukan', function (BreadcrumbTrail $trail) {
      $trail->push('Master Data', route('superadmin.spesialisrujukan'));

@@ -35,6 +35,22 @@ class KategoriPasienSeeder extends Seeder
                 'created_by' => 1,
                 'updated_by' => 1
             ],
+            [
+                'nama_kategori' => 'Visitor MIP',
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'nama_kategori' => 'Karyawan Vendor MIP',
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'nama_kategori' => 'Karyawan Vendor mitra kerja',
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            
         ]);
     }
 }

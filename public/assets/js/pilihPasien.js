@@ -6,7 +6,7 @@ function pilihPasien(pasien) {
         $('#select_pasien_id').addClass('is-invalid')
         $('.invalid-feedback').addClass('d-block')
     } else {
-        
+        console.log(pasien);
         $('[name=pasien_id]').val(pasien.id)
         $('td#nama').text(": " + pasien.nama_pasien);
         $('td#umur').text(": " + getAge(pasien.tanggal_lahir));
@@ -21,7 +21,7 @@ function pilihPasien(pasien) {
         $('td#jenis_kelamin').text(": " + pasien.jenis_kelamin)
         $('td#telepon').text(": " + pasien.telepon)
         $('td#kategori').text(": " + pasien.kategori.nama_kategori )
-        $('#alergi').html(': ' + cekAlergi(pasien.alergi));
+        $('#alergi').html(': ' + cekAlergi(pasien.obat_alergi?.nama_obat));
         $('#menyusui').html(': ' + cekTrueFalse(pasien.hamil_menyusui));
         if(pasien.perusahaan_id==9){
             $('td#perusahaan').append(' - <b class="m-0">'+pasien.lain+'</b>');
@@ -101,7 +101,7 @@ function setPasien(pasien) {
     $('td#email').text(": " + email);
     $('.invalid-feedback').removeClass('d-block')
     $('#detail_pasien').fadeIn('slow');
-    $('#alergi').html(': ' + cekAlergi(pasien.alergi));
+    $('#alergi').html(': ' + cekAlergi(pasien.obat_alergi?.nama_obat));
     $('#menyusui').html(': ' + cekTrueFalse(pasien.hamil_menyusui));
     if(pasien.perusahaan_id==9){
         $('td#perusahaan').append(' - <b class="m-0">'+pasien.lain+'</b>');

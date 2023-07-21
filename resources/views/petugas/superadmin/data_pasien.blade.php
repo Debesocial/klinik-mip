@@ -59,7 +59,7 @@
                             <td>{{ $patient['jenis_kelamin'] }}</td>
                             <td>{{$patient->kategori->nama_kategori}}</td>
                             <td class="text-center">
-                                {!! $patient->alergi_obat == 1 ? '<i class="fas fa-check text-primary"></i> </br>'.ucfirst($patient->alergi??'') : '<i class="fas fa-times text-danger"></i>' !!}
+                                {!! $patient->alergi_obat == 1 ? '<i class="fas fa-check text-primary"></i> </br>'.ucfirst($patient->obatAlergi->nama_obat??'') : '<i class="fas fa-times text-danger"></i>' !!}
                                 </td>
                             <td class="text-center"><i class="{{ $patient->hamil_menyusui == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
                             <td class="text-center">

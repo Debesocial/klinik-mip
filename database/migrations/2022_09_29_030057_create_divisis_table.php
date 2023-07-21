@@ -13,6 +13,7 @@ class CreateDivisisTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::create('divisis', function (Blueprint $table) {
             $table->id();
             $table->string('nama_divisi_pasien', 30);
@@ -22,6 +23,7 @@ class CreateDivisisTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

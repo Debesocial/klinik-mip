@@ -183,6 +183,9 @@
                                     <li class="submenu-item @yield('spes')">
                                         <a href="{{ route('superadmin.spesialisrujukan') }}"> Dokter Spesialis Rujukan</a>
                                     </li>
+                                    <li class="submenu-item @yield('tindakan')">
+                                        <a href="{{ route('superadmin.tindakan') }}"> Tindakan</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif

@@ -136,7 +136,13 @@
                                     </div>
                                     <div class="form-group" id="_alergi" style="display: none;">
                                         <label for="alergi">Alergi obat terhadap</label>
-                                        <textarea class="form-control" name="alergi" id="alergi"></textarea>
+                                        <select class="form-select" name="alergi" id="alergi">
+                                            <option value="">Pilih obat</option>
+                                            @foreach ($obat as $ob)
+                                                <option value="{{$ob->id}}">{{$ob->nama_obat}}</option>
+                                            @endforeach
+                                            <option value=""></option>
+                                        </select>
                                         <div class="invalid-feedback">
                                             Obat harus diisi apabila pasien memiliki alergi
                                         </div>
@@ -153,7 +159,14 @@
                                 </div>
 
                                 <div class="col-md-6 col-12">
-                                    <h5 class="mb-4">Data Keluarga</h5>
+                                    
+                                    <div class="row mb-4">
+                                        <h5>Riwayat Pengobatan</h5>
+                                        <div class="col">
+                                            <textarea name="riwayat_pengobatan" id="riwayat_pengobatan" class="form-control" placeholder="Masukkan riwayat pengobatan"></textarea>
+                                        </div>
+                                    </div>
+                                    <h5 class="">Data Keluarga</h5>
                                     <div class="form-group">
                                         <label for="nama_keluarga">Nama Keluarga</label>
                                         <input type="text" id="nama_keluarga" class="form-control" name="nama_keluarga" placeholder="Masukkan Nama Keluarga" >
@@ -204,6 +217,11 @@
 </section>
 @section('js')
     <script type="text/javascript">
+        $('#alergi').select2({
+            theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+        });
         $(document).ready(function(){
             $('[id*="alergi_obat"]').click(function(){
                 var alergi_obat =  $('#alergi_obat:checked').val();
@@ -215,6 +233,7 @@
             input_karyawan = ['NIK','perusahaan_id', 'divisi_id', 'jabatan_id'];
             $('#kategori_pasien_id').change(function(){
                 id = $(this).val();
+                //jika yg dipilih penduduk lokal
                 if (id==4) {
                     $('#data-karyawan').hide()
                     input_karyawan.forEach(input => {
@@ -222,12 +241,14 @@
                         form.val('');
                         form.removeAttr('required');
                     });
+                    $('#alamat_mess').prop('required',false);
                 }else{
                     $('#data-karyawan').show();
                     input_karyawan.forEach(input => {
                         form = $('#'+input);
                         form.attr('required', 'required');
                     });
+                    $('#alamat_mess').prop('required',true);
                 }
             })
             $('#perusahaan_id').change(function(){
@@ -248,8 +269,11 @@
             if (status == '0') {
                 $('#_alergi').hide('slow')
                 $('#alergi').val('')
+                $('#alergi').prop('required',false);
+
             } else {
                 $('#_alergi').show('slow')
+                $('#alergi').prop('required',true);
             }
         }
         function submitForm() {
