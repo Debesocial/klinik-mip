@@ -34,8 +34,8 @@
     </div>
 
     <p>Yang bersangkutan adalah benar telah berobat di
-        <b><u>{{ ($keteranganberobat->rumah_sakit_rujukans_id==10)? $keteranganberobat->rs_lain :$keteranganberobat->rumahsakitrujukan->nama_RS_rujukan }}</u></b>.
-        Pada hasil pemeriksaan didapatkan diagnosa penyakit <b><u>{{ $keteranganberobat->namapenyakit->primer }}</u></b>{!! ($keteranganberobat->sekunder)? ' dengan diagnosa sekunder <b><u>'.$keteranganberobat->sekunders->primer.'</u></b>':''!!}
+        <b><u>{{ ($keteranganberobat->rumah_sakit_rujukans_id==10)? $keteranganberobat->rs_lain :$keteranganberobat->rumahsakitrujukan->nama_RS_rujukan }}</u></b>. <br>
+        Pada hasil pemeriksaan didapatkan diagnosa penyakit <b><u>{{ $keteranganberobat->namapenyakit->primer }}</u></b>{!! ($keteranganberobat->sekunder)? '<br>dengan diagnosa sekunder <b><u>'.$keteranganberobat->sekunders->primer.'</u></b>':''!!} <br>
         dan pada pasien diresepkan obat <b><i>{{ $keteranganberobat->resep }}</i></b>.
     </p>
     <p>Saran untuk pasien: {{ $keteranganberobat->saran }}.</p>
@@ -44,6 +44,10 @@
     @else
         <p>Pasien <b><u>tidak harus</u></b> kontrol kembali.</p>
     @endif
+
+    {{-- {{tanngal()}} --}}
+
+    <p>Masa berlaku surat berlaku sampai tanggal <b>{{tanggal($keteranganberobat->created_at.' +2 week',false)}}</b>.</p>
 
     <div class="row" style="margin-bottom: 50px; margin-top: 50px;">
         <div class="col">

@@ -200,6 +200,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/keterangan/berobat', [SuperAdminController::class, 'keteranganberobat'])->name('superadmin.keteranganberobat');
         Route::post('/keterangan/berobat', [SuperAdminController::class, 'addketeranganberobat'])->name('superadmin.addketeranganberobat');
         Route::get('/print/ket/berobat/{id}', [SuperAdminController::class, 'printketberobat'])->name('superadmin.printketberobat');
+        Route::get('/view/keterangan-berobat/{id}', [SuperAdminController::class, 'viewketberobat'])->name('superadmin.viewketberobat');
         Route::get('/ubah/ket/berobat/{id}', [SuperAdminController::class, 'ubahketberobat'])->name('superadmin.ubahketberobat');
         Route::post('/ubah/ket/berobat/{id}', [SuperAdminController::class, 'changeketberobat'])->name('superadmin.changeketberobat');
 

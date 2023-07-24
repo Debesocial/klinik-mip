@@ -763,8 +763,9 @@ class SuperAdminController extends Controller
         $keterangan = KeteranganBerobat::all();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
+        $dokters = User::where('level_id',2)->get();
 
-        return view('petugas.superadmin.keterangan_berobat', compact('pasien_id', 'namapenyakit', 'keterangan', 'rsrujukan'));
+        return view('petugas.superadmin.keterangan_berobat', compact('dokters','pasien_id', 'namapenyakit', 'keterangan', 'rsrujukan'));
     }
 
     public function addketeranganberobat(Request $request)
@@ -802,14 +803,21 @@ class SuperAdminController extends Controller
         return $pdf->stream();
     }
 
+    function viewketberobat($id) {
+        $keterangan = KeteranganBerobat::with(['pasien.perusahaan','pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori','pasien.obatAlergi'])->find($id);
+        return view('petugas.superadmin.view_berobat', compact('keterangan'));
+        
+    }
+
     public function ubahketberobat($id)
     {
         $keterangan = KeteranganBerobat::find($id);
         $pasien = Pasien::with(['kategori'])->get();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
+        $dokters = User::where('level_id',2)->get();
 
-        return view('petugas.superadmin.ubah_keterangan_berobat', compact('keterangan', 'pasien', 'namapenyakit', 'rsrujukan'));
+        return view('petugas.superadmin.ubah_keterangan_berobat', compact('dokters','keterangan', 'pasien', 'namapenyakit', 'rsrujukan'));
     }
 
     function changeketberobat(Request $request, $id)
@@ -824,6 +832,9 @@ class SuperAdminController extends Controller
         $keterangan->saran = $request->input('saran');
         $keterangan->kontrol = $request->input('kontrol');
         $keterangan->tanggal_kembali = $request->input('tanggal_kembali');
+        $keterangan->tanggal_pengembalian = $request->input('tanggal_pengembalian');
+        $keterangan->dokter_periksa = $request->input('dokter_periksa');
+        $keterangan->dokter_rujuk = $request->input('dokter_rujuk');
         $keterangan->update();
 
         return redirect('/data/keterangan/berobat')->with('message', 'Berhasil mengubah surat keterangan berobat');

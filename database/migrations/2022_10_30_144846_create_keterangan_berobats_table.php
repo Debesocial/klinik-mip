@@ -24,6 +24,9 @@ class CreateKeteranganBerobatsTable extends Migration
             $table->text('saran');
             $table->boolean('kontrol');
             $table->date('tanggal_kembali')->nullable();
+            $table->date('tanggal_pengembalian')->nullable();
+            $table->foreignId('dokter_rujuk')->constrained('users');
+            $table->text('dokter_periksa')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

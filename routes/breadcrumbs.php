@@ -520,6 +520,10 @@ Breadcrumbs::for('ubah_keterangan_berobat', function (BreadcrumbTrail $trail) {
      $trail->parent('keterangan_berobat');
      $trail->push('Ubah Keterangan Berobat');
 });
+Breadcrumbs::for('lihat_keterangan_berobat', function (BreadcrumbTrail $trail) {
+     $trail->parent('keterangan_berobat');
+     $trail->push('Detail Keterangan Berobat');
+});
 /** Izin Berobat */
 Breadcrumbs::for('izin_berobat', function (BreadcrumbTrail $trail) {
      $trail->push('Surat Keterangan', route('superadmin.dataizinberobat'));

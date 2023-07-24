@@ -28,6 +28,10 @@ class KeteranganBerobat extends Model
         return $this->belongsTo(Pasien::class);
     }
 
+    function dokterRujuk() {
+        return $this->belongsTo(User::class, 'dokter_rujuk','id');
+    }
+
     public function user() {
         return $this->hasMany(User::class);
     }

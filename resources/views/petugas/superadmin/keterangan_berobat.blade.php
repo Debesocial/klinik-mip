@@ -51,6 +51,10 @@
                                         <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                                     </div>
                                     <div class="mb-2">
+                                        <label for="" class="form-label">Dokter yang memeriksa <b class="color-red">*</b></label>
+                                        <input type="text" id="dokter_periksa" name="dokter_periksa" class="form-control" placeholder="Masukkan nama dokter" required>
+                                    </div>
+                                    <div class="mb-2">
                                         <label class="form-label">Diagnosa <b class="color-red">*</b></label>
                                         <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select" required>
                                             <option value="" disabled selected>Pilih Nama Penyakit</option>
@@ -99,13 +103,27 @@
                                
                             </div>
                             <div class="mb-2">
-                                <label id="label-kontrol">Tanggal Pengembalian Surat Rujukan <b class="color-red">*</b></label>
-                                <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali"
-                                    required>
+                                <label id="label-kontrol">Tanggal kontrol kembali <b class="color-red">*</b></label>
+                                <input type="date" id="tanggal_kembali" class="form-control" name="tanggal_kembali" required>
                             </div>
+                            <div class="mb-2">
+                                <label class="form-label" >Tanggal pengembalian surat <b class="color-red">*</b></label>
+                                <input type="date" id="tanggal_pengembalian" class="form-control" name="tanggal_pengembalian" required>
+                            </div>
+                            <div class="mb-2">
+                                <label for="" class="form-label">Dokter yang merujuk <b class="color-red">*</b></label>
+                                <select name="dokter_rujuk" id="dokter_rujuk" class="form-select" required>
+                                    <option value="" disabled>Pilih Dokter</option>
+                                    @foreach ($dokters as $dokter)
+                                        <option value="{{$dokter->id}}">{{$dokter->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-3">
                         <div class="col text-end">
                             <button type="submit"  class="btn btn-primary">Simpan <i class="bi bi-save"></i></button>
                         </div>
