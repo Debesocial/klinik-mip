@@ -109,13 +109,13 @@
                         </thead>
                         <tbody>
                             @if (is_array(json_decode($inap->tindakan)))
-                                @foreach (json_decode($inap->tindakan) as $tindakan)
+                                @foreach (json_decode($inap->tindakan) as $tin)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$tindakan->nama_tindakan}}</td>
-                                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tindakan->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tindakan->alat_kesehatan)->nama_alkes}}</td>
-                                        <td>{{$tindakan->jumlah_pengguna}}</td>
-                                        <td>{{$tindakan->keterangan}}</td>
+                                        <td>{{$tindakan->find($tin->nama_tindakan)->nama_tindakan}}</td>
+                                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tin->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alkes->find($tin->alat_kesehatan)->nama_alkes}}</td>
+                                        <td>{{$tin->jumlah_pengguna}}</td>
+                                        <td>{{$tin->keterangan}}</td>
                                     </tr>
                                 @endforeach
                             @endif

@@ -120,9 +120,10 @@
                     @foreach (json_decode($kecelakaan->tindakan, true) as $tin);
                         @php
                             $alat =  $alkes->find($tin['alat_kesehatan']);
+                            $nama_tindakan = $tindakan->find($tin['nama_tindakan'])->nama_tindakan;
                         @endphp
                         <tr >
-                            <td class="text-center" >{{$tin['nama_tindakan']}}</td>
+                            <td class="text-center" >{{$nama_tindakan}}</td>
                             <td class="text-center">{{$alat->nama_alkes}}</td>
                             <td class="text-center">{{$tin['jumlah_pengguna']}} {{$alat->satuan_obat->satuan_obat}}</td>
                             <td class="text-center">{{$tin['keterangan']}}</td>

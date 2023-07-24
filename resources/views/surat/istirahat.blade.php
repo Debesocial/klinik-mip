@@ -49,14 +49,15 @@
                     <td>
                         <ol style="margin:0; padding-left: 20px;">
                             @if (is_array(json_decode($istirahat->tindakan)))
-                            @foreach (json_decode($istirahat->tindakan) as $tindakan)
+                            @foreach (json_decode($istirahat->tindakan) as $tin)
                                 @php
-                                    $dataAlkes = $alkes->find($tindakan->alat_kesehatan);   
+                                    $dataAlkes = $alkes->find($tin->alat_kesehatan);
+                                    $nama_tindakan = $tindakan->find($tin->nama_tindakan)->nama_tindakan;   
                                 @endphp
                                 <li>
-                                    <b>{{$tindakan->nama_tindakan}}</b><br>
-                                    Alat : <b>{{$dataAlkes->nama_alkes}} ({{$tindakan->jumlah_pengguna}} {{$dataAlkes->satuan_obat->satuan_obat}})</b><br>
-                                    <i>Ket. {{$tindakan->keterangan}}</i>
+                                    <b>{{$nama_tindakan}}</b><br>
+                                    Alat : <b>{{$dataAlkes->nama_alkes}} ({{$tin->jumlah_pengguna}} {{$dataAlkes->satuan_obat->satuan_obat}})</b><br>
+                                    <i>Ket. {{$tin->keterangan}}</i>
                                 </li>
                             @endforeach
                                 

@@ -6,7 +6,6 @@ function pilihPasien(pasien) {
         $('#select_pasien_id').addClass('is-invalid')
         $('.invalid-feedback').addClass('d-block')
     } else {
-        console.log(pasien);
         $('[name=pasien_id]').val(pasien.id)
         $('td#nama').text(": " + pasien.nama_pasien);
         $('td#umur').text(": " + getAge(pasien.tanggal_lahir));

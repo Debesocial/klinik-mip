@@ -172,64 +172,87 @@
                 <div id="test-nl-2" class="content">
                     <input type="text" name="tindakan" id="tindakan" hidden>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-2">
-                                <label for="" class="form-label">Nama Tindakan <b
-                                        class="text-danger">*</b></label>
-                                <input type="text" name="" id="nama_tindakan" class="form-control">
-                                {!! validasi('Nama') !!}
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">Nama Alat Kesehatan <b
-                                        class="text-danger">*</b></label>
-                                <select name="" id="alat_kesehatan" class="form-select">
-                                    <option value="" selected disabled>Pilihi alat kesehatan </option>
-                                    @foreach ($alatkesehatan as $alat)
-                                        <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                {!! validasi('Alat Kesehatan') !!}
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
-                                        class="text-danger">*</b></label>
-                                <input type="number" name="" id="jumlah_pengguna" class="form-control">
-                                {!! validasi('Jumlah Pengguna') !!}
+                        <div class="col-5">
+                            <div class="row">
+                                <div class="col my-auto">
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Nama Tindakan <b
+                                                class="text-danger">*</b></label>
+                                        <select name="" id="nama_tindakan" class="form-select">
+                                            <option value="">Pilih Tindakan</option>
+                                            @foreach ($tindakan as $tin)
+                                                <option value="{{$tin->id}}">{{$tin->nama_tindakan}}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! validasi('Nama') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Nama Alat Kesehatan <b
+                                                class="text-danger">*</b></label>
+                                        <select name="" id="alat_kesehatan" class="form-select">
+                                            <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                            @foreach ($alatkesehatan as $alat)
+                                                <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        {!! validasi('Alat Kesehatan') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
+                                                class="text-danger">*</b></label>
+                                        <input type="number" name="" id="jumlah_pengguna" class="form-control">
+                                        {!! validasi('Jumlah Penggunaan') !!}
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="" class="form-label">Keterangan <b
+                                                class="text-danger">*</b></label>
+                                        <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
+                                        {!! validasi('Keterangan') !!}
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mb-2">
-                                <label for="" class="form-label">Keterangan <b
-                                        class="text-danger">*</b></label>
-                                <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
-                                {!! validasi('Keterangan') !!}
+                        <div class="col-1 my-auto">
+                            <div class="mb-3 text-center">
+                                <button type="button" class="btn btn-success" onclick="addTindakan()"><b> <i
+                                            class="bi bi-arrow-right-circle"></i></b></button>
+                            </div>
+                        </div>
+                        <div class="col-6 border">
+                            <div class="row">
+                                <div class="col py-3">
+                                    
+                                    <div class="table-responsive">
+                                        <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
+                                            boleh kosong</span>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tindakan</th>
+                                                    <th>Alat Kesehatan</th>
+                                                    <th>Jumlah Penggunaan</th>
+                                                    <th>Keterangan</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="body_tindakan">
+                                                <tr>
+                                                    <td colspan="5" style="height: 300px">
+                                                        <h4 class="text-center" style="color: rgba(0, 0, 0, 0.10)">
+                                                            Isi tabel tindakan dengan memasukkan data di form sebelah kiri.
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+                                </div>
                             </div>
 
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3 text-center">
-                                <button type="button" class="btn btn-success" onclick="addTindakan()"><b>Tambah <i
-                                            class="bi bi-arrow-down-circle"></i></b></button>
-                            </div>
-                            <div class="table-responsive">
-                                <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
-                                    boleh kosong</span>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Tindakan</th>
-                                            <th>Alat Kesehatan</th>
-                                            <th>Jumlah Pengguna</th>
-                                            <th>Keterangan</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="body_tindakan"></tbody>
-                                </table>
-                            </div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between">
@@ -264,7 +287,7 @@
 </div>
 
 @php
-    $tindakan = $intervensi->tindakan??json_encode([]);
+    $selectedTindakan = $intervensi->tindakan??json_encode([]);
     
 @endphp
 
@@ -359,7 +382,8 @@
     }
 
     var alkes = @json($alatkesehatan);
-    var tindakan = {!! $tindakan !!};
+    var tindakan = {!! $selectedTindakan !!};
+    var allTindakan = @json($tindakan);
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     drawformTindakan();
     var tindakanSelected = {};
@@ -388,7 +412,7 @@
     function clearformTindakan() {
         id_tindakan.forEach(id => {
             form = $('#' + id);
-            if (id == 'alat_kesehatan') {
+            if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
 
                 form.val('').trigger('change');
             }
@@ -401,8 +425,9 @@
         html = ``;
         tindakan.forEach((data, key) => {
             var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+            var tin = allTindakan.find(d => d.id == data.nama_tindakan);
             html += `<tr> 
-                    <td>` + data.nama_tindakan + `</td>
+                    <td>` + tin.nama_tindakan + `</td>
                     <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
                     <td>` + data.jumlah_pengguna + `</td>
                     <td>` + data.keterangan + `</td>

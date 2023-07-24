@@ -416,8 +416,8 @@
                         </div>
                         <div id="test-nl-4" class="content">
                             <input type="text" name="resep" id="resep" hidden>
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row border p-3 mb-3">
+                                <div class="col-md-5">
                                     <div class="mb-2">
                                         <label for="" class="form-label">Nama Obat <b
                                                 class="text-danger">*</b></label>
@@ -448,8 +448,6 @@
                                         <input type="text" id="aturan_pakai" class="form-control">
                                         {!! validasi('Aturan pakai') !!}
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="mb-2">
                                         <label for="" class="form-label">Keterangan<b
                                                 class="text-danger">*</b></label>
@@ -457,15 +455,11 @@
                                         {!! validasi('Aturan pakai') !!}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-center">
-                                    <button type="button" class="btn btn-success" onclick="addResep()"><b>Tambah <i
-                                                class="bi bi-arrow-down-circle"></i></b></button>
+                                <div class="col-1 my-auto text-center">
+                                    <button type="button" class="btn btn-success" onclick="addResep()"><b><i
+                                                class="bi bi-arrow-right-circle"></i></b></button>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
+                                <div class="col-md-6 border pt-2">
                                     <span id="resep_kosong" class="text-danger" style="display: none">Resep tidak boleh
                                         kosong</span>
                                     <div class="table-responsive">
@@ -480,7 +474,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="body_resep">
-
+                                                <tr>
+                                                    <td colspan="5" style="height: 300px">
+                                                        <h4 class="text-center" style="color: rgba(0, 0, 0, 0.10)">
+                                                            Isi tabel resep dengan memasukkan data di form sebelah kiri.
+                                                        </h4>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -601,7 +601,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 </div>
 
 @php
-    $tindakan = $rawat_inap->tindakan??json_encode([]);
+    $selectedTindakan = $rawat_inap->tindakan??json_encode([]);
     $resep = $rawat_inap->resep??json_encode([]);
 @endphp
 
@@ -619,7 +619,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
-        select2_tindakan = $('select#tindakan').select2({
+        select2_tindakan = $('select#nama_tindakan').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
@@ -817,7 +817,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
     </script>
     <script>
         function lanjut3() {
-            // validated3 = true;
+            // validated3 = true;   
             // if (tindakan.length != 0) {
             //     $('#tindakan_kosong').hide();
                 
@@ -836,7 +836,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
 
         var alkes = @json($alatkesehatan);
         var allTindakan = @json($tindakan);
-        var tindakan = {!!$tindakan!!};
+        var tindakan = {!!$selectedTindakan!!};
         var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
 
         function addTindakan() {
@@ -864,7 +864,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function clearformTindakan() {
             id_tindakan.forEach(id => {
                 form = $('#' + id);
-                if (id == 'alat_kesehatan') {
+                if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
 
                     form.val('').trigger('change');
                 }

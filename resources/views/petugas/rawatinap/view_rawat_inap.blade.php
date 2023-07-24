@@ -404,7 +404,7 @@
     <!-- Modal -->
     <div class="modal fade" id="modalRawatInap" data-bs-backdrop="static" data-bs-keyboard="false"
         aria-labelledby="modalRawatInapLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered modal-lg">
+        <div class="modal-dialog  modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalRawatInap_title">Modal title</h5>
@@ -592,8 +592,16 @@
             var request = $.ajax({
                 method: 'GET',
                 url: url,
+                beforeSend: function() {
+                    html = `<div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+                        $('#modalRawatInap_body').html(html);
+                },
             });
             request.done(function(html) {
+                
                 $('#modalRawatInap_body').html(html);
             })
 
@@ -606,6 +614,13 @@
             var request = $.ajax({
                 method: 'GET',
                 url: url,
+                beforeSend: function() {
+                    html = `<div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+                    $('#modalRawatInap2_body').html(html);
+                },
             });
             request.done(function(html) {
                 $('#modalRawatInap2_body').html(html);

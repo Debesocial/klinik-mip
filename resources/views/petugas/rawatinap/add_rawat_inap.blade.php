@@ -369,7 +369,6 @@
                                     <div class="col-6 border">
                                         <div class="row">
                                             <div class="col py-3">
-                                                
                                                 <div class="table-responsive">
                                                     <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
                                                         boleh kosong</span>
@@ -413,8 +412,8 @@
                         </div>
                         <div id="test-nl-4" class="content">
                             <input type="text" name="resep" id="resep" hidden>
-                            <div class="row">
-                                <div class="col-md-6">
+                            <div class="row border p-3 mb-3">
+                                <div class="col-md-5">
                                     <div class="mb-2">
                                         <label for="" class="form-label">Nama Obat <b
                                                 class="text-danger">*</b></label>
@@ -445,8 +444,6 @@
                                         <input type="text" id="aturan_pakai" class="form-control">
                                         {!! validasi('Aturan pakai') !!}
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="mb-2">
                                         <label for="" class="form-label">Keterangan<b
                                                 class="text-danger">*</b></label>
@@ -454,15 +451,11 @@
                                         {!! validasi('Aturan pakai') !!}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-center">
-                                    <button type="button" class="btn btn-success" onclick="addResep()"><b>Tambah <i
-                                                class="bi bi-arrow-down-circle"></i></b></button>
+                                <div class="col-1 my-auto text-center">
+                                    <button type="button" class="btn btn-success" onclick="addResep()"><b><i
+                                                class="bi bi-arrow-right-circle"></i></b></button>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
+                                <div class="col-md-6 border pt-2">
                                     <span id="resep_kosong" class="text-danger" style="display: none">Resep tidak boleh
                                         kosong</span>
                                     <div class="table-responsive">
@@ -477,7 +470,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="body_resep">
-
+                                                <tr>
+                                                    <td colspan="5" style="height: 300px">
+                                                        <h4 class="text-center" style="color: rgba(0, 0, 0, 0.10)">
+                                                            Isi tabel resep dengan memasukkan data di form sebelah kiri.
+                                                        </h4>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -584,7 +583,7 @@
 <!-- Modal -->
 <div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false"
 aria-labelledby="modalRawatInap2Label" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered ">
+<div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
@@ -848,7 +847,7 @@ aria-labelledby="modalRawatInap2Label" aria-hidden="true">
         function clearformTindakan() {
             id_tindakan.forEach(id => {
                 form = $('#' + id);
-                if (id == 'alat_kesehatan'|| id == 'tindakan') {
+                if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
 
                     form.val('').trigger('change');
                 }
