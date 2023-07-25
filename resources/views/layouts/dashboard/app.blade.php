@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo/logo-klinik.png') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/logo/medicoal.png') }}" />
     {{-- stepper --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -300,7 +300,7 @@
             },
             scrollY: 320,
             scrollX: true,
-           
+            order: [],
             'autoWidth': true,
             
         })

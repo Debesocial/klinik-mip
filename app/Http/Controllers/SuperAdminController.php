@@ -1057,17 +1057,8 @@ class SuperAdminController extends Controller
     function changeketerangansehat(Request $request, $id)
     {
 
-        $keterangan = KeteranganSehat::find($id);
-        $keterangan->tinggi_badan = $request->input('tinggi_badan');
-        $keterangan->berat_badan = $request->input('berat_badan');
-        $keterangan->suhu_tubuh = $request->input('suhu_tubuh');
-        $keterangan->tekanan_darah = $request->input('tekanan_darah');
-        $keterangan->tekanan_darah_per = $request->input('tekanan_darah_per');
-        $keterangan->denyut_nadi = $request->input('denyut_nadi');
-        $keterangan->laju_pernapasan = $request->input('laju_pernapasan');
-        $keterangan->saturasi = $request->input('saturasi');
-        $keterangan->hasil = $request->input('hasil');
-        $keterangan->update();
+        $data = $request->except(['_token']);
+        KeteranganSehat::where('id',$id)->update($data);
 
         return redirect('/data/keterangan/sehat')->with('message', 'Berhasil ');
     }

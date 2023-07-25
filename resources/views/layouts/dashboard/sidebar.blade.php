@@ -24,14 +24,9 @@
 <div id="app">
     <div id="sidebar" class="active">
         <div class="sidebar-wrapper active">
-            <div class="sidebar-header">
-                <div class="d-flex justify-content-between">
-                    <div class="logo flex-column gap-4 mb-6 align-items-center justify-content-center">
-                        <a href=""><img src="{{asset('assets/images/logo/logo-klinik.png')}}" alt="" style="width: 150px; height: 50px;"></a>
-                    </div>
-                    <div class="toggler">
-                        <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                    </div>
+            <div class="sidebar-header p-0 mt-4">
+                <div class="logo text-center">
+                    <a href=""><img class="img-fluid" src="{{asset('assets/images/logo/medicoal.png')}}" alt="" style="height: 100px; width: 100px; object-fit: contain"></a>
                 </div>
             </div>
             <div class="sidebar-menu">
@@ -57,9 +52,9 @@
                                         <a href="{{ route('superadmin.datauser') }}"> Data Petugas</a>
                                         </a>
                                     </li>
-                                    <li class="submenu-item @yield('level')">
+                                    {{-- <li class="submenu-item @yield('level')">
                                         <a href="{{ route('superadmin.level') }}"><i class="bi bi-arrow-return-right"></i> Level Petugas</a>
-                                    </li>
+                                    </li> --}}
                                     {{-- <li class="submenu-item @yield('jadwal')">
                                         <a href="{{ route('superadmin.jadwal') }}"><i class="bi bi-arrow-return-right"></i> Jadwal Petugas</a>
                                     </li> --}}

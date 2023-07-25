@@ -28,13 +28,13 @@
                 </tr>
                 <tr>
                     <td>Riwayat Penyakit</td>
-                    <td>: {{ ($tindakan->riwayat)??'-' }}</td>
+                    <td>{!! nl2br($tindakan->riwayat)??'-' !!}</td>
                 </tr>
             </table>
         </div>
     </div>
 
-    <p>Dengan in menyatakan <b>{{$tindakan->hasil==1?'SETUJU':'TIDAK SETUJU'}}</b> untuk dilakukan tindakan medis berupa <b>{{$tindakan->tindakan}}</b></p>
+    <p>Dengan in menyatakan <b>{{$tindakan->hasil==1?'SETUJU':'TIDAK SETUJU'}}</b> <br> untuk dilakukan tindakan medis berupa <b>{!!nl2br($tindakan->tindakan)!!}</b></p>
 
     <p>
         Pernyataan ini saya buat dengan sesungguhnya bahwa : 

@@ -42,12 +42,12 @@
 
     <h4 class="card-title">Selamat Datang, {{ Auth::user()->name }}</h4>
     <div class="page-content">
-        @if (Auth::user()->level->nama_level=='superadmin'||Auth::user()->level->nama_level=='apoteker')
+        
         <div class="row">
             <div class="col-md-7">
                 <div class="card">  
                     <div class="card-header pb-0">
-                        <div class="card-title">Antrian Resep Obat</div>
+                        <div class="card-title">Resep Obat</div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive ">
@@ -68,7 +68,7 @@
                                         <td>{{$res->pasien->nama_pasien}}</td>
                                         <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap")'>
+                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_inap}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "inap", @json($res))'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
                                                     <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
                                                 </svg>
@@ -88,7 +88,7 @@
                                         <td>{{$res->pasien->nama_pasien}}</td>
                                         <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan")'>
+                                            <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->id_rawat_jalan}}","{{$res->pasien->nama_pasien}}",{!!$res->resep!!}, "jalan",@json($res))'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
                                                     <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
                                                 </svg>
@@ -107,7 +107,7 @@
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->resep_obat!!} , "instruksi")'>
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->resep_obat!!} , "instruksi",@json($res))'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
                                                         <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
                                                     </svg>
@@ -125,7 +125,7 @@
                                             <td>{{$res->rawatinap->pasien->nama_pasien}}</td>
                                             <td data-sort="{{ $res->created_at }}">{{tanggal($res->created_at,null,null,null,true)}}</td>
                                             <td class="text-center">
-                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->terapi!!}, "vital")'>
+                                                <button class="btn btn-outline-success btn-sm" onclick='modalResep("{{$res->id}}","{{$res->rawatinap->id_rawat_inap}}","{{$res->rawatinap->pasien->nama_pasien}}",{!!$res->terapi!!}, "vital",@json($res))'>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capsule" viewBox="0 0 16 16">
                                                         <path d="M1.828 8.9 8.9 1.827a4 4 0 1 1 5.657 5.657l-7.07 7.071A4 4 0 1 1 1.827 8.9Zm9.128.771 2.893-2.893a3 3 0 1 0-4.243-4.242L6.713 5.429l4.243 4.242Z"/>
                                                     </svg>
@@ -212,7 +212,6 @@
             </div>
         </div>
             
-        @endif
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
@@ -265,45 +264,13 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="card-title">Pemeriksaan Tanda Vital <b>{{tanggal(date('Y-m-d H:i:s'),null,null,true)}}</b></div>
+                        <div class="card-title">Kunjungan Harian</div>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive tableFixHead">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="bg-white">#</th>
-                                        <th class="bg-white">Waktu</th>
-                                        <th class="bg-white">ID Rawat Inap</th>
-                                        <th class="bg-white">Skala Nyeri</th>
-                                        <th class="bg-white">HR</th>
-                                        <th class="bg-white">BP</th>
-                                        <th class="bg-white">Temp</th>
-                                        <th class="bg-white">RR</th>
-                                        <th class="bg-white">SPO2</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($tanda_vital_hari_ini->sortByDesc('created_at') as $vital)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{date('H:i',strtotime($vital->created_at))}}</td>
-                                            <td>
-                                                <a href="/view/rawat/inap/{{$vital->rawatinap->id}}/4">
-                                                    <b>{{$vital->rawatinap->id_rawat_inap}} <i class="bi bi-box-arrow-up-right"></i></b> <br>
-                                                    {{$vital->rawatinap->pasien->nama_pasien}}
-                                                </a>
-                                            </td>
-                                            <td class="text-center">{{$vital->skala_nyeri}}</td>
-                                            <td class="text-center">{{$vital->hr}}</td>
-                                            <td class="text-center">{{$vital->bp}}</td>
-                                            <td class="text-center">{{$vital->temp}}</td>
-                                            <td class="text-center">{{$vital->rr}}</td>
-                                            <td class="text-center">{{$vital->saturasi_oksigen}}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <div class="chart">
+                            <div class="chart-body">
+                                <canvas id="kunjunganHarianChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -408,24 +375,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body" id="modalResep_body">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th style="white-space: nowrap; width:0">Nama Pasien</th>
-                                <td id="_nama_pasien"></td>
-                            </tr>
-                            <tr>
-                                <th>ID Pemeriksaan</th>
-                                <td id="_id_pemeriksaan"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th style="white-space: nowrap; width:0">Nama Pasien</th>
+                                        <td id="_nama_pasien"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>ID Pemeriksaan</th>
+                                        <td id="_id_pemeriksaan"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alergi</th>
+                                        <td id="_alergi"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="col-md-6">
+                            <b>Diagnosa</b>
+                            <div id="_diagnosa"></div>
+                        </div>
+                    </div>
                     <div class="row mt-3 mx-3">
                         <div class="col-md-6 border pt-2">
-                            <h6>Daftar Obat</h6>
+                            <h6>Daftar Resep Obat</h6>
                             <div id="list-resep"></div>
                         </div>
                         <div class="col-md-6 py-3 border">
+                            @if (Auth::user()->level->nama_level == "perawat"||Auth::user()->level->nama_level == "apoteker"|| Auth::user()->level->nama_level == "superadmin")
                             <form action="" id="form-serahkan" action="POST">
                                 <input type="hidden" name="is_delivered" value="1">
                                 <div class="mb-3">
@@ -442,7 +423,9 @@
                                 <div class="text-center">
                                     <button type="button" class="btn btn-success btn-sm" id="button-serahkan" onclick="confirmSerahkan()">Serahkan Obat</button>
                                 </div>
+                                    
                             </form>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -867,19 +850,131 @@
         })
     </script>
 
+<script>
+    let kunjunganHarian = @json($kunjungan_perhari);
+    let MaxKunjunganHarian = new Date();
+    let MinKunjunganHarian = new Date();
+    MinKunjunganHarian.setDate(MinKunjunganHarian.getDate()-6);
+    let ctx4 = document.getElementById('kunjunganHarianChart').getContext('2d');
+    let options4 = {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Total Kunjungan'
+                },
+                ticks: {
+                    stepSize: 10
+                }
+            },
+            x: {
+                beginAtZero: true,
+                type: 'time',
+                time: {
+                    unit: 'day',
+                    tooltipFormat:'d MMM'
+                },
+                grid: {
+                    display: false
+                },
+                min: MinKunjunganHarian.getFullYear()+'-'+ cekSingle(MinKunjunganHarian.getMonth()+1) +'-'+ cekSingle(MinKunjunganHarian.getDate()),
+                max: MaxKunjunganHarian.getFullYear()+'-'+ cekSingle(MaxKunjunganHarian.getMonth()+1)+'-'+ cekSingle(MaxKunjunganHarian.getDate()),
+            }
+        },
+        layout: {
+            padding: {
+                top: 30
+            }
+        },
+        plugins: {
+            legend: false,
+            datalabels: {
+                anchor: 'end', // remove this line to get label in middle of the bar
+                align: 'end',
+                formatter: (val) => (`${val.total}`),
+                labels: {
+                    value: {
+                        color: 'black'
+                    }
+                }
+            }
+        },
+        interaction: {
+            intersect: false,
+            mode: 'index',
+        },
+    }
+    for (let date = MinKunjunganHarian; date <= MaxKunjunganHarian; date.setDate(date.getDate() + 1)){
+        const formattedMonthKunjungan = date.getFullYear()+'-'+ cekSingle(date.getMonth()+1)+'-'+ cekSingle(date.getDate());
+        cekTemp = kunjunganHarian.find(e => e.bulan === formattedMonthKunjungan);
+        if (cekTemp==undefined){
+            temp = {
+                total:0,
+                bulan: formattedMonthKunjungan
+            }
+            kunjunganHarian.push(temp);
+        }
+    }
+    kunjunganHarian.sort((a, b) => {
+        if (a.bulan < b.bulan) {
+            return -1;
+        }
+    });
+    let datasets4 = [{
+        label: 'Total Kunjungan',
+        data: kunjunganHarian,
+        parsing: {
+            yAxisKey: 'total',
+            xAxisKey: 'bulan',
+        },
+        spanGaps: true,
+        fill:true,
+        backgroundColor: 'Aquamarine',
+        
+    }]
+    let cfg4 = {
+        type: 'bar',
+        options: options4,
+        data: {
+            datasets: datasets4
+        },
+    }
+    const chartKunjunganHarian =  new Chart(ctx4, cfg4);
+    // chartKunjunganHarian.canvas.addEventListener('wheel', (e)=>{
+    //     scroller(e, chartKunjunganHarian, 3);
+    // })
+</script>
+
     <script>
         $(document).ready(function(){
             tgl = new Date();
-            $('[id*="_'+tgl.getDay()+'"]').css('background-color','rgba(30, 81, 123,0.1)').removeClass('bg-white');
+            $('[id*="_'+tgl.getDate()+'"]').css('background-color','rgba(30, 81, 123,0.1)').removeClass('bg-white');
         })
     </script>
 
     <script>
         var url= '';
         var catatan ="";
-        function modalResep(id,id_per,nama_pasien,data,jenis) {
+        const obat = @json($obat);
+        const penyakit = @json($penyakit);
+        function modalResep(id,id_per,nama_pasien,data,jenis, alldata) {
+            console.log(alldata);
             var field_id = $('#_id_pemeriksaan');
             var field_nama = $('#_nama_pasien');
+            var namaAlergi =  '-';
+            if (alldata.pasien.alergi_obat==1) {
+                namaAlergi=(obat.find(o => o.id == alldata.pasien.alergi)).nama_obat;
+            } 
+            var namaPenyakit = `<ol>`;
+
+            JSON.parse(alldata.nama_penyakit_id).forEach(element => {
+                peny = (penyakit.find(p => p.id == element)).primer;
+                namaPenyakit += `<li>` +  peny + `</li>`;
+            });
+            namaPenyakit += `</ol>`;
+                
             var modal = $('#modalResep');
             var form = $('#form-serahkan');
             var buttonSerahkan = $('#button-serahkan');
@@ -887,6 +982,8 @@
             drawTabelResep(data);
             field_id.text(': '+id_per);
             field_nama.text(': '+nama_pasien);
+            $('#_alergi').html(': '+ namaAlergi);
+            $('#_diagnosa').html(namaPenyakit);
 
             modal.modal('show');
         }
@@ -906,7 +1003,7 @@
             }
             modal.modal('show');
         }
-        const obat = @json($obat);
+        
         function drawTabelResep(resep){
             var html = `<ol>`;
             resep.forEach(res => {

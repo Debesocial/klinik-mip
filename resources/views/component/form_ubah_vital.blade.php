@@ -150,8 +150,7 @@
                         <div class="row border p-3 mb-3">
                             <div class="col-md-5">
                                 <div class="mb-2">
-                                    <label for="" class="form-label">Nama Obat <b
-                                            class="text-danger">*</b></label>
+                                    <label for="" class="form-label">Nama Obat </label>
                                     <select id="nama_obat" class="form-select">
                                         <option value="">Pilih Obat</option>
                                         @foreach ($obat as $ob)
@@ -161,8 +160,7 @@
                                     {!! validasi('Nama obat') !!}
                                 </div>
                                 <div class="mb-2">
-                                    <label for="" class="form-label">Jumlah Obat <b
-                                            class="text-danger">*</b></label>
+                                    <label for="" class="form-label">Jumlah Obat </label>
                                         <div class="row">
                                             <div class="col-md-8">
                                                 <div class="input-group">
@@ -174,21 +172,19 @@
                                         </div>
                                 </div>
                                 <div class="mb-2">
-                                    <label for="" class="form-label">Aturan Pakai <b
-                                            class="text-danger">*</b></label>
+                                    <label for="" class="form-label">Aturan Pakai </label>
                                     <input type="text" id="aturan_pakai" class="form-control">
                                     {!! validasi('Aturan pakai') !!}
                                 </div>
                                 <div class="mb-2">
-                                    <label for="" class="form-label">Keterangan<b
-                                            class="text-danger">*</b></label>
+                                    <label for="" class="form-label">Keterangan</label>
                                     <textarea id="keterangan_resep" class="form-control"></textarea>
                                     {!! validasi('Aturan pakai') !!}
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="form-label">Waktu Pemberian Obat<b
                                         class="text-danger">*</b></label>
-                                        <input type="datetime-local" name="tgl_pemberian" id="tgl_pemberian" class="form-control">
+                                        <input type="datetime-local" id="tgl_pemberian" class="form-control">
                                 {!! validasi('Waktu Pemberian Obat') !!}
                                 </div>
                             </div>

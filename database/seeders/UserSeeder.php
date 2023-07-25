@@ -17,14 +17,41 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
-                'name' => 'Hiskia Pulungan',
-                'email' => 'hiski46@gmail.com',
+                'name' => 'Super Admin',
+                'email' => 'admin.klinik@mandirigroup.net',
                 'password' => Hash::make('123123'),
                 'telp' => '085896224113',
                 'level_id' => 1,
                 'jadwal_id'=>1,
                 'status' => 'Aktif',
-            ]
+            ],
+            [
+                'name' => 'Dokter',
+                'email' => 'dokter.klinik@mandirigroup.net',
+                'password' => Hash::make('123123'),
+                'telp' => '085896224113',
+                'level_id' => 2,
+                'jadwal_id'=>1,
+                'status' => 'Aktif',
+            ],
+            [
+                'name' => 'Perawat',
+                'email' => 'perawat.klinik@mandirigroup.net',
+                'password' => Hash::make('123123'),
+                'telp' => '085896224113',
+                'level_id' => 3,
+                'jadwal_id'=>1,
+                'status' => 'Aktif',
+            ],
+            [
+                'name' => 'Apoteker',
+                'email' => 'apoteker.klinik@mandirigroup.net',
+                'password' => Hash::make('123123'),
+                'telp' => '085896224113',
+                'level_id' => 4,
+                'jadwal_id'=>1,
+                'status' => 'Aktif',
+            ],
         ]);
     }
 }

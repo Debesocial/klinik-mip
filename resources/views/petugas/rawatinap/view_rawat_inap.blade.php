@@ -277,7 +277,7 @@
                             <h6>Permintaan Makanan</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
+                            @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
                             <button
                                 onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Fromulir Permintaan Makanan')"
                                 class="btn btn-sm btn-success rounded-pill">
@@ -312,7 +312,7 @@
                                                     onclick="tampilModalRawatInap('/permintaan_makanan/{{ $makanan->id }}','Permintaan Makanan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
+                                                @if (Auth::user()->level->nama_level == "superadmin"|| Auth::user()->level->nama_level == "dokter")
                                                 <a href="#"
                                                     onclick="tampilModalRawatInap('/permintaan_makanan/form_edit/{{ $makanan->id }}','Formulir Ubah Permintaan Makanan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i

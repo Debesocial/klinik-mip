@@ -35,6 +35,7 @@ class CreateKecelakaanKerjasTable extends Migration
             $table->text('status_lokalis');
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->text('obat_konsumsi')->nullable();
+            $table->text('diagnosa_surat')->nullable();
             $table->json('nama_penyakit_id');
             $table->json('tindakan')->nullable();
             $table->json('resep')->nullable();

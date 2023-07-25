@@ -87,9 +87,23 @@
                         <input type="number" id="saturasi" class="form-control" name="saturasi" placeholder="" value="{{$keterangan->saturasi}}" required>
                     </div>
                     <div class="mb-3">
+                        <label for="">Pemeriksaan Fisik <b class="color-red">*</b></label>
+                        <textarea name="pemeriksaan_fisik" id="pemeriksaan_fisik" class="form-control" required>{{$keterangan->pemeriksaan_fisik}}</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Buta Warna <b class="color-red">*</b></label>
+                        <input class="form-check-input" type="radio" name="buta_warna" id="buta_warna" value="0" {{$keterangan->buta_warna==0?'checked':''}}> Tidak
+                        <input class="form-check-input " type="radio" name="buta_warna" id="buta_warna" value="1" {{$keterangan->buta_warna==1?'checked':''}}> Ya
+                    </div>
+                    <div class="mb-3">
                         <label>Hasil Pemeriksaan <b class="color-red">*</b></label>
                         <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" {{$keterangan->hasil==0?'checked':''}}> Tidak Sehat
                         <input class="form-check-input " type="radio" name="hasil" id="hasil" value="1"{{$keterangan->hasil==1?'checked':''}}> Sehat
+                    </div>
+                    <div class="mb-3" id="alasan" style="display: {{$keterangan->hasil==1?'none':''}}">
+                        <label for="">Alasan tidak sehat</label>
+                        <textarea name="alasan_sakit" id="alasan_sakit" class="form-control" placeholder="Masukkan alasan tidak sehat">{{$keterangan->alasan_sakit}}</textarea>
                     </div>
                 </div>
             </div>
@@ -145,6 +159,16 @@
             return age;
         }
         setPasien();
+
+        $('[id*="hasil"]').change(function(){
+            var val = $(this).val();
+            if (val == 0) {
+                $('#alasan').show();
+            }else{
+                $('#alasan').hide();
+                $('#alasan_sakit').val('');
+            }
+        })
     </script>
 @stop
 

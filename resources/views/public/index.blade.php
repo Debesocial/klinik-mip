@@ -7,7 +7,7 @@
     <title>Welcome to Klinik</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo/logo-klinik.jpg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/logo/medicoal.png')}}" />
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 
@@ -50,7 +50,7 @@
                     <div class="nav-inner">
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index-2.html">
-                                <img src="{{asset('assets/images/logo/logo-klinik.jpg')}}" alt="" style="width: 150px; height: 50px;">
+                                <img src="{{asset('assets/images/logo/medicoal.png')}}" alt="" style="height: 80px; width: 80px; object-fit: contain">
                             </a>
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="toggler-icon"></span>
@@ -80,7 +80,8 @@
                     <div class="row ">
                         <div class="col-lg-8">
                             <div class="home-slider">
-                                <div class="hero-text">
+                                <div class="hero-text" style="margin-top:50px !important;">
+                                    <img src="{{asset('assets/images/logo/medicoal.png')}}" alt="" style="height: 150px; width: 150px; object-fit: contain">
                                     <h1 class="wow fadeInUp" data-wow-delay=".5s">Excellent And Friendly <br> Faculty
                                         Members</h1>
                                     <p class="wow fadeInUp" data-wow-delay=".7s">Lorem Ipsum is simply dummy text of the
@@ -105,13 +106,13 @@
                                             <form action="{{route('login')}}" method="POST">
                                                 @csrf
                                                 <div class="form-group position-relative has-icon-left mb-4 mt-3">
-                                                    <input type="email" class="form-control form-control-xl" name="email" placeholder="email" value="hiski46@gmail.com" required>
+                                                    <input type="email" class="form-control form-control-xl" name="email" placeholder="Email" value="" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-person"></i>
                                                     </div>
                                                 </div>
                                                 <div class="form-group position-relative has-icon-left mb-4">
-                                                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" value="123123" required>
+                                                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Password" value="" required>
                                                     <div class="form-control-icon">
                                                         <i class="bi bi-shield-lock"></i>
                                                     </div>

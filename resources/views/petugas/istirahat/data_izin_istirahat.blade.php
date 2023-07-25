@@ -16,7 +16,7 @@
         </div>
         <div class="col">
             <div class="buttons text-end">
-                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                 <a href="/izin_istirahat" class="btn btn-success rounded-pill">
                     <i class="bi bi-plus-circle"></i>
                     <span>Tambah</span></a>
@@ -52,7 +52,7 @@
                             <td class="text-center">{{ getRekomendasiDokter($izin->rekomendasi) }}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                    @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                                     <a href="/ubah/izin_istirahat/{{$izin->id}}" class="btn btn-outline-secondary" title="Edit"><i class="bi-pencil-square   "></i></a>
                                     
                                     @endif

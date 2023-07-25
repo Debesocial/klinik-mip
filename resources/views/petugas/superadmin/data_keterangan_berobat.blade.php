@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col">
-                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                 <div class="buttons text-end">
                     <a href="{{ route('superadmin.addketeranganberobat') }}" class="btn btn-success rounded-pill">
                         <i class="bi bi-plus-circle"></i>
@@ -68,7 +68,7 @@
                                             <a href="/view/keterangan-berobat/{{ $ket->id }}" title="print Data"
                                                 href="#"  class="btn btn-outline-secondary"><i
                                                     class="bi bi-eye-fill"></i></a>
-                                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                                             <a href="/ubah/ket/berobat/{{ $ket->id }}"
                                                 class="btn btn-outline-secondary" title="Edit"><i
                                                     class="bi bi-pencil-square"></i></a>

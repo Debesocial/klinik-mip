@@ -263,6 +263,12 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col">
+                                            <label for="">Diagnosa untuk surat</label><b><small class="text-warning">**Diagnosa yang akan ditampilkan di surat</small></b>
+                                            <textarea name="diagnosa_surat" id="diagnosa_surat" class="form-control" placeholder="Masukkan diagnosa"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
                                             <small class="text-warning"><b>**Penyakit primer adalah penyakit yang dipilih pertama</b></small>
                                             <select class="js-states form-control"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
@@ -310,8 +316,7 @@
                                     <div class="row">
                                         <div class="col my-auto">
                                             <div class="mb-2">
-                                                <label for="" class="form-label">Nama Tindakan <b
-                                                        class="text-danger">*</b></label>
+                                                <label for="" class="form-label">Nama Tindakan</label>
                                                 <select name="" id="nama_tindakan" class="form-select">
                                                     <option value="">Pilih Tindakan</option>
                                                     @foreach ($tindakan as $tin)
@@ -321,8 +326,7 @@
                                                 {!! validasi('Nama') !!}
                                             </div>
                                             <div class="mb-2">
-                                                <label for="" class="form-label">Nama Alat Kesehatan <b
-                                                        class="text-danger">*</b></label>
+                                                <label for="" class="form-label">Nama Alat Kesehatan </label>
                                                 <select name="" id="alat_kesehatan" class="form-select">
                                                     <option value="" selected disabled>Pilihi alat kesehatan </option>
                                                     @foreach ($alatkesehatan as $alat)
@@ -333,14 +337,12 @@
                                                 {!! validasi('Alat Kesehatan') !!}
                                             </div>
                                             <div class="mb-2">
-                                                <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
-                                                        class="text-danger">*</b></label>
+                                                <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan </label>
                                                 <input type="number" name="" id="jumlah_pengguna" class="form-control">
                                                 {!! validasi('Jumlah Penggunaan') !!}
                                             </div>
                                             <div class="mb-2">
-                                                <label for="" class="form-label">Keterangan <b
-                                                        class="text-danger">*</b></label>
+                                                <label for="" class="form-label">Keterangan </label>
                                                 <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
                                                 {!! validasi('Keterangan') !!}
                                             </div>
@@ -402,8 +404,7 @@
                             <div class="row border p-3 mb-3">
                                 <div class="col-md-5">
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Nama Obat <b
-                                                class="text-danger">*</b></label>
+                                        <label for="" class="form-label">Nama Obat </label>
                                         <select id="nama_obat" class="form-select">
                                             <option value="">Pilih Obat</option>
                                             @foreach ($obat as $ob)
@@ -413,8 +414,7 @@
                                         {!! validasi('Nama obat') !!}
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Jumlah Obat <b
-                                                class="text-danger">*</b></label>
+                                        <label for="" class="form-label">Jumlah Obat </label>
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="input-group">
@@ -426,14 +426,12 @@
                                             </div>
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Aturan Pakai <b
-                                                class="text-danger">*</b></label>
+                                        <label for="" class="form-label">Aturan Pakai </label>
                                         <input type="text" id="aturan_pakai" class="form-control">
                                         {!! validasi('Aturan pakai') !!}
                                     </div>
                                     <div class="mb-2">
-                                        <label for="" class="form-label">Keterangan<b
-                                                class="text-danger">*</b></label>
+                                        <label for="" class="form-label">Keterangan</label>
                                         <textarea id="keterangan_resep" class="form-control"></textarea>
                                         {!! validasi('Aturan pakai') !!}
                                     </div>

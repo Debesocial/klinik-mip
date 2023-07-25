@@ -100,16 +100,29 @@
                         <input type="number" id="saturasi" class="form-control" name="saturasi" placeholder="" required>
                     </div>
                     <div class="mb-3">
+                        <label for="">Pemeriksaan Fisik <b class="color-red">*</b></label>
+                        <textarea name="pemeriksaan_fisik" id="pemeriksaan_fisik" class="form-control" required>Dalam batas normal</textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Buta Warna <b class="color-red">*</b></label>
+                        <input class="form-check-input" type="radio" name="buta_warna" id="buta_warna" value="0" checked> Tidak
+                        <input class="form-check-input " type="radio" name="buta_warna" id="buta_warna" value="1"> Ya
+                    </div>
+                    <div class="mb-3">
                         <label>Hasil Pemeriksaan <b class="color-red">*</b></label>
                         <input class="form-check-input" type="radio" name="hasil" id="hasil" value="0" checked> Tidak Sehat
                         <input class="form-check-input " type="radio" name="hasil" id="hasil" value="1"> Sehat
+                    </div>
+                    <div class="mb-3" id="alasan">
+                        <label for="">Alasan tidak sehat</label>
+                        <textarea name="alasan_sakit" id="alasan_sakit" class="form-control" placeholder="Masukkan alasan tidak sehat"></textarea>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col text-end">
                     <button type="submit"  class="btn btn-primary">Simpan</button>
-                    <button type="reset" class="btn btn-light-secondary">Reset</button>
                 </div>
             </div>
         </form>
@@ -159,6 +172,16 @@
             }
             return age;
         }
+
+        $('[id*="hasil"]').change(function(){
+            var val = $(this).val();
+            if (val == 0) {
+                $('#alasan').show();
+            }else{
+                $('#alasan').hide();
+                $('#alasan_sakit').val('');
+            }
+        })
     </script>
 @stop
                                                 

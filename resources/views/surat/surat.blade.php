@@ -76,10 +76,10 @@
                         </td>
                         <td style="padding-left: 20px;">
                             <div >
-                                <h2 >PT MANDIRI INTIPERKASA</h2>
+                                <h2 >PT. MANDIRI INTIPERKASA</h2>
                                 <p class="m-0" style="font-size:14px">Site Lagub, Kecamatan Sembakung, Kab. Nunukan Provinsi Kalimantan Utara</p>
                                 <small style="font-size:12px">
-                                    email: mip-site@mandirigroup.net
+                                    email: mip-site@mandirigroup.net <br> whatshapp: 0888 8888 8888
                                 </small>
                             </div>
                         </td>

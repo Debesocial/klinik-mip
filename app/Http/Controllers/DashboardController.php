@@ -9,6 +9,7 @@ use App\Models\Jadwal;
 use App\Models\Level;
 use App\Models\McuAwal;
 use App\Models\McuLanjutan;
+use App\Models\NamaPenyakit;
 use App\Models\Obat;
 use App\Models\Pasien;
 use App\Models\PemantauanCovid;
@@ -49,10 +50,12 @@ class DashboardController extends Controller
         $kunjungan = $this->totalKunjungan([$rawat_inap_per_bulan, $rawat_jalan_per_bulan, $mcu_awal_per_bulan, $mcu_lanjut_per_bulan,$narkoba_per_bulan]);
         $data['total_kunjungan'] = $kunjungan[1];
         $data['kunjungan_perbulan'] = $kunjungan[0];
+        $data['kunjungan_perhari'] = $this->kunjunganHarian();
         $data['jadwal'] = Jadwal::with(['user'])->get();
         $data['resep'] = $this->antrianResep();
         $data['delivered_resep'] = $this->deliveredResep();
         $data['obat'] = Obat::with(['satuan_obat'])->get();
+        $data['penyakit'] = NamaPenyakit::get();
         return view('index', $data);
     }
 
@@ -73,6 +76,16 @@ class DashboardController extends Controller
         }
         return([array_values($kunjungan), $total]);
         
+    }
+
+    public function kunjunganHarian() {
+        $rawat_jalan_per_hari = RawatJalan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_berobat, "%Y-%m-%d") as bulan')->groupByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m-%d')")->orderByRaw("DATE_FORMAT(tanggal_berobat, '%Y-%m-%d')")->get();
+        $rawat_inap_per_hari = RawatInap::selectRaw('count(id) as total, DATE_FORMAT(mulai_rawat, "%Y-%m-%d") as bulan')->groupByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m-%d')")->orderByRaw("DATE_FORMAT(mulai_rawat, '%Y-%m-%d')")->get();
+        $mcu_awal_per_hari = McuAwal::selectRaw('count(id) as total, DATE_FORMAT(created_at, "%Y-%m-%d") as bulan')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m-%d')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m-%d')")->get();
+        $mcu_lanjut_per_hari = McuLanjutan::selectRaw('count(id) as total, DATE_FORMAT(tanggal_pemeriksaan, "%Y-%m-%d") as bulan')->groupByRaw("DATE_FORMAT(tanggal_pemeriksaan, '%Y-%m-%d')")->orderByRaw("DATE_FORMAT(tanggal_pemeriksaan, '%Y-%m-%d')")->get();
+        $narkoba_per_hari = TestUrin::selectRaw('count(id) as total, DATE_FORMAT(created_at, "%Y-%m-%d") as bulan')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m-%d')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m-%d')")->get();
+
+        return $this->totalKunjungan([$rawat_jalan_per_hari,$rawat_inap_per_hari,$mcu_awal_per_hari,$mcu_lanjut_per_hari,$narkoba_per_hari])[0];
     }
 
     function antrianResep(){

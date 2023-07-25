@@ -84,51 +84,81 @@
     <div class="text-center"><h5 style="margin:0; padding-top:5px">Diagnosis</h5></div>
     <div class="row" style="border: 1px solid black; padding:3px; ">
         <div class="col">
-            <table class="w100">
-                <thead style="border-bottom: 1px solid black">
-                    <th>Nama Penyakit</th>
-                    <th>Klasifikasi</th>
-                    <th>Sub Klasifikasi</th>
-                </thead>
-                <tbody>
-                    @foreach (json_decode($kecelakaan->nama_penyakit_id) as $pen);
-                    @php
-                        $p =  $penyakit->find($pen);
-                        
-                    @endphp
-                        <tr >
-                            <td class="text-center" >{{$p->primer}}</td>
-                            <td class="text-center">{{$p->sub_klasifikasi->nama_penyakit}}</td>
-                            <td class="text-center">{{$p->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @if ($kecelakaan->diagnosa_surat==null||$kecelakaan->diagnosa_surat==''||$kecelakaan->diagnosa_surat==' ')
+            <ol>
+                @foreach (json_decode($kecelakaan->nama_penyakit_id,true) as $pen)
+                @php
+                    $p =  $penyakit->find($pen);
+                @endphp
+                    <li >
+                        <b>  {{$p->primer }} </b><br>
+                        <small><b>Sub-Klasifikasi:</b> {{$p->sub_klasifikasi->nama_penyakit}}</small>,
+                        <small><b>Klasifikasi:</b> {{$p->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</small>
+                    </li>
+                @endforeach
+
+            </ol>
+            @else
+            {!!nl2br($kecelakaan->diagnosa_surat)!!}
+                
+            @endif
+            
         </div>
     </div>
     <div class="text-center"><h5 style="margin:0; padding-top:5px">Terapi yang Diberikan</h5></div>
     <div class="row" style="border: 1px solid black; padding:3px; ">
         <div class="col">
+            <ul>
+                <li><b>Terapi Tambahan</b>
+                    <ol>
+                        @foreach (json_decode($kecelakaan->tindakan, true) as $tin)
+                            @php
+                                $alat =  $alkes->find($tin['alat_kesehatan']);
+                                $nama_tindakan = $tindakan->find($tin['nama_tindakan'])->nama_tindakan;
+                            @endphp
+                            <li >
+                                {{$nama_tindakan}}
+                            </li>
+                        @endforeach
+    
+                    </ol>
+                </li>
+                <li><b>Resep Obat</b>
+                    <ol>
+                        @foreach (json_decode($kecelakaan->resep, true) as $resep)
+                            @php
+                                $ob = $obat->find($resep['nama_obat']);
+                            @endphp
+                            
+                            <li>{{$ob->nama_obat}}  (<i>{{$resep['jumlah_obat']}} {{$ob->satuan_obat->satuan_obat}}</i>)</li>
+                        @endforeach
+                    </ol>
+                </li>
+            </ul>
+               
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 50px; margin-top: 50px;">
+        <div class="col">
             <table class="w100">
-                <thead style="border-bottom: 1px solid black">
-                    <th>Nama Tindakan</th>
-                    <th>Alat Kesehatan</th>
-                    <th>Jumlah Pengguna</th>
-                    <th>Keterangan</th>
+                <thead>
+                    <tr>
+                        <td width=30% class="text-center"></td>
+                        <td width=30% class="text-center"></td>
+                        <td width=30% class="text-center">Site Krassi, {{tanggal($kecelakaan->created_at, false, true)}}</td>
+                    </tr>
                 </thead>
                 <tbody>
-                    @foreach (json_decode($kecelakaan->tindakan, true) as $tin);
-                        @php
-                            $alat =  $alkes->find($tin['alat_kesehatan']);
-                            $nama_tindakan = $tindakan->find($tin['nama_tindakan'])->nama_tindakan;
-                        @endphp
-                        <tr >
-                            <td class="text-center" >{{$nama_tindakan}}</td>
-                            <td class="text-center">{{$alat->nama_alkes}}</td>
-                            <td class="text-center">{{$tin['jumlah_pengguna']}} {{$alat->satuan_obat->satuan_obat}}</td>
-                            <td class="text-center">{{$tin['keterangan']}}</td>
-                        </tr>
-                    @endforeach
+                    <tr>
+                        <td style="height: 50px"></td>
+                        <td style="height: 50px"></td>
+                        <td style="height: 50px"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center"></td>
+                        <td class="text-center">Dokter</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -79,7 +79,11 @@
                     </tr>
                     <tr>
                         <td>Pemeriksaan Fisik</td>
-                        <td>: Dalam Batas Normal</td>
+                        <td>: {{$sehat->pemeriksaan_fisik}}</td>
+                    </tr>
+                    <tr>
+                        <td>Buta Warna</td>
+                        <td>: {{$sehat->buta_warna=1?'Ada buta warna':'Tidak ada buta warna'}}</td>
                     </tr>
                 </tbody>
             </table>
