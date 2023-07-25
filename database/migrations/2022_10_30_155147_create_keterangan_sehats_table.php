@@ -28,6 +28,9 @@ class CreateKeteranganSehatsTable extends Migration
             $table->string('laju_pernapasan');
             $table->string('saturasi');
             $table->boolean('hasil');
+            $table->text('alasan_sakit')->nullable();
+            $table->boolean('buta_warna');
+            $table->text('pemeriksaan_fisik');
             $table->text('ttd')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

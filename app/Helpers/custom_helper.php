@@ -76,6 +76,19 @@ function diffDay($awal, $akhir)
     return $diff . ' hari';
 }
 
+function diffDay2($awal,$akhir) {
+    $date1 = new DateTime($awal);
+    $date2 = new DateTime($akhir);
+    $interval = $date1->diff($date2);
+
+    if($interval->d == 0){
+        return $interval->h .' Jam';
+    }
+    return $interval->d . ' Hari '. $interval->h .' Jam'; 
+}
+
+
+
 
 function hasilRekomendasi()
 {

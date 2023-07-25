@@ -34,7 +34,7 @@
                 </tr>
                 <tr>
                     <td>Keluhan</td>
-                    <td>: {{$istirahat->keluhan}}</td>
+                    <td>: {!!nl2br($istirahat->keluhan)!!}</td>
                 </tr>
                 <tr>
                     <td>Diagnosa Dokter/Medice</td>
@@ -56,8 +56,8 @@
                                 @endphp
                                 <li>
                                     <b>{{$nama_tindakan}}</b><br>
-                                    Alat : <b>{{$dataAlkes->nama_alkes}} ({{$tin->jumlah_pengguna}} {{$dataAlkes->satuan_obat->satuan_obat}})</b><br>
-                                    <i>Ket. {{$tin->keterangan}}</i>
+                                    {{-- Alat : <b>{{$dataAlkes->nama_alkes}} ({{$tin->jumlah_pengguna}} {{$dataAlkes->satuan_obat->satuan_obat}})</b><br> --}}
+                                    {{-- <i>Ket. {{$tin->keterangan}}</i> --}}
                                 </li>
                             @endforeach
                                 
@@ -79,7 +79,7 @@
                                 <li>
                                     <b>{{$dataObat->nama_obat}} ({{$terapi->jumlah_obat}} {{$dataObat->satuan_obat->satuan_obat}})</b><br>
                                    {{ $terapi->aturan_pakai}}. <br>
-                                   <i>ket.{{$terapi->keterangan_resep}}</i> 
+                                   {{-- <i>ket.{{$terapi->keterangan_resep}}</i>  --}}
                                 </li>
                             @endforeach
                                 
@@ -99,7 +99,7 @@
                             <b>Dapat Bekerja Dengan Catatan, <i>{{$istirahat->dapat_bekerja_catatan}}</i></b> 
                         @endif
                         @if ($istirahat->rekomendasi==3)
-                            <b>Istirahat di MESS Karyawan selama {{diffDay($istirahat->dari, $istirahat->sampai)}}</b> <br>
+                            <b>Istirahat di MESS Karyawan selama {{diffDay2($istirahat->dari, $istirahat->sampai)}}</b> <br>
                             <div style="padding-left:7px;">
                                 dari {{tanggal($istirahat->dari,true,null,null, true)}} <br>
                                 sampai {{tanggal($istirahat->sampai,true,null,null,true)}}

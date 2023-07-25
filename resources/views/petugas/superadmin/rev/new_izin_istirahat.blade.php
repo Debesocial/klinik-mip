@@ -366,14 +366,14 @@
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="rekomendasi" id="rekomendasi" value="3">
-                                                <label class="form-check-label" for="rekomendasi">Istirahat di MESS Karyawan <b id="total_hari"></b></label> 
+                                                <label class="form-check-label" for="rekomendasi">Istirahat di MESS Karyawan selama <b id="total_hari">...</b></label> 
                                             </div>
                                             <div class="mb-2 ps-4" id="_3" style="display:none">
                                                 <label for="">Dari Tanggal</label>
-                                                <input type="datetime-local" id="dari" class="form-control" name="dari" id="dari">
+                                                <input type="datetime-local" id="dari" class="form-control" name="dari" id="dari" onchange="hitungHari()">
                                                 {!!validasi('Tanggal')!!}
                                                 <label for="">Sampai tanggal</label>
-                                                <input type="datetime-local" id="sampai" class="form-control" name="sampai" id="sampai">
+                                                <input type="datetime-local" id="sampai" class="form-control" name="sampai" id="sampai" onchange="hitungHari()">
                                                 {!!validasi('Tanggal')!!}
 
                                             </div>
@@ -879,6 +879,22 @@
                 if(validated==true){
                     submitform('form-istirahat');
                 }
+            }
+        </script>
+
+        <script>     
+            function hitungHari() {
+                var start = $('#dari').val();
+                var end = $('#sampai').val();
+
+                var fieldTotal = $('#total_hari');
+                var dif = getDateDiff2(start,end)
+                if (dif) {
+                    fieldTotal.text(dif)
+                }else{
+                    fieldTotal.text("...")
+                }
+
             }
         </script>
     @stop

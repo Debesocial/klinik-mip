@@ -282,7 +282,11 @@
 
     <script src="{{ asset('assets/js/mazer.js') }}"></script>
     <script>
-        
+        $('textarea').keypress(function(event) {
+            if (event.which == 13) {
+                event.stopPropagation();
+            }
+        });
         // Jquery Datatable
         let jquery_datatable = $("table[id*='table1']").DataTable({
             "language": {

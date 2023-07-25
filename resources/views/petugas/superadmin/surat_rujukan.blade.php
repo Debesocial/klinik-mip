@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tanggal">Tanggal Pemeriksaan <b class="color-red">*</b></label>
-                        <input type="date" id="tanggal" class="form-control" placeholder="Tanggal Pemeriksaan" name="tanggal" required>
+                        <input type="date" id="tanggal" class="form-control" placeholder="Tanggal Pemeriksaan" name="tanggal" max="{{date('Y-m-d')}}" required>
                     </div>
                     {{-- <div class="mb-3">
                         <label for="">File Pendukung </label>
@@ -115,7 +115,7 @@
         function setPasien(select){
             id = $(select).val()
             let pas = pasien.find(data => data.id == id);
-
+            
             colId.forEach(col => {
                 if (col==='kategori_pasien_id') {
                     $('#'+col).text(pas.kategori.nama_kategori);
@@ -124,6 +124,17 @@
                 }
             });
         }
+    </script>
+    <script>
+        // $('[max]').bind('input', function() {
+        //     var to_confirm = $(this);
+        //     var now = new Date();
+
+        //     if(to_confirm.val() > now)
+        //         this.setCustomValidity('Tanggal tidak maksimal hari ini');
+        //     else
+        //         this.setCustomValidity('');
+        // });
     </script>
 @stop
 

@@ -1,3 +1,5 @@
+
+
 var optionsProfileVisit = {
     annotations: {
         position: 'back'
@@ -188,7 +190,7 @@ let optionsIndonesia = {
     }
 }(jQuery));
 
-function getDateDiff(time1, time2, abs=true) {
+function getDateDiff(time1, time2, abs=true,) {
     // console.log(time1);
     var str1= time1.split('-');
     var str2= time2.split('-');
@@ -216,6 +218,33 @@ function getDateDiff(time1, time2, abs=true) {
     }else{
         return diffD;
     }
+  }
+
+  function getDateDiff2(time1, time2) {
+
+
+    if (time1 != '' && time2 != '') {
+        
+        var t1 = new Date(time1);
+        var t2 = new Date(time2);
+    
+        var diffMS = t2 - t1;    
+        // console.log(diffMS + ' ms');
+      
+        var diffS = diffMS / 1000;    
+        // console.log(diffS + ' ');
+      
+        var diffM = diffS / 60;
+        // console.log(diffM + ' minutes');
+      
+        var diffH = diffM / 60;
+        // console.log(diffH + ' hours');
+      
+        var diffD = diffH / 24;
+      
+        return Math.round(diffD)+' Hari '+ Math.round(diffH)%24 + ' Jam';
+    }
+    return false;
   }
 
   function cekSingle(m) {

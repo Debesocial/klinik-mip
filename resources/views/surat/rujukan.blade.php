@@ -38,13 +38,12 @@
 
     <p>
         Riwayat perjalanan penyakit: <br>
-        {{$rujukan->riwayat}}
+        {!!nl2br($rujukan->riwayat)!!}
     </p>
 
     <p>
-        Pada pasien telah kami berikan obat <br>
-        R/ <br>
-        {{$rujukan->obat_diberikan}}
+        Pada pasien telah kami berikan obat:<br>
+        {!!nl2br($rujukan->obat_diberikan)!!}
     </p>
 
     <p>

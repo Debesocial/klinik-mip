@@ -1,4 +1,4 @@
-@extends('surat.surat-2')
+@extends('surat.surat')
 @section('no_surat','No: MIP/FRM/KLN/015');
 @section('no_revisi','00');
 
@@ -36,7 +36,7 @@
         </div>
     </div>
     <p>
-        Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. Saya menyarankan yang bersangkutan dapat diberikan ijin untuk berobat ke <b><i>{{$izinberobat->tempat}}</i></b> pada <b>{{tanggal($izinberobat->tanggal_keluar,null,null,true)}}</b>.
+        Yang bersangkutan di atas saat ini kondisinya dalam keadaan sakit. <br> Saya menyarankan yang bersangkutan dapat diberikan ijin untuk berobat ke <b><i>{{$izinberobat->tempat}}</i></b> pada <b>{{tanggal($izinberobat->tanggal_keluar,null,null,true)}}</b>.
     </p>
     <p>Demikian surat ini saya buat, atas perhatian dan kerja samanya saya ucapkan terima kasih.</p>
 
