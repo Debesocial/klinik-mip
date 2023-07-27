@@ -480,7 +480,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
     
     /** Laporan */
-    Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja','apoteker']], function () {
+    Route::group(['middleware' => ['checkRole:superadmin,dokter,perawat,mitrakerja,apoteker']], function () {
         Route::get('/laporan', [LaporanController::class, 'laporan']);
         Route::get('/laporan/pekerja-sakit', [LaporanController::class, 'pekerjaSakit']);
         Route::get('/laporan/absen-sakit', [LaporanController::class, 'absenSakit']);
