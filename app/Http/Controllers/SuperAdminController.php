@@ -1554,9 +1554,9 @@ class SuperAdminController extends Controller
             $user->password = Hash::make($request->input('password'));
         }
         $user->email = $request->input('email');
-        $user->status = $request->input('status');
+        // $user->status = $request->input('status');
         $user->telp = $request->input('telp');
-        $user->level_id = $request->input('level_id');
+        // $user->level_id = $request->input('level_id');
         $user->update();
         // $jadwal = Jadwal::find($jadwal_id);
         // $jadwal->senin = $request->input('senin');
