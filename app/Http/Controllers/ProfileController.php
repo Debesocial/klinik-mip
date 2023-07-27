@@ -68,8 +68,8 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->telp = $request->input('telp');
-        $user->level_id = $request->input('level_id');
-        $user->status = $request->input('status');
+        // $user->level_id = $request->input('level_id');
+        // $user->status = $request->input('status');
         $user->update();
 
 
