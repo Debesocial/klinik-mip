@@ -60,7 +60,6 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($resep['resep_inap'] as $res)
-                                    {{$res->resep}}
                                     @if (is_array(json_decode($res->resep)))
                                     @if (count(json_decode($res->resep))>0)
                                     <tr>
