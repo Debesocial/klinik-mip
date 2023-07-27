@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
-                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                             <a href="/add/rawat/inap?user={{$pasien->id}}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
@@ -68,7 +68,7 @@
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/rawat/inap/{{$rawatinap->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
-                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                                                 <a href="/ubah/rawat/inap/{{$rawatinap->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                                     
                                                 @endif
@@ -92,7 +92,7 @@
                             </div>
                         </div>
                         <div class="col-md-4 text-end">
-                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                             <a href="/add/rawat/jalan?user={{$pasien->id}}" class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
@@ -125,7 +125,7 @@
                                         <td class="text-center">
                                             <div class="btn-group btn-group-sm" role="group" aria-label="Basic outlined example">
                                                 <a href="/view/rawat/jalan/{{$rawatjalan->id }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
-                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
                                                 <a href="/ubah/rawat/jalan/{{$rawatjalan->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
                                                     
                                                 @endif

@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col">
-            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "perawat")
 
             <div class="buttons text-end">
                 <a href="{{ route('rawatjalan.addrawatjalan') }}" class="btn btn-success rounded-pill">
@@ -58,7 +58,6 @@
                                 <a href="/view/rawat/jalan/{{  $jalan->id  }}" title="Lihat Data" href="#" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a>
                                 @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
                                 <a href="/ubah/rawat/jalan/{{  $jalan->id  }}" class="btn btn-outline-secondary" title="Ubah Data"><i class="bi bi-pencil-square"></i></a>
-
                                 @endif
                             </div></td>
                         </tr>
