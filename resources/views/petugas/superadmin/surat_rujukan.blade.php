@@ -64,7 +64,7 @@
                         <textarea name="rs_lain" id="rs_lain"  rows="3" class="form-control mt-1" placeholder="Masukkan nama rumah sakit" hidden></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="riwayat">Riwayat Perjalanan Penyakit <b class="color-red">*</b></label>
+                        <label for="riwayat">Riwayat Penyakit <b class="color-red">*</b></label>
                         <textarea type="text" id="riwayat" class="form-control" placeholder="Masukkan Riwayat Penyakit" name="riwayat" required></textarea>
                     </div>
                     <div class="mb-3">

@@ -69,7 +69,7 @@
     <div class="row" style="border: 1px solid black; padding:3px; ">
         <div class="col">
             <p>
-                {{$kecelakaan->anamnesis}}
+                {!!nl2br($kecelakaan->anamnesis)!!}
             </p>
         </div>
     </div>
@@ -77,7 +77,7 @@
     <div class="row" style="border: 1px solid black; padding:3px; ">
         <div class="col">
             <p>
-                {{$kecelakaan->status_lokalis}}
+                {!!nl2br($kecelakaan->status_lokalis)!!}
             </p>
         </div>
     </div>
@@ -92,7 +92,7 @@
                 @endphp
                     <li >
                         <b>  {{$p->primer }} </b><br>
-                        <small><b>Sub-Klasifikasi:</b> {{$p->sub_klasifikasi->nama_penyakit}}</small>,
+                        <small><b>Sub-Klasifikasi:</b> {{$p->sub_klasifikasi->nama_penyakit}}</small>,<br>
                         <small><b>Klasifikasi:</b> {{$p->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</small>
                     </li>
                 @endforeach
