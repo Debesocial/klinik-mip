@@ -44,7 +44,7 @@
                             </tr>
                             <tr>
                                 <th>Diagnosa Sekunder</th>
-                                <td>: {{$keterangan->sekunders->primer}}</td>
+                                <td>: {{$keterangan->sekunders->primer??'-'}}</td>
                             </tr>
                             <tr>
                                 <th>Saran</th>
