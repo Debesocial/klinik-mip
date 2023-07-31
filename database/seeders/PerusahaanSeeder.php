@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Perusahaan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class PerusahaanSeeder extends Seeder
 {
@@ -14,52 +15,24 @@ class PerusahaanSeeder extends Seeder
      */
     public function run()
     {
-        Perusahaan::insert([
-            [
-                'nama_perusahaan_pasien' => 'MIP',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'MKP',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'ABP',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'GMS',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'MHA',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'PSU',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'RML',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'SUCOFINDO',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_perusahaan_pasien' => 'Lainnya',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        Perusahaan::truncate();
+        $csvFile = fopen(base_path("database/data/perusahaan.csv"), "r");
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                Perusahaan::create([
+                    "id" => $data['0'],
+                    "nama_perusahaan_pasien" => $data['1'],
+                    "created_by" => 1,
+                    "updated_by" => 1,
+                    "created_at" => date('Y-m-d H:i:s'),
+                    "updated_at" => date('Y-m-d H:i:s'),
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
 }

@@ -92,11 +92,11 @@ textarea::placeholder {
 
 .dots .dot {
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 20px;
+    height: 20px;
     margin: 0 10px 0 10px;
     border-radius: 50%;
-    background: #435EBE;
+    background-color: #435EBE;
     -webkit-animation: dot-dot-dot 1.4s linear infinite;
     animation: dot-dot-dot 1.4s linear infinite;
 }

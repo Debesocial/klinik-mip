@@ -1,0 +1,50 @@
+"level_id";"level_name";"level_comp";"level_datetime";"level_status"
+"1";"Foreman / Officer";"1";"2021-11-22 21:23:06";"STAFF"
+"2";"Supervisor	";"1";"2021-11-22 21:23:06";"STAFF"
+"3";"Superintendent";"1";"2021-11-22 21:23:06";"STAFF"
+"4";"Manager";"1";"2021-11-22 21:23:06";"STAFF"
+"5";"Foreman / Officer";"4";"2021-11-22 21:23:06";"STAFF"
+"6";"Supervisor	";"4";"2021-11-22 21:23:06";"STAFF"
+"7";"Superintendent";"4";"2021-11-22 21:23:06";"STAFF"
+"8";"Manager";"4";"2021-11-22 21:23:06";"STAFF"
+"9";"Foreman / Officer";"6";"2021-11-22 21:23:06";"STAFF"
+"10";"Supervisor	";"6";"2021-11-22 21:23:06";"STAFF"
+"11";"Superintendent";"6";"2021-11-22 21:23:06";"STAFF"
+"12";"Manager";"6";"2021-11-22 21:23:06";"STAFF"
+"13";"Foreman / Officer";"3";"2021-11-22 21:23:06";"STAFF"
+"14";"Supervisor	";"3";"2021-11-22 21:23:06";"STAFF"
+"15";"Superintendent";"3";"2021-11-22 21:23:06";"STAFF"
+"16";"Manager";"3";"2021-11-22 21:23:06";"STAFF"
+"17";"Foreman / Officer";"2";"2021-11-22 21:23:06";"STAFF"
+"18";"Supervisor	";"2";"2021-11-22 21:23:06";"STAFF"
+"19";"Superintendent";"2";"2021-11-22 21:23:06";"STAFF"
+"20";"Manager";"2";"2021-11-22 21:23:06";"STAFF"
+"21";"Foreman / Officer";"9";"2021-11-22 21:23:06";"STAFF"
+"22";"Supervisor	";"9";"2021-11-22 21:23:06";"STAFF"
+"23";"Superintendent";"9";"2021-11-22 21:23:06";"STAFF"
+"24";"Manager";"9";"2021-11-22 21:23:06";"STAFF"
+"25";"Foreman / Officer";"7";"2021-11-22 21:23:06";"STAFF"
+"26";"Supervisor	";"7";"2021-11-22 21:23:06";"STAFF"
+"27";"Superintendent";"7";"2021-11-22 21:23:06";"STAFF"
+"28";"Manager";"7";"2021-11-22 21:23:06";"STAFF"
+"29";"Foreman	/ Officer";"10";"2021-11-22 21:23:06";"STAFF"
+"30";"Supervisor	";"10";"2021-11-22 21:23:06";"STAFF"
+"31";"Superintendent";"10";"2021-11-22 21:23:06";"STAFF"
+"32";"Manager";"10";"2021-11-22 21:23:06";"STAFF"
+"34";"Foreman / Officer";"14";"2021-11-27 11:03:23";"STAFF"
+"35";"Foreman";"8";"2022-06-21 14:10:03";"STAFF"
+"36";"Manager";"14";"2022-11-06 08:03:17";"STAFF"
+"37";"Manager";"5";"2023-02-24 08:47:19";"STAFF"
+"38";"Supervisor";"5";"2023-02-24 08:47:51";"STAFF"
+"39";"Apoteker";"1";"2023-03-16 14:36:28";"NON STAFF"
+"40";"Operator Wheel Loader";"1";"2023-03-16 14:38:15";"NON STAFF"
+"41";"Site Manager";"16";"2023-06-09 14:46:30";
+"42";"Supervisor Catering";"16";"2023-06-09 14:46:37";
+"43";"Site Coordinator House Keeping";"16";"2023-06-09 14:46:43";
+"45";"Nutritionist";"16";"2023-06-09 14:47:01";
+"46";"Safety Officer";"16";"2023-06-09 14:47:07";
+"47";"Storeman";"16";"2023-06-09 14:47:12";
+"48";"Team Leader Waiter/Ss";"16";"2023-06-09 14:47:18";
+"49";"Team Leader Housekeeping";"16";"2023-06-09 14:47:24";
+"50";"Team Leader Laundry Attendant";"16";"2023-06-09 14:47:30";
+"51";"Supervisor House Keeping";"16";"2023-06-09 14:47:37";
