@@ -49,7 +49,7 @@
                                             <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" required >
                                                 <option disabled selected value="">Pilih Perusahaan</option>
-                                                <option value="9">other</option>
+                                                <option value="17">Lainnya</option>
                                                 @foreach ($perusahaan as $peru)
                                                 <option value="{{ $peru->id }}">
                                                     {{ $peru->nama_perusahaan_pasien }}
@@ -57,29 +57,37 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group ps-3" id="_lain" name="_lain" style="display: none;">
+                                        <div class="form-group ps-3" id="_lain" style="display: none;">
                                             <label for="lain">Perusahaan Lain <b class="color-red">*</b></label>
                                             <input type="text" id="lain" class="form-control" name="lain" placeholder="perusahaan lainnya">
                                         </div>
                                         <div class="form-group">
                                             <label for="divisi_id">Divisi <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="divisi_id" id="divisi_id" required >
+                                            <select class="choices form-select" name="divisi_id" id="divisi_id"  required >
                                                 <option disabled selected value="">Pilih Divisi</option>
-                                                @foreach ($divisi as $divi)
+                                                {{-- @foreach ($divisi as $divi)
                                                 <option value="{{ $divi->id }}">{{ $divi->nama_divisi_pasien }}
                                                 </option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
+                                        </div>
+                                        <div class="form-group ps-3" id="_divisi_lain" style="display: none;">
+                                            <label for="lain">Divisi Lain <b class="color-red">*</b></label>
+                                            <input type="text" id="divisi_lain" class="form-control" name="divisi_lain" placeholder="divisi lainnya">
                                         </div>
                                         <div class="form-group">
                                             <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="jabatan_id" id="jabatan_id" required >
+                                            <select class="choices form-select" name="jabatan_id" id="jabatan_id"  required >
                                                 <option disabled selected value="">Pilih Jabatan</option>
-                                                @foreach ($jabatan as $jabat)
+                                                {{-- @foreach ($jabatan as $jabat)
                                                 <option value="{{ $jabat->id }}">{{ $jabat->nama_jabatan }}
                                                 </option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
+                                        </div>
+                                        <div class="form-group ps-3" id="_jabatan_lain" style="display: none;">
+                                            <label for="lain">Jabatan Lain <b class="color-red">*</b></label>
+                                            <input type="text" id="jabatan_lain" class="form-control" name="jabatan_lain" placeholder="jabatan lainnya">
                                         </div>
                                     </div>
                                     
@@ -100,11 +108,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                        <textarea type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" required ></textarea>
+                                        <label for="alamat">Alamat</label>
+                                        <textarea type="text" id="alamat" class="form-control" name="alamat" placeholder="Masukkan Alamat" ></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat_mess">Alamat Mess</label>
+                                        <label for="alamat_mess" id="label_mess">Alamat Mess</label>
                                         <input type="text" id="alamat_mess" class="form-control" name="alamat_mess" placeholder="Masukkan Alamat Mess">
                                     </div>
                                     <div class="form-group">
@@ -136,12 +144,10 @@
                                     </div>
                                     <div class="form-group" id="_alergi" style="display: none;">
                                         <label for="alergi">Alergi obat terhadap</label>
-                                        <select class="form-select" name="alergi" id="alergi">
-                                            <option value="">Pilih obat</option>
+                                        <select class="form-select" name="alergi[]" id="alergi" multiple="multiple">
                                             @foreach ($obat as $ob)
                                                 <option value="{{$ob->id}}">{{$ob->nama_obat}}</option>
                                             @endforeach
-                                            <option value=""></option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Obat harus diisi apabila pasien memiliki alergi
@@ -217,11 +223,29 @@
 </section>
 @section('js')
     <script type="text/javascript">
+        const allDivisi = @json($divisi);
+        const allJabatan = @json($jabatan);
         $('#alergi').select2({
             theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
         });
+        let jabatanSelect = $('#jabatan_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            disabled:true,
+
+        });
+        let divisiSelect = $('#divisi_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            disabled:true,
+
+        });
+
+
         $(document).ready(function(){
             $('[id*="alergi_obat"]').click(function(){
                 var alergi_obat =  $('#alergi_obat:checked').val();
@@ -242,6 +266,8 @@
                         form.removeAttr('required');
                     });
                     $('#alamat_mess').prop('required',false);
+                    $('#label_mess').html('Alamat Mess');
+
                 }else{
                     $('#data-karyawan').show();
                     input_karyawan.forEach(input => {
@@ -249,26 +275,113 @@
                         form.attr('required', 'required');
                     });
                     $('#alamat_mess').prop('required',true);
+                    $('#label_mess').html('Alamat Mess <b class="color-red">*</b>');
                 }
             })
             $('#perusahaan_id').change(function(){
                 id = $(this).val();
                 inputLain = $('#lain');
-                if (id==9) {
+                divisiLain = $('#divisi_lain');
+                jabatanLain = $('#jabatan_lain');
+                if (id==17) {
                     $('#_lain').show();
-                    inputLain.attr('required', 'required')
+                    $('#_divisi_lain').show();
+                    $('#_jabatan_lain').show();
+                    inputLain.prop('required', true)
+                    divisiLain.prop('required', true)
+                    jabatanLain.prop('required', true)
+                    clearDivisi();
+                    clearJabatan();
                 } else {
                     $('#_lain').hide();
-                    inputLain.removeAttr('required')
-                    inputLain.val('')
+                    $('#_divisi_lain').hide();
+                    $('#_jabatan_lain').hide();
+                    inputLain.prop('required', false)
+                    divisiLain.prop('required', false)
+                    jabatanLain.prop('required', false)
+                    inputLain.val('');
+                    divisiLain.val('');
+                    jabatanLain.val('');
+                    
+                    setDivisi(id);
+                    setJabatan(id);
                 }
             })
         })
 
+        function setDivisi(id) {
+            let result1 = [{id:'', nama_divisi_pasien:' Pilih divisi'}]
+            let result2 = allDivisi.filter((val)=>id == val.perusahaan_id);
+            let result = result1.concat(result2);
+            
+            divisiSelect.select2('destroy');
+            divisiSelect.empty();
+
+            result.forEach(val => {
+                const newOption = new Option(val.nama_divisi_pasien, val.id, false, false);
+                divisiSelect.append(newOption);
+            });
+            divisiSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:false,
+            });
+        }
+        function setJabatan(id) {
+            let result1 = [{id:'', nama_jabatan:' Pilih jabatan'}]
+            let result2 = allJabatan.filter((val)=>id == val.perusahaan_id);
+            let result = result1.concat(result2);
+            jabatanSelect.select2('destroy');
+            jabatanSelect.empty();
+
+            result.forEach(val => {
+                const newOption = new Option(val.nama_jabatan, val.id, false, false);
+                jabatanSelect.append(newOption);
+            });
+            jabatanSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:false,
+            });
+        }
+        function clearDivisi() {
+            let result = [{id:'', nama_divisi_pasien:' Pilih divisi'}];
+            divisiSelect.select2('destroy');
+            divisiSelect.empty();
+            result.forEach(val => {
+                const newOption = new Option(val.nama_divisi_pasien, val.id, false, false);
+                divisiSelect.append(newOption);
+            });
+            divisiSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:true,
+            });
+        }
+
+        function clearJabatan() {
+            let result = [{id:'', nama_jabatan:' Pilih jabatan'}]
+            jabatanSelect.select2('destroy');
+            jabatanSelect.empty();
+            result.forEach(val => {
+                const newOption = new Option(val.nama_jabatan, val.id, false, false);
+                jabatanSelect.append(newOption);
+            });
+            jabatanSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:true,
+            });
+        }
+
         function cekAlergiObat(status) {
             if (status == '0') {
                 $('#_alergi').hide('slow')
-                $('#alergi').val('')
+                $('#alergi').val(null).trigger('change')
                 $('#alergi').prop('required',false);
 
             } else {

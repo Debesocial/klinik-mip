@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Divisi;
 use App\Http\Requests\StoreDivisiRequest;
 use App\Http\Requests\UpdateDivisiRequest;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,13 +18,14 @@ class DivisiController extends Controller
      */
     public function divisi()
     {
-        $divisi = Divisi::all();
+        $divisi = Divisi::with(['perusahaan'])->get();
         return view('petugas.superadmin.divisi')->with('divisi', $divisi);
     }
 
     public function adddivisi()
     {
-        return view('petugas.superadmin.add_divisi');
+        $data['perusahaan'] = Perusahaan::get();
+        return view('petugas.superadmin.add_divisi', $data);
     }
 
     public function tambahdivisi(Request $request)
@@ -34,6 +36,7 @@ class DivisiController extends Controller
 
         Divisi::create([
             'nama_divisi_pasien' => $request->nama_divisi_pasien,
+            'perusahaan_id' => $request->perusahaan_id,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id
         ]);
@@ -44,15 +47,17 @@ class DivisiController extends Controller
     public function ubahdivisi($id)
     {
         $divisi = Divisi::find($id);
-        return view('petugas.superadmin.ubah_divisi', compact('divisi')); 
+        $perusahaan = Perusahaan::get();
+        return view('petugas.superadmin.ubah_divisi', compact('divisi', 'perusahaan')); 
     }
 
     function changedivisi(Request $request, $id) {
         $divisi = Divisi::find($id);
         $divisi->nama_divisi_pasien = $request->input('nama_divisi_pasien');
+        $divisi->perusahaan_id = $request->input('perusahaan_id');
         $divisi->update();
 
-        return redirect('/jabatan')->with('success', 'Berhasil Mengubah Divisi');
+        return redirect('/divisi')->with('success', 'Berhasil Mengubah Divisi');
     }
     /**
      * Show the form for creating a new resource.

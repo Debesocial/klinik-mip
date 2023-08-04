@@ -33,15 +33,16 @@
                                             </tr>
                                             <tr>
                                                 <th>Perusahaan</th>
-                                                <td>: {{ $pasien->perusahaan->nama_perusahaan_pasien??'-' }}</td>
+                                                <td>: {{ ($pasien->perusahaan==null)?'-':(($pasien->perusahaan_id==17)?$pasien->lain:$pasien->perusahaan->nama_perusahaan_pasien) }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Divisi</th>
-                                                <td>: {{ ($pasien->divisi->nama_divisi_pasien)??'-' }}</td>
+                                                <td>: {{ ($pasien->divisi!=null)?$pasien->divisi->nama_divisi_pasien:(($pasien->perusahaan_id==17)?$pasien->divisi_lain:'-') }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Jabatan</th>
-                                                <td>: {{ $pasien->jabatan->nama_jabatan??'-' }}</td>
+                                                <td>: {{ ($pasien->jabatan!=null)?$pasien->jabatan->nama_jabatan:(($pasien->perusahaan_id==17)?$pasien->jabatan_lain:'-') }}</td>
+
                                             </tr>
                                             <tr>
                                                 <th>Tempat/Tanggal Lahir</th>

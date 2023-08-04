@@ -87,6 +87,10 @@ function diffDay2($awal,$akhir) {
     return $interval->d . ' Hari '. $interval->h .' Jam'; 
 }
 
+function mandatory() {
+    return '<b class="color-red">*</b>';
+}
+
 
 
 
@@ -292,4 +296,18 @@ function cardLaporan(array $data)
 
 function uang($number) {
     return number_format((float)$number,0,',','.');
+}
+
+function sediaan()
+{
+    $data = [
+        ['id' => 1, 'singkatan' => 'Tablet', 'kepanjangan'=>'Tablet'],
+        ['id' => 2, 'singkatan' => 'Sirup', 'kepanjangan'=>'Sirup'],
+        ['id' => 3, 'singkatan' => 'Supp', 'kepanjangan'=>'Supositoria'],
+        ['id' => 4, 'singkatan' => 'Amp', 'kepanjangan'=>'Ampul'],
+        ['id' => 5, 'singkatan' => 'Caps', 'kepanjangan'=>'Capsul'],
+        ['id' => 6, 'singkatan' => 'Grag', 'kepanjangan'=>'Gragel'],
+    ];
+
+    return  $data;
 }

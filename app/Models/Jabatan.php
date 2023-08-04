@@ -11,10 +11,8 @@ class Jabatan extends Model
 
     protected $table = 'jabatans';
     protected $primaryKey = 'id';
-    protected $fillable = [
-        'nama_jabatan',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function user() {
@@ -23,5 +21,9 @@ class Jabatan extends Model
 
     public function pasien() {
         return $this->hasMany(Pasien::class);
+    }
+
+    function perusahaan() {
+        return $this->belongsTo(Perusahaan::class,'perusahaan_id','id');
     }
 }

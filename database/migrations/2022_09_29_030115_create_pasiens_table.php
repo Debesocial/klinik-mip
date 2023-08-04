@@ -21,20 +21,22 @@ class CreatePasiensTable extends Migration
             $table->string('penduduk')->nullable();
             $table->foreignId('perusahaan_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->foreignId('divisi_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->string('divisi_lain')->nullable();
             $table->foreignId('jabatan_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
+            $table->string('jabatan_lain')->nullable();
             $table->foreignId('keluarga_id')->nullable()->constrained()->onUpdate('cascade') ->onDelete('cascade');
             $table->string('lain')->nullable();
             $table->string('nama_pasien', 50);
             $table->string('tempat_lahir', 20);
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin', 10);
-            $table->text('alamat');
+            $table->text('alamat')->nullable();
             $table->text('alamat_mess')->nullable();
             $table->string('pekerjaan', 20);
             $table->string('telepon', 20);
             $table->string('email', 30)->nullable();
             $table->boolean('alergi_obat');
-            $table->foreignId('alergi')->nullable()->constrained('obats');
+            $table->json('alergi')->nullable();
             $table->boolean('hamil_menyusui');
             $table->text('upload')->nullable();
             $table->text('riwayat_pengobatan')->nullable();
@@ -53,6 +55,8 @@ class CreatePasiensTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pasiens');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -71,6 +71,23 @@
                                             <textarea class="form-control" name="komposisi_obat" id="komposisi_obat" cols="50" rows="5"></textarea>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="sediaan">Sediaan</label>
+                                            <select name="sediaan" id="sediaan" class="form-select" placeholder="Masukkan sediaan">
+                                                @foreach (sediaan() as $sediaan)
+                                                    <option value="{{$sediaan['id']}}">{{$sediaan['singkatan']}} <i>({{$sediaan['kepanjangan']}})</i></option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="distributor">Distributor</label>
+                                            <input name="distributor" id="distributor" class="form-control" placeholder="Masukkan distributor">
+                                        </div>
+                                    </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="1" id="is_antibiotik" name="is_antibiotik">
                                         <label class="form-check-label" for="flexCheckDefault">
@@ -78,9 +95,9 @@
                                         </label>
                                       </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="is_antivirus" name="is_antivirus">
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_sedatif" name="is_sedatif">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                          Antivirus
+                                          Efek Sedatif
                                         </label>
                                       </div>
 

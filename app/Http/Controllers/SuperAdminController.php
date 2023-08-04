@@ -1225,10 +1225,11 @@ class SuperAdminController extends Controller
         $now = CarbonImmutable::now()->locale('id_ID');
         $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
         $end_week = $now->endOfWeek()->format('m-d');
+        $obat = Obat::get();
 
-        $pasien =  Pasien::with(['kategori'])->get();
+        $pasiens =  Pasien::with(['kategori'])->get();
 
-        return view('petugas.superadmin.data_pasien')->with('pasiens', $pasien);
+        return view('petugas.superadmin.data_pasien',compact('pasiens','obat'));
     }
 
     public function viewdatapasien($id)
@@ -1238,7 +1239,8 @@ class SuperAdminController extends Controller
         $start_week = $now->startOfWeek(Carbon::MONDAY)->format('m-d');
         $end_week = $now->endOfWeek()->format('m-d');
 
-        $pasien = Pasien::with('obatAlergi')->find($id);
+        $pasien = Pasien::find($id);
+        $obat = Obat::get();
         $kategori = KategoriPasien::all();
         $perusahaan = Perusahaan::all();
         $divisi = Divisi::all();
@@ -1246,7 +1248,7 @@ class SuperAdminController extends Controller
         $keluarga = Keluarga::all();
         $namapenyakit = NamaPenyakit::all();
 
-        return view('petugas.superadmin.view_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit'));
+        return view('petugas.superadmin.view_data_pasien', compact('pasien', 'kategori', 'perusahaan', 'divisi', 'jabatan', 'keluarga', 'namapenyakit','obat'));
     }
 
     public function addpasien()
@@ -1305,8 +1307,10 @@ class SuperAdminController extends Controller
             'telepon' => $request->telepon,
             'email' => $request->email,
             'lain' =>$request->lain,
+            'divisi_lain' =>$request->divisi_lain,
+            'jabatan_lain' =>$request->jabatan_lain,
             'riwayat_pengobatan' => $request->riwayat_pengobatan,
-            'alergi' => $request->alergi,
+            'alergi' => json_encode($request->alergi),
             'alergi_obat' => $request->alergi_obat,
             'hamil_menyusui' => $request->hamil_menyusui,
             'upload' => $filename,
@@ -1345,7 +1349,9 @@ class SuperAdminController extends Controller
         $pasien->perusahaan_id = $request->input('perusahaan_id');
         $pasien->lain = $request->input('lain');
         $pasien->divisi_id = $request->input('divisi_id');
+        $pasien->divisi_lain = $request->input('divisi_lain');
         $pasien->jabatan_id = $request->input('jabatan_id');
+        $pasien->jabatan_lain = $request->input('jabatan_lain');
         $pasien->nama_pasien = $request->input('nama_pasien');
         $pasien->tempat_lahir = $request->input('tempat_lahir');
         $pasien->tanggal_lahir = $request->input('tanggal_lahir');

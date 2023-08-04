@@ -9,10 +9,8 @@ class Perusahaan extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_perusahaan_pasien',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function pasien() {

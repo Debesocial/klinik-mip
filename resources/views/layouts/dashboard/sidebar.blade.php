@@ -181,6 +181,12 @@
                                     <li class="submenu-item @yield('tindakan')">
                                         <a href="{{ route('superadmin.tindakan') }}"> Tindakan</a>
                                     </li>
+                                    <li class="submenu-item @yield('aturan')">
+                                        <a href="/aturan_pakai"> Aturan Pakai</a>
+                                    </li>
+                                    <li class="submenu-item @yield('dosis')">
+                                        <a href="/dosis"> Dosis</a>
+                                    </li>
                                 </ul>
                             </li>
                         @endif

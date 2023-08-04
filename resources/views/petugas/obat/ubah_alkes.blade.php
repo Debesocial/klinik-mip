@@ -69,7 +69,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="komposisi_obat">Komposisi Alat/Bahan Kesehatan</label>
+                                            <label for="komposisi_obat">Komposisi/Keterangan Alat atau Bahan Kesehatan</label>
                                             <textarea class="form-control" name="komposisis" id="komposisis" cols="50" rows="5">{{ $alkes['komposisis'] }}</textarea>
                                         </div>
                                     </div>

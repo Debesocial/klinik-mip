@@ -2,6 +2,9 @@
 @section('title', 'Add Divisi')
 @section('judul', 'Tambah Divisi')
 @section('breadcrumb', 'tambah_divisi')
+@section('organisasi', 'active')
+@section('divisi', 'active')
+@section('organ', 'active')
 @section('container')
 
 <section id="multiple-column-form">
@@ -18,6 +21,17 @@
                                         <div class="form-group">
                                             <label for="nama_divisi_pasien">Nama Divisi <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="nama_divisi_pasien" id="nama_divisi_pasien" placeholder="Masukkan Divisi" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="perusahaan_id">Nama Perusahaan {!!mandatory()!!}</label>
+                                            <select name="perusahaan_id" id="perusahaan_id" class="form-select" required>
+                                                <option value="">Pilih Perusahaan</option>
+                                                @foreach ($perusahaan as $p)
+                                                    <option value="{{$p->id}}">{{$p->nama_perusahaan_pasien}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>

@@ -10,6 +10,7 @@ use App\Http\Controllers\SubKlasifikasiController;
 use App\Http\Controllers\NamaPenyakitController;
 use App\Http\Controllers\NamaObatController;
 use App\Http\Controllers\AlkesController;
+use App\Http\Controllers\AturanPakaiController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\BobotObatController;
 use App\Http\Controllers\JenisObatController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\GolonganObatController;
 use App\Http\Controllers\SatuanObatController;
 use App\Http\Controllers\PerusahaanController;
 use App\Http\Controllers\DivisiController;
+use App\Http\Controllers\DosisController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PasienController;
@@ -374,6 +376,18 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/tindakan', [SuperAdminController::class, 'tambahtindakan'])->name('superadmin.tambahtindakan');
         Route::get('/ubah/tindakan/{id}', [SuperAdminController::class, 'ubahtindakan'])->name('superadmin.ubahtindakan');
         Route::post('/ubah/tindakan/{id}', [SuperAdminController::class, 'changetindakan'])->name('superadmin.changetindakan');
+
+        Route::get('/aturan_pakai', [AturanPakaiController::class, 'index']);
+        Route::get('/aturan_pakai/add', [AturanPakaiController::class, 'halamanTambah']);
+        Route::post('/aturan_pakai/add', [AturanPakaiController::class, 'tambah']);
+        Route::get('/aturan_pakai/ubah/{id}', [AturanPakaiController::class, 'halamanUbah']);
+        Route::post('/aturan_pakai/ubah/{id}', [AturanPakaiController::class, 'ubah']);
+        
+        Route::get('/dosis', [DosisController::class, 'index']);
+        Route::get('/dosis/add', [DosisController::class, 'halamanTambah']);
+        Route::post('/dosis/add', [DosisController::class, 'tambah']);
+        Route::get('/dosis/ubah/{id}', [DosisController::class, 'halamanUbah']);
+        Route::post('/dosis/ubah/{id}', [DosisController::class, 'ubah']);
 
         Route::get('/spesialis/rujukan', [SuperAdminController::class, 'spesialisrujukan'])->name('superadmin.spesialisrujukan');
         Route::get('/add/spesialis/rujukan', [SuperAdminController::class, 'addspesialisrujukan'])->name('superadmin.addspesialisrujukan');

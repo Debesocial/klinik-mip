@@ -60,9 +60,18 @@
                                     <path d="M9.979 5.356a.5.5 0 0 0-.968.04L7.92 10.49l-.94-3.135a.5.5 0 0 0-.926-.08L4.69 10H4.5a.5.5 0 0 0 0 1H5a.5.5 0 0 0 .447-.276l.936-1.873 1.138 3.793a.5.5 0 0 0 .968-.04L9.58 7.51l.94 3.135A.5.5 0 0 0 11 11h.5a.5.5 0 0 0 0-1h-.128L9.979 5.356Z"/>
                                 </svg>
                             </span>
-                            <span class="bs-stepper-label">Pemeriksaan</span>
+                            <span class="bs-stepper-label">Pemeriksaan Fisik</span>
                         </button>
                     </div>
+                    {{-- <div class="line"></div>
+                    <div class="step" data-target="#test-nl-2">
+                        <button class="btn step-trigger">
+                            <span class="bs-stepper-circle">
+                                <i class="bi bi-file-medical"></i>
+                            </span>
+                            <span class="bs-stepper-label">Pemeriksaan Penunjang</span>
+                        </button>
+                    </div> --}}
                     <div class="line"></div>
                     <div class="step" data-target="#test-nl-3">
                         <button class="btn step-trigger">
@@ -326,22 +335,37 @@
                                                     </select>
                                                     {!! validasi('Nama') !!}
                                                 </div>
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Nama Alat Kesehatan </label>
-                                                    <select name="" id="alat_kesehatan" class="form-select">
-                                                        <option value="" selected disabled>Pilihi alat kesehatan </option>
-                                                        @foreach ($alatkesehatan as $alat)
-                                                            <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    {!! validasi('Alat Kesehatan') !!}
+                                                <select name="" id="temp_alat_kesehatan" class="form-select" hidden> 
+                                                    <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                                    @foreach ($alatkesehatan as $alat)
+                                                        <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <div class="mb-2" id="alkes">
+                                                    <div class="row" id="field_alkes">
+                                                        <div class="col-7">
+                                                            <label for="" class="form-label">Nama Alat Kesehatan </label>
+                                                            <select name="" id="alat_kesehatan" class="form-select">
+                                                                <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                                                @foreach ($alatkesehatan as $alat)
+                                                                    <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                            {!! validasi('Alat Kesehatan') !!}
+                                                        </div>
+                                                        <div class="col-3">
+                                                            <label for="" class="form-label">Jumlah </label>
+                                                            <input type="number" name="" id="jumlah_pengguna" class="form-control" value=1 min=1>
+                                                            {{-- {!! validasi('Jumlah Penggunaan') !!} --}}
+                                                        </div>
+                                                        <div class="col-2 my-auto" id="tombol_tambah_alat">
+                                                            <button type="button" class="btn btn-primary btn-sm py-0 px-1" onclick="tambahAlat()"><i class="bi bi-plus"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan </label>
-                                                    <input type="number" name="" id="jumlah_pengguna" class="form-control">
-                                                    {!! validasi('Jumlah Penggunaan') !!}
-                                                </div>
+                                                
                                                 <div class="mb-2">
                                                     <label for="" class="form-label">Keterangan </label>
                                                     <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
@@ -585,7 +609,7 @@
             linear: true,
             animation: true
         })
-        // stepper2.to(3);
+        stepper2.to(3);
         select2_alat = $('select#alat_kesehatan').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
@@ -598,12 +622,12 @@
         });
         var selectedPasien = "{{$selected_pasien}}";
         $(document).ready(function() {
-            $('select').select2({
-                theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
-                tags: true,
-            });
+            // $('select').select2({
+            //     theme: "bootstrap-5",
+            //     selectionCssClass: 'select2--small',
+            //     dropdownCssClass: 'select2--small',
+            //     tags: true,
+            // });
             $("select").on("select2:select", function (evt) {
                 var element = evt.params.data.element;
                 var $element = $(element);
@@ -970,6 +994,23 @@
             $(params).parentsUntil('#dok').remove();
         }
     </script>
+
+    <script>
+        let countAlkes = 1;
+        function tambahAlat() {
+            let fieldAlkes = $('#field_alkes');
+            let newSelect = $('#temp_alat_kesehatan').clone();
+            newSelect.removeAttr('hidden');
+            let newInput = fieldAlkes.clone();
+            html = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteFieldAlkes(this)"><i class="bi bi-trash"></i></button>`;
+            newInput.children('#tombol_tambah_alat').html(html);
+            newInput.children('div.col-7').children().not('label').remove();
+            newInput.children('div.col-7').append(newSelect);
+            // newInput.children('div.col-7').children('select#alat_kesehatan_'+countAlkes).select2().val('').trigger('change');
+            newInput.appendTo('#alkes')
+        }
+    </script>
+
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
 @stop
     

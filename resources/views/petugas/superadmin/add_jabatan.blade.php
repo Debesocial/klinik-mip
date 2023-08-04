@@ -2,6 +2,9 @@
 @section('title', 'Add Jabatan')
 @section('judul', 'Tambah Jabatan')
 @section('breadcrumb', 'tambah_jabatan')
+@section('organisasi', 'active')
+@section('jabatan', 'active')
+@section('organ', 'active')
 @section('container')
 
 <section id="multiple-column-form">
@@ -18,6 +21,17 @@
                                         <div class="form-group">
                                             <label for="nama_jabatan">Nama Jabatan <b class="color-red">*</b></label>
                                             <input type="text" class="form-control" name="nama_jabatan" id="nama_jabatan" placeholder="Masukkan jabatan" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="perusahaan_id">Nama Perusahaan {!!mandatory()!!}</label>
+                                            <select name="perusahaan_id" id="perusahaan_id" class="form-select" required>
+                                                <option value="">Pilih Perusahaan</option>
+                                                @foreach ($perusahaan as $p)
+                                                    <option value="{{$p->id}}">{{$p->nama_perusahaan_pasien}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col text-end"><br>

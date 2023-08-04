@@ -279,7 +279,7 @@
                         <div class="col-md-4 text-end">
                             @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
                             <button
-                                onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Fromulir Permintaan Makanan')"
+                                onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Formulir Permintaan Makanan')"
                                 class="btn btn-sm btn-success rounded-pill">
                                 <i class="bi bi-plus-circle"></i>
                                 <span>Tambah</span>
@@ -344,7 +344,7 @@
                                     <span>Grafik</span>
                                 </button>
                                 <button href="" class="btn btn-sm btn-success rounded-pill"
-                                    onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Fromulir Pemantauan Tanda Vital')">
+                                    onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Formulir Pemantauan Tanda Vital')">
                                     <i class="bi bi-plus-circle"></i>
                                     <span>Tambah</span>
                                 </button>

@@ -53,8 +53,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group" id="_lain" style="{{($pasien->perusahaan_id!=9)?'display: none;':''}}">
-                                            <label for="lain">Lain-lain</label>
+                                        <div class="form-group ps-3" id="_lain" style="{{($pasien->perusahaan_id!=17)?'display: none;':''}}">
+                                            <label for="lain">Perusahaan Lain</label>
                                             <input type="text" id="lain" class="form-control" placeholder="Masukkan nama perusahaan" name="lain" value="{{ ($pasien->lain)??'' }}" placeholder="lainnya">
                                         </div>
                                         <div class="form-group">
@@ -66,6 +66,10 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group ps-3" id="_divisi_lain" style="{{($pasien->perusahaan_id!=17)?'display: none;':''}}">
+                                            <label for="lain">Divisi Lain <b class="color-red">*</b></label>
+                                            <input type="text" id="divisi_lain" class="form-control" name="divisi_lain" placeholder="divisi lainnya" value="{{$pasien->divisi_lain??''}}">
+                                        </div>
                                         <div class="form-group">
                                             <label for="jabatan_id">Jabatan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="jabatan_id" id="jabatan_id">
@@ -74,6 +78,10 @@
                                                 <option value="{{ $jabat->id }}" {{ $jabat->id == $pasien->jabatan_id ? 'selected' : '' }}>{{ $jabat->nama_jabatan }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                        <div class="form-group ps-3" id="_jabatan_lain" style="{{($pasien->perusahaan_id!=17)?'display: none;':''}}">
+                                            <label for="lain">Jabatan Lain <b class="color-red">*</b></label>
+                                            <input type="text" id="jabatan_lain" class="form-control" name="jabatan_lain" placeholder="jabatan lainnya" value="{{$pasien->jabatan_lain??''}}">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -93,11 +101,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat">Alamat <b class="color-red">*</b></label>
-                                        <textarea type="text" id="alamat" class="form-control" name="alamat" value="" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')">{{ $pasien['alamat'] }}</textarea>
+                                        <label for="alamat">Alamat </label>
+                                        <textarea type="text" id="alamat" class="form-control" name="alamat" >{{ $pasien['alamat'] }}</textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="alamat_mess">Alamat Mess</label>
+                                        <label for="alamat_mess" id="label_mess">Alamat Mess <b class="color-red">*</b></label>
                                         <input type="text" id="alamat_mess" class="form-control" placeholder="Masukkan Alamat Mess" name="alamat_mess" {{$pasien['alamat_mess']!=4?'required':''}} value="{{ $pasien['alamat_mess'] }}">
                                     </div>
                                     <div class="form-group">
@@ -122,12 +130,10 @@
                                     </div>
                                     <div class="form-group" id="_alergi">
                                         <label for="alamat_mess">Alergi Obat terhadap <b class="color-red">*</b></label>
-                                        <select class="form-select" name="alergi" id="alergi">
-                                            <option value="">Pilih obat</option>
+                                        <select class="form-select" name="alergi[]" id="alergi" multiple="multiple">
                                             @foreach ($obat as $ob)
                                                 <option value="{{$ob->id}}" {{$ob->id==$pasien->alergi?'selected':''}}>{{$ob->nama_obat}}</option>
                                             @endforeach
-                                            <option value=""></option>
                                         </select>
                                         <div class="invalid-feedback">
                                             Obat harus diisi apabila pasien memiliki alergi
@@ -204,11 +210,54 @@
 
 @section('js')
     <script type="text/javascript">
-        $('#alergi').select2({
+        const allDivisi = @json($divisi);
+        const allJabatan = @json($jabatan);
+        const allObat = @json($obat);
+        let alergiSelect = $('#alergi').select2({
                 theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                tags : true,
         });
+        let jabatanSelect = $('#jabatan_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            disabled:true,
+
+        });
+        let divisiSelect = $('#divisi_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+            disabled:true,
+
+        });
+
+        let alergiSelected = {!! $pasien->alergi??0 !!} ;
+        let alergiSelectedOption = [];
+
+        if (Array.isArray(alergiSelected)) {
+            alergiSelected.forEach((value) => {
+                let option = alergiSelect.find(`option[value="${value}"]`);
+                if (option.length > 0) {
+                    alergiSelectedOption.push(option);
+                }
+            });
+            
+        }
+
+        // Clear the current selected options
+        alergiSelect.val(null);
+
+        // Append the selected options in the desired order
+       
+        alergiSelectedOption.forEach((option) => {
+            alergiSelect.append(option);
+        });
+        
+        alergiSelect.val(alergiSelected).trigger('change');
+
         $(document).ready(function(){
             $('[id*="alergi_obat"]').click(function(){
                 var alergi_obat =  $('#alergi_obat:checked').val();
@@ -224,36 +273,123 @@
             input_karyawan = ['NIK','perusahaan_id', 'divisi_id', 'jabatan_id'];
             $('#kategori_pasien_id').change(function(){
                 id = $(this).val();
-                if (id==4) {
-                    $('#data-karyawan').hide()
-                    input_karyawan.forEach(input => {
-                        form = $('#'+input);
-                        form.val('');
-                        form.removeAttr('required');
-                    });
-                    $('#alamat_mess').prop('required',false);
-                }else{
-                    $('#data-karyawan').show();
-                    input_karyawan.forEach(input => {
-                        form = $('#'+input);
-                        form.attr('required', 'required');
-                    });
-                    $('#alamat_mess').prop('required',true);
-                }
+                cekKategoriPasien(id);
+                
             })
             $('#perusahaan_id').change(function(){
-                id = $(this).val();
-                inputLain = $('#lain');
-                if (id==9) {
-                    $('#_lain').show();
-                    inputLain.attr('required', 'required')
-                } else {
-                    $('#_lain').hide();
-                    inputLain.removeAttr('required')
-                    inputLain.val('')
-                }
-            })
+                cekPerusahaan();
+            });
+            cekPerusahaan();
+            const divisiSelected = {{ $pasien->divisi_id??0 }} ;
+            const jabatanSelected = {{ $pasien->jabatan_id??0 }};
+            divisiSelect.val(divisiSelected).trigger('change');
+            jabatanSelect.val(jabatanSelected).trigger('change');
+            cekKategoriPasien($('#kategori_pasien_id').val());
         })
+
+        function cekPerusahaan() {
+            id = $('#perusahaan_id').val();
+            inputLain = $('#lain');
+            divisi = $('#divisi_id');
+            jabatan = $('#jabatan_id');
+            divisiLain = $('#divisi_lain');
+            jabatanLain = $('#jabatan_lain');
+            if (id==17) {
+                $('#_lain').show();
+                $('#_divisi_lain').show();
+                $('#_jabatan_lain').show();
+                inputLain.prop('required', true)
+                divisiLain.prop('required', true)
+                jabatanLain.prop('required', true)
+                divisi.prop('required', false)
+                jabatan.prop('required', false)
+                clearDivisi();
+                clearJabatan();
+            } else {
+                $('#_lain').hide();
+                $('#_divisi_lain').hide();
+                $('#_jabatan_lain').hide();
+                inputLain.prop('required', false)
+                divisiLain.prop('required', false)
+                jabatanLain.prop('required', false)
+                inputLain.val('');
+                divisiLain.val('');
+                jabatanLain.val('');
+                divisi.prop('required', true)
+                jabatan.prop('required', true)
+                setDivisi(id);
+                setJabatan(id);
+            }
+        }
+
+        function setDivisi(id) {
+            let result1 = [{id:'', nama_divisi_pasien:' Pilih divisi'}]
+            let result2 = allDivisi.filter((val)=>id == val.perusahaan_id);
+            let result = result1.concat(result2);
+            
+            divisiSelect.select2('destroy');
+            divisiSelect.empty();
+
+            result.forEach(val => {
+                const newOption = new Option(val.nama_divisi_pasien, val.id, false, false);
+                divisiSelect.append(newOption);
+            });
+            divisiSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:false,
+            });
+        }
+        function setJabatan(id) {
+            let result1 = [{id:'', nama_jabatan:' Pilih jabatan'}]
+            let result2 = allJabatan.filter((val)=>id == val.perusahaan_id);
+            let result = result1.concat(result2);
+            jabatanSelect.select2('destroy');
+            jabatanSelect.empty();
+
+            result.forEach(val => {
+                const newOption = new Option(val.nama_jabatan, val.id, false, false);
+                jabatanSelect.append(newOption);
+            });
+            jabatanSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:false,
+            });
+        }
+        function clearDivisi() {
+            let result = [{id:'', nama_divisi_pasien:' Pilih divisi'}];
+            divisiSelect.select2('destroy');
+            divisiSelect.empty();
+            result.forEach(val => {
+                const newOption = new Option(val.nama_divisi_pasien, val.id, false, false);
+                divisiSelect.append(newOption);
+            });
+            divisiSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:true,
+            });
+        }
+
+        function clearJabatan() {
+            let result = [{id:'', nama_jabatan:' Pilih jabatan'}]
+            jabatanSelect.select2('destroy');
+            jabatanSelect.empty();
+            result.forEach(val => {
+                const newOption = new Option(val.nama_jabatan, val.id, false, false);
+                jabatanSelect.append(newOption);
+            });
+            jabatanSelect.select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                disabled:true,
+            });
+        }
 
         function cekAlergiObat(status) {
             if (status == '0') {
@@ -281,6 +417,29 @@
             if (validation == true) {
                 $('button[type="submit"]').trigger('click');
             }
+        }
+
+        function cekKategoriPasien(id) {
+            if (id==4) {
+                    $('#data-karyawan').hide()
+                    input_karyawan.forEach(input => {
+                        form = $('#'+input);
+                        form.val('');
+                        form.removeAttr('required');
+                    });
+                    $('#alamat_mess').prop('required',false);
+                    $('#label_mess').html('Alamat Mess');
+                    
+                }else{
+                    $('#data-karyawan').show();
+                    input_karyawan.forEach(input => {
+                        form = $('#'+input);
+                        form.attr('required', 'required');
+                    });
+                    $('#alamat_mess').prop('required',true);
+                    $('#label_mess').html('Alamat Mess <b class="color-red">*</b>');
+
+                }
         }
     </script>
 @stop

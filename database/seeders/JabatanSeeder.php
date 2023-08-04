@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Jabatan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class JabatanSeeder extends Seeder
 {
@@ -14,27 +15,25 @@ class JabatanSeeder extends Seeder
      */
     public function run()
     {
-        Jabatan::insert([
-            [
-                'nama_jabatan' => 'Manager',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_jabatan' => 'Superitendent',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_jabatan' => 'Staff',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_jabatan' => 'Non Staff',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-        ]);
+        Schema::disableForeignKeyConstraints();
+        Jabatan::truncate();
+        $csvFile = fopen(base_path("database/data/jabatan.csv"), "r");
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
+            if (!$firstline) {
+                Jabatan::create([
+                    "id" => $data['0'],
+                    "nama_jabatan" => $data['1'],
+                    "perusahaan_id" => $data['2'],
+                    "created_by" => 1,
+                    "updated_by" => 1,
+                    "created_at" => date('Y-m-d H:i:s'),
+                    "updated_at" => date('Y-m-d H:i:s'),
+                ]);    
+            }
+            $firstline = false;
+        }
+        Schema::enableForeignKeyConstraints();
+        fclose($csvFile);
     }
 }

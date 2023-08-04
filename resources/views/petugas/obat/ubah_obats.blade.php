@@ -74,12 +74,27 @@
                                         </label>
                                       </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" id="is_antivirus" name="is_antivirus" {{$obat->is_antivirus==1?'checked':''}}>
+                                        <input class="form-check-input" type="checkbox" value="1" id="is_sedatif" name="is_sedatif" {{$obat->is_sedatif==1?'checked':''}}>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                          Antivirus
+                                          Efek Sedatif
                                         </label>
                                       </div>
-
+                                      <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="sediaan">Sediaan</label>
+                                            <select name="sediaan" id="sediaan" class="form-select" placeholder="Masukkan sediaan">
+                                                @foreach (sediaan() as $sediaan)
+                                                    <option value="{{$sediaan['id']}}" {{$sediaan['id']==$obat->sediaan?'selected':''}}>{{$sediaan['singkatan']}} <i>({{$sediaan['kepanjangan']}})</i></option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="distributor">Distributor</label>
+                                            <input name="distributor" id="distributor" class="form-control" placeholder="Masukkan distributor" value="{{$obat->distributor}}">
+                                        </div>
+                                    </div>
 
                                     <div class="col-12 text-end"><br>
                                         <button type="submit" class=" btn btn-primary"><i class="bi bi-save"></i> Simpan</button>

@@ -347,6 +347,32 @@ Breadcrumbs::for('ubah_tindakan', function (BreadcrumbTrail $trail) {
      $trail->parent('tindakan');
      $trail->push('Ubah Tindakan');
 });
+/** Aturan Pakai */
+Breadcrumbs::for('aturan_pakai', function (BreadcrumbTrail $trail) {
+     $trail->push('Master Data', '/aturan_pakai');
+     $trail->push('Aturan Pakai', '/aturan_pakai');
+});
+Breadcrumbs::for('tambah_aturan_pakai', function (BreadcrumbTrail $trail) {
+     $trail->parent('aturan_pakai');
+     $trail->push('Tambah Aturan Pakai',);
+});
+Breadcrumbs::for('ubah_aturan_pakai', function (BreadcrumbTrail $trail) {
+     $trail->parent('aturan_pakai');
+     $trail->push('Ubah Aturan Pakai');
+});
+/** Dosis */
+Breadcrumbs::for('dosis', function (BreadcrumbTrail $trail) {
+     $trail->push('Master Data', '/dosis');
+     $trail->push('Dosis', '/dosis');
+});
+Breadcrumbs::for('tambah_dosis', function (BreadcrumbTrail $trail) {
+     $trail->parent('dosis');
+     $trail->push('Tambah Dosis',);
+});
+Breadcrumbs::for('ubah_dosis', function (BreadcrumbTrail $trail) {
+     $trail->parent('dosis');
+     $trail->push('Ubah Dosis');
+});
 /** Dokter Spesialis */
 Breadcrumbs::for('spesialis_rujukan', function (BreadcrumbTrail $trail) {
      $trail->push('Master Data', route('superadmin.spesialisrujukan'));

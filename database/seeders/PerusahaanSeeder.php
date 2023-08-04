@@ -17,6 +17,7 @@ class PerusahaanSeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         Perusahaan::truncate();
+          
         $csvFile = fopen(base_path("database/data/perusahaan.csv"), "r");
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ";")) !== FALSE) {
@@ -32,6 +33,14 @@ class PerusahaanSeeder extends Seeder
             }
             $firstline = false;
         }
+        Perusahaan::create([
+            "id" => 0,
+            "nama_perusahaan_pasien" => 'Lainnya',
+            "created_by" => 1,
+            "updated_by" => 1,
+            "created_at" => date('Y-m-d H:i:s'),
+            "updated_at" => date('Y-m-d H:i:s'),
+        ]); 
         Schema::enableForeignKeyConstraints();
         fclose($csvFile);
     }

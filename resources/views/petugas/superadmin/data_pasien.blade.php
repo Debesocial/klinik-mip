@@ -48,7 +48,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pasiens as $patient)
+                        @foreach ($pasiens->sortByDesc('created_at') as $patient)
+                        @php
+                            $alergi = json_decode($patient->alergi);
+                            $showAlergi = "<ul>";
+                            if (is_array($alergi)) {
+                                foreach ($alergi as $a) {
+                                    $showAlergi .= "<li>".$obat->find($a)?->nama_obat."</li>";
+                                }
+                            }
+                            $showAlergi .= "</ul>";
+                        @endphp
                         <tr>
                             <td style="white-space: nowrap;">
                                 <B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
@@ -58,8 +68,8 @@
                             <td>{{ umur($patient->tanggal_lahir)}}</td>
                             <td>{{ $patient['jenis_kelamin'] }}</td>
                             <td>{{$patient->kategori->nama_kategori}}</td>
-                            <td class="text-center">
-                                {!! $patient->alergi_obat == 1 ? '<i class="fas fa-check text-primary"></i> </br>'.ucfirst($patient->obatAlergi->nama_obat??'') : '<i class="fas fa-times text-danger"></i>' !!}
+                            <td class="">
+                                {!! $patient->alergi_obat == 1 ? '<div class="text-center"><i class="fas fa-check text-primary"></i></div>'.$showAlergi: '<div class="text-center"><i class="fas fa-times text-danger"></i></div>' !!}
                                 </td>
                             <td class="text-center"><i class="{{ $patient->hamil_menyusui == 1 ? "fas fa-check text-primary" : "fas fa-times text-danger" }}"></i></td>
                             <td class="text-center">

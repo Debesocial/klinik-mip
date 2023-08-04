@@ -17,6 +17,7 @@ class CreateDivisisTable extends Migration
         Schema::create('divisis', function (Blueprint $table) {
             $table->id();
             $table->string('nama_divisi_pasien', 30);
+            $table->foreignId('perusahaan_id')->constrained('perusahaans', 'id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');
@@ -33,6 +34,8 @@ class CreateDivisisTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('divisis');
+        Schema::enableForeignKeyConstraints();
     }
 }

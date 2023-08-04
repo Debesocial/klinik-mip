@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jabatan;
 use App\Http\Requests\StoreJabatanRequest;
 use App\Http\Requests\UpdateJabatanRequest;
+use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,13 +18,15 @@ class JabatanController extends Controller
      */
     public function jabatan()
     {
-        $jabatan = Jabatan::all();
-        return view('petugas.superadmin.jabatan')->with('jabatan', $jabatan);
+        $data['jabatan'] = Jabatan::with(['perusahaan'])->get();
+        
+        return view('petugas.superadmin.jabatan',$data);
     }
 
     public function addjabatan()
     {
-        return view('petugas.superadmin.add_jabatan');
+        $data['perusahaan'] = Perusahaan::get();
+        return view('petugas.superadmin.add_jabatan',$data);
     }
 
     public function tambahjabatan(Request $request)
@@ -34,6 +37,7 @@ class JabatanController extends Controller
 
         Jabatan::create([
             'nama_jabatan' => $request->nama_jabatan,
+            'perusahaan_id' => $request->perusahaan_id,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id
         ]);
@@ -44,12 +48,15 @@ class JabatanController extends Controller
     public function ubahjabatan($id)
     {
         $jabatan = Jabatan::find($id);
-        return view('petugas.superadmin.ubah_jabatan', compact('jabatan')); 
+        $perusahaan = Perusahaan::get();
+
+        return view('petugas.superadmin.ubah_jabatan', compact('jabatan','perusahaan')); 
     }
 
     function changejabatan(Request $request, $id) {
         $jabatan = Jabatan::find($id);
         $jabatan->nama_jabatan = $request->input('nama_jabatan');
+        $jabatan->perusahaan_id = $request->input('perusahaan_id');
         $jabatan->update();
 
         return redirect('/jabatan')->with('message', 'Successfully!');

@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Komposisi Alat/Bahan Kesehatan</label>
+                                            <label for="">Komposisi/Keterangan Alat atau Bahan Kesehatan</label>
                                             <textarea class="form-control" name="komposisis" id="komposisis" cols="50" rows="5"></textarea>
                                             
                                         </div>

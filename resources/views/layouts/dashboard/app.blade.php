@@ -73,7 +73,7 @@
             }
         }
 
-        td::first-letter {
+        td:not(.lower)::first-letter {
             text-transform: uppercase;
         }
        

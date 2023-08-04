@@ -9,15 +9,17 @@ class Divisi extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_divisi_pasien',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
     public function pasien() {
         return $this->hasMany(Pasien::class);
     }
     public function user() {
         return $this->hasMany(User::class);
+    }
+
+    function perusahaan() {
+        return $this->belongsTo(Perusahaan::class,'perusahaan_id','id');
     }
 }

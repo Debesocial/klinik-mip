@@ -36,14 +36,16 @@
                 <table class="table table-hover" id="table1" width=100%>
                     <thead>
                         <tr>
-                            <th width=70%>Divisi</th>
+                            <th width=60%>Divisi</th>
+                            <th width=60%>Perusahaan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($divisi as $div)
+                        @foreach ($divisi->sortByDesc('created_at') as $div)
                         <tr>
                             <td>{{ $div['nama_divisi_pasien'] }}</td>
+                            <td>{{$div->perusahaan->nama_perusahaan_pasien}}</td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/ubah/divisi/{{ $div->id }}" class="btn btn-outline-secondary" title="Edit"><i class="bi bi-pencil-square"></i></a>
