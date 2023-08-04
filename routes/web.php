@@ -294,11 +294,11 @@ Route::group(['middleware' => ['auth']], function () {
             $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations/'.$path));
             return $migrate;
         });
-        Route::get('/seed', function(Request $request){
-            $class = $request->input('class');
-            $migrate =  Artisan::call('db:seed '.$class);
-            return $migrate;
-        });
+        // Route::get('/seed', function(Request $request){
+        //     $class = $request->input('class');
+        //     $migrate =  Artisan::call('db:seed '.$class);
+        //     return $migrate;
+        // });
 
         Route::get('/mitra/kerja', [SuperAdminController::class, 'mitrakerja'])->name('superadmin.mitrakerja');
         Route::get('/add/mitra/kerja', [SuperAdminController::class, 'addmitrakerja'])->name('superadmin.addmitrakerja');
