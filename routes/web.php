@@ -45,6 +45,7 @@ use App\Models\IzinIstirahat;
 use App\Models\PermintaanMakanan;
 use App\Models\RawatInap;
 use App\Models\RawatJalan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -63,14 +64,14 @@ Route::get('/', [AuthController::class, 'home'])->name('public.index');
 Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
-Route::get('/migrate-refresh', function(){
-    $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
-    return $migrate;
-});
-Route::get('/seed', function(){
-    $migrate =  Artisan::call('db:seed');
-    return $migrate;
-});
+// Route::get('/migrate-refresh', function(){
+//     $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
+//     return $migrate;
+// });
+// Route::get('/seed', function(){
+//     $migrate =  Artisan::call('db:seed');
+//     return $migrate;
+// });
 /** Profile & Password */
 Route::group(['middleware' => ['auth', 'checkRole:superadmin,dokter,apoteker,tenaga teknis kefarmasian,perawat,mitrakerja']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -288,8 +289,14 @@ Route::group(['middleware' => ['auth']], function () {
         //     $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
         //     return $migrate;
         // });
-        Route::get('/migrate', function(){
-            $migrate =  Artisan::call('migrate', array('--path' => 'database/migrations'));
+        Route::get('/migrate', function(Request $request){
+            $path = $request->input('path');
+            $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations/'.$path));
+            return $migrate;
+        });
+        Route::get('/seed', function(Request $request){
+            $class = $request->input('class');
+            $migrate =  Artisan::call('db:seed '.$class);
             return $migrate;
         });
 
