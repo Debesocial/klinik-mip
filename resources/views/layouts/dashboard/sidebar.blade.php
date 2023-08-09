@@ -161,10 +161,13 @@
                                     </li>
                                     @endif
                                     <li class="submenu-item @yield('klas')">
-                                        <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Klasifikasi Penyakit</a>
+                                        <a href="{{ route('superadmin.klasifikasipenyakit') }}"> Chapter</a>
                                     </li>
                                     <li class="submenu-item @yield('sub')">
-                                        <a href="{{ route('superadmin.subklasifikasi') }}">Sub Klasifikasi Penyakit</a>
+                                        <a href="{{ route('superadmin.subklasifikasi') }}">Blok</a>
+                                    </li>
+                                    <li class="submenu-item @yield('cat')">
+                                        <a href="{{ route('superadmin.category') }}">Categories</a>
                                     </li>
                                     <li class="submenu-item @yield('dia')">
                                         <a href="{{ route('superadmin.namapenyakit') }}"> Diagnosa</a>

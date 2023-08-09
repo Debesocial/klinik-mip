@@ -31,6 +31,8 @@ class CreateKlasifikasiPenyakitsTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('klasifikasi_penyakits');
+        Schema::enableForeignKeyConstraints();
     }
 }

@@ -18,6 +18,8 @@ class CreateNamaPenyakitsTable extends Migration
             $table->string('primer');
             $table->string('sekunder')->nullable();
             $table->foreignId('sub_klasifikasi_id')->constrained();
+            $table->foreignId('category_id')->constrained('categories','id');
+            $table->text('pengertian')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

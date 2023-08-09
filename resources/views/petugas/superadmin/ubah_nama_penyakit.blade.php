@@ -39,6 +39,23 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="klasifikasi_penyakit_id">Category<b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="category_id" id="category_id" required>
+                                                <option value="">Pilih Category</option>
+                                                @foreach ($category as $cat)
+                                                <option value="{{ $cat->id }}" {{ $cat->id == $namapenyakit->category_id ? 'selected' : '' }}>{{ $cat->nama_penyakit }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="primer">Pengertian</label>
+                                            <textarea type="text" id="pengertian" class="form-control" name="pengertian" placeholder="Masukkan pengertian">{{$namapenyakit->pengertian}}</textarea>
+                                        </div>
+                                    </div>
                                     <div class="col-md-12"><br>
                                         <div class="row ">
                                             <div class="col text-end">

@@ -23,6 +23,17 @@ class CreateSubKlasifikasisTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->timestamps();
         });
+       
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_penyakit');
+            $table->foreignId('klasifikasi_penyakit_id')->constrained();
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('updated_by');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -33,5 +44,6 @@ class CreateSubKlasifikasisTable extends Migration
     public function down()
     {
         Schema::dropIfExists('sub_klasifikasis');
+        Schema::dropIfExists('categories');
     }
 }

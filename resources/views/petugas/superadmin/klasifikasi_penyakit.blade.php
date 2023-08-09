@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Klasifikasi Penyakit')
+@section('title', 'Chapter')
 @section('md', 'active')
 @section('periksa', 'active')
 @section('klas', 'active')
@@ -11,7 +11,7 @@
     <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
-                    <h3>Data Klasifikasi Penyakit</h3>
+                    <h3>Data Chapter</h3>
                     {{ Breadcrumbs::render('klasifikasi_penyakit') }}
             </div>
         </div>

@@ -1,95 +1,259 @@
-﻿Alergi atau Kondisi Hipersensitivitas;1;Penyakit Sistem Imun;13
-Arthropathies;2;Penyakit Muskoskeletal (Otot dan Sendi);9
-Asma;3;-;16
-Benda Asing;4;Trauma, Keracunan dan Konsekuensi Penyebab Eksternal;15
-Carsinoma In Situ;5;Penyakit Neoplasma;10
-Cedera Kaki dan Ankle;6;Trauma, Keracunan dan Konsekuensi Penyebab Eksternal;15
-Cedera Kepala;7;Trauma, Keracunan dan Konsekuensi Penyebab Eksternal;15
-Cerebral Palsy dan Sindrom Paralitik Lainnya;8;-;16
-Cerebrovascular Disease;9;Penyakit Kardiovaskuler (Jantung dan Pembuluh Darah);7
-Coronary Artery Disease;10;-;16
-Dengue;11;Penyakit Infeksi dan Parasit;6
-Dermatitis dan Eczema;12;-;16
-Diabetes Mellitus;13;Penyakit Endokrin, Nutrisi dan Metabolik;4
-Diabetes Mellitus Tipe 2;14;-;16
-Dorsopathy;15;Penyakit Muskoskeletal (Otot dan Sendi);9
-Gangguan Cairan atau Elektrolit;16;Penyakit Endokrin, Nutrisi dan Metabolik;4
-Gangguan Efek Racun;17;-;16
-Gangguan Episodik dan Paroksismal;18;-;16
-Gangguan Fungsi Ginjal;19;-;16
-Gangguan Fungsi Visual;20;Penyakit Mata dan Adneksa;8
-Gangguan Jaringan Lunak Lainnya;21;Penyakit Muskoskeletal (Otot dan Sendi);9
-Gangguan Jiwa dan Perilaku;22;Gangguan Psikologi (Jiwa dan Perilaku);2
-Gangguan Mental, Perilaku dan Fungsi Otak;23;Gangguan Mental, Perilaku dan Fungsi Otak;1
-Gangguan Metabolik;24;Penyakit Endokrin, Nutrisi dan Metabolik;4
-Gangguan Nutrisi;25;Penyakit Endokrin, Nutrisi dan Metabolik;4
-Gangguan Otot;26;Penyakit Muskoskeletal (Otot dan Sendi);9
-Gangguan pada Kelenjar atau Hormon Tiroid;27;Penyakit Endokrin, Nutrisi dan Metabolik;4
-Gangguan Pembuluh Limfa dan Kelenjar Getah Bening;28;Penyakit Kardiovaskuler (Jantung dan Pembuluh Darah);7
-Gangguan Sinovium dan Tendon;29;Penyakit Muskoskeletal (Otot dan Sendi);9
-Gejala, Tanda atau Temuan Klinis;30;Gejala, Tanda atau Temuan Klinis;3
-Hipertensi;31;Penyakit Kardiovaskuler (Jantung dan Pembuluh Darah);7
-Hypertensive Heart Disease;32;-;16
-Infeksi Bakteri pada Usus;33;Penyakit Infeksi dan Parasit;6
-Infeksi Bakteri Piogenik pada Kulit atau Jaringan Subkutan;34;Penyakit Infeksi dan Parasit;6
-Infeksi Cacing;35;Penyakit Infeksi dan Parasit;6
-Infeksi Ektoparasit;36;Penyakit Infeksi dan Parasit;6
-Infeksi Jamur;37;Penyakit Infeksi dan Parasit;6
-Infeksi Kulit dan Jaringan Subkutaneus;38;-;16
-Infeksi pada Sistem Saraf Pusat Non Spesifik dan Non Viral;39;Penyakit Infeksi dan Parasit;6
-Infeksi Parasit;40;Penyakit Infeksi dan Parasit;6
-Infeksi Parasit pada Usus;41;Penyakit Infeksi dan Parasit;6
-Infeksi Saluran Pernafasan;42;-;16
-Infeksi Saluran Pernafasan Atas;43;Penyakit Respiratori (Sistem Pernafasan);11
-Infeksi Saluran Pernafasan Bawah;44;Penyakit Respiratori (Sistem Pernafasan);11
-Infeksi Telinga Luar;45;Penyakit Telinga dan Prosesus Mastoideus;14
-Infeksi Virus Lainnya;46;Penyakit Infeksi dan Parasit;6
-Infeksi Virus pada Sistem Saraf Pusat;47;Penyakit Infeksi dan Parasit;6
-Infeksi Virus pada Usus;48;Penyakit Infeksi dan Parasit;6
-Infeksi Virus Varicella Zoster;49;Penyakit Infeksi dan Parasit;6
-Infeksi Zoonotik;50;Penyakit Infeksi dan Parasit;6
-Kelainan Jantung Lainnya;51;Penyakit Kardiovaskuler (Jantung dan Pembuluh Darah);7
-Keracunan Makanan Akibat Bakteri;52;Penyakit Infeksi dan Parasit;6
-Konsultasi;53;-;16
-Lesi Rongga Mulut;54;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Luka Bakar;55;Trauma, Keracunan dan Konsekuensi Penyebab Eksternal;15
-Neoplasma Benigna;56;Penyakit Neoplasma;10
-Neoplasma Maligna;57;Penyakit Neoplasma;10
-Otitis Media Supuratif Kronik;58;-;16
-Penyakit Adneksa Kulit;59;-;16
-Penyakit Akibat Bakteri Lainnya;60;Penyakit Infeksi dan Parasit;6
-Penyakit Akibat Mycobacterial;61;Penyakit Infeksi dan Parasit;6
-Penyakit Bibir dan Mukosa Mulut;62;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Esofagus, Perut dan Usus;63;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Gigi dan Rongga Mulut;64;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Hiv;65;Penyakit Infeksi dan Parasit;6
-Penyakit Jantung Iskemik;66;Penyakit Kardiovaskuler (Jantung dan Pembuluh Darah);7
-Penyakit Kelenjar Ludah;67;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Kulit dan Jaringan Subkutaneus Lainnya;68;-;16
-Penyakit Lain pada Saluran Pencernaan;69;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Lain pada Saluran Pernafasan Atas;70;Penyakit Respiratori (Sistem Pernafasan);11
-Penyakit Lain pada Saluran Pernafasan Bawah;71;Penyakit Respiratori (Sistem Pernafasan);11
-Penyakit Lain pada Usus;72;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Lidah;73;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit Mata Lainnya;74;Penyakit Mata dan Adneksa;8
-Penyakit Menular Seksual;75;Penyakit Infeksi dan Parasit;6
-Penyakit Organ Genital;76;Penyakit Genitalia (Organ Kelamin);5
-Penyakit pada Anterior Chamber;77;Penyakit Mata dan Adneksa;8
-Penyakit pada Apparatus Lakrimal;78;Penyakit Mata dan Adneksa;8
-Penyakit pada Empedu dan Pankreas;79;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit pada Eyelid dan Area Peri-Ocular;80;Penyakit Mata dan Adneksa;8
-Penyakit pada Hati;81;Penyakit Sistem Digestive (Saluran Pencernaan);12
-Penyakit pada Konjungtiva;82;Penyakit Mata dan Adneksa;8
-Penyakit pada Lensa;83;Penyakit Mata dan Adneksa;8
-Penyakit pada Otot dan Myoneural Junction;84;-;16
-Penyakit pada Pleura;85;Penyakit Respiratori (Sistem Pernafasan);11
-Penyakit pada Retina;86;Penyakit Mata dan Adneksa;8
-Penyakit pada Saraf, Radix dan Pleksus Saraf;87;-;16
-Penyakit Refraksi;88;Penyakit Mata dan Adneksa;8
-Post Operasi;89;-;16
-Post Stroke;90;-;16
-Sekuel Penyakit Infeksi;91;Penyakit Infeksi dan Parasit;6
-Sepsis;92;Penyakit Infeksi dan Parasit;6
-Urolithiasis;93;-;16
-Viral Hepatitis;94;Penyakit Infeksi dan Parasit;6
-Vulnus;95;-;16
+﻿- Aetiology;1;18
+- Anatomy and topography;2;18
+- Capacity or context;3;18
+- Consciousness;4;18
+- Diagnosis code descriptors;5;18
+- Dimensions of external causes;6;18
+- Dimensions of injury;7;18
+- Health Devices, Equipment and Supplies;8;18
+- Heart failure;9;7
+- Histopathology;10;18
+- Severity Scale Value;11;18
+- Substances;12;18
+- Temporality;13;18
+- Topology Scale Value;14;18
+L1-1A0- Gastroenteritis or colitis of infectious origin;15;2
+L1-1A6- Predominantly sexually transmitted infections;16;2
+L1-1B1- Mycobacterial diseases;17;2
+L1-1B4- Certain staphylococcal or streptococcal diseases;18;2
+L1-1B7- Pyogenic bacterial infections of the skin or subcutaneous tissues;19;2
+L1-1B9- Certain zoonotic bacterial diseases;20;2
+L1-1C1- Other bacterial diseases;21;2
+L1-1C6- Human immunodeficiency virus disease;22;2
+L1-1C8- Viral infections of the central nervous system;23;2
+L1-1D0- Non-viral and unspecified infections of the central nervous system;24;2
+L1-1D2- Dengue;25;2
+L1-1D4- Certain arthropod-borne viral fevers;26;2
+L1-1D6- Certain zoonotic viral diseases;27;2
+L1-1D8- Certain other viral diseases;28;2
+L1-1E3- Influenza;29;2
+L1-1E5- Viral hepatitis;30;2
+L1-1E7- Viral infections characterised by skin or mucous membrane lesions;31;2
+L1-1F2- Mycoses;32;2
+L1-1F4- Parasitic diseases;33;2
+L1-1G4- Sepsis;34;2
+L1-1G8- Sequelae of infectious diseases;35;2
+L1-2A0- Neoplasms of brain or central nervous system;36;23
+L1-2A2- Neoplasms of haematopoietic or lymphoid tissues;37;23
+L1-2B5- Malignant neoplasms, except of lymphoid, haematopoietic, central nervous system or related tissues;38;23
+L1-2E8- Benign neoplasms, except of lymphoid, haematopoietic, central nervous system or related tissues;39;23
+L1-2F7- Neoplasms of uncertain behaviour, except of lymphoid, haematopoietic, central nervous system or related tissues;40;23
+L1-2F9- Neoplasms of unknown behaviour, except of lymphoid, haematopoietic, central nervous system or related tissues;41;23
+L1-3A0- Anaemias or other erythrocyte disorders;42;6
+L1-3B1- Coagulation defects, purpura or other haemorrhagic or related conditions;43;6
+L1-3B8- Diseases of spleen;44;6
+L1-4A0- Primary immunodeficiencies;45;11
+L1-4A4- Nonorgan specific systemic autoimmune disorders;46;11
+L1-4A6- Autoinflammatory disorders;47;11
+L1-4A8- Allergic or hypersensitivity conditions;48;11
+L1-4B0- Immune system disorders involving white cell lineages;49;11
+L1-4B2- Certain disorders involving the immune system;50;11
+L1-5A0- Endocrine diseases;51;17
+L1-5B5- Nutritional disorders;52;17
+L1-5C5- Metabolic disorders;53;17
+L1-5D4- Postprocedural endocrine or metabolic disorders;54;17
+L1-6A0- Neurodevelopmental disorders;55;22
+L1-6A2- Schizophrenia or other primary psychotic disorders;56;22
+L1-6A4- Catatonia;57;22
+L1-6A6- Mood disorders;58;22
+L1-6B0- Anxiety or fear-related disorders;59;22
+L1-6B2- Obsessive-compulsive or related disorders;60;22
+L1-6B4- Disorders specifically associated with stress;61;22
+L1-6B6- Dissociative disorders;62;22
+L1-6B8- Feeding or eating disorders;63;22
+L1-6C0- Elimination disorders;64;22
+L1-6C2- Disorders of bodily distress or bodily experience;65;22
+L1-6C4- Disorders due to substance use or addictive behaviours;66;22
+L1-6C7- Impulse control disorders;67;22
+L1-6C9- Disruptive behaviour or dissocial disorders;68;22
+L1-6D1- Personality disorders and related traits;69;22
+L1-6D3- Paraphilic disorders;70;22
+L1-6D5- Factitious disorders;71;22
+L1-6D7- Neurocognitive disorders;72;22
+L1-6E2- Mental or behavioural disorders associated with pregnancy, childbirth or the puerperium;73;22
+L1-6E6- Secondary mental or behavioural syndromes associated with disorders or diseases classified elsewhere;74;22
+L1-7A0- Insomnia disorders;75;25
+L1-7A2- Hypersomnolence disorders;76;25
+L1-7A4- Sleep-related breathing disorders;77;25
+L1-7A6- Circadian rhythm sleep-wake disorders;78;25
+L1-7A8- Sleep-related movement disorders;79;25
+L1-7B0- Parasomnia disorders;80;25
+L1-8A0- Movement disorders;81;13
+L1-8A2- Disorders with neurocognitive impairment as a major feature;82;13
+L1-8A4- Multiple sclerosis or other white matter disorders;83;13
+L1-8A6- Epilepsy or seizures;84;13
+L1-8A8- Headache disorders;85;13
+L1-8B0- Cerebrovascular diseases;86;13
+L1-8B4- Spinal cord disorders excluding trauma;87;13
+L1-8B6- Motor neuron diseases or related disorders;88;13
+L1-8B8- Disorders of nerve root, plexus or peripheral nerves;89;13
+L1-8C6- Diseases of neuromuscular junction or muscle;90;13
+L1-8D2- Cerebral palsy;91;13
+L1-8D4- Nutritional or toxic disorders of the nervous system;92;13
+L1-8D6- Disorders of cerebrospinal fluid pressure or flow;93;13
+L1-8D8- Disorders of autonomic nervous system;94;13
+L1-8E0- Human prion diseases;95;13
+L1-8E2- Disorders of consciousness;96;13
+L1-8E4- Other disorders of the nervous system;97;13
+L1-8E6- Postprocedural disorders of the nervous system;98;13
+L1-9A0- Disorders of the ocular adnexa or orbit;99;16
+L1-9A6- Disorders of the eyeball - anterior segment;100;16
+L1-9B5- Disorders of the eyeball - posterior segment;101;16
+L1-9C2- Disorders of the eyeball affecting both anterior and posterior segments;102;16
+L1-9C4- Disorders of the visual pathways or centres;103;16
+L1-9C6- Glaucoma or glaucoma suspect;104;16
+L1-9C8- Strabismus or ocular motility;105;16
+L1-9D0- Disorders of refraction or accommodation;106;16
+L1-9D2- Postprocedural disorders of eye or ocular adnexa;107;16
+L1-9D4- Impairment of visual functions;108;16
+L1-9D9- Vision impairment;109;16
+L1-AA0- Diseases of external ear;110;9
+L1-AA8- Diseases of middle ear or mastoid;111;9
+L1-AB3- Diseases of inner ear;112;9
+L1-AB5- Disorders with hearing impairment;113;9
+L1-AB7- Disorders of ear, not elsewhere classified;114;9
+L1-AB9- Postprocedural disorders of ear or mastoid process;115;9
+L1-BA0- Hypertensive diseases;116;7
+L1-BA2- Hypotension;117;7
+L1-BA4- Ischaemic heart diseases;118;7
+L1-BA8- Diseases of coronary artery;119;7
+L1-BB0- Pulmonary heart disease or diseases of pulmonary circulation;120;7
+L1-BB2- Pericarditis;121;7
+L1-BB4- Acute or subacute endocarditis;122;7
+L1-BB6- Heart valve diseases;123;7
+L1-BC4- Diseases of the myocardium or cardiac chambers;124;7
+L1-BC6- Cardiac arrhythmia;125;7
+L1-BD3- Diseases of arteries or arterioles;126;7
+L1-BD7- Diseases of veins;127;7
+L1-BD9- Disorders of lymphatic vessels or lymph nodes;128;7
+L1-BE1- Postprocedural disorders of circulatory system;129;7
+L1-CA0- Upper respiratory tract disorders;130;14
+L1-CA2- Certain lower respiratory tract diseases;131;14
+L1-CA4- Lung infections;132;14
+L1-CA6- Lung diseases due to external agents;133;14
+L1-CB0- Respiratory diseases principally affecting the lung interstitium;134;14
+L1-CB2- Pleural, diaphragm or mediastinal disorders;135;14
+L1-CB6- Postprocedural disorders of the respiratory system;136;14
+L1-DA0- Diseases or disorders of orofacial complex;137;8
+L1-DA2- Diseases of oesophagus;138;8
+L1-DA4- Diseases of the stomach or the duodenum;139;8
+L1-DA9- Diseases of small intestine;140;8
+L1-DB1- Diseases of appendix;141;8
+L1-DB3- Diseases of large intestine;142;8
+L1-DB5- Diseases of anal canal;143;8
+L1-DB9- Diseases of liver;144;8
+L1-DC1- Diseases of gallbladder or biliary tract;145;8
+L1-DC3- Diseases of pancreas;146;8
+L1-DC5- Diseases of peritoneum;147;8
+L1-DC7- Diverticular disease of intestine;148;8
+L1-DD3- Ischaemic vascular disorders of intestine;149;8
+L1-DD5- Hernias;150;8
+L1-DD7- Inflammatory bowel diseases;151;8
+L1-DD9- Functional gastrointestinal disorders;152;8
+L1-DE1- Postprocedural disorders of digestive system;153;8
+L1-EA0- - Certain skin disorders attributable to viral infection;154;15
+L1-EA8- Inflammatory dermatoses;155;15
+L1-EB9- Metabolic and nutritional disorders affecting the skin;156;15
+L1-EC1- Genetic and developmental disorders affecting the skin;157;15
+L1-EC9- Sensory and psychological disorders affecting the skin;158;15
+L1-ED5- Skin disorders involving specific cutaneous structures;159;15
+L1-EG3- Skin disorders involving certain specific body regions;160;15
+L1-EH1- Skin disorders associated with pregnancy, the neonatal period and infancy;161;15
+L1-EH6- Adverse cutaneous reactions to medication;162;15
+L1-EH9- Skin disorders provoked by external factors;163;15
+L1-EK7- Benign proliferations, neoplasms and cysts of the skin;164;15
+L1-EK9- Disorders of the skin of uncertain or unpredictable malignant potential;165;15
+L1-EL1- Cutaneous markers of internal disorders;166;15
+L1-EL5- Postprocedural disorders of the skin;167;15
+L1-FA0- Arthropathies;168;12
+L1-FA7- Conditions associated with the spine;169;12
+L1-FB3- Soft tissue disorders;170;12
+L1-FB8- Osteopathies or chondropathies;171;12
+L1-GA0- Diseases of the female genital system;172;10
+L1-GA8- Diseases of the male genital system;173;10
+L1-GB2- Disorders of breast;174;10
+L1-GB4- Diseases of the urinary system;175;10
+L1-GC4- Other conditions of the genitourinary system;176;10
+L1-GC7- Postprocedural disorders of genitourinary system;177;10
+L1-HA0- Sexual dysfunctions;178;4
+L1-HA2- Sexual pain disorders;179;4
+L1-HA6- Gender incongruence;180;4
+L1-JA0- Abortive outcome of pregnancy;181;24
+L1-JA2- Oedema, proteinuria, or hypertensive disorders in pregnancy, childbirth, or the puerperium;182;24
+L1-JA4- Obstetric haemorrhage;183;24
+L1-JA6- Certain specified maternal disorders predominantly related to pregnancy;184;24
+L1-JA8- Maternal care related to the foetus, amniotic cavity or possible delivery problems;185;24
+L1-JB0- Complications of labour or delivery;186;24
+L1-JB2- Delivery;187;24
+L1-JB4- Complications predominantly related to the puerperium;188;24
+L1-JB6- Certain obstetric conditions, not elsewhere classified;189;24
+L1-KA0- Foetus or newborn affected by maternal factors or by complications of pregnancy, labour or delivery;190;1
+L1-KA2- Disorders of newborn related to length of gestation or foetal growth;191;1
+L1-KA4- Birth injury;192;1
+L1-KA6- Infections of the foetus or newborn;193;1
+L1-KA8- Haemorrhagic or haematological disorders of foetus or newborn;194;1
+L1-KB0- Neurological disorders specific to the perinatal or neonatal period;195;1
+L1-KB2- Respiratory disorders specific to the perinatal or neonatal period;196;1
+L1-KB4- Cardiovascular disorders present in the perinatal or neonatal period;197;1
+L1-KB6- Transitory endocrine or metabolic disorders specific to foetus or newborn;198;1
+L1-KB8- Digestive system disorders of foetus or newborn;199;1
+L1-KC0- Genitourinary system disorders specific to the perinatal or neonatal period;200;1
+L1-KC2- Disorders involving the integument of foetus or newborn;201;1
+L1-KD1- Disturbances of temperature regulation of newborn;202;1
+L1-KD3- Certain disorders originating in the perinatal period;203;1
+L1-LA0- Structural developmental anomalies primarily affecting one body system;204;5
+L1-LD2- Multiple developmental anomalies or syndromes;205;5
+L1-LD4- Chromosomal anomalies, excluding gene mutations;206;5
+L1-MA0- Symptoms, signs or clinical findings of blood, blood-forming organs, or the immune system;207;28
+L1-MA5- Symptoms, signs or clinical findings of endocrine, nutritional or metabolic diseases;208;28
+L1-MA8- Symptoms, signs or clinical findings of speech or voice;209;28
+L1-MB2- Mental or behavioural symptoms, signs or clinical findings;210;28
+L1-MB4- Symptoms, signs or clinical findings of the nervous system;211;28
+L1-MC1- Symptoms, signs or clinical findings of the visual system;212;28
+L1-MC8- Symptoms, signs or clinical findings of the circulatory system;213;28
+L1-MD1- Symptoms, signs or clinical findings of the respiratory system;214;28
+L1-MD8- Symptoms, signs or clinical findings of the digestive system or abdomen;215;28
+L1-ME6- Symptoms, signs or clinical findings involving the skin;216;28
+L1-ME8- Symptoms, signs or clinical findings of the musculoskeletal system;217;28
+L1-MF3- Symptoms, signs or clinical findings of the genitourinary system;218;28
+L1-MG2- General symptoms, signs or clinical findings;219;28
+L1-MH1- Ill-defined and unknown causes of mortality;220;28
+L1-NA0- Injuries to the head;221;21
+L1-NA2- Injuries to the neck;222;21
+L1-NA8- Injuries to the thorax;223;21
+L1-NB5- Injuries to the abdomen, lower back, lumbar spine or pelvis;224;21
+L1-NC1- Injuries to the shoulder or upper arm;225;21
+L1-NC3- Injuries to the elbow or forearm;226;21
+L1-NC5- Injuries to the wrist or hand;227;21
+L1-NC7- Injuries to the hip or thigh;228;21
+L1-NC9- Injuries to the knee or lower leg;229;21
+L1-ND1- Injuries to the ankle or foot;230;21
+L1-ND3- Injuries involving multiple body regions;231;21
+L1-ND5- Injuries to unspecified part of trunk, limb or body region;232;21
+L1-ND7- Effects of foreign body entering through natural orifice;233;21
+L1-ND9- Burns;234;21
+L1-NE4- Frostbite;235;21
+L1-NE6- Harmful effects of substances;236;21
+L1-NE8- Injury or harm arising from surgical or medical care, not elsewhere classified;237;21
+L1-NF0- Other or unspecified effects of external causes;238;21
+L1-PA0- Unintentional causes;239;19
+L1-PB8- Intentional self-harm;240;19
+L1-PD5- Assault;241;19
+L1-PF4- Undetermined intent;242;19
+L1-PJ0- Exposure to extreme forces of nature;243;19
+L1-PJ2- Maltreatment;244;19
+L1-PJ4- Legal intervention;245;19
+L1-PJ6- Armed conflict;246;19
+L1-PK8- Causes of healthcare related harm or injury;247;19
+L1-QA0- Reasons for contact with the health services;248;20
+L1-QD5- Factors influencing health status;249;20
+L1-RA0- International provisional assignment of new diseases of uncertain aetiology;250;3
+L1-RA2- National provisional assignment of new diseases of uncertain aetiology;251;3
+L1-SA0- Traditional medicine disorders (TM1);252;26
+L1-SE7- Traditional medicine patterns (TM1);253;26
+L1-VA0- WHODAS 2.0 36-item version;254;27
+L1-VA9- Brief Model Disability Survey;255;27
+L1-VB6- Generic functioning domains;256;27
+L2-1F5- - Nonintestinal protozoal diseases;257;2
+L2-DB6- - Haemorrhoids or perianal venous conditions;258;8
+L2-LD5- - Sex chromosome anomalies;259;5

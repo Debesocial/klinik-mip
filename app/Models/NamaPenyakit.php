@@ -9,12 +9,8 @@ class NamaPenyakit extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'primer',
-        'sekunder',
-        'sub_klasifikasi_id',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function user() {
@@ -51,6 +47,9 @@ class NamaPenyakit extends Model
 
     public function sub_klasifikasi(){
         return $this->belongsTo(SubKlasifikasi::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id','id');
     }
 
     public function izinistirahat() {

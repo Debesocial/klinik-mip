@@ -25,19 +25,30 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="sekunder">Nama Penyakit Sekunder</label>
-                                            <input type="text" id="sekunder" class="form-control" name="sekunder" placeholder="Masukkan nama penyakit">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
                                             <label for="klasifikasi_penyakit_id">Sub Klasifikasi<b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="sub_klasifikasi_id" id="sub_klasifikasi_id">
+                                            <select class="choices form-select" name="sub_klasifikasi_id" id="sub_klasifikasi_id" required>
                                                 <option value="">Pilih Sub-Klasifikasi</option>
                                                 @foreach ($subklasifikasi as $sub)
                                                 <option value="{{ $sub->id }}">{{ $sub->nama_penyakit }}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="klasifikasi_penyakit_id">Category<b class="color-red">*</b></label>
+                                            <select class="choices form-select" name="category_id" id="category_id" required>
+                                                <option value="">Pilih Category</option>
+                                                @foreach ($category as $cat)
+                                                <option value="{{ $cat->id }}">{{ $cat->nama_penyakit }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="primer">Pengertian</label>
+                                            <textarea type="text" id="pengertian" class="form-control" name="pengertian" placeholder="Masukkan pengertian"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12"><br>
@@ -60,6 +71,11 @@
 @section('js')
 <script>
     $('#sub_klasifikasi_id').select2({
+        theme: 'bootstrap-5',
+        selectionCssClass: "select2--small",
+        dropdownCssClass: "select2--small",
+    });
+    $('#category_id').select2({
         theme: 'bootstrap-5',
         selectionCssClass: "select2--small",
         dropdownCssClass: "select2--small",

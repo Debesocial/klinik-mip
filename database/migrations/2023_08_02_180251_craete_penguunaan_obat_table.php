@@ -44,7 +44,7 @@ class CraetePenguunaanObatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penggunaan_obat');
+        Schema::dropIfExists('aturan_pakai');
         Schema::dropIfExists('dosis');
     }
 }

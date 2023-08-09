@@ -14,7 +14,8 @@ class JadwalSeeder extends Seeder
      */
     public function run()
     {
-        Jadwal::insert([
+        Jadwal::insert(
+            [
             'senin'=>'-',
             'selasa'=>'-',
             'rabu'=>'-',
@@ -22,6 +23,34 @@ class JadwalSeeder extends Seeder
             'jumat'=>'-',
             'sabtu'=>'-',
             'minggu'=>'-'
-        ]);
+            ],
+            [
+            'senin'=>'-',
+            'selasa'=>'-',
+            'rabu'=>'-',
+            'kamis'=>'-',
+            'jumat'=>'-',
+            'sabtu'=>'-',
+            'minggu'=>'-'
+            ],
+            [
+            'senin'=>'-',
+            'selasa'=>'-',
+            'rabu'=>'-',
+            'kamis'=>'-',
+            'jumat'=>'-',
+            'sabtu'=>'-',
+            'minggu'=>'-'
+            ],
+            [
+            'senin'=>'-',
+            'selasa'=>'-',
+            'rabu'=>'-',
+            'kamis'=>'-',
+            'jumat'=>'-',
+            'sabtu'=>'-',
+            'minggu'=>'-'
+            ],
+    );
     }
 }

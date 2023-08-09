@@ -180,7 +180,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Class Aliases
+    | Class AliasesDataTables
     |--------------------------------------------------------------------------
     |
     | This array of class aliases will be registered when this application

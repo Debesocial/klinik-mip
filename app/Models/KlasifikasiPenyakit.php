@@ -9,10 +9,8 @@ class KlasifikasiPenyakit extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'klasifikasi_penyakit',
-        'created_by',
-        'updated_by'
+    protected $guarded = [
+        'id'
     ];
 
     public function user() {

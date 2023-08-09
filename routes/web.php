@@ -13,6 +13,7 @@ use App\Http\Controllers\AlkesController;
 use App\Http\Controllers\AturanPakaiController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\BobotObatController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\JenisObatController;
 use App\Http\Controllers\GolonganObatController;
 use App\Http\Controllers\SatuanObatController;
@@ -65,11 +66,15 @@ Route::get('/login', [AuthController::class, 'index'])->name('login.index');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/migrate-refresh', function(){
-    $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
+    $migrate =  Artisan::call('migrate:refresh --seed');
     return $migrate;
 });
 Route::get('/seed', function(){
     $migrate =  Artisan::call('db:seed');
+    return $migrate;
+});
+Route::get('/seed-class', function(Request $request){
+    $migrate =  Artisan::call('db:seed --class='.$request->input('class'));
     return $migrate;
 });
 /** Profile & Password */
@@ -359,12 +364,19 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/sub/klasifikasi', [SubKlasifikasiController::class, 'tambahsubklasifikasi'])->name('superadmin.tambahsubklasifikasi');
         Route::get('/ubah/sub/klasifikasi/{id}', [SubKlasifikasiController::class, 'ubahsubklasifikasi'])->name('superadmin.ubahsubklasifikasi');
         Route::post('/ubah/sub/klasifikasi/{id}', [SubKlasifikasiController::class, 'changesubklasifikasi'])->name('superadmin.changesubklasifikasi');
+        
+        Route::get('/category', [CategoryController::class, 'category'])->name('superadmin.category');
+        Route::get('/add/category', [CategoryController::class, 'addCategory'])->name('superadmin.addcategory');
+        Route::post('/add/category', [CategoryController::class, 'tambahCategory'])->name('superadmin.tambahcategory');
+        Route::get('/ubah/category/{id}', [CategoryController::class, 'ubahCategory'])->name('superadmin.ubahcategory');
+        Route::post('/ubah/category/{id}', [CategoryController::class, 'changeCategory'])->name('superadmin.changecategory');
 
         Route::get('/nama/penyakit', [NamaPenyakitController::class, 'namapenyakit'])->name('superadmin.namapenyakit');
         Route::get('/add/nama/penyakit', [NamaPenyakitController::class, 'addnamapenyakit'])->name('superadmin.addnamapenyakit');
         Route::post('/add/nama/penyakit', [NamaPenyakitController::class, 'tambahnamapenyakit'])->name('superadmin.tambahnamapenyakit');
         Route::get('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'ubahnamapenyakit'])->name('superadmin.ubahnamapenyakit');
         Route::post('/ubah/nama/penyakit/{id}', [NamaPenyakitController::class, 'changenamapenyakit'])->name('superadmin.changenamapenyakit');
+        Route::get('/get-penyakit', [NamaPenyakitController::class, 'getPenyakit']);
 
         Route::get('/lokasi/kejadian', [SuperAdminController::class, 'lokasikejadian'])->name('superadmin.lokasikejadian');
         Route::get('/add/lokasi/kejadian', [SuperAdminController::class, 'addlokasikejadian'])->name('superadmin.addlokasikejadian');

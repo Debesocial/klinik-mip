@@ -272,28 +272,41 @@ Breadcrumbs::for('ubah_kode_covid', function (BreadcrumbTrail $trail) {
 /** Klasifikasi penyakit */
 Breadcrumbs::for('klasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->push('Master Data', route('superadmin.klasifikasipenyakit'));
-     $trail->push('Klasifikasi Penyakit', route('superadmin.klasifikasipenyakit'));
+     $trail->push('Chapter', route('superadmin.klasifikasipenyakit'));
 });
 Breadcrumbs::for('tambah_klasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->parent('klasifikasi_penyakit');
-     $trail->push('Tambah Klasifikasi Penyakit',);
+     $trail->push('Tambah Chapter',);
 });
 Breadcrumbs::for('ubah_klasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->parent('klasifikasi_penyakit');
-     $trail->push('Ubah Klasifikasi Penyakit');
+     $trail->push('Ubah Chapter');
 });
 /** subklasifikasi penyakit */
 Breadcrumbs::for('subklasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->push('Master Data', route('superadmin.subklasifikasi'));
-     $trail->push('Subklasifikasi Penyakit', route('superadmin.subklasifikasi'));
+     $trail->push('Blok', route('superadmin.subklasifikasi'));
 });
 Breadcrumbs::for('tambah_subklasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->parent('subklasifikasi_penyakit');
-     $trail->push('Tambah Subklasifikasi Penyakit',);
+     $trail->push('Tambah Blok',);
 });
 Breadcrumbs::for('ubah_subklasifikasi_penyakit', function (BreadcrumbTrail $trail) {
      $trail->parent('subklasifikasi_penyakit');
-     $trail->push('Ubah Subklasifikasi Penyakit');
+     $trail->push('Ubah Blok');
+});
+/** Categories */
+Breadcrumbs::for('category', function (BreadcrumbTrail $trail) {
+     $trail->push('Master Data', route('superadmin.category'));
+     $trail->push('Category', route('superadmin.category'));
+});
+Breadcrumbs::for('tambah_category', function (BreadcrumbTrail $trail) {
+     $trail->parent('category');
+     $trail->push('Tambah Category',);
+});
+Breadcrumbs::for('ubah_category', function (BreadcrumbTrail $trail) {
+     $trail->parent('category');
+     $trail->push('Ubah Category');
 });
 /** Nama Penyakit */
 Breadcrumbs::for('nama_penyakit', function (BreadcrumbTrail $trail) {

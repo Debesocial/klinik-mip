@@ -1,6 +1,6 @@
 @extends('layouts.dashboard.app')
-@section('title', 'Ubah Klasifikasi Penyakit')
-@section('judul', 'Ubah Klasifikasi Penyakit')
+@section('title', 'Ubah Chapter')
+@section('judul', 'Ubah Chapter')
 @section('breadcrumb', 'ubah_klasifikasi_penyakit')
 @section('md', 'active')
 @section('periksa', 'active')
@@ -19,7 +19,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="nama_lokasi">Klasifikasi Penyakit <b class="color-red">*</b></label>
+                                            <label for="nama_lokasi">Chapter <b class="color-red">*</b></label>
                                             <input type="text" id="klasifikasi_penyakit" class="form-control" name="klasifikasi_penyakit" placeholder="Masukkan klasifikasi penyakit"value="{{ $klasifikasipenyakit['klasifikasi_penyakit'] }}" required>
                                         </div>
                                     </div>
