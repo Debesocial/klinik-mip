@@ -33,6 +33,7 @@
                 if (result.isConfirmed) { window.location.href = "{{ route('superadmin.datapasien') }}" }})
                 </script>
             @endif
+           
             <div class="table-responsive pt-2 pe-2">
                 <table class="table table-hover" id="table1" width="auto">
                     <thead>
@@ -61,8 +62,12 @@
                         @endphp
                         <tr>
                             <td style="white-space: nowrap;">
+                                @if (!$patient->id_rekam_medis)
+                                <span class="badge bg-warning"><b>Belum Terdaftar</b></span>
+                                @else
                                 <B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($patient->created_at)->format('H:i:s') }}
+                                @endif
                             </td>
                             <td>{{ $patient['nama_pasien'] }}</td>
                             <td>{{ umur($patient->tanggal_lahir)}}</td>

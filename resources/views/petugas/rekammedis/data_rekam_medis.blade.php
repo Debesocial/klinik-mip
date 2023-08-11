@@ -71,7 +71,7 @@
                                                 <div class="col-md-9">
                                                     <div >
                                                         {{-- <div hidden>{{ $pas->perusahaan->nama_perusahaan_pasien }} {{ $pas->jabatan->nama_jabatan }} {{ $pas->divisi->nama_divisi }}{{ $pas->keluarga->nama_keluarga }}</div> --}}
-                                                       <a href="/lihat/rekam/medis/{{ $pas->id }}" ><h6 class="mb-0" style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
+                                                       <a href="#" onclick="toPemeriksaan('{{$pas->id}}','{{$pas->id_rekam_medis}}','{{$pas->nama_pasien}}', this)" ><h6 class="mb-0" style="display: inline-block;">{{ $pas->nama_pasien }}</h6> - <i>{{ $pas->id_rekam_medis }}</i></a>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-3">
@@ -82,12 +82,22 @@
                                                             <div>{{$pas->kategori->nama_kategori}}</div>
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <div><B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
-                                                                <i>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i') }}</i>
-                                                            </div>
+                                                            
+                                                            @if (!$pas->id_rekam_medis)
+                                                            <span class="badge bg-warning"><b>Belum Terdaftar</b></span>
+                                                            @else
+                                                            <B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
+                                                            <br>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i:s') }}
+                                                            @endif
+                                                            
                                                         </div>
             
                                                     </div>
+                                                </div>
+                                                <div class="col-md-2 text-end">
+                                                    @if ($pas->is_sap==1)
+                                                        <img src="{{asset('assets/images/sap-sm.png')}}" height="30px" width="auto" style="object-fit: contain"  alt="">
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -13,7 +13,7 @@ class Pasien extends Model
 
     protected $table = 'pasiens';
     protected $primaryKey = 'id';
-
+    // public $timestamps = false;
     protected $guarded = ['id'];
 
     public static function boot()
@@ -30,6 +30,16 @@ class Pasien extends Model
                 'prefix' => 'RM' .substr( date('Y'), -2). date('m'),
             ]);
         });
+    }
+
+    function generateIdRekamMedis() {
+        $id_rekam_medis = IdGenerator::generate([
+            'table'  => 'pasiens',
+            'field'  => 'id_rekam_medis',
+            'length' => '10',
+            'prefix' => 'RM' .substr( date('Y'), -2). date('m'),
+        ]);
+        return $id_rekam_medis;
     }
 
     function obatAlergi() {

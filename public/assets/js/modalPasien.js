@@ -15,12 +15,12 @@ function tampilModalPasien(data) {
     $('#modal_email').text(': ' + cekNull(data.email));
     $('#modal_alergi').html(': ' + cekAlergi(data.obat_alergi?.nama_obat));
     $('#modal_menyusui').html(': ' + cekTrueFalse(data.hamil_menyusui));
-    $('#modal_nama_keluarga').html(': ' + cekAlergi(data.keluarga.nama));
-    $('#modal_hubungan_keluarga').html(': ' + cekAlergi(data.keluarga.hubungan));
-    $('#modal_alamat_keluarga').html(': ' + cekAlergi(data.keluarga.alamat));
-    $('#modal_pekerjaan_keluarga').html(': ' + cekAlergi(data.keluarga.pekerjaan));
-    $('#modal_telepon_keluarga').html(': ' + cekAlergi(data.keluarga.telepon));
-    $('#modal_email_keluarga').html(': ' + cekAlergi(data.keluarga.email));
+    $('#modal_nama_keluarga').html(': ' + cekAlergi(data.keluarga?.nama));
+    $('#modal_hubungan_keluarga').html(': ' + cekAlergi(data.keluarga?.hubungan));
+    $('#modal_alamat_keluarga').html(': ' + cekAlergi(data.keluarga?.alamat));
+    $('#modal_pekerjaan_keluarga').html(': ' + cekAlergi(data.keluarga?.pekerjaan));
+    $('#modal_telepon_keluarga').html(': ' + cekAlergi(data.keluarga?.telepon));
+    $('#modal_email_keluarga').html(': ' + cekAlergi(data.keluarga?.email));
     $('#modal_kategori').html(': ' + cekAlergi(data.kategori.nama_kategori));
     if(data.perusahaan_id==9){
         $('td#modal_perusahaan').append(' - <b class="m-0">'+data.lain+'</b>');
@@ -85,5 +85,8 @@ function printDiv(divName) {
 }
 
 function firstCapital(word){
-    return word.charAt(0).toUpperCase()+ word.slice(1)
+    if (word) {
+        return word.charAt(0).toUpperCase()+ word.slice(1)
+        
+    }
 }

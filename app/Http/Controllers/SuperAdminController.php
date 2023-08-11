@@ -1228,7 +1228,6 @@ class SuperAdminController extends Controller
         $obat = Obat::get();
 
         $pasiens =  Pasien::with(['kategori'])->get();
-
         return view('petugas.superadmin.data_pasien',compact('pasiens','obat'));
     }
 
@@ -1343,6 +1342,10 @@ class SuperAdminController extends Controller
     function changepasien(Request $request, $id)
     {
         $pasien = Pasien::find($id);
+        if (!$pasien->id_rekam_medis) {
+            $modal = new Pasien;
+            $pasien->id_rekam_medis =  $modal->generateIdRekamMedis($id);
+        }
         $pasien->kategori_pasien_id = $request->input('kategori_pasien_id');
         $pasien->NIK = $request->input('NIK');
         $pasien->penduduk = $request->input('penduduk');
@@ -1357,6 +1360,7 @@ class SuperAdminController extends Controller
         $pasien->tanggal_lahir = $request->input('tanggal_lahir');
         $pasien->jenis_kelamin = $request->input('jenis_kelamin');
         $pasien->alamat = $request->input('alamat');
+        $pasien->alamat_mess = $request->input('alamat_mess');
         $pasien->pekerjaan = $request->input('pekerjaan');
         $pasien->telepon = $request->input('telepon');
         $pasien->email = $request->input('email');
@@ -1366,13 +1370,26 @@ class SuperAdminController extends Controller
         $pasien->riwayat_pengobatan = $request->input('riwayat_pengobatan');
         $pasien->update();
         $keluarga = Keluarga::find($id);
-        $keluarga->nama = $request->input('nama_keluarga');
-        $keluarga->hubungan = $request->input('hubungan_keluarga');
-        $keluarga->alamat = $request->input('alamat_keluarga');
-        $keluarga->pekerjaan = $request->input('pekerjaan_keluarga');
-        $keluarga->telepon = $request->input('telepon_keluarga');
-        $keluarga->email = $request->input('email_keluarga');
-        $keluarga->update();
+        if ($keluarga) {
+            $keluarga->nama = $request->input('nama_keluarga');
+            $keluarga->hubungan = $request->input('hubungan_keluarga');
+            $keluarga->alamat = $request->input('alamat_keluarga');
+            $keluarga->pekerjaan = $request->input('pekerjaan_keluarga');
+            $keluarga->telepon = $request->input('telepon_keluarga');
+            $keluarga->email = $request->input('email_keluarga');
+            $keluarga->update();
+        }else{
+            Keluarga::create([
+                'nama' => $request->nama_keluarga,
+                'hubungan' => $request->hubungan_keluarga,
+                'alamat' => $request->alamat_keluarga,
+                'pekerjaan' => $request->pekerjaan_keluarga,
+                'telepon' => $request->telepon_keluarga,
+                'email' => $request->email_keluarga,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
+            ]);
+        }
 
         return redirect('/data/pasien')->with('message', 'Berhasil Mengubah Data Pasien!');
     }
