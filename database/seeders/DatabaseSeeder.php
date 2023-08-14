@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             PerusahaanSeeder::class,
             AturanPakaiSeeder::class,
             DosisSeeder::class,
+            SediaanSeeder::class,
             JadwalSeeder::class,
             SpesialisRujukanSeeder::class,
             CategorySeeder::class,

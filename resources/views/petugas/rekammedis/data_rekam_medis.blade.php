@@ -95,9 +95,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 text-end">
-                                                    @if ($pas->is_sap==1)
+                                                    {{-- @if ($pas->is_sap==1)
                                                         <img src="{{asset('assets/images/sap-sm.png')}}" height="30px" width="auto" style="object-fit: contain"  alt="">
-                                                    @endif
+                                                    @endif --}}
                                                 </div>
                                             </div>
                                         </div>

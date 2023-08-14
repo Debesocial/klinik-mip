@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddObatAntibiotik extends Migration
+class CreateSediaanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class AddObatAntibiotik extends Migration
      */
     public function up()
     {
-        Schema::table('obats', function (Blueprint $table) {
-            $table->boolean('is_antibiotik')->default(0);
-            $table->boolean('is_sedatif')->default(0); //efek sedatif
-            $table->integer('sediaan');
-            $table->string('distributor')->nullable();
+        Schema::create('sediaan', function (Blueprint $table) {
+            $table->id();
+            $table->string('singkatan');
+            $table->string('kepanjangan');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ class AddObatAntibiotik extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('sediaan');
     }
 }

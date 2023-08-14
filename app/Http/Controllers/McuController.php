@@ -23,7 +23,7 @@ class McuController extends Controller
 
     public function halamanTambahMcuAwal(Request $request)
     {
-        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
+        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $data['hasilrekomendasi'] = hasilRekomendasi();
         $data['selected_pasien'] = $request->user;
         return view('petugas.pemeriksaan.add_mcu_awal', $data);
@@ -81,7 +81,7 @@ class McuController extends Controller
     /**Mcu Lanjutan */
     public function halamanTambahMcuLanjutan(Request $request)
     {
-        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
+        $data['pasien_id'] = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $jenismcu = [(object)['id' => 1, 'jenis' => 'Akhir'], (object)['id' => 2, 'jenis' => 'Berkala'], (object)['id' => 3, 'jenis' => 'Khusus']];
         $data['jenismcu'] = $jenismcu;
         $data['selected_pasien'] = $request->user;

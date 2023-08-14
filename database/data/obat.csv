@@ -1,405 +1,265 @@
-﻿nama_obat;golongan_obat;golongan_obat_id;satuan_obat;satuan_obat_id;bobot_obat;bobot_obat_id;komposisi_obat;"Harga
-Per Tablet/Pcs"
-Alpara Tab;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 12 Strip
- 1 Strip isi 10 Tab";44;Paracetamol 500mg, phenylpropanolamine 12,5mg, CTM 2 mg, DMP 15 mg;1281,00
-Ambroxol 30 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ambroxol 30 mg;400,00
-Bisolvon Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Bromhexine 8 mg;2300,00
-Demacolin Tab;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Paracetamol 500mg, Pseudoefedrin HCL 7.5mg, CTM 2mg;500,00
-Dextral Tab;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;DMP 10mg, Guaifenesin 50mg, Phenylpropanolamine 12.5mg, CTM 1mg;450,00
-Daryant Tulle Sachet;Obat Keras;5;Sachet;12;1 Box isi 10 Sachet;37;Framycetin Sulfate;29400,00
-Eflin Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Triprolidine HCl 2.5 mg, Pseudoephedrine HCl 60 mg;2000,00
-Erdostein 300 mg;Obat Keras;5;Tablet;19;"1 Box isi 2 Strip
- 1 Strip isi 10 Tab";46;Erdostein 300 mg;2850,00
-Flutrop Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Pseudoefedrin 30mg, Tripolidine 2.5mg;1000,00
-Guafanesin 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Guafanesin 100 mg;200,00
-Librofed Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Tripolidine HCl 2,5mg dan Pseudoephedrine HCl 30mg;1500,00
-Neomethor Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Dextromethorphan HBr 15 mg, Diphenhydramine HCl 10.;400,00
-Paratusin Tab;Obat Keras;5;Tablet;19;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab";51;"Paracetamol 500 mg,Guaifenesin 50 mg, Noscapin 10, Phenylpropanolamin 15 mg,
-Chorphenamin Maleat 2";1450,00
-Rhinos Sr;Obat Keras;5;Kapsul;10;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Loratadine 5mg, Pseudoephedrine HCI 60 mg;10000,00
-Roverton Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ambroxol 30 mg;200,00
-Salbutamol 4 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Salbutamol 4 mg;200,00
-Strepsils;Obat Bebas;3;Tablet;19;1 Box isi 24 Butir;54;"Amylmetacresol 0.6 mg, Dibenal 1.2 mg, Madu 132.6 mg, Pappermint Oil,
-Terpeneless Lemon, Asam tartarat, Gula, Glukosa Cair, Pewarna Kuning Kuinolin";1400,00
-Alloris 10 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Loratadine 10 mg;6420,00
-Cetirizin 10 mg;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cetirizin 10 mg;500,00
-Chlorphenamine Maleate 4 mg;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Chlorphenamine Maleate 4 mg;100,00
-Dexaharsen 0.75 mg;Obat Bebas;3;Tablet;19;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab";51;Dexamethasone 0.75mg;190,00
-Dexteem Plus Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Dexchlorpheniramine Maleate 2, Dexamethasone 0,5;240,00
-Incidal-OD 10 mg;Obat Bebas Terbatas;4;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cetirizine 10 mg;3400,00
-Lameson 8 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Methylprednisolone 8mg;7500,00
-Methylprednisolon 4 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Methylprednisolon 4 mg;225,00
-Prednison 5 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Prednison 5 mg;300,00
-Antasida Doen Tab;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Magnesium Hidroksida 200 mg, Aluminium Hidroksida 200 mg;160,00
-Ardium 500 mg;Jamu;2;Tablet;19;"1 Box isi 4 Blister
- 1 Blister isi 15 Tab";62;Ekstrak citrus sinensis pericarpum (diosmin 90% ), hesperidin, Mikronisasi flavonoid;9800,00
-Becantex 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Rebamipid 100 mg;4340,00
-Domperidone 10 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Domperidone 10 mg;225,00
-Dulcolax Suppositoria 10 mg;Obat Keras;5;Tablet;19;1 Box isi 50 Supp;69;Bisacodyl 10 mg;4750,00
-Dulcolax Tab;Obat Keras;5;Tablet;19;"1 Box isi Amplop
- 1 Amplop isi 4 Tab";74;Bisacodyl 5 mg;1500,00
-Esomeprazol 20 mg;Obat Bebas;3;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Esomeprazole Magnesium 20 mg;12200,00
-Faktu Suppositoria;Obat Keras;5;Tablet;19;1 Box isi 10 Supp;41;Policresulen 100mg, Cinchocaine 2.5mg;8500,00
-Imodium 2 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Loperamid 2 mg;11640,00
-Lansoprazole 30 mg;Obat Bebas;3;Kapsul;10;"1 Box isi 2 Strip
- 1 Strip isi 10 Tab";46;Lansoprazole 30 mg;875,00
-L-Bio;Obat Bebas;3;Sachet;12;1 Box isi 30 Sachet;61;"Rice starch, Maltodextrin, Lactobacillus Acidophilus, Lactobacillus Casei,
-Lactobacillus Salivarius, Bifidobacterium Infantis, Bifidobacterium Lactis,
-Bifidobacterium Longum, Lactobacillus Lactis";12900,00
-Loperamid 2 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Loperamid 2 mg;300,00
-Metoclopramid 5 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Metoclopramid 5 mg;194,00
-Molagit Tab;Obat Bebas;3;Tablet;19;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab";51;Attafulgite 100m, Pectin 50mg;453,00
-Norit Tab;Obat Bebas;3;Tablet;19;1 Box isi 10 Pcs;36;Karbon Aktivatus 125 mg, Excipients Ad 325 mg;19500,00
-Omeprazole 20 mg;Obat Bebas;3;Kapsul;10;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Omeprazole 20 mg;416,00
-Ondancentron 4 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ondancentron 4 mg;2100,00
-Oralit 200;Obat Bebas;3;Sachet;12;1 Box isi 100 Pcs;43;"Glukosa anhidrat 2,7 gram. Kalium klorida 0,3 gram. Natrium Klorida 0,52 gram.
-Trisodium sitrat dihidrat 0,58 gram.";240,00
-Ranitidin 150 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ranitidin 150 mg;225,00
-Rebamipid 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Rebamipid 100 mg;3300,00
-Spasminal Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Metamizole Na 500 mg, belladonna extr 10 mg, papaverine HCl 25 mg.;850,00
-Sucralfat 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Sucralfat 500 mg;1400,00
-Venaron Capsul;jamu;2;Kapsul;10;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ekstrak Sapora japanicae Flos 100mg, Citrus aurantum Fructus 450mg;2600,00
-Xepazym Tab;Obat Bebas;3;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 6 Tab";66;Pancreatin 170 mg, Simethicone 80;3000,00
-Zinc sulfat 20 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Zinc sulfat 20 mg;400,00
-Becom C;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;"Vitamin B1 50 mg, Vitamin B2 25 mg, Vitamin B6 10 mg, Vitamin B12 5 mcg,
-Vitamin C 500 mg, Nicotinamide 100 mg, Asam pantotenat 18.4 mg";1608,00
-Becom Zet;Obat Bebas;3;Kaplet;9;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;"Vitamin E 30 IU, Vitamin B1 15 mg, Vitamin B2 15 mg, Vitamin B6 20 mg,
-Vitamin B12 mcg, Asam folat 400 mcg, Asam Pantotenate 20 mg,
-Niacin 100 mg, Vitamin C 750 mg, Zinc 22.5 mg.";19500,00
-Bionicom Zinc;Obat Bebas;3;Kaplet;9;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;"Thiamine HCI (vitamin B1) 15 mg, Riboflavin (vitamin B2) 15 mg,
-Pyridoxine HCI (Vitamin B6) 20 mg, Cyanocobalamin (vitamin B12) 12 mcg,
-Folic Acid 400 mg, Ascorbic Acid (Vitamin C) 750 mg,
-Calcium Pantothenate 20 mg, Zinc Picolinat 22.5 mg, dan Vitamin E 30 mg";19500,00
-Calcium laktat Tab;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Calcium laktat 500 mg;
-Caviplex Tab;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Vitamin A 4000 iu, Vitamin D 400 iu, Vitamin B1 3 mg, Vitamin B2 4 mg, Vitamin B6 4 mg, Vitamin B12 12 mcg, Vitamin C 75 mg Nikotinamid 20 mg;500,00
-Curcuma Tab;jamu;2;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 12 Tab";40;Extrak Curcuma xanthorrhiza Rhozoma;1300,00
-Curliv Plus;Obat Bebas;3;Tablet;19;"1 Box isi 6 Strip
- 1 Strip isi 10 Tab";72;Silymarin Phytosome 35 mg, Ekstrak Schisandrae Fructus 135 mg, Ekstrak Curcumae Xanthorrhizae Rhizoma 150 mg, Ekstrak Liquiritiae Radix 135 mg, Choline Bitartrate 150 mg, Vitamin B6 HCL 2 mg;47000,00
-Enervon Active;Obat Bebas;3;Botol;1;1 Botol isi 30 Tab;21;Vitamin C (Kalsium Askorbat) 500 mg, Vitamin B1 (Tiamin Mononitrat) 50 mg, Vitamin B2 (Riboflavin) 25 mg, Vitamin B6 (Piridoksin Hcl) 10 mg, Vitamin B12 5 mcg, Kalsium Pantotenat 20 mg, Niasinamida 50 mg, Zinc 10 mg;57100,00
-Glucosamine MPL;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Glucosamine 250 mg;1454,00
-Imboost Plus;Obat Bebas;3;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 10 Tab";65;Ekstrak echinachea purpurea 250 mg dan zinc picolinate 10 mg;9900,00
-Neurodex Tab;Obat Bebas;3;Tablet;19;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab";51;Vitamin B1 mononitrate 100 mg Vitamin B6 HCl 200 mg Vitamin B12 200 mcg.;500,00
-Phytomenadione 10 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Phytomenadione 10 mg;1710,00
-Prove E 400 IU;Obat Bebas;3;Kapsul;10;1 Botol isi 60 Caps;25;Natural vitamin E 400 IU;200200,00
-PSIDII Capsul;Obat Bebas;3;Tablet;19;1 Botol isi 50 Tab;23;Ekstrak daun jambu (Psidii folium extract);426400,00
-Sangobion Capsul;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;"Ferrous Gluconate 250 mg Manganese Sulfate 0, 2 mg Copper Sulfate 0, 2 mg
-Vitamin C 50, 0 mg Asam Folat / Folic Acid 1,0 mg Vitamin B 12 7, 5 mcg";3500,00
-Vitacimin Tab;Obat Bebas;3;Tablet;19;"1 Box isi 50 Strip
- 1 Strip isi 2 Tab";68;"Vitamin C 75 mg, vitamin B2 15 mg, vitamin B6 50 mg, nicotinamide 30 mg,
-L-cysteine 30 mg, biotin 0,0375 mg";1000,00
-Asam Mefenamat 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Asam Mefenamat 500 mg;280,00
-Emturnas Forte 650 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Paracetamol 650 mg;630,00
-Eperison 50 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Eperison 50 mg;4150,00
-Erlamol Forte 650 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Paracetamol 650 mg;600,00
-Etafen 400 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ibuprofen 400 mg;500,00
-Kaflam 50 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Na-Diclofenak 50 mg;2500,00
-Kaltrofen suppositoria;Obat Keras;5;Tablet;19;"1 Box isi 2 Strip
- 1 Strip isi 5 Supp";47;Ketoprofen 100 mg;14000,00
-Mefinal 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Asam Mefenamat 500 mg;1650,00
-Meloxicam 15 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Meloxicam 15 mg;380,00
-Na-Diclofenak tab;Obat Keras;5;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 10 Tab";65;Na-Diclofenak 50 mg;447,00
-Nephrolite;Jamu;2;Kapsul;10;"1 Box isi 20 Strip
- 1 Strip isi 5 Tab";52;Ekstrak Orthosifon stamineus, Strobilantus crispus, Sonchus arvensis, Phyalnthus niruri;480,00
-Neuralgin Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Methampyrone 500 mg, Thiamine HCl 50 mg, Pyridoxine HCl 10 mg, Cyanocobalamine 10 mcg, Trimethylxanthine 50 mg.;750,00
-Paracetamol 500 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Paracetamol 500 mg;250,00
-Acyclovir 400 mg;Obat Keras;5;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 10 Tab";65;Acyclovir 400 mg;600,00
-Amoxicillin 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Amoxicillin 500 mg;400,00
-Cefadroxil 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cefadroxil 500 mg;1400,00
-Cefixim 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cefixim 100 mg;850,00
-Ciprofloxacin 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ciprofloxacin 500 mg;400,00
-Clindamycin 300 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Clindamycin 300 mg;1500,00
-Compyrantel 250;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Pirantel pamoat 250 mg;750,00
-Cotrimoxazol 480 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Trimethoprim 80mg, Sulfamethoxazole 400mg;1400,00
-Fasiprim Forte 960 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Trimetoprim 160 mg, Sulfametoksazol 800 mg;1300,00
-FG Troches Tab;Obat Keras;5;Tablet;19;"1 Box isi 12 Strip
- 1 Strip isi 10 Tab";44;Fradiomycin 2,5 mg dan gramicidin 1,0 mg;1300,00
-Griseofulvin 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Griseofulvin 500 Mg;2000,00
-Ketoconazol 200 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Ketoconazol 200 mg;900,00
-Lapicef 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cefadroxil 500 mg;14000,00
-Levofloxacin 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Levofloxacin 500 mg;1600,00
-Metrodinazol 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Metrodinazol 500 mg;650,00
-Sulcolon 500 mg;Obat Bebas;3;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Sulfasalazine 500 mg;5000,00
-Allopurinol 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Allopurinol 100 mg;400,00
-Allopurinol 300 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Allopurinol 300 mg;400,00
-Amlodipin 10 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Amlodipin 10 mg;500,00
-Amlodipin 5 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Amlodipin 5 mg;400,00
-Ar-gout 0.5 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 6 Tab";59;Cochicine 0.5 mg;6240,00
-Asam Traneksamat 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Asam Traneksamat 500 mg;2800,00
-Aspilet 80 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Acetylsalicylic Acid 80 mg;600,00
-Betahistin 6 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Betahistin 6 mg;833,00
-Bisoprolol 5 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Bisoprolol 5 mg;2300,00
-Candesartan 16 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Candesartan 16 mg;850,00
-Candesartan 8 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Candesartan 8 mg;700,00
-Captopril 25 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Captopril 25 mg;150,00
-Chlopromazine 25 mg;Obat Keras;5;Botol;1;1 Botol isi 50 Tab;23;Chlopromazine 25 mg;275,00
-Cholvastin Tab;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Lovastatin 20 mg;12000,00
-Clopidogrel 75 mg;Obat Keras;5;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 10 Tab";65;Clopidogrel 75 mg;1800,00
-Diazepam 2 mg;Obat Psikotropika;6;Tablet;19;1 Tablet isi 2 mg;77;Diazepam 2 mg;1760,00
-Fenofibrate 100 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Fenofibrate 100 mg;2000,00
-Fenofibrate 300 mg;Obat Keras;5;Kapsul;10;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Fenofibrate 300 mg;2300,00
-Furosemid 40 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Furosemid 40 mg;390,00
-Gabapentin 300 mg;Obat Keras;5;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Gabapentin 300 mg;1666,00
-Glimepiride 1 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Glimepiride 1 mg;400,00
-Glimepiride 2 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Glimepiride 2 mg;400,00
-Glimepiride 4 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Glimepiride 4 mg;400,00
-Gliquidone 30 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Gliquidone 30 mg;1740,00
-Glucophage 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Glucophage 500 mg;2640,00
-Hidroclorotiazida 25 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Hidroclorotiazida 25 mg;400,00
-Isosorbide Dinitrate 5 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Isosorbide Dinitrate 5 mg;150,00
-KSR (Potassium Chloride);Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Potassium Chloride 600 mg;2375,00
-Lelap;Jamu;2;Kapsul;10;"1 Box isi 25 Strip
- 1 Strip isi 4 Tab";57;Valerianae 250 mg, Myristicae 115 mg, Eleuthroginseng 100 mg, Polygalae 135 mg;350,00
-Metformin 500 mg;Obat Keras;5;Tablet;19;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab";51;Metformin 500 mg;350,00
-Potasium permanganat;Obat Keras;5;Serbuk;16;1 box isi 500 gr;70;Potasium permanganat;68500,00
-Puricemia 300 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Allopurinol 300 mg;4230,00
-Recolfar 0.5 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Cochicine 0.5 mg;830,00
-Simvastatin 10 mg;Obat Keras;5;Tablet;19;"1 Box isi 10 Strip
- 1 Strip isi 10 Tab";39;Simvastatin 10 mg;200,00
-Simvastatin 20 mg;Obat Keras;5;Tablet;19;"1 Box isi 5 Strip
- 1 Strip isi 10 Tab";65;Simvastatin 20 mg;360,00
-Urdafalk 250 mg;Obat Keras;5;Tablet;19;"1 Box isi 6 Strip
- 1 Strip isi 5 tab";73;Ursodeoxycholic acid 250 mg;12500,00
-Valisanbe Inj.;Obat Psikotropika;6;Injeksi;8;1 Amp isi 2 ml;1;Diazepam 5 mb/2ml;26330,00
-Valsartan 80 mg;Obat Psikotropika;6;Tablet;19;"1 Box isi 3 Strip
- 1 Strip isi 10 Tab";58;Valsartan 80 mg;12500,00
-Alco plus syr 100 ml;Obat Keras;5;Sirup;17;1 Botol isi 100 Ml;16;Pseudoephedrine HCl 30, Brompheniramine maleate 2;75625,00
-Antasida syr 60 ml;Obat Bebas;3;Sirup;17;1 Botol isi 60 Ml;27;Aluminium hydroxide 200 mg, Magnesium hydroxide 200 mg;5000,00
-Bisolvon Syr 60 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 60 ml;27;Bromhexine 4 mg, Guaifenesin100 mg;59900,00
-Domperidone Syr 60 ml;Obat Bebas;3;Sirup;17;1 Botol isi 60 ml;27;Domperidon 5 mg/ 5 mL;16000,00
-OBH Combi syr 100 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 100 Ml;16;Succus Liquiritiae Extract 167 mg, Paracetamol 150 mg, Ammonium Chloride 50 mg, Ephedrine HCl 2,5 mg, Chlorpheniramine Maleate 1 mg, Alkohol 2%;17500,00
-Plantacid Forte syr 100 ml;Obat Bebas;3;Sirup;17;1 Botol isi 100 Ml;16;Al(OH)3 300 mg, Mg(OH)2 300 mg, Dimethylpolysiloxane 30 mg;27500,00
-Sanadryl syr DMP 60 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 60 Ml;27;"Dextromethorphan HBr 10 mg, Diphenhydramine HCl 12.5 mg,
-Ammonium Chloride 100 mg, Sodium citrate 50 mg, Menthol 1 mg";16000,00
-Siladex biru syr 60 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 60 Ml;27;DMP HBr 7,5 mg, pseudoefedrin 15 mg, doxylamine succinate 2 mg;30250,00
-Siladex hijau syr 60 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 60 Ml;27;Bromhexine HCI 10 mg Guaifenesin 50 mg;15000,00
-Siladex merah syr 60 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 60 Ml;27;Chlopheniramine maleate 1mg, Dextromethorphan Hydrobromide 15mg.;20000,00
-Sucralfat syr 100 ml;Obat Bebas;3;Sirup;17;1 Botol isi 100 Ml;16;Sucralfate 500 mg.;15000,00
-Woods syr 100 ml;Obat Bebas Terbatas;4;Sirup;17;1 Botol isi 100 Ml;16;Bromhexine HCl 4 mg, guaifenesin 100 mg;23000,00
-Aclyclovir 5% zalf 5 g;Obat Keras;5;Salep;13;1 Box isi 25 pcs;56;Acyclovir 50 mg;4300,00
-Baycuten-N cr;Salep;7;Salep;13;1 Tube 5 gr;78;Dexamethason 0.4 mg, Clotrimazole 10 mg;75700,00
-Betason-N zalf 5 g;Obat Keras;5;Salep;13;1 box isi 24 pcs;55;Betamethasone valerate 0.1%, neomycin sulfate 0.5%;17500,00
-Bioplacenton gel 15 g;Obat Keras;5;Salep;13;1 Box isi 6 pcs;71;Placenta extract 10%, Neomycin sulfate 0,5%;20000,00
-Bufacomb zalf 5 g;Obat Keras;5;Salep;13;1 Tube isi 5 gr;85;Triamcinolon 5 g;18000,00
-Burnazin Zalf 35 g;Obat Keras;5;Salep;13;1 Tube isi 35 gr;84;Silver Sulfadiazine 10 mg;59500,00
-Callusol 10 ml;Obat Keras;5;Cair;2;1 Botol isi 10 Ml;14;Asam salisilat 0,2 gram, Polidocanol 0,02 gram, Asam laktat 0,05 gram.;30000,00
-Canesten Cream;Obat Bebas Terbatas;4;Salep;13;1 Tube 5 gr;78;Bifonazol 1 %;25000,00
-Cendo Lyteers 15 ml;Obat Bebas;3;Tetes Mata;20;1 Box isi 50 pcs;67;Sodium chloride 4.40 mg dan Potassium chloride 0.80;22500,00
-Cendo pantocain 5 ml;Obat Keras;5;Tetes Mata;20;1 Botol isi 5 Ml;22;Tetracaine Hydrochloride 2%;18000,00
-Cendo Xitrol 5 ml;Obat Keras;5;Tetes Mata;20;1 Botol isi 5 Ml;22;"Dexamethasone/Deksametason 0,1 %, Neomisin sulfat 3,5 mg/mL,
-Polimiksin B sulfat 6000 iu/mL";27000,00
-Digenta zalf 10 g;Obat Keras;5;Salep;13;1 Tube isi 10 gr;79;Gentamycin 0.1% dan Betamethasone 0.05%;136200,00
-Epitel cream 10 gr;Obat Bebas;3;Cream;4;1 Tube isi 10 gr;79;"zinc oxide, lanolin, ribes ningrum, (black currant) seed oil,
-cardiospernum halicacabun flower";50000,00
-Erlamycetin 1% Salep mata;Obat Keras;5;Cream;4;1 Tube isi 3.5 gr;82;Chloramphenicol 1%;16700,00
-Erlamycetin Ear Drop 10 ml;Obat Keras;5;Tetes Telinga;21;1 Botol isi 10 ml;14;Chloramphenicol 1%;22500,00
-Erlamycetin Eye Drop 5 ml;Obat Keras;5;Tetes Mata;20;1 Botol isi 5 ml;22;Chloramphenicol base 5 mg, Dexamethasone sodium phospate 1 mg;20000,00
-Erymed Gel 2% 15 Gr;Obat Keras;5;Cream;4;1 Tube isi 15 gr;80;Erythromycin 20 mg.;31000,00
-Floxa 5 ml;Obat Keras;5;Tetes Telinga;21;1 Botol isi 10 Ml;14;Ofloxacin 0.3%;41000,00
-Forumen 10 ml;Obat Bebas;3;Tetes Telinga;21;1 Botol isi 10 ml;14;Docusate Sodium 5 mg;33400,00
-Genoint zalf 15 gr (Salep Kulit);Obat Keras;5;Salep Kulit;14;1 Tube isi 15 gr;80;Gentamicin sulfate 0.1%;5000,00
-Genoint zalf Mata 3.5 gr (Salep Mata);Obat Keras;5;Salep Mata;15;1 Tube isi 3.5 gr;82;Gentamicin sulfate 0.1%;14300,00
-Gentamicin Salep Kulit 0.1% 5 g;Obat Keras;5;Salep Kulit;14;1 Tube isi 5 gr;85;Gentamicin sulfate 0.1%;11000,00
-Gom glyserin 8 ml;Obat Bebas Terbatas;4;Cairan;3;1 Botol isi 8 ml;28;Borax glycerin 10%;6300,00
-Hot In Cream 60gr;Obat Bebas Terbatas;4;Cream/Botol;5;1 Botol isi 60 gr;26;Menthol 70 Mg, Metil Salisilat 25 Mg, Eucalyptus Oil 1 Mg, Sereh Oil 1 Mg, Pine Oil 2,5 Mg;19300,00
-Hot In Cream Tube 60g;Obat Bebas Terbatas;4;Cream;4;1 Tube isi 60 gr;86;menthol crystal 6%, gandapura oil 3,5% , Eucaliptus oil, sereh oil, piine oil;25500,00
-Hot In DCL;Obat Bebas Terbatas;4;Cream;4;1 Tube isi 60 gr;86;Diclofenac Diethylamine 11.6mg;39800,00
-Ichtiol zalf 15 g;Obat Bebas Terbatas;4;Salep;13;1 Tube isi 15 gr;80;Ichtyol Ointment 15 g;15000,00
-Iliadin Nasal Spray 0.05% 10 ml;Obat Bebas Terbatas;4;Spray Hidung;18;1 Botol isi 10 ml;14;Oxymetazoline HCl 0,05%;79000,00
-Inerson zalf 15 g;Obat Keras;5;Salep;13;1 Tube isi 15 gr;80;Desoximetasone 0.25%;120000,00
-Miconazol 2% Salep 10 g;Obat Bebas;3;Cream;4;1 box isi 24 pcs;55;Miconazole nitrate 2%;4000,00
-Reco Dry eye;Obat Keras;5;Tetes Mata;20;1 Botol isi 5 ml;22;Chloramphenicol 0.5%;10643,00
-Sagestam Salep Kulit;Obat Keras;5;Salep;13;1 Tube isi 10 gr;79;Gentamicin 0.1%;23200,00
-Salep 2-4 15 g;Obat Bebas;3;Salep;13;1 box isi 24 pcs;55;Acidum salycylicum 2%, sulfur praecipitate 4%;5000,00
-Scabimit cream 30 g;Obat Keras;5;Gel;7;1 Tube isi 30 gr;83;Permethrin 5%;70000,00
-Thrombogel Gel 10 gr;Obat Bebas Terbatas;4;Gel;7;1 Tube isi 10 gr;79;Heparin natrium 5.000 IU dan benzyl nicotinate 250 mg;53500,00
-Thrombophob Gel 20 gr;Obat Bebas Terbatas;4;Gel;7;1 Tube isi 20 gr;81;Thymol 10 mg, menthol 20mg, camphor 600mg, paraffin liquid 10 ml.;73400,00
-Vital ear oil 10 ml;Obat Bebas;3;Tetes Mata;20;1 Botol isi 10 ml;14;"Distilled witch hazel 13.0% v/v, Benzalkonium chloride 0.005% w/v,
-Dalam larutan yang diberi dapar Borax dan Boric acid";15000,00
-y-rins 12 ml;Obat Bebas;3;Cuci Mata;6;"1 Box isi 2 Botol
- 1 Botol isi 12 ml";45;Distilled Witch Hazel 13%;18000,00
-Aminophylin Inj 24 mg;Obat Keras;5;Injeksi;8;"1 Box isi 30 Amp
- 1 Amp isi 10 ml";60;Aminophylin Inj 24 mg;8700,00
-Asam Traneksamat inj;Obat Keras;5;Injeksi;8;"1 Box isi 10 Amp
- 1 Amp isi 5 ml";35;Asam Traneksamat 100 mg;8000,00
-Atropine Sulfat;Obat Keras;5;Injeksi;8;1 Ampul isi 5 ml;11;Atropine Sulfate 0.25 mg;7480,00
-Biosave inj 5 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 5 ml;11;"Agkistrodon rhodostoma ≥10 LD50, Bungarus fasciatus ≥25 LD50,
-Naja sputatrix ≥25 LD50, phenol 2.5 mg.";1950000,00
-Bisolvon solution 50 ml;Obat Bebas Terbatas;4;Injeksi;8;1 Ampul isi 50 ml;12;Bromhexine 2 mg;105000,00
-Buscopan Inj 1 ml;Obat Keras;5;Injeksi;8;"1 Box isi 10 Amp
- 1 Amp isi 1 ml";33;Hyoscine butylbromide 20 mg/ml;45000,00
-Ceftriaxon inj 1 g;Obat Keras;5;Injeksi;8;"1 Box isi 2 Vial
- 1 Vial isi 1 gr";48;Ceftriaxon inj 1 g;28000,00
-Cernevit;Obat Keras;5;Vial;22;1 Vial isi 750 mg;88;"Retinol 3.500 IU, Cholecalciferol 220 IU, Alphatocopherol 11,2 IU,
-Ascorbic acid 125 mg, Thiamine 3,51 mg, Riboflavine 4,14 mg,
-Pyridoxine 4,53 mg,Cyanocobalamine 0,006 mg, Folic acid 0,414 mg,
-Pantothenic acid 17,25 mg,Biotin 0,069 mg, Nicotinamide 46 mg. Eksipien: Glycine 250 mg,
-Glycocholic acid 140 mg, Soya Lecithin 112,5 mg, Sodium hydroxide";295000,00
-Citicolin inj 250 mg;Obat Keras;5;Injeksi;8;"1 Box isi 10 Amp
- 1 Amp isi 1 ml";33;Citicolin inj 250 mg;7500,00
-Combivent UDV;Obat Keras;5;Vial;22;"1 Box isi 20 Unit dose
- 1 Unit Dose isi 2.5 ml";53;Ipratropium Bromide 0.52 mg, Salbutamol sulphate 3.01 mg;10000,00
-Dexamethason Inj 5 mg;Obat Keras;5;Injeksi;8;"1 Box isi 100 Amp
- 1 Amp isi 1 ml";42;Dexamethason Inj 5 mg;5000,00
-Dextrosa 40 %;Obat Keras;5;Cair;2;1 Botol isi 25 ml;20;Dextrose Anhydrate 40%;18000,00
-Dextrosa 5 %;Obat Keras;5;Cair;2;1 Botol isi 100 ml;16;Dextrose Anhydrate 5%;13500,00
-Epineprin Inj 1 mg;Obat Keras;5;Injeksi;8;1 Ampul isi 1 ml;3;Epineprin Inj 1 mg;16500,00
-Ketorolac Inj 30 mg;Obat Keras;5;Injeksi;8;"1 Box isi 10 Amp
- 1 Amp isi 1 ml";33;Ketorolac Tromethamine 30 mg/mL;3000,00
-Nebacetin powder 5 g;Obat Keras;5;Vial;22;1 Ampul isi 5 g;10;Neomycin sulfate 5 mg, Bacitracin 250 IU;31800,00
-Nacl 100 ml;Obat Keras;5;Cair;2;1 Botol isi 100 mg;15;Natrium Klorida 0.9 g Aqua pro injeksi hingga 100 ml;8000,00
-Nacl 500 ml;Obat Keras;5;Cair;2;1 Botol isi 500 mg;24;Natrium Klorida 0.9 g Aqua pro injeksi hingga 500 ml;18000,00
-Neurobion 5000;Obat Keras;5;Injeksi;8;"1 Box isi 20 Pasang Amp
- 1 Amp isi 1 ml";50;"100 mg vitamin B1 dan 100 mg vitamin B6,
-Sedangkan ampul kedua mengandung 5 mg vitamin B12";31800,00
-Neurosanbe 5000 Inj 3 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 3 ml;7;Thiamine 100 mg, Pyridoxin 100 mg, Cobalamin 5000 mcg.;24500,00
-Omeprazole inj 40 mg;Obat Keras;5;Injeksi;8;1 Ampul isi 40 mg;9;Omeprazole 40 mg;22500,00
-Ondancentron Inj 4 mg;Obat Keras;5;Injeksi;8;1 Ampul isi 4 ml;8;Ondancentron 4 mg;3500,00
-Pantoprazole inj 40 mg;Obat Keras;5;Injeksi;8;1 Ampul isi 40 mg;9;Pantoprazole 40 mg;95000,00
-Paracetamol Infus 100 ml;Obat Keras;5;Injeksi;8;1 Botol isi 100 mg;15;Paracetamol 1000 mg;21000,00
-Pehacain Inj 2 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 2 ml;5;Lidocaine 20 mg dan Epinephrine 0.0125 mg/mL;6500,00
-Piracetam inj 1 g;Obat Keras;5;Injeksi;8;1 Ampul isi 1 g;2;Piracetam 1 g;14900,00
-Pulmicort 0.25 mg/ml;Obat Keras;5;Vial;22;"1 Box isi 20 Amp
- 1 Amp isi 1 ml";49;Budesonide 0.25 mg;18750,00
-Ranitidin Inj 25mg;Obat Keras;5;Injeksi;8;"1 Box isi 10 Amp
- 1 Amp isi 2 ml";34;Ranitidin 25mg;2500,00
-Recodryl inj 15 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 15 ml;4;Diphenhydramine Hydrochloride 10 mg/mL.;7000,00
-RL 500 ml;Obat Keras;5;Injeksi;8;1 Botol isi 500 mg;24;"Natrium klorida 0.6%, natrium laktat 0,25%, kalium klorida 0,04%,
-kalsium klorida 0,027%";12000,00
-Sanmol infus 100 ml;Obat Keras;5;Injeksi;8;1 Botol isi 100 mg;15;Paracetamol 1000 mg;85000,00
-Santagesik inj 2 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 2 ml;5;Metamizole sodium 500 mg;12800,00
-Tetagram 1 ml;Obat Keras;5;Injeksi;8;1 Ampul isi 1 ml;3;Imunoglobulin human tetanus 250 IU/ML;275000,00
-Ventolin nebules 2.5mg;Obat Keras;5;Cair;2;"1 Box isi 4 Strip
- 1 Strip isi 5 Amp";63;Salbutamol sulfat 2.5 mg;11250,00
-Vitamin C Inj 200 mg;Obat Keras;5;Injeksi;8;1 Ampul isi 200 mg;6;Vitamin C 200 mg/mL;12000,00
-Fleet Enema;Obat Bebas Terbatas;4;Gel;7;1 Botol isi 133 ml;18;Monobasic Na phosphate 19 g, dibasic Na phosphate 7;137110,00
-Minyak kayu putih 15 ml;Herbal;1;Cair;2;1 Botol isi 15 ml;19;Minyak atsiri (Sineol 1.8%);11000,00
-Minyak Tawon DD 30 ml;Herbal;1;Cair;2;1 Botol is 30 ml;13;"Minyak kelapa (coconut oil), minyak kayu putih (cajuput oil), minyak sereh,
-daun lada, rimpang jahe (ginger), rimpang kunyit, bawang merah (onio)";21500,00
-M-Y Lubricant Jelly 80gram;Obat Bebas;3;Gel;7;1 Tube isi 80gram;87;Glycerine, Propylene Glycol, Hydroxyethyl Cellulose, Preservative, Deionizwd;107000,00
-Favipiravir 200 mg;Obat Keras;5;Tablet;19;1 Box isi 10 Strip;38;Favipiravir 200 mg;25000,00
-N-Aseltylsistein;Obat Keras;5;Tablet;19;1@6 Strip;94;N-Acetylcysteine 200 mg;446,00
-Hua Ziang Zheng;Obat Bebas;3;Cair;2;1@5 pcs;93;Herbal Cina;41990,00
-Ivermectin 12 mg Tab;Obat Keras;5;Tablet;19;1@1 Strip;92;Ivermectin 12 mg Tab;7712,00
-Lung Cleansing & Detoxfying;Obat Bebas;3;Serbuk;16;1@1 Sachet;91;-;608000,00
-Qing Fei Pai Du Tang;Obat Bebas;3;Kapsul;10;1@ 10 Sachet;89;Herbal Cina;1498,00
-Rhea Healt;Obat Bebas;3;Cair;2;1@ 30 ml;90;Herbal Cina;180000,00
-GoodLife 1000 mg;Suplemen;8;Tablet;19;1 Botol isi 30 tab;21;Vitamin C 1,000 mg, echinacea 25,000 mcg, Zn 10 mg;195000,00
-GoodLife 500 mg;Suplemen;8;Tablet;19;1 Botol isi 30 tab;21;Kalsium askorbat 605 mg yang setara dengan vitamin C 500 mg;133500,00
-Vitamin Hi-D 1000;Suplemen;8;Tablet;19;1 Box isi 5 Strip;64;Cholecalciferol 1000 IU setara dengan Vitamin D3 25 mikrogram;3700,00
-Gliserol 98%;Obat Bebas;3;Gel;7;1 Botol isi 1000 ml;17;-;31000,00
-Venaron Capsul;Herbal;1;Tablet;19;1 box @100 Tab;30;Ekstrak Sapora japanicae Flos 100 mg, Citrus aurantum Fructus 450 mg.;2600,00
-Ventolin Nebules 2,5 mg;Obat Keras;5;Pieces;11;1 box @20 Pcs;31;Salbutamol Nebules 2,5 mg;13020,00
-Vitacimin;Obat Bebas;3;Tablet;19;1 box @100 Tab;30;Acidum Ascorbicum 250 mg, Natrii Ascorbas 281,25 mg;1000,00
-Vital ear oil 10 ml;Obat Bebas;3;Pieces;11;1 pcs @10 ml;75;Thymol 10 mg, menthol 20mg, camphor 600mg, paraffin liquid ad 10 ml.;15000,00
-Vitamin C Inj 200mg/2ml;Obat Keras;5;Injeksi;8;1 box @100 Pcs;29;Vitamin C Inj 200mg/2ml;13000,00
-Vitamin C Tab;Obat Bebas;3;Tablet;19;1 box @100 Tab;30;Vitamin C 500 mg;1000,00
-Vitamin Hi-D 1000;Obat Keras;5;Tablet;19;1 box @30 Tab;32;Cholecalciferol 1000 IU setara dengan Vitamin D3 25 mikrogram;87400,00
-Winatin 10 mg;Obat Keras;5;Tablet;19;1 box @100 Tab;30;Loratadin 10mg;1040,00
-Xepazym;Obat Bebas;3;Tablet;19;1 box @30 Tab;32;Pancreatin 170 mg, Simethicone 80 .;3000,00
-Y-rins 12 ml;Obat Bebas;3;Pieces;11;1 pcs @12 ml;76;Distilled witch hazel 13.0% v/v, Benzalkonium chloride 0.005% w/v, Dalam larutan yang diberi dapar Borax dan Boric acid;18000,00
-Zinc sulfat 20 mg;Obat Bebas Terbatas;4;Tablet;19;1 box @100 Tab;30;Zinc sulfat 20 mg;400,00
+﻿nama_obat;golongan_id;sediaan_id;satuan_id;bobot_id;komposisi_obat;Distributor;Harga (satuan terkecil);Efek sedatif;Antibiotik
+Aclyclovir 5% 5 g;5;20;12;63;Acyclovir 50 mg;Kimia Farma;4500;0;0
+Acyclovir 400 mg;5;1;6;73;Acyclovir 400 mg;Kimia Farma;600;0;0
+Alco plus 100 ml;5;2;4;11;Pseudoephedrine HCl 30, Brompheniramine maleate 2;Interbat;75625;1;0
+Allopurinol 100 mg;5;1;11;37;Allopurinol 100 mg;HJ;400;0;0
+Allopurinol 300 mg;5;1;11;37;Allopurinol 300 mg;HJ;400;0;0
+Alloris 10 mg;5;1;11;37;Loratadine 10 mg;Sanbe;6420;1;0
+Alpara;4;1;11;45;Paracetamol 500mg, phenylpropanolamine 12,5mg, CTM 2 mg, DMP 15 mg;Moles Ayux;1281;1;0
+Ambroxol 30 mg;5;1;11;37;Ambroxol 30 mg;Bernofarm;400;0;0
+Aminophyline 24 mg (Injeksi);5;18;3;67;Aminophyline 24 mg/ml;Pharos;8700;0;0
+Amlodipin 10 mg;5;1;11;37;Amlodipin 10 mg;HJ;500;0;0
+Amlodipin 5 mg;5;1;11;37;Amlodipin 5 mg;HJ;400;0;0
+Amoxicillin 500 mg;5;1;11;37;Amoxicillin 500 mg;HJ;400;0;1
+Antasida Doen (Tablet) Merci;3;1;11;37;Magnesium Hidroksida 200 mg, Aluminium Hidroksida 200 mg;Merci;160;0;0
+Antasida 60 ml;3;2;4;24;Aluminium hydroxide 200 mg, Magnesium hydroxide 200 mg;Sampharindo Perdana;5000;0;0
+Ar-gout 0.5 mg;5;1;11;66;Cochicine 0.5 mg;Simex;6240;0;0
+Ardium 500 mg;1;1;11;69;Ekstrak citrus sinensis pericarpum (diosmin 90% ), hesperidin, Mikronisasi flavonoid;LeB Labotorius Service;9800;0;0
+Asam Mefenamat 500 mg;5;1;11;37;Asam Mefenamat 500 mg;Erita Farma;280;0;0
+Asam Traneksamat 500 mg;5;1;11;37;Asam Traneksamat 500 mg;Kimia Farma;2800;0;0
+Asam Traneksamat 100 mg (Injeksi);5;18;3;29;Asam Traneksamat 100 mg/ml;Kimia Farma;8000;0;0
+Aspilet 80 mg;5;1;11;37;Acetylsalicylic Acid 80 mg;Darya-varia;600;0;0
+Atropine Sulfat 0.25 mg (Injeksi);5;18;3;42;Atropine Sulfate 0.25 mg/ml;Ethica;7480;0;0
+Baycuten-N cr;5;20;12;83;Dexamethason 0.4 mg, Clotrimazole 10 mg;Bayer;75700;0;0
+Betadin Kumur 100 ml;4;8;4;11;ovidone Iodine 1 %;Mahakam Beta Farma;30000;0;0
+Becantex 100 mg;5;1;11;37;Rebamipid 100 mg;Pharos;4340;0;0
+Becom C;10;1;11;37;"Vitamin B1 50 mg, Vitamin B2 25 mg, Vitamin B6 10 mg, Vitamin B12 5 mcg,
+ Vitamin C 500 mg, Nicotinamide 100 mg, Asam pantotenat 18.4 mg";Sanbe;1608;0;0
+Becom Zet;10;1;11;37;"Vitamin E 30 IU, Vitamin B1 15 mg, Vitamin B2 15 mg, Vitamin B6 20 mg,
+ Vitamin B12 mcg, Asam folat 400 mcg, Asam Pantotenate 20 mg,
+ Niacin 100 mg, Vitamin C 750 mg, Zinc 22.5 mg.";Sanbe;19500;0;0
+Betahistin 6 mg;5;1;11;37;Betahistin 6 mg;HJ;833;0;0
+Betason-N 5 g;5;20;12;59;Betamethasone valerate 0.1%, neomycin sulfate 0.5%;Kimia Farma;17500;0;0
+Bionicom Zinc;10;1;11;37;"Thiamine HCI (vitamin B1) 15 mg, Riboflavin (vitamin B2) 15 mg,
+ Pyridoxine HCI (Vitamin B6) 20 mg, Cyanocobalamin (vitamin B12) 12 mcg,
+ Folic Acid 400 mg, Ascorbic Acid (Vitamin C) 750 mg,
+ Calcium Pantothenate 20 mg, Zinc Picolinat 22.5 mg, dan Vitamin E 30 mg";Sampharindo Perdana;19500;0;0
+Bioplacenton gel 15 gr;5;20;12;85;Placenta extract 10%, Neomycin sulfate 0,5%;Kalbe;20000;0;0
+Biosave 5 ml;5;9;13;6;"Agkistrodon rhodostoma ≥10 LD50, Bungarus fasciatus ≥25 LD50,
+ Naja sputatrix ≥25 LD50, phenol 2.5 mg.";Biofarma;1950000;0;0
+Bisolvon 8 mg;5;1;11;37;Bromhexine 8 mg;Sanofi;2300;0;0
+Bisolvon 50 ml (solution);4;22;4;7;Bromhexine 2 mg;Sanofi;105000;0;0
+Bisolvon 60 ml (sirup);4;2;4;24;Bromhexine 4 mg, Guaifenesin100 mg;Sanofi;59900;0;0
+Bisoprolol 5 mg;5;1;11;65;Bisoprolol 5 mg;OGB Dexa;2300;0;0
+Bufacomb 5 g;5;20;12;90;Triamcinolon 5 g;Bufa Aneka;18000;0;0
+Burnazin 35 g;5;20;12;89;Silver Sulfadiazine 10 mg;Darya-varia;59500;0;0
+Buscopan 20 mg (injeksi);5;18;3;30;Hyoscine butylbromide 20 mg/ml;Boehringer Ingelheim;45000;0;0
+Calcium laktat;3;1;11;37;Calcium laktat 500 mg;Merci;1500;0;0
+Callusol 10 ml;5;9;4;9;Asam salisilat 0,2 gram, Polidocanol 0,02 gram, Asam laktat 0,05 gram.;Fahfeinhet;30000;0;0
+Candesartan 16 mg;5;1;11;65;Candesartan 16 mg;OGB Dexa;850;0;0
+Candesartan 8 mg;5;1;11;65;Candesartan 8 mg;OGB Dexa;700;0;0
+Canesten 1% 5 gr;4;20;12;83;Clotrimazole 1%;Bayer;25000;0;0
+Caladine Lotion 60 ml;7;7;1;24;Caladine Lotion;Galenium Pharmasia;21000;0;0
+Caladine Lotion 95 ml;7;7;2;27;Caladine Lotion;Galenium Pharmasia;29700;0;0
+Captopril 25 mg;5;1;11;37;Captopril 25 mg;Landsen;150;0;0
+Caviplex Tab;10;1;11;37;Vitamin A 4000 iu, Vitamin D 400 iu, Vitamin B1 3 mg, Vitamin B2 4 mg, Vitamin B6 4 mg, Vitamin B12 12 mcg, Vitamin C 75 mg Nikotinamid 20 mg;Erela;500;0;0
+Cefadroxil 500 mg;5;1;11;37;Cefadroxil 500 mg;HJ;1400;0;1
+Cefixim 100 mg;5;1;11;37;Cefixim 100 mg;HJ;850;0;1
+Ceftriaxon 1 g;5;21;13;50;Ceftriaxon inj 1 g;HJ;28000;0;1
+Cendo Lyteers 15 ml;3;15;4;75;Sodium chloride 4.40 mg dan Potassium chloride 0.80;Cendo;22500;0;0
+Cendo pantocain 5 ml;5;15;4;75;Tetracaine Hydrochloride 2%;Cendo;18000;0;0
+Cendo Xitrol 5 ml;5;15;4;75;"Dexamethasone/Deksametason 0,1 %, Neomisin sulfat 3,5 mg/mL,
+ Polimiksin B sulfat 6000 iu/mL";Cendo;27000;0;0
+Cernevit;5;21;13;93;"Retinol 3.500 IU, Cholecalciferol 220 IU, Alphatocopherol 11,2 IU,
+ Ascorbic acid 125 mg, Thiamine 3,51 mg, Riboflavine 4,14 mg,
+ Pyridoxine 4,53 mg,Cyanocobalamine 0,006 mg, Folic acid 0,414 mg,
+ Pantothenic acid 17,25 mg,Biotin 0,069 mg, Nicotinamide 46 mg. Eksipien: Glycine 250 mg,
+ Glycocholic acid 140 mg, Soya Lecithin 112,5 mg, Sodium hydroxide";Kalbe;295000;0;0
+Cetirizin 10 mg;4;1;11;37;Cetirizin 10 mg;Triman;500;1;0
+Chlopromazine 25 mg;8;1;4;19;Chlopromazine 25 mg;Kimia Farma;275;1;0
+Chlorphenamine Maleate 4 mg;4;1;11;37;Chlorphenamine Maleate 4 mg;Novepharm;100;1;0
+Cholvastin Tab;5;1;11;37;Lovastatin 20 mg;Sanbe;12000;0;0
+Ciprofloxacin 500 mg;5;1;11;37;Ciprofloxacin 500 mg;HJ;400;0;1
+Citicolin 250 mg (Injeksi);5;18;3;28;Citicolin inj 250 mg/2 ml;Quantum Labs;7500;0;0
+Clindamycin 300 mg;5;1;11;37;Clindamycin 300 mg;OGB Dexa;1500;0;1
+Clopidogrel 75 mg;5;1;11;73;Clopidogrel 75 mg;OGB Dexa;1800;0;0
+Combivent UDV;5;9;13;56;Ipratropium Bromide 0.52 mg, Salbutamol sulphate 3.01 mg;Boehringer Ingelheim;10000;0;0
+Compyrantel 250;5;1;11;61;Pirantel pamoat 250 mg;MEF (Mega Dexa Farma);750;0;0
+Cotrimoxazol 480 mg;5;1;11;37;Trimethoprim 80mg, Sulfamethoxazole 400mg;Landsen;1400;0;1
+Curcuma Tab;1;12;11;38;Extrak Curcuma xanthorrhiza Rhozoma;SOHO;1300;0;0
+Curliv Plus;10;12;11;79;Silymarin Phytosome 35 mg, Ekstrak Schisandrae Fructus 135 mg, Ekstrak Curcumae Xanthorrhizae Rhizoma 150 mg, Ekstrak Liquiritiae Radix 135 mg, Choline Bitartrate 150 mg, Vitamin B6 HCL 2 mg;SOHO;47000;0;0
+Daryant Tulle Sachet;5;12;10;33;Framycetin Sulfate;Darya-Varia;29400;0;0
+Demacolin;4;1;11;37;Paracetamol 500mg, Pseudoefedrin HCL 7.5mg, CTM 2mg;Ethical;500;1;0
+Dexaharsen 0.75 mg;3;1;11;54;Dexamethasone 0.75 mg;HJ;190;0;0
+Dexamethason 5 mg (Injeksi);5;18;3;41;Dexamethason 5 mg/ml;Pharos;5000;0;0
+Dexteem Plus;5;1;11;37;Dexchlorpheniramine Maleate 2, Dexamethasone 0,5;Erlimpex;240;1;0
+Dextral;4;1;11;37;DMP 10mg, Guaifenesin 50mg, Phenylpropanolamine 12.5mg, CTM 1mg;Melox;450;1;0
+Dextrose 40 %;5;10;5;14;Dextrose Anhydrate 40%;Otsuka;18000;0;0
+Dextrose 5 %;5;10;5;11;Dextrose Anhydrate 5%;Otsuka;13500;0;0
+Diazepam 2 mg;8;1;11;82;Diazepam 2 mg;;1760;1;0
+Digenta 10 g;5;20;12;84;Gentamycin 0.1% dan Betamethasone 0.05%;Intebat;136200;0;0
+Domperidone 10 mg;5;1;11;37;Domperidone 10 mg;Promed;225;0;0
+Domperidone 5 mg (Sirup);3;2;4;24;Domperidon 5 mg/ 5 mL;Promed;16000;0;0
+Dulcolax Suppositoria 10 mg;5;3;9;77;Bisacodyl 10 mg;Boehringer Ingelheim;4750;0;0
+Dulcolax;5;1;11;81;Bisacodyl 5 mg;Boehringer Ingelheim;1500;0;0
+Eflin;5;1;11;37;Triprolidine HCl 2.5 mg, Pseudoephedrine HCl 60 mg;Mapro;2000;1;0
+Emturnas Forte 650 mg;3;1;11;37;Paracetamol 650 mg;First Mediafarma;630;0;0
+Enervon Active;10;1;4;16;Vitamin C (Kalsium Askorbat) 500 mg, Vitamin B1 (Tiamin Mononitrat) 50 mg, Vitamin B2 (Riboflavin) 25 mg, Vitamin B6 (Piridoksin Hcl) 10 mg, Vitamin B12 5 mcg, Kalsium Pantotenat 20 mg, Niasinamida 50 mg, Zinc 10 mg;Darya-varia;57100;0;0
+Eperison 50 mg;5;1;11;37;Eperison 50 mg;Medikom;4150;0;0
+Epineprin Inj 1 mg;5;18;3;1;Epineprin Inj 1 mg/ml;Etchia Pharma;16500;0;0
+Epitel cream 10 gr;3;11;12;84;"zinc oxide, lanolin, ribes ningrum, (black currant) seed oil,
+ cardiospernum halicacabun flower";;50000;0;0
+Erdostein 300 mg;5;1;11;49;Erdostein 300 mg;Etercon Pharma;2850;0;0
+Erlamol Forte 650 mg;3;1;11;37;Paracetamol 650 mg;Erela;600;0;0
+Erlamycetin 1% 3,5 gr;5;11;12;87;Chloramphenicol 1%;Erela;16700;0;1
+Erlamycetin Ear Drop 10 ml;5;14;4;9;Chloramphenicol 1%;Erela;22500;0;1
+Erlamycetin Eye Drop 5 ml;5;15;4;18;Chloramphenicol base 5 mg, Dexamethasone sodium phospate 1 mg;Erela;20000;0;1
+Erymed Gel 2% 15 Gr;5;11;12;85;Erythromycin 20 mg.;;31000;0;1
+Esomeprazol 20 mg;5;1;11;65;Esomeprazole Magnesium 20 mg;Etercon Pharma;12200;0;0
+Etafen 400 mg;5;1;11;37;Ibuprofen 400 mg;Errita Pharma;500;0;0
+Faktu Suppositoria;5;3;9;40;Policresulen 100mg, Cinchocaine 2.5mg;Takeda;8500;0;0
+Fasiprim Forte 960 mg;5;1;11;37;Trimetoprim 160 mg, Sulfametoksazol 800 mg;Ifars;1300;0;1
+Favipiravir 200 mg;5;1;11;37;Favipiravir 200 mg;Kimia Farma;22500;0;0
+Fenofibrate 100 mg;5;1;11;65;Fenofibrate 100 mg;HJ;2000;0;0
+Fenofibrate 300 mg;5;1;8;65;Fenofibrate 300 mg;HJ;2300;0;0
+FG Troches Tab;5;1;11;45;Fradiomycin 2,5 mg dan gramicidin 1,0 mg;Meiji pharma;1300;0;1
+Fleet Enema;4;13;9;12;Monobasic Na phosphate 19 g, dibasic Na phosphate 7;Combiphar;137110;0;0
+Floxa 0,3% 5 ml;5;14;4;9;Ofloxacin 0.3%;Cendo;41000;0;1
+Flutrop Tab;5;1;11;37;Pseudoefedrin 30mg, Tripolidine 2.5mg;Tropica;1000;1;0
+Forumen 10 ml;3;14;4;9;Docusate Sodium 5 mg;Sanbe;33400;0;0
+Furosemid 40 mg;5;1;11;37;Furosemid 40 mg;Landsen;390;0;0
+Gabapentin 300 mg;5;1;11;65;Gabapentin 300 mg;OGB Dexa;1666;0;0
+Genoint 0,1 % 15 gr (Salep Kulit);5;20;12;85;Gentamicin sulfate 0.1%;Erela;5000;0;1
+Genoint Mata 0,1 % 3.5 gr (Salep Mata);5;20;12;87;Gentamicin sulfate 0.1%;Erela;14300;0;1
+Gentamicin 0.1% 5 g (Salep Kulilt);5;20;12;90;Gentamicin sulfate 0.1%;Kimia Farma;11000;0;1
+Glimepiride 1 mg;5;1;11;37;Glimepiride 1 mg;HJ;400;0;0
+Glimepiride 2 mg;5;1;11;37;Glimepiride 2 mg;HJ;400;0;0
+Glimepiride 4 mg;5;1;11;37;Glimepiride 4 mg;HJ;400;0;0
+Gliquidone 30 mg;5;1;11;37;Gliquidone 30 mg;OGB Dexa;1740;0;0
+Glucophage 500 mg;5;1;11;37;Glucophage 500 mg;Merck;2640;0;0
+Glucosamine MPL;10;1;11;37;Glucosamine 250 mg;Medikon Prima Laboratories;1454;0;0
+Gom glyserin 8 ml;4;16;4;26;Borax glycerin 10%;Ciubros Farma;6300;0;0
+GoodLife 1000 mg;10;1;11;17;Vitamin C 1,000 mg, echinacea 25,000 mcg, Zn 10 mg;Simex;195000;0;0
+GoodLife 500 mg;10;1;11;25;Kalsium askorbat 605 mg yang setara dengan vitamin C 500 mg;Simex;133500;0;0
+Griseofulvin 500 mg;5;1;11;37;Griseofulvin 500 Mg;Pharma Laboratorium;2000;0;0
+Guafanesin 100 mg;5;1;11;37;Guafanesin 100 mg;Novapharma;200;0;0
+Hidroclorotiazida 25 mg;5;1;11;37;Hidroclorotiazida 25 mg;Generic Manufacturer;400;0;0
+Hot In Cream 60gr;4;11;4;22;Menthol 70 Mg, Metil Salisilat 25 Mg, Eucalyptus Oil 1 Mg, Sereh Oil 1 Mg, Pine Oil 2,5 Mg;Ultra Sakti;19300;0;0
+Hot In Cream Tube 60g;4;11;12;91;menthol crystal 6%, gandapura oil 3,5% , Eucaliptus oil, sereh oil, piine oil;Ultra Sakti;25500;0;0
+Hot In DCL;4;11;12;91;Diclofenac Diethylamine 11.6mg;Ultra Sakti;39800;0;0
+Hua Ziang Zheng;4;21;10;71;Herbal Cina;;41990;0;0
+Iliadin Nasal Spray 0.05% 10 ml;4;23;4;9;Oxymetazoline HCl 0,05%;Merck;79000;0;0
+Imboost Plus;10;1;11;72;Ekstrak echinachea purpurea 250 mg dan zinc picolinate 10 mg;SOHO;9900;0;0
+Imodium 2 mg;5;1;11;34;Loperamid 2 mg;Jannsen;11640;1;0
+Incidal-OD 10 mg;4;1;11;37;Cetirizine 10 mg;SOHO;3400;1;0
+Inerson 0,25% 15 g;5;20;12;85;Desoximetasone 0.25%;Interbat;120000;0;0
+Isosorbide Dinitrate 5 mg;5;1;11;37;Isosorbide Dinitrate 5 mg;Indofarma;150;0;0
+Ivermectin 12 mg;5;1;4;13;Ivermectin 12 mg;Indofarma;7712;0;0
+Kaflam 50 mg;5;1;11;65;Na-Diclofenak 50 mg;Dankos Pharma;2500;0;0
+Kaltrofen suppositoria;5;3;9;46;Ketoprofen 100 mg;Kalbe;14000;0;0
+Ketoconazol 200 mg;5;1;11;37;Ketoconazol 200 mg;HJ;900;0;0
+Ketorolac 30 mg (Injeksi);5;18;3;30;Ketorolac Tromethamine 30 mg/mL;Mepro;3000;0;0
+KSR (Potassium Chloride);5;1;11;37;Potassium Chloride 600 mg;Merck;2375;0;0
+L-Bio;10;21;10;68;"Rice starch, Maltodextrin, Lactobacillus Acidophilus, Lactobacillus Casei,
+ Lactobacillus Salivarius, Bifidobacterium Infantis, Bifidobacterium Lactis,
+ Bifidobacterium Longum, Lactobacillus Lactis";Lapi;12900;0;0
+Lameson 8 mg;5;1;11;37;Methylprednisolone 8mg;Lapi;7500;0;0
+Lansoprazole 30 mg (Bernofarm);3;5;8;48;Lansoprazole 30 mg;Bernofarm;2309;0;0
+Lansoprazole 30 mg (Exeltis);3;5;8;48;Lansoprazole 30 mg;Exeltis;1330;0;0
+Lapicef 500 mg;5;1;11;37;Cefadroxil 500 mg;Lapi;14000;0;1
+Lelap;1;5;8;62;Valerianae 250 mg, Myristicae 115 mg, Eleuthroginseng 100 mg, Polygalae 135 mg;SOHO;350;1;0
+Levofloxacin 500 mg;5;1;11;37;Levofloxacin 500 mg;Bernofarm;1891;0;1
+Librofed Tab;5;1;11;37;Tripolidine HCl 2,5mg dan Pseudoephedrine HCl 30mg;Dankos Pharma;1500;1;0
+Loperamid 2 mg;5;1;11;37;Loperamid 2 mg;Ifars;300;1;0
+Lung Cleansing & Detoxfying;5;21;10;95;-;;608000;0;0
+Mefinal 500 mg;5;1;11;37;Asam Mefenamat 500 mg;Sanbe;1650;0;0
+Meloxicam 15 mg;5;1;11;37;Meloxicam 15 mg;OGB Dexa;380;0;0
+Metformin 500 mg;5;1;11;53;Metformin 500 mg;HJ;350;0;0
+Methylprednisolon 4 mg;5;1;11;37;Methylprednisolon 4 mg;OGB Dexa;225;0;0
+Metoclopramid 5 mg;5;1;11;37;Metoclopramid 5 mg;Kimia Farma;194;0;0
+Metrodinazol 500 mg;5;1;11;37;Metrodinazol 500 mg;Bernofarm;650;0;1
+Miconazol 2% 10 g;3;11;12;60;Miconazole nitrate 2%;Kimia Farma;4000;0;0
+Molagit Tab;3;1;11;54;Attafulgite 100m, Pectin 50mg;Molex Ayux;453;0;0
+N-Acetylcysteine 200 mg;5;1;11;37;Acetylcysteine 200 mg;Indofarma;1555;0;0
+Na-Diclofenak;5;1;11;37;Na-Diclofenak 50 mg;Kimia Farma;447;0;0
+Nacl 100 ml;5;17;4;10;Natrium Klorida 0.9 g Aqua pro injeksi hingga 100 ml;Braun;8000;0;0
+Nacl 500 ml;5;17;4;21;Natrium Klorida 0.9 g Aqua pro injeksi hingga 500 ml;Braun;18000;0;0
+Nebacetin powder 5 g;5;21;13;92;Neomycin sulfate 5 mg, Bacitracin 250 IU;Pharos;31800;0;0
+Neomethor;5;1;11;37;Dextromethorphan HBr 15 mg, Diphenhydramine HCl 10.;Erlimpex;400;1;0
+Nephrolite;1;5;8;55;Ekstrak Orthosifon stamineus, Strobilantus crispus, Sonchus arvensis, Phyalnthus niruri;Kalbe;480;0;0
+Neuralgin;5;1;11;37;Methampyrone 500 mg, Thiamine HCl 50 mg, Pyridoxine HCl 10 mg, Cyanocobalamine 10 mcg, Trimethylxanthine 50 mg.;Kalbe;750;0;0
+Neurobion 5000 (Injeksi);5;18;3;52;"100 mg vitamin B1 dan 100 mg vitamin B6,
+ Sedangkan ampul kedua mengandung 5 mg vitamin B12";Merck;31800;0;0
+Neurodex;3;1;11;54;Vitamin B1 mononitrate 100 mg Vitamin B6 HCl 200 mg Vitamin B12 200 mcg.;Dexa Medica;500;0;0
+Neurosanbe 5000 3 ml (Injeksi);5;18;3;4;Thiamine 100 mg, Pyridoxin 100 mg, Cobalamin 5000 mcg.;Sanbe;24500;0;0
+Norit;1;1;11;32;Karbon Aktivatus 125 mg, Excipients Ad 325 mg;;19500;0;0
+OBH Combi 100 ml;4;2;4;11;Succus Liquiritiae Extract 167 mg, Paracetamol 150 mg, Ammonium Chloride 50 mg, Ephedrine HCl 2,5 mg, Chlorpheniramine Maleate 1 mg, Alkohol 2%;Combiper;17500;1;0
+Omeprazole 20 mg;5;5;8;64;Omeprazole 20 mg;Erita Farma;416;0;0
+Omeprazole 40 mg (Injeksi);5;18;13;5;Omeprazole 40 mg/10ml;Bernofarm;22500;0;0
+Ondancentron 4 mg;5;1;11;37;Ondancentron 4 mg;OGB Dexa;2100;0;0
+Ondancentron 4 mg (Injeksi);5;18;3;3;Ondancentron 4 mg/2 ml;Bernofarm;3500;0;0
+Oxycan Green Kaleng;4;19;7;96;Ocygen;Samator Gas Industri;69300;0;0
+Oralit 200;3;21;10;44;"Glukosa anhidrat 2,7 gram. Kalium klorida 0,3 gram. Natrium Klorida 0,52 gram.
+ Trisodium sitrat dihidrat 0,58 gram.";Pharos;240;0;0
+Pantoprazole 40 mg (Injeksi);5;18;13;5;Pantoprazole 40 mg;OGB Dexa;95000;0;0
+Paracetamol 500 mg;3;1;11;37;Paracetamol 500 mg;Merci;250;0;0
+Paracetamol Infus 100 ml;5;17;4;8;Paracetamol 1000 mg;Quantum Labs;21000;0;0
+Paratusin;5;1;11;54;"Paracetamol 500 mg,Guaifenesin 50 mg, Noscapin 10, Phenylpropanolamin 15 mg,
+ Chorphenamin Maleat 2";Darya-varia;1450;1;0
+Pehacain 2 ml (Injeksi);5;18;3;3;Lidocaine 20 mg dan Epinephrine 0.0125 mg/mL;Pharos;6500;0;0
+Phytomenadione 10 mg;3;1;11;37;Phytomenadione 10 mg;Pharos;1710;0;0
+Piracetam 1 g (Injeksi);5;18;3;6;Piracetam 1 g/5 ml;Quantum Labs;14900;0;0
+Plantacid Forte 100 ml;3;2;4;11;Al(OH)3 300 mg, Mg(OH)2 300 mg, Dimethylpolysiloxane 30 mg;Kalbe;27500;0;0
+Potasium permanganat;5;21;4;78;Potasium permanganat;PK;68500;0;0
+Prednison 5 mg;5;1;11;37;Prednison 5 mg;Triman;300;0;0
+Prove E 400 IU;10;5;4;23;Natural vitamin E 400 IU;Kalbe;200200;0;0
+PSIDII Capsul;1;1;4;20;Ekstrak daun jambu (Psidii folium extract);Dexa Medica;426400;0;0
+Pulmicort 0.25 mg/ml;5;24;13;51;Budesonide 0.25 mg;AstraZeneca;18750;0;0
+Puricemia 300 mg;5;1;11;37;Allopurinol 300 mg;Sanbe;4230;0;0
+Qing Fei Pai Du Tang;5;5;4;94;Herbal Cina;;1498;0;0
+Ranitidine 150 mg;5;1;11;37;Ranitidine 150 mg;HJ;225;0;0
+Ranitidine 50 mg (injeksi);5;24;3;31;Ranitidine 25 mg/ml;Quantum Labs;2500;0;0
+Rebamipide 100 mg;5;1;11;37;Rebamipid 100 mg;Etercon Pharma;3300;0;0
+Reco Dry eye;5;15;4;18;Chloramphenicol 0.5%;;10643;0;0
+Recodryl 15 ml (Injeksi);5;18;13;2;Diphenhydramine Hydrochloride 10 mg/mL.;Global Multi;7000;0;0
+Recolfar 0.5 mg;5;1;11;37;Cochicine 0.5 mg;;830;0;0
+Rhea Healt;1;9;4;15;"Gardenia jasminoides oleum 1.8 mg
+Commiphora myrrha oleum 1.8 mg
+Boswellia serrata oleum 1.8 mg
+Daucus carota oleum 1.8 mg
+Foeniculum vulgarae oleum 1.8 mg
+Olea europaea oleum (Olive oil) 0.99 ml";Rhea Pharmaceuticical Sciences Indonesia;180000;0;0
+Rhinos Sr;5;5;8;36;Loratadine 5mg, Pseudoephedrine HCI 60 mg;Dexa Medica;10000;1;0
+RL 500 ml;5;17;4;21;"Natrium klorida 0.6%, natrium laktat 0,25%, kalium klorida 0,04%,
+ kalsium klorida 0,027%";Wiratra Bhakti;12000;0;0
+Roverton;5;1;11;37;Ambroxol 30 mg;Ifars;200;0;0
+Sagestam 0,1% 10 gr;5;20;12;84;Gentamicin 0.1%;Sanbe;23200;0;1
+Salbutamol 4 mg;5;1;11;37;Salbutamol 4 mg;Indofarma;200;0;0
+Salep 2-4 15 g;3;20;4;58;Acidum salycylicum 2%, sulfur praecipitate 4%;;5000;0;0
+Sanadryl DMP 60 ml;4;2;4;24;"Dextromethorphan HBr 10 mg, Diphenhydramine HCl 12.5 mg,
+ Ammonium Chloride 100 mg, Sodium citrate 50 mg, Menthol 1 mg";Sanbe;16000;1;0
+Sangobion;3;5;8;36;"Ferrous Gluconate 250 mg Manganese Sulfate 0, 2 mg Copper Sulfate 0, 2 mg
+ Vitamin C 50, 0 mg Asam Folat / Folic Acid 1,0 mg Vitamin B 12 7, 5 mcg";;3500;0;0
+Sanmol 100 ml;5;17;4;10;Paracetamol 1000 mg;Sanbe;85000;0;0
+Santagesik 2 ml (Injeksi);5;18;3;3;Metamizole sodium 500 mg;Sanbe;12800;0;0
+Scabimit cream 30 g;5;13;12;88;Permethrin 5%;Gura;70000;0;0
+Siladex biru 60 ml;4;2;4;24;DMP HBr 7,5 mg, pseudoefedrin 15 mg, doxylamine succinate 2 mg;Konimex;30250;1;0
+Siladex hijau 60 ml;4;2;4;24;Bromhexine HCI 10 mg Guaifenesin 50 mg;Konimex;15000;1;0
+Siladex merah 60 ml;4;2;4;24;Chlopheniramine maleate 1mg, Dextromethorphan Hydrobromide 15mg.;Konimex;20000;1;0
+Simvastatin 10 mg;5;1;11;37;Simvastatin 10 mg;HJ;200;0;0
+Simvastatin 20 mg;5;1;11;37;Simvastatin 20 mg;HJ;360;0;0
+Spasminal;5;1;11;37;Metamizole Na 500 mg, belladonna extr 10 mg, papaverine HCl 25 mg.;Kalbe;850;0;0
+Strepsils;5;1;11;57;"Amylmetacresol 0.6 mg, Dibenal 1.2 mg, Madu 132.6 mg, Pappermint Oil,
+ Terpeneless Lemon, Asam tartarat, Gula, Glukosa Cair, Pewarna Kuning Kuinolin";;1400;0;0
+Sucralfat 500 mg;5;1;11;37;Sucralfat 500 mg;Combiper;1400;0;0
+Sucralfat 100 ml;3;2;4;11;Sucralfate 500 mg.;Combiper;15000;0;0
+Sulcolon 500 mg;3;1;11;37;Sulfasalazine 500 mg;Bernofarm;5000;0;0
+Tetagram 1 ml;5;18;3;1;Imunoglobulin human tetanus 250 IU/ML;Behring;275000;0;0
+Thrombogel 10 gr;4;13;12;84;Setiap 100 gram mengandung 20.000 IU Sodium Heparin.;Tunggal Idaman Abdi;53500;0;0
+Thrombophob 20 gr;4;13;12;86;Setiap 100 gram mengandung 20.000 IU Sodium Heparin.;Tunggal Idaman Abdi;73400;0;0
+Urdafalk 250 mg;5;1;11;80;Ursodeoxycholic acid 250 mg;Darya-varia;12500;0;0
+Valisanbe 2 ml (Injeksi);6;18;3;3;Diazepam 5 mb/2ml;Sanbe;26330;1;0
+Valsartan 80 mg;5;1;11;65;Valsartan 80 mg;Generic Manufacturer;12500;0;0
+Venaron ;2;5;8;35;Ekstrak Sapora japanicae Flos 100 mg, Citrus aurantum Fructus 450 mg.;Teguhsindo Lestari;2600;0;0
+Ventolin nebules 2.5mg;5;9;4;70;Salbutamol sulfat 2.5 mg;GlaxoSmithKline Indonesia;11250;0;0
+Vitacimin 500 mg;9;1;11;76;"Acidum Ascorbicum ( Vitamin C) 250 mg, Natrium Ascorbate 281.25 mg
+(sesuai dengan Acidum Ascorbicum 250 mg), Pemanis (gula murni,
+sakarin & siklamat), pengisi, aroma, pewarna (FD & C Yellow NO.6)";Takeda;1000;0;0
+Vital ear oil 10 ml;3;14;4;9;"Distilled witch hazel 13.0% v/v, Benzalkonium chloride 0.005% w/v,
+ Dalam larutan yang diberi dapar Borax dan Boric acid";;15000;0;0
+Vitamin C Inj 200mg/2ml;5;18;3;43;Vitamin C Inj 200mg/2ml;Etchia pharma;13000;0;0
+Vitamin Hi-D 1000;9;1;11;72;Cholecalciferol 1000 IU setara dengan Vitamin D3 25 mikrogram;Imedco;3700;0;0
+Woods 100 ml;4;2;4;11;Bromhexine HCl 4 mg, guaifenesin 100 mg;Kalbe;23000;1;0
+Xepazym Tab;3;1;11;74;Pancreatin 170 mg, Simethicone 80;Mustika Farma;3000;0;0
+y-rins 12 ml;3;15;4;47;Distilled Witch Hazel 13%;;18000;0;0
+Zinc sulfat 20 mg;4;1;11;39;Zinc sulfat 20 mg;Indofarma;400;0;0

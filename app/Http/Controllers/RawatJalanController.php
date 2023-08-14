@@ -37,7 +37,7 @@ class RawatJalanController extends Controller
 
     public function addrawatjalan(Request $request)
     {
-        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->get();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->where('id_rekam_medis', '!=', 'null')->get();
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();

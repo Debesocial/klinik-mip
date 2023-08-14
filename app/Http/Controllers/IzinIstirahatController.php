@@ -36,7 +36,7 @@ class IzinIstirahatController extends Controller
      */
     public function create()
     {
-        $data['pasien_id'] = Pasien::with('kategori', 'perusahaan', 'divisi', 'jabatan')->get();
+        $data['pasien_id'] = Pasien::with('kategori', 'perusahaan', 'divisi', 'jabatan')->where('id_rekam_medis', '!=', 'null')->get();
         $data['rsrujukan'] = RumahSakitRujukan::all();
         $data['spesialisrujukan'] = SpesialisRujukan::all();
         $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();

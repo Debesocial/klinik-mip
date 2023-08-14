@@ -76,7 +76,7 @@
                                         <div class="form-group">
                                             <label for="sediaan">Sediaan</label>
                                             <select name="sediaan" id="sediaan" class="form-select" placeholder="Masukkan sediaan">
-                                                @foreach (sediaan() as $sediaan)
+                                                @foreach ($sediaan as $sediaan)
                                                     <option value="{{$sediaan['id']}}">{{$sediaan['singkatan']}} <i>({{$sediaan['kepanjangan']}})</i></option>
                                                 @endforeach
                                             </select>

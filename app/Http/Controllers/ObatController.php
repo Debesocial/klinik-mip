@@ -9,7 +9,7 @@ use App\Models\GolonganObat;
 use App\Models\NamaObat;
 use App\Models\Obat;
 use App\Models\SatuanObat;
-
+use App\Models\Sediaan;
 use Illuminate\Http\Request;
 
 
@@ -33,8 +33,9 @@ class ObatController extends Controller
         $golonganobat = GolonganObat::all();
         $namaobat = NamaObat::all();
         $satuanobat = SatuanObat::all();
+        $sediaan = Sediaan::get();
 
-        return view('petugas.obat.add_obats', compact('bobotobat', 'golonganobat', 'namaobat', 'satuanobat'));
+        return view('petugas.obat.add_obats', compact('bobotobat', 'golonganobat', 'namaobat', 'satuanobat','sediaan'));
     }
 
     public function tambahobats(Request $request)

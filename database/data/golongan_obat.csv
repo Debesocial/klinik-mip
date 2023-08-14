@@ -1,9 +1,11 @@
 ﻿id;nama_golongan_obat
 1;Herbal
-2;Jamu
+2;jamu
 3;Obat Bebas
 4;Obat Bebas Terbatas
 5;Obat Keras
-6;Obat Psikotropika
-7;Salep
-8;Suplemen
+6;obat psikotropika
+7;Produk Kesehatan
+8;Psikotropika
+9;Suplemen
+10;Vitamin & Suplemen 

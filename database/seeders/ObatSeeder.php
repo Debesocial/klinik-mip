@@ -29,12 +29,15 @@ class ObatSeeder extends Seeder
             if (!$firstline) {
                 Obat::create([
                     "nama_obat" => $data['0'],
-                    "golongan_obat_id" => $data['2'],
-                    "satuan_obat_id" => $data['4'],
-                    "bobot_obat_id" => $data['6'],
-                    "komposisi_obat" => $data['7'],
-                    "komposisi_obat" => $data['7'],
-                    "harga" => $data['8'],
+                    "golongan_obat_id" => $data['1'],
+                    "sediaan" => $data['2'],
+                    "satuan_obat_id" => $data['3'],
+                    "bobot_obat_id" => $data['4'],
+                    "komposisi_obat" => $data['5'],
+                    "distributor" => $data['6'],
+                    "harga" => $data['7'],
+                    "is_sedatif" => $data['8'],
+                    "is_antibiotik" => $data['9'],
                 ]);    
             }
             $firstline = false;

@@ -69,7 +69,7 @@ class SuperAdminController extends Controller
 
     public function periksanarkoba(Request $request)
     {
-        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'keluarga', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $test = TestUrin::all();
         $selected_pasien = $request->user;
 
@@ -676,7 +676,7 @@ class SuperAdminController extends Controller
 
     public function kecelakaankerja()
     {
-        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->get();
+        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
@@ -759,7 +759,7 @@ class SuperAdminController extends Controller
 
     public function keteranganberobat()
     {
-        $pasien_id = Pasien::with(['kategori'])->get();
+        $pasien_id = Pasien::with(['kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $keterangan = KeteranganBerobat::all();
         $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
@@ -869,7 +869,7 @@ class SuperAdminController extends Controller
 
     public function izinberobat()
     {
-        $pasien_id = Pasien::with(['kategori'])->get();
+        $pasien_id = Pasien::with(['kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $izin = IzinBerobat::all();
 
         return view('petugas.superadmin.izin_berobat', compact('pasien_id', 'izin'));
@@ -930,7 +930,7 @@ class SuperAdminController extends Controller
 
     public function izinistirahat()
     {
-        $pasien_id = Pasien::get();
+        $pasien_id = Pasien::where('id_rekam_medis', '!=', 'null')->get();
         $rsrujukan = RumahSakitRujukan::all();
         $spesialisrujukan = SpesialisRujukan::all();
 
@@ -949,7 +949,7 @@ class SuperAdminController extends Controller
 
     public function suratrujukan(Request $request)
     {
-        $pasien_id = Pasien::with(['kategori'])->get();
+        $pasien_id = Pasien::with(['kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $suratrujukan = SuratRujukan::all();
         $spesialisrujukan = SpesialisRujukan::all();
         $rsrujukan = RumahSakitRujukan::all();
@@ -1029,7 +1029,7 @@ class SuperAdminController extends Controller
 
     public function keterangansehat()
     {
-        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'kategori'])->get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
 
         return view('petugas.superadmin.keterangan_sehat', compact('pasien_id'));
     }
@@ -1086,7 +1086,7 @@ class SuperAdminController extends Controller
 
     public function persetujuantindakanmedis()
     {
-        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan','kategori'])->get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'jabatan','kategori'])->where('id_rekam_medis', '!=', 'null')->get();
 
         return view('petugas.superadmin.persetujuan_tindakan_medis', compact('pasien_id'));
     }

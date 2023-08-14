@@ -35,10 +35,15 @@ class Obat extends Model
     // public function nama_obat() {
     //     return $this->belongsTo(NamaObat::class);
     // }
+
+
     public function satuan_obat() {
         return $this->belongsTo(SatuanObat::class);
     }
     public function bobot_obat() {
         return $this->belongsTo(BobotObat::class);
+    }
+    public function sediaan_obat() {
+        return $this->belongsTo(Sediaan::class);
     }
 }
