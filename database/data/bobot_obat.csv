@@ -1,171 +1,190 @@
-﻿1;1 Ampul isi 1 ml
-2;1 Ampul isi 15 ml
-3;1 Ampul isi 2 ml
-4;1 Ampul isi 3 ml
-5;1 Ampul isi 40 mg
-6;1 Ampul isi 5 ml
-7;1 Ampul isi 50 ml
-8;1 Botol isi 1 gr
-9;1 Botol isi 10 ml
-10;1 Botol isi 100 mg
-11;1 Botol isi 100 ml
-12;1 Botol isi 133 ml
-13;1 Botol isi 20 Tablet
-14;1 Botol isi 25 ml
-15;1 Botol isi 30 ml
-16;1 Botol isi 30 Tab
-17;1 Botol isi 30 tablet
-18;1 Botol isi 5 ml
-19;1 Botol isi 50 Tab
-20;1 Botol isi 50 Tablet
-21;1 Botol isi 500 mg
-22;1 Botol isi 60 gr
-23;1 Botol isi 60 Kapsul
-24;1 Botol isi 60 ml
-25;1 Botol isi 60 tablet
-26;1 Botol isi 8 ml
-27;1 Botol isi 95 ml
+﻿1;1 Ampul isi 1 ml;1
+2;1 Ampul isi 15 ml;2
+3;1 Ampul isi 2 ml;3
+4;1 Ampul isi 3 ml;4
+5;1 Ampul isi 40 mg;5
+6;1 Ampul isi 5 ml;6
+7;1 Ampul isi 50 ml;7
+8;1 Botol isi 1 gr;8
+9;1 Botol isi 10 ml;9
+10;1 Botol isi 100 mg;10
+11;1 Botol isi 100 ml;11
+12;1 Botol isi 133 ml;12
+13;1 Botol isi 20 Tablet;13
+14;1 Botol isi 25 ml;14
+15;1 Botol isi 30 ml;15
+16;1 Botol isi 30 Tab;16
+17;1 Botol isi 30 tablet;17
+18;1 Botol isi 5 ml;18
+19;1 Botol isi 50 Tab;19
+20;1 Botol isi 50 Tablet;20
+21;1 Botol isi 500 mg;21
+22;1 Botol isi 60 gr;22
+23;1 Botol isi 60 Kapsul;23
+24;1 Botol isi 60 ml;24
+25;1 Botol isi 60 tablet;25
+26;1 Botol isi 8 ml;26
+27;1 Botol isi 95 ml;27
 28;"1 Box isi 10 Amp
- 1 Amp isi 1 ml"
+ 1 Amp isi 1 ml";28
 29;"1 Box isi 10 Amp
- 1 Amp isi 5 ml"
+ 1 Amp isi 5 ml";29
 30;"1 Box isi 10 Ampul
- 1 Ampul isi 1 ml"
+ 1 Ampul isi 1 ml";30
 31;"1 Box isi 10 Ampul
- 1 Ampul isi 2 ml"
-32;1 Box isi 10 Pcs
-33;1 Box isi 10 Sachet
-34;1 Box isi 10 Strip
+ 1 Ampul isi 2 ml";31
+32;1 Box isi 10 Pcs;32
+33;1 Box isi 10 Sachet;33
+34;1 Box isi 10 Strip;34
 35;"1 Box isi 10 Strip 
-1 Strip isi 10 Kapsul"
+1 Strip isi 10 Kapsul";35
 36;"1 Box isi 10 Strip
- 1 Strip isi 10 Kapsul"
+ 1 Strip isi 10 Kapsul";36
 37;"1 Box isi 10 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";37
 38;"1 Box isi 10 Strip
- 1 Strip isi 12 Tablet"
+ 1 Strip isi 12 Tablet";38
 39;"1 box isi 10 Strip
-10 Strip isi 10 Tablet"
-40;1 Box isi 10 Supp
+10 Strip isi 10 Tablet";39
+40;1 Box isi 10 Supp;40
 41;"1 Box isi 100 Amp
- 1 Amp isi 1 ml"
+ 1 Amp isi 1 ml";41
 42;"1 Box isi 100 Ampul
- 1 Ampul isi 1 ml"
+ 1 Ampul isi 1 ml";42
 43;"1 Box isi 100 Ampul
-1 Ampul isi 2 ml"
-44;1 Box isi 100 Sachet
+1 Ampul isi 2 ml";43
+44;1 Box isi 100 Sachet;44
 45;"1 Box isi 12 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";45
 46;"1 Box isi 2 Blister
- 1 Blister isi 5 Suppositoria"
+ 1 Blister isi 5 Suppositoria";46
 47;"1 Box isi 2 Botol
- 1 Botol isi 12 ml"
+ 1 Botol isi 12 ml";47
 48;"1 Box isi 2 Strip
- 1 Strip isi 10 Kapsul"
+ 1 Strip isi 10 Kapsul";48
 49;"1 Box isi 2 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";49
 50;"1 Box isi 2 Vial
- 1 Vial isi 1 gr"
+ 1 Vial isi 1 gr";50
 51;"1 Box isi 20 Ampul
- 1 Ampul isi 1 ml"
+ 1 Ampul isi 1 ml";51
 52;"1 Box isi 20 Pasang Ampul
- 1 Ampul isi 1 ml"
+ 1 Ampul isi 1 ml";52
 53;"1 Box isi 20 Strip
- 1 Strip isi 10 Tab"
+ 1 Strip isi 10 Tab";53
 54;"1 Box isi 20 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";54
 55;"1 Box isi 20 Strip
- 1 Strip isi 5 Kapsul"
+ 1 Strip isi 5 Kapsul";55
 56;"1 Box isi 20 vial
- 1 vial isi 2.5 ml"
-57;1 Box isi 24 Butir
-58;1 box isi 24 pcs
+ 1 vial isi 2.5 ml";56
+57;1 Box isi 24 Butir;57
+58;1 box isi 24 pcs;58
 59;"1 box isi 24 pcs
- 1 Pcs isi 5 gr"
-60;1 Box isi 24 Tube
+ 1 Pcs isi 5 gr";59
+60;1 Box isi 24 Tube;60
 61;"1 Box isi 25 Strip
- 1 Strip isi 2 Tablet"
+ 1 Strip isi 2 Tablet";61
 62;"1 Box isi 25 Strip
- 1 Strip isi 4 Tablet"
-63;1 Box isi 25 Tube
+ 1 Strip isi 4 Tablet";62
+63;1 Box isi 25 Tube;63
 64;"1 Box isi 3 Strip
- 1 Strip isi 10 Kapsul"
+ 1 Strip isi 10 Kapsul";64
 65;"1 Box isi 3 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";65
 66;"1 Box isi 3 Strip
- 1 Strip isi 6 Tablet"
+ 1 Strip isi 6 Tablet";66
 67;"1 Box isi 30 Ampul
- 1 Ampul isi 10 ml"
-68;1 Box isi 30 Sachet
+ 1 Ampul isi 10 ml";67
+68;1 Box isi 30 Sachet;68
 69;"1 Box isi 4 Blister
- 1 Blister isi 15 Tablet"
+ 1 Blister isi 15 Tablet";69
 70;"1 Box isi 4 Strip
- 1 Strip isi 5 Ampul"
-71;1 Box isi 5 Sachet
-72;1 Box isi 5 Strip
+ 1 Strip isi 5 Ampul";70
+71;1 Box isi 5 Sachet;71
+72;1 Box isi 5 Strip;72
 73;"1 Box isi 5 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";73
 74;"1 Box isi 5 Strip
- 1 Strip isi 6 Tab"
+ 1 Strip isi 6 Tab";74
 75;"1 Box isi 50 Botol
- 1 botol isi 15 ml"
+ 1 botol isi 15 ml";75
 76;"1 Box isi 50 Strip
- 1 Strip isi 2 Tablet"
-77;1 Box isi 50 Supp
-78;1 box isi 500 gr
+ 1 Strip isi 2 Tablet";76
+77;1 Box isi 50 Supp;77
+78;1 box isi 500 gr;78
 79;"1 Box isi 6 Strip
- 1 Strip isi 10 Tablet"
+ 1 Strip isi 10 Tablet";79
 80;"1 Box isi 6 Strip
- 1 Strip isi 5 tablet"
+ 1 Strip isi 5 tablet";80
 81;"1 Box isi Amplop
- 1 Amplop isi 4 Tab"
-82;1 Tablet isi 2 mg
-83;1 Tube 5 gr
-84;1 Tube isi 10 gr
-85;1 Tube isi 15 gr
-86;1 Tube isi 20 gr
-87;1 Tube isi 3.5 gr
-88;1 Tube isi 30 gr
-89;1 Tube isi 35 gr
-90;1 Tube isi 5 gr
-91;1 Tube isi 60 gr
-92;1 Vial isi 5 gr
-93;1 Vial isi 750 mg
-94;1@ 10 Sachet
-95;1@1 Sachet
-96;per pcs
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
-;
+ 1 Amplop isi 4 Tab";81
+82;1 Tablet isi 2 mg;82
+83;1 Tube 5 gr;83
+84;1 Tube isi 10 gr;84
+85;1 Tube isi 15 gr;85
+86;1 Tube isi 20 gr;86
+87;1 Tube isi 3.5 gr;87
+88;1 Tube isi 30 gr;88
+89;1 Tube isi 35 gr;89
+90;1 Tube isi 5 gr;90
+91;1 Tube isi 60 gr;91
+92;1 Vial isi 5 gr;92
+93;1 Vial isi 750 mg;93
+94;1@ 10 Sachet;94
+95;1@1 Sachet;95
+96;per pcs;96
+97;1 Botol 350 ml;97
+98;1 Botol is 30 ml;98
+99;1 Botol isi 100 gr;99
+100;1 botol isi 1000 ml;100
+101;1 Botol isi 15 gr;101
+102;1 Botol isi 15 ml;102
+103;1 Botol isi 495 ml;103
+104;1 Botol isi 500 ml;104
+105;1 Botol isi 750 ml;105
+106;1 Box 100 Pcs;106
+107;1 box 12 pcs;107
+108;1 Box 24 pcs;108
+109;1 Box isi 1 Pcs;109
+110;1 Box isi 1 roll;110
+111;1 Box isi 10 roll;111
+112;1 box isi 100 pcs;112
+113;1 Box isi 12 Pcs;113
+114;1 Box isi 16 pcs;114
+115;1 Box isi 16 Pouch;115
+116;1 Box isi 20 pcs;116
+117;1 box isi 200 pcs;117
+118;1 box isi 25 count;118
+119;1 Box isi 25 Sacet;119
+120;1 Box isi 25 Strip;120
+121;1 Box isi 36 Pcs;121
+122;1 Box isi 50 Lembar;122
+123;1 Box isi 50 pcs;123
+124;1 Box isi 500 ml;124
+125;1 box isis 36 pcs;125
+126;1 Dus isi 50 pcs;126
+127;1 Jerigen isi 5 L;127
+128;1 Pack 100 pcs;128
+129;1 pack isi 1 Pcs;129
+130;1 Pack isi 12 pot;130
+131;1 pack isi 20 pcs;131
+132;1 pack isi 50 roll;132
+133;1 Pcs;133
+134;1 Pot isi 15 gr;134
+135;1 set;135
+136;1 Tube isi 80gram;136
+137;1@10 Strip;137
+138;1@200 pcss;138
+139;1@25 Strip;139
+140;1@50 pcs;140
+141;12.5;141
+142;Mito baby;142
+143;Paseo;143
+144;Sacet;144
+145;1@25 ml;145
+146;1@50 ml;146
+147;1@25 pcs;147
+148;1 Botol isi 5000 ml;148
+149;1@100 pcs;149
+150;-;150

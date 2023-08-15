@@ -47,21 +47,26 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Ukuran</label>
+                                            <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran">
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Harga</label>
-                                            <input type="text" class="form-control" name="harga" id="harga" >
+                                            <input type="text" class="form-control" name="harga" id="harga" placeholder="Masukkan Harga">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Distributor</label>
+                                            <input type="text" class="form-control" name="distributor" id="distributor" placeholder="Masukkan Distributor">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Komposisi Produk Kesehatan</label>
-                                            <textarea class="form-control" name="komposisi" id="komposisi" cols="50" rows="5"></textarea>
-                                        </div>
-                                    </div>
 
                                     <div class="col-12"><br>
                                         <div class="row ">

@@ -48,6 +48,13 @@
                                     
                                     <div class="col-md-12">
                                         <div class="form-group">
+                                            <label for="">Ukuran</label>
+                                            <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran" value="{{$produk->ukuran}}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
                                             <label for="komposisi_obat">Harga</label>
                                             <input type="text" class="form-control" name="harga" id="harga" value="{{$produk->harga}}">
                                         </div>
@@ -55,8 +62,8 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="komposisi_obat">Komposisi Produk Kesehatan</label>
-                                            <textarea class="form-control" name="komposisi" id="komposisi" cols="50" rows="5">{{ $produk['komposisi'] }}</textarea>
+                                            <label for="">Distributor</label>
+                                            <input type="text" class="form-control" name="distributor" id="distributor" placeholder="Masukkan Distributor" value="{{$produk->distributor}}">
                                         </div>
                                     </div>
 

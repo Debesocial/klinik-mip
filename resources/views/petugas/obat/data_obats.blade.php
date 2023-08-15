@@ -48,11 +48,15 @@
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
                             <th>Nama</th>
+                            <th>Distributor</th>
                             <th>Golongan</th>
                             <th>Satuan</th>
                             <th>Bobot</th>
+                            <th>Sediaan</th>
                             <th>Harga</th>
                             <th>Komposisi</th>
+                            <th>Antibiotik</th>
+                            <th>E. Sedatif</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -63,11 +67,19 @@
                                 <br>{{ Carbon\Carbon::parse($ob->created_at)->format('H:i:s') }}
                             </td> --}}
                             <td>{{ $ob->nama_obat}}</td>
+                            <td>{{$ob->distributor}}</td>
                             <td class="text-center">{{ $ob->golongan_obat->nama_golongan_obat }}</td>
                             <td class="text-center">{{ $ob->satuan_obat->satuan_obat }}</td>
                             <td class="text-center">{{ $ob->bobot_obat->bobot_obat }}</td>
+                            <td class="text-center">{{$ob->sediaan_obat->singkatan}}</td>
                             <td class="text-center">Rp. {{ uang($ob->harga)??'-' }}</td>
                             <td>{{ $ob->komposisi_obat }}</td>
+                            <td>
+                                {!! $ob->is_antibiotik == 1 ? '<div class="text-center"><i class="fas fa-check text-primary"></i></div>': '<div class="text-center"><i class="fas fa-times text-danger"></i></div>' !!}
+                            </td>
+                            <td>
+                                {!! $ob->is_sedatif == 1 ? '<div class="text-center"><i class="fas fa-check text-primary"></i></div>': '<div class="text-center"><i class="fas fa-times text-danger"></i></div>' !!}
+                            </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/ubah/obats/{{ $ob->id }}" class="btn btn-outline-secondary" title="Ubah data obat/alkes"><i class="bi bi-pencil-square"></i></a>

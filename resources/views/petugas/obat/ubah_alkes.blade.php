@@ -58,7 +58,12 @@
                                             </select>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Ukuran</label>
+                                            <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran" value="{{$alkes->ukuran}}">
+                                        </div>
+                                    </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Harga</label>
@@ -66,11 +71,10 @@
                                             
                                         </div>
                                     </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="komposisi_obat">Komposisi/Keterangan Alat atau Bahan Kesehatan</label>
-                                            <textarea class="form-control" name="komposisis" id="komposisis" cols="50" rows="5">{{ $alkes['komposisis'] }}</textarea>
+                                            <label for="">Distributor</label>
+                                            <input type="text" class="form-control" name="distributor" id="distributor" placeholder="Masukkan Distributor" value="{{$alkes->distributor}}">
                                         </div>
                                     </div>
 

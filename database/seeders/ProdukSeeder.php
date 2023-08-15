@@ -23,10 +23,11 @@ class ProdukSeeder extends Seeder
             if (!$firstline) {
                 Produk::create([
                     "nama_produk" => $data['0'],
-                    "satuan_obat_id" => $data['2'],
-                    "bobot_obat_id" => $data['4'],
-                    "komposisi" => $data['5'],
-                    "harga" => $data['6'],
+                    "satuan_obat_id" => $data['1'],
+                    "ukuran" => $data['2'],
+                    "bobot_obat_id" => $data['3'],
+                    "distributor" => $data['4'],
+                    "harga" => $data['5'],
                 ]);    
             }
             $firstline = false;

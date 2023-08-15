@@ -49,11 +49,12 @@
                         <tr>
                             {{-- <th>Tanggal dibuat</th> --}}
                             <th>Nama </th>
+                            <th>Distributor</th>
                             <th>Golongan </th>
                             <th>Satuan </th>
                             <th>Bobot </th>
+                            <th>Ukuran</th>
                             <th>Harga </th>
-                            <th>Komposisi </th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -64,11 +65,12 @@
                                 <br>{{ Carbon\Carbon::parse($al->created_at)->format('H:i:s') }}
                             </td> --}}
                             <td>{{ $al->nama_alkes }}</td>
-                            <td class="text-center">{{ $al->golongan_alkes->golongan_alkes }}</td>
-                            <td class="text-center">{{ $al->satuan_obat->satuan_obat }}</td>
-                            <td class="text-center">{{ $al->bobot_obat->bobot_obat }}</td>
-                            <td class="text-center">Rp. {{ uang($al->harga)??'-' }}</td>
-                            <td>{{ $al->komposisis }}</td>
+                            <td>{{$al->distributor}}</td>
+                            <td >{{ $al->golongan_alkes->golongan_alkes }}</td>
+                            <td >{{ $al->satuan_obat->satuan_obat }}</td>
+                            <td >{{ $al->bobot_obat->bobot_obat }}</td>
+                            <td>{{ $al->ukuran }}</td>
+                            <td >Rp. {{ uang($al->harga)??'-' }}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                     <a href="/ubah/alkes/{{ $al->id }}" class="btn btn-outline-secondary" title="Ubah data alkes"><i class="bi bi-pencil-square"></i></a>

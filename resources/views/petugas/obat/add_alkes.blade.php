@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" action="/add/alkes"  onsubmit="showLoader()" method="post">
+                        <form class="form" action="/add/alkes"  onsubmit="showLoader()" method="post" autocomplete="off">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -48,6 +48,7 @@
                                             </select>
                                         </div>
                                     </div>
+                                    
 
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -60,12 +61,23 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Ukuran</label>
+                                            <input type="text" class="form-control" name="ukuran" id="ukuran" placeholder="Masukkan Ukuran">
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="">Harga</label>
-                                            <input type="text" class="form-control" name="harga" id="harga" >
-                                            
+                                            <input type="text" class="form-control" name="harga" id="harga" placeholder="Masukkan Harga">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="">Distributor</label>
+                                            <input type="text" class="form-control" name="distributor" id="distributor" placeholder="Masukkan Distributor">
                                         </div>
                                     </div>
                                     <div class="col-md-12">

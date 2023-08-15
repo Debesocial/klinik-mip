@@ -20,7 +20,8 @@ class CreateProduksTable extends Migration
             $table->string('harga')->nullable();
             $table->foreignId('satuan_obat_id')->constrained();
             $table->foreignId('bobot_obat_id')->constrained();
-            $table->text('komposisi')->nullable();
+            $table->string('ukuran')->nullable();
+            $table->string('distributor')->nullable();
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->foreign('created_by')->references('id')->on('users');

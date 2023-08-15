@@ -27,11 +27,12 @@ class AlkesSeeder extends Seeder
             if (!$firstline) {
                 Alkes::create([
                     "nama_alkes" => $data['0'],
-                    "golongan_alkes_id" => $data['2'],
-                    "satuan_obat_id" => $data['4'],
-                    "bobot_obat_id" => $data['6'],
-                    "komposisis" => $data['7'],
-                    "harga" => $data['8'],
+                    "golongan_alkes_id" => $data['1'],
+                    "satuan_obat_id" => $data['2'],
+                    "ukuran" => $data['3'],
+                    "bobot_obat_id" => $data['4'],
+                    "distributor" => $data['5'],
+                    "harga" => $data['6'],
                 ]);    
             }
             $firstline = false;
