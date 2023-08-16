@@ -611,7 +611,7 @@
             linear: true,
             animation: true
         })
-        stepper2.to(3);
+        
         select2_alat = $('select#alat_kesehatan').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
@@ -765,17 +765,6 @@
     </script>
     <script>
         function lanjut3() {
-            // validated3 = true;
-            // if (tindakan.length != 0) {
-            //     $('#tindakan_kosong').hide();
-            // } else {
-            //     $('#tindakan_kosong').show();
-            //     validated3 = false;
-            // }
-
-        
-            // if (validated3) {
-            // }
             if (validasiFile(2048, 'persetujuan_tindakan')) {
                 stepper2.next();
             }
