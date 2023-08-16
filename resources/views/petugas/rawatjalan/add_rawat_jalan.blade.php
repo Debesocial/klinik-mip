@@ -335,13 +335,16 @@
                                                     </select>
                                                     {!! validasi('Nama') !!}
                                                 </div>
-                                                <select name="" id="temp_alat_kesehatan" class="form-select" hidden> 
-                                                    <option value="" selected disabled>Pilihi alat kesehatan </option>
-                                                    @foreach ($alatkesehatan as $alat)
-                                                        <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
+                                                <div id="temp_alat_kesehatan" hidden>
+                                                    <select name=""  class="form-select"> 
+                                                        <option value="" selected disabled>Pilihi alat kesehatan </option>
+                                                        @foreach ($alatkesehatan as $alat)
+                                                            <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
                                                 <div class="mb-2" id="alkes">
                                                     <div class="row" id="field_alkes">
                                                         <div class="col-7">
@@ -360,7 +363,7 @@
                                                             <input type="number" name="" id="jumlah_pengguna" class="form-control" value=1 min=1>
                                                             {{-- {!! validasi('Jumlah Penggunaan') !!} --}}
                                                         </div>
-                                                        <div class="col-2 my-auto" id="tombol_tambah_alat">
+                                                        <div class="col-2 d-flex align-items-end pb-2" id="tombol_tambah_alat">
                                                             <button type="button" class="btn btn-primary btn-sm py-0 px-1" onclick="tambahAlat()"><i class="bi bi-plus"></i></button>
                                                         </div>
                                                     </div>
@@ -393,7 +396,6 @@
                                                             <tr>
                                                                 <th>Tindakan</th>
                                                                 <th>Alat Kesehatan</th>
-                                                                <th>Jumlah Penggunaan</th>
                                                                 <th>Keterangan</th>
                                                                 <th></th>
                                                             </tr>
@@ -620,6 +622,11 @@
             selectionCssClass: 'select2--small',
             dropdownCssClass: 'select2--small',
         });
+        select2_tindakan =$('select#nama_tindakan').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
         var selectedPasien = "{{$selected_pasien}}";
         $(document).ready(function() {
             // $('select').select2({
@@ -784,6 +791,7 @@
         function addTindakan() {
             var temp = {};
             var validated = true;
+            
             id_tindakan.forEach(id => {
                 form = $('#' + id)
                 if (form.val() == null || form.val() == '') {
@@ -796,6 +804,14 @@
                     temp[id] = form.val();
                 }
             });
+            let dataAlkes = $('[id^="alat_kesehatan"]');
+            let selectedAlkes = [];
+            dataAlkes.each(function(){
+                if ($(this).val()!=null) {
+                    selectedAlkes.push({id:$(this).val(), jlh:$(this).parent().siblings('.col-3').children('input').val()});
+                }
+            })
+            temp['alat_kesehatan'] = selectedAlkes;
             if (validated == true) {
                 tindakan.push(temp)
                 drawformTindakan();
@@ -806,24 +822,34 @@
         function clearformTindakan() {
             id_tindakan.forEach(id => {
                 form = $('#' + id);
-                if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
 
-                    form.val('').trigger('change');
+                if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
+                    form.val(null).trigger('change');
+                }else if (id=='jumlah_pengguna') {
+                    form.val('1').trigger('change');
+                }else{
+                    form.val('');
                 }
+                
                 form.removeClass('is-valid');
-                form.val('');
+                $('#field_alkes').siblings().remove();
             })
         }
 
         function drawformTindakan() {
             html = ``;
+            // console.log(tindakan);
             tindakan.forEach((data, key) => {
-                var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
+                let listnamaalkes =`<ol class="ps-2">`;
+                data.alat_kesehatan.forEach(id_alkes => {
+                    let namaalkes = alkes.find(nama => nama.id == id_alkes.id);
+                    listnamaalkes += `<li><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + ` <i class="bi bi-box-arrow-up-right"></i></a> <b>${id_alkes.jlh}</b> ${namaalkes.satuan_obat.satuan_obat}</li>`;
+                });
+                listnamaalkes += `</ol>`;
                 var tin = allTindakan.find(d => d.id == data.nama_tindakan);
                 html += `<tr> 
                         <td>` + tin.nama_tindakan + `</td>
-                        <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
-                        <td>` + data.jumlah_pengguna + `</td>
+                        <td>${listnamaalkes}</td>
                         <td>` + data.keterangan + `</td>
                         <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
@@ -853,12 +879,57 @@
                 form = $('#'+idt);
                 if (idt!='alat_kesehatan') {
                     form.val(temp[idt]);
+                    if (idt == 'nama_tindakan') {
+                        form.trigger('change')
+                    }
                 } else {
-                    form.children().removeAttr('selected');
-                    select2_alat.val(temp.alat_kesehatan).trigger('change');
+                    drawAlat(temp.alat_kesehatan);
+                    // form.children().removeAttr('selected');
+                    // select2_alat.val(temp.alat_kesehatan).trigger('change');
                 }
             });
         }
+
+        let countAlkes = 1;
+        function tambahAlat(data=null) {
+            let newSelect = $('#temp_alat_kesehatan').clone();
+            newSelect.removeAttr('hidden');
+            newSelect.children('select').attr('id', 'alat_kesehatan_'+countAlkes);
+            let deleteButton = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteFieldAlkes(this)"><i class="bi bi-trash"></i></button>`;
+            html = `<div class="row mt-1">
+                <div class="col-7">${newSelect.html()}</div>
+                <div class="col-3"><input type="number" name="" id="jumlah_pengguna_${countAlkes}" class="form-control" value=1 min=1></div>
+                <div class="col-2">${deleteButton}</div>
+                </div>`;
+            $('#alkes').append(html);
+            $('#alat_kesehatan_'+countAlkes).select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            if (data!=null) {
+                $('#alat_kesehatan_'+countAlkes).val(data.id).trigger('change');
+                $('#jumlah_pengguna_'+countAlkes).val(data.jlh);
+            }
+            countAlkes++;
+        }
+
+        function deleteFieldAlkes(param) {
+            let row = $(param).parentsUntil('div.row').parent();
+            row.remove();
+            // console.log(row);
+        }
+
+        function drawAlat(data) {
+            data.forEach((d,i) => {
+                if (i==0) {
+                    $('#alat_kesehatan').val(d.id).trigger('change');
+                }else{
+                    tambahAlat(d);
+                }
+            });
+        }
+
     </script>
     <script>
         function lanjut4() {
@@ -900,6 +971,7 @@
 
         function drawformResep() {
             html = ``;
+            
             resep.forEach((data, key) => {
                 namaobat = obat.find(ob => ob.id == data.nama_obat); 
                 satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
@@ -992,22 +1064,6 @@
         }
         function deleteField(params) {
             $(params).parentsUntil('#dok').remove();
-        }
-    </script>
-
-    <script>
-        let countAlkes = 1;
-        function tambahAlat() {
-            let fieldAlkes = $('#field_alkes');
-            let newSelect = $('#temp_alat_kesehatan').clone();
-            newSelect.removeAttr('hidden');
-            let newInput = fieldAlkes.clone();
-            html = `<button type="button" class="btn btn-outline-danger btn-sm border-0" onclick="deleteFieldAlkes(this)"><i class="bi bi-trash"></i></button>`;
-            newInput.children('#tombol_tambah_alat').html(html);
-            newInput.children('div.col-7').children().not('label').remove();
-            newInput.children('div.col-7').append(newSelect);
-            // newInput.children('div.col-7').children('select#alat_kesehatan_'+countAlkes).select2().val('').trigger('change');
-            newInput.appendTo('#alkes')
         }
     </script>
 

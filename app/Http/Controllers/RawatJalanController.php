@@ -41,7 +41,7 @@ class RawatJalanController extends Controller
         $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $tindakan = Tindakan::get();
