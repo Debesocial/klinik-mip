@@ -38,7 +38,6 @@ class RawatJalanController extends Controller
     public function addrawatjalan(Request $request)
     {
         $pasien_id = Pasien::with(['perusahaan', 'divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->where('id_rekam_medis', '!=', 'null')->get();
-        $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
         $alatkesehatan = Alkes::where('golongan_alkes_id', '!=', 5)->with('satuan_obat')->get();
@@ -46,7 +45,7 @@ class RawatJalanController extends Controller
         $obat = Obat::get();
         $tindakan = Tindakan::get();
         $selected_pasien = $request->user;
-        return view('petugas.rawatjalan.add_rawat_jalan', compact('tindakan', 'selected_pasien', 'pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
+        return view('petugas.rawatjalan.add_rawat_jalan', compact('tindakan', 'selected_pasien', 'pasien_id', 'obat', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     public function tambahrawatjalan(Request $request)
@@ -74,7 +73,7 @@ class RawatJalanController extends Controller
 
         $data['dokumen'] = json_encode($dokumen);
         $data['persetujuan_tindakan'] = $persetujuan;
-        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
+        $data['nama_penyakit_id'] = $request->nama_penyakit_id;
         $save = RawatJalan::create($data);
         if ($save) {
             return redirect("/view/rawat/jalan/$save->id")->with('message', 'Berhasil Menambah Pasien Rawat Jalan');
@@ -97,16 +96,15 @@ class RawatJalanController extends Controller
     {
         $rawat_jalan = RawatJalan::find($id);
         $rawat_jalan->load(['pasien', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'pasien.obatAlergi']);
-        $nama_penyakit = NamaPenyakit::get();
         $klasifikasi = KlasifikasiPenyakit::get();
         $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::where('golongan_alkes_id', '!=', 5)->get();
+        $alatkesehatan = Alkes::with(['satuan_obat'])->where('golongan_alkes_id', '!=', 5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $tindakan = Tindakan::get();
 
 
-        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('tindakan', 'rawat_jalan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('tindakan', 'rawat_jalan', 'obat', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
     }
 
     function changerawatjalan(Request $request, $id)

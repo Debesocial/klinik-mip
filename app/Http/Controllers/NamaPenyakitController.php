@@ -121,70 +121,17 @@ class NamaPenyakitController extends Controller
         return redirect('/nama/penyakit')->with('message', 'Berhasil Mengubah Diagnosa!');
     }
 
+    function cariPenyakit(Request $request) {
+        $keyword = $request->input('keyword');
+        if ($keyword) {
+            $data = NamaPenyakit::with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->where('primer', 'like', '%'.$keyword.'%')->limit(100)->get();
+        }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        if ($data->count() > 0 ) {
+           $result = ['code' => 200, 'data'=>$data]; 
+        }else{
+            $result = ['code' => 404, 'msg'=>'Tidak ada hasil dengan kata kunci "'.$keyword.'"']; 
+        }
+        return json_encode($result);
     }
 }

@@ -269,8 +269,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
+                                    <div class="row px-3">
+                                        {{-- <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
                                             <small class="text-warning"><b>**Penyakit primer adalah penyakit yang dipilih pertama</b></small>
                                             <select class="js-states form-control"  name="nama_penyakit_id[]" multiple="multiple" id="nama_penyakit_id">
@@ -280,18 +280,27 @@
                                                 @endforeach
                                             </select>
                                             {!!validasi('Nama penyakit')!!}
-                                        </div>
+                                        </div> --}}
+                                        
                                     </div>
-                                    <div class="row">
-                                        <h6>Diagnosa Penyakit</h6>
+                                    <input type="hidden" name="nama_penyakit_id" id="nama_penyakit_id">
+                                    <div class="text-danger" id="penyakit_kosong" hidden>Diagnosa harus diisi</div>
+                                    <div class="border p-3" id="tabel_penyakit">
+                                        <div class="row">
+                                            <div class="col-6"><h6>Diagnosa Penyakit</h6></div>
+                                        <div class="col-6 text-end">
+                                            <button type="button" class="btn btn-sm btn-success" onclick="modalPilihPenyakit()"><small><i class="bi bi-plus-circle"></i> Tambah Diagnosa</small></button>
+                                        </div>
+                                        </div>
                                         <div class="table-responsive">
-                                            <table class="table table-borderless table-hover">
+                                            <table class="table table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>No.</th>
                                                         <th>Penyakit</th>
-                                                        <th>Sub-Klasifikasi</th>
-                                                        <th>Klasifikasi</th>
+                                                        <th>Blog</th>
+                                                        <th>Category</th>
+                                                        <th>Chapter</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="body-penyakit">
@@ -559,8 +568,9 @@
                                                     <tr>
                                                         <th>No.</th>
                                                         <th>Penyakit</th>
-                                                        <th>Sub-Klasifikasi</th>
-                                                        <th>Klasifikasi</th>
+                                                        <th>Blok</th>
+                                                        <th>Category</th>
+                                                        <th>Chapter</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="_body-penyakit">
@@ -590,7 +600,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalRawatInap2" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modalRawatInap2Label" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalRawatInap2_title">Modal title</h5>
@@ -612,6 +622,11 @@
             animation: true
         })
         
+        select2_pasien = $('select#select_pasien_id').select2({
+            theme: "bootstrap-5",
+            selectionCssClass: 'select2--small',
+            dropdownCssClass: 'select2--small',
+        });
         select2_alat = $('select#alat_kesehatan').select2({
             theme: "bootstrap-5",
             selectionCssClass: 'select2--small',
@@ -643,11 +658,7 @@
                 $(this).append($element);
                 $(this).trigger("change");
             });
-            $('#nama_penyakit_id').select2({
-                theme: "bootstrap-5",
-                selectionCssClass: 'select2--small',
-                dropdownCssClass: 'select2--small',
-            })
+
 
             $('input').keyup(function(event) {
                 if ($(this).hasClass('is-invalid')) {
@@ -699,7 +710,7 @@
         function lanjut2() {
             var validated = true;
             // console.log($('#nama_penyakit_id').val());
-            var inputs = ['tanggal_berobat', 'nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'laju_pernapasan', 'status_lokalis'];
+            var inputs = ['tanggal_berobat','anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per', 'saturasi_oksigen', 'denyut_nadi', 'laju_pernapasan', 'status_lokalis'];
             inputs.forEach(input => {
                 var value_input = $('[name*="' + input + '"]').val();                    
                 var text_input = $('[name*="' + input + '"]').children('option:selected').text();                    
@@ -722,6 +733,14 @@
                     setResult(input, text_input);
                 }
             });
+            if($('#nama_penyakit_id').val()==null||$('#nama_penyakit_id').val()==''||$('#nama_penyakit_id').val()=='[]'){
+                validated = false;
+                $('#penyakit_kosong').prop('hidden', false);
+                $('#tabel_penyakit').addClass('border-danger');
+            }else{
+                $('#penyakit_kosong').prop('hidden', true);
+                $('#tabel_penyakit').removeClass('border-danger');
+            }
             var files = document.getElementsByName("dokumen[]");
             if (validated === true && validasiManyFile(20000,files)) {
                 stepper2.next()
@@ -735,32 +754,60 @@
             $('#_'+id).text(': '+value);
         }
 
-        var semuaPenyakit = {!! json_encode($nama_penyakit) !!};
+        var semuaPenyakit = [];
         var subKlasifikasi = {!! json_encode($subKlasifikasi) !!};
         var klasifikasi = {!! json_encode($klasifikasi) !!};
+        let selectedPenyakit = [];
+        let selectedIdPenyakit = [];
         function drawTableDiagnodsa() {
-            var value = $('#nama_penyakit_id').val();
-            var html = ``;
             var n=1;
-            value.forEach((val,index) => {
-                penyakit = semuaPenyakit.find(data => data.id == val);
-                sub = subKlasifikasi.find(data => data.id == penyakit.sub_klasifikasi_id);
-                klas = klasifikasi.find(data => data.id == sub.klasifikasi_penyakit_id);
-                // console.log(penyakit);
-                html += `<tr>
-                    <td>`+n+`</td>
-                    <td>`+penyakit.primer;
-                if (index == 0) {
-                    html += ` <span class="badge bg-success">Primer</span>`;
-                }        
-                html+=`</td>
-                    <td>`+ sub.nama_penyakit +`</td>
-                    <td>`+ klas.klasifikasi_penyakit +`</td>
-                    </tr>`;
-                    n++;
-            });
-            $('#body-penyakit').html(html);
-            $('#_body-penyakit').html(html);
+            let html =``;
+            if (Array.isArray(selectedPenyakit)) {
+                selectedPenyakit.forEach((val,index) => {
+                    penyakit = val;
+                    sub = val.sub_klasifikasi.nama_penyakit;
+                    cat = val.category.nama_penyakit;
+                    klas = val.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit;
+                    // console.log(penyakit);
+                    html += `<tr>
+                        <td>`+n+`</td>
+                        <td>`+penyakit.primer;
+                    if (index == 0) {
+                        html += ` <span class="badge bg-success">Primer</span>`;
+                    }        
+                    html+=`</td>
+                        <td>`+ sub+`</td>
+                        <td>`+ cat +`</td>
+                        <td>`+ klas+`</td>
+                        <td><b class="text-danger" style="cursor:pointer" onclick="deletePenyakit(${val.id})"><i class="bi bi-trash"></i></b></td>
+                        </tr>`;
+                        n++;
+                });
+                $('#nama_penyakit_id').val(JSON.stringify(selectedIdPenyakit));
+                $('#body-penyakit').html(html);
+                $('#_body-penyakit').html(html);
+            }
+        }
+
+        function modalPilihPenyakit() {
+            let url = '/modal-penyakit';
+            let modal = $('#modalRawatInap2');
+            
+            tampilModalRawatInap2(url, 'Pilih Penyakit');
+        }
+
+        function addPenyakit(data) {
+            selectedPenyakit.push(data);
+            selectedIdPenyakit.push(data.id);
+            
+            drawTableDiagnodsa();
+            hideModal('modalRawatInap2');
+        }
+
+        function deletePenyakit(id) {
+            selectedPenyakit = selectedPenyakit.filter(data => data.id != id);
+            selectedIdPenyakit = selectedIdPenyakit.filter(data => data != id);
+            drawTableDiagnodsa();
         }
     </script>
     <script>
@@ -768,8 +815,6 @@
             if (validasiFile(2048, 'persetujuan_tindakan')) {
                 stepper2.next();
             }
-
-
         }
 
         var alkes = @json($alatkesehatan);
@@ -1031,6 +1076,13 @@
             var request = $.ajax({
                 method: 'GET',
                 url: url,
+                beforeSend: function() {
+                    html = `<div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+                        $('#modalRawatInap2_body').html(html);
+                },
             });
             request.done(function(html) {
                 $('#modalRawatInap2_body').html(html);
@@ -1055,6 +1107,7 @@
             $(params).parentsUntil('#dok').remove();
         }
     </script>
+
 
     <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
 @stop

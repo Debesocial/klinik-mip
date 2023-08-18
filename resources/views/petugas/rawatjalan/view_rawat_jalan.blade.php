@@ -135,7 +135,8 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Penyakit</th>
-                                    <th>Sub-Klasifikasi</th>
+                                    <th>Blok</th>
+                                    <th>Category</th>
                                     <th>Klasifikasi</th>
                                 </tr>
                             </thead>
@@ -148,6 +149,7 @@
                                         <td class="text-center">{{ $loop->iteration }}</td>
                                         <td>{{ $penyakit->primer }}</td>
                                         <td>{{ $penyakit->sub_klasifikasi->nama_penyakit }}</td>
+                                        <td>{{ $penyakit->category->nama_penyakit }}</td>
                                         <td>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}
                                         </td>
                                     </tr>
@@ -272,6 +274,13 @@
             var request = $.ajax({
                 method: 'GET',
                 url: url,
+                beforeSend: function() {
+                    html = `<div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+                        $('#modalRawatInap2_body').html(html);
+                },
             });
             request.done(function(html) {
                 $('#modalRawatInap2_body').html(html);

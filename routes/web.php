@@ -43,6 +43,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\TandaVitalController;
 use App\Models\IzinIstirahat;
+use App\Models\NamaPenyakit;
 use App\Models\PermintaanMakanan;
 use App\Models\RawatInap;
 use App\Models\RawatJalan;
@@ -294,11 +295,11 @@ Route::group(['middleware' => ['auth']], function () {
         //     $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations', '--seed'=>''));
         //     return $migrate;
         // });
-        Route::get('/migrate', function(Request $request){
-            $path = $request->input('path');
-            $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations/'.$path));
-            return $migrate;
-        });
+        // Route::get('/migrate', function(Request $request){
+        //     $path = $request->input('path');
+        //     $migrate =  Artisan::call('migrate:refresh', array('--path' => 'database/migrations/'.$path));
+        //     return $migrate;
+        // });
         // Route::get('/seed', function(Request $request){
         //     $class = $request->input('class');
         //     $migrate =  Artisan::call('db:seed '.$class);
@@ -332,8 +333,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/add/level', [LevelController::class, 'tambahlevel'])->name('superadmin.tambahlevel');
         Route::get('/ubah/level/{id}', [LevelController::class, 'ubahlevel'])->name('superadmin.ubahlevel');
         Route::post('/ubah/level/{id}', [LevelController::class, 'changelevel'])->name('superadmin.changelevel');
-
-
 
         Route::get('/jabatan', [JabatanController::class, 'jabatan'])->name('superadmin.jabatan');
         Route::get('/add/jabatan', [JabatanController::class, 'addjabatan'])->name('superadmin.addjabatan');
@@ -530,3 +529,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth', 'checkRole:perawat']], function () {
     Route::get('/perawat/daftar', [PerawatController::class, 'daftar'])->name('perawat.daftar');
 });
+
+Route::get('/modal-penyakit', function(){
+    return view('component.pilih_penyakit');
+});
+Route::get('/cari-penyakit', [NamaPenyakitController::class, 'cariPenyakit']);
