@@ -76,18 +76,20 @@ function diffDay($awal, $akhir)
     return $diff . ' hari';
 }
 
-function diffDay2($awal,$akhir) {
+function diffDay2($awal, $akhir)
+{
     $date1 = new DateTime($awal);
     $date2 = new DateTime($akhir);
     $interval = $date1->diff($date2);
 
-    if($interval->d == 0){
-        return $interval->h .' Jam';
+    if ($interval->d == 0) {
+        return $interval->h . ' Jam';
     }
-    return $interval->d . ' Hari '. $interval->h .' Jam'; 
+    return $interval->d . ' Hari ' . $interval->h . ' Jam';
 }
 
-function mandatory() {
+function mandatory()
+{
     return '<b class="color-red">*</b>';
 }
 
@@ -294,20 +296,153 @@ function cardLaporan(array $data)
     return $htmls;
 }
 
-function uang($number) {
-    return number_format((float)$number,0,',','.');
+function uang($number)
+{
+    return number_format((float)$number, 0, ',', '.');
 }
 
 function sediaan()
 {
     $data = [
-        ['id' => 1, 'singkatan' => 'Tablet', 'kepanjangan'=>'Tablet'],
-        ['id' => 2, 'singkatan' => 'Sirup', 'kepanjangan'=>'Sirup'],
-        ['id' => 3, 'singkatan' => 'Supp', 'kepanjangan'=>'Supositoria'],
-        ['id' => 4, 'singkatan' => 'Amp', 'kepanjangan'=>'Ampul'],
-        ['id' => 5, 'singkatan' => 'Caps', 'kepanjangan'=>'Capsul'],
-        ['id' => 6, 'singkatan' => 'Grag', 'kepanjangan'=>'Gragel'],
+        ['id' => 1, 'singkatan' => 'Tablet', 'kepanjangan' => 'Tablet'],
+        ['id' => 2, 'singkatan' => 'Sirup', 'kepanjangan' => 'Sirup'],
+        ['id' => 3, 'singkatan' => 'Supp', 'kepanjangan' => 'Supositoria'],
+        ['id' => 4, 'singkatan' => 'Amp', 'kepanjangan' => 'Ampul'],
+        ['id' => 5, 'singkatan' => 'Caps', 'kepanjangan' => 'Capsul'],
+        ['id' => 6, 'singkatan' => 'Grag', 'kepanjangan' => 'Gragel'],
     ];
 
     return  $data;
+}
+
+function formTindakan()
+{
+    $html = '<div class="row mb-3">
+    <div class="col-md-6">
+        <label class="form-label" for="">Surat Persetujuan Tindakan Medis <small
+                class="text-warning"><b>**File maksimal berukuran 2MB</b></small></label>
+        <input type="file" name="persetujuan_tindakan" id="persetujuan_tindakan"
+            class="form-control">`' .
+        validasi('Ukuran file', 'terlalu besar')
+        . '</div>
+</div>
+<div class="border p-3 mb-3">
+    <input type="text" name="tindakan" id="tindakan" hidden>
+    <div class="row">
+        <div class="col-5">
+            <div class="row">
+                <div class="col my-auto">
+                    <div class="mb-2">
+                        <label for="" class="form-label">Nama Tindakan </label>
+                        <select name="" id="nama_tindakan" class="form-select">
+                            <option value="">Pilih Tindakan</option>
+                            @foreach ($tindakan as $tin)
+                                <option value="{{ $tin->id }}">
+                                    {{ $tin->nama_tindakan }}</option>
+                            @endforeach
+                        </select>' .
+        validasi('Nama')
+        . '</div>
+                    <div id="temp_alat_kesehatan" hidden>
+                        <select name="" class="form-select">
+                            <option value="" selected disabled>Pilihi alat kesehatan
+                            </option>
+                            @foreach ($alatkesehatan as $alat)
+                                <option value="{{ $alat->id }}">
+                                    {{ $alat->nama_alkes }}<small>({{ $alat->distributor }})</small>
+                                </option>
+                            @endforeach
+                        </select>
+
+                    </div>
+                    <div class="mb-2" id="alkes">
+                        <div class="row" id="field_alkes">
+                            <div class="col-7">
+                                <label for="" class="form-label">Nama Alat
+                                    Kesehatan </label>
+                                <select name="" id="alat_kesehatan"
+                                    class="form-select">
+                                    <option value="" selected disabled>Pilihi alat
+                                        kesehatan </option>
+                                    @foreach ($alatkesehatan as $alat)
+                                        <option value="{{ $alat->id }}">
+                                            {{ $alat->nama_alkes }}
+                                            <small>({{ $alat->distributor }})</small>
+                                        </option>
+                                    @endforeach
+                                </select>' .
+        validasi('Alat Kesehatan')
+        . '</div>
+                            <div class="col-3">
+                                <label for="" class="form-label">Jumlah </label>
+                                <input type="number" name="" id="jumlah_pengguna"
+                                    class="form-control" value=1 min=1>
+                            </div>
+                            <div class="col-2 d-flex align-items-end pb-2"
+                                id="tombol_tambah_alat">
+                                <button type="button"
+                                    class="btn btn-primary btn-sm py-0 px-1"
+                                    onclick="tambahAlat()"><i
+                                        class="bi bi-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="" class="form-label">Keterangan </label>
+                        <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>' .
+        validasi('Keterangan')
+        . '</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-1 my-auto">
+            <div class="mb-3 text-center">
+                <button type="button" class="btn btn-success"
+                    onclick="addTindakan()"><b> <i
+                            class="bi bi-arrow-right-circle"></i></b></button>
+            </div>
+        </div>
+        <div class="col-6 border">
+            <div class="row">
+                <div class="col py-3">
+
+                    <div class="table-responsive">
+                        <span id="tindakan_kosong" class="text-danger"
+                            style="display: none">Tindakan tidak
+                            boleh kosong</span>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Tindakan</th>
+                                    <th>Alat Kesehatan</th>
+                                    <th>Keterangan</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="body_tindakan">
+                                <tr>
+                                    <td colspan="5" style="height: 300px">
+                                        <h4 class="text-center"
+                                            style="color: rgba(0, 0, 0, 0.10)">
+                                            Isi tabel tindakan dengan memasukkan data di
+                                            form sebelah kiri.
+                                        </h4>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>';
+    return $html;
 }

@@ -15,10 +15,10 @@ class PenyakitSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-            KlasifikasiPenyakitSeeder::class,
-            SubKlasifikasiSeeder::class
-        ]);
+        // $this->call([
+        //     KlasifikasiPenyakitSeeder::class,
+        //     SubKlasifikasiSeeder::class
+        // ]);
         Schema::disableForeignKeyConstraints();
         NamaPenyakit::truncate();
         $csvFile = fopen(base_path("database/data/penyakit.csv"), "r");
@@ -30,7 +30,7 @@ class PenyakitSeeder extends Seeder
                     "sub_klasifikasi_id" => $data['1'],
                     "category_id" => $data['2'],
                     "pengertian" => $data['4'],
-                ]);    
+                ]);
             }
             $firstline = false;
         }

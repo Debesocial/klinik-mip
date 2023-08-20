@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alkes;
+use App\Models\AturanPakai;
+use App\Models\Dosis;
 use App\Models\HasilPemantauan;
 use App\Models\KlasifikasiPenyakit;
 use App\Models\NamaAlkes;
@@ -23,38 +25,35 @@ class RawatInapController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function viewrawatinap($id, $pos=1)
+    public function viewrawatinap($id, $pos = 1)
     {
         // $pasien = Pasien::find($id);
         $rawat_inap = RawatInap::find($id);
-        $rawat_inap->load(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'instruksidokter', 'instruksidokter.namapenyakit','instruksidokter.namapenyakitsekunder', 'pasien.obatAlergi']);
+        $rawat_inap->load(['pasien', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'instruksidokter', 'instruksidokter.namapenyakit', 'instruksidokter.namapenyakitsekunder', 'pasien.obatAlergi']);
         $nama_penyakit = NamaPenyakit::get();
-        $nama_penyakit->load(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit']);
+        $nama_penyakit->load(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit']);
         $pemantauan = HasilPemantauan::all();
 
 
-        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'pemantauan','pos'));
+        return view('petugas.rawatinap.view_rawat_inap', compact('rawat_inap', 'nama_penyakit', 'pemantauan', 'pos'));
     }
 
     public function daftarrawatinap()
     {
-        $rawat_inap = RawatInap::with(['pasien','pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'pasien.obatAlergi'])->get();
+        $rawat_inap = RawatInap::with(['pasien', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'pasien.obatAlergi'])->get();
 
         return view('petugas.rawatinap.daftar_rawat_inap', compact('rawat_inap'));
     }
 
     public function addrawatinap(Request $request)
     {
-        $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->where('id_rekam_medis', '!=', 'null')->get();
-        $nama_penyakit = NamaPenyakit::get();
-        $klasifikasi = KlasifikasiPenyakit::get();
-        $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $pasien_id = Pasien::with(['perusahaan', 'divisi', 'keluarga', 'jabatan', 'kategori', 'obatAlergi'])->where('id_rekam_medis', '!=', 'null')->get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id', '!=', 5)->with('satuan_obat')->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $tindakan = Tindakan::get();
         $selected_pasien = $request->user;
-        return view('petugas.rawatinap.add_rawat_inap', compact('tindakan','pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','selected_pasien'));
+        return view('petugas.rawatinap.add_rawat_inap', compact('tindakan', 'pasien_id', 'obat', 'alatkesehatan', 'satuanobat', 'selected_pasien'));
     }
 
     public function tambahrawatinap(Request $request)
@@ -69,7 +68,7 @@ class RawatInapController extends Controller
             foreach ($file as $val) {
                 $filename = time() . '_' . $val->getClientOriginalName();
                 $dokumen[] = $filename;
-                $val->move('pemeriksaan/rawatinap', $filename); 
+                $val->move('pemeriksaan/rawatinap', $filename);
             }
         }
         if ($request->hasFile('persetujuan_tindakan')) {
@@ -81,45 +80,49 @@ class RawatInapController extends Controller
         }
         $data['dokumen'] = json_encode($dokumen);
         $data['persetujuan_tindakan'] = $persetujuan;
-        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
+        $data['nama_penyakit_id'] = $request->nama_penyakit_id;
         $save = RawatInap::create($data);
         if ($save) {
             return redirect("/view/rawat/inap/$save->id")->with('message', 'Berhasil Menambah Pasien Rawat Inap');
         }
-
     }
 
     public function ubahrawatinap($id)
     {
         $rawat_inap = RawatInap::find($id);
-        if ($rawat_inap->berakhir_rawat!=null) {
+        if ($rawat_inap->berakhir_rawat != null) {
             return redirect("/view/rawat/inap/" . $id)->with('warning', 'Rawat inap telah diselesaikan!');
         }
-        $nama_penyakit = NamaPenyakit::get();
-        $klasifikasi = KlasifikasiPenyakit::get();
-        $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $nama_penyakit = NamaPenyakit::whereIn('id', json_decode($rawat_inap->nama_penyakit_id))->with(['sub_klasifikasi', 'category', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id', '!=', 5)->with('satuan_obat')->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $tindakan = Tindakan::get();
 
-        return view('petugas.rawatinap.ubah_rawat_inap', compact('tindakan','rawat_inap', 'nama_penyakit', 'subKlasifikasi',
-        'klasifikasi','alatkesehatan', 'satuanobat', 'obat'));
+        return view('petugas.rawatinap.ubah_rawat_inap', compact(
+            'tindakan',
+            'rawat_inap',
+            'nama_penyakit',
+            'alatkesehatan',
+            'satuanobat',
+            'obat'
+        ));
     }
 
-    function changerawatinap(Request $request, $id) {
-        $data = $request->except(['_token','old_dokumen','old_persetujuan_tindakan']);
+    function changerawatinap(Request $request, $id)
+    {
+        $data = $request->except(['_token', 'old_dokumen', 'old_persetujuan_tindakan']);
         $data['updated_by'] = auth()->user()->id;
 
 
         // hapus dokumen ada yang berubah
-        $currDok = RawatInap::select('dokumen')->where('id',$id)->get()[0]->dokumen;
+        $currDok = RawatInap::select('dokumen')->where('id', $id)->get()[0]->dokumen;
         $currDok = json_decode($currDok);
         if ($currDok) {
             foreach ($currDok as $key) {
                 //hapus yang tidak ada
-                if (!in_array($key,json_decode($request->old_dokumen))) {
-                    $path = parse_url('pemeriksaan/rawatinap/'.$key);
+                if (!in_array($key, json_decode($request->old_dokumen))) {
+                    $path = parse_url('pemeriksaan/rawatinap/' . $key);
                     File::delete(public_path($path['path']));
                 }
             }
@@ -130,25 +133,23 @@ class RawatInapController extends Controller
             foreach ($file as $val) {
                 $filename = time() . '_' . $val->getClientOriginalName();
                 $dokumen[] = $filename;
-                $val->move('pemeriksaan/rawatinap', $filename); 
+                $val->move('pemeriksaan/rawatinap', $filename);
             }
-            
         }
-        $data['dokumen']=json_encode($dokumen);
+        $data['dokumen'] = json_encode($dokumen);
         if ($request->hasFile('persetujuan_tindakan')) {
             $file = $request->file('persetujuan_tindakan');
-            $persetujuan = time() . '_' . $file->getClientOriginalName();  
+            $persetujuan = time() . '_' . $file->getClientOriginalName();
             $file->move('pemeriksaan/persetujuan_tindakan', $persetujuan);
             if ($request->old_persetujuan_tindakan) {
-                $path = parse_url('pemeriksaan/persetujuan_tindakan/'.$request->old_persetujuan_tindakan);
+                $path = parse_url('pemeriksaan/persetujuan_tindakan/' . $request->old_persetujuan_tindakan);
                 File::delete(public_path($path['path']));
             }
-            $data['persetujuan_tindakan']=$persetujuan;
+            $data['persetujuan_tindakan'] = $persetujuan;
         }
-        if (RawatInap::where('id',$id)->update($data)) {
+        if (RawatInap::where('id', $id)->update($data)) {
             return redirect("/view/rawat/inap/" . $id)->with('message', 'Berhasil Merubah Data Pasien Rawat Inap!');
         }
-        
     }
 
     public function detail($id)
@@ -158,8 +159,10 @@ class RawatInapController extends Controller
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
         $data['tindakan'] = Tindakan::get();
+        $data['aturan'] = AturanPakai::get();
+        $data['dosis'] = Dosis::get();
 
-        return view('component/detail_rawat_inap',$data);
+        return view('component/detail_rawat_inap', $data);
     }
 
     public function selesaiInap($id)

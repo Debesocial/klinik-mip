@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alkes;
+use App\Models\AturanPakai;
+use App\Models\Dosis;
 use App\Models\KlasifikasiPenyakit;
 use App\Models\NamaAlkes;
 use App\Models\Pasien;
@@ -88,6 +90,9 @@ class RawatJalanController extends Controller
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['tindakan'] = Tindakan::get();
 
+        $data['aturan'] = AturanPakai::get();
+        $data['dosis'] = Dosis::get();
+
 
         return view('petugas.rawatjalan.view_rawat_jalan', $data);
     }
@@ -95,16 +100,15 @@ class RawatJalanController extends Controller
     public function ubahrawatjalan($id)
     {
         $rawat_jalan = RawatJalan::find($id);
+        $nama_penyakit = NamaPenyakit::whereIn('id', json_decode($rawat_jalan->nama_penyakit_id))->with(['sub_klasifikasi', 'category', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
         $rawat_jalan->load(['pasien', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan', 'pasien.keluarga', 'pasien.kategori', 'pasien.obatAlergi']);
-        $klasifikasi = KlasifikasiPenyakit::get();
-        $subKlasifikasi = SubKlasifikasi::get();
         $alatkesehatan = Alkes::with(['satuan_obat'])->where('golongan_alkes_id', '!=', 5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $tindakan = Tindakan::get();
 
 
-        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('tindakan', 'rawat_jalan', 'obat', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat'));
+        return view('petugas.rawatjalan.ubah_rawat_jalan', compact('nama_penyakit', 'tindakan', 'rawat_jalan', 'obat', 'alatkesehatan', 'satuanobat'));
     }
 
     function changerawatjalan(Request $request, $id)

@@ -219,7 +219,7 @@
                                 <th>Nama Obat</th>
                                 <th>Jumlah</th>
                                 <th>Aturan Pakai</th>
-                                <th>Keterangan</th>
+                                <th>Dosis</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -235,8 +235,8 @@
                                         </td>
                                         <td class="text-center">{{ $resep->jumlah_obat }}
                                             {{ $dataobat->satuan_obat->satuan_obat }}</td>
-                                        <td>{{ $resep->aturan_pakai }}</td>
-                                        <td>{{ $resep->keterangan_resep }}</td>
+                                        <td>{{ $aturan->find($resep->aturan_pakai)->singkatan }}</td>
+                                        <td>{{ $dosis->find($resep->dosis)->singkatan }}</td>
                                     </tr>
                                 @endforeach
 
@@ -279,7 +279,7 @@
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                         </div></div>`;
-                        $('#modalRawatInap2_body').html(html);
+                    $('#modalRawatInap2_body').html(html);
                 },
             });
             request.done(function(html) {

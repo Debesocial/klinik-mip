@@ -33,6 +33,7 @@ class CreateKecelakaanKerjasTable extends Migration
             $table->float('laju_pernapasan');
             $table->float('saturasi_oksigen');
             $table->text('status_lokalis');
+            $table->text('titik_lokalis')->nullable();
             $table->string('pemeriksaan_penunjang')->nullable();
             $table->text('obat_konsumsi')->nullable();
             $table->text('diagnosa_surat')->nullable();

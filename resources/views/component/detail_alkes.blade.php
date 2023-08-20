@@ -5,27 +5,31 @@
                 <tbody>
                     <tr>
                         <th>Kode</th>
-                        <td>: {{$alkes->kod}}</td>
+                        <td>: {{ $alkes->kod }}</td>
                     </tr>
                     <tr>
                         <th>Nama</th>
-                        <td>: {{$alkes->nama_alkes}}</td>
+                        <td>: {{ $alkes->nama_alkes }}</td>
+                    </tr>
+                    <tr>
+                        <th>Distributor</th>
+                        <td>: {{ $alkes->distributor }}</td>
                     </tr>
                     <tr>
                         <th>Golongan</th>
-                        <td>: {{$alkes->golongan_alkes->golongan_alkes}}</td>
+                        <td>: {{ $alkes->golongan_alkes->golongan_alkes }}</td>
                     </tr>
                     <tr>
                         <th>Satuan</th>
-                        <td>: {{$alkes->satuan_obat->satuan_obat}}</td>
+                        <td>: {{ $alkes->satuan_obat->satuan_obat }}</td>
                     </tr>
                     <tr>
                         <th>Bobot</th>
-                        <td>: {{$alkes->bobot_obat->bobot_obat}}</td>
+                        <td>: {{ $alkes->bobot_obat->bobot_obat }}</td>
                     </tr>
                     <tr>
-                        <th>Komposisi</th>
-                        <td>: {{$alkes->komposisis}}</td>
+                        <th>Harga</th>
+                        <td>: Rp {{ uang($alkes->harga) }}</td>
                     </tr>
                 </tbody>
             </table>

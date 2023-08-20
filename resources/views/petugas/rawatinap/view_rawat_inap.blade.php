@@ -80,17 +80,15 @@
                                         <th>Berakhir Dirawat
                                         </th>
                                         <td id="_berakhir_rawat">
-                                            : 
-                                            @if (Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                                            {!! $rawat_inap->berakhir_rawat
-                                                ? tanggal($rawat_inap->berakhir_rawat, false)
-                                                : '<a href="/selesai-inap/'.$rawat_inap->id.'" class="btn btn-primary btn-sm">Selesaikan Rawat Inap <i class="bi bi-check-square"></i></a>' !!}
-
+                                            :
+                                            @if (Auth::user()->level->nama_level == 'superadmin' || Auth::user()->level->nama_level == 'dokter')
+                                                {!! $rawat_inap->berakhir_rawat
+                                                    ? tanggal($rawat_inap->berakhir_rawat, false)
+                                                    : '<a href="/selesai-inap/' .
+                                                        $rawat_inap->id .
+                                                        '" class="btn btn-primary btn-sm">Selesaikan Rawat Inap <i class="bi bi-check-square"></i></a>' !!}
                                             @else
-                                            {!! $rawat_inap->berakhir_rawat
-                                                ? tanggal($rawat_inap->berakhir_rawat, false)
-                                                : '-' !!}
-
+                                                {!! $rawat_inap->berakhir_rawat ? tanggal($rawat_inap->berakhir_rawat, false) : '-' !!}
                                             @endif
                                         </td>
                                     </tr>
@@ -110,8 +108,9 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Penyakit</th>
-                                            <th>Sub-Klasifikasi</th>
-                                            <th>Klasifikasi</th>
+                                            <th>Blok</th>
+                                            <th>Category</th>
+                                            <th>Chapter</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -123,6 +122,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $penyakit->primer }}</td>
                                                 <td>{{ $penyakit->sub_klasifikasi->nama_penyakit }}</td>
+                                                <td>{{ $penyakit->category->nama_penyakit }}</td>
                                                 <td>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}
                                                 </td>
                                             </tr>
@@ -139,23 +139,25 @@
 
     <div class="mb-1">
         <div class="list-group list-group-horizontal-sm mb-1 text-center" role="tablist">
-            <a class="list-group-item list-group-item-action rounded-end rounded-pill {{$pos==1?'active':''}}" id="list-dokter-list"
-                data-bs-toggle="list" href="#list-dokter" role="tab">Pemeriksaan Instruksi Dokter</a>
-            <a class="list-group-item list-group-item-action {{$pos==2?'active':''}}"  id="list-perawat-list" data-bs-toggle="list"
-                href="#list-perawat" role="tab">Pemeriksaan
+            <a class="list-group-item list-group-item-action rounded-end rounded-pill {{ $pos == 1 ? 'active' : '' }}"
+                id="list-dokter-list" data-bs-toggle="list" href="#list-dokter" role="tab">Pemeriksaan Instruksi
+                Dokter</a>
+            <a class="list-group-item list-group-item-action {{ $pos == 2 ? 'active' : '' }}" id="list-perawat-list"
+                data-bs-toggle="list" href="#list-perawat" role="tab">Pemeriksaan
                 Intervensi Keperawatan</a>
-            <a class="list-group-item list-group-item-action {{$pos==3?'active':''}}" id="list-makanan-list" data-bs-toggle="list"
-                href="#list-makanan" role="tab">Permintaan
+            <a class="list-group-item list-group-item-action {{ $pos == 3 ? 'active' : '' }}" id="list-makanan-list"
+                data-bs-toggle="list" href="#list-makanan" role="tab">Permintaan
                 Makanan</a>
-            <a class="list-group-item list-group-item-action rounded-start rounded-pill {{$pos==4?'active':''}}" id="list-tandavital-list"
-                data-bs-toggle="list" href="#list-tandavital" role="tab">Pemantauan
+            <a class="list-group-item list-group-item-action rounded-start rounded-pill {{ $pos == 4 ? 'active' : '' }}"
+                id="list-tandavital-list" data-bs-toggle="list" href="#list-tandavital" role="tab">Pemantauan
                 Tanda Vital</a>
         </div>
     </div>
 
 
     <div class="tab-content text-justify">
-        <div class="tab-pane fade {{$pos==1?'show active':''}}" id="list-dokter" role="tabpanel" aria-labelledby="list-dokter-list">
+        <div class="tab-pane fade {{ $pos == 1 ? 'show active' : '' }}" id="list-dokter" role="tabpanel"
+            aria-labelledby="list-dokter-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -164,12 +166,12 @@
                         </div>
                         <div class="col-md-4 text-end">
                             <div class="buttons" width="100px">
-                                @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
-                                <button
-                                    onclick="tampilModalRawatInap('/instruksi_dokter/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Instruksi Dokter')"
-                                    class="btn m-0 btn-sm btn-success rounded-pill">
-                                    <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span></button>
+                                @if (Auth::user()->level->nama_level == 'dokter' || Auth::user()->level->nama_level == 'superadmin')
+                                    <button
+                                        onclick="tampilModalRawatInap('/instruksi_dokter/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Instruksi Dokter')"
+                                        class="btn m-0 btn-sm btn-success rounded-pill">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Tambah</span></button>
                                 @endif
                             </div>
                         </div>
@@ -197,11 +199,11 @@
                                                     onclick="tampilModalRawatInap('/instruksi_dokter/{{ $instruksi->id }}','Pemeriksaan Instruksi Dokter')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
-                                                <a href="#"
-                                                    onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')"
-                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
-                                                        class="bi bi-pencil-square"></i></a>
+                                                @if (Auth::user()->level->nama_level == 'dokter' || Auth::user()->level->nama_level == 'superadmin')
+                                                    <a href="#"
+                                                        onclick="tampilModalRawatInap('/instruksi_dokter/form_edit/{{ $instruksi->id }}','Formulir Ubah Pemeriksaan Instruksi Dokter')"
+                                                        class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                            class="bi bi-pencil-square"></i></a>
                                                 @endif
                                             </div>
                                         </td>
@@ -213,7 +215,8 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade {{$pos==2?'show active':''}}" id="list-perawat" role="tabpanel" aria-labelledby="list-perawat-list">
+        <div class="tab-pane fade {{ $pos == 2 ? 'show active' : '' }}" id="list-perawat" role="tabpanel"
+            aria-labelledby="list-perawat-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -221,7 +224,7 @@
                             <h6>Pemeriksaan Intervensi Keperawatan</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
+                            @if (Auth::user()->level->nama_level == 'perawat' || Auth::user()->level->nama_level == 'superadmin')
                                 <div class="buttons" width="100px">
                                     <button
                                         onclick="tampilModalRawatInap('/intervensi/form_tambah/{{ $rawat_inap->id }}','Formulir Pemeriksaan Intervensi Keperawatan')"
@@ -230,7 +233,6 @@
                                         <span>Tambah</span>
                                     </button>
                                 </div>
-                                
                             @endif
                         </div>
                     </div>
@@ -254,11 +256,13 @@
                                                     onclick="tampilModalRawatInap('/intervensi/{{ $inter->id }}','Intervensi Keperawatan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin")
-                                                <a href="#" onclick="tampilModalRawatInap('/intervensi/form_edit/{{ $inter->id }}','Formulir Ubah Intervensi Keperawatan')" class="btn btn-sm btn-outline-secondary" title="Ubah Data">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </a>
-                                                @endif        
+                                                @if (Auth::user()->level->nama_level == 'perawat' || Auth::user()->level->nama_level == 'superadmin')
+                                                    <a href="#"
+                                                        onclick="tampilModalRawatInap('/intervensi/form_edit/{{ $inter->id }}','Formulir Ubah Intervensi Keperawatan')"
+                                                        class="btn btn-sm btn-outline-secondary" title="Ubah Data">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </a>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>
@@ -269,7 +273,8 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade {{$pos==3?'show active':''}}" id="list-makanan" role="tabpanel" aria-labelledby="list-makanan-list">
+        <div class="tab-pane fade {{ $pos == 3 ? 'show active' : '' }}" id="list-makanan" role="tabpanel"
+            aria-labelledby="list-makanan-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -277,13 +282,13 @@
                             <h6>Permintaan Makanan</h6>
                         </div>
                         <div class="col-md-4 text-end">
-                            @if (Auth::user()->level->nama_level == "dokter" || Auth::user()->level->nama_level == "superadmin")
-                            <button
-                                onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Formulir Permintaan Makanan')"
-                                class="btn btn-sm btn-success rounded-pill">
-                                <i class="bi bi-plus-circle"></i>
-                                <span>Tambah</span>
-                            </button>
+                            @if (Auth::user()->level->nama_level == 'dokter' || Auth::user()->level->nama_level == 'superadmin')
+                                <button
+                                    onclick="tampilModalRawatInap('/permintaan_makanan/tambah/{{ $rawat_inap->id }}', 'Formulir Permintaan Makanan')"
+                                    class="btn btn-sm btn-success rounded-pill">
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>Tambah</span>
+                                </button>
                             @endif
                         </div>
                     </div>
@@ -312,11 +317,11 @@
                                                     onclick="tampilModalRawatInap('/permintaan_makanan/{{ $makanan->id }}','Permintaan Makanan')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                @if (Auth::user()->level->nama_level == "superadmin"|| Auth::user()->level->nama_level == "dokter")
-                                                <a href="#"
-                                                    onclick="tampilModalRawatInap('/permintaan_makanan/form_edit/{{ $makanan->id }}','Formulir Ubah Permintaan Makanan')"
-                                                    class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
-                                                        class="bi bi-pencil-square"></i></a>
+                                                @if (Auth::user()->level->nama_level == 'superadmin' || Auth::user()->level->nama_level == 'dokter')
+                                                    <a href="#"
+                                                        onclick="tampilModalRawatInap('/permintaan_makanan/form_edit/{{ $makanan->id }}','Formulir Ubah Permintaan Makanan')"
+                                                        class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
+                                                            class="bi bi-pencil-square"></i></a>
                                                 @endif
                                             </div>
                                         </td>
@@ -328,28 +333,31 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade {{$pos==4?'show active':''}}" id="list-tandavital" role="tabpanel" aria-labelledby="list-tandavital-list">
+        <div class="tab-pane fade {{ $pos == 4 ? 'show active' : '' }}" id="list-tandavital" role="tabpanel"
+            aria-labelledby="list-tandavital-list">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
-                        <div class="col-md-8">
-                            <h6>Pemantauan Tanda Vital</h6>
-                        </div>
-                        <div class="col-md-4 text-end">
-                            <div class="buttons">
-                                <button href="" class="btn btn-sm btn-info rounded-pill"
-                                    onclick="tampilModalRawatInap('/tanda_vital/grafik/{{ $rawat_inap->id }}', 'Grafik Pemantauan Tanda Vital')">
-                                    <i class="bi bi-graph-up"></i>
-                                    <span>Grafik</span>
-                                </button>
-                                <button href="" class="btn btn-sm btn-success rounded-pill"
-                                    onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Formulir Pemantauan Tanda Vital')">
-                                    <i class="bi bi-plus-circle"></i>
-                                    <span>Tambah</span>
-                                </button>
+                        @if (Auth::user()->level->nama_level == 'perawat' ||
+                                Auth::user()->level->nama_level == 'superadmin' ||
+                                Auth::user()->level->nama_level == 'dokter')
+                            <div class="col-md-8">
+                                <h6>Pemantauan Tanda Vital</h6>
                             </div>
-                        </div>
+                            <div class="col-md-4 text-end">
+                                <div class="buttons">
+                                    <button href="" class="btn btn-sm btn-info rounded-pill"
+                                        onclick="tampilModalRawatInap('/tanda_vital/grafik/{{ $rawat_inap->id }}', 'Grafik Pemantauan Tanda Vital')">
+                                        <i class="bi bi-graph-up"></i>
+                                        <span>Grafik</span>
+                                    </button>
+                                    <button href="" class="btn btn-sm btn-success rounded-pill"
+                                        onclick="tampilModalRawatInap('/tanda_vital/tambah/{{ $rawat_inap->id }}', 'Formulir Pemantauan Tanda Vital')">
+                                        <i class="bi bi-plus-circle"></i>
+                                        <span>Tambah</span>
+                                    </button>
+                                </div>
+                            </div>
                         @endif
                     </div>
                     <div class="table-responsive">
@@ -382,12 +390,13 @@
                                                     onclick="tampilModalRawatInap('/tanda_vital/{{ $vital->id }}','Pemeriksaan Tanda Vital')"
                                                     class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                         class="bi bi-eye"></i></a>
-                                                @if (Auth::user()->level->nama_level == "perawat" || Auth::user()->level->nama_level == "superadmin" || Auth::user()->level->nama_level == "dokter")
+                                                @if (Auth::user()->level->nama_level == 'perawat' ||
+                                                        Auth::user()->level->nama_level == 'superadmin' ||
+                                                        Auth::user()->level->nama_level == 'dokter')
                                                     <a href="#"
                                                         onclick="tampilModalRawatInap('/tanda_vital/form_edit/{{ $vital->id }}','Formulir Ubah Pemeriksaan Tanda Vital')"
                                                         class="btn btn-sm btn-outline-secondary" title="Ubah Data"><i
                                                             class="bi bi-pencil-square"></i></a>
-
                                                 @endif
                                             </div>
                                         </td>
@@ -443,21 +452,21 @@
 
 @section('js')
     <script type="text/javascript" defer="defer">
-        let legendClick = function (e, legendItem, legend) {
+        let legendClick = function(e, legendItem, legend) {
             let index = legendItem.datasetIndex;
             let ci = legend.chart;
             let yId = ci.data.datasets[index].yAxisID;
             if (ci.isDatasetVisible(index)) {
                 ci.hide(index);
-                if (index===2) {
-                    ci.hide(index+1);
+                if (index === 2) {
+                    ci.hide(index + 1);
                 }
                 vitalChart.options.scales[yId].display = false;
                 legendItem.hidden = true;
             } else {
                 ci.show(index);
-                if (index===2) {
-                    ci.show(index+1);
+                if (index === 2) {
+                    ci.show(index + 1);
                 }
                 vitalChart.options.scales[yId].display = true;
                 legendItem.hidden = false;
@@ -563,11 +572,11 @@
                 scrollX: true,
                 scrollY: 300
             });
-            $('#modalRawatInap2').on('show.bs.modal', function () {
+            $('#modalRawatInap2').on('show.bs.modal', function() {
                 $('#modalRawatInap').css('z-index', 1039);
             });
 
-            $('#modalRawatInap2').on('hidden.bs.modal', function () {
+            $('#modalRawatInap2').on('hidden.bs.modal', function() {
                 $('#modalRawatInap').css('z-index', 1041);
             });
         });
@@ -597,16 +606,17 @@
                     <div class="spinner-border text-primary" role="status">
                         <span class="visually-hidden">Loading...</span>
                         </div></div>`;
-                        $('#modalRawatInap_body').html(html);
+                    $('#modalRawatInap_body').html(html);
                 },
             });
             request.done(function(html) {
-                
+
                 $('#modalRawatInap_body').html(html);
             })
 
             modal.modal('show');
         }
+
         function tampilModalRawatInap2(url, title) {
             var modal = $('#modalRawatInap2');
 
