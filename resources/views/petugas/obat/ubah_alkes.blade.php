@@ -50,7 +50,7 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat_id">Bobot Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <label for="bobot_obat_id">Bobot/Kemasan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id">
                                                 @foreach ($bobotobat as $item)
                                                 <option value="{{ $item->id }}" {{($item->id==$alkes->bobot_obat_id)?'selected':''}}>{{ $item->bobot_obat }}</option>

@@ -52,9 +52,9 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="bobot_obat_id">Bobot Alat/Bahan Kesehatan <b class="color-red">*</b></label>
+                                            <label for="bobot_obat_id">Bobot/Kemasan <b class="color-red">*</b></label>
                                             <select class="choices form-select" name="bobot_obat_id" id="bobot_obat_id" required>
-                                                <option value="">Pilih bobot alat/bahan kesehatan</option>
+                                                <option value="">Pilih bobot/kemasan</option>
                                                 @foreach ($bobotobat as $bobotobat)
                                                 <option value="{{ $bobotobat->id }}">{{ $bobotobat->bobot_obat }}</option>
                                                 @endforeach
@@ -78,13 +78,6 @@
                                         <div class="form-group">
                                             <label for="">Distributor</label>
                                             <input type="text" class="form-control" name="distributor" id="distributor" placeholder="Masukkan Distributor">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="">Komposisi/Keterangan Alat atau Bahan Kesehatan</label>
-                                            <textarea class="form-control" name="komposisis" id="komposisis" cols="50" rows="5"></textarea>
-                                            
                                         </div>
                                     </div>
 
