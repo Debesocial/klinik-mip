@@ -107,7 +107,6 @@
                             <th>#</th>
                             <th>Tindakan</th>
                             <th>Alat Kesehatan</th>
-                            <th>Jumlah Pengguna</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
