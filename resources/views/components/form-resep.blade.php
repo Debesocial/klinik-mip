@@ -6,7 +6,7 @@
                 <select id="nama_obat" class="form-select">
                     <option value="">Pilih Obat</option>
                     @foreach ($obat as $ob)
-                        <option value="{{ $ob->id }}">{{ $ob->nama_obat }}</option>
+                        <option value="{{ $ob->id }}">{{ $ob->nama_obat }} ({{$ob->distributor}}) - {{$ob->sediaan_obat->singkatan}}</option>
                     @endforeach
                 </select>
                 {!! validasi('Nama obat') !!}
@@ -129,7 +129,7 @@
             let ds = dosis.find(d => d.id == data.dosis);
             html += `<tr> 
                             <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/` + namaobat
-                .id + `', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
+                .id + `', 'Detail Obat')">` + namaobat.nama_obat + ` <i class="bi bi-box-arrow-up-right"></i></a></td>
                             <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
                             <td>` + atr.singkatan + `</td>
                             <td>` + ds.singkatan + `</td>

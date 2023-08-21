@@ -692,6 +692,13 @@
             var request = $.ajax({
                 method: 'GET',
                 url: url,
+                beforeSend: function() {
+                    html = `<div class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                        </div></div>`;
+                    $('#modalRawatInap2_body').html(html);
+                },
             });
             request.done(function(html) {
                 $('#modalRawatInap2_body').html(html);

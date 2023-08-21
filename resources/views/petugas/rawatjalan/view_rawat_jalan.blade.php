@@ -62,15 +62,6 @@
                                     <th>Saturasi Oksigen</th>
                                     <td>: {{ $jalan->saturasi_oksigen }} %</td>
                                 </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="table-responsive">
-                        <table class="table table-borderless">
-                            <tbody>
                                 <tr>
                                     <th>Denyut Nadi</th>
                                     <td>: {{ $jalan->denyut_nadi }}x /menit</td>
@@ -104,10 +95,6 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Status Lokalis</th>
-                                    <td>: {{ $jalan->status_lokalis }}</td>
-                                </tr>
-                                <tr>
                                     <th>Persetujuan tindakan medis</th>
                                     <td>
                                         @if ($jalan->persetujuan_tindakan)
@@ -122,6 +109,19 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <th>Status Lokalis</th>
+                                    <td>: {{ $jalan->status_lokalis }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <x-status-lokalis :titik="$jalan->titik_lokalis" :form=false/>
                 </div>
             </div>
             <div class="row mb-3">

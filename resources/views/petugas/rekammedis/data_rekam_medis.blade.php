@@ -84,7 +84,7 @@
                                                         <div class="col-md-4">
                                                             
                                                             @if (!$pas->id_rekam_medis)
-                                                            <span class="badge bg-warning"><b>Belum Terdaftar</b></span>
+                                                            <span class="badge bg-warning">Belum Terdaftar</span>
                                                             @else
                                                             <B>{{ Carbon\Carbon::parse($pas->created_at)->isoFormat('D MMMM Y') }}</B>
                                                             <br>{{ Carbon\Carbon::parse($pas->created_at)->format('H:i:s') }}

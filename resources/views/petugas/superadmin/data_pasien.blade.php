@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($pasiens->sortByDesc('created_at') as $patient)
+                        @foreach ($pasiens->sortByDesc('id_rekam_medis') as $patient)
                         @php
                             $alergi = json_decode($patient->alergi);
                             $showAlergi = "<ul>";
@@ -63,7 +63,7 @@
                         <tr>
                             <td style="white-space: nowrap;">
                                 @if (!$patient->id_rekam_medis)
-                                <span class="badge bg-warning"><b>Belum Terdaftar</b></span>
+                                <span class="badge bg-warning">Belum Terdaftar</span>
                                 @else
                                 <B>{{ Carbon\Carbon::parse($patient->created_at)->isoFormat('D MMMM Y') }}</B>
                                 <br>{{ Carbon\Carbon::parse($patient->created_at)->format('H:i:s') }}

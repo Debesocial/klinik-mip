@@ -2,17 +2,19 @@
     #zoom {
         border: 1px black solid;
         box-shadow: 5px 5px 10px #1e1e1e;
-        background-color: aquamarine;
+        background-color: grey;
         z-index: 99999;
     }
 </style>
 <div>
-    <div class="row mb-2">
+    <div class="row justify-content-center mb-2">
         <input type="hidden" name="titik_lokalis" id="titik_lokalis">
         <div class="col-6 text-center">
+            @if ($form)
             <button type="button" class="btn btn-sm btn-outline-secondary mb-1" onclick="removeMarks()">
                 <b>Undo <i class="bi bi-arrow-counterclockwise"></i></b>
             </button>
+            @endif
             <div class="input-group">
                 <canvas id="myCanvas" style="cursor: pointer"></canvas>
                 <canvas class="rounded-circle" id="zoom" width="100" height="100"
@@ -20,16 +22,18 @@
 
             </div>
         </div>
+        @if ($form)
         <div class="col-6">
             <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
             <div class="input-group">
-
                 {{-- <img src="{{ asset('assets/images/body.png') }}" alt="" id="sourceImage" style="display: none;"> --}}
                 <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control"
                     placeholder="Masukkan status lokalis">Dalam batas normal</textarea>
                 {!! validasi('Status lokalis') !!}
             </div>
         </div>
+            
+        @endif
     </div>
 </div>
 <script>
@@ -41,11 +45,14 @@
 
     var img = new Image();
     img.src = "{{ asset('assets/images/body.png') }}";
-    const width = img.width / 2;
-    const height = img.height / 2;
+    let width = 0;
+    let height = 0;
     img.onload = drawImageOnCanvas;
     // Fungsi untuk menggambar gambar di kanvas
     function drawImageOnCanvas() {
+        width = img.width / 2;
+         height = img.height / 2;
+   
         canvas.width = width;
         canvas.height = height;
         ctx.drawImage(img, 0, 0, width, height);
@@ -71,7 +78,11 @@
         context.closePath();
     }
 
-    function removeMarks() {
+    
+</script>
+@if ($form)
+    <script>
+        function removeMarks() {
         marks.pop();
         drawImageOnCanvas();
     }
@@ -125,4 +136,5 @@
     canvas.addEventListener("mouseout", function() {
         zoom.style.display = "none";
     });
-</script>
+    </script>
+@endif
