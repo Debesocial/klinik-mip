@@ -292,19 +292,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="row mb-2">
-                                        <div class="col">
-                                            <label for="" class="form-label">Status Lokalis <b
-                                                    class="text-danger">*</b></label>
-                                            <div class="input-group">
-                                                <img src="{{ asset('assets/images/body.png') }}" width="50%"
-                                                    alt="" class="img-fluid magniflier">
-                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control"
-                                                    placeholder="Masukkan status lokalis">{{ $rawat_inap->status_lokalis }}</textarea>
-                                                {!! validasi('Status lokalis') !!}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-status-lokalis :titik="$rawat_inap->titik_lokalis"/>
                                     <div class="row mb-3">
                                         {{-- <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>
