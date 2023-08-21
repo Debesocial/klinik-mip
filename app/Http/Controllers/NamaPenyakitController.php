@@ -124,7 +124,7 @@ class NamaPenyakitController extends Controller
     function cariPenyakit(Request $request) {
         $keyword = $request->input('keyword');
         if ($keyword) {
-            $data = NamaPenyakit::with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->where('primer', 'like', '%'.$keyword.'%')->limit(100)->get();
+            $data = NamaPenyakit::with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->where('primer', 'like', '%'.$keyword.'%')->orWhere('pengertian', 'like', '%'.$keyword.'%')->limit(100)->get();
         }
 
         if ($data->count() > 0 ) {
