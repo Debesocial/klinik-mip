@@ -127,7 +127,7 @@
                                         <a href="{{ route('superadmin.satuanobat') }}"><i class="bi bi-arrow-return-right"></i> Satuan </a>
                                     </li>
                                     <li class="submenu-item @yield('bobot')">
-                                        <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot </a>
+                                        <a href="{{ route('superadmin.bobotobat') }}"><i class="bi bi-arrow-return-right"></i> Bobot/Kemasan </a>
                                     </li>
                                     <li class="submenu-item @yield('produk')">
                                         <a href="{{ route('obat.dataproduk') }}"> Data Produk Kesehatan</a>
