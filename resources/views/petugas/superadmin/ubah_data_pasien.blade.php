@@ -115,7 +115,7 @@
 
                                     <div class="form-group">
                                         <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                        <input type="text" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon" value="{{ $pasien['telepon'] }}" maxlength="13" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('Nomor maksimal 13 Karakter')"/>
+                                        <input type="number" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon" placeholder="Masukkan No Telepon " maxlength="13" value="{{$pasien['telepon']}}" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
