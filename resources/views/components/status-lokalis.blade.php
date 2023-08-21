@@ -38,15 +38,15 @@
 </div>
 <script>
     // Array untuk menyimpan tanda-tanda yang sudah ada
-    let marks = {!! $titik !!};
-    const canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext("2d");
+    var marks = {!! $titik !!};
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
     // const img = document.getElementById("sourceImage");
 
     var img = new Image();
     img.src = "{{ asset('assets/images/body.png') }}";
-    let width = 0;
-    let height = 0;
+    var width = 0;
+    var height = 0;
     img.onload = drawImageOnCanvas;
     // Fungsi untuk menggambar gambar di kanvas
     function drawImageOnCanvas() {

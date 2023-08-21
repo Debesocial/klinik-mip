@@ -241,7 +241,7 @@
         });
     }
 
-    let countAlkes = 1;
+    countAlkes = 1;
 
     function tambahAlat(data = null) {
         let newSelect = $('#temp_alat_kesehatan').clone();

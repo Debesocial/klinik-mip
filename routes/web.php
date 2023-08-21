@@ -534,3 +534,5 @@ Route::get('/modal-penyakit', function(){
     return view('component.pilih_penyakit');
 });
 Route::get('/cari-penyakit', [NamaPenyakitController::class, 'cariPenyakit']);
+Route::get('/cari-penyakit-select2', [NamaPenyakitController::class, 'penyakitSelect2']);
+Route::get('/select-penyakit-by-id', [NamaPenyakitController::class, 'selectPenyakitById']);

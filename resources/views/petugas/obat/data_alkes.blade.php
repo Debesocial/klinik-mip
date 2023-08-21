@@ -52,7 +52,7 @@
                             <th>Distributor</th>
                             <th>Golongan </th>
                             <th>Satuan </th>
-                            <th>Bobot </th>
+                            <th>Bobot/Kemasan </th>
                             <th>Ukuran</th>
                             <th>Harga </th>
                             <th>Aksi</th>

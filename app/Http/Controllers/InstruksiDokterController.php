@@ -30,8 +30,8 @@ class InstruksiDokterController extends Controller
         if ($rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        // $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with(['satuan_obat'])->get();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::get();
         $data['tindakan'] = Tindakan::get();
@@ -55,7 +55,7 @@ class InstruksiDokterController extends Controller
     public function tampil($id)
     {
         $data['instruksidokter'] = InstruksiDokter::find($id);
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alkes'] = Alkes::where('golongan_alkes_id','!=',5)->get();
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['tindakan'] = Tindakan::get();
 

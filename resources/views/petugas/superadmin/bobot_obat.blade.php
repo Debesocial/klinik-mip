@@ -10,7 +10,7 @@
     <div class="row align-items-center">
         <div class="col">
             <div class="page-heading">
-                    <h3>Data Bobot Obat</h3>
+                    <h3>Data Bobot/Kemasan</h3>
                     {{ Breadcrumbs::render('bobot_obat') }}
             </div>
         </div>

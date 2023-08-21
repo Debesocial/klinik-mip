@@ -57,7 +57,7 @@
                             <th>Nama </th>
                             <th>Distributor</th>
                             <th>Satuan </th>
-                            <th>Bobot </th>
+                            <th>Bobot/Kemasan </th>
                             <th>Ukuran</th>
                             <th>Harga </th>
                             <th>Aksi</th>

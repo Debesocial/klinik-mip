@@ -134,4 +134,31 @@ class NamaPenyakitController extends Controller
         }
         return json_encode($result);
     }
+
+    function penyakitSelect2(Request $request) {
+        $keyword = $request->input('q');
+        $data = [];
+        
+        $data = NamaPenyakit::select('id', 'primer as text')->where('primer', 'like', '%'.$keyword.'%')->orWhere('pengertian', 'like', '%'.$keyword.'%')->limit(100)->get();
+
+        if ($data->count() > 0 ) {
+           $result = ['code' => 200, 'items'=>$data, 'total_count'=> $data->count()]; 
+        }else{
+            $result = ['code' => 404, 'items'=>["id"=>"", "text" => "Pilih Penyakit"], 'msg'=>'Tidak ada hasil dengan kata kunci "'.$keyword.'"']; 
+        }
+        return json_encode($result);
+    }
+
+    function selectPenyakitById(Request $request) {
+        $id = $request->input('id');
+        if ($id) {
+            $penyakit = NamaPenyakit::with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->find($id);
+        }
+        if ($penyakit->count() > 0 ) {
+            $result = ['code' => 200, 'data'=>$penyakit, 'total_count'=> $penyakit->count()]; 
+         }else{
+             $result = ['code' => 404, 'msg'=>'Tidak ada hasil dengan id "'.$id.'"']; 
+         }
+         return json_encode($result);
+    }
 }
