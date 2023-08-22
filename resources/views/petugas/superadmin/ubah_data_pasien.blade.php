@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required {{$pasien->is_sap==1?'disabled':''}}>
+                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
                                             <option value="{{ $pasien->kategori_pasien_id  }}">{{ $pasien->kategori->nama_kategori }}</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}" {{ $kate->id == $pasien->kategori_pasien_id ? 'selected' : '' }}>{{ $kate->nama_kategori }}</option>
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" {{$pasien->is_sap==1?'disabled':''}}>
+                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id">
                                                 <option value="">Pilih perusahaan</option>
                                                 @foreach ($perusahaan as $peru)
                                                     <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
