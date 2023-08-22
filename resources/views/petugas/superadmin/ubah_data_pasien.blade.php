@@ -24,7 +24,7 @@
                                     <h5 class="mb-4">Data Pasien</h5>
                                     <div class="form-group">
                                         <label for="nama_pasien">Nama Pasien <b class="color-red">*</b></label>
-                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="text" id="nama_pasien" class="form-control" name="nama_pasien" value="{{ $pasien['nama_pasien'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')" {{$pasien->is_sap==1?'readonly':''}} />
                                     </div>
                                     <div class="form-group">
                                         <label for="NIK">Nomor Induk Kependudukan</label>
@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
-                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
+                                        <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required {{$pasien->is_sap==1?'disabled':''}}>
                                             <option value="{{ $pasien->kategori_pasien_id  }}">{{ $pasien->kategori->nama_kategori }}</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}" {{ $kate->id == $pasien->kategori_pasien_id ? 'selected' : '' }}>{{ $kate->nama_kategori }}</option>
@@ -42,11 +42,11 @@
                                     <div id="data-karyawan" class="p-3 border bg-body" style="{{($pasien->kategori_pasien_id==4)?'display:none':''}}">
                                         <div class="form-group">
                                             <label for="NIK">Nomor Induk Karyawan <b class="color-red">*</b></label>
-                                            <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="NIK" value="{{ ($pasien->NIK)??'' }}" maxlength="16" />
+                                            <input type="text" id="NIK" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="NIK" value="{{ ($pasien->NIK)??'' }}" maxlength="16" {{$pasien->is_sap==1?'readonly':''}}/>
                                         </div>
                                         <div class="form-group">
                                             <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" >
+                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id" {{$pasien->is_sap==1?'disabled':''}}>
                                                 <option value="">Pilih perusahaan</option>
                                                 @foreach ($perusahaan as $peru)
                                                     <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="tanggal_lahir">Tanggal Lahir <b class="color-red">*</b></label>
-                                        <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" value="{{ $pasien['tanggal_lahir'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')"/>
+                                        <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" value="{{ $pasien['tanggal_lahir'] }}" required oninvalid="this.setCustomValidity('Silahkan isi kolom ini')" oninput="this.setCustomValidity('')" {{$pasien->is_sap==1?'readonly':''}}/>
                                     </div>
                                     <div class="form-group">
                                         <label for="jenis_kelamin">Jenis Kelamin <b class="color-red">*</b></label>
@@ -115,11 +115,11 @@
 
                                     <div class="form-group">
                                         <label for="telepon">Telepon <b class="color-red">*</b></label>
-                                        <input type="number" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon" placeholder="Masukkan No Telepon " maxlength="13" value="{{$pasien['telepon']}}" required>
+                                        <input type="number" id="telepon" class="form-control" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="telepon" placeholder="Masukkan No Telepon " maxlength="13" value="{{$pasien['telepon']}}" {{$pasien->is_sap==1?'readonly':''}} required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" id="email" class="form-control" placeholder="Masukkan email" name="email" value="{{ $pasien['email'] }}" >
+                                        <input type="email" id="email" class="form-control" placeholder="Masukkan email" name="email" value="{{ $pasien['email'] }}" {{$pasien->is_sap==1?'readonly':''}}>
                                     </div>
                                     <div class="col-md-4">
                                         <label>Alergi Obat</label>
