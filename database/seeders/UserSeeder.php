@@ -25,33 +25,7 @@ class UserSeeder extends Seeder
                 'jadwal_id'=>1,
                 'status' => 'Aktif',
             ],
-            [
-                'name' => 'Dokter',
-                'email' => 'dokter.klinik@mandirigroup.net',
-                'password' => Hash::make('123123'),
-                'telp' => '085896224113',
-                'level_id' => 2,
-                'jadwal_id'=>2,
-                'status' => 'Aktif',
-            ],
-            [
-                'name' => 'Perawat',
-                'email' => 'perawat.klinik@mandirigroup.net',
-                'password' => Hash::make('123123'),
-                'telp' => '085896224113',
-                'level_id' => 3,
-                'jadwal_id'=>3,
-                'status' => 'Aktif',
-            ],
-            [
-                'name' => 'Apoteker',
-                'email' => 'apoteker.klinik@mandirigroup.net',
-                'password' => Hash::make('123123'),
-                'telp' => '085896224113',
-                'level_id' => 4,
-                'jadwal_id'=>4,
-                'status' => 'Aktif',
-            ],
+            
         ]);
     }
 }

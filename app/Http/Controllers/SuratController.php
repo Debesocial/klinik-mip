@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alkes;
+use App\Models\AturanPakai;
+use App\Models\Dosis;
 use App\Models\IzinBerobat;
 use App\Models\IzinIstirahat;
 use App\Models\KecelakaanKerja;
@@ -92,6 +94,8 @@ class SuratController extends Controller
         $data['obat'] = Obat::with(['satuan_obat'])->get();
         $data['alkes'] = Alkes::with(['satuan_obat'])->get();
         $data['tindakan'] = Tindakan::get();
+        $data['aturan'] = AturanPakai::get();
+        $data['dosis'] = Dosis::get();
         $view = view('surat/istirahat', $data);
         // return $view;
         $savename = 'izin-istirahat' . str_replace(' ', '-', $istirahat->pasien->nama_pasien) . '.pdf';

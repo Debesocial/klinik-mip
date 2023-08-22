@@ -677,17 +677,17 @@ class SuperAdminController extends Controller
     public function kecelakaankerja()
     {
         $pasien_id = Pasien::with(['perusahaan','divisi', 'keluarga', 'jabatan', 'kategori'])->where('id_rekam_medis', '!=', 'null')->get();
-        $nama_penyakit = NamaPenyakit::get();
-        $klasifikasi = KlasifikasiPenyakit::get();
-        $subKlasifikasi = SubKlasifikasi::get();
-        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
+        // $nama_penyakit = NamaPenyakit::get();
+        // $klasifikasi = KlasifikasiPenyakit::get();
+        // $subKlasifikasi = SubKlasifikasi::get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $lokasi = LokasiKejadian::get();
         $tindakan = Tindakan::get();
 
 
-        return view('petugas.superadmin.kecelakaan_kerja', compact('tindakan','pasien_id', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+        return view('petugas.superadmin.kecelakaan_kerja', compact('tindakan','pasien_id', 'obat', 'alatkesehatan', 'satuanobat','lokasi'));
     }
 
     public function createKecelakaanKerja(Request $request)
@@ -695,7 +695,7 @@ class SuperAdminController extends Controller
         $data = $request->except('_token');
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
-        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id);
+        $data['nama_penyakit_id'] = $request->nama_penyakit_id;
         if ($request->rekam_medis=='RI') {
             $rawatinap = RawatInap::find($request->id_rekam_medis);
             $rawatinap->is_kecelakaan = 1;
@@ -725,23 +725,20 @@ class SuperAdminController extends Controller
                 $kecelakaan[$input] = $rekam_medis[$input];
             }
         }
-        $nama_penyakit = NamaPenyakit::get();
-        $klasifikasi = KlasifikasiPenyakit::get();
-        $subKlasifikasi = SubKlasifikasi::get();
         $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
         $lokasi = LokasiKejadian::get();
         $tindakan = Tindakan::get();
 
-        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('tindakan','kecelakaan', 'obat', 'nama_penyakit', 'klasifikasi', 'subKlasifikasi', 'alatkesehatan', 'satuanobat','lokasi'));
+        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('tindakan','kecelakaan', 'obat', 'alatkesehatan', 'satuanobat','lokasi'));
     }
 
     public function changeKecelakaanKerja(Request $request, $id)
     {
         $data = $request->except('_token');
         $data['updated_by'] = auth()->user()->id;
-        $data['nama_penyakit_id'] = json_encode($request->nama_penyakit_id); 
+        $data['nama_penyakit_id'] = $request->nama_penyakit_id; 
         KecelakaanKerja::where('id',$id)->update($data);
         return redirect('/data-kecelakaan-kerja')->with('message', 'Berhasil merubah surat kecelakaan kerja!');
     }
@@ -1345,6 +1342,7 @@ class SuperAdminController extends Controller
         if (!$pasien->id_rekam_medis) {
             $modal = new Pasien;
             $pasien->id_rekam_medis =  $modal->generateIdRekamMedis($id);
+            $pasien->created_at = date('Y-m-d H:i:s');
         }
         $pasien->kategori_pasien_id = $request->input('kategori_pasien_id');
         $pasien->NIK = $request->input('NIK');

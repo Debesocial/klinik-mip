@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AturanPakai;
+use App\Models\Dosis;
 use App\Models\HasilPemantauan;
 use App\Models\Obat;
 use App\Models\RawatInap;
@@ -22,6 +24,8 @@ class TandaVitalController extends Controller
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
+        $data['dosis'] = Dosis::get();
+        $data['aturan'] = AturanPakai::get();
         return view('component/form_tambah_vital', $data);
     }
 
@@ -53,6 +57,8 @@ class TandaVitalController extends Controller
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::all();
+        $data['dosis'] = Dosis::get();
+        $data['aturan'] = AturanPakai::get();
         return view('component/form_ubah_vital', $data);
     }
 
@@ -81,7 +87,8 @@ class TandaVitalController extends Controller
         $data['tandavital']= TandaVital::find($id);
         $data['hasilpemantauan'] = HasilPemantauan::all();
         $data['obat'] = Obat::with(['satuan_obat'])->get();
-        
+        $data['dosis'] = Dosis::get();
+        $data['aturan'] = AturanPakai::get();
         return view('component/view_vital', $data);
     }
 

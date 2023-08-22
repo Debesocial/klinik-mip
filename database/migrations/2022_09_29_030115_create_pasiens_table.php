@@ -34,7 +34,7 @@ class CreatePasiensTable extends Migration
             $table->text('alamat_mess')->nullable();
             $table->string('pekerjaan', 20)->nullable();
             $table->string('telepon', 20)->nullable();
-            $table->string('email', 30)->nullable();
+            $table->string('email')->nullable();
             $table->boolean('alergi_obat')->nullable();
             $table->json('alergi')->nullable();
             $table->boolean('hamil_menyusui');

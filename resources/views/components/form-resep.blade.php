@@ -39,7 +39,7 @@
             </div>
             <div class="mb-2">
                 <label for="" class="form-label">Dosis</label>
-                <select id="dosis" class="form-control">
+                <select id="dosis" class="form-select">
                     <option value="">Pilih dosis</option>
                     @foreach ($dosis as $d)
                         <option value="{{ $d->id }}">{{ $d->singkatan }}
@@ -96,6 +96,9 @@
     var aturan = @json($aturan);
     var dosis = @json($dosis);
     var resepSelected = {};
+    if (resep.length > 0) {
+        drawformResep(true);
+    }
 
     function addResep() {
         var temp = {};
@@ -119,7 +122,7 @@
         }
     }
 
-    function drawformResep() {
+    function drawformResep(first=false) {
         html = ``;
 
         resep.forEach((data, key) => {
@@ -138,7 +141,9 @@
                 key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
         })
-        clearformResep();
+        if (!first) {
+            clearformResep();
+        }
         $('#resep').val(JSON.stringify(resep));
         $('#body_resep').html(html);
     }

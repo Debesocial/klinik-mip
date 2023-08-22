@@ -1,13 +1,15 @@
 <div>
-    <div class="row mb-3">
-        <div class="col-md-6">
-            <label class="form-label" for="">Surat Persetujuan Tindakan Medis
-                <small class="text-warning"><b>**File maksimal berukuran
-                        2MB</b></small></label>
-            <input type="file" name="persetujuan_tindakan" id="persetujuan_tindakan" class="form-control">
-            {!! validasi('Ukuran file', 'terlalu besar') !!}
+    @if ($dokumen)   
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label" for="">Surat Persetujuan Tindakan Medis
+                    <small class="text-warning"><b>**File maksimal berukuran
+                            2MB</b></small></label>
+                <input type="file" name="persetujuan_tindakan" id="persetujuan_tindakan" class="form-control">
+                {!! validasi('Ukuran file', 'terlalu besar') !!}
+            </div>
         </div>
-    </div>
+    @endif
     <div class="border p-3 mb-3">
         <input type="text" name="tindakan" id="tindakan" hidden>
         <div class="row">
@@ -130,7 +132,9 @@
     var allTindakan = @json($tindakan);
     var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
     var tindakanSelected = {};
-
+    if (tindakan.length > 0) {
+        drawformTindakan(true);
+    }
     function addTindakan() {
         var temp = {};
         var validated = true;
@@ -182,7 +186,7 @@
         })
     }
 
-    function drawformTindakan() {
+    function drawformTindakan(first=false) {
         html = ``;
         // console.log(tindakan);
         tindakan.forEach((data, key) => {
@@ -205,7 +209,9 @@
                 key + `)"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
         })
-        clearformTindakan();
+        if (!first) {
+            clearformTindakan();
+        }
         $('#tindakan').val(JSON.stringify(tindakan));
         $('#body_tindakan').html(html);
     }
@@ -283,3 +289,5 @@
         });
     }
 </script>
+
+

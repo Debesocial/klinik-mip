@@ -39,8 +39,8 @@ class IzinIstirahatController extends Controller
         $data['pasien_id'] = Pasien::with('kategori', 'perusahaan', 'divisi', 'jabatan')->where('id_rekam_medis', '!=', 'null')->get();
         $data['rsrujukan'] = RumahSakitRujukan::all();
         $data['spesialisrujukan'] = SpesialisRujukan::all();
-        $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        // $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $data['obat'] = Obat::get();
         $data['satuanobat'] = SatuanObat::get();
         $data['tindakan'] = Tindakan::get();
@@ -56,8 +56,8 @@ class IzinIstirahatController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-
+        $data = $request->except(['_token','resep']);
+        $data['terapi'] = $request->input('resep');
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
         if (IzinIstirahat::create($data)) {
@@ -87,8 +87,7 @@ class IzinIstirahatController extends Controller
         $data['istirahat'] = IzinIstirahat::with(['pasien.kategori', 'pasien.perusahaan', 'pasien.divisi', 'pasien.jabatan'])->find($id);
         $data['rsrujukan'] = RumahSakitRujukan::all();
         $data['spesialisrujukan'] = SpesialisRujukan::all();
-        $data['nama_penyakit'] = NamaPenyakit::with(['sub_klasifikasi', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $data['obat'] = Obat::get();
         $data['satuanobat'] = SatuanObat::get();
         $data['tindakan'] = Tindakan::get();
@@ -107,7 +106,8 @@ class IzinIstirahatController extends Controller
     public function update(Request $request, $id)
     {
         
-        $data = $request->except('_token');
+        $data = $request->except(['_token','resep']);
+        $data['terapi'] = $request->input('resep');
         $data['updated_by'] = auth()->user()->id;
         if (IzinIstirahat::where('id', $id)->update($data)) {
             return redirect("/data/izin/istirahat")->with('message', 'Berhasil Mengubah Izin Istirahat!');

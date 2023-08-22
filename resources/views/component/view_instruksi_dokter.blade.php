@@ -115,6 +115,7 @@
                         @foreach (json_decode($instruksidokter->tindakan) as $tin)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>{{$tindakan->find($tin->nama_tindakan)->nama_tindakan}}</td>
                                 <td>
                                     <ol>
                                         @foreach ($tin->alat_kesehatan as $al)
@@ -171,8 +172,8 @@
                                     <td>{{ $resep->jumlah_obat }}
                                         {{ $data_obat->satuan_obat->satuan_obat }}
                                     </td>
-                                    <td>{{ $resep->aturan_pakai }}</td>
-                                    <td>{{ $resep->keterangan_resep }}</td>
+                                    <td>{{ $aturan->find($resep->aturan_pakai)->singkatan }}</td>
+                                    <td>{{ $aturan->find($resep->dosis)->singkatan }}</td>
                                 </tr>
                             @endforeach
                                 

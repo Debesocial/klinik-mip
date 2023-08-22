@@ -16,47 +16,32 @@ class RumahSakitRujukanSeeder extends Seeder
     {
         RumahSakitRujukan::insert([
             [
-                'nama_RS_rujukan' => 'Rumah Sakit Pertamedika',
+                'nama_RS_rujukan' => 'RSUD dr. H. Jusuf SK',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'Rumah Sakit Malinau',
+                'nama_RS_rujukan' => 'RSUD Mantri Raga Kota Tarakan',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'Rumah Sakit MEDAN',
+                'nama_RS_rujukan' => 'RSU Pertamedika Tarakan',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'Rumah Sakit Harapan Indah',
+                'nama_RS_rujukan' => 'RSAL Ilyas Tarakan',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'RSUD Tarakan',
+                'nama_RS_rujukan' => 'RSU Carsa Tarakan',
                 'created_by' => 1,
                 'updated_by' => 1
             ],
             [
-                'nama_RS_rujukan' => 'Rumah Sakit AL Tarakan',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_RS_rujukan' => 'Rumah Sakit JAMBI',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_RS_rujukan' => 'Rumah Sakit JAWA',
-                'created_by' => 1,
-                'updated_by' => 1
-            ],
-            [
-                'nama_RS_rujukan' => 'Rumah Sakit Makasar',
+                'nama_RS_rujukan' => 'RSU Carsa Tarakan',
                 'created_by' => 1,
                 'updated_by' => 1
             ],

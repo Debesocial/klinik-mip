@@ -161,13 +161,29 @@
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="form-label">Aturan Pakai </label>
-                                    <input type="text" id="aturan_pakai" class="form-control">
+                                    <select type="text" id="aturan_pakai" class="form-select">
+                                        <option value="">Pilih aturan pakai</option>
+                                        @foreach ($aturan as $a)
+                                            <option value="{{ $a->id }}">{{ $a->singkatan }}
+                                                {{ $a->kepanjangan ? '(' . ucfirst($a->kepanjangan) . ')' : '' }}
+                                                - {{ ucfirst($a->arti) ?? '' }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                     {!! validasi('Aturan pakai') !!}
                                 </div>
                                 <div class="mb-2">
-                                    <label for="" class="form-label">Keterangan</label>
-                                    <textarea id="keterangan_resep" class="form-control"></textarea>
-                                    {!! validasi('Aturan pakai') !!}
+                                    <label for="" class="form-label">Dosis</label>
+                                    <select id="dosis" class="form-select">
+                                        <option value="">Pilih dosis</option>
+                                        @foreach ($dosis as $d)
+                                            <option value="{{ $d->id }}">{{ $d->singkatan }}
+                                                {{ $d->kepanjangan ? '(' . ucfirst($d->kepanjangan) . ')' : '' }}
+                                                - {{ ucfirst($d->arti) ?? '' }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    {!! validasi('Dosis') !!}
                                 </div>
                                 <div class="mb-2">
                                     <label for="" class="form-label">Waktu Pemberian Obat</label>
@@ -189,7 +205,7 @@
                                                 <th>Nama Obat</th>
                                                 <th>Obat</th>
                                                 <th>Aturan Pakai</th>
-                                                <th>Keterangan</th>
+                                                <th>Dosis</th>
                                                 <th>Tanggal Pemberian</th>
                                                 <th></th>
                                             </tr>
@@ -280,10 +296,12 @@
         hideModal('modalRawatInap');
         $('#form-tambah-tandavital').submit();
     }
-    id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep', 'tgl_pemberian'];
+    id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'dosis', 'tgl_pemberian'];
     resep = [];
     var satuanobat = @json($satuanobat);
     var obat = @json($obat);
+    var aturan = @json($aturan);
+    var dosis = @json($dosis);
     var resepSelected = {};
     function addResep() {
         var temp = {};
@@ -311,14 +329,19 @@
         resep.forEach((data, key) => {
             namaobat = obat.find(ob => ob.id == data.nama_obat); 
             satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
+            let atr = aturan.find(a => a.id == data.aturan_pakai);
+            let ds = dosis.find(d => d.id == data.dosis);
             html += `<tr> 
-                    <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
-                        <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
-                        <td>` + data.aturan_pakai + `</td>
-                        <td>` + data.keterangan_resep + `</td>
-                        <td>` + tanggal(data.tgl_pemberian) + `</td>
-                        <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                    </tr>`;
+                            <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/` + namaobat
+                .id + `', 'Detail Obat')">` + namaobat.nama_obat + ` <i class="bi bi-box-arrow-up-right"></i></a></td>
+                            <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
+                            <td>` + atr.singkatan + `</td>
+                            <td>` + ds.singkatan + `</td>
+                            <td>` + tanggal(data.tgl_pemberian) + `</td>
+                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key +
+                `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` +
+                key + `)"><i class="bi bi-trash"></i></b></td>
+                        </tr>`;
         })
         clearformResep();
         $('#terapi').val(JSON.stringify(resep));

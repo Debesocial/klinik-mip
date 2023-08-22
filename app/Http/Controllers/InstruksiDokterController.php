@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alkes;
+use App\Models\AturanPakai;
+use App\Models\Dosis;
 use Illuminate\Http\Request;
 use App\Models\InstruksiDokter;
 
@@ -40,12 +42,11 @@ class InstruksiDokterController extends Controller
 
     public function tampilFormUbah($id)
     {
-        $data['instruksidokter'] = InstruksiDokter::find($id);
+        $data['instruksidokter'] = InstruksiDokter::with(['namapenyakit','namapenyakitsekunder'])->find($id);
         if ($data['instruksidokter']->rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['namapenyakit'] = NamaPenyakit::with(['sub_klasifikasi','sub_klasifikasi.klasifikasi_penyakit'])->get();
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with(['satuan_obat'])->get();
         $data['satuanobat'] = SatuanObat::all();
         $data['obat'] = Obat::get();
         $data['tindakan'] = Tindakan::get();
@@ -57,6 +58,8 @@ class InstruksiDokterController extends Controller
         $data['instruksidokter'] = InstruksiDokter::find($id);
         $data['alkes'] = Alkes::where('golongan_alkes_id','!=',5)->get();
         $data['obat'] = Obat::with(['satuan_obat'])->get();
+        $data['dosis'] = Dosis::get();
+        $data['aturan'] = AturanPakai::get();
         $data['tindakan'] = Tindakan::get();
 
         return view('/component/view_instruksi_dokter', $data);
@@ -65,6 +68,7 @@ class InstruksiDokterController extends Controller
     public function simpan(Request $request)
     {
         $data = $request->except('_token');
+        $data['resep_obat'] = $data['resep'];
         $data['created_by'] = auth()->user()->id;
         $data['updated_by'] = auth()->user()->id;
         if (InstruksiDokter::create($data)) {
@@ -74,9 +78,9 @@ class InstruksiDokterController extends Controller
 
     public function ubah(Request $request, $id)
     {
-        $data = $request->except('_token');
+        $data = $request->except('_token','resep');
         $data['updated_by'] = auth()->user()->id;
-
+        $data['resep_obat'] = $request->input('resep');
         if (InstruksiDokter::where('id', $id)->update($data)) {
             return redirect("/view/rawat/inap/" . $data['id_rawat_inap'])->with('message', 'Berhasil Mengubah Pemeriksaan Instruksi Dokter!');
         }

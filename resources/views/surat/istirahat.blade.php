@@ -51,7 +51,6 @@
                             @if (is_array(json_decode($istirahat->tindakan)))
                             @foreach (json_decode($istirahat->tindakan) as $tin)
                                 @php
-                                    $dataAlkes = $alkes->find($tin->alat_kesehatan);
                                     $nama_tindakan = $tindakan->find($tin->nama_tindakan)->nama_tindakan;   
                                 @endphp
                                 <li>
@@ -78,7 +77,8 @@
                                 @endphp
                                 <li>
                                     <b>{{$dataObat->nama_obat}} ({{$terapi->jumlah_obat}} {{$dataObat->satuan_obat->satuan_obat}})</b><br>
-                                   {{ $terapi->aturan_pakai}}. <br>
+                                   {{-- aturan : {!! $aturan->find($terapi->aturan_pakai)->singkatan!!}. <br>
+                                   dosis : {{$dosis->find($terapi->dosis)->singkatan}} --}}
                                    {{-- <i>ket.{{$terapi->keterangan_resep}}</i>  --}}
                                 </li>
                             @endforeach

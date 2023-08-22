@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div id="test-nl-2" class="content">
-                    <x-form-tindakan :tindakan="$tindakan" :alatkesehatan="$alatkesehatan" :selectedTindakan=null/>
+                    <x-form-tindakan :tindakan="$tindakan" :alatkesehatan="$alatkesehatan" :selectedTindakan=null :dokumen="false"/>
                     <div class="d-flex justify-content-between">
                         <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
                                 class="bi bi-arrow-left-circle"></i>
@@ -234,6 +234,11 @@
     })
 
     select2_alat =$('select#alat_kesehatan').select2({
+        theme: "bootstrap-5",
+        selectionCssClass: 'select2--small',
+        dropdownCssClass: 'select2--small',
+    });
+    select2_tindakan =$('select#nama_tindakan').select2({
         theme: "bootstrap-5",
         selectionCssClass: 'select2--small',
         dropdownCssClass: 'select2--small',

@@ -107,17 +107,21 @@
                                                     class="text-danger">*</b></label>
                                             <div class="col">
                                                 <select name="diagnosa" id="diagnosa" class="form-select">
-                                                    <option value="" disabled>Pilih Penyakit</option>
-                                                    @foreach ($nama_penyakit as $penyakit)
-                                                        {{-- <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div> --}}
-                                                        <option value="{{ $penyakit->id }}" {{($penyakit->id==$istirahat->diagnosa)?'selected':''}}>{{ $penyakit->primer }}</option>
-                                                    @endforeach
+                                                    <option value="{{$istirahat->diagnosa}}" selected>{{$istirahat->namapenyakit->primer}}</option>
+                                                    
                                                 </select>
                                                 {!! validasi('Diagnosa') !!}
-                                                <div id="diagnosa_klasifikasi" class="mt-1" >
+                                                <div id="diagnosa_klasifikasi" class="mt-1">
                                                     <ul class="m-0">
-                                                        <li><b>Subklasifikasi</b> <span id="diagnosa_sub_kla"> {{$istirahat->namapenyakit->sub_klasifikasi->nama_penyakit}}</span></li>
-                                                        <li><b>Klasifikasi</b> <span id="diagnosa_kla">{{$istirahat->namapenyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</span></li>
+                                                        <li><b>Subklasifikasi</b> <span
+                                                                id="diagnosa_sub_kla">{{ $istirahat->namapenyakit->sub_klasifikasi->nama_penyakit }}</span>
+                                                        </li>
+                                                        <li><b>Category</b> <span
+                                                                id="diagnosa_cat">{{ $istirahat->namapenyakit->category->nama_penyakit }}</span>
+                                                        </li>
+                                                        <li><b>Klasifikasi</b> <span
+                                                                id="diagnosa_kla">{{ $istirahat->namapenyakit->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -127,17 +131,20 @@
                                                     class="text-danger">*</b></label>
                                             <div class="col">
                                                 <select name="diagnosa_sekunder" id="diagnosa_sekunder" class="form-select">
-                                                    <option value="">Pilih Penyakit</option>
-                                                    @foreach ($nama_penyakit as $penyakit)
-                                                        {{-- <div hidden>{{ $penyakit->sub_klasifikasi->klasifikasi_penyakit->id }}</div> --}}
-                                                        <option value="{{ $penyakit->id }}" {{($penyakit->id==$istirahat->diagnosa_sekunder)?'selected':''}}>{{ $penyakit->primer }}</option>
-                                                    @endforeach
+                                                    <option value="{{$istirahat->diagnosa_sekunder}}" selected>{{$istirahat->namapenyakitsekunder->primer}}</option>
                                                 </select>
                                                 {!! validasi('Diagnosa sekunder', 'tidak boleh sama dengan diagnosa primer') !!}
                                                 <div id="diagnosa_sekunder_klasifikasi" class="mt-1">
                                                     <ul class="m-0">
-                                                        <li><b>Subklasifikasi</b> <span id="diagnosa_sekunder_sub_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->nama_penyakit??'-'}}</span></li>
-                                                        <li><b>Klasifikasi</b> <span id="diagnosa_sekunder_kla">{{$istirahat->namapenyakitsekunder->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit??'-'}}</span></li>
+                                                        <li><b>Blok</b> <span
+                                                                id="diagnosa_sekunder_sub_kla">{{ $istirahat->namapenyakitsekunder->sub_klasifikasi->nama_penyakit }}</span>
+                                                        </li>
+                                                        <li><b>Category</b> <span
+                                                                id="diagnosa_sekunder_cat">{{ $istirahat->namapenyakitsekunder->category->nama_penyakit }}</span>
+                                                        </li>
+                                                        <li><b>Klasifikasi</b> <span
+                                                                id="diagnosa_sekunder_kla"></span>{{ $istirahat->namapenyakitsekunder->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit }}
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -154,91 +161,7 @@
                                 </div>
                             </div>
                             <div id="test-nl-3" class="content">
-                                <input type="text" name="tindakan" id="tindakan" hidden>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <div class="row">
-                                            <div class="col my-auto">
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Nama Tindakan <b
-                                                            class="text-danger">*</b></label>
-                                                    <select name="" id="nama_tindakan" class="form-select">
-                                                        <option value="">Pilih Tindakan</option>
-                                                        @foreach ($tindakan as $tin)
-                                                            <option value="{{$tin->id}}">{{$tin->nama_tindakan}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    {!! validasi('Nama') !!}
-                                                </div>
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Nama Alat Kesehatan <b
-                                                            class="text-danger">*</b></label>
-                                                    <select name="" id="alat_kesehatan" class="form-select">
-                                                        <option value="" selected disabled>Pilihi alat kesehatan </option>
-                                                        @foreach ($alatkesehatan as $alat)
-                                                            <option value="{{ $alat->id }}">{{ $alat->nama_alkes }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    {!! validasi('Alat Kesehatan') !!}
-                                                </div>
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Jumlah Penggunaan Alat Kesehatan <b
-                                                            class="text-danger">*</b></label>
-                                                    <input type="number" name="" id="jumlah_pengguna" class="form-control">
-                                                    {!! validasi('Jumlah Penggunaan') !!}
-                                                </div>
-                                                <div class="mb-2">
-                                                    <label for="" class="form-label">Keterangan <b
-                                                            class="text-danger">*</b></label>
-                                                    <textarea name="" id="keterangan" rows="3" class="form-control"></textarea>
-                                                    {!! validasi('Keterangan') !!}
-                                                </div>
-            
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-1 my-auto">
-                                        <div class="mb-3 text-center">
-                                            <button type="button" class="btn btn-success" onclick="addTindakan()"><b> <i
-                                                        class="bi bi-arrow-right-circle"></i></b></button>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 border">
-                                        <div class="row">
-                                            <div class="col py-3">
-                                                
-                                                <div class="table-responsive">
-                                                    <span id="tindakan_kosong" class="text-danger" style="display: none">Tindakan tidak
-                                                        boleh kosong</span>
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Tindakan</th>
-                                                                <th>Alat Kesehatan</th>
-                                                                <th>Jumlah Penggunaan</th>
-                                                                <th>Keterangan</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="body_tindakan">
-                                                            <tr>
-                                                                <td colspan="5" style="height: 300px">
-                                                                    <h4 class="text-center" style="color: rgba(0, 0, 0, 0.10)">
-                                                                        Isi tabel tindakan dengan memasukkan data di form sebelah kiri.
-                                                                    </h4>
-                                                                </td>
-                                                            </tr>
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                    
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
+                                <x-form-tindakan :tindakan="$tindakan" :alatkesehatan="$alatkesehatan" :selectedTindakan="$istirahat->tindakan" />
                                 <div class="d-flex justify-content-between">
                                     <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
                                             class="bi bi-arrow-left-circle"></i>
@@ -248,77 +171,7 @@
                                 </div>
                             </div>
                             <div id="test-nl-4" class="content">
-                                <input type="text" name="terapi" id="terapi" hidden>
-                                <div class="row border p-3 mb-3">
-                                    <div class="col-md-5">
-                                        <div class="mb-2">
-                                            <label for="" class="form-label">Nama Obat <b
-                                                    class="text-danger">*</b></label>
-                                            <select id="nama_obat" class="form-select">
-                                                <option value="">Pilih Obat</option>
-                                                @foreach ($obat as $ob)
-                                                    <option value="{{$ob->id}}">{{$ob->nama_obat}}</option>
-                                                @endforeach
-                                            </select>
-                                            {!! validasi('Nama obat') !!}
-                                        </div>
-                                        <div class="mb-2">
-                                            <label for="" class="form-label">Jumlah Obat <b
-                                                    class="text-danger">*</b></label>
-                                                <div class="row">
-                                                    <div class="col-md-8">
-                                                        <div class="input-group">
-                                                            <input type="number" id="jumlah_obat" class="form-control">
-                                                            <span class="input-group-text" id="satuan_obat">Satuan</span>
-                                                            {!! validasi('Jumlah obat') !!}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div class="mb-2">
-                                            <label for="" class="form-label">Aturan Pakai <b
-                                                    class="text-danger">*</b></label>
-                                            <input type="text" id="aturan_pakai" class="form-control">
-                                            {!! validasi('Aturan pakai') !!}
-                                        </div>
-                                        <div class="mb-2">
-                                            <label for="" class="form-label">Keterangan<b
-                                                    class="text-danger">*</b></label>
-                                            <textarea id="keterangan_resep" class="form-control"></textarea>
-                                            {!! validasi('Aturan pakai') !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-1 my-auto text-center">
-                                        <button type="button" class="btn btn-success" onclick="addResep()"><b><i
-                                                    class="bi bi-arrow-right-circle"></i></b></button>
-                                    </div>
-                                    <div class="col-md-6 border pt-2">
-                                        <span id="resep_kosong" class="text-danger" style="display: none">Resep tidak boleh
-                                            kosong</span>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Nama Obat</th>
-                                                        <th>Obat</th>
-                                                        <th>Aturan Pakai</th>
-                                                        <th>Keterangan</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="body_resep">
-                                                    <tr>
-                                                        <td colspan="5" style="height: 300px">
-                                                            <h4 class="text-center" style="color: rgba(0, 0, 0, 0.10)">
-                                                                Isi tabel resep dengan memasukkan data di form sebelah kiri.
-                                                            </h4>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <x-form-resep :obat="$obat" :satuanobat="$satuanobat" :resep="$istirahat->terapi" />
                                 <div class="d-flex justify-content-between">
                                     <button type="button" class="btn btn-primary rounded-pill" onclick="stepper2.previous()"><i
                                             class="bi bi-arrow-left-circle"></i>
@@ -427,10 +280,6 @@
         </div>
     </div>
 
-    @php
-        $selectedTindakan = $istirahat->tindakan??json_encode([]);
-        $terapi = $istirahat->terapi??json_encode([]);
-    @endphp
 
     @section('js')
         <script src="{{asset('/assets/js/pilihPasien.js')}}"></script>
@@ -440,7 +289,12 @@
                 animation: true
             })
             // stepper2.to(3);
-            select2_alat = $('select#alat_kesehatan').select2({
+            select2_alat =$('select#alat_kesehatan').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            select2_tindakan =$('select#nama_tindakan').select2({
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
@@ -450,13 +304,45 @@
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
             });
+            select2_aturan =$('select#aturan_pakai').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            select2_dosis =$('select#dosis').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+            });
+            select2_diagnosa =$('select#diagnosa').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                ajax: {
+                    url: '/cari-penyakit-select2',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: data.items
+                        };
+                    }
+                }
+            });
+            select2_diagnosa_sekunder =$('select#diagnosa_sekunder').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                ajax: {
+                    url: '/cari-penyakit-select2',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: data.items
+                        };
+                    }
+                }
+            });
             $(document).ready(function() {
-                $('select').select2({
-                    theme: "bootstrap-5",
-                    selectionCssClass: 'select2--small',
-                    dropdownCssClass: 'select2--small',
-                    tags: true,
-                });
                 $("select").on("select2:select", function (evt) {
                     var element = evt.params.data.element;
                     var $element = $(element);
@@ -486,31 +372,59 @@
                 $('input[class="form-check-input"]').click(function() {
                     $(this).siblings('.invalid-feedback').hide()
                 })
-                var namapenyakit = @json($nama_penyakit);
+                
                 $('#diagnosa').change(function() {
                     var id = $(this).val();
-                    var penyakit = namapenyakit.find(data => data.id == id);
+                    var penyakit = {};
+
+                    $.ajax({
+                        type: "get",
+                        async :false,
+                        url: "/select-penyakit-by-id",
+                        data: {id:id},
+                        dataType: "json",
+                        success: function (response) {
+                            if (response.code==200) {
+                                penyakit = response.data;
+                            }
+                        }
+                    });
+                
                     $('#diagnosa_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
+                    $('#diagnosa_cat').text(penyakit.category.nama_penyakit);
                     $('#diagnosa_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
                     $('#diagnosa_klasifikasi').show();
                 })
                 $('#diagnosa_sekunder').change(function() {
                     var id = $(this).val();
-                    if (id==''||id==null) {
-                        $('#diagnosa_sekunder_klasifikasi').hide();
-                    }else{
-                        var penyakit = namapenyakit.find(data => data.id == id);
-                        $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
-                        $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit.klasifikasi_penyakit);
-                        $('#diagnosa_sekunder_klasifikasi').show();
-                    }
-
                     if (id == $('#diagnosa').val()) {
-                        $(this).addClass('is-invalid');
-                        $(this).removeClass('is-valid');
+                        
+                        $('#diagnosa_sekunder').addClass('is-invalid');
+                        $('#diagnosa_sekunder').removeClass('is-valid');
                     }else{
-                        $(this).removeClass('is-invalid');
+                        $('#diagnosa_sekunder').removeClass('is-invalid');
                     }
+                    var penyakit = {};
+
+                    $.ajax({
+                        type: "get",
+                        async :false,
+                        url: "/select-penyakit-by-id",
+                        data: {id:id},
+                        dataType: "json",
+                        success: function (response) {
+                            if (response.code==200) {
+                                penyakit = response.data;
+                            }
+                        }
+                    });
+                    $('#diagnosa_sekunder_sub_kla').text(penyakit.sub_klasifikasi.nama_penyakit);
+                    $('#diagnosa_sekunder_cat').text(penyakit.category.nama_penyakit);
+                    $('#diagnosa_sekunder_kla').text(penyakit.sub_klasifikasi.klasifikasi_penyakit
+                        .klasifikasi_penyakit);
+                    $('#diagnosa_sekunder_klasifikasi').show();
+
+                    
                 })
 
                 $('[id*="rekomendasi"]').change(function(){
@@ -632,91 +546,7 @@
                 stepper2.next();
             }
 
-            var alkes = @json($alatkesehatan);
-            var tindakan = {!! $selectedTindakan !!};
-            var allTindakan = @json($tindakan);
-            var id_tindakan = ['nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
-            drawformTindakan();
-            function addTindakan() {
-                var temp = {};
-                var validated = true;
-                id_tindakan.forEach(id => {
-                    form = $('#' + id)
-                    if (form.val() == null || form.val() == '') {
-                        form.addClass('is-invalid');
-                        form.removeClass('is-valid');
-                        validated = false;
-                    } else {
-                        form.addClass('is-valid');
-                        form.removeClass('is-invalid');
-                        temp[id] = form.val();
-                    }
-                });
-                if (validated == true) {
-                    tindakan.push(temp)
-                    drawformTindakan();
-                    tindakanSelected = {};
-                }
-                return validated;
-            }
-
-            function clearformTindakan() {
-                id_tindakan.forEach(id => {
-                    form = $('#' + id);
-                    if (id == 'alat_kesehatan'|| id == 'nama_tindakan') {
-
-                        form.val('').trigger('change');
-                    }
-                    form.removeClass('is-valid');
-                    form.val('');
-                })
-            }
-
-            function drawformTindakan() {
-                html = ``;
-                tindakan.forEach((data, key) => {
-                    var namaalkes = alkes.find(nama => nama.id == data.alat_kesehatan);
-                    var tin = allTindakan.find(d => d.id == data.nama_tindakan);
-                    html += `<tr> 
-                            <td>` + tin.nama_tindakan + `</td>
-                            <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/`+namaalkes.id+`', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes + `</td>
-                            <td>` + data.jumlah_pengguna + `</td>
-                            <td>` + data.keterangan + `</td>
-                            <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                            </tr>`;
-                })
-                clearformTindakan();
-                $('#tindakan').val(JSON.stringify(tindakan));
-                $('#body_tindakan').html(html);
-            }
-
-            function deleteTindakan(id) {
-                delete tindakan[id];
-                tindakan = tindakan.filter(function(x) {
-                    return x !== null
-                });
-                drawformTindakan();
-            }
-
-            tindakanSelected={}
-            function editTindakan(id){
-                temp = tindakan[id];
-                deleteTindakan(id);
-                if(Object.keys(tindakanSelected).length !== 0){
-                    tindakan.push(tindakanSelected);
-                    drawformTindakan();
-                }
-                tindakanSelected = temp;
-                id_tindakan.forEach(idt => {
-                    form = $('#'+idt);
-                    if (idt!='alat_kesehatan') {
-                        form.val(temp[idt]);
-                    } else {
-                        form.children().removeAttr('selected');
-                        select2_alat.val(temp.alat_kesehatan).trigger('change');
-                    }
-                });
-            }
+            
         </script>
         <script>
             function lanjut4() {
@@ -729,99 +559,7 @@
                 // }
             }
 
-            id_resep = ['nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep'];
-            resep = {!!$terapi!!}
-            var satuanobat = @json($satuanobat);
-            var obat = @json($obat);
-            var resepSelected = {};
-            drawformResep();
-            function addResep() {
-                var temp = {};
-                var validated = true;
-                id_resep.forEach(id => {
-                    form = $('#' + id)
-                    if (form.val() == null || form.val() == '') {
-                        form.addClass('is-invalid');
-                        form.removeClass('is-valid');
-                        validated = false;
-                    } else {
-                        form.addClass('is-valid');
-                        form.removeClass('is-invalid');
-                        temp[id] = form.val();
-                    }
-                });
-                if (validated == true) {
-                    resep.push(temp)
-                    drawformResep();
-                    resepSelected = {};
-                }
-            }
-
-            function drawformResep() {
-                html = ``;
-                resep.forEach((data, key) => {
-                    namaobat = obat.find(ob => ob.id == data.nama_obat); 
-                    satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
-                    html += `<tr> 
-                                <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/`+namaobat.id+`', 'Detail Obat')">` + namaobat.nama_obat + `</a></td>
-                                <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
-                                <td>` + data.aturan_pakai + `</td>
-                                <td>` + data.keterangan_resep + `</td>
-                                <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key + `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` + key + `)"><i class="bi bi-trash"></i></b></td>
-                            </tr>`;
-                })
-                clearformResep();
-                $('#terapi').val(JSON.stringify(resep));
-                $('#body_resep').html(html);
-            }
-
-            function clearformResep() {
-                id_resep.forEach(id => {
-                    form = $('#' + id);
-                    if (id == 'nama_obat') {
-                        select2_obat.val('').trigger('change');
-                        $('#satuan_obat').text('Satuan');
-                    }
-                    form.removeClass('is-valid');
-                    form.val('');
-                })
-            }
-
-            function deleteResep(id) {
-                delete resep[id];
-                resep = resep.filter(function(x) {
-                    return x !== null
-                });
-                drawformResep();
-            }
-            function editResep(id){
-                temp = resep[id];
-                deleteResep(id);
-                if(Object.keys(resepSelected).length !== 0){
-                    resep.push(resepSelected);
-                    drawformResep();
-                }
-                resepSelected = temp;
-                id_resep.forEach(idt => {
-                    form = $('#'+idt);
-                    if (idt!='nama_obat') {
-                        form.val(temp[idt]);
-                    } else {
-                        form.children().removeAttr('selected');
-                        select2_obat.val(temp.nama_obat).trigger('change');
-                    }
-                });
-            }
-
-            function setSatuan(i) {
-                if (i==null || i=='') {
-                    $('#satuan_obat').text('Satuan');
-                }else{
-                    namaobat = obat.find(ob => ob.id == i);
-                    satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
-                    $('#satuan_obat').text(satuan.satuan_obat);
-                }
-            }
+            
             function tampilModalRawatInap2(url, title) {
                 var modal = $('#modalRawatInap2');
 

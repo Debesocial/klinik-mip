@@ -32,12 +32,17 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="kategori_pasien_id">Kategori Pasien <b class="color-red">*</b></label>
+                                        @if ($pasien->is_sap==1)
+                                            <input type="text" class="form-control" value="{{ $pasien->kategori->nama_kategori }}" readonly>
+                                            <input type="hidden" name="kategori_pasien_id" value="{{ $pasien->kategori_pasien_id  }}">
+                                        @else
                                         <select class="choices form-select" name="kategori_pasien_id" id="kategori_pasien_id" required>
                                             <option value="{{ $pasien->kategori_pasien_id  }}">{{ $pasien->kategori->nama_kategori }}</option>
                                             @foreach ($kategori as $kate)
                                             <option value="{{ $kate->id }}" {{ $kate->id == $pasien->kategori_pasien_id ? 'selected' : '' }}>{{ $kate->nama_kategori }}</option>
                                             @endforeach
                                         </select>
+                                        @endif
                                     </div>
                                     <div id="data-karyawan" class="p-3 border bg-body" style="{{($pasien->kategori_pasien_id==4)?'display:none':''}}">
                                         <div class="form-group">
@@ -46,12 +51,22 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="perusahaan_id">Perusahaan <b class="color-red">*</b></label>
-                                            <select class="choices form-select" name="perusahaan_id" id="perusahaan_id">
-                                                <option value="">Pilih perusahaan</option>
-                                                @foreach ($perusahaan as $peru)
-                                                    <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
-                                                @endforeach
-                                            </select>
+                                            @if ($pasien->is_sap==1)
+                                                <input type="text" class="form-control" value="{{ $pasien->perusahaan->nama_perusahaan_pasien }}" readonly>
+                                                <select class="" name="perusahaan_id" id="perusahaan_id" hidden>
+                                                    <option value="">Pilih perusahaan</option>
+                                                    @foreach ($perusahaan as $peru)
+                                                        <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @else
+                                                <select class="choices form-select" name="perusahaan_id" id="perusahaan_id">
+                                                    <option value="">Pilih perusahaan</option>
+                                                    @foreach ($perusahaan as $peru)
+                                                        <option value="{{ $peru->id }}" {{ $peru->id == $pasien->perusahaan_id ? 'selected' : '' }}>{{ $peru->nama_perusahaan_pasien }}</option>
+                                                    @endforeach
+                                                </select>
+                                            @endif
                                         </div>
                                         <div class="form-group ps-3" id="_lain" style="{{($pasien->perusahaan_id!=17)?'display: none;':''}}">
                                             <label for="lain">Perusahaan Lain</label>

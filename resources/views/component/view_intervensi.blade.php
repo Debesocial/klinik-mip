@@ -74,7 +74,6 @@
                             <th>#</th>
                             <th>Tindakan</th>
                             <th>Alat Kesehatan</th>
-                            <th>Jumlah Penggunaan</th>
                             <th>Keterangan</th>
                         </tr>
                     </thead>
@@ -84,9 +83,23 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $tindakan->find($tin->nama_tindakan)->nama_tindakan }}</td>
-                                <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$tin->alat_kesehatan}}', 'Detail Alat Kesehatan' )">{{$alatkesehatan->find($tin->alat_kesehatan)->nama_alkes}}</td>
-                                {{-- <td>{{ $alatkesehatan->find($tin->alat_kesehatan)->nama_alkes }}</td> --}}
-                                <td>{{ $tin->jumlah_pengguna }}</td>
+                                <td>
+                                    <ol>
+                                        @foreach ($tin->alat_kesehatan as $al)
+                                            <?php
+                                                $alat = $alkes->find($al->id);
+                                            ?>
+                                            <li>
+                                                <a href="javascript:void(0)"
+                                                    onclick="tampilModalRawatInap2('/modal/alkes/{{ $al->id }}', 'Detail Alat Kesehatan' )">
+                                                    {{ $alat->nama_alkes }}
+                                                </a>
+                                                {{ $al->jlh }}
+                                                {{ $alat->satuan_obat->satuan_obat }}
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </td>
                                 <td>{{ $tin->keterangan }}</td>
                             </tr>
                         @endforeach

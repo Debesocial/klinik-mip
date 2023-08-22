@@ -8,10 +8,7 @@
                 <div class="mb-3">
                     <label for="" class="form-label">Doiagnosa <b class="text-danger">*</b></label>
                     <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select">
-                        <option value="" selected disabled>Pilih penyakit</option>
-                        @foreach ($penyakit as $namapenyakit)
-                            <option value="{{ $namapenyakit->id }}" {{($namapenyakit->id==$permintaanmakanan->nama_penyakit_id)?'selected':''}} >{{ $namapenyakit->primer }}</option>
-                        @endforeach
+                        <option value="{{$permintaanmakanan->nama_penyakit_id}}" selected>{{$permintaanmakanan->namapenyakit->primer}}</option>
                     </select>
                     {!! validasi('Diagnosa') !!}
                 </div>
@@ -94,11 +91,20 @@
         });
     })
 
-    $('select').select2({
+    select2_penyakit =$('select#nama_penyakit_id').select2({
         theme: "bootstrap-5",
         selectionCssClass: 'select2--small',
         dropdownCssClass: 'select2--small',
-    })
+        ajax: {
+            url: '/cari-penyakit-select2',
+            dataType: 'json',
+            processResults: function (data) {
+                return {
+                    results: data.items
+                };
+            }
+        }
+    });
 
     var id = ['nama_penyakit_id', 'catatan', 'permintaan_makanan', 'tanggal_mulai', 'tanggal_selesai', 'ttd' , 'jumlah_pemberian'];
 

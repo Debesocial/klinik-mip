@@ -340,7 +340,7 @@ function toPemeriksaan(id_pas,id_rekam_medis,nama, tombol){
         Swal.fire({ 
             icon: "warning",
             title: "ID Rekam Medis belum didaftarkan", 
-            html: "Data <b>"+nama+"</b> diambil dari <b>SAP</b> dan belum memiliki ID Rekam Medis. Silahkan mengubah data untuk mendapatkan ID Rekam Medis!",
+            html: "Data <b>"+nama+"</b> diambil dari <b>Sisakty</b> dan belum memiliki ID Rekam Medis. Silahkan mengubah data untuk mendapatkan ID Rekam Medis!",
             confirmButtonText: "Ubah Data Pasien" 
         }).then((result) => {
             if (result.isConfirmed) { window.location.href = '/ubah/data/pasien/'+id_pas }

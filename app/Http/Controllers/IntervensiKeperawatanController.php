@@ -18,7 +18,7 @@ class IntervensiKeperawatanController extends Controller
         if ($rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $data['tindakan'] = Tindakan::get();
 
         return view('component/form_tambah_intervensi', $data);
@@ -40,7 +40,7 @@ class IntervensiKeperawatanController extends Controller
         if ($data['intervensi']->rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->with('satuan_obat')->get();
         $data['tindakan'] = Tindakan::get();
 
         return view('component/form_ubah_intervensi', $data);
@@ -59,7 +59,7 @@ class IntervensiKeperawatanController extends Controller
     public function tampil($id)
     {
         $data['intervensi'] = IntervensiKeperawatan::find($id);
-        $data['alatkesehatan'] = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $data['alkes'] = Alkes::where('golongan_alkes_id','!=',5)->get();
         $data['tindakan'] = Tindakan::get();
 
         return view('component/view_intervensi', $data);

@@ -26,7 +26,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data['total_pasien'] = Pasien::count();
+        $data['total_pasien'] = Pasien::whereNotNull('id_rekam_medis')->count();
         // $data['pasien_per_bulan'] = Pasien::selectRaw('count(id) as total_bulan, SUM(COUNT(id)) OVER (ORDER BY DATE_FORMAT(created_at, "%Y-%m")) AS total, DATE_FORMAT(created_at, "%Y-%m") as tanggal')->groupByRaw("DATE_FORMAT(created_at, '%Y-%m')")->orderByRaw("DATE_FORMAT(created_at, '%Y-%m')")->get();
         $data['pasien_per_bulan'] = DB::table('pasiens as p1')
         ->selectRaw('COUNT(p1.id) as count, DATE_FORMAT(p1.created_at, "%Y-%m") as tanggal')
@@ -37,6 +37,7 @@ class DashboardController extends Controller
         }, 'total')
         ->groupBy(DB::raw('DATE_FORMAT(p1.created_at, "%Y-%m")'))
         ->orderBy(DB::raw('DATE_FORMAT(p1.created_at, "%Y-%m")'))
+        ->whereNotNull('id_rekam_medis')
         ->get();
         $data['pasien_masih_rawat_inap'] = RawatInap::where('berakhir_rawat',null)->with(['pasien'])->get();
         $data['tanda_vital_hari_ini'] = TandaVital::whereDate('created_at', Carbon::today())->with(['rawatinap','rawatinap.pasien'])->get();

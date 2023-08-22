@@ -75,9 +75,8 @@
                             <th>Nama Obat</th>
                             <th>Jumlah Obat</th>
                             <th>Aturan Pakai</th>
-                            <th>Keterangan</th>
+                            <th>Dosis</th>
                             <th>Tanggal Pemberian</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="body_resep">
@@ -88,10 +87,9 @@
                                 @endphp
                                 <tr>
                                     <td><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/{{$dataobat->id}}', 'Detail Alat Kesehatan' )">{{$dataobat->nama_obat}}</td>
-                                    <td>{{$dataobat->nama_obat}}</td>
                                     <td>{{$terapi->jumlah_obat .' '. $dataobat->satuan_obat->satuan_obat}}</td>
-                                    <td>{{$terapi->aturan_pakai}}</td>
-                                    <td>{{$terapi->keterangan_resep}}</td>
+                                    <td>{{$aturan->find($terapi->aturan_pakai)->singkatan}}</td>
+                                    <td>{{$dosis->find($terapi->dosis)->singkatan}}</td>
                                     <td>{{tanggal($terapi->tgl_pemberian)}}</td>
                                 </tr>
                             @endforeach

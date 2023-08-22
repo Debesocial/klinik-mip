@@ -11,16 +11,18 @@ class FormTindakan extends Component
     public $tindakan;
     public $alatkesehatan;
     public $selectedTindakan;
+    public $dokumen;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($tindakan, $alatkesehatan, $selectedTindakan)
+    public function __construct($tindakan, $alatkesehatan, $selectedTindakan, $dokumen=true)
     {
         $this->tindakan = $tindakan;
         $this->alatkesehatan = $alatkesehatan;
         $this->selectedTindakan = $this->setSelectedTindakan($selectedTindakan);
+        $this->dokumen = $dokumen;
     }
 
     public function setSelectedTindakan($tindakan)

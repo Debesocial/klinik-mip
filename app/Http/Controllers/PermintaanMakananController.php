@@ -17,7 +17,6 @@ class PermintaanMakananController extends Controller
         if ($rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['penyakit'] = NamaPenyakit::all();
 
         return view('/component/form_tambah_permintaan_makanan', $data);
     }
@@ -39,7 +38,6 @@ class PermintaanMakananController extends Controller
         if ($data['permintaanmakanan']->rawatinap->berakhir_rawat!=null) {
             return "Rawat Inap Sudah Selesai";
         }
-        $data['penyakit'] = NamaPenyakit::all();
         return view('/component/form_ubah_permintaan_makanan', $data);
 
     }
