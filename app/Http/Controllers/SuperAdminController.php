@@ -748,7 +748,7 @@ class SuperAdminController extends Controller
     {
         $keterangan = KeteranganBerobat::all();
         $pasien = Pasien::all();
-        $namapenyakit = NamaPenyakit::all();
+        // $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
         $tindakan = Tindakan::get();
 
@@ -759,7 +759,7 @@ class SuperAdminController extends Controller
     {
         $pasien_id = Pasien::with(['kategori'])->where('id_rekam_medis', '!=', 'null')->get();
         $keterangan = KeteranganBerobat::all();
-        $namapenyakit = NamaPenyakit::all();
+        $namapenyakit = NamaPenyakit::get();
         $rsrujukan = RumahSakitRujukan::all();
         $dokters = User::where('level_id',2)->get();
 
@@ -810,12 +810,14 @@ class SuperAdminController extends Controller
     public function ubahketberobat($id)
     {
         $keterangan = KeteranganBerobat::find($id);
+        $primer = NamaPenyakit::find($keterangan->nama_penyakit_id);
+        $sekunder = NamaPenyakit::find($keterangan->sekunder);
         $pasien = Pasien::with(['kategori'])->get();
-        $namapenyakit = NamaPenyakit::all();
+        // $namapenyakit = NamaPenyakit::all();
         $rsrujukan = RumahSakitRujukan::all();
         $dokters = User::where('level_id',2)->get();
 
-        return view('petugas.superadmin.ubah_keterangan_berobat', compact('dokters','keterangan', 'pasien', 'namapenyakit', 'rsrujukan'));
+        return view('petugas.superadmin.ubah_keterangan_berobat', compact('dokters','keterangan', 'pasien', 'rsrujukan'));
     }
 
     function changeketberobat(Request $request, $id)

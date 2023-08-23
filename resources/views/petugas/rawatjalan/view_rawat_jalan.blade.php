@@ -4,7 +4,7 @@
 @section('pemeriksaan', 'active')
 @section('jalan', 'active')
 @section('breadcrumb', 'lihat_rawat_jalan')
-@section('judul', 'Lihat Data Rawap Jalan')
+@section('judul', 'Lihat Data Rawat Jalan')
 @section('container')
 @section('css')
     <style>

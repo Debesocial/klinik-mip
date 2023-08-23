@@ -5,6 +5,9 @@
                 margin-left :2cm;
                 margin-right: 2cm;
             }
+            body{
+                padding-top:3cm;
+            }
             img {
                 height: 80px;
                 width: auto
@@ -61,9 +64,10 @@
                 color:  blue;
 
             }
+            
             header { position: fixed; top: 0; left: 0px; right: 0px; border-bottom: 1px solid black;}
-            footer { position: fixed; bottom: 0; left: 0px; right: 0px; }
-            main { position: fixed; top:100px ; font-size: 14px; line-height: 1.5; padding-top: 10px; width: 100%;}
+            footer { position: fixed; bottom: 0; left: 0px; right: 0px;}
+            main { font-size: 14px; line-height: 1.5;  width: 100%;}
         </style>
     </head>
     <body>

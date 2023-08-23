@@ -54,23 +54,45 @@
                                         <label for="" class="form-label">Dokter yang memeriksa <b class="color-red">*</b></label>
                                         <input type="text" id="dokter_periksa" name="dokter_periksa" class="form-control" placeholder="Masukkan nama dokter" required>
                                     </div>
-                                    <div class="mb-2">
-                                        <label class="form-label">Diagnosa <b class="color-red">*</b></label>
-                                        <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select" required>
-                                            <option value="" disabled selected>Pilih Nama Penyakit</option>
-                                            @foreach ($namapenyakit as $nama)
-                                                <option value="{{ $nama->id }}">{{ $nama->primer }}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="row mb-2">
+                                        <label for="" class="form-label">Diagnosa <b
+                                                class="text-danger">*</b></label>
+                                        <div class="col">
+                                            <select name="nama_penyakit_id" id="nama_penyakit_id" class="form-select" required>
+                                                {{-- <option value="" selected disabled>Pilih Penyakit</option>
+                                                @foreach ($namapenyakit as $penyakit)
+                                                    <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                                @endforeach --}}
+                                            </select>
+                                            {!! validasi('Diagnosa') !!}
+                                            <div id="diagnosa_klasifikasi" class="mt-1" style="display: none">
+                                                <ul class="m-0">
+                                                    <li><b>Blok</b> <span id="diagnosa_sub_kla"></span></li>
+                                                    <li><b>Category </b> <span id="diagnosa_cat"></span></li>
+                                                    <li><b>Chapter</b> <span id="diagnosa_kla"></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-2">
-                                        <label class="form-label">Diagnosa Sekunder </label>
-                                        <select name="sekunder" id="sekunder" class="form-select">
-                                            <option value="" selected>Pilih Nama Penyakit</option>
-                                            @foreach ($namapenyakit as $nama)
-                                                <option value="{{ $nama->id }}">{{ $nama->primer }}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="row mb-2">
+                                        <label for="" class="form-label">Diagnosa Sekunder <b
+                                                class="text-danger">*</b></label>
+                                        <div class="col">
+                                            <select name="sekunder" id="sekunder" class="form-select">
+                                                {{-- <option value="" selected disabled>Pilih Penyakit</option>
+                                                @foreach ($namapenyakit as $penyakit)
+                                                    <option value="{{ $penyakit->id }}">{{ $penyakit->primer }}</option>
+                                                @endforeach --}}
+                                            </select>
+                                            {!! validasi('Diagnosa sekunder', 'tidak boleh sama dengan diagnosa primer') !!}
+                                            <div id="diagnosa_sekunder_klasifikasi" class="mt-1" style="display: none">
+                                                <ul class="m-0">
+                                                    <li><b>Blok</b> <span id="diagnosa_sekunder_sub_kla"></span></li>
+                                                    <li><b>Category </b> <span id="diagnosa_sekunder_cat"></span></li>
+                                                    <li><b>Chapter</b> <span id="diagnosa_sekunder_kla"></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,6 +161,35 @@
                 theme: "bootstrap-5",
                 selectionCssClass: 'select2--small',
                 dropdownCssClass: 'select2--small',
+            });
+
+            select2_diagnosa =$('select#nama_penyakit_id').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                ajax: {
+                    url: '/cari-penyakit-select2',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: data.items
+                        };
+                    }
+                }
+            });
+            select2_diagnosa_sekunder =$('select#sekunder').select2({
+                theme: "bootstrap-5",
+                selectionCssClass: 'select2--small',
+                dropdownCssClass: 'select2--small',
+                ajax: {
+                    url: '/cari-penyakit-select2',
+                    dataType: 'json',
+                    processResults: function (data) {
+                        return {
+                            results: data.items
+                        };
+                    }
+                }
             });
             
             $(document).ready(function () {
