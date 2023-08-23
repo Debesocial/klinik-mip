@@ -292,7 +292,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <x-status-lokalis :titik="$rawat_inap->titik_lokalis"/>
+                                    <x-status-lokalis :titik="$rawat_inap->titik_lokalis" :text="$rawat_inap->status_lokalis"/>
                                     <div class="row mb-3">
                                         {{-- <div class="col">
                                             <label class="form-label">Nama Penyakit <b class="text-danger">*</b></label>

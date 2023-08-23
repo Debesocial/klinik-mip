@@ -151,7 +151,9 @@ Route::group(['middleware' => ['auth']], function () {
             return $result;
         });
         Route::get('/get-one-rawat-inap/{id}', function ($id) {
-            return RawatInap::find($id);
+            $data = RawatInap::find($id);
+            $data['penyakit'] = NamaPenyakit::whereIn('id',json_decode($data->nama_penyakit_id))->with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+            return $data;
         });
 
         Route::get('/instruksi_dokter/form_tambah/{id}', [InstruksiDokterController::class, 'tampilFormTambah']);
@@ -187,7 +189,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/ubah/rawat/jalan/{id}', [RawatJalanController::class, 'ubahrawatjalan'])->name('rawatjalan.ubahrawatjalan');
         Route::post('/ubah/rawat/jalan/{id}', [RawatJalanController::class, 'changerawatjalan'])->name('rawatjalan.changerawatjalan');
         Route::get('/get-one-rawat-jalan/{id}', function ($id) {
-            return RawatJalan::find($id);
+            $data = RawatJalan::find($id);
+            $data['penyakit'] = NamaPenyakit::whereIn('id',json_decode($data->nama_penyakit_id))->with(['sub_klasifikasi','category', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
+            return $data;
         });
 
         Route::get('/data/permintaan/makanan', [PermintaanMakananController::class, 'datapermintaanmakanan'])->name('makanan.datapermintaanmakanan');

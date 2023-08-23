@@ -92,8 +92,10 @@
                 @endphp
                     <li >
                         <b>  {{$p->primer }} </b><br>
-                        <small><b>Sub-Klasifikasi:</b> {{$p->sub_klasifikasi->nama_penyakit}}</small>,<br>
-                        <small><b>Klasifikasi:</b> {{$p->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</small>
+                        <small><b>Blok:</b> {{$p->sub_klasifikasi->nama_penyakit}}</small>,<br>
+                        <small><b>Category:</b> {{$p->category->nama_penyakit}}</small>,<br>
+                        <small><b>Chapter:</b> {{$p->sub_klasifikasi->klasifikasi_penyakit->klasifikasi_penyakit}}</small><br>
+                        <small><b>Pengertian:</b> {{$p->pengertian}}</small>
                     </li>
                 @endforeach
 
@@ -113,7 +115,7 @@
                     <ol>
                         @foreach (json_decode($kecelakaan->tindakan, true) as $tin)
                             @php
-                                $alat =  $alkes->find($tin['alat_kesehatan']);
+                                // $alat =  $alkes->find($tin['alat_kesehatan']);
                                 $nama_tindakan = $tindakan->find($tin['nama_tindakan'])->nama_tindakan;
                             @endphp
                             <li >
@@ -125,6 +127,7 @@
                 </li>
                 <li><b>Resep Obat</b>
                     <ol>
+                        @if ($kecelakaan->resep)
                         @foreach (json_decode($kecelakaan->resep, true) as $resep)
                             @php
                                 $ob = $obat->find($resep['nama_obat']);
@@ -132,6 +135,8 @@
                             
                             <li>{{$ob->nama_obat}}  (<i>{{$resep['jumlah_obat']}} {{$ob->satuan_obat->satuan_obat}}</i>)</li>
                         @endforeach
+                            
+                        @endif
                     </ol>
                 </li>
             </ul>

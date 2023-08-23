@@ -8,7 +8,7 @@
 </style>
 <div>
     <div class="row justify-content-center mb-2">
-        <input type="hidden" name="titik_lokalis" id="titik_lokalis">
+        <input type="hidden" name="titik_lokalis" id="titik_lokalis" value="{{$titik}}">
         <div class="col-6 text-center">
             @if ($form)
             <button type="button" class="btn btn-sm btn-outline-secondary mb-1" onclick="removeMarks()">
@@ -28,7 +28,7 @@
             <div class="input-group">
                 {{-- <img src="{{ asset('assets/images/body.png') }}" alt="" id="sourceImage" style="display: none;"> --}}
                 <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control"
-                    placeholder="Masukkan status lokalis">Dalam batas normal</textarea>
+                    placeholder="Masukkan status lokalis">{{$text!=''?$text:'Dalam batas normal'}}</textarea>
                 {!! validasi('Status lokalis') !!}
             </div>
         </div>
@@ -41,6 +41,7 @@
     var marks = {!! $titik !!};
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
+    let needSelect = true;
     // const img = document.getElementById("sourceImage");
 
     var img = new Image();
@@ -82,59 +83,66 @@
 </script>
 @if ($form)
     <script>
+        
         function removeMarks() {
-        marks.pop();
-        drawImageOnCanvas();
-    }
+            marks.pop();
+            drawImageOnCanvas();
+        }
 
 
     // Fungsi untuk mendapatkan koordinat saat kanvas diklik
     function getCoordinates(event) {
-        const canvas = document.getElementById("myCanvas");
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-        const ctx = canvas.getContext("2d");
-
-        // Menggambar gambar kembali untuk mengembalikan gambar asli dan tanda-tanda yang sudah ada
-        drawImageOnCanvas();
-
-        // Menggambar tanda silang di titik yang diklik
-        drawMark(ctx, x, y);
-
-        // Menyimpan koordinat
-        marks.push({
-            x: x,
-            y: y
-        });
-        $('#titik_lokalis').val(JSON.stringify(marks));
+        if (needSelect) {
+            const canvas = document.getElementById("myCanvas");
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const ctx = canvas.getContext("2d");
+    
+            // Menggambar gambar kembali untuk mengembalikan gambar asli dan tanda-tanda yang sudah ada
+            drawImageOnCanvas();
+    
+            // Menggambar tanda silang di titik yang diklik
+            drawMark(ctx, x, y);
+    
+            // Menyimpan koordinat
+            marks.push({
+                x: x,
+                y: y
+            });
+            $('#titik_lokalis').val(JSON.stringify(marks));
+            
+        }
     }
 
-    // Memanggil fungsi untuk menggambar gambar saat halaman dimuat
-    // window.onload = drawImageOnCanvas;
+    
+    
+        canvas.addEventListener("click", getCoordinates);
+    
+        var zoom = document.getElementById("zoom");
+        var zoomCtx = zoom.getContext("2d");
+        canvas.addEventListener("mousemove", function(e) {
+            if (needSelect) {
+                const rect = canvas.getBoundingClientRect();
+                zoomCtx.clearRect(0, 0, canvas.width, canvas.height);
+                zoomCtx.drawImage(img, (e.layerX - 25) * 2, (e.layerY - 25) * 2, width * 2, height * 2, 0, 0,
+                    width * 2,
+                    height *
+                    2);
+                drawMark(zoomCtx, 50, 50, true, 'green');
+                zoom.style.top = e.clientY - rect.top + 10 + "px"
+                zoom.style.left = e.clientX - rect.left + 10 + "px"
+                zoom.style.display = "block";
+                
+            }
+        });
+    
+        canvas.addEventListener("mouseout", function() {
+            zoom.style.display = "none";
+        });
 
-    // Menambahkan event listener untuk menghandle klik pada kanvas
-
-    canvas.addEventListener("click", getCoordinates);
-
-    var zoom = document.getElementById("zoom");
-    var zoomCtx = zoom.getContext("2d");
-    canvas.addEventListener("mousemove", function(e) {
-        // console.log(e);
-        const rect = canvas.getBoundingClientRect();
-        zoomCtx.clearRect(0, 0, canvas.width, canvas.height);
-        zoomCtx.drawImage(img, (e.layerX - 25) * 2, (e.layerY - 25) * 2, width * 2, height * 2, 0, 0,
-            width * 2,
-            height *
-            2);
-        drawMark(zoomCtx, 50, 50, true, 'green');
-        zoom.style.top = e.clientY - rect.top + 10 + "px"
-        zoom.style.left = e.clientX - rect.left + 10 + "px"
-        zoom.style.display = "block";
-    });
-
-    canvas.addEventListener("mouseout", function() {
-        zoom.style.display = "none";
-    });
+    function disableSelect() { 
+        needSelect = false;
+    }
     </script>
 @endif

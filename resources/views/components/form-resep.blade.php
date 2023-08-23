@@ -124,23 +124,25 @@
 
     function drawformResep(first=false) {
         html = ``;
-
-        resep.forEach((data, key) => {
-            let namaobat = obat.find(ob => ob.id == data.nama_obat);
-            let satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
-            let atr = aturan.find(a => a.id == data.aturan_pakai);
-            let ds = dosis.find(d => d.id == data.dosis);
-            html += `<tr> 
-                            <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/` + namaobat
-                .id + `', 'Detail Obat')">` + namaobat.nama_obat + ` <i class="bi bi-box-arrow-up-right"></i></a></td>
-                            <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
-                            <td>` + atr.singkatan + `</td>
-                            <td>` + ds.singkatan + `</td>
-                            <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key +
-                `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` +
-                key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
-        })
+        if (Array.isArray(resep)) {
+            resep.forEach((data, key) => {
+                let namaobat = obat.find(ob => ob.id == data.nama_obat);
+                let satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
+                let atr = aturan.find(a => a.id == data.aturan_pakai);
+                let ds = dosis.find(d => d.id == data.dosis);
+                html += `<tr> 
+                                <td> <a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/obat/` + namaobat
+                    .id + `', 'Detail Obat')">` + namaobat.nama_obat + ` <i class="bi bi-box-arrow-up-right"></i></a></td>
+                                <td>` + data.jumlah_obat + ` ` + satuan.satuan_obat + `</td>
+                                <td>` + atr.singkatan + `</td>
+                                <td>` + ds.singkatan + `</td>
+                                <td><b class="text-warning" style="cursor:pointer" onclick="editResep(` + key +
+                    `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteResep(` +
+                    key + `)"><i class="bi bi-trash"></i></b></td>
+                            </tr>`;
+            })
+            
+        }
         if (!first) {
             clearformResep();
         }

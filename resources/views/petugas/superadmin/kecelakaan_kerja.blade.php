@@ -251,16 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="row mb-2">
-                                        <div class="col">
-                                            <label for="" class="form-label">Status Lokalis <b class="text-danger">*</b></label>
-                                            <div class="input-group">
-                                                <img src="{{asset('assets/images/body.png')}}" width="50%" alt="" class="img-fluid magniflier"> 
-                                                <textarea type="number" name="status_lokalis" id="status_lokalis" rows="5" class="form-control">Dalam batas normal</textarea>
-                                                {!!validasi('Status lokalis')!!}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <x-status-lokalis :select="false"/>
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="">Diagnosa untuk surat</label><b><small class="text-warning">**Diagnosa yang akan ditampilkan di surat</small></b>
@@ -288,7 +279,7 @@
                                                 <h6>Diagnosa Penyakit</h6>
                                             </div>
                                             <div class="col-6 text-end">
-                                                <button type="button" class="btn btn-sm btn-success"
+                                                <button type="button" class="btn btn-sm btn-success" id="modal-pilih-penyakit"
                                                     onclick="modalPilihPenyakit()"><small><i
                                                             class="bi bi-plus-circle"></i> Tambah
                                                         Diagnosa</small></button>
@@ -529,15 +520,15 @@
                         if (input == 'nama_penyakit_id') {
                             form.val([]).trigger('change')
                         }else if (input == 'status_lokalis') {
-                            if (form.val()==null||form.val == '') {
-                                form.val('Dalam batas normal');
-                            }else{
-                                form.val('');
-                            }
+                            form.val('Dalam batas normal');
+                            // if (form.val()==null||form.val == '') {
+                            // }else{
+                                // form.val('');
+                            // }
                         }else{
                             form.val('');
                         }
-                        form.removeAttr('disabled');
+                        form.prop('readonly',false);
                         tindakan = [];
                         drawformTindakan();
                         resep = [];
@@ -547,7 +538,6 @@
                 }else{
                     let id_rekam  = $(this).children('option:selected').text().substring(0,2);
                     $('input#rekam_medis').val(id_rekam);
-                    console.log();
                     if (id_rekam == 'RI') {
                         setAllFormWithRekamMedis('{{url("/get-one-rawat-inap")}}/'+val);
                     }else if(id_rekam == 'RJ'){
@@ -604,23 +594,36 @@
                 url:url,
                 success: function (data) {
                     // console.log(data);
-                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'laju_pernapasan', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'keterangan'];
+                    selectedPenyakit = data.penyakit;
+                    
+                    
+                    var inputs = ['obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'tekanan_darah_per','saturasi_oksigen', 'denyut_nadi', 'laju_pernapasan', 'status_lokalis', 'nama_obat', 'jumlah_obat', 'aturan_pakai', 'keterangan_resep','nama_tindakan', 'alat_kesehatan', 'jumlah_pengguna', 'dosis', 'keterangan'];
                     inputs.forEach(input => {
                         if (input=='nama_penyakit_id') {
-                            penyakitId=JSON.parse(data[input]);
-
-                            selectedPenyakit = penyakitId;
+                            selectedIdPenyakit=JSON.parse(data[input]);
                             drawTableDiagnodsa();
-                            $('#'+input).val(penyakitId);
+                            $('#'+input).val(data[input]);
                         }else{
                             $('#'+input).val(data[input])
                         }
-                        $('#'+input).attr('disabled','disabled');
+                        $('#'+input).prop('readonly',true);
                         tindakan = JSON.parse(data.tindakan);
                         resep = JSON.parse(data.resep);
                         drawformTindakan(true);
                         drawformResep(true);
                     });
+                    $('#modal-pilih-penyakit').hide();
+                    $('[id*="delete-penyakit"]').hide();
+                    $('[onclick^="editTindakan"]').hide();
+                    $('[onclick^="deleteTindakan"]').hide();
+                    $('[onclick^="editResep"]').hide();
+                    $('[onclick^="deleteResep"]').hide();
+                    $('[onclick="tambahAlat()"]').hide();
+                    $('[onclick="removeMarks()"]').hide();
+                    marks = JSON.parse(data.titik_lokalis);
+                    $('#titik_lokalis').val(data.titik_lokalis);
+                    disableSelect()
+                    drawImageOnCanvas()
                 }
             })
         }
@@ -722,7 +725,7 @@
                         <td>` + sub + `</td>
                         <td>` + cat + `</td>
                         <td>` + klas + `</td>
-                        <td><b class="text-danger" style="cursor:pointer" onclick="deletePenyakit(${val.id})"><i class="bi bi-trash"></i></b></td>
+                        <td><b class="text-danger" style="cursor:pointer" id="delete-penyakit" ="deletePenyakit(${val.id})"><i class="bi bi-trash"></i></b></td>
                         </tr>`;
                     n++;
                 });
@@ -776,18 +779,6 @@
             //     $('#resep_kosong').show();
             // }
         }
-
-        
-
-        function setSatuan(i) {
-            if (i==null || i=='') {
-                $('#satuan_obat').text('Satuan');
-            }else{
-                namaobat = obat.find(ob => ob.id == i);
-                satuan = satuanobat.find(st => st.id == namaobat.satuan_obat_id);
-                $('#satuan_obat').text(satuan.satuan_obat);
-            }
-        }
         function tampilModalRawatInap2(url, title) {
             var modal = $('#modalRawatInap2');
 
@@ -808,7 +799,6 @@
             modal.modal('hide');
         }
     </script>
-    <script src="{{asset('assets/js/kacaPembesar.js')}}"></script>
 @stop
 
 

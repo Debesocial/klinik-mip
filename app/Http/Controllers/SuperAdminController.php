@@ -720,18 +720,19 @@ class SuperAdminController extends Controller
                 $rekam_medis = RawatJalan::find($kecelakaan->id_rekam_medis);
                 $rekam_medis['gen_id'] = $rekam_medis->id_rawat_jalan;
             }
-            $inputs = ['gen_id','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis','tindakan','resep'];
+            $inputs = ['gen_id','obat_konsumsi','pemeriksaan_penunjang','nama_penyakit_id', 'anamnesis', 'tinggi_badan', 'berat_badan', 'suhu_tubuh', 'tekanan_darah', 'saturasi_oksigen', 'denyut_nadi', 'denyut_nadi_menit', 'laju_pernapasan', 'laju_pernapasan_menit', 'status_lokalis','titik_lokalis','tindakan','resep'];
             foreach ($inputs as $input) {
                 $kecelakaan[$input] = $rekam_medis[$input];
             }
         }
-        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->get();
+        $alatkesehatan = Alkes::where('golongan_alkes_id','!=',5)->with(['satuan_obat'])->get();
         $satuanobat = SatuanObat::get();
         $obat = Obat::get();
+        $nama_penyakit = NamaPenyakit::whereIn('id', json_decode($kecelakaan->nama_penyakit_id))->with(['sub_klasifikasi', 'category', 'sub_klasifikasi.klasifikasi_penyakit'])->get();
         $lokasi = LokasiKejadian::get();
         $tindakan = Tindakan::get();
 
-        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('tindakan','kecelakaan', 'obat', 'alatkesehatan', 'satuanobat','lokasi'));
+        return view('petugas.superadmin.ubah_kecelakaan_kerja', compact('tindakan','kecelakaan', 'obat', 'alatkesehatan', 'satuanobat','lokasi', 'nama_penyakit'));
     }
 
     public function changeKecelakaanKerja(Request $request, $id)

@@ -189,26 +189,29 @@
     function drawformTindakan(first=false) {
         html = ``;
         // console.log(tindakan);
-        tindakan.forEach((data, key) => {
-            let listnamaalkes = `<ol class="ps-2">`;
-            data.alat_kesehatan.forEach(id_alkes => {
-                let namaalkes = alkes.find(nama => nama.id == id_alkes.id);
-                listnamaalkes +=
-                    `<li><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/` +
-                    namaalkes.id + `', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes +
-                    ` <i class="bi bi-box-arrow-up-right"></i></a> <b>${id_alkes.jlh}</b> ${namaalkes.satuan_obat.satuan_obat}</li>`;
-            });
-            listnamaalkes += `</ol>`;
-            var tin = allTindakan.find(d => d.id == data.nama_tindakan);
-            html += `<tr> 
-                        <td>` + tin.nama_tindakan + `</td>
-                        <td>${listnamaalkes}</td>
-                        <td>` + data.keterangan + `</td>
-                        <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key +
-                `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` +
-                key + `)"><i class="bi bi-trash"></i></b></td>
-                        </tr>`;
-        })
+        if (Array.isArray(tindakan)) {
+            tindakan.forEach((data, key) => {
+                let listnamaalkes = `<ol class="ps-2">`;
+                data.alat_kesehatan.forEach(id_alkes => {
+                    let namaalkes = alkes.find(nama => nama.id == id_alkes.id);
+                    listnamaalkes +=
+                        `<li><a href="javascript:void(0)" onclick="tampilModalRawatInap2('/modal/alkes/` +
+                        namaalkes.id + `', 'Detail Alat Kesehatan')">` + namaalkes.nama_alkes +
+                        ` <i class="bi bi-box-arrow-up-right"></i></a> <b>${id_alkes.jlh}</b> ${namaalkes.satuan_obat.satuan_obat}</li>`;
+                });
+                listnamaalkes += `</ol>`;
+                var tin = allTindakan.find(d => d.id == data.nama_tindakan);
+                html += `<tr> 
+                            <td>` + tin.nama_tindakan + `</td>
+                            <td>${listnamaalkes}</td>
+                            <td>` + data.keterangan + `</td>
+                            <td><b class="text-warning" style="cursor:pointer" onclick="editTindakan(` + key +
+                    `)"><i class="bi bi-pencil-square"></i></b> <b class="text-danger" style="cursor:pointer" onclick="deleteTindakan(` +
+                    key + `)"><i class="bi bi-trash"></i></b></td>
+                            </tr>`;
+            })
+            
+        }
         if (!first) {
             clearformTindakan();
         }

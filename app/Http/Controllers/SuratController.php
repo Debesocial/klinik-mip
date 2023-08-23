@@ -105,7 +105,7 @@ class SuratController extends Controller
     public function printKecelakaan($id)
     {
         $kecelakaan = KecelakaanKerja::find($id);
-        if ($kecelakaan->id_rekam_medis!=null) {
+        if ($kecelakaan->id_rekam_medis) {
             if ($kecelakaan->rekam_medis=='RI') {
                 $rekam_medis = RawatInap::find($kecelakaan->id_rekam_medis);
                 $rekam_medis['gen_id'] = $rekam_medis->id_rawat_inap;

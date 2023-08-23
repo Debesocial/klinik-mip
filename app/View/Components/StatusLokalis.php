@@ -6,17 +6,20 @@ use Illuminate\View\Component;
 
 class StatusLokalis extends Component
 {
+
     public $titik;
     public $form;
+    public $text;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($titik = null, $form=true)
+    public function __construct($titik = null, $form=true, $text="")
     {
         $this->titik = $titik ?? json_encode([]);
         $this->form = $form;
+        $this->text = $text;
     }
 
     /**
